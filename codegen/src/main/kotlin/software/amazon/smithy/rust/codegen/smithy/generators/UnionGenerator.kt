@@ -6,10 +6,11 @@ import software.amazon.smithy.model.shapes.MemberShape
 import software.amazon.smithy.model.shapes.UnionShape
 import software.amazon.smithy.rust.codegen.lang.RustWriter
 
-class UnionGenerator(val model: Model,
-                         private val symbolProvider: SymbolProvider,
-                         private val writer: RustWriter,
-                         private val shape: UnionShape
+class UnionGenerator(
+    val model: Model,
+    private val symbolProvider: SymbolProvider,
+    private val writer: RustWriter,
+    private val shape: UnionShape
 ) {
 
     fun render() {

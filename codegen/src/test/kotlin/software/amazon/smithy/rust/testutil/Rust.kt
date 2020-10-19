@@ -1,9 +1,7 @@
 package software.amazon.smithy.rust.testutil
 
 import software.amazon.smithy.rust.codegen.lang.RustDependency
-import software.amazon.smithy.rust.codegen.smithy.generators.CargoTomlGenerator
 import software.amazon.smithy.rust.codegen.util.runCommand
-
 
 fun String.shouldParseAsRust() {
     // quick hack via rustfmt

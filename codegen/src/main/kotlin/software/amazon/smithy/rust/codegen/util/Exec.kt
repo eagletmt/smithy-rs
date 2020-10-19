@@ -1,9 +1,8 @@
 package software.amazon.smithy.rust.codegen.util
 
-import software.amazon.smithy.rust.codegen.smithy.letIf
-import java.io.File
 import java.nio.file.Path
 import java.util.concurrent.TimeUnit
+import software.amazon.smithy.rust.codegen.smithy.letIf
 
 fun String.runCommand(workdir: Path? = null): String? {
     val parts = this.split("\\s".toRegex())
@@ -17,7 +16,7 @@ fun String.runCommand(workdir: Path? = null): String? {
 
     proc.waitFor(60, TimeUnit.MINUTES)
     if (proc.exitValue() != 0) {
-        val output = proc.errorStream.bufferedReader().readText();
+        val output = proc.errorStream.bufferedReader().readText()
         throw AssertionError("Command Failed\n$output")
     }
     return proc.inputStream.bufferedReader().readText()

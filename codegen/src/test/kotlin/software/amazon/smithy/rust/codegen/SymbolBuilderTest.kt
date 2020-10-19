@@ -12,10 +12,20 @@ import org.junit.jupiter.params.provider.CsvSource
 import software.amazon.smithy.codegen.core.SymbolProvider
 import software.amazon.smithy.model.Model
 import software.amazon.smithy.model.loader.ModelAssembler
-import software.amazon.smithy.model.shapes.*
+import software.amazon.smithy.model.shapes.ListShape
+import software.amazon.smithy.model.shapes.MemberShape
+import software.amazon.smithy.model.shapes.SetShape
+import software.amazon.smithy.model.shapes.ShapeId
+import software.amazon.smithy.model.shapes.StringShape
+import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.model.traits.ErrorTrait
 import software.amazon.smithy.rust.codegen.lang.render
-import software.amazon.smithy.rust.codegen.smithy.*
+import software.amazon.smithy.rust.codegen.smithy.Errors
+import software.amazon.smithy.rust.codegen.smithy.Shapes
+import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
+import software.amazon.smithy.rust.codegen.smithy.isOptional
+import software.amazon.smithy.rust.codegen.smithy.referenceClosure
+import software.amazon.smithy.rust.codegen.smithy.rustType
 import software.amazon.smithy.vended.SparseTrait
 
 class SymbolBuilderTest {
@@ -83,7 +93,6 @@ class SymbolBuilderTest {
         sym.namespace shouldBe "crate::model"
     }
 
-
     @DisplayName("Creates primitives")
     @ParameterizedTest(name = "{index} ==> ''{0}''")
     @CsvSource(
@@ -115,7 +124,7 @@ class SymbolBuilderTest {
             .assemble()
             .unwrap()
 
-        val provider: SymbolProvider = SymbolVisitor(model, "test")//KotlinCodegenPlugin.createSymbolProvider(model, "test")
+        val provider: SymbolProvider = SymbolVisitor(model, "test") // KotlinCodegenPlugin.createSymbolProvider(model, "test")
         val memberSymbol = provider.toSymbol(member)
         // builtins should not have a namespace set
         Assertions.assertEquals("", memberSymbol.namespace)
@@ -204,6 +213,4 @@ class SymbolBuilderTest {
         sym.referenceClosure().map { it.name } shouldContain "Instant"
         sym.references[0].dependencies.shouldNotBeEmpty()
     }
-
 }
-

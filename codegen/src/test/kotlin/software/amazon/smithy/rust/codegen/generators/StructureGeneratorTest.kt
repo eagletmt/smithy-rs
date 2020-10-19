@@ -9,14 +9,11 @@ import software.amazon.smithy.model.traits.DocumentationTrait
 import software.amazon.smithy.model.traits.ErrorTrait
 import software.amazon.smithy.rust.codegen.lang.RustDependency
 import software.amazon.smithy.rust.codegen.lang.RustWriter
-import software.amazon.smithy.rust.codegen.smithy.RuntimeConfig
-import software.amazon.smithy.rust.codegen.smithy.generators.StructureGenerator
 import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
-import software.amazon.smithy.rust.codegen.smithy.SymbolVisitorConfig
+import software.amazon.smithy.rust.codegen.smithy.generators.StructureGenerator
 import software.amazon.smithy.rust.testutil.shouldCompile
 import software.amazon.smithy.rust.testutil.shouldParseAsRust
 import software.amazon.smithy.rust.testutil.testSymbolProvider
-import java.io.File
 
 class StructureGeneratorTest {
     private val model: Model
@@ -35,7 +32,7 @@ class StructureGeneratorTest {
             .id("com.test#Qux")
             .build()
         // structure member shape - note the capitalization of the member name (generated code should use the Kotlin class member name)
-        //val member4 = MemberShape.builder().id("com.test#MyStruct\$Quux").target(struct2).build()
+        // val member4 = MemberShape.builder().id("com.test#MyStruct\$Quux").target(struct2).build()
         val member5 = MemberShape.builder().id("com.test#MyStruct\$byteValue").target("smithy.api#Byte").build()
 
         struct = StructureShape.builder()
@@ -58,7 +55,6 @@ class StructureGeneratorTest {
             .addShapes(struct, error, struct2, member1, member2, member3, messageMember)
             .assemble()
             .unwrap()
-
     }
 
     @Test

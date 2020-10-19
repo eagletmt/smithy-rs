@@ -21,6 +21,7 @@ sealed class RustType {
     data class Float(val precision: Int) : RustType() {
         override val name: kotlin.String = "f$precision"
     }
+
     data class Integer(val precision: Int) : RustType() {
         override val name: kotlin.String = "i$precision"
     }
@@ -28,6 +29,7 @@ sealed class RustType {
     data class Vec(val member: RustType) : RustType() {
         override val name: kotlin.String = "Vec"
     }
+
     data class HashMap(val key: RustType, val value: RustType) : RustType() {
         // TODO: assert that underneath, the member is a String
         override val name: kotlin.String = "HashMap"
@@ -41,17 +43,17 @@ sealed class RustType {
     data class Reference(val lifetime: kotlin.String?, val value: RustType) : RustType() {
         override val name: kotlin.String = value.name
     }
+
     data class Option(val value: RustType) : RustType() {
         override val name: kotlin.String = "Option"
     }
+
     data class Box(val value: RustType) : RustType() {
         override val name: kotlin.String = "Box"
     }
 
     data class Opaque(override val name: kotlin.String) : RustType()
-
 }
-
 
 fun RustType.render(): String {
     return when (this) {
@@ -62,7 +64,7 @@ fun RustType.render(): String {
         is RustType.Vec -> "${this.name}<${this.member.render()}>"
         is RustType.HashMap -> "${this.name}<${this.key.render()}, ${this.value.render()}>"
         is RustType.HashSet -> "${this.name}<${this.member.render()}>"
-        is RustType.Reference -> "&${this.lifetime?.let { "'$it"  } ?: ""} ${this.value.render()}"
+        is RustType.Reference -> "&${this.lifetime?.let { "'$it" } ?: ""} ${this.value.render()}"
         is RustType.Option -> "${this.name}<${this.value.render()}>"
         is RustType.Box -> "${this.name}<${this.value.render()}>"
         is RustType.Opaque -> this.name

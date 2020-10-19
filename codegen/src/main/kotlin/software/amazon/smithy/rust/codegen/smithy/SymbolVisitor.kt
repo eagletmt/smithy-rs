@@ -4,29 +4,50 @@ import software.amazon.smithy.codegen.core.CodegenException
 import software.amazon.smithy.codegen.core.Symbol
 import software.amazon.smithy.codegen.core.SymbolProvider
 import software.amazon.smithy.model.Model
-import software.amazon.smithy.model.shapes.*
+import software.amazon.smithy.model.shapes.BigDecimalShape
+import software.amazon.smithy.model.shapes.BigIntegerShape
+import software.amazon.smithy.model.shapes.BlobShape
+import software.amazon.smithy.model.shapes.BooleanShape
+import software.amazon.smithy.model.shapes.ByteShape
+import software.amazon.smithy.model.shapes.DocumentShape
+import software.amazon.smithy.model.shapes.DoubleShape
+import software.amazon.smithy.model.shapes.FloatShape
+import software.amazon.smithy.model.shapes.IntegerShape
+import software.amazon.smithy.model.shapes.ListShape
+import software.amazon.smithy.model.shapes.LongShape
+import software.amazon.smithy.model.shapes.MapShape
+import software.amazon.smithy.model.shapes.MemberShape
+import software.amazon.smithy.model.shapes.OperationShape
+import software.amazon.smithy.model.shapes.ResourceShape
+import software.amazon.smithy.model.shapes.ServiceShape
+import software.amazon.smithy.model.shapes.SetShape
+import software.amazon.smithy.model.shapes.Shape
+import software.amazon.smithy.model.shapes.ShapeVisitor
+import software.amazon.smithy.model.shapes.ShortShape
+import software.amazon.smithy.model.shapes.SimpleShape
+import software.amazon.smithy.model.shapes.StringShape
+import software.amazon.smithy.model.shapes.StructureShape
+import software.amazon.smithy.model.shapes.TimestampShape
+import software.amazon.smithy.model.shapes.UnionShape
 import software.amazon.smithy.model.traits.EnumTrait
 import software.amazon.smithy.model.traits.ErrorTrait
 import software.amazon.smithy.model.traits.Trait
 import software.amazon.smithy.rust.codegen.lang.RustType
-import software.amazon.smithy.rust.codegen.lang.RustType.*
 import software.amazon.smithy.utils.StringUtils
 import software.amazon.smithy.vended.NullableIndex
-import java.lang.IllegalStateException
 
 // TODO: currently, respecting integer types.
 // Should we not? [Go does not]
 val SimpleShapes = mapOf(
-    BooleanShape::class to Bool,
-    FloatShape::class to Float(32),
-    DoubleShape::class to Float(64),
-    ByteShape::class to Integer(8),
-    ShortShape::class to Integer(16),
-    IntegerShape::class to Integer(32),
-    LongShape::class to Integer(64),
+    BooleanShape::class to RustType.Bool,
+    FloatShape::class to RustType.Float(32),
+    DoubleShape::class to RustType.Float(64),
+    ByteShape::class to RustType.Integer(8),
+    ShortShape::class to RustType.Integer(16),
+    IntegerShape::class to RustType.Integer(32),
+    LongShape::class to RustType.Integer(64),
     StringShape::class to RustType.String
 )
-
 
 // TODO:
 // Unions
@@ -138,11 +159,9 @@ class SymbolVisitor(
         ).addReference(key).addReference(value).build()
     }
 
-
     override fun documentShape(shape: DocumentShape?): Symbol {
         TODO("Not yet implemented")
     }
-
 
     override fun bigIntegerShape(shape: BigIntegerShape?): Symbol {
         TODO("Not yet implemented")
@@ -164,7 +183,6 @@ class SymbolVisitor(
         TODO("Not yet implemented")
     }
 
-
     override fun structureShape(shape: StructureShape): Symbol {
         val isError = shape.isA(ErrorTrait::class.java)
         val name = StringUtils.capitalize(shape.id.name).letIf(isError) {
@@ -178,7 +196,7 @@ class SymbolVisitor(
 
         // not sure why we need a reference to each member but I'm sure we'll find out soon enough
         // add a reference to each member symbol
-        //addDeclareMemberReferences(builder, shape.allMembers.values)
+        // addDeclareMemberReferences(builder, shape.allMembers.values)
     }
 
     override fun unionShape(shape: UnionShape): Symbol {
@@ -240,7 +258,6 @@ fun Symbol.isOptional(): Boolean = when (this.rustType()) {
 
 // Symbols should _always_ be created with a Rust type attached
 fun Symbol.rustType(): RustType = this.getProperty(RUST_TYPE_KEY, RustType::class.java).get()
-
 
 private fun boolProp(symbol: Symbol, key: String): Boolean {
     return symbol.getProperty(key).map {

@@ -43,7 +43,7 @@ class ErrorGenerator(
             withBlock("fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {", "}") {
                 val message = shape.getMember("message")
                 write("write!(f, \"${symbol.name}\")?;")
-                if(message.isPresent) {
+                if (message.isPresent) {
                     withBlock("if let Some(msg) = &self.message {", "}") {
                         write("""write!(f, ": {}", msg)?;""")
                     }
@@ -54,5 +54,4 @@ class ErrorGenerator(
 
         writer.write("impl \$T for ${symbol.name} {}", StdError)
     }
-
 }

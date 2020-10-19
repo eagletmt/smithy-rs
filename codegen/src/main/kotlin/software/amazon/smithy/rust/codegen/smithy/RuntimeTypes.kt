@@ -1,11 +1,11 @@
 package software.amazon.smithy.rust.codegen.smithy
 
+import java.io.File
+import java.util.Optional
 import software.amazon.smithy.codegen.core.Symbol
 import software.amazon.smithy.model.node.ObjectNode
 import software.amazon.smithy.rust.codegen.lang.RustDependency
 import software.amazon.smithy.rust.codegen.lang.RustType
-import java.io.File
-import java.util.*
 
 data class RuntimeConfig(val cratePrefix: String = "smithy", val relativePath: String = "../") {
     companion object {
@@ -16,7 +16,6 @@ data class RuntimeConfig(val cratePrefix: String = "smithy", val relativePath: S
                     node.get().getStringMemberOrDefault("createPrefix", "smithy"),
                     File(node.get().getStringMemberOrDefault("relativePath", "../")).absolutePath
                 )
-
             } else {
                 RuntimeConfig()
             }
@@ -34,7 +33,7 @@ data class RuntimeType(val name: String, val dependency: RustDependency?, val na
     }
 
     companion object {
-        //val Blob = RuntimeType("Blob", RustDependency.IO_CORE, "blob")
+        // val Blob = RuntimeType("Blob", RustDependency.IO_CORE, "blob")
         val From = RuntimeType("From", dependency = null, namespace = "std::convert")
         val AsRef = RuntimeType("AsRef", dependency = null, namespace = "std::convert")
         fun StdFmt(member: String) = RuntimeType("fmt::$member", dependency = null, namespace = "std")
@@ -47,4 +46,3 @@ data class RuntimeType(val name: String, val dependency: RustDependency?, val na
             RuntimeType("Blob", RustDependency.SmithyTypes(runtimeConfig), "${runtimeConfig.cratePrefix}_types")
     }
 }
-

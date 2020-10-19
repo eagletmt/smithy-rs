@@ -1,20 +1,18 @@
 package software.amazon.smithy.rust.lang
 
-import io.kotest.matchers.collections.contain
 import io.kotest.matchers.string.shouldContain
 import org.junit.jupiter.api.Test
-import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
 import software.amazon.smithy.codegen.core.SymbolProvider
 import software.amazon.smithy.model.Model
 import software.amazon.smithy.model.shapes.SetShape
 import software.amazon.smithy.model.shapes.StringShape
 import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.lang.withBlock
+import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
 import software.amazon.smithy.rust.testutil.quickTest
-import software.amazon.smithy.rust.testutil.shouldParseAsRust
 import software.amazon.smithy.rust.testutil.shouldCompile
 import software.amazon.smithy.rust.testutil.shouldMatchResource
-
+import software.amazon.smithy.rust.testutil.shouldParseAsRust
 
 class RustWriterTest {
     @Test

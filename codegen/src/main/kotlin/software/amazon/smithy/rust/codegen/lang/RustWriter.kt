@@ -1,14 +1,13 @@
 package software.amazon.smithy.rust.codegen.lang
 
+import java.util.function.BiFunction
 import software.amazon.smithy.codegen.core.CodegenException
 import software.amazon.smithy.codegen.core.Symbol
-import software.amazon.smithy.codegen.core.SymbolProvider
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
 import software.amazon.smithy.rust.codegen.smithy.rustType
 import software.amazon.smithy.utils.CodeWriter
 import software.amazon.smithy.vended.CodegenWriter
 import software.amazon.smithy.vended.CodegenWriterFactory
-import java.util.function.BiFunction
 
 fun CodeWriter.withBlock(textBeforeNewLine: String, textAfterNewLine: String, block: CodeWriter.() -> Unit): CodeWriter {
     openBlock(textBeforeNewLine)
@@ -40,9 +39,9 @@ class RustWriter(private val filename: String, private val namespace: String, pr
         return "$header\n$useDecls\n$contents\n"
     }
 
-    inner class RustSymbolFormatter: BiFunction<Any, String, String> {
+    inner class RustSymbolFormatter : BiFunction<Any, String, String> {
         override fun apply(t: Any, u: String): String {
-            return when(t) {
+            return when (t) {
                 is RuntimeType -> {
                     t.dependency?.also { addDependency(it) }
                     // for now, use the fully qualified type name
@@ -67,4 +66,3 @@ class RustWriter(private val filename: String, private val namespace: String, pr
             } }
     }
 }
-

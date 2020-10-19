@@ -1,10 +1,9 @@
 package software.amazon.smithy.rust.codegen.lang
 
 import software.amazon.smithy.codegen.core.Symbol
-import software.amazon.smithy.rust.codegen.smithy.referenceClosure
 import software.amazon.smithy.vended.ImportContainer
 
-class UseDeclarations(private val filename: String, private val namespace: String): ImportContainer {
+class UseDeclarations(private val filename: String, private val namespace: String) : ImportContainer {
     private val imports: MutableSet<UseStatement> = mutableSetOf()
     fun addImport(moduleName: String, symbolName: String, alias: String = symbolName) {
         imports.add(UseStatement(moduleName, symbolName, alias))

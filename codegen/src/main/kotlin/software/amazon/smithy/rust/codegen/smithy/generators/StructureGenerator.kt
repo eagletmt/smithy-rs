@@ -9,10 +9,11 @@ import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.utils.CaseUtils
 
 // TODO: extract struct generation from Smithy shapes to support generating body objects
-class StructureGenerator(val model: Model,
-                         private val symbolProvider: SymbolProvider,
-                         private val writer: RustWriter,
-                         private val shape: StructureShape
+class StructureGenerator(
+    val model: Model,
+    private val symbolProvider: SymbolProvider,
+    private val writer: RustWriter,
+    private val shape: StructureShape
 ) {
     private val sortedMembers: List<MemberShape> = shape.allMembers.values.sortedBy { symbolProvider.toMemberName(it) }
     fun render() {
@@ -33,10 +34,9 @@ class StructureGenerator(val model: Model,
         val blockWriter = writer.openBlock("pub struct ${symbol.name} {")
         sortedMembers.forEach { member ->
             val memberName = member.memberName.toSnakeCase()
-            blockWriter.write("pub ${memberName}: \$T,", symbolProvider.toSymbol(member)) }
+            blockWriter.write("pub $memberName: \$T,", symbolProvider.toSymbol(member)) }
         blockWriter.closeBlock("}")
     }
-
 }
 
 // String extensions

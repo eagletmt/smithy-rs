@@ -1,15 +1,23 @@
 package software.amazon.smithy.rust.codegen.smithy
 
+import java.util.logging.Logger
 import software.amazon.smithy.build.PluginContext
 import software.amazon.smithy.model.neighbor.Walker
-import software.amazon.smithy.model.shapes.*
+import software.amazon.smithy.model.shapes.Shape
+import software.amazon.smithy.model.shapes.ShapeVisitor
+import software.amazon.smithy.model.shapes.StringShape
+import software.amazon.smithy.model.shapes.StructureShape
+import software.amazon.smithy.model.shapes.UnionShape
 import software.amazon.smithy.model.traits.EnumTrait
 import software.amazon.smithy.rust.codegen.lang.RustDependency
 import software.amazon.smithy.rust.codegen.lang.RustWriter
-import software.amazon.smithy.rust.codegen.smithy.generators.*
+import software.amazon.smithy.rust.codegen.smithy.generators.CargoTomlGenerator
+import software.amazon.smithy.rust.codegen.smithy.generators.EnumGenerator
+import software.amazon.smithy.rust.codegen.smithy.generators.LibRsGenerator
+import software.amazon.smithy.rust.codegen.smithy.generators.StructureGenerator
+import software.amazon.smithy.rust.codegen.smithy.generators.UnionGenerator
 import software.amazon.smithy.rust.codegen.util.runCommand
 import software.amazon.smithy.vended.CodegenWriterDelegator
-import java.util.logging.Logger
 
 class CodegenVisitor(private val context: PluginContext) : ShapeVisitor.Default<Unit>() {
 
@@ -45,14 +53,13 @@ class CodegenVisitor(private val context: PluginContext) : ShapeVisitor.Default<
         }
         writers.flushWriters()
         "cargo fmt".runCommand(context.fileManifest.baseDir)
-
     }
 
     override fun getDefault(shape: Shape?) {
     }
 
     override fun structureShape(shape: StructureShape) {
-        //super.structureShape(shape)
+        // super.structureShape(shape)
         logger.info("generating a structure...")
         writers.useShapeWriter(shape) {
             StructureGenerator(context.model, symbolProvider, it, shape).render()
