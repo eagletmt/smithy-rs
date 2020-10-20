@@ -17,7 +17,6 @@
 
 package software.amazon.smithy.rust.codegen.smithy
 
-
 import java.util.Optional
 import java.util.logging.Logger
 import kotlin.streams.toList
