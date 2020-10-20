@@ -1,3 +1,20 @@
+/*
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  http://aws.amazon.com/apache2.0
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ *
+ *
+ */
+
 package software.amazon.smithy.rust.codegen.generators
 
 import io.kotest.matchers.shouldBe
@@ -31,7 +48,7 @@ class EnumGeneratorTest {
             .build()
 
         val shape = StringShape.builder()
-            .id("com.test#Baz")
+            .id("com.test#InstanceType")
             .addTrait(trait)
             .addTrait(DocumentationTrait("Documentation for this enum"))
             .build()
@@ -45,13 +62,16 @@ class EnumGeneratorTest {
         val generator = EnumGenerator(provider, writer, shape, trait)
         generator.render()
         val result = writer.toString()
+        println(result)
         result.shouldParseAsRust()
         result.shouldCompile()
         result.quickTest("""
-            let instance = Baz::T2Micro;
+            let instance = InstanceType::T2Micro;
             assert_eq!(instance.as_str(), "t2.micro");
-            assert_eq!(Baz::from("t2.nano"), Baz::T2Nano);
-            assert_eq!(Baz::from("other"), Baz::Unknown("other".to_owned()));
+            assert_eq!(InstanceType::from("t2.nano"), InstanceType::T2Nano);
+            assert_eq!(InstanceType::from("other"), InstanceType::Unknown("other".to_owned()));
+            // round trip unknown variants:
+            assert_eq!(InstanceType::from("other").as_str(), "other");
         """.trimIndent())
     }
 

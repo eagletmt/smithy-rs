@@ -1,3 +1,20 @@
+/*
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  http://aws.amazon.com/apache2.0
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ *
+ *
+ */
+
 package software.amazon.smithy.rust.codegen.smithy
 
 import software.amazon.smithy.codegen.core.CodegenException
@@ -31,7 +48,6 @@ import software.amazon.smithy.model.shapes.TimestampShape
 import software.amazon.smithy.model.shapes.UnionShape
 import software.amazon.smithy.model.traits.EnumTrait
 import software.amazon.smithy.model.traits.ErrorTrait
-import software.amazon.smithy.model.traits.Trait
 import software.amazon.smithy.rust.codegen.lang.RustType
 import software.amazon.smithy.utils.StringUtils
 import software.amazon.smithy.vended.NullableIndex
@@ -94,7 +110,7 @@ class SymbolVisitor(
     private fun handleOptionality(symbol: Symbol, shape: Shape): Symbol {
         return if (nullableIndex.isNullable(shape)) {
             val builder = Symbol.builder()
-            val rustType = Option(symbol.rustType())
+            val rustType = RustType.Option(symbol.rustType())
             builder.rustType(rustType)
             builder.addReference(symbol)
             builder.name(rustType.name)
@@ -103,9 +119,9 @@ class SymbolVisitor(
     }
 
     private fun handleRustBoxing(symbol: Symbol, shape: Shape): Symbol {
-        return if (shape.isA(RustBox::class.java)) {
+        return if (shape.hasTrait(RustBox::class.java)) {
             val builder = Symbol.builder()
-            val rustType = Box(symbol.rustType())
+            val rustType = RustType.Box(symbol.rustType())
             builder.rustType(rustType)
             builder.addReference(symbol)
             builder.name(rustType.name)
@@ -125,8 +141,8 @@ class SymbolVisitor(
     override fun floatShape(shape: FloatShape): Symbol = simpleShape(shape)
     override fun doubleShape(shape: DoubleShape): Symbol = simpleShape(shape)
     override fun stringShape(shape: StringShape): Symbol {
-        return if (shape.isA(EnumTrait::class.java)) {
-            symbolBuilder(shape, Opaque(shape.id.name)).locatedIn(Shapes).build()
+        return if (shape.hasTrait(EnumTrait::class.java)) {
+            symbolBuilder(shape, RustType.Opaque(shape.id.name)).locatedIn(Shapes).build()
         } else {
             simpleShape(shape)
         }
@@ -134,17 +150,17 @@ class SymbolVisitor(
 
     override fun listShape(shape: ListShape): Symbol {
         val inner = this.toSymbol(shape.member)
-        return symbolBuilder(shape, Vec(inner.rustType())).addReference(inner).build()
+        return symbolBuilder(shape, RustType.Vec(inner.rustType())).addReference(inner).build()
     }
 
     override fun setShape(shape: SetShape): Symbol {
         val inner = this.toSymbol(shape.member)
         val builder = if (model.expectShape(shape.member.target).isStringShape) {
             // TODO: refactor / figure out how we want to handle prebaked symbols
-            symbolBuilder(shape, HashSet(inner.rustType())).namespace(RuntimeType.HashSet.namespace, "::")
+            symbolBuilder(shape, RustType.HashSet(inner.rustType())).namespace(RuntimeType.HashSet.namespace, "::")
         } else {
             // only strings get put into actual sets because floats are unhashable
-            symbolBuilder(shape, Vec(inner.rustType()))
+            symbolBuilder(shape, RustType.Vec(inner.rustType()))
         }
         return builder.addReference(inner).build()
     }
@@ -184,24 +200,21 @@ class SymbolVisitor(
     }
 
     override fun structureShape(shape: StructureShape): Symbol {
-        val isError = shape.isA(ErrorTrait::class.java)
+        val isError = shape.hasTrait(ErrorTrait::class.java)
         val name = StringUtils.capitalize(shape.id.name).letIf(isError) {
+            // TODO: this is should probably be a configurable mixin
             it.replace("Exception", "Error")
         }
-        val builder = symbolBuilder(shape, Opaque(name))
+        val builder = symbolBuilder(shape, RustType.Opaque(name))
         return when {
             isError -> builder.locatedIn(Errors)
             else -> builder.locatedIn(Shapes)
         }.build()
-
-        // not sure why we need a reference to each member but I'm sure we'll find out soon enough
-        // add a reference to each member symbol
-        // addDeclareMemberReferences(builder, shape.allMembers.values)
     }
 
     override fun unionShape(shape: UnionShape): Symbol {
         val name = StringUtils.capitalize(shape.id.name)
-        val builder = symbolBuilder(shape, Opaque(name)).locatedIn(Shapes)
+        val builder = symbolBuilder(shape, RustType.Opaque(name)).locatedIn(Shapes)
 
         return builder.build()
     }
@@ -231,42 +244,19 @@ class SymbolVisitor(
 }
 
 // TODO(chore): Move this to a useful place
-private const val OPTIONAL_KEY = "optional"
-private const val RUST_BOX_KEY = "rustboxed"
 private const val RUST_TYPE_KEY = "rusttype"
 
 fun Symbol.Builder.rustType(rustType: RustType): Symbol.Builder {
     return this.putProperty(RUST_TYPE_KEY, rustType)
 }
 
-fun Symbol.Builder.setOptional(optional: Boolean): Symbol.Builder {
-    return this.putProperty(OPTIONAL_KEY, optional)
-}
-
-fun Symbol.Builder.setRustBox(rustBoxed: Boolean): Symbol.Builder {
-    return this.putProperty(RUST_BOX_KEY, rustBoxed)
-}
-
-fun Shape?.isA(trait: Class<out Trait>): Boolean {
-    return this?.hasTrait(trait) ?: false
-}
-
 fun Symbol.isOptional(): Boolean = when (this.rustType()) {
-    is Option -> true
+    is RustType.Option -> true
     else -> false
 }
 
 // Symbols should _always_ be created with a Rust type attached
 fun Symbol.rustType(): RustType = this.getProperty(RUST_TYPE_KEY, RustType::class.java).get()
-
-private fun boolProp(symbol: Symbol, key: String): Boolean {
-    return symbol.getProperty(key).map {
-        when (it) {
-            is Boolean -> it
-            else -> throw IllegalStateException("property was not set to boolean")
-        }
-    }.orElse(false)
-}
 
 fun <T> T.letIf(cond: Boolean, f: (T) -> T): T {
     return if (cond) {
