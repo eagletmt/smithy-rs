@@ -22,9 +22,17 @@ dependencies {
 
 tasks.register<Exec>("cargoCheck") {
     workingDir("build/smithyprojections/codegen-test/source/rust-codegen/")
+    // disallow warnings
+    environment("RUSTFLAGS", "-D warnings")
     commandLine("cargo", "check")
     dependsOn("build")
 }
 
-tasks["test"].finalizedBy("cargoCheck")
+tasks.register<Exec>("cargoClippy") {
+    workingDir("build/smithyprojections/codegen-test/source/rust-codegen/")
+    // disallow warnings
+    commandLine("cargo", "clippy")
+    dependsOn("build")
+}
 
+tasks["test"].finalizedBy("cargoCheck", "cargoClippy")
