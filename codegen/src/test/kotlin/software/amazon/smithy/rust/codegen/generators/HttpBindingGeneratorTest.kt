@@ -129,6 +129,5 @@ class HttpBindingGeneratorTest {
             assert_eq!(http_request.uri(), "/buk/1970-04-28T03:58:45Z?paramName=qp&hello=0&hello=1");
             assert_eq!(http_request.method(), "PUT");
         """)
-
     }
 }
