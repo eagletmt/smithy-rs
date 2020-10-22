@@ -45,7 +45,9 @@ class EnumGenerator(
     }
 
     private fun EnumDefinition.derivedName(): String {
-        // TODO: Update with guidance from Smithy team re: named enums
+        // TODO: For unnamed enums, generate a newtype that wraps the string. We can provide a &[&str] with the valid
+        // values.
+
         // Because enum variants always start with an upper case letter, they will never
         // conflict with reserved words (which are always lower case), therefore, we never need
         // to fall back to raw identifiers

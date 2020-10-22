@@ -42,15 +42,21 @@ data class RustDependency(
 
     override fun toString(): String {
         return when (location) {
-            is CratesIo -> """$name = $location.version"""
+            is CratesIo -> """$name = "${location.version}""""
             is Local -> """$name = { path = "${location.path}/$name" }"""
         }
     }
 
     companion object {
-        private val PropKey = "rustdep"
+        val Http: RustDependency = RustDependency("http", CratesIo("0.2"))
         fun SmithyTypes(runtimeConfig: RuntimeConfig) =
             RustDependency("${runtimeConfig.cratePrefix}-types", Local(runtimeConfig.relativePath))
+
+        fun SmithyHttp(runtimeConfig: RuntimeConfig) = RustDependency(
+            "${runtimeConfig.cratePrefix}-http", Local(runtimeConfig.relativePath)
+        )
+
+        private val PropKey = "rustdep"
 
         fun fromSymbolDependency(symbolDependency: SymbolDependency) =
             symbolDependency.getProperty(PropKey, RustDependency::class.java).get()

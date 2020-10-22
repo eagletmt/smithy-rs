@@ -48,7 +48,9 @@ import software.amazon.smithy.model.shapes.TimestampShape
 import software.amazon.smithy.model.shapes.UnionShape
 import software.amazon.smithy.model.traits.EnumTrait
 import software.amazon.smithy.model.traits.ErrorTrait
+import software.amazon.smithy.model.traits.HttpLabelTrait
 import software.amazon.smithy.rust.codegen.lang.RustType
+import software.amazon.smithy.rust.codegen.smithy.generators.toSnakeCase
 import software.amazon.smithy.utils.StringUtils
 import software.amazon.smithy.vended.NullableIndex
 
@@ -87,10 +89,12 @@ val DefaultConfig = SymbolVisitorConfig(runtimeConfig = RuntimeConfig(), handleO
 data class SymbolLocation(val filename: String, val namespace: String)
 
 fun Symbol.Builder.locatedIn(symbolLocation: SymbolLocation): Symbol.Builder =
-    this.definitionFile("src/${symbolLocation.filename}").namespace("crate::${symbolLocation.namespace}", "::")
+    this.definitionFile("src/${symbolLocation.filename}")
+        .namespace("crate::${symbolLocation.namespace}", "::")
 
 val Shapes = SymbolLocation("model.rs", "model")
 val Errors = SymbolLocation("error.rs", "error")
+val Operations = SymbolLocation("operation.rs", "operation")
 
 class SymbolVisitor(
     private val model: Model,
@@ -103,12 +107,14 @@ class SymbolVisitor(
         return shape.accept(this)
     }
 
+    override fun toMemberName(shape: MemberShape): String = shape.memberName.toSnakeCase()
+
     override fun blobShape(shape: BlobShape?): Symbol {
         return RuntimeType.Blob(config.runtimeConfig).toSymbol()
     }
 
     private fun handleOptionality(symbol: Symbol, shape: Shape): Symbol {
-        return if (nullableIndex.isNullable(shape)) {
+        return if (nullableIndex.isNullable(shape) && !shape.hasTrait(HttpLabelTrait::class.java)) {
             val builder = Symbol.builder()
             val rustType = RustType.Option(symbol.rustType())
             builder.rustType(rustType)
@@ -187,8 +193,8 @@ class SymbolVisitor(
         TODO("Not yet implemented")
     }
 
-    override fun operationShape(shape: OperationShape?): Symbol {
-        TODO("Not yet implemented")
+    override fun operationShape(shape: OperationShape): Symbol {
+        return symbolBuilder(shape, RustType.Opaque(shape.id.name.capitalize())).locatedIn(Operations).build()
     }
 
     override fun resourceShape(shape: ResourceShape?): Symbol {

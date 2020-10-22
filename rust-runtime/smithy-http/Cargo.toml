@@ -1,9 +1,8 @@
 [package]
-name = "smithy-types"
+name = "smithy-http"
 version = "0.0.1"
 authors = ["rcoh@amazon.com"]
 edition = "2018"
 
 [dependencies]
-chrono = "0.4"
-httpdate = "0.3.2"
+smithy-types = { path = "../smithy-types" }

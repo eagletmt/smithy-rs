@@ -38,11 +38,14 @@ import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.model.traits.ErrorTrait
 import software.amazon.smithy.rust.codegen.lang.render
 import software.amazon.smithy.rust.codegen.smithy.Errors
+import software.amazon.smithy.rust.codegen.smithy.Operations
 import software.amazon.smithy.rust.codegen.smithy.Shapes
 import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
 import software.amazon.smithy.rust.codegen.smithy.isOptional
 import software.amazon.smithy.rust.codegen.smithy.referenceClosure
 import software.amazon.smithy.rust.codegen.smithy.rustType
+import software.amazon.smithy.rust.testutil.asSmithy
+import software.amazon.smithy.rust.testutil.testSymbolProvider
 import software.amazon.smithy.vended.SparseTrait
 
 class SymbolBuilderTest {
@@ -86,8 +89,7 @@ class SymbolBuilderTest {
 
     @Test
     fun `creates enums`() {
-        val model = Model.assembler().addUnparsedModel("test.smithy", """
-            ${"$"}version: "1.0"
+        val model = """
             namespace test
             
             @enum([
@@ -101,7 +103,7 @@ class SymbolBuilderTest {
                 }
             ])
             string StandardUnit
-        """.trimIndent()).assemble().unwrap()
+        """.asSmithy()
         val shape = model.expectShape(ShapeId.from("test#StandardUnit"))
         val provider: SymbolProvider = SymbolVisitor(model, "test")
         val sym = provider.toSymbol(shape)
@@ -229,5 +231,47 @@ class SymbolBuilderTest {
         sym.rustType().render() shouldBe "Option<Instant>"
         sym.referenceClosure().map { it.name } shouldContain "Instant"
         sym.references[0].dependencies.shouldNotBeEmpty()
+    }
+
+    @Test
+    fun `creates operations`() {
+        val model = """
+            namespace smithy.example
+
+            @idempotent
+            @http(method: "PUT", uri: "/{bucketName}/{key}", code: 200)
+            operation PutObject {
+                input: PutObjectInput
+            }
+
+            structure PutObjectInput {
+                // Sent in the URI label named "key".
+                @required
+                @httpLabel
+                key: String,
+
+                // Sent in the URI label named "bucketName".
+                @required
+                @httpLabel
+                bucketName: String,
+
+                // Sent in the X-Foo header
+                @httpHeader("X-Foo")
+                foo: String,
+
+                // Sent in the query string as paramName
+                @httpQuery("paramName")
+                someValue: String,
+
+                // Sent in the body
+                data: Blob,
+
+                // Sent in the body
+                additional: String,
+            }
+        """.asSmithy()
+        val symbol = testSymbolProvider(model).toSymbol(model.expectShape(ShapeId.from("smithy.example#PutObject")))
+        symbol.definitionFile shouldBe("src/${Operations.filename}")
+        symbol.name shouldBe "PutObject"
     }
 }

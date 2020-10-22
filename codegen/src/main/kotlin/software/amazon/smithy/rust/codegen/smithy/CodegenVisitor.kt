@@ -20,6 +20,7 @@ package software.amazon.smithy.rust.codegen.smithy
 import java.util.logging.Logger
 import software.amazon.smithy.build.PluginContext
 import software.amazon.smithy.model.neighbor.Walker
+import software.amazon.smithy.model.shapes.OperationShape
 import software.amazon.smithy.model.shapes.Shape
 import software.amazon.smithy.model.shapes.ShapeVisitor
 import software.amazon.smithy.model.shapes.StringShape
@@ -31,10 +32,13 @@ import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.smithy.generators.CargoTomlGenerator
 import software.amazon.smithy.rust.codegen.smithy.generators.EnumGenerator
 import software.amazon.smithy.rust.codegen.smithy.generators.LibRsGenerator
+import software.amazon.smithy.rust.codegen.smithy.generators.OperationGenerator
 import software.amazon.smithy.rust.codegen.smithy.generators.StructureGenerator
 import software.amazon.smithy.rust.codegen.smithy.generators.UnionGenerator
 import software.amazon.smithy.rust.codegen.util.runCommand
 import software.amazon.smithy.vended.CodegenWriterDelegator
+
+private val PublicModules = listOf("error", "operation", "model")
 
 class CodegenVisitor(private val context: PluginContext) : ShapeVisitor.Default<Unit>() {
 
@@ -59,13 +63,8 @@ class CodegenVisitor(private val context: PluginContext) : ShapeVisitor.Default<
             cargoToml.render()
         }
         writers.useFileWriter("src/lib.rs") {
-            val modules = mutableListOf<String>()
-            if (writers.writers.containsKey("src/model.rs")) {
-                modules.add("model")
-            }
-            if (writers.writers.containsKey("src/error.rs")) {
-                modules.add("error")
-            }
+            // TODO: a more structured method of signaling what modules should get loaded.
+            val modules = PublicModules.filter { writers.writers.containsKey("src/$it.rs") }
             LibRsGenerator(modules, it).render()
         }
         writers.flushWriters()
@@ -94,6 +93,12 @@ class CodegenVisitor(private val context: PluginContext) : ShapeVisitor.Default<
     override fun unionShape(shape: UnionShape) {
         writers.useShapeWriter(shape) {
             UnionGenerator(context.model, symbolProvider, it, shape).render()
+        }
+    }
+
+    override fun operationShape(shape: OperationShape) {
+        writers.useShapeWriter(shape) {
+            OperationGenerator(context.model, symbolProvider, settings.runtimeConfig, it, shape).render()
         }
     }
 }

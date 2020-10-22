@@ -25,7 +25,8 @@ import software.amazon.smithy.model.traits.ErrorTrait
 import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.utils.CaseUtils
 
-// TODO: extract struct generation from Smithy shapes to support generating body objects
+// TODO(maybe): extract struct generation from Smithy shapes to support generating body objects
+// TODO: generate builders; 1d
 class StructureGenerator(
     val model: Model,
     private val symbolProvider: SymbolProvider,
@@ -44,13 +45,12 @@ class StructureGenerator(
 
     private fun renderStructure() {
         val symbol = symbolProvider.toSymbol(shape)
-        // TODO: _probably_, pull this info from the symbol so that the
-        // symbol provider can alter things as necessary
+        // TODO(maybe): Pull derive info from the symbol so that the symbol provider can alter things as necessary; 4h
         writer.write("#[non_exhaustive]")
         writer.write("#[derive(Debug, PartialEq, Clone)]")
         val blockWriter = writer.openBlock("pub struct ${symbol.name} {")
         sortedMembers.forEach { member ->
-            val memberName = member.memberName.toSnakeCase()
+            val memberName = symbolProvider.toMemberName(member)
             blockWriter.write("pub $memberName: \$T,", symbolProvider.toSymbol(member)) }
         blockWriter.closeBlock("}")
     }

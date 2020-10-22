@@ -24,7 +24,6 @@ import software.amazon.smithy.model.shapes.MemberShape
 import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.model.traits.DocumentationTrait
 import software.amazon.smithy.model.traits.ErrorTrait
-import software.amazon.smithy.rust.codegen.lang.RustDependency
 import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
 import software.amazon.smithy.rust.codegen.smithy.generators.StructureGenerator
@@ -83,10 +82,9 @@ class StructureGeneratorTest {
         val result = writer.toString()
         println(result)
         result.shouldParseAsRust()
-        val deps = writer.dependencies.map { RustDependency.fromSymbolDependency(it) }
-        result.shouldCompile(deps, """
+        writer.shouldCompile("""
             let s: Option<MyStruct> = None;
-            s.map(|i|println!("{:?}", i.ts));
+            s.map(|i|println!("{:?}, {:?}", i.ts, i.byte_value));
         """.trimIndent())
     }
 

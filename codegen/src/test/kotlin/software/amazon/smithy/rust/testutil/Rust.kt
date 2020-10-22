@@ -18,8 +18,10 @@
 package software.amazon.smithy.rust.testutil
 
 import software.amazon.smithy.rust.codegen.lang.RustDependency
+import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.util.runCommand
 
+// TODO: unify these test helpers a bit
 fun String.shouldParseAsRust() {
     // quick hack via rustfmt
     val tempFile = createTempFile(suffix = ".rs")
@@ -27,9 +29,14 @@ fun String.shouldParseAsRust() {
     "rustfmt ${tempFile.absolutePath}".runCommand()
 }
 
-// TODO: should probably unify this with CargoTomlGenerator
-fun String.shouldCompile(deps: List<RustDependency>, main: String = "") {
+fun RustWriter.shouldCompile(main: String = "") {
+    val deps = this.dependencies.map { RustDependency.fromSymbolDependency(it) }
+    this.toString().shouldCompile(deps.toSet(), main)
+}
+
+fun String.shouldCompile(deps: Set<RustDependency>, main: String = "") {
     val tempDir = createTempDir()
+    // TODO: unify this with CargoTomlGenerator
     val cargoToml = """
     [package]
     name = "test-compile"
@@ -38,8 +45,7 @@ fun String.shouldCompile(deps: List<RustDependency>, main: String = "") {
     edition = "2018"
     
     [dependencies]
-    ${deps.map { it.toString() }.joinToString("\n") }
-    
+    ${deps.joinToString("\n") { it.toString() }}
     """.trimIndent()
     tempDir.resolve("Cargo.toml").writeText(cargoToml)
     tempDir.resolve("src").mkdirs()

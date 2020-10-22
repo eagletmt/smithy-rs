@@ -72,8 +72,7 @@ sealed class RustType {
     data class Opaque(override val name: kotlin.String) : RustType()
 }
 
-fun RustType.render(): String {
-    return when (this) {
+fun RustType.render(): String = when (this) {
         is RustType.Bool -> this.name
         is RustType.Float -> this.name
         is RustType.Integer -> this.name
@@ -85,5 +84,4 @@ fun RustType.render(): String {
         is RustType.Option -> "${this.name}<${this.value.render()}>"
         is RustType.Box -> "${this.name}<${this.value.render()}>"
         is RustType.Opaque -> this.name
-    }
 }

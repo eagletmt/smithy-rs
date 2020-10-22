@@ -21,6 +21,7 @@ import java.io.File
 import java.util.Optional
 import software.amazon.smithy.codegen.core.Symbol
 import software.amazon.smithy.model.node.ObjectNode
+import software.amazon.smithy.model.traits.TimestampFormatTrait
 import software.amazon.smithy.rust.codegen.lang.RustDependency
 import software.amazon.smithy.rust.codegen.lang.RustType
 
@@ -45,10 +46,11 @@ data class RuntimeType(val name: String, val dependency: RustDependency?, val na
         val builder = Symbol.builder().name(name).namespace(namespace, "::")
             .rustType(RustType.Opaque(name))
 
-        dependency.run { builder.addDependency(this) }
+        dependency?.run { builder.addDependency(this) }
         return builder.build()
     }
 
+    // TODO: refactor to be RuntimeTypeProvider a la Symbol provider that packages the `RuntimeConfig` state.
     companion object {
         // val Blob = RuntimeType("Blob", RustDependency.IO_CORE, "blob")
         val From = RuntimeType("From", dependency = null, namespace = "std::convert")
@@ -59,7 +61,30 @@ data class RuntimeType(val name: String, val dependency: RustDependency?, val na
 
         fun Instant(runtimeConfig: RuntimeConfig) =
             RuntimeType("Instant", RustDependency.SmithyTypes(runtimeConfig), "${runtimeConfig.cratePrefix}_types")
+
         fun Blob(runtimeConfig: RuntimeConfig) =
             RuntimeType("Blob", RustDependency.SmithyTypes(runtimeConfig), "${runtimeConfig.cratePrefix}_types")
+
+        fun LabelFormat(runtimeConfig: RuntimeConfig, func: String) =
+            RuntimeType(func, RustDependency.SmithyHttp(runtimeConfig), "${runtimeConfig.cratePrefix}_http::label")
+
+        fun QueryFormat(runtimeConfig: RuntimeConfig, func: String) =
+            RuntimeType(func, RustDependency.SmithyHttp(runtimeConfig), "${runtimeConfig.cratePrefix}_http::query")
+
+        fun TimestampFormat(runtimeConfig: RuntimeConfig, format: TimestampFormatTrait.Format): RuntimeType {
+            val timestampFormat = when (format) {
+                TimestampFormatTrait.Format.EPOCH_SECONDS -> "EpochSeconds"
+                TimestampFormatTrait.Format.DATE_TIME -> "DateTime"
+                TimestampFormatTrait.Format.HTTP_DATE -> "HttpDate"
+                TimestampFormatTrait.Format.UNKNOWN -> TODO()
+            }
+            return RuntimeType(
+                timestampFormat,
+                RustDependency.SmithyTypes(runtimeConfig),
+                "${runtimeConfig.cratePrefix}_types::instant::Format"
+            )
+        }
+
+        fun Http(path: String): RuntimeType = RuntimeType(name = path, dependency = RustDependency.Http, namespace = "http")
     }
 }
