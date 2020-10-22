@@ -24,6 +24,7 @@ import software.amazon.smithy.model.shapes.ShapeId
 import software.amazon.smithy.model.shapes.StringShape
 import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.model.traits.ErrorTrait
+import software.amazon.smithy.model.traits.SparseTrait
 import software.amazon.smithy.rust.codegen.lang.render
 import software.amazon.smithy.rust.codegen.smithy.Errors
 import software.amazon.smithy.rust.codegen.smithy.Shapes
@@ -31,7 +32,6 @@ import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
 import software.amazon.smithy.rust.codegen.smithy.isOptional
 import software.amazon.smithy.rust.codegen.smithy.referenceClosure
 import software.amazon.smithy.rust.codegen.smithy.rustType
-import software.amazon.smithy.vended.SparseTrait
 
 class SymbolBuilderTest {
     @Test

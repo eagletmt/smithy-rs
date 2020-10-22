@@ -7,6 +7,7 @@ package software.amazon.smithy.rust.codegen.smithy
 
 import java.util.logging.Logger
 import software.amazon.smithy.build.PluginContext
+import software.amazon.smithy.codegen.core.writer.CodegenWriterDelegator
 import software.amazon.smithy.model.neighbor.Walker
 import software.amazon.smithy.model.shapes.Shape
 import software.amazon.smithy.model.shapes.ShapeVisitor
@@ -22,7 +23,6 @@ import software.amazon.smithy.rust.codegen.smithy.generators.LibRsGenerator
 import software.amazon.smithy.rust.codegen.smithy.generators.StructureGenerator
 import software.amazon.smithy.rust.codegen.smithy.generators.UnionGenerator
 import software.amazon.smithy.rust.codegen.util.runCommand
-import software.amazon.smithy.vended.CodegenWriterDelegator
 
 class CodegenVisitor(private val context: PluginContext) : ShapeVisitor.Default<Unit>() {
 

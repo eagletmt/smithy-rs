@@ -27,9 +27,7 @@ class UnionGeneratorTest {
             .target("smithy.api#PrimitiveInteger").addTrait(
             DocumentationTrait("This *is* documentation about the member.")
         ).build()
-        // val member3 = MemberShape.builder().id("com.test#MyStruct\$baz").target("smithy.api#Integer").build()
 
-        // struct 2 will be of type `Qux` under `MyStruct::quux` member
         val union = UnionShape.builder()
             .id("com.test#MyUnion")
             .addMember(member1)
@@ -45,7 +43,6 @@ class UnionGeneratorTest {
         val generator = UnionGenerator(model, provider, writer, union)
         generator.render()
         val result = writer.toString()
-        println(result)
         result.shouldParseAsRust()
         result.shouldCompile()
     }
