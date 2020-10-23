@@ -12,12 +12,14 @@ import software.amazon.smithy.rust.codegen.smithy.RuntimeConfig
 import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
 import software.amazon.smithy.rust.codegen.smithy.SymbolVisitorConfig
 import software.amazon.smithy.rust.codegen.smithy.letIf
+import software.amazon.smithy.rust.codegen.util.dq
 
 val TestRuntimeConfig = RuntimeConfig(relativePath = File("../rust-runtime/").absolutePath)
 val TestSymbolVisitorConfig = SymbolVisitorConfig(runtimeConfig = TestRuntimeConfig, handleOptionality = true, handleRustBoxing = true)
 fun testSymbolProvider(model: Model): SymbolProvider = SymbolVisitor(model, "test", TestSymbolVisitorConfig)
 
+private val SmithyVersion = "1.0"
 fun String.asSmithy(sourceLocation: String? = null): Model {
-    val processed = letIf(!this.startsWith("\$version")) { "\$version: \"1.0\"\n$it" }
+    val processed = letIf(!this.startsWith("\$version")) { "\$version: ${SmithyVersion.dq()}\n$it" }
     return Model.assembler().addUnparsedModel(sourceLocation ?: "test.smithy", processed).assemble().unwrap()
 }

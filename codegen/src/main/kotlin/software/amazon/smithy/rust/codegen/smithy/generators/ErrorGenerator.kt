@@ -15,6 +15,7 @@ import software.amazon.smithy.rust.codegen.lang.rustBlock
 import software.amazon.smithy.rust.codegen.lang.withBlock
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType.Companion.StdError
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType.Companion.StdFmt
+import software.amazon.smithy.rust.codegen.util.dq
 
 class ErrorGenerator(
     val model: Model,
@@ -35,7 +36,7 @@ class ErrorGenerator(
         val errorCause = when {
             error.isClientError -> "ErrorCause::Client"
             error.isServerError -> "ErrorCause::Server"
-            else -> "ErrorCause::Unknown(\"${error.value}\")"
+            else -> "ErrorCause::Unknown(${error.value.dq()})"
         }
         writer.withBlock("impl ${symbol.name} {", "}") {
             write("// TODO: create shared runtime crate")
@@ -47,7 +48,7 @@ class ErrorGenerator(
         writer.rustBlock("impl \$T for ${symbol.name}", StdFmt("Display")) {
             withBlock("fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {", "}") {
                 val message = shape.getMember("message")
-                write("write!(f, \"${symbol.name}\")?;")
+                write("write!(f, ${symbol.name.dq()})?;")
                 if (message.isPresent) {
                     withBlock("if let Some(msg) = &self.message {", "}") {
                         write("""write!(f, ": {}", msg)?;""")

@@ -17,5 +17,13 @@ package software.amazon.smithy.rust.codegen.util
 
 fun String.doubleQuote(): String = "\"$this\""
 fun String.singleQuote(): String = "\'$this\'"
+
+/**
+ * Double quote a string, eg. "abc" -> "\"abc\""
+ */
 fun String.dq(): String = this.doubleQuote()
-fun String.sq(): String = this.sq()
+
+/**
+ * Single quote a string
+ */
+fun String.sq(): String = this.singleQuote()

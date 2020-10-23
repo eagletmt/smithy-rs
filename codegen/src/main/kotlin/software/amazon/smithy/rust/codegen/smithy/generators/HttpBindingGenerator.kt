@@ -30,6 +30,7 @@ import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.lang.rustBlock
 import software.amazon.smithy.rust.codegen.smithy.RuntimeConfig
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
+import software.amazon.smithy.rust.codegen.util.doubleQuote
 import software.amazon.smithy.rust.codegen.util.dq
 import software.amazon.smithy.utils.CodeWriter
 
@@ -38,7 +39,7 @@ fun HttpTrait.uriFormatString(): String = uri.segments.map {
         it.isLabel -> "{${it.content}}"
         else -> it.content
     }
-}.joinToString("/", prefix = "/").let { "\"$it\"" }
+}.joinToString("/", prefix = "/").doubleQuote()
 
 // TODO: TimestampFormat index that
 
@@ -108,7 +109,7 @@ class HttpBindingGenerator(
                         renderUriList(this, param, memberType.asListShape().get().member, field)
                     } else {
                         write(
-                            "params.push((\"${param.locationName}\", ${
+                            "params.push((${param.locationName.dq()}, ${
                                 paramFmtFun(
                                     memberType,
                                     memberShape,
@@ -126,7 +127,7 @@ class HttpBindingGenerator(
     private fun renderUriList(writer: CodeWriter, param: HttpBinding, innerMember: Shape, memberName: String) {
         val member = param.member
         writer.rustBlock("for inner in $memberName") {
-            write("params.push((\"${param.locationName}\", ${paramFmtFun(innerMember, member, "inner")}))")
+            write("params.push((${param.locationName.dq()}, ${paramFmtFun(innerMember, member, "inner")}))")
         }
     }
 

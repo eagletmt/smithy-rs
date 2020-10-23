@@ -24,6 +24,7 @@ import software.amazon.smithy.model.traits.HttpTrait
 import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.smithy.generators.OperationGenerator
 import software.amazon.smithy.rust.codegen.smithy.generators.uriFormatString
+import software.amazon.smithy.rust.codegen.util.dq
 import software.amazon.smithy.rust.testutil.TestRuntimeConfig
 import software.amazon.smithy.rust.testutil.asSmithy
 import software.amazon.smithy.rust.testutil.shouldCompile
@@ -83,7 +84,7 @@ class HttpBindingGeneratorTest {
 
     @Test
     fun `produce correct uri format strings`() {
-        httpTrait.uriFormatString() shouldBe("\"/{bucketName}/{key}\"")
+        httpTrait.uriFormatString() shouldBe("/{bucketName}/{key}".dq())
     }
 
     @Test
