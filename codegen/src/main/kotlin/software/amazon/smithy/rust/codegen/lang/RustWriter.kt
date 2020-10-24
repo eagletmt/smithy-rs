@@ -10,9 +10,13 @@ import software.amazon.smithy.codegen.core.CodegenException
 import software.amazon.smithy.codegen.core.Symbol
 import software.amazon.smithy.codegen.core.writer.CodegenWriter
 import software.amazon.smithy.codegen.core.writer.CodegenWriterFactory
+import software.amazon.smithy.model.shapes.MemberShape
+import software.amazon.smithy.model.shapes.Shape
+import software.amazon.smithy.model.shapes.ShapeId
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
 import software.amazon.smithy.rust.codegen.smithy.isOptional
 import software.amazon.smithy.rust.codegen.smithy.rustType
+import software.amazon.smithy.rust.codegen.smithy.shape
 import software.amazon.smithy.utils.CodeWriter
 
 fun CodeWriter.withBlock(textBeforeNewLine: String, textAfterNewLine: String, block: CodeWriter.() -> Unit): CodeWriter {
@@ -34,19 +38,36 @@ fun <T : CodeWriter> T.rustBlock(header: String, vararg args: Any, block: T.() -
 
 class RustWriter(filename: String, private val namespace: String, private val commentCharacter: String = "//") : CodegenWriter<RustWriter, UseDeclarations>(null, UseDeclarations(filename, namespace)) {
     private val formatter = RustSymbolFormatter()
+    private var n = 0
     init {
         putFormatter('T', formatter)
     }
 
-    fun OptionIter(member: Symbol, outerField: String, block: CodeWriter.(field: String) -> Unit) {
+    fun safeName(prefix: String = "var"): String {
+        n += 1
+        return "${prefix}_$n"
+    }
+
+    fun OptionForEach(member: Symbol, outerField: String, block: CodeWriter.(field: String) -> Unit) {
         if (member.isOptional()) {
-            val derefName = "inner"
+            val derefName = safeName("inner")
             // TODO: `inner` should be custom codegenned to avoid shadowing
             rustBlock("if let Some($derefName) = $outerField") {
-                block("inner")
+                block(derefName)
             }
         } else {
             this.block(outerField)
+        }
+    }
+
+    fun ListForEach(target: Shape, outerField: String, block: CodeWriter.(field: String, target: ShapeId) -> Unit) {
+        if (target.isListShape) {
+            val derefName = safeName("inner")
+            rustBlock("for $derefName in $outerField") {
+                block(derefName, target.asListShape().get().member.target)
+            }
+        } else {
+            this.block(outerField, target.toShapeId())
         }
     }
 

@@ -108,6 +108,7 @@ class SymbolVisitor(
             builder.rustType(rustType)
             builder.addReference(symbol)
             builder.name(rustType.name)
+            builder.putProperty(SHAPE_KEY, shape)
             builder.build()
         } else symbol
     }
@@ -228,7 +229,7 @@ class SymbolVisitor(
     }
 
     private fun symbolBuilder(shape: Shape?, rustType: RustType): Symbol.Builder {
-        val builder = Symbol.builder().putProperty("shape", shape)
+        val builder = Symbol.builder().putProperty(SHAPE_KEY, shape)
         return builder.rustType(rustType)
             .name(rustType.name)
             // Every symbol that actually gets defined somewhere should set a definition file
@@ -239,9 +240,15 @@ class SymbolVisitor(
 
 // TODO(chore): Move this to a useful place
 private const val RUST_TYPE_KEY = "rusttype"
+private const val SHAPE_KEY = "shape"
 
 fun Symbol.Builder.rustType(rustType: RustType): Symbol.Builder {
     return this.putProperty(RUST_TYPE_KEY, rustType)
+}
+
+fun Symbol.rename(newName: String): Symbol {
+    assert(this.rustType() is RustType.Opaque)
+    return this.toBuilder().name(newName).rustType(RustType.Opaque(newName)).build()
 }
 
 fun Symbol.isOptional(): Boolean = when (this.rustType()) {
@@ -249,8 +256,9 @@ fun Symbol.isOptional(): Boolean = when (this.rustType()) {
     else -> false
 }
 
-// Symbols should _always_ be created with a Rust type attached
+// Symbols should _always_ be created with a Rust type & shape attached
 fun Symbol.rustType(): RustType = this.getProperty(RUST_TYPE_KEY, RustType::class.java).get()
+fun Symbol.shape(): Shape = this.expectProperty(SHAPE_KEY, Shape::class.java)
 
 fun <T> T.letIf(cond: Boolean, f: (T) -> T): T {
     return if (cond) {

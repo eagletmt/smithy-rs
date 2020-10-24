@@ -37,14 +37,18 @@ class HttpBindingGeneratorTest {
             @idempotent
             @http(method: "PUT", uri: "/{bucketName}/{key}", code: 200)
             operation PutObject {
-                input: PutObjectInput
+                input: PutObjectRequest
             }
             
             list Extras {
                 member: Integer
             }
+            
+            list Dates {
+                member: Timestamp
+            }
 
-            structure PutObjectInput {
+            structure PutObjectRequest {
                 // Sent in the URI label named "key".
                 @required
                 @httpLabel
@@ -57,7 +61,7 @@ class HttpBindingGeneratorTest {
 
                 // Sent in the X-Foo header
                 @httpHeader("X-Foo")
-                foo: String,
+                foo: Dates,
 
                 // Sent in the query string as paramName
                 @httpQuery("paramName")
@@ -74,9 +78,8 @@ class HttpBindingGeneratorTest {
             }
         """.asSmithy()
 
-    val operationShape = model.expectShape(ShapeId.from("smithy.example#PutObject"), OperationShape::class.java)
-    val httpTrait = operationShape.expectTrait(HttpTrait::class.java)
-    val inputShape = model.expectShape(operationShape.input.get(), StructureShape::class.java)
+    private val operationShape = model.expectShape(ShapeId.from("smithy.example#PutObject"), OperationShape::class.java)
+    private val httpTrait = operationShape.expectTrait(HttpTrait::class.java)
 
     private fun renderOperation(writer: RustWriter) {
         OperationGenerator(model, testSymbolProvider(model), TestRuntimeConfig, writer, operationShape).render()
@@ -84,7 +87,7 @@ class HttpBindingGeneratorTest {
 
     @Test
     fun `produce correct uri format strings`() {
-        httpTrait.uriFormatString() shouldBe("/{bucketName}/{key}".dq())
+        httpTrait.uriFormatString() shouldBe ("/{bucketName}/{key}".dq())
     }
 
     @Test
@@ -93,14 +96,15 @@ class HttpBindingGeneratorTest {
         // currently rendering the operation renders the protocols—I want to separate that at some point.
         renderOperation(writer)
         println(writer.toString())
-        writer.shouldCompile("""
+        writer.shouldCompile(
+            """
             let inp = PutObjectInput {
               additional: None,
               bucket_name: "somebucket/ok".to_string(),
               data: None,
               foo: None,
               key: Instant::from_epoch_seconds(10123125),
-              extras: Some(vec![0,1,2,44]),
+              extras: Some(vec![Instant::from_epoch_seconds(10123125)]),
               some_value: Some("svq!!%&".to_string())
             };
             let mut o = String::new();
@@ -109,19 +113,21 @@ class HttpBindingGeneratorTest {
             o.clear();
             inp.uri_query(&mut o);
             assert_eq!(o.as_str(), "?paramName=svq!!%25%26&hello=0&hello=1&hello=2&hello=44")
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
 
     @Test
     fun `build http requests`() {
         val writer = RustWriter("operation.rs", "operation")
         renderOperation(writer)
-        writer.shouldCompile("""
+        writer.shouldCompile(
+            """
             let inp = PutObjectInput {
               additional: None,
               bucket_name: "buk".to_string(),
               data: None,
-              foo: None,
+              foo: Some(vec![0,2]),
               key: Instant::from_epoch_seconds(10123125),
               extras: Some(vec![0,1]),
               some_value: Some("qp".to_string())
@@ -129,6 +135,10 @@ class HttpBindingGeneratorTest {
             let http_request = inp.build_http_request(::http::Request::builder()).body(()).unwrap();
             assert_eq!(http_request.uri(), "/buk/1970-04-28T03:58:45Z?paramName=qp&hello=0&hello=1");
             assert_eq!(http_request.method(), "PUT");
-        """)
+            let mut foo_header = http_request.headers().get_all("X-Foo").iter();
+            assert_eq!(foo_header.next().unwrap(), "0");
+            assert_eq!(foo_header.next().unwrap(), "2");
+        """
+        )
     }
 }

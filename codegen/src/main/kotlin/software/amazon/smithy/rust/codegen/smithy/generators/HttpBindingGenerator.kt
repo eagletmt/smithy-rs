@@ -25,6 +25,7 @@ import software.amazon.smithy.model.shapes.OperationShape
 import software.amazon.smithy.model.shapes.Shape
 import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.model.traits.HttpTrait
+import software.amazon.smithy.model.traits.MediaTypeTrait
 import software.amazon.smithy.model.traits.TimestampFormatTrait
 import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.lang.rustBlock
@@ -33,6 +34,7 @@ import software.amazon.smithy.rust.codegen.smithy.RuntimeType
 import software.amazon.smithy.rust.codegen.util.doubleQuote
 import software.amazon.smithy.rust.codegen.util.dq
 import software.amazon.smithy.utils.CodeWriter
+import software.amazon.smithy.utils.MediaType
 
 fun HttpTrait.uriFormatString(): String = uri.segments.map {
     when {
@@ -56,21 +58,78 @@ class HttpBindingGenerator(
     private val defaultTimestampFormat = TimestampFormatTrait.Format.EPOCH_SECONDS
     private val index = HttpBindingIndex(model)
     fun render() {
-        writer.rustBlock("impl ${inputShape.id.name}") {
+        writer.rustBlock("impl ${symbolProvider.toSymbol(inputShape).name}") {
             uriBase(this)
             uriQuery(this)
+            addHeaders(this)
             httpRequestBuilder(this)
         }
     }
 
+    private val RequestBuilder = RuntimeType.Http("request::Builder")
     private fun httpRequestBuilder(writer: RustWriter) {
-        writer.rustBlock("pub fn build_http_request(&self, builder: \$T) -> \$T", RuntimeType.Http("request::Builder"), RuntimeType.Http("request::Builder")) {
+        writer.rustBlock("pub fn build_http_request(&self, builder: \$T) -> \$T", RequestBuilder, RequestBuilder) {
             write("let mut uri = String::new();")
             write("self.uri_base(&mut uri);")
             if (hasQuery()) {
                 write("self.uri_query(&mut uri);")
             }
-            write("builder.method(${httpTrait.method.dq()}).uri(uri)")
+            write("let builder = builder.method(${httpTrait.method.dq()}).uri(uri);")
+            if (hasHeaders()) {
+                write("self.add_headers(builder)")
+            } else {
+                write("builder")
+            }
+        }
+    }
+
+    private fun hasHeaders(): Boolean = index.getRequestBindings(shape, HttpBinding.Location.HEADER).isNotEmpty()
+
+    /** Header Generation **/
+    private fun addHeaders(writer: RustWriter) {
+        val headers = index.getRequestBindings(shape, HttpBinding.Location.HEADER)
+        assert(headers.isNotEmpty())
+        writer.rustBlock("fn add_headers(&self, mut builder: \$T) -> \$T", RequestBuilder, RequestBuilder) {
+            headers.forEach { httpBinding ->
+                val memberShape = httpBinding.member
+                val memberType = model.expectShape(memberShape.target)
+                val memberSymbol = symbolProvider.toSymbol(memberShape)
+                val memberName = symbolProvider.toMemberName(memberShape)
+                OptionForEach(memberSymbol, "&self.$memberName") { field ->
+                    ListForEach(memberType, field) { innerField, targetId ->
+                        val memberType = model.expectShape(targetId)
+                        val formatted = headerFmtFun(memberType, memberShape, innerField)
+                        write("builder = builder.header(${httpBinding.locationName.dq()}, $formatted);")
+                    }
+                }
+                write("builder")
+            }
+        }
+    }
+    private fun headerFmtFun(target: Shape, member: MemberShape, targetName: String): String {
+        return when {
+            target.isStringShape -> {
+                val func = if (target.hasTrait(MediaTypeTrait::class.java)) {
+                    writer.format(RuntimeType.Base64Encode(runtimeConfig))
+                } else {
+                    writer.format(RuntimeType.QueryFormat(runtimeConfig, "fmt_string"))
+                }
+                "$func(&$targetName)"
+            }
+            target.isTimestampShape -> {
+                val timestampFormat =
+                    index.determineTimestampFormat(member, HttpBinding.Location.HEADER, defaultTimestampFormat)
+                val timestampFormatType = RuntimeType.TimestampFormat(runtimeConfig, timestampFormat)
+                val func = writer.format(RuntimeType.QueryFormat(runtimeConfig, "fmt_timestamp"))
+                "$func($targetName, ${writer.format(timestampFormatType)})"
+            }
+            target.isListShape || target.isMemberShape -> {
+                throw IllegalArgumentException("lists should be handled at a higher level")
+            }
+            else -> {
+                val func = writer.format(RuntimeType.QueryFormat(runtimeConfig, "fmt_default"))
+                "$func(&$targetName)"
+            }
         }
     }
 
@@ -101,19 +160,18 @@ class HttpBindingGenerator(
 
             queryParams.forEach { param ->
                 val memberShape = param.member
-                val memberType = model.expectShape(memberShape.target)
                 val memberSymbol = symbolProvider.toSymbol(memberShape)
                 val memberName = symbolProvider.toMemberName(memberShape)
-                OptionIter(memberSymbol, "&self.$memberName") { field ->
-                    if (memberType.isListShape) {
-                        renderUriList(this, param, memberType.asListShape().get().member, field)
-                    } else {
+                val outerTarget = model.expectShape(memberShape.target)
+                OptionForEach(memberSymbol, "&self.$memberName") { field ->
+                    ListForEach(outerTarget, field) { innerField, targetId ->
+                        val target = model.expectShape(targetId)
                         write(
                             "params.push((${param.locationName.dq()}, ${
                                 paramFmtFun(
-                                    memberType,
+                                    target,
                                     memberShape,
-                                    field
+                                    innerField
                                 )
                             }))"
                         )
@@ -121,13 +179,6 @@ class HttpBindingGenerator(
                 }
             }
             write("\$T(params, output)", RuntimeType.QueryFormat(runtimeConfig, "write"))
-        }
-    }
-
-    private fun renderUriList(writer: CodeWriter, param: HttpBinding, innerMember: Shape, memberName: String) {
-        val member = param.member
-        writer.rustBlock("for inner in $memberName") {
-            write("params.push((${param.locationName.dq()}, ${paramFmtFun(innerMember, member, "inner")}))")
         }
     }
 
@@ -144,7 +195,7 @@ class HttpBindingGenerator(
                 val func = writer.format(RuntimeType.QueryFormat(runtimeConfig, "fmt_timestamp"))
                 "$func($targetName, ${writer.format(timestampFormatType)})"
             }
-            target.isListShape -> {
+            target.isListShape || target.isMemberShape -> {
                 throw IllegalArgumentException("lists should be handled at a higher level")
             }
             else -> {
@@ -170,7 +221,7 @@ class HttpBindingGenerator(
             }
             else -> {
                 val func = writer.format(RuntimeType.LabelFormat(runtimeConfig, "fmt_default"))
-                "$func(self.$memberName)"
+                "$func(&self.$memberName)"
             }
         }
     }

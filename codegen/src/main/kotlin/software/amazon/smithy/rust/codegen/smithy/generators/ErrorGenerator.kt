@@ -50,8 +50,8 @@ class ErrorGenerator(
                 val message = shape.getMember("message")
                 write("write!(f, ${symbol.name.dq()})?;")
                 if (message.isPresent) {
-                    withBlock("if let Some(msg) = &self.message {", "}") {
-                        write("""write!(f, ": {}", msg)?;""")
+                    OptionForEach(symbolProvider.toSymbol(message.get()), "&self.message") { field ->
+                        write("""write!(f, ": {}", $field)?;""")
                     }
                 }
                 write("Ok(())")

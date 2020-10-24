@@ -21,12 +21,14 @@ import software.amazon.smithy.model.Model
 import software.amazon.smithy.model.shapes.MemberShape
 import software.amazon.smithy.model.shapes.OperationShape
 import software.amazon.smithy.model.shapes.Shape
+import software.amazon.smithy.model.shapes.ShapeId
 import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.model.traits.HttpTrait
 import software.amazon.smithy.rust.codegen.lang.RustType
 import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.smithy.RuntimeConfig
 import software.amazon.smithy.rust.codegen.smithy.letIf
+import software.amazon.smithy.rust.codegen.smithy.rename
 import software.amazon.smithy.rust.codegen.smithy.rustType
 
 class OperationGenerator(
@@ -37,12 +39,11 @@ class OperationGenerator(
     private val shape: OperationShape
 ) {
     private val operationName: String = symbolProvider.toSymbol(shape).name
-    inner class InputRenamer(val name: String) : SymbolProvider {
-        override fun toSymbol(shape: Shape): Symbol {
-            val baseSymbol = symbolProvider.toSymbol(shape)
-            return baseSymbol.letIf(shape.isStructureShape) {
-                it.toBuilder().rustType(RustType.Opaque(name)).name(name).build()
-            }
+
+    inner class Replacer(private val old: Shape, val new: Symbol) : SymbolProvider {
+        override fun toSymbol(shape: Shape): Symbol = when (shape) {
+            old -> new
+            else -> symbolProvider.toSymbol(shape)
         }
 
         override fun toMemberName(shape: MemberShape?): String {
@@ -53,19 +54,22 @@ class OperationGenerator(
     fun render() {
         val httpTrait = shape.getTrait(HttpTrait::class.java)
         shape.input.map { model.expectShape(it, StructureShape::class.java) }.map {
-            renderInput(it)
+            val inputSymbol = symbolProvider.toSymbol(it).rename("${operationName}Input")
+            val renamer = Replacer(it, inputSymbol)
+
+            StructureGenerator(model, renamer, writer, it).render()
             httpTrait.map { httpTrait ->
-                HttpBindingGenerator(model, symbolProvider, runtimeConfig, writer, shape, it, httpTrait).render()
+                HttpBindingGenerator(model, renamer, runtimeConfig, writer, shape, it, httpTrait).render()
             }
         }
         shape.output.map { model.expectShape(it, StructureShape::class.java) }.map { renderOutput(it) }
     }
 
     fun renderInput(shape: StructureShape) {
-        StructureGenerator(model, InputRenamer("${operationName}Input"), writer, shape).render()
+
     }
 
     fun renderOutput(shape: StructureShape) {
-        StructureGenerator(model, InputRenamer("${operationName}Output"), writer, shape).render()
+        //StructureGenerator(model, InputRenamer("${operationName}Output"), writer, shape).render()
     }
 }
