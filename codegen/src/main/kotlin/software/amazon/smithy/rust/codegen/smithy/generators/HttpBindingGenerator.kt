@@ -33,8 +33,6 @@ import software.amazon.smithy.rust.codegen.smithy.RuntimeConfig
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
 import software.amazon.smithy.rust.codegen.util.doubleQuote
 import software.amazon.smithy.rust.codegen.util.dq
-import software.amazon.smithy.utils.CodeWriter
-import software.amazon.smithy.utils.MediaType
 
 fun HttpTrait.uriFormatString(): String = uri.segments.map {
     when {
@@ -67,6 +65,8 @@ class HttpBindingGenerator(
     }
 
     private val RequestBuilder = RuntimeType.Http("request::Builder")
+    // TODO: refactor to unify the usage & function generation so that we don't need
+    // hasHeaders, hasQuery & to enable clean abstractions
     private fun httpRequestBuilder(writer: RustWriter) {
         writer.rustBlock("pub fn build_http_request(&self, builder: \$T) -> \$T", RequestBuilder, RequestBuilder) {
             write("let mut uri = String::new();")
@@ -87,8 +87,10 @@ class HttpBindingGenerator(
 
     /** Header Generation **/
     private fun addHeaders(writer: RustWriter) {
+        if (!hasHeaders()) {
+            return
+        }
         val headers = index.getRequestBindings(shape, HttpBinding.Location.HEADER)
-        assert(headers.isNotEmpty())
         writer.rustBlock("fn add_headers(&self, mut builder: \$T) -> \$T", RequestBuilder, RequestBuilder) {
             headers.forEach { httpBinding ->
                 val memberShape = httpBinding.member
@@ -102,8 +104,8 @@ class HttpBindingGenerator(
                         write("builder = builder.header(${httpBinding.locationName.dq()}, $formatted);")
                     }
                 }
-                write("builder")
             }
+            write("builder")
         }
     }
     private fun headerFmtFun(target: Shape, member: MemberShape, targetName: String): String {
@@ -114,7 +116,7 @@ class HttpBindingGenerator(
                 } else {
                     writer.format(RuntimeType.QueryFormat(runtimeConfig, "fmt_string"))
                 }
-                "$func(&$targetName)"
+                "$func(&${writer.useAs(target, targetName)})"
             }
             target.isTimestampShape -> {
                 val timestampFormat =
@@ -186,7 +188,7 @@ class HttpBindingGenerator(
         return when {
             target.isStringShape -> {
                 val func = writer.format(RuntimeType.QueryFormat(runtimeConfig, "fmt_string"))
-                "$func(&$targetName)"
+                "$func(&${writer.useAs(target, targetName)})"
             }
             target.isTimestampShape -> {
                 val timestampFormat =

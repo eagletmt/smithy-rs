@@ -23,6 +23,7 @@ fun RustWriter.shouldCompile(main: String = "") {
 }
 
 fun String.shouldCompile(deps: Set<RustDependency>, main: String = "") {
+    this.shouldParseAsRust()
     val tempDir = createTempDir()
     // TODO: unify this with CargoTomlGenerator
     val cargoToml = """

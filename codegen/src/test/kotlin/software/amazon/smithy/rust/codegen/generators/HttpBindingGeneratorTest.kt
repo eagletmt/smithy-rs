@@ -19,7 +19,6 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import software.amazon.smithy.model.shapes.OperationShape
 import software.amazon.smithy.model.shapes.ShapeId
-import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.model.traits.HttpTrait
 import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.smithy.generators.OperationGenerator
@@ -47,6 +46,9 @@ class HttpBindingGeneratorTest {
             list Dates {
                 member: Timestamp
             }
+            
+            @mediaType("video/quicktime")
+            string Video
 
             structure PutObjectRequest {
                 // Sent in the URI label named "key".
@@ -59,9 +61,15 @@ class HttpBindingGeneratorTest {
                 @httpLabel
                 bucketName: String,
 
-                // Sent in the X-Foo header
-                @httpHeader("X-Foo")
-                foo: Dates,
+                // Sent in the X-Dates header
+                @httpHeader("X-Dates")
+                dateHeaderList: Dates,
+                
+                @httpHeader("X-Ints")
+                intList: Extras,
+                
+                @httpHeader("X-MediaType")
+                mediaType: Video,
 
                 // Sent in the query string as paramName
                 @httpQuery("paramName")
@@ -90,6 +98,7 @@ class HttpBindingGeneratorTest {
         httpTrait.uriFormatString() shouldBe ("/{bucketName}/{key}".dq())
     }
 
+    // TODO: when we generate builders, use them to clean up these tests; 1h
     @Test
     fun `generate uris`() {
         val writer = RustWriter("operation.rs", "operation")
@@ -98,14 +107,17 @@ class HttpBindingGeneratorTest {
         println(writer.toString())
         writer.shouldCompile(
             """
+            let ts = Instant::from_epoch_seconds(10123125);
             let inp = PutObjectInput {
               additional: None,
               bucket_name: "somebucket/ok".to_string(),
               data: None,
-              foo: None,
-              key: Instant::from_epoch_seconds(10123125),
-              extras: Some(vec![Instant::from_epoch_seconds(10123125)]),
-              some_value: Some("svq!!%&".to_string())
+              date_header_list: None,
+              key: ts.clone(),
+              int_list: None,
+              extras: Some(vec![0, 1,2,44]),
+              some_value: Some("svq!!%&".to_string()),
+              media_type: None
             };
             let mut o = String::new();
             inp.uri_base(&mut o);
@@ -123,21 +135,30 @@ class HttpBindingGeneratorTest {
         renderOperation(writer)
         writer.shouldCompile(
             """
+            let ts = Instant::from_epoch_seconds(10123125);
             let inp = PutObjectInput {
               additional: None,
               bucket_name: "buk".to_string(),
               data: None,
-              foo: Some(vec![0,2]),
+              date_header_list: Some(vec![ts.clone()]),
+              int_list: Some(vec![0,1,44]),
               key: Instant::from_epoch_seconds(10123125),
               extras: Some(vec![0,1]),
-              some_value: Some("qp".to_string())
+              some_value: Some("qp".to_string()),
+              media_type: Some("base64encodethis".to_string()),
             };
             let http_request = inp.build_http_request(::http::Request::builder()).body(()).unwrap();
             assert_eq!(http_request.uri(), "/buk/1970-04-28T03:58:45Z?paramName=qp&hello=0&hello=1");
             assert_eq!(http_request.method(), "PUT");
-            let mut foo_header = http_request.headers().get_all("X-Foo").iter();
-            assert_eq!(foo_header.next().unwrap(), "0");
-            assert_eq!(foo_header.next().unwrap(), "2");
+            let mut date_header = http_request.headers().get_all("X-Dates").iter();
+            assert_eq!(date_header.next().unwrap(), "Tue, 28 Apr 1970 03:58:45 GMT");
+            assert_eq!(date_header.next(), None);
+            
+            let int_header = http_request.headers().get_all("X-Ints").iter().map(|hv|hv.to_str().unwrap()).collect::<Vec<_>>();
+            assert_eq!(int_header, vec!["0", "1", "44"]);
+            
+            let base64_header = http_request.headers().get_all("X-MediaType").iter().map(|hv|hv.to_str().unwrap()).collect::<Vec<_>>();
+            assert_eq!(base64_header, vec!["YmFzZTY0ZW5jb2RldGhpcw=="]);
         """
         )
     }

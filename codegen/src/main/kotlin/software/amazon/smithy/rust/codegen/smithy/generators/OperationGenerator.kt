@@ -21,15 +21,11 @@ import software.amazon.smithy.model.Model
 import software.amazon.smithy.model.shapes.MemberShape
 import software.amazon.smithy.model.shapes.OperationShape
 import software.amazon.smithy.model.shapes.Shape
-import software.amazon.smithy.model.shapes.ShapeId
 import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.model.traits.HttpTrait
-import software.amazon.smithy.rust.codegen.lang.RustType
 import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.smithy.RuntimeConfig
-import software.amazon.smithy.rust.codegen.smithy.letIf
 import software.amazon.smithy.rust.codegen.smithy.rename
-import software.amazon.smithy.rust.codegen.smithy.rustType
 
 class OperationGenerator(
     val model: Model,
@@ -62,14 +58,6 @@ class OperationGenerator(
                 HttpBindingGenerator(model, renamer, runtimeConfig, writer, shape, it, httpTrait).render()
             }
         }
-        shape.output.map { model.expectShape(it, StructureShape::class.java) }.map { renderOutput(it) }
-    }
-
-    fun renderInput(shape: StructureShape) {
-
-    }
-
-    fun renderOutput(shape: StructureShape) {
-        //StructureGenerator(model, InputRenamer("${operationName}Output"), writer, shape).render()
+        // shape.output.map { model.expectShape(it, StructureShape::class.java) }.map { renderOutput(it) }
     }
 }
