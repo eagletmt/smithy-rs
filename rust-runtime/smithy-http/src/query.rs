@@ -11,6 +11,7 @@ use std::fmt::Debug;
 
 const HEX_CHARS: &[u8; 16] = b"0123456789ABCDEF";
 
+
 pub fn fmt_default<T: Debug>(t: T) -> String {
     format!("{:?}", t)
 }

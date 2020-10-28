@@ -16,24 +16,39 @@ val smithyVersion: String by project
 
 dependencies {
     implementation(project(":codegen"))
+    implementation("software.amazon.smithy:smithy-aws-protocol-tests:1.3.0")
     implementation("software.amazon.smithy:smithy-protocol-test-traits:$smithyVersion")
     implementation("software.amazon.smithy:smithy-aws-traits:$smithyVersion")
 }
 
+tasks.register<Exec>("installCargoToml") {
+    commandLine("cp", "Cargo.toml.tmpl", "build/smithyprojections/codegen-test/Cargo.toml")
+    dependsOn("build")
+}
+
 tasks.register<Exec>("cargoCheck") {
-    workingDir("build/smithyprojections/codegen-test/source/rust-codegen/")
+    workingDir("build/smithyprojections/codegen-test/")
     // disallow warnings
     environment("RUSTFLAGS", "-D warnings")
     commandLine("cargo", "check")
-    dependsOn("build")
+    dependsOn("installCargoToml")
 }
 
 tasks.register<Exec>("cargoClippy") {
-    workingDir("build/smithyprojections/codegen-test/source/rust-codegen/")
+    workingDir("build/smithyprojections/codegen-test/")
     // disallow warnings
     environment("RUSTFLAGS", "-D warnings")
     commandLine("cargo", "clippy")
-    dependsOn("build")
+    dependsOn("installCargoToml")
 }
 
-tasks["test"].finalizedBy("cargoCheck", "cargoClippy")
+tasks.register<Exec>("cargoTest") {
+    workingDir("build/smithyprojections/codegen-test/")
+    // disallow warnings
+    commandLine("cargo", "test")
+    dependsOn("installCargoToml")
+}
+
+
+
+tasks["test"].finalizedBy("cargoCheck", "cargoClippy", "cargoTest")

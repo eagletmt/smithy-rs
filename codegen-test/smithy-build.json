@@ -1,16 +1,60 @@
 {
   "version": "1.0",
   "outputDirectory": "target",
-  "plugins": {
-    "rust-codegen": {
-      "runtimeConfig": {
-        "relativePath": "${REPO_ROOT}/rust-runtime"
-      },
-      "service": "com.amazonaws.ebs#Ebs",
-      "module": "weather",
-      "moduleVersion": "0.0.1",
-      "build": {
-        "rootProject": true
+  "projections": {
+    "dynamo": {
+      "plugins": {
+        "rust-codegen": {
+          "runtimeConfig": {
+            "relativePath": "${REPO_ROOT}/rust-runtime"
+          },
+          "service": "com.amazonaws.dynamodb#DynamoDB_20120810",
+          "module": "dynamo",
+          "moduleVersion": "0.0.1",
+          "build": {
+            "rootProject": true
+          }
+        }
+      }
+    },
+    "ebs": {
+      "plugins": {
+        "rust-codegen": {
+          "runtimeConfig": {
+            "relativePath": "${REPO_ROOT}/rust-runtime"
+          },
+          "service": "com.amazonaws.ebs#Ebs",
+          "module": "ebs",
+          "moduleVersion": "0.0.1",
+          "build": {
+            "rootProject": true
+          }
+        }
+      }
+    },
+    "aws-json-10": {
+      "transforms": [
+        {
+          "name": "includeServices",
+          "args": {
+            "services": [
+              "aws.protocoltests.json10#JsonRpc10"
+            ]
+          }
+        }
+      ],
+      "plugins": {
+        "rust-codegen": {
+          "runtimeConfig": {
+            "relativePath": "${REPO_ROOT}/rust-runtime"
+          },
+          "service": "aws.protocoltests.json10#JsonRpc10",
+          "module": "jsonrpc_10",
+          "moduleVersion": "0.0.1",
+          "build": {
+            "rootProject": true
+          }
+        }
       }
     }
   }

@@ -37,22 +37,25 @@ class ServiceGenerator(
 
     )
     private val protocols: MutableMap<ShapeId, Trait> = ServiceIndex(model).getProtocols(serviceShape)
-    private val matchingProtocols = protocols.keys.mapNotNull { supportedProtocols[it] }
+    private val matchingProtocols = protocols.keys.mapNotNull { protocolId -> supportedProtocols[protocolId]?.let { protocolId to it } }
 
     init {
         if (matchingProtocols.isEmpty()) {
-            throw CodegenException("No matching protocol — service offers: ${protocols.keys}. We offer: ${supportedProtocols.keys}")
+            throw CodegenException("No matching protocol — service supports: ${protocols.keys}. We support: ${supportedProtocols.keys}")
         }
     }
 
     fun render() {
         val operations = index.getContainedOperations(serviceShape)
+        val protocol = matchingProtocols.first()
+        // TODO: refactor so that we don't need to re-instantiate the protocol for every operation
         operations.map { operation ->
             writers.useShapeWriter(operation) { writer ->
                 // transform ensures that all models have input shapes
                 val input = operation.input.get().let { model.expectShape(it, StructureShape::class.java) }
-                val config = ProtocolConfig(model, symbolProvider, runtimeConfig, writer, serviceShape, operation, input)
-                matchingProtocols.first().build(config).render()
+                val config = ProtocolConfig(model, symbolProvider, runtimeConfig, writer, serviceShape, operation, input, protocol.first)
+                protocol.second.build(config).render()
+                HttpProtocolTestGenerator(config).render()
             }
         }
     }
