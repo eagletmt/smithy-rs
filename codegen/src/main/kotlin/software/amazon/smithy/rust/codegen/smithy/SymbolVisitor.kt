@@ -8,6 +8,7 @@ package software.amazon.smithy.rust.codegen.smithy
 import software.amazon.smithy.codegen.core.Symbol
 import software.amazon.smithy.codegen.core.SymbolProvider
 import software.amazon.smithy.model.Model
+import software.amazon.smithy.model.knowledge.BottomUpIndex
 import software.amazon.smithy.model.knowledge.NullableIndex
 import software.amazon.smithy.model.shapes.BigDecimalShape
 import software.amazon.smithy.model.shapes.BigIntegerShape
@@ -91,6 +92,7 @@ class SymbolVisitor(
 ) : SymbolProvider,
     ShapeVisitor<Symbol> {
     private val nullableIndex = NullableIndex(model)
+    private val bottomUpIndex = BottomUpIndex(model)
     override fun toSymbol(shape: Shape): Symbol {
         return shape.accept(this)
     }
@@ -250,6 +252,11 @@ private const val SHAPE_KEY = "shape"
 
 fun Symbol.Builder.rustType(rustType: RustType): Symbol.Builder {
     return this.putProperty(RUST_TYPE_KEY, rustType)
+}
+
+fun Symbol.rename(newName: String): Symbol {
+    assert(this.rustType() is RustType.Opaque)
+    return this.toBuilder().name(newName).rustType(RustType.Opaque(newName)).build()
 }
 
 fun Symbol.isOptional(): Boolean = when (this.rustType()) {
