@@ -18,12 +18,12 @@ import software.amazon.smithy.rust.codegen.smithy.isOptional
 import software.amazon.smithy.rust.codegen.smithy.rustType
 import software.amazon.smithy.utils.CodeWriter
 
-fun CodeWriter.withBlock(
+fun <T : CodeWriter> T.withBlock(
     textBeforeNewLine: String,
     textAfterNewLine: String,
     conditional: Boolean = true,
-    block: CodeWriter.() -> Unit
-): CodeWriter {
+    block: T.() -> Unit
+): T {
     if (conditional) {
         openBlock(textBeforeNewLine)
     }
@@ -92,6 +92,7 @@ class RustWriter private constructor(private val filename: String, val namespace
         rustBlock("$visibility mod $moduleName") {
             write(innerWriter.toString())
         }
+        innerWriter.dependencies.forEach { addDependency(it) }
     }
 
     // TODO: refactor both of these methods & add a parent method to for_each across any field type

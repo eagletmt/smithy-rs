@@ -180,7 +180,8 @@ class SymbolVisitor(
     }
 
     override fun mapShape(shape: MapShape): Symbol {
-        require(shape.key.isStringShape)
+        val target = model.expectShape(shape.key.target)
+        require(target.isStringShape) { "unexpected key shape: ${shape.key}: $target [keys must be strings]" }
         val key = this.toSymbol(shape.key)
         val value = this.toSymbol(shape.value)
         return symbolBuilder(shape, RustType.HashMap(key.rustType(), value.rustType())).namespace(
@@ -190,7 +191,7 @@ class SymbolVisitor(
     }
 
     override fun documentShape(shape: DocumentShape?): Symbol {
-        TODO("Not yet implemented")
+        return RuntimeType.Document(config.runtimeConfig).toSymbol()
     }
 
     override fun bigIntegerShape(shape: BigIntegerShape?): Symbol {

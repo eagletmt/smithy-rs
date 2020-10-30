@@ -46,6 +46,7 @@ data class RuntimeType(val name: String, val dependency: RustDependency?, val na
         fun StdFmt(member: String) = RuntimeType("fmt::$member", dependency = null, namespace = "std")
         val StdError = RuntimeType("Error", dependency = null, namespace = "std::error")
         val HashSet = RuntimeType("HashSet", dependency = null, namespace = "std::collections")
+        val HashMap = RuntimeType("HashMap", dependency = null, namespace = "std::collections")
 
         fun Instant(runtimeConfig: RuntimeConfig) =
             RuntimeType("Instant", RustDependency.SmithyTypes(runtimeConfig), "${runtimeConfig.cratePrefix}_types")
@@ -62,6 +63,9 @@ data class RuntimeType(val name: String, val dependency: RustDependency?, val na
         fun Base64Encode(runtimeConfig: RuntimeConfig): RuntimeType =
             RuntimeType("encode", RustDependency.SmithyHttp(runtimeConfig), "${runtimeConfig.cratePrefix}_http::base64")
 
+        fun Base64Decode(runtimeConfig: RuntimeConfig): RuntimeType =
+            RuntimeType("decode", RustDependency.SmithyHttp(runtimeConfig), "${runtimeConfig.cratePrefix}_http::base64")
+
         fun TimestampFormat(runtimeConfig: RuntimeConfig, format: TimestampFormatTrait.Format): RuntimeType {
             val timestampFormat = when (format) {
                 TimestampFormatTrait.Format.EPOCH_SECONDS -> "EpochSeconds"
@@ -76,7 +80,16 @@ data class RuntimeType(val name: String, val dependency: RustDependency?, val na
             )
         }
 
+        fun ProtocolTestHelper(runtimeConfig: RuntimeConfig, func: String): RuntimeType =
+            RuntimeType(
+                func, RustDependency.ProtocolTestHelpers(runtimeConfig), "protocol_test_helpers"
+            )
+
         fun Http(path: String): RuntimeType = RuntimeType(name = path, dependency = RustDependency.Http, namespace = "http")
+        fun Document(runtimeConfig: RuntimeConfig): RuntimeType {
+            return RuntimeType("Document", RustDependency.SmithyTypes(runtimeConfig), "${runtimeConfig.cratePrefix}_types")
+        }
+
         val HttpRequestBuilder = Http("request::Builder")
     }
 }

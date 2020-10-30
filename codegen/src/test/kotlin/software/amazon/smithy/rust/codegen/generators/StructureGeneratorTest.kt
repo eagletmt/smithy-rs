@@ -16,7 +16,7 @@ import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
 import software.amazon.smithy.rust.codegen.smithy.canUseDefault
 import software.amazon.smithy.rust.codegen.smithy.generators.StructureGenerator
-import software.amazon.smithy.rust.testutil.asSmithy
+import software.amazon.smithy.rust.testutil.asSmithyModel
 import software.amazon.smithy.rust.testutil.shouldCompile
 import software.amazon.smithy.rust.testutil.testSymbolProvider
 
@@ -42,7 +42,7 @@ class StructureGeneratorTest {
         structure MyError {
             message: String
         }
-        """.asSmithy()
+        """.asSmithyModel()
     private val struct = model.expectShape(ShapeId.from("com.test#MyStruct"), StructureShape::class.java)
     private val inner = model.expectShape(ShapeId.from("com.test#Inner"), StructureShape::class.java)
     private val error = model.expectShape(ShapeId.from("com.test#MyError"), StructureShape::class.java)
@@ -104,7 +104,6 @@ class StructureGeneratorTest {
             assert_eq!(my_struct.bar, 0);
         """
         )
-
     }
 
     @Test

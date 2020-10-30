@@ -32,9 +32,22 @@ class StructureGenerator(
     private val shape: StructureShape,
     private val renderBuilder: Boolean = true
 ) {
+
+    companion object {
+        fun fallibleBuilder(structureShape: StructureShape, symbolProvider: SymbolProvider): Boolean = structureShape
+            .allMembers
+            .values.map { symbolProvider.toSymbol(it) }.any {
+                // If any members are not optional && we can't use a default, we need to
+                // generate a fallible builder
+                !it.isOptional() && !it.canUseDefault()
+            }
+    }
+
     private val members: List<MemberShape> = shape.allMembers.values.toList()
     private val structureSymbol = symbolProvider.toSymbol(shape)
-    private val builderSymbol = RuntimeType("Builder", null, "${structureSymbol.namespace}::${structureSymbol.name.toSnakeCase()}")
+    private val builderSymbol =
+        RuntimeType("Builder", null, "${structureSymbol.namespace}::${structureSymbol.name.toSnakeCase()}")
+
     fun render() {
         renderStructure()
         val errorTrait = shape.getTrait(ErrorTrait::class.java)
@@ -115,11 +128,7 @@ class StructureGenerator(
                 }
             }
 
-            val fallible = members.map { symbolProvider.toSymbol(it) }.any {
-                // If any members are not optional && we can't use a default, we need to
-                // generate a fallible builder
-                !it.isOptional() && !it.canUseDefault()
-            }
+            val fallible = fallibleBuilder(shape, symbolProvider)
 
             val returnType = when (fallible) {
                 true -> "Result<\$T, String>"

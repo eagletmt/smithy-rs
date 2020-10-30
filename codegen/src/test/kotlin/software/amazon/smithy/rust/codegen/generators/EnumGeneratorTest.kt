@@ -16,7 +16,7 @@ import software.amazon.smithy.model.traits.EnumTrait
 import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
 import software.amazon.smithy.rust.codegen.smithy.generators.EnumGenerator
-import software.amazon.smithy.rust.testutil.asSmithy
+import software.amazon.smithy.rust.testutil.asSmithyModel
 import software.amazon.smithy.rust.testutil.quickTest
 import software.amazon.smithy.rust.testutil.shouldCompile
 import software.amazon.smithy.rust.testutil.shouldParseAsRust
@@ -85,11 +85,11 @@ class EnumGeneratorTest {
             },
         ])
         string FooEnum
-        """.asSmithy()
+        """.asSmithyModel()
         val shape = model.expectShape(ShapeId.from("test#FooEnum"), StringShape::class.java)
         val trait = shape.expectTrait(EnumTrait::class.java)
         val provider: SymbolProvider = SymbolVisitor(model, "test")
-        val writer = RustWriter("model.rs", "model")
+        val writer = RustWriter.forModule("model")
         val generator = EnumGenerator(provider, writer, shape, trait)
         generator.render()
         writer.shouldCompile("""

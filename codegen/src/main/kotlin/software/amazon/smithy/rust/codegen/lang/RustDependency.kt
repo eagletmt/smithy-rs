@@ -13,9 +13,14 @@ sealed class DependencyLocation
 data class CratesIo(val version: String) : DependencyLocation()
 data class Local(val path: String? = null) : DependencyLocation()
 
+sealed class DependencyScope
+object Dev : DependencyScope()
+object Compile : DependencyScope()
+
 data class RustDependency(
     val name: String,
-    val location: DependencyLocation
+    val location: DependencyLocation,
+    val scope: DependencyScope = Compile
 ) : SymbolDependencyContainer {
     override fun getDependencies(): List<SymbolDependency> {
         return listOf(
@@ -42,6 +47,10 @@ data class RustDependency(
 
         fun SmithyHttp(runtimeConfig: RuntimeConfig) = RustDependency(
             "${runtimeConfig.cratePrefix}-http", Local(runtimeConfig.relativePath)
+        )
+
+        fun ProtocolTestHelpers(runtimeConfig: RuntimeConfig) = RustDependency(
+            "protocol-test-helpers", Local(runtimeConfig.relativePath), scope = Dev
         )
 
         private val PropKey = "rustdep"
