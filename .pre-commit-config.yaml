@@ -12,3 +12,5 @@ repos:
     args: [--autofix, --ktlint-version, 0.39.0]
   - id: pretty-format-yaml
     args: [--autofix, --indent, '2']
+  - id: pretty-format-rust
+    args: [--autofix]
