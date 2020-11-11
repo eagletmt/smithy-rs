@@ -7,3 +7,7 @@ description = "A collection of library functions to validate HTTP requests again
 
 [dependencies]
 http = "0.2.1"
+serde_json = "1"
+smithy-http = { path = "../smithy-http" }
+assert-json-diff = "1"
+thiserror = "1"

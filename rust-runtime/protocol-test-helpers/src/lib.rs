@@ -1,25 +1,34 @@
+use crate::MediaType::Other;
+use assert_json_diff::assert_json_eq_no_panic;
 use http::{Request, Uri};
+use smithy_http::base64;
 use std::collections::HashSet;
+use std::str::{from_utf8, FromStr};
+use thiserror::Error;
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(PartialEq, Eq, Error, Debug)]
 pub enum ProtocolTestFailure {
+    #[error("missing query param: expected {expected}, found {found:?}")]
     MissingQueryParam {
         expected: String,
         found: Vec<String>,
     },
-    ForbiddenQueryParam {
-        expected: String,
-    },
-    RequiredQueryParam {
-        expected: String,
-    },
-    InvalidHeader {
+    #[error("forbidden query param present: {expected}")]
+    ForbiddenQueryParam { expected: String },
+    #[error("required query param missing: {expected}")]
+    RequiredQueryParam { expected: String },
+    #[error("invalid header value: expected {expected}, found {found}")]
+    InvalidHeader { expected: String, found: String },
+    #[error("missing header {expected}")]
+    MissingHeader { expected: String },
+    #[error("Bodies did not match. Hint:\n{hint}")]
+    BodyDidNotMatch {
         expected: String,
         found: String,
+        hint: String,
     },
-    MissingHeader {
-        expected: String,
-    },
+    #[error("Expected body to be valid {expected} but instead: {found}")]
+    InvalidBodyFormat { expected: String, found: String },
 }
 
 #[derive(Eq, PartialEq, Hash)]
@@ -122,13 +131,87 @@ pub fn validate_headers<B>(
     Ok(())
 }
 
+pub enum MediaType {
+    Json,
+    Other(String),
+}
+
+impl FromStr for MediaType {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(match s {
+            "application/json" => MediaType::Json,
+            other => Other(other.to_string()),
+        })
+    }
+}
+
+pub fn validate_body(
+    actual_body: &[u8],
+    expected_body: &str,
+    media_type: MediaType,
+) -> Result<(), ProtocolTestFailure> {
+    let actual_body_str = from_utf8(actual_body)
+        .map(|body| body.to_string())
+        .unwrap_or(base64::encode(actual_body));
+    match media_type {
+        MediaType::Json => {
+            let actual_json: serde_json::Value =
+                serde_json::from_slice(actual_body).map_err(|e| {
+                    ProtocolTestFailure::InvalidBodyFormat {
+                        expected: "json".to_owned(),
+                        found: e.to_string(),
+                    }
+                })?;
+            let expected_json: serde_json::Value =
+                serde_json::from_str(expected_body).expect("expected value must be valid JSON");
+            return match assert_json_eq_no_panic(&actual_json, &expected_json) {
+                Ok(()) => Ok(()),
+                Err(message) => Err(ProtocolTestFailure::BodyDidNotMatch {
+                    expected: expected_body.to_string(),
+                    found: actual_body_str,
+                    hint: message,
+                }),
+            };
+        }
+        MediaType::Other(other_media_type) => {
+            if actual_body != expected_body.as_bytes() {
+                return Err(ProtocolTestFailure::BodyDidNotMatch {
+                    expected: expected_body.to_string(),
+                    found: actual_body_str,
+                    hint: format!("media type: {}", other_media_type),
+                });
+            }
+        }
+    }
+    Ok(())
+}
+
+/// Check that the protocol test succeeded & print the pretty error
+/// if it did not
+///
+/// The primary motivation is making multiline debug output
+/// readable as is the case in JSON diff hints
+#[track_caller]
+pub fn check(inp: Result<(), ProtocolTestFailure>) {
+    match inp {
+        Ok(_) => (),
+        Err(e) => {
+            eprintln!("{}", e);
+            assert!(false, "Protocol test failed");
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::{
-        forbid_query_params, require_query_params, validate_headers, validate_query_string,
-        ProtocolTestFailure,
+        check, forbid_query_params, require_query_params, validate_body, validate_headers,
+        validate_query_string, MediaType, ProtocolTestFailure,
     };
     use http::Request;
+    use std::str::FromStr;
 
     #[test]
     fn test_validate_empty_query_string() {
@@ -206,5 +289,34 @@ mod tests {
                 expected: "missing".to_owned()
             })
         );
+    }
+
+    #[test]
+    fn test_validate_json_body() {
+        let expected = r#"{"abc": 5 }"#;
+        let actual = r#"   {"abc":   5 }"#;
+        check(validate_body(actual.as_bytes(), expected, MediaType::Json));
+
+        let expected = r#"{"abc": 5 }"#;
+        let actual = r#"   {"abc":   6 }"#;
+        validate_body(actual.as_bytes(), expected, MediaType::Json)
+            .expect_err("bodies do not match");
+    }
+
+    #[test]
+    fn test_validate_non_json_body() {
+        let expected = r#"asdf"#;
+        let actual = r#"asdf "#;
+        validate_body(
+            actual.as_bytes(),
+            expected,
+            MediaType::from_str("something/else").unwrap(),
+        ).expect_err("bodies do not match");
+
+        check(validate_body(
+            expected.as_bytes(),
+            expected,
+            MediaType::from_str("something/else").unwrap(),
+        ))
     }
 }
