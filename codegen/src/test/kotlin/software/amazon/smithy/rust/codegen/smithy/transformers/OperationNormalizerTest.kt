@@ -10,6 +10,9 @@ import org.junit.jupiter.api.Test
 import software.amazon.smithy.model.shapes.OperationShape
 import software.amazon.smithy.model.shapes.ShapeId
 import software.amazon.smithy.model.shapes.StructureShape
+import software.amazon.smithy.rust.codegen.smithy.traits.InputBodyTrait
+import software.amazon.smithy.rust.codegen.smithy.traits.SyntheticInputTrait
+import software.amazon.smithy.rust.codegen.util.lookup
 import software.amazon.smithy.rust.testutil.asSmithy
 import software.amazon.smithy.rust.testutil.testSymbolProvider
 
@@ -52,5 +55,33 @@ internal class OperationNormalizerTest {
         val inputShape = modified.expectShape(inputId, StructureShape::class.java)
         testSymbolProvider(modified).toSymbol(inputShape).name shouldBe "MyOpInput"
         inputShape.memberNames shouldBe listOf("v")
+    }
+
+    @Test
+    fun `create bodies for operations`() {
+        val model = """
+            namespace smithy.test
+            structure RenameMe {
+                v: String,
+                drop: String
+            }
+            operation MyOp {
+                input: RenameMe
+            }""".asSmithy()
+
+        val sut = OperationNormalizer(testSymbolProvider(model))
+        val modified = sut.addOperationInputs(model) { input ->
+            input.toBuilder().members(input.members().filter { it.memberName != "drop" }).build()
+        }
+        val operation = modified.lookup<OperationShape>("smithy.test#MyOp")
+        operation.input.isPresent shouldBe true
+        val inputId = operation.input.get()
+        inputId.name shouldBe "MyOpInput"
+        val inputShape = modified.expectShape(inputId, StructureShape::class.java)
+        val input = inputShape.expectTrait(SyntheticInputTrait::class.java)
+        input.body shouldBe ShapeId.from("smithy.test#MyOpInputBody")
+        val body = modified.expectShape(input.body, StructureShape::class.java)
+        body.expectTrait(InputBodyTrait::class.java)
+        body.members().size shouldBe 1
     }
 }

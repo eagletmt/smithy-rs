@@ -39,6 +39,10 @@ class Instantiator(
 ) {
 
     fun render(arg: Node, shape: Shape, writer: RustWriter) {
+        if (arg.isNullNode) {
+            writer.write("None")
+            return
+        }
         when (shape) {
             // Compound Shapes
             is StructureShape -> renderStructure(writer, shape, arg as ObjectNode)

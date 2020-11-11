@@ -15,7 +15,7 @@
 
 package software.amazon.smithy.rust.codegen.util
 
-fun String.doubleQuote(): String = "\"$this\""
+fun String.doubleQuote(): String = "\"${this.replace("\"", "\\\"")}\""
 fun String.singleQuote(): String = "\'$this\'"
 
 /**

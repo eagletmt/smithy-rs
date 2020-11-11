@@ -13,32 +13,36 @@ import software.amazon.smithy.model.shapes.ShapeId
 import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.lang.rustBlock
+import software.amazon.smithy.rust.codegen.smithy.Configurator
 import software.amazon.smithy.rust.codegen.smithy.RuntimeConfig
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
+import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
+import software.amazon.smithy.rust.codegen.smithy.transformers.OperationNormalizer
 
 data class ProtocolConfig(
     val model: Model,
     val symbolProvider: SymbolProvider,
     val runtimeConfig: RuntimeConfig,
-    val writer: RustWriter,
     val serviceShape: ServiceShape,
-    val operationShape: OperationShape,
-    val inputShape: StructureShape,
     val protocol: ShapeId
 )
 
 interface ProtocolGeneratorFactory<out T : HttpProtocolGenerator> {
-    fun build(protocolConfig: ProtocolConfig): T
+    fun buildProtocolGenerator(protocolConfig: ProtocolConfig): T
+    fun preprocessModel(model: Model, symbolProvider: SymbolVisitor): Model {
+        // don't make a body by default
+        return OperationNormalizer(symbolProvider).addOperationInputs(model) {
+            null
+        }
+    }
 }
 
 abstract class HttpProtocolGenerator(
-    private val symbolProvider: SymbolProvider,
-    private val writer: RustWriter,
-    private val inputShape: StructureShape
+    private val symbolProvider: SymbolProvider
 ) {
-    fun render() {
+    fun render(writer: RustWriter, inputShape: StructureShape, operationShape: OperationShape) {
         writer.rustBlock("impl ${symbolProvider.toSymbol(inputShape).name}") {
-            toHttpRequestImpl(this)
+            toHttpRequestImpl(this, inputShape, operationShape)
         }
     }
 
@@ -56,5 +60,7 @@ abstract class HttpProtocolGenerator(
      *
      * Your implementation MUST call `httpBuilderFun` to create the public method.
      */
-    abstract fun toHttpRequestImpl(implBlockWriter: RustWriter)
+    abstract fun toHttpRequestImpl(implBlockWriter: RustWriter, inputShape: StructureShape, operationShape: OperationShape)
+    open fun bodyConfigurator(base: Configurator): Configurator = base
+    open fun modelConfigurator(base: Configurator): Configurator = base
 }

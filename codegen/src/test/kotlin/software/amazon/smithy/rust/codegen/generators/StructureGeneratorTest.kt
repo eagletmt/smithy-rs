@@ -13,7 +13,6 @@ import software.amazon.smithy.model.shapes.Shape
 import software.amazon.smithy.model.shapes.ShapeId
 import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.rust.codegen.lang.RustWriter
-import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
 import software.amazon.smithy.rust.codegen.smithy.canUseDefault
 import software.amazon.smithy.rust.codegen.smithy.generators.StructureGenerator
 import software.amazon.smithy.rust.testutil.asSmithy
@@ -109,7 +108,7 @@ class StructureGeneratorTest {
 
     @Test
     fun `generate error structures`() {
-        val provider: SymbolProvider = SymbolVisitor(model, "test")
+        val provider: SymbolProvider = testSymbolProvider(model)
         val writer = RustWriter.forModule("error")
         val generator = StructureGenerator(model, provider, writer, error)
         generator.render()

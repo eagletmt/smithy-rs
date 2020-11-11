@@ -21,12 +21,18 @@ dependencies {
     implementation("software.amazon.smithy:smithy-aws-traits:$smithyVersion")
 }
 
-data class CodegenTest(val service: String, val module: String)
+data class CodegenTest(val service: String, val module: String, val settings: TestSettings = TestSettings())
+data class TestSettings(val parses: Boolean = true, val compiles: Boolean = true, val passesTests: Boolean = true)
 
 val CodgenTests = listOf(
     CodegenTest("com.amazonaws.dynamodb#DynamoDB_20120810", "dynamo"),
     CodegenTest("com.amazonaws.ebs#Ebs", "ebs"),
-    CodegenTest("aws.protocoltests.json10#JsonRpc10", "json_rpc10")
+    CodegenTest("aws.protocoltests.json10#JsonRpc10", "json_rpc10"),
+    CodegenTest(
+        "aws.protocoltests.json#JsonProtocol",
+        "json_rpc11",
+        TestSettings(compiles = false, passesTests = false)
+    )
 )
 
 fun generateSmithyBuild(tests: List<CodegenTest>): String {
@@ -70,7 +76,7 @@ fun generateCargoWorkspace(tests: List<CodegenTest>): String {
     return """
     [workspace]
     members = [
-        ${tests.joinToString(",") { "\"${it.module}/rust-codegen\"" }}
+        ${tests.filter { it.settings.compiles }.joinToString(",") { "\"${it.module}/rust-codegen\"" }}
     ]
     """.trimIndent()
 }

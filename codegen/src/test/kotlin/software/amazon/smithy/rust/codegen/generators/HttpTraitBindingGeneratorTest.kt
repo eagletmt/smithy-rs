@@ -22,10 +22,12 @@ import software.amazon.smithy.model.shapes.ShapeId
 import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.model.traits.HttpTrait
 import software.amazon.smithy.rust.codegen.lang.RustWriter
+import software.amazon.smithy.rust.codegen.lang.rustBlock
+import software.amazon.smithy.rust.codegen.smithy.RuntimeType
+import software.amazon.smithy.rust.codegen.smithy.generators.DefaultTraitBindingFactory
 import software.amazon.smithy.rust.codegen.smithy.generators.HttpTraitBindingGenerator
 import software.amazon.smithy.rust.codegen.smithy.generators.StructureGenerator
 import software.amazon.smithy.rust.codegen.smithy.generators.uriFormatString
-import software.amazon.smithy.rust.codegen.smithy.transformers.OperationNormalizer
 import software.amazon.smithy.rust.codegen.util.dq
 import software.amazon.smithy.rust.testutil.TestRuntimeConfig
 import software.amazon.smithy.rust.testutil.asSmithy
@@ -88,21 +90,27 @@ class HttpTraitBindingGeneratorTest {
                 additional: String,
             }
         """.asSmithy()
-    private val model = OperationNormalizer(testSymbolProvider(baseModel)).addOperationInputs(baseModel)
+    private val defaultGenerator = DefaultTraitBindingFactory()
+    private val model = defaultGenerator.preprocessModel(baseModel, testSymbolProvider(baseModel))
 
     private val operationShape = model.expectShape(ShapeId.from("smithy.example#PutObject"), OperationShape::class.java)
-    private val inputShape = model.expectShape(operationShape.input.get(), StructureShape::class.java)
     private val httpTrait = operationShape.expectTrait(HttpTrait::class.java)
 
     private val symbolProvider = testSymbolProvider(model)
     private fun renderOperation(writer: RustWriter) {
+        val inputShape = model.expectShape(operationShape.input.get(), StructureShape::class.java)
         StructureGenerator(model, symbolProvider, writer, inputShape).render()
-        HttpTraitBindingGenerator(
-            model,
-            symbolProvider,
-            TestRuntimeConfig, writer, operationShape, inputShape, httpTrait
-        )
-            .Default().render()
+        writer.rustBlock("impl PutObjectInput") {
+            HttpTraitBindingGenerator(
+                model,
+                symbolProvider,
+                TestRuntimeConfig, writer, operationShape, inputShape, httpTrait
+            ).renderUpdateHttpBuilder(this)
+            rustBlock("pub fn build_http_request(&self) -> \$T", RuntimeType.HttpRequestBuilder) {
+                write("let builder = \$T::new();", RuntimeType.HttpRequestBuilder)
+                write("self.update_http_builder(builder)")
+            }
+        }
     }
 
     @Test

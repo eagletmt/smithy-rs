@@ -39,7 +39,8 @@ import software.amazon.smithy.model.traits.ErrorTrait
 import software.amazon.smithy.model.traits.HttpLabelTrait
 import software.amazon.smithy.rust.codegen.lang.RustType
 import software.amazon.smithy.rust.codegen.smithy.generators.toSnakeCase
-import software.amazon.smithy.rust.codegen.smithy.traits.SyntheticInput
+import software.amazon.smithy.rust.codegen.smithy.traits.InputBodyTrait
+import software.amazon.smithy.rust.codegen.smithy.traits.SyntheticInputTrait
 import software.amazon.smithy.utils.StringUtils
 
 // TODO: currently, respecting integer types.
@@ -81,13 +82,10 @@ val DefaultConfig =
 
 data class SymbolLocation(val filename: String, val namespace: String)
 
-fun Symbol.Builder.locatedIn(symbolLocation: SymbolLocation): Symbol.Builder =
-    this.definitionFile("src/${symbolLocation.filename}")
-        .namespace("crate::${symbolLocation.namespace}", "::")
-
 val Shapes = SymbolLocation("model.rs", "model")
 val Errors = SymbolLocation("error.rs", "error")
 val Operations = SymbolLocation("operation.rs", "operation")
+val Serializers = SymbolLocation("serializer.rs", "serializer")
 
 fun Symbol.makeOptional(): Symbol {
     return if (isOptional()) {
@@ -102,6 +100,10 @@ fun Symbol.makeOptional(): Symbol {
     }
 }
 
+fun Symbol.Builder.locatedIn(symbolLocation: SymbolLocation, rootNamespace: String): Symbol.Builder =
+    this.definitionFile("src/${symbolLocation.filename}")
+        .namespace("$rootNamespace::${symbolLocation.namespace}", "::")
+
 class SymbolVisitor(
     private val model: Model,
     private val rootNamespace: String = "crate",
@@ -113,6 +115,12 @@ class SymbolVisitor(
         return shape.accept(this)
     }
 
+    fun of(model: Model): SymbolVisitor = SymbolVisitor(model, rootNamespace, config)
+
+    fun Symbol.Builder.locatedIn(symbolLocation: SymbolLocation): Symbol.Builder =
+        this.definitionFile("src/${symbolLocation.filename}")
+            .namespace("$rootNamespace::${symbolLocation.namespace}", "::")
+
     override fun toMemberName(shape: MemberShape): String = shape.memberName.toSnakeCase()
 
     override fun blobShape(shape: BlobShape?): Symbol {
@@ -121,9 +129,11 @@ class SymbolVisitor(
 
     private fun handleOptionality(symbol: Symbol, member: MemberShape, container: Shape): Symbol {
         // If a field has the httpLabel trait and we are generating
-        // an Input shape, then the field is _not optional_.
+        // an Input shape, then the field is NOT optional.
+        // TODO: handle this for endpoint traits:
+        // https://awslabs.github.io/smithy/1.0/spec/core/endpoint-traits.html#endpoint-trait
         val httpLabeledInput =
-            container.hasTrait(SyntheticInput::class.java) && member.hasTrait(HttpLabelTrait::class.java)
+            container.hasTrait(SyntheticInputTrait::class.java) && member.hasTrait(HttpLabelTrait::class.java)
         return if (nullableIndex.isNullable(member) && !httpLabeledInput) {
             symbol.makeOptional()
         } else symbol
@@ -189,7 +199,7 @@ class SymbolVisitor(
     }
 
     override fun documentShape(shape: DocumentShape?): Symbol {
-        TODO("Not yet implemented")
+        return RuntimeType.Document(config.runtimeConfig).toSymbol()
     }
 
     override fun bigIntegerShape(shape: BigIntegerShape?): Symbol {
@@ -214,7 +224,8 @@ class SymbolVisitor(
 
     override fun structureShape(shape: StructureShape): Symbol {
         val isError = shape.hasTrait(ErrorTrait::class.java)
-        val isInput = shape.hasTrait(SyntheticInput::class.java)
+        val isInput = shape.hasTrait(SyntheticInputTrait::class.java)
+        val isBody = shape.hasTrait(InputBodyTrait::class.java)
         val name = StringUtils.capitalize(shape.id.name).letIf(isError) {
             // TODO: this is should probably be a configurable mixin
             it.replace("Exception", "Error")
@@ -224,6 +235,7 @@ class SymbolVisitor(
             isError -> builder.locatedIn(Errors)
             // Input shapes live with their Operations
             isInput -> builder.locatedIn(Operations)
+            isBody -> builder.locatedIn(Serializers)
             else -> builder.locatedIn(Shapes)
         }.build()
     }

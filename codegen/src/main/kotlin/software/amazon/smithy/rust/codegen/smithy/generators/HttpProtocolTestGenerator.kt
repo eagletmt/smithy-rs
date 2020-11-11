@@ -1,5 +1,7 @@
 package software.amazon.smithy.rust.codegen.smithy.generators
 
+import software.amazon.smithy.model.shapes.OperationShape
+import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.protocoltests.traits.HttpRequestTestCase
 import software.amazon.smithy.protocoltests.traits.HttpRequestTestsTrait
 import software.amazon.smithy.rust.codegen.lang.RustWriter
@@ -8,12 +10,19 @@ import software.amazon.smithy.rust.codegen.lang.withBlock
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
 import software.amazon.smithy.rust.codegen.util.dq
 
-class HttpProtocolTestGenerator(private val protocolConfig: ProtocolConfig) {
+val DenyList = setOf(
+    "RestJsonListsSerializeNull"
+)
+
+class HttpProtocolTestGenerator(
+    private val protocolConfig: ProtocolConfig,
+    private val operationShape: OperationShape,
+    private val inputShape: StructureShape,
+    private val writer: RustWriter
+) {
     fun render() {
-        with(protocolConfig) {
-            operationShape.getTrait(HttpRequestTestsTrait::class.java).map {
-                renderHttpRequestTests(it)
-            }
+        operationShape.getTrait(HttpRequestTestsTrait::class.java).map {
+            renderHttpRequestTests(it)
         }
     }
 
@@ -23,7 +32,7 @@ class HttpProtocolTestGenerator(private val protocolConfig: ProtocolConfig) {
             val operationName = symbolProvider.toSymbol(operationShape).name
             val testModuleName = "${operationName.toSnakeCase()}_request_test"
             writer.withModule(testModuleName) {
-                httpRequestTestsTrait.testCases.filter { it.protocol == protocol }.forEach { testCase ->
+                httpRequestTestsTrait.testCases.filter { it.protocol == protocol }.filter { !DenyList.contains(it.id) }.forEach { testCase ->
                     renderHttpRequestTestCase(testCase, this)
                 }
             }
@@ -36,12 +45,12 @@ class HttpProtocolTestGenerator(private val protocolConfig: ProtocolConfig) {
 
     private fun renderHttpRequestTestCase(httpRequestTestCase: HttpRequestTestCase, testModuleWriter: RustWriter) {
         httpRequestTestCase.documentation.map {
-            testModuleWriter.setNewlinePrefix("/// ").write(it).setNewlinePrefix("")
+            testModuleWriter.setNewlinePrefix("/// ").write(it).write(httpRequestTestCase.id).setNewlinePrefix("")
         }
         testModuleWriter.write("#[test]")
         testModuleWriter.rustBlock("fn test_${httpRequestTestCase.id.toSnakeCase()}()") {
             writeInline("let input =")
-            instantiator.render(httpRequestTestCase.params, protocolConfig.inputShape, this)
+            instantiator.render(httpRequestTestCase.params, inputShape, this)
             write(";")
             write("let http_request = input.build_http_request().body(()).unwrap();")
             checkQueryParams(this, httpRequestTestCase.queryParams)

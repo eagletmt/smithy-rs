@@ -10,12 +10,16 @@ import software.amazon.smithy.model.Model
 import software.amazon.smithy.model.shapes.MemberShape
 import software.amazon.smithy.model.shapes.UnionShape
 import software.amazon.smithy.rust.codegen.lang.RustWriter
+import software.amazon.smithy.rust.codegen.lang.rustBlock
+import software.amazon.smithy.rust.codegen.smithy.Configurator
+import software.amazon.smithy.rust.codegen.smithy.DefaultConfigurator
 
 class UnionGenerator(
     val model: Model,
     private val symbolProvider: SymbolProvider,
     private val writer: RustWriter,
-    private val shape: UnionShape
+    private val shape: UnionShape,
+    private val configurator: Configurator = DefaultConfigurator()
 ) {
 
     fun render() {
@@ -25,11 +29,12 @@ class UnionGenerator(
     private val sortedMembers: List<MemberShape> = shape.allMembers.values.sortedBy { symbolProvider.toMemberName(it) }
     private fun renderUnion() {
         val symbol = symbolProvider.toSymbol(shape)
-        writer.write("#[derive(Debug, PartialEq, Clone)]")
-        val blockWriter = writer.openBlock("pub enum ${symbol.name} {")
-        sortedMembers.forEach { member ->
-            blockWriter.write("${member.memberName.toPascalCase()}(\$T),", symbolProvider.toSymbol(member))
+        configurator.container(shape).render(writer)
+        writer.rustBlock("enum ${symbol.name}") {
+            sortedMembers.forEach { member ->
+                configurator.member(member).renderAnnotations(this)
+                write("${member.memberName.toPascalCase()}(\$T),", symbolProvider.toSymbol(member))
+            }
         }
-        blockWriter.closeBlock("}")
     }
 }

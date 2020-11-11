@@ -15,6 +15,8 @@ import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.lang.render
 import software.amazon.smithy.rust.codegen.lang.rustBlock
 import software.amazon.smithy.rust.codegen.lang.withBlock
+import software.amazon.smithy.rust.codegen.smithy.Configurator
+import software.amazon.smithy.rust.codegen.smithy.DefaultConfigurator
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
 import software.amazon.smithy.rust.codegen.smithy.canUseDefault
 import software.amazon.smithy.rust.codegen.smithy.isOptional
@@ -30,6 +32,7 @@ class StructureGenerator(
     private val symbolProvider: SymbolProvider,
     private val writer: RustWriter,
     private val shape: StructureShape,
+    private val configurator: Configurator = DefaultConfigurator(),
     private val renderBuilder: Boolean = true
 ) {
     private val members: List<MemberShape> = shape.allMembers.values.toList()
@@ -64,13 +67,14 @@ class StructureGenerator(
 
     private fun renderStructure() {
         val symbol = symbolProvider.toSymbol(shape)
-        // TODO(maybe): Pull derive info from the symbol so that the symbol provider can alter things as necessary; 4h
-        writer.write("#[non_exhaustive]")
-        writer.write("#[derive(Debug, PartialEq, Clone)]")
-        writer.rustBlock("pub struct ${symbol.name}") {
+        // renders annotations & visibility
+        configurator.container(shape).render(writer)
+        writer.rustBlock("struct ${symbol.name}") {
             members.forEach { member ->
                 val memberName = symbolProvider.toMemberName(member)
-                write("pub $memberName: \$T,", symbolProvider.toSymbol(member))
+                val meta = configurator.member(member)
+                meta.render(writer)
+                write("$memberName: \$T,", symbolProvider.toSymbol(member))
             }
         }
 
@@ -84,10 +88,6 @@ class StructureGenerator(
     }
 
     private fun renderBuilder(writer: RustWriter) {
-        // Eventually, I want to do a fancier module layout:
-        // model/some_model.rs [contains builder and impl for a single model] struct SomeModel, struct Builder
-        // model/mod.rs [contains pub use for each model to bring it into top level scope]
-        // users will do models::SomeModel, models::SomeModel::builder()
         val builderName = "Builder"
         writer.write("#[non_exhaustive]")
         writer.write("#[derive(Debug, Clone, Default)]")

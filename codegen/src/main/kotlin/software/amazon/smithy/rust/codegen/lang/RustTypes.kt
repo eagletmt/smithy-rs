@@ -5,6 +5,8 @@
 
 package software.amazon.smithy.rust.codegen.lang
 
+import software.amazon.smithy.rust.codegen.smithy.RuntimeType
+
 /**
  * A hierarchy of types handled by Smithy codegen
  */
@@ -72,4 +74,75 @@ fun RustType.render(): String = when (this) {
     is RustType.Option -> "${this.name}<${this.value.render()}>"
     is RustType.Box -> "${this.name}<${this.value.render()}>"
     is RustType.Opaque -> this.name
+    // is RustType.Struct -> this.name
+}
+
+fun <T : RustType> RustType.contains(t: T): Boolean {
+    if (t == this) {
+        return true
+    }
+
+    return when (this) {
+        is RustType.Vec -> this.member.contains(t)
+        is RustType.HashSet -> this.member.contains(t)
+        is RustType.Reference -> this.value.contains(t)
+        is RustType.Option -> this.value.contains(t)
+        is RustType.Box -> this.value.contains(t)
+        else -> false
+    }
+}
+
+data class Meta(val derives: Derives, val annotations: List<Annotation>, val public: Boolean) {
+    fun renderAnnotations(writer: RustWriter): Meta {
+        derives.render(writer)
+        annotations.forEach {
+            it.render(writer)
+        }
+        return this
+    }
+
+    fun renderVisibility(writer: RustWriter): Meta {
+        if (public) {
+            writer.writeInline("pub ")
+        }
+        return this
+    }
+
+    fun render(writer: RustWriter) {
+        renderAnnotations(writer)
+        renderVisibility(writer)
+    }
+}
+
+sealed class Annotation {
+    abstract fun render(writer: RustWriter)
+
+    companion object {
+        val NonExhaustive = Custom("non_exhaustive")
+    }
+}
+
+data class Derives(val derives: List<RuntimeType>) : Annotation() {
+    override fun render(writer: RustWriter) {
+        if (derives.isEmpty()) {
+            return
+        }
+        writer.writeInline("#[derive(")
+        derives.forEach { derive ->
+            writer.writeInline("\$T, ", derive)
+        }
+        writer.write(")]")
+    }
+}
+
+data class Custom(val annot: String, val symbols: List<RuntimeType> = listOf()) : Annotation() {
+    override fun render(writer: RustWriter) {
+        writer.writeInline("#[")
+        writer.writeInline(annot)
+        writer.write("]")
+
+        symbols.forEach {
+            writer.addDependency(it.dependency)
+        }
+    }
 }

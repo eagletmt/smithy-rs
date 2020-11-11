@@ -24,6 +24,7 @@ import software.amazon.smithy.model.shapes.MemberShape
 import software.amazon.smithy.model.shapes.OperationShape
 import software.amazon.smithy.model.shapes.Shape
 import software.amazon.smithy.model.shapes.StructureShape
+import software.amazon.smithy.model.traits.HttpPayloadTrait
 import software.amazon.smithy.model.traits.HttpTrait
 import software.amazon.smithy.model.traits.MediaTypeTrait
 import software.amazon.smithy.model.traits.TimestampFormatTrait
@@ -31,6 +32,8 @@ import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.lang.rustBlock
 import software.amazon.smithy.rust.codegen.smithy.RuntimeConfig
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
+import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
+import software.amazon.smithy.rust.codegen.smithy.transformers.OperationNormalizer
 import software.amazon.smithy.rust.codegen.util.doubleQuote
 import software.amazon.smithy.rust.codegen.util.dq
 
@@ -55,6 +58,66 @@ fun HttpTrait.uriFormatString(): String = uri.segments.map {
  * TODO: httpPrefixHeaders; 4h
  * TODO: Deserialization of all fields; 1w
  */
+
+class DefaultTraitBindingFactory : ProtocolGeneratorFactory<DefaultProtocolGenerator> {
+    override fun buildProtocolGenerator(protocolConfig: ProtocolConfig): DefaultProtocolGenerator {
+        return with(protocolConfig) {
+            DefaultProtocolGenerator(
+                model,
+                symbolProvider,
+                runtimeConfig
+            )
+        }
+    }
+    override fun preprocessModel(model: Model, symbolProvider: SymbolVisitor): Model {
+        return OperationNormalizer(symbolProvider).addOperationInputs(model) { inputShape ->
+            val newMembers = inputShape.members().filter {
+                when {
+                    HttpBindingIndex.hasHttpRequestBindings(it) -> it.hasTrait(HttpPayloadTrait::class.java)
+                    else -> true
+                }
+            }
+            inputShape.toBuilder().members(newMembers).build()
+        }
+    }
+}
+
+/**
+ * Default implementation of HttpTraitBindings. A `build_http_request()` method is added that
+ * simply calls `update_http_builder()`
+ */
+class DefaultProtocolGenerator(
+    private val model: Model,
+    private val symbolProvider: SymbolProvider,
+    private val runtimeConfig: RuntimeConfig
+) : HttpProtocolGenerator(symbolProvider) {
+
+    private val requestBuilder = RuntimeType.Http("request::Builder")
+
+    override fun toHttpRequestImpl(
+        implBlockWriter: RustWriter,
+        inputShape: StructureShape,
+        operationShape: OperationShape
+    ) {
+        val httpTrait = operationShape.expectTrait(HttpTrait::class.java)
+
+        val httpBindingGenerator = HttpTraitBindingGenerator(
+            model,
+            symbolProvider,
+            runtimeConfig,
+            implBlockWriter,
+            operationShape,
+            inputShape,
+            httpTrait
+        )
+        httpBindingGenerator.renderUpdateHttpBuilder(implBlockWriter)
+        httpBuilderFun(implBlockWriter) {
+            write("let builder = \$T::new();", requestBuilder)
+            write("self.update_http_builder(builder)")
+        }
+    }
+}
+
 class HttpTraitBindingGenerator(
     val model: Model,
     private val symbolProvider: SymbolProvider,
@@ -90,20 +153,6 @@ class HttpTraitBindingGenerator(
                 write("let builder = self.add_headers(builder);")
             }
             write("builder.method(${httpTrait.method.dq()}).uri(uri)")
-        }
-    }
-
-    /**
-     * Default implementation of HttpTraitBindings. A `build_http_request()` method is added that
-     * simply calls `update_http_builder()`
-     */
-    inner class Default : HttpProtocolGenerator(symbolProvider, writer, inputShape) {
-        override fun toHttpRequestImpl(implBlockWriter: RustWriter) {
-            renderUpdateHttpBuilder(implBlockWriter)
-            httpBuilderFun(implBlockWriter) {
-                write("let builder = \$T::new();", RuntimeType.HttpRequestBuilder)
-                write("self.update_http_builder(builder)")
-            }
         }
     }
 

@@ -21,38 +21,39 @@ import software.amazon.smithy.rust.codegen.smithy.generators.ProtocolGeneratorFa
 import software.amazon.smithy.rust.codegen.util.dq
 
 class AwsRestJsonFactory : ProtocolGeneratorFactory<AwsRestJsonGenerator> {
-    override fun build(
+    override fun buildProtocolGenerator(
         protocolConfig: ProtocolConfig
     ): AwsRestJsonGenerator = with(protocolConfig) {
-        AwsRestJsonGenerator(model, symbolProvider, runtimeConfig, writer, operationShape, inputShape)
+        AwsRestJsonGenerator(model, symbolProvider, runtimeConfig)
     }
 }
 
 class AwsRestJsonGenerator(
     private val model: Model,
     private val symbolProvider: SymbolProvider,
-    private val runtimeConfig: RuntimeConfig,
-    private val writer: RustWriter,
-    private val operationShape: OperationShape,
-    private val inputShape: StructureShape
-) : HttpProtocolGenerator(symbolProvider, writer, inputShape) {
+    private val runtimeConfig: RuntimeConfig
+) : HttpProtocolGenerator(symbolProvider) {
     // restJson1 requires all operations to use the HTTP trait
-    private val httpTrait = operationShape.expectTrait(HttpTrait::class.java)
-
-    private val httpBindingGenerator = HttpTraitBindingGenerator(
-        model,
-        symbolProvider,
-        runtimeConfig,
-        writer,
-        operationShape,
-        inputShape,
-        httpTrait
-    )
 
     private val httpIndex = HttpBindingIndex(model)
     private val requestBuilder = RuntimeType.Http("request::Builder")
 
-    override fun toHttpRequestImpl(implBlockWriter: RustWriter) {
+    override fun toHttpRequestImpl(
+        implBlockWriter: RustWriter,
+        inputShape: StructureShape,
+        operationShape: OperationShape
+    ) {
+        val httpTrait = operationShape.expectTrait(HttpTrait::class.java)
+
+        val httpBindingGenerator = HttpTraitBindingGenerator(
+            model,
+            symbolProvider,
+            runtimeConfig,
+            implBlockWriter,
+            operationShape,
+            inputShape,
+            httpTrait
+        )
         val contentType = httpIndex.determineRequestContentType(operationShape, "application/json").orElse("application/json")
         httpBindingGenerator.renderUpdateHttpBuilder(implBlockWriter)
         httpBuilderFun(implBlockWriter) {

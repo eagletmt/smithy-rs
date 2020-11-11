@@ -85,14 +85,14 @@ class HttpProtocolTestGeneratorTest {
                 model,
                 symbolProvider,
                 runtimeConfig,
-                this,
                 model.lookup("com.example#HelloService"),
-                model.lookup("com.example#SayHello"),
-                model.lookup("com.example#SayHelloInput"),
                 RestJson1Trait.ID
             )
             HttpProtocolTestGenerator(
-                protocolConfig
+                protocolConfig,
+                model.lookup("com.example#SayHello"),
+                model.lookup("com.example#SayHelloInput"),
+                writer
             ).render()
         }
     }

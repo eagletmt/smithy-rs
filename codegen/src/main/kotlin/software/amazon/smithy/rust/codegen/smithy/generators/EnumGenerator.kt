@@ -12,15 +12,16 @@ import software.amazon.smithy.model.traits.EnumTrait
 import software.amazon.smithy.rust.codegen.lang.RustWriter
 import software.amazon.smithy.rust.codegen.lang.rustBlock
 import software.amazon.smithy.rust.codegen.lang.withBlock
+import software.amazon.smithy.rust.codegen.smithy.Configurator
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
 import software.amazon.smithy.rust.codegen.util.doubleQuote
-import java.lang.IllegalStateException
 
 class EnumGenerator(
     symbolProvider: SymbolProvider,
     private val writer: RustWriter,
-    shape: StringShape,
-    private val enumTrait: EnumTrait
+    private val shape: StringShape,
+    private val enumTrait: EnumTrait,
+    private val configurator: Configurator
 ) {
     companion object {
         const val Values = "values"
@@ -42,8 +43,8 @@ class EnumGenerator(
     }
 
     private fun renderUnamedEnum() {
-        writer.write("#[derive(Debug, PartialEq, Eq, Clone)]")
-        writer.write("pub struct $enumName(String);")
+        configurator.container(shape).render(writer)
+        writer.write("struct $enumName(String);")
         writer.rustBlock("impl $enumName") {
             writer.rustBlock("pub fn as_str(&self) -> &str") {
                 write("&self.0")
@@ -74,10 +75,8 @@ class EnumGenerator(
     private val sortedMembers: List<EnumDefinition> = enumTrait.values.sortedBy { it.value }
     private val enumName = symbolProvider.toSymbol(shape).name
     private fun renderEnum() {
-        writer.write("#[non_exhaustive]")
-        // Enums can only be strings, so we can derive Eq
-        writer.write("#[derive(Debug, PartialEq, Eq, Clone)]")
-        writer.rustBlock("pub enum $enumName") {
+        configurator.container(shape).render(writer)
+        writer.rustBlock("enum $enumName") {
             sortedMembers.forEach { member ->
                 member.documentation.map { setNewlinePrefix("/// ").write(it).setNewlinePrefix("") }
                 // use the name, or escape the value

@@ -15,6 +15,13 @@ pub struct Instant {
 }
 
 pub mod instant {
+    use crate::Instant;
+
+    trait Formatter {
+        fn format(inst: Instant) -> String;
+    }
+
+    #[derive(Copy, Clone)]
     pub enum Format {
         DateTime,
         HttpDate,
@@ -90,6 +97,9 @@ impl Blob {
         Blob { inner: inp }
     }
 }
+
+#[derive(Debug, PartialEq, Clone)]
+pub struct Document;
 
 #[cfg(test)]
 mod test {
