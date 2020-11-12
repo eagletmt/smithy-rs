@@ -52,6 +52,7 @@ data class RustDependency(
     }
 
     companion object {
+        val SerdeJson: RustDependency = RustDependency("serde_json", CratesIo("1"))
         val Http: RustDependency = RustDependency("http", CratesIo("0.2"))
         val Serde = RustDependency("serde", CratesIo("1"), features = listOf("derive"))
         fun SmithyTypes(runtimeConfig: RuntimeConfig) =

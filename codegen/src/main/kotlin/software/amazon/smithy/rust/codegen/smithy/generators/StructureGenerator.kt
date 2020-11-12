@@ -69,7 +69,7 @@ class StructureGenerator(
         val symbol = symbolProvider.toSymbol(shape)
         // renders annotations & visibility
         configurator.container(shape).render(writer)
-        writer.rustBlock("struct ${symbol.name}") {
+        writer.rustBlock("struct ${symbol.name} ${configurator.container(shape).lifetimes()}") {
             members.forEach { member ->
                 val memberName = symbolProvider.toMemberName(member)
                 val meta = configurator.member(member)

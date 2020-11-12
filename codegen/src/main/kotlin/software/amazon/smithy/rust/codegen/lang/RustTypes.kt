@@ -92,13 +92,21 @@ fun <T : RustType> RustType.contains(t: T): Boolean {
     }
 }
 
-data class Meta(val derives: Derives, val annotations: List<Annotation>, val public: Boolean) {
+data class Meta(val derives: Derives, val annotations: List<Annotation>, val public: Boolean, val lifetimes: List<String>) {
     fun renderAnnotations(writer: RustWriter): Meta {
         derives.render(writer)
         annotations.forEach {
             it.render(writer)
         }
         return this
+    }
+
+    fun lifetimes(): String {
+        return if (lifetimes.isNotEmpty()) {
+            lifetimes.joinToString(prefix = "<", postfix = ">") { "'$it" }
+        } else {
+            ""
+        }
     }
 
     fun renderVisibility(writer: RustWriter): Meta {

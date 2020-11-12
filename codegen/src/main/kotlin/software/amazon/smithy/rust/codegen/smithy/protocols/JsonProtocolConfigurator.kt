@@ -15,7 +15,9 @@ import software.amazon.smithy.rust.codegen.lang.render
 import software.amazon.smithy.rust.codegen.smithy.Configurator
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
 import software.amazon.smithy.rust.codegen.smithy.generators.ProtocolConfig
+import software.amazon.smithy.rust.codegen.smithy.letIf
 import software.amazon.smithy.rust.codegen.smithy.rustType
+import software.amazon.smithy.rust.codegen.smithy.traits.InputBodyTrait
 import software.amazon.smithy.rust.codegen.util.dq
 
 class JsonProtocolConfigurator(private val base: Configurator, private val protocolConfig: ProtocolConfig) : Configurator {
@@ -26,14 +28,19 @@ class JsonProtocolConfigurator(private val base: Configurator, private val proto
         return baseMeta.copy(
             derives = baseMeta.derives.copy(derives = baseMeta.derives.derives + listOf(RuntimeType.Serialize))
             // public = false
-        )
+        ).letIf(container.hasTrait(InputBodyTrait::class.java)) {
+            it.copy(lifetimes = listOf("a"))
+        }
     }
 
     private fun specialSerializer(target: Shape): Custom? {
-        val targetRustType = protocolConfig.symbolProvider.toSymbol(target).rustType()
+        var targetRustType = protocolConfig.symbolProvider.toSymbol(target).rustType()
         val instant = RuntimeType.Instant(protocolConfig.runtimeConfig).toSymbol().rustType()
         val blob = RuntimeType.Blob(protocolConfig.runtimeConfig).toSymbol().rustType()
         return if (targetRustType.contains(instant) || targetRustType.contains(blob)) {
+            if (targetRustType is RustType.Reference) {
+                targetRustType = targetRustType.value
+            }
             val funcTyped = targetRustType.render().filter { it.isLetterOrDigit() }.toLowerCase()
             val format = if (targetRustType.contains(instant)) {
                 val format = httpBindingIndex.determineTimestampFormat(target, HttpBinding.Location.PAYLOAD, TimestampFormatTrait.Format.EPOCH_SECONDS)

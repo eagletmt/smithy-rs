@@ -147,22 +147,20 @@ impl FromStr for MediaType {
     }
 }
 
-pub fn validate_body(
-    actual_body: &[u8],
+pub fn validate_body<T: AsRef<[u8]>>(
+    actual_body: T,
     expected_body: &str,
     media_type: MediaType,
 ) -> Result<(), ProtocolTestFailure> {
-    let actual_body_str = from_utf8(actual_body)
+    let actual_body_str = from_utf8(actual_body.as_ref())
         .map(|body| body.to_string())
-        .unwrap_or(base64::encode(actual_body));
+        .unwrap_or(base64::encode(actual_body.as_ref()));
     match media_type {
         MediaType::Json => {
-            let actual_json: serde_json::Value =
-                serde_json::from_slice(actual_body).map_err(|e| {
-                    ProtocolTestFailure::InvalidBodyFormat {
-                        expected: "json".to_owned(),
-                        found: e.to_string(),
-                    }
+            let actual_json: serde_json::Value = serde_json::from_slice(actual_body.as_ref())
+                .map_err(|e| ProtocolTestFailure::InvalidBodyFormat {
+                    expected: "json".to_owned(),
+                    found: e.to_string(),
                 })?;
             let expected_json: serde_json::Value =
                 serde_json::from_str(expected_body).expect("expected value must be valid JSON");
@@ -176,7 +174,7 @@ pub fn validate_body(
             };
         }
         MediaType::Other(other_media_type) => {
-            if actual_body != expected_body.as_bytes() {
+            if actual_body.as_ref() != expected_body.as_bytes() {
                 return Err(ProtocolTestFailure::BodyDidNotMatch {
                     expected: expected_body.to_string(),
                     found: actual_body_str,
@@ -311,7 +309,8 @@ mod tests {
             actual.as_bytes(),
             expected,
             MediaType::from_str("something/else").unwrap(),
-        ).expect_err("bodies do not match");
+        )
+        .expect_err("bodies do not match");
 
         check(validate_body(
             expected.as_bytes(),

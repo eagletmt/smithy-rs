@@ -23,10 +23,10 @@ class DefaultConfigurator : Configurator {
             is StringShape -> defaultDerives + listOf(RuntimeType.Std("hash::Hash"), RuntimeType.Std("cmp::Eq"))
             else -> defaultDerives
         }
-        return Meta(derives = Derives(derives), annotations = listOf(Annotation.NonExhaustive), public = true)
+        return Meta(derives = Derives(derives), annotations = listOf(Annotation.NonExhaustive), public = true, lifetimes = listOf())
     }
 
     override fun member(member: MemberShape): Meta {
-        return Meta(derives = Derives(listOf()), annotations = listOf(), public = true)
+        return Meta(derives = Derives(listOf()), annotations = listOf(), public = true, lifetimes = listOf())
     }
 }

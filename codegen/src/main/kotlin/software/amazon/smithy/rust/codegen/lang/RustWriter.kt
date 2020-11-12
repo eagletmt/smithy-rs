@@ -22,10 +22,11 @@ fun <T : CodeWriter> T.withBlock(
     textBeforeNewLine: String,
     textAfterNewLine: String,
     conditional: Boolean = true,
+    vararg args: Any,
     block: T.() -> Unit
 ): T {
     if (conditional) {
-        openBlock(textBeforeNewLine)
+        openBlock(textBeforeNewLine, *args)
     }
 
     block(this)

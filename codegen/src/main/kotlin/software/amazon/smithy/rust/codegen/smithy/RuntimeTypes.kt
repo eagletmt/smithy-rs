@@ -50,6 +50,8 @@ data class RuntimeType(val name: String, val dependency: RustDependency?, val na
     // TODO: refactor to be RuntimeTypeProvider a la Symbol provider that packages the `RuntimeConfig` state.
     companion object {
 
+        fun SerdeJson(path: String) = RuntimeType(path, dependency = RustDependency.SerdeJson, namespace = "serde_json")
+
         // val Blob = RuntimeType("Blob", RustDependency.IO_CORE, "blob")
         val From = RuntimeType("From", dependency = null, namespace = "std::convert")
         val AsRef = RuntimeType("AsRef", dependency = null, namespace = "std::convert")

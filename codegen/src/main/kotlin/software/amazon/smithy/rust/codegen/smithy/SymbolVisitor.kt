@@ -254,6 +254,8 @@ class SymbolVisitor(
             handleOptionality(it, shape, model.expectShape(shape.container))
         }.letIf(config.handleRustBoxing) {
             handleRustBoxing(it, shape)
+        }.letIf(model.expectShape(shape.container).hasTrait(InputBodyTrait::class.java)) {
+            it.toBuilder().rustType(RustType.Reference("a", it.rustType())).build()
         }
     }
 

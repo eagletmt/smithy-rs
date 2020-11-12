@@ -60,8 +60,8 @@ class Instantiator(
 
             is BlobShape -> writer.write(
                 "\$T::new(\$T(${(arg as StringNode).value.dq()}).unwrap())",
-                RuntimeType.Blob(runtimeConfig),
-                RuntimeType.Base64Decode(runtimeConfig)
+                RuntimeType.Blob(runtimeConfig)
+                // RuntimeType.Base64Decode(runtimeConfig)
             )
 
             // Simple Shapes

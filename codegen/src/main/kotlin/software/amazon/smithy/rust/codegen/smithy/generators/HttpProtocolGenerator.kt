@@ -17,6 +17,7 @@ import software.amazon.smithy.rust.codegen.smithy.Configurator
 import software.amazon.smithy.rust.codegen.smithy.RuntimeConfig
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
 import software.amazon.smithy.rust.codegen.smithy.SymbolVisitor
+import software.amazon.smithy.rust.codegen.smithy.traits.SyntheticInputTrait
 import software.amazon.smithy.rust.codegen.smithy.transformers.OperationNormalizer
 
 data class ProtocolConfig(
@@ -38,11 +39,15 @@ interface ProtocolGeneratorFactory<out T : HttpProtocolGenerator> {
 }
 
 abstract class HttpProtocolGenerator(
-    private val symbolProvider: SymbolProvider
+    private val protocolConfig: ProtocolConfig
 ) {
+    private val symbolProvider = protocolConfig.symbolProvider
     fun render(writer: RustWriter, inputShape: StructureShape, operationShape: OperationShape) {
         writer.rustBlock("impl ${symbolProvider.toSymbol(inputShape).name}") {
             toHttpRequestImpl(this, inputShape, operationShape)
+            val shapeId = inputShape.expectTrait(SyntheticInputTrait::class.java).body
+            val body = shapeId?.let { protocolConfig.model.expectShape(it, StructureShape::class.java) }
+            toBodyImpl(this, inputShape, body)
         }
     }
 
@@ -61,6 +66,9 @@ abstract class HttpProtocolGenerator(
      * Your implementation MUST call `httpBuilderFun` to create the public method.
      */
     abstract fun toHttpRequestImpl(implBlockWriter: RustWriter, inputShape: StructureShape, operationShape: OperationShape)
+
+    abstract fun toBodyImpl(implBlockWriter: RustWriter, inputShape: StructureShape, inputBody: StructureShape?)
+
     open fun bodyConfigurator(base: Configurator): Configurator = base
     open fun modelConfigurator(base: Configurator): Configurator = base
 }

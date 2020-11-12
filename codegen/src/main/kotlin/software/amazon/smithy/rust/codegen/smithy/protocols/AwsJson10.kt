@@ -36,7 +36,7 @@ class AwsJson10Factory : ProtocolGeneratorFactory<AwsJson10Generator> {
 
 class AwsJson10Generator(
     private val protocolConfig: ProtocolConfig
-) : HttpProtocolGenerator(protocolConfig.symbolProvider) {
+) : HttpProtocolGenerator(protocolConfig) {
     override fun toHttpRequestImpl(
         implBlockWriter: RustWriter,
         inputShape: StructureShape,
@@ -52,6 +52,27 @@ class AwsJson10Generator(
                    .header("X-Amz-Target", "${protocolConfig.serviceShape.id.name}.${operationShape.id.name}")
                """.trimMargin()
             )
+        }
+    }
+
+    override fun toBodyImpl(implBlockWriter: RustWriter, inputShape: StructureShape, inputBody: StructureShape?) {
+        if (inputBody == null) {
+            implBlockWriter.rustBlock("pub fn build_body(&self) -> String") {
+                write("String::new()")
+            }
+            return
+        }
+        val bodySymbol = protocolConfig.symbolProvider.toSymbol(inputBody)
+        implBlockWriter.rustBlock("fn body(&self) -> \$T", bodySymbol) {
+            rustBlock("\$T", bodySymbol) {
+                for (member in inputBody.members()) {
+                    val name = protocolConfig.symbolProvider.toMemberName(member)
+                    write("$name: &self.$name,")
+                }
+            }
+        }
+        implBlockWriter.rustBlock("pub fn build_body(&self) -> String") {
+            write("\$T(&self.body()).expect(\"serialization should succeed\")", RuntimeType.SerdeJson("to_string"))
         }
     }
 

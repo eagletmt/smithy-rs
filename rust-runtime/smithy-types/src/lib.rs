@@ -56,6 +56,10 @@ impl Instant {
         DateTime::<Utc>::from_utc(NaiveDateTime::from_timestamp(self.seconds, self.nanos), Utc)
     }
 
+    pub fn epoch_seconds(&self) -> i64 {
+        self.seconds
+    }
+
     pub fn fmt(&self, format: instant::Format) -> String {
         match format {
             instant::Format::DateTime => {
@@ -95,6 +99,9 @@ pub struct Blob {
 impl Blob {
     pub fn new(inp: Vec<u8>) -> Self {
         Blob { inner: inp }
+    }
+    pub fn bytes(&self) -> &[u8] {
+        self.inner.as_slice()
     }
 }
 

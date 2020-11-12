@@ -61,13 +61,7 @@ fun HttpTrait.uriFormatString(): String = uri.segments.map {
 
 class DefaultTraitBindingFactory : ProtocolGeneratorFactory<DefaultProtocolGenerator> {
     override fun buildProtocolGenerator(protocolConfig: ProtocolConfig): DefaultProtocolGenerator {
-        return with(protocolConfig) {
-            DefaultProtocolGenerator(
-                model,
-                symbolProvider,
-                runtimeConfig
-            )
-        }
+        return DefaultProtocolGenerator(protocolConfig)
     }
     override fun preprocessModel(model: Model, symbolProvider: SymbolVisitor): Model {
         return OperationNormalizer(symbolProvider).addOperationInputs(model) { inputShape ->
@@ -87,10 +81,8 @@ class DefaultTraitBindingFactory : ProtocolGeneratorFactory<DefaultProtocolGener
  * simply calls `update_http_builder()`
  */
 class DefaultProtocolGenerator(
-    private val model: Model,
-    private val symbolProvider: SymbolProvider,
-    private val runtimeConfig: RuntimeConfig
-) : HttpProtocolGenerator(symbolProvider) {
+    private val protocolConfig: ProtocolConfig
+) : HttpProtocolGenerator(protocolConfig) {
 
     private val requestBuilder = RuntimeType.Http("request::Builder")
 
@@ -101,20 +93,26 @@ class DefaultProtocolGenerator(
     ) {
         val httpTrait = operationShape.expectTrait(HttpTrait::class.java)
 
-        val httpBindingGenerator = HttpTraitBindingGenerator(
-            model,
-            symbolProvider,
-            runtimeConfig,
-            implBlockWriter,
-            operationShape,
-            inputShape,
-            httpTrait
-        )
+        val httpBindingGenerator = with(protocolConfig) {
+            HttpTraitBindingGenerator(
+                model,
+                symbolProvider,
+                runtimeConfig,
+                implBlockWriter,
+                operationShape,
+                inputShape,
+                httpTrait
+            )
+        }
         httpBindingGenerator.renderUpdateHttpBuilder(implBlockWriter)
         httpBuilderFun(implBlockWriter) {
             write("let builder = \$T::new();", requestBuilder)
             write("self.update_http_builder(builder)")
         }
+    }
+
+    override fun toBodyImpl(implBlockWriter: RustWriter, inputShape: StructureShape, inputBody: StructureShape?) {
+        // do nothing, the default protocol doesn't make a body
     }
 }
 

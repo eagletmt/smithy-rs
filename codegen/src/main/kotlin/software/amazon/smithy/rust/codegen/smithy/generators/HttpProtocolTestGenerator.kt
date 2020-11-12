@@ -57,6 +57,7 @@ class HttpProtocolTestGenerator(
             checkForbidQueryParams(this, httpRequestTestCase.forbidQueryParams)
             checkRequiredQueryParams(this, httpRequestTestCase.requireQueryParams)
             checkHeaders(this, httpRequestTestCase.headers)
+            checkBody(this, httpRequestTestCase.body.orElse(""), httpRequestTestCase.bodyMediaType.orElse(null))
             with(httpRequestTestCase) {
                 write(
                     """
@@ -67,6 +68,32 @@ class HttpProtocolTestGenerator(
                 // TODO: assert on the body contents
                 write("/* BODY:\n ${body.orElse("[ No Body ]")} */")
             }
+        }
+    }
+
+    private fun checkBody(rustWriter: RustWriter, body: String, mediaType: String?) {
+        if (body == "") {
+            rustWriter.write("// No body")
+            rustWriter.write("assert_eq!(input.build_body(), \"\");")
+        } else {
+            check(mediaType != null)
+            checked(rustWriter) {
+                rustWriter.addImport(RuntimeType.Std("str::FromStr").toSymbol(), null)
+                write(
+                    "\$T(input.build_body(), ${body.dq()}, \$T::from_str(${mediaType.dq()}).unwrap())",
+                    RuntimeType.ProtocolTestHelper(protocolConfig.runtimeConfig, "validate_body"),
+                    RuntimeType.ProtocolTestHelper(protocolConfig.runtimeConfig, "MediaType")
+                )
+            }
+        }
+    }
+
+    private fun checked(rustWriter: RustWriter, inner: RustWriter.() -> Unit) {
+        rustWriter.withBlock(
+            "\$T(", ");", conditional = true,
+            args = *arrayOf(RuntimeType.ProtocolTestHelper(protocolConfig.runtimeConfig, "check"))
+        ) {
+            inner(this)
         }
     }
 

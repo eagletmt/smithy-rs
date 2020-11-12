@@ -1,35 +1,55 @@
-use smithy_types::{Instant, Blob};
 use serde::Serializer;
+use smithy_http::base64;
+use smithy_types::{Blob, Instant};
 
-pub fn instant_ser_epoch_seconds<S>(_inp: &Instant, _serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
-    where
-        S: Serializer {
+pub fn instant_ser_epoch_seconds<S>(
+    inp: &Instant,
+    serializer: S,
+) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
+where
+    S: Serializer,
+{
+    serializer.serialize_i64(inp.epoch_seconds())
+}
+
+pub fn optioninstant_ser_epoch_seconds<S>(
+    _inp: &Option<Instant>,
+    _serializer: S,
+) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
+where
+    S: Serializer,
+{
     todo!()
     //serializer.collect_seq(inp.iter().map(|i|SerializableInstant(i, Format::HttpDate)))
 }
 
-pub fn optioninstant_ser_epoch_seconds<S>(_inp: &Option<Instant>, _serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
-    where
-        S: Serializer {
-    todo!()
-    //serializer.collect_seq(inp.iter().map(|i|SerializableInstant(i, Format::HttpDate)))
+pub fn blob_ser<S>(
+    _inp: &Blob,
+    _serializer: S,
+) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
+where
+    S: Serializer,
+{
+    _serializer.serialize_str(&base64::encode(_inp.bytes()))
 }
 
-pub fn blob_ser<S>(_inp: &Blob, _serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
-    where
-        S: Serializer {
+pub fn optionblob_ser<S>(
+    _inp: &Option<Blob>,
+    _serializer: S,
+) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
+where
+    S: Serializer,
+{
     todo!()
 }
 
-pub fn optionblob_ser<S>(_inp: &Option<Blob>, _serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
-    where
-        S: Serializer {
-    todo!()
-}
-
-pub fn optionvecblob_ser<S>(_inp: &Option<Vec<Blob>>, _serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
-    where
-        S: Serializer {
+pub fn optionvecblob_ser<S>(
+    _inp: &Option<Vec<Blob>>,
+    _serializer: S,
+) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
+where
+    S: Serializer,
+{
     todo!()
 }
 
