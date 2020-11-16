@@ -80,6 +80,7 @@ fun RustType.render(): String = when (this) {
  * Meta information about a Rust construction (field, struct, or enum)
  */
 data class Meta(val derives: Derives = Derives.Empty, val additionalAttributes: List<Attribute> = listOf(), val public: Boolean) {
+    fun withDerive(newDerive: RuntimeType): Meta = this.copy(derives = derives.copy(derives.derives + newDerive))
     fun attributes(): List<Attribute> = additionalAttributes + derives
     fun renderAttributes(writer: RustWriter): Meta {
         attributes().forEach {

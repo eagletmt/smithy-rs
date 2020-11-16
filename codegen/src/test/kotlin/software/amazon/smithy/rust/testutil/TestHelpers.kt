@@ -16,7 +16,7 @@ import java.io.File
 
 val TestRuntimeConfig = RuntimeConfig(relativePath = File("../rust-runtime/").absolutePath)
 val TestSymbolVisitorConfig = SymbolVisitorConfig(runtimeConfig = TestRuntimeConfig, handleOptionality = true, handleRustBoxing = true)
-fun testSymbolProvider(model: Model): SymbolProvider = RustCodegenPlugin.BaseSymbolProvider(model, TestSymbolVisitorConfig)
+fun testSymbolProvider(model: Model): SymbolProvider = RustCodegenPlugin.baseSymbolProvider(model, TestSymbolVisitorConfig)
 
 private const val SmithyVersion = "1.0"
 fun String.asSmithy(sourceLocation: String? = null): Model {

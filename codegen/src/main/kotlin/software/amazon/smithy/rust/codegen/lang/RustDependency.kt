@@ -18,12 +18,9 @@ sealed class DependencyLocation
 data class CratesIo(val version: String) : DependencyLocation()
 data class Local(val basePath: String) : DependencyLocation()
 
-data class RustDependency(
-    val name: String,
-    val location: DependencyLocation,
-    val scope: DependencyScope = Compile,
-    val features: List<String> = listOf()
-) : SymbolDependencyContainer {
+sealed class RustDependency : SymbolDependencyContainer {
+    abstract val name: String
+    abstract fun version(): String
     override fun getDependencies(): List<SymbolDependency> {
         return listOf(
             SymbolDependency
@@ -34,7 +31,43 @@ data class RustDependency(
         )
     }
 
-    private fun version(): String = when (location) {
+    companion object {
+        val Http: CargoDependency = CargoDependency("http", CratesIo("0.2"))
+        val SerdeJson: CargoDependency = CargoDependency("serde_json", CratesIo("1"))
+        val Serde = CargoDependency("serde", CratesIo("1"), features = listOf("derive"))
+
+        fun SmithyTypes(runtimeConfig: RuntimeConfig) =
+            CargoDependency("${runtimeConfig.cratePrefix}-types", Local(runtimeConfig.relativePath))
+
+        fun SmithyHttp(runtimeConfig: RuntimeConfig) = CargoDependency(
+            "${runtimeConfig.cratePrefix}-http", Local(runtimeConfig.relativePath)
+        )
+
+        fun ProtocolTestHelpers(runtimeConfig: RuntimeConfig) = CargoDependency(
+            "protocol-test-helpers", Local(runtimeConfig.relativePath), scope = Dev
+        )
+
+        const val PropertyKey = "rustdep"
+
+        fun fromSymbolDependency(symbolDependency: SymbolDependency) =
+            symbolDependency.getProperty(PropertyKey, RustDependency::class.java).get()
+    }
+}
+
+class VendoredDependency(override val name: String, val module: String, val renderer: (RustWriter) -> Unit) : RustDependency() {
+    override fun version(): String {
+        return renderer(RustWriter.forModule("_")).hashCode().toString()
+    }
+}
+
+data class CargoDependency(
+    override val name: String,
+    val location: DependencyLocation,
+    val scope: DependencyScope = Compile,
+    val features: List<String> = listOf()
+) : RustDependency() {
+
+    override fun version(): String = when (location) {
         is CratesIo -> location.version
         is Local -> "local"
     }
@@ -58,24 +91,5 @@ data class RustDependency(
             }
         }
         return "$name = { ${attribs.joinToString(",")} }"
-    }
-
-    companion object {
-        val Http: RustDependency = RustDependency("http", CratesIo("0.2"))
-        fun SmithyTypes(runtimeConfig: RuntimeConfig) =
-            RustDependency("${runtimeConfig.cratePrefix}-types", Local(runtimeConfig.relativePath))
-
-        fun SmithyHttp(runtimeConfig: RuntimeConfig) = RustDependency(
-            "${runtimeConfig.cratePrefix}-http", Local(runtimeConfig.relativePath)
-        )
-
-        fun ProtocolTestHelpers(runtimeConfig: RuntimeConfig) = RustDependency(
-            "protocol-test-helpers", Local(runtimeConfig.relativePath), scope = Dev
-        )
-
-        private val PropertyKey = "rustdep"
-
-        fun fromSymbolDependency(symbolDependency: SymbolDependency) =
-            symbolDependency.getProperty(PropertyKey, RustDependency::class.java).get()
     }
 }

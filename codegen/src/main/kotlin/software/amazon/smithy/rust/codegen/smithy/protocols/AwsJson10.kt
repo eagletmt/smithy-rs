@@ -37,7 +37,7 @@ class AwsJson10Factory : ProtocolGeneratorFactory<AwsJson10Generator> {
     }
 
     override fun symbolProvider(model: Model, base: SymbolProvider): SymbolProvider {
-        return SyntheticBodySymbolProvider(model, base)
+        return JsonSerializerSymbolProvider(model, SyntheticBodySymbolProvider(model, base))
     }
 }
 

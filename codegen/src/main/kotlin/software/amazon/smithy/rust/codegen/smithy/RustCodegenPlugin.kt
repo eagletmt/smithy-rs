@@ -7,6 +7,7 @@ package software.amazon.smithy.rust.codegen.smithy
 
 import software.amazon.smithy.build.PluginContext
 import software.amazon.smithy.build.SmithyBuildPlugin
+import software.amazon.smithy.codegen.core.SymbolProvider
 import software.amazon.smithy.model.Model
 
 class RustCodegenPlugin : SmithyBuildPlugin {
@@ -17,6 +18,8 @@ class RustCodegenPlugin : SmithyBuildPlugin {
     }
 
     companion object {
-        fun BaseSymbolProvider(model: Model, symbolVisitorConfig: SymbolVisitorConfig = DefaultConfig) = SymbolVisitor(model, config = symbolVisitorConfig).let { SymbolMetadataProvider(it) }
+        fun baseSymbolProvider(model: Model, symbolVisitorConfig: SymbolVisitorConfig = DefaultConfig): SymbolProvider {
+            return BaseSymbolMetadataProvider(SymbolVisitor(model, config = symbolVisitorConfig))
+        }
     }
 }

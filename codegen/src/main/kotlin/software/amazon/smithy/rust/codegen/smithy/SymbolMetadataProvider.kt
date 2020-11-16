@@ -1,5 +1,6 @@
 package software.amazon.smithy.rust.codegen.smithy
 
+import software.amazon.smithy.codegen.core.CodegenException
 import software.amazon.smithy.codegen.core.Symbol
 import software.amazon.smithy.codegen.core.SymbolProvider
 import software.amazon.smithy.model.shapes.MemberShape
@@ -10,7 +11,6 @@ import software.amazon.smithy.model.shapes.UnionShape
 import software.amazon.smithy.model.traits.EnumTrait
 import software.amazon.smithy.rust.codegen.lang.Derives
 import software.amazon.smithy.rust.codegen.lang.Meta
-import software.amazon.smithy.rust.codegen.util.orNull
 
 /**
  * Default delegator to enable easily decorating another symbol provider.
@@ -30,7 +30,7 @@ open class WrappingSymbolProvider(private val base: SymbolProvider) : SymbolProv
  *
  * Protocols may inherit from this class and override the `xyzMeta` methods to modify structure generation.
  */
-open class SymbolMetadataProvider(private val base: SymbolProvider) : WrappingSymbolProvider(base) {
+abstract class SymbolMetadataProvider(private val base: SymbolProvider) : WrappingSymbolProvider(base) {
     override fun toSymbol(shape: Shape): Symbol {
         val baseSymbol = base.toSymbol(shape)
         val meta = when (shape) {
@@ -44,20 +44,26 @@ open class SymbolMetadataProvider(private val base: SymbolProvider) : WrappingSy
         }
         return baseSymbol.toBuilder().meta(meta).build()
     }
+    abstract fun memberMeta(memberShape: MemberShape): Meta
+    abstract fun structureMeta(structureShape: StructureShape): Meta
+    abstract fun unionMeta(unionShape: UnionShape): Meta
+    abstract fun enumMeta(stringShape: StringShape): Meta
+}
 
-    open fun memberMeta(memberShape: MemberShape): Meta {
+class BaseSymbolMetadataProvider(base: SymbolProvider) : SymbolMetadataProvider(base) {
+    override fun memberMeta(memberShape: MemberShape): Meta {
         return Meta(public = true)
     }
 
-    open fun structureMeta(structureShape: StructureShape): Meta {
+    override fun structureMeta(structureShape: StructureShape): Meta {
         return Meta(Derives(defaultDerives.toSet()), public = true)
     }
 
-    open fun unionMeta(unionShape: UnionShape): Meta {
+    override fun unionMeta(unionShape: UnionShape): Meta {
         return Meta(Derives(defaultDerives.toSet()), public = true)
     }
 
-    open fun enumMeta(stringShape: StringShape): Meta {
+    override fun enumMeta(stringShape: StringShape): Meta {
         return Meta(
             Derives(
                 defaultDerives.toSet() +
@@ -80,4 +86,4 @@ private const val MetaKey = "meta"
 fun Symbol.Builder.meta(meta: Meta?): Symbol.Builder {
     return this.putProperty(MetaKey, meta)
 }
-fun Symbol.meta(): Meta? = this.getProperty(MetaKey, Meta::class.java).orNull()
+fun Symbol.expectMeta(): Meta = this.getProperty(MetaKey, Meta::class.java).orElseThrow { CodegenException("Expected $this to have metadata attached but it did not") }

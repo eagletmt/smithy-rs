@@ -88,6 +88,8 @@ data class RuntimeType(val name: String, val dependency: RustDependency?, val na
             )
 
         fun Http(path: String): RuntimeType = RuntimeType(name = path, dependency = RustDependency.Http, namespace = "http")
+        fun SerdeJson(path: String) = RuntimeType(path, dependency = RustDependency.SerdeJson, namespace = "serde_json")
+        val Serialize = RuntimeType("Serialize", RustDependency.Serde, namespace = "serde")
         val HttpRequestBuilder = Http("request::Builder")
     }
 }
