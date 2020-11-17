@@ -84,13 +84,13 @@ class StructureGenerator(
     private fun renderStructure() {
         val symbol = symbolProvider.toSymbol(shape)
         // TODO(maybe): Pull derive info from the symbol so that the symbol provider can alter things as necessary; 4h
-        val containerMeta = symbol.expectMeta()!!
+        val containerMeta = symbol.expectMeta()
         containerMeta.render(writer)
 
         writer.rustBlock("struct ${symbol.name} ${lifetimeDeclaration()}") {
             members.forEach { member ->
                 val memberName = symbolProvider.toMemberName(member)
-                symbolProvider.toSymbol(member).expectMeta()!!.render(this)
+                symbolProvider.toSymbol(member).expectMeta().render(this)
                 write("$memberName: \$T,", symbolProvider.toSymbol(member))
             }
         }

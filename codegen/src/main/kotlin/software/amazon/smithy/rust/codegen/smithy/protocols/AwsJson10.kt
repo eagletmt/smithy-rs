@@ -12,8 +12,10 @@ import software.amazon.smithy.model.shapes.MemberShape
 import software.amazon.smithy.model.shapes.OperationShape
 import software.amazon.smithy.model.shapes.Shape
 import software.amazon.smithy.model.shapes.StructureShape
+import software.amazon.smithy.model.traits.TimestampFormatTrait
 import software.amazon.smithy.rust.codegen.lang.RustType
 import software.amazon.smithy.rust.codegen.lang.RustWriter
+import software.amazon.smithy.rust.codegen.lang.rust
 import software.amazon.smithy.rust.codegen.lang.rustBlock
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
 import software.amazon.smithy.rust.codegen.smithy.Serializers
@@ -37,7 +39,7 @@ class AwsJson10Factory : ProtocolGeneratorFactory<AwsJson10Generator> {
     }
 
     override fun symbolProvider(model: Model, base: SymbolProvider): SymbolProvider {
-        return JsonSerializerSymbolProvider(model, SyntheticBodySymbolProvider(model, base))
+        return JsonSerializerSymbolProvider(model, SyntheticBodySymbolProvider(model, base), TimestampFormatTrait.Format.EPOCH_SECONDS)
     }
 }
 
@@ -77,13 +79,13 @@ class AwsJson10Generator(
     ) {
         implBlockWriter.rustBlock("pub fn build_http_request(&self) -> \$T", RuntimeType.HttpRequestBuilder) {
             write("let builder = \$T::new();", RuntimeType.HttpRequestBuilder)
-            write(
+            rust(
                 """
                 builder
                    .method("POST")
                    .header("Content-Type", "application/x-amz-json-1.0")
                    .header("X-Amz-Target", "${protocolConfig.serviceShape.id.name}.${operationShape.id.name}")
-               """.trimMargin()
+               """
             )
         }
     }

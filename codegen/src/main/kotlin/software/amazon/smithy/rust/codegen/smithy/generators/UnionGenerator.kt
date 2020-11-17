@@ -27,12 +27,12 @@ class UnionGenerator(
     private val sortedMembers: List<MemberShape> = shape.allMembers.values.sortedBy { symbolProvider.toMemberName(it) }
     private fun renderUnion() {
         val symbol = symbolProvider.toSymbol(shape)
-        val containerMeta = symbol.expectMeta()!!
+        val containerMeta = symbol.expectMeta()
         containerMeta.render(writer)
         writer.rustBlock("enum ${symbol.name}") {
             sortedMembers.forEach { member ->
                 val memberSymbol = symbolProvider.toSymbol(member)
-                memberSymbol.expectMeta()!!.renderAttributes(this)
+                memberSymbol.expectMeta().renderAttributes(this)
                 write("${member.memberName.toPascalCase()}(\$T),", symbolProvider.toSymbol(member))
             }
         }

@@ -5,6 +5,7 @@
 
 package software.amazon.smithy.rust.codegen.lang
 
+import org.intellij.lang.annotations.Language
 import software.amazon.smithy.codegen.core.CodegenException
 import software.amazon.smithy.codegen.core.Symbol
 import software.amazon.smithy.codegen.core.writer.CodegenWriter
@@ -38,11 +39,18 @@ fun <T : CodeWriter> T.withBlock(
 /*
  * Writes a Rust-style block, demarcated by curly braces
  */
-fun <T : CodeWriter> T.rustBlock(header: String, vararg args: Any, block: T.() -> Unit): T {
+fun <T : CodeWriter> T.rustBlock(@Language("Rust", suffix = "{}") header: String, vararg args: Any, block: T.() -> Unit): T {
     openBlock("$header {", *args)
     block(this)
     closeBlock("}")
     return this
+}
+
+/**
+ * Convenience wrapper that tells Intellij that the contents of this block are Rust
+ */
+fun <T : CodeWriter> T.rust(@Language("Rust", prefix = "fn foo() {", suffix = "}") contents: String, vararg args: Any) {
+    this.write(contents, *args)
 }
 
 class RustWriter private constructor(private val filename: String, val namespace: String, private val commentCharacter: String = "//") :

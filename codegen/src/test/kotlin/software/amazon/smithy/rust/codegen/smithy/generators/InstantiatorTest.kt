@@ -8,6 +8,7 @@ import software.amazon.smithy.model.shapes.ShapeId
 import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.model.shapes.UnionShape
 import software.amazon.smithy.rust.codegen.lang.RustWriter
+import software.amazon.smithy.rust.codegen.lang.rust
 import software.amazon.smithy.rust.codegen.lang.rustBlock
 import software.amazon.smithy.rust.codegen.lang.withBlock
 import software.amazon.smithy.rust.codegen.util.dq
@@ -75,7 +76,7 @@ class InstantiatorTest {
             writer.withBlock("let result = ", ";") {
                 sut.render(data, union, this)
             }
-            writer.write("assert_eq!(result, MyUnion::StringVariant(\"ok!\".to_string()));")
+            rust("assert_eq!(result, MyUnion::StringVariant(\"ok!\".to_string()));")
         }
     }
 
@@ -120,7 +121,7 @@ class InstantiatorTest {
             writer.withBlock("let result = ", ";") {
                 sut.render(data, model.lookup("com.test#MyList"), writer)
             }
-            writer.write("""assert_eq!(result, vec!["bar".to_string(), "foo".to_string()]);""")
+            rust("""assert_eq!(result, vec!["bar".to_string(), "foo".to_string()]);""")
         }
         writer.compileAndTest()
     }
@@ -139,10 +140,10 @@ class InstantiatorTest {
         val sut = Instantiator(symbolProvider, model, runtimeConfig)
         writer.write("#[test]")
         writer.rustBlock("fn inst()") {
-            writer.withBlock("let result = ", ";") {
+            withBlock("let result = ", ";") {
                 sut.render(data, model.lookup("com.test#MySparseList"), writer)
             }
-            writer.write("""assert_eq!(result, vec![Some("bar".to_string()), Some("foo".to_string()), None]);""")
+            rust("""assert_eq!(result, vec![Some("bar".to_string()), Some("foo".to_string()), None]);""")
         }
         writer.compileAndTest()
     }
@@ -163,10 +164,10 @@ class InstantiatorTest {
         structureGenerator.render()
         writer.write("#[test]")
         writer.rustBlock("fn inst()") {
-            writer.withBlock("let result = ", ";") {
+            withBlock("let result = ", ";") {
                 sut.render(data, model.lookup("com.test#NestedMap"), writer)
             }
-            writer.write(
+            rust(
                 """
                 assert_eq!(result.len(), 3);
                 assert_eq!(result.get("k1").unwrap().map.as_ref().unwrap().len(), 0);
@@ -189,7 +190,7 @@ class InstantiatorTest {
             withBlock("let blob = ", ";") {
                 sut.render(StringNode.parse("foo".dq()), BlobShape.builder().id(ShapeId.from("com.example#Blob")).build(), this)
             }
-            write("assert_eq!(std::str::from_utf8(blob.as_ref()).unwrap(), \"foo\");")
+            rust("assert_eq!(std::str::from_utf8(blob.as_ref()).unwrap(), \"foo\");")
         }
         writer.compileAndTest()
     }

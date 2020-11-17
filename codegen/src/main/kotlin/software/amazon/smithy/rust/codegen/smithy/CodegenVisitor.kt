@@ -37,12 +37,13 @@ import software.amazon.smithy.rust.codegen.util.CommandFailed
 import software.amazon.smithy.rust.codegen.util.runCommand
 import java.util.logging.Logger
 
-private val Modules = listOf(
-    RustModule("error", Meta(public = true)),
-    RustModule("operation", Meta(public = true)),
-    RustModule("model", Meta(public = true)),
-    RustModule("serializer", Meta(public = false))
-)
+private val PublicModules = setOf("error", "operation", "model")
+/*private val Modules = mapOf(
+    "error" to RustModule("error", Meta(public = true)),
+    "operation" to RustModule("operation", Meta(public = true)),
+    "model" to RustModule("model", Meta(public = true)),
+    "serializer" to RustModule("serializer", Meta(public = false))
+)*/
 
 class CodegenVisitor(context: PluginContext) : ShapeVisitor.Default<Unit>() {
 
@@ -91,7 +92,7 @@ class CodegenVisitor(context: PluginContext) : ShapeVisitor.Default<Unit>() {
             }
         }
         // reload the dependencies to pick up any dependencies that may have been added by vendored dependencies
-        val cargoDependencies = rustDependencies().filterIsInstance<CargoDependency>()
+        val cargoDependencies = rustDependencies().filterIsInstance<CargoDependency>().distinct()
         writers.useFileWriter("Cargo.toml") {
             val cargoToml = CargoTomlGenerator(
                 settings,
@@ -102,8 +103,10 @@ class CodegenVisitor(context: PluginContext) : ShapeVisitor.Default<Unit>() {
         }
 
         writers.useFileWriter("src/lib.rs", "crate::lib") { writer ->
-            val includedModules = writers.includedModules().toSet()
-            val modules = Modules.filter { module -> includedModules.contains(module.name) }
+            val includedModules = writers.includedModules().toSet().filter { it != "lib" }
+            val modules = includedModules.map {
+                RustModule(it, Meta(public = PublicModules.contains(it)))
+            }
             LibRsGenerator(modules).render(writer)
         }
         writers.flushWriters()

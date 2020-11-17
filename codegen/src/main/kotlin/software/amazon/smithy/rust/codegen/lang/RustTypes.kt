@@ -77,6 +77,26 @@ fun RustType.render(): String = when (this) {
 }
 
 /**
+ * Returns true if [this] contains [t] anywhere within it's tree. For example,
+ * Option<Instant>.contains(Instant) would return true.
+ * Option<Instant>.contains(Blob) would return false.
+ */
+fun <T : RustType> RustType.contains(t: T): Boolean {
+    if (t == this) {
+        return true
+    }
+
+    return when (this) {
+        is RustType.Vec -> this.member.contains(t)
+        is RustType.HashSet -> this.member.contains(t)
+        is RustType.Reference -> this.value.contains(t)
+        is RustType.Option -> this.value.contains(t)
+        is RustType.Box -> this.value.contains(t)
+        else -> false
+    }
+}
+
+/**
  * Meta information about a Rust construction (field, struct, or enum)
  */
 data class Meta(val derives: Derives = Derives.Empty, val additionalAttributes: List<Attribute> = listOf(), val public: Boolean) {

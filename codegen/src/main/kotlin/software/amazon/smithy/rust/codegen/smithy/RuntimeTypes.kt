@@ -38,6 +38,15 @@ data class RuntimeType(val name: String, val dependency: RustDependency?, val na
         return builder.build()
     }
 
+    fun fullyQualifiedName(): String {
+        val prefix = if (namespace.startsWith("crate")) {
+            ""
+        } else {
+            "::"
+        }
+        return "$prefix$namespace::$name"
+    }
+
     // TODO: refactor to be RuntimeTypeProvider a la Symbol provider that packages the `RuntimeConfig` state.
     companion object {
 
@@ -87,9 +96,12 @@ data class RuntimeType(val name: String, val dependency: RustDependency?, val na
                 func, RustDependency.ProtocolTestHelpers(runtimeConfig), "protocol_test_helpers"
             )
 
-        fun Http(path: String): RuntimeType = RuntimeType(name = path, dependency = RustDependency.Http, namespace = "http")
+        fun Http(path: String): RuntimeType =
+            RuntimeType(name = path, dependency = RustDependency.Http, namespace = "http")
+
         fun SerdeJson(path: String) = RuntimeType(path, dependency = RustDependency.SerdeJson, namespace = "serde_json")
         val Serialize = RuntimeType("Serialize", RustDependency.Serde, namespace = "serde")
+        val Serializer = RuntimeType("Serializer", RustDependency.Serde, namespace = "serde")
         val HttpRequestBuilder = Http("request::Builder")
     }
 }
