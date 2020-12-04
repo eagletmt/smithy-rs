@@ -2,6 +2,219 @@
 use crate::model::ComplexNestedErrorData;
 use crate::model::KitchenSink;
 use std::collections::HashMap;
+#[derive(::std::fmt::Debug)]
+pub enum EmptyOperationError {
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for EmptyOperationError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            EmptyOperationError::Generic(inner) => inner.fmt(f),
+            EmptyOperationError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for EmptyOperationError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            EmptyOperationError::Generic(inner) => Some(inner),
+            EmptyOperationError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
+#[derive(::std::fmt::Debug)]
+pub enum GreetingWithErrorsError {
+    InvalidGreeting(InvalidGreeting),
+    ComplexError(ComplexError),
+    FooError(FooError),
+
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for GreetingWithErrorsError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            GreetingWithErrorsError::InvalidGreeting(inner) => inner.fmt(f),
+            GreetingWithErrorsError::ComplexError(inner) => inner.fmt(f),
+            GreetingWithErrorsError::FooError(inner) => inner.fmt(f),
+
+            GreetingWithErrorsError::Generic(inner) => inner.fmt(f),
+            GreetingWithErrorsError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for GreetingWithErrorsError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            GreetingWithErrorsError::InvalidGreeting(inner) => Some(inner),
+            GreetingWithErrorsError::ComplexError(inner) => Some(inner),
+            GreetingWithErrorsError::FooError(inner) => Some(inner),
+
+            GreetingWithErrorsError::Generic(inner) => Some(inner),
+            GreetingWithErrorsError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
+#[derive(::std::fmt::Debug)]
+pub enum JsonEnumsError {
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for JsonEnumsError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            JsonEnumsError::Generic(inner) => inner.fmt(f),
+            JsonEnumsError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for JsonEnumsError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            JsonEnumsError::Generic(inner) => Some(inner),
+            JsonEnumsError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
+#[derive(::std::fmt::Debug)]
+pub enum JsonUnionsError {
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for JsonUnionsError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            JsonUnionsError::Generic(inner) => inner.fmt(f),
+            JsonUnionsError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for JsonUnionsError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            JsonUnionsError::Generic(inner) => Some(inner),
+            JsonUnionsError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
+#[derive(::std::fmt::Debug)]
+pub enum KitchenSinkOperationError {
+    ErrorWithMembers(ErrorWithMembers),
+    ErrorWithoutMembers(ErrorWithoutMembers),
+
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for KitchenSinkOperationError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            KitchenSinkOperationError::ErrorWithMembers(inner) => inner.fmt(f),
+            KitchenSinkOperationError::ErrorWithoutMembers(inner) => inner.fmt(f),
+
+            KitchenSinkOperationError::Generic(inner) => inner.fmt(f),
+            KitchenSinkOperationError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for KitchenSinkOperationError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            KitchenSinkOperationError::ErrorWithMembers(inner) => Some(inner),
+            KitchenSinkOperationError::ErrorWithoutMembers(inner) => Some(inner),
+
+            KitchenSinkOperationError::Generic(inner) => Some(inner),
+            KitchenSinkOperationError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
+#[derive(::std::fmt::Debug)]
+pub enum NullOperationError {
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for NullOperationError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            NullOperationError::Generic(inner) => inner.fmt(f),
+            NullOperationError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for NullOperationError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            NullOperationError::Generic(inner) => Some(inner),
+            NullOperationError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
+#[derive(::std::fmt::Debug)]
+pub enum OperationWithOptionalInputOutputError {
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for OperationWithOptionalInputOutputError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            OperationWithOptionalInputOutputError::Generic(inner) => inner.fmt(f),
+            OperationWithOptionalInputOutputError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for OperationWithOptionalInputOutputError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            OperationWithOptionalInputOutputError::Generic(inner) => Some(inner),
+            OperationWithOptionalInputOutputError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
+#[derive(::std::fmt::Debug)]
+pub enum PutAndGetInlineDocumentsError {
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for PutAndGetInlineDocumentsError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            PutAndGetInlineDocumentsError::Generic(inner) => inner.fmt(f),
+            PutAndGetInlineDocumentsError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for PutAndGetInlineDocumentsError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            PutAndGetInlineDocumentsError::Generic(inner) => Some(inner),
+            PutAndGetInlineDocumentsError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
 /// This error has test cases that test some of the dark corners of Amazon service
 /// framework history. It should only be implemented by clients.
 #[non_exhaustive]

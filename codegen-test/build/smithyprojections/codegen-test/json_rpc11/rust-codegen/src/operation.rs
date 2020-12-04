@@ -1687,7 +1687,7 @@ mod put_and_get_inline_documents_request_test {
     fn test_put_and_get_inline_documents_input() {
         let input =PutAndGetInlineDocumentsInput::builder()
         .inline_document(
-            todo!() /* (document: `aws.protocoltests.json#Document`) software.amazon.smithy.model.node.ObjectNode@6c9dfd4a */
+            todo!() /* (document: `aws.protocoltests.json#Document`) software.amazon.smithy.model.node.ObjectNode@65e35bf6 */
         )
         .build()
         .unwrap()

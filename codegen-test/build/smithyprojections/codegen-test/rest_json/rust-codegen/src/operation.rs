@@ -1050,7 +1050,7 @@ mod inline_document_request_test {
             "string".to_string()
         )
         .document_value(
-            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@6c9dfd4a */
+            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@65e35bf6 */
         )
         .build()
         .unwrap()
@@ -1107,7 +1107,7 @@ mod inline_document_as_payload_request_test {
     fn test_inline_document_as_payload_input() {
         let input =InlineDocumentAsPayloadInput::builder()
         .document_value(
-            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@6c9dfd4a */
+            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@65e35bf6 */
         )
         .build()
         .unwrap()

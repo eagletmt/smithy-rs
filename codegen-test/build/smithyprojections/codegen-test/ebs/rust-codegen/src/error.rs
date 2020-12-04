@@ -4,6 +4,282 @@ use crate::model::RequestThrottledExceptionReason;
 use crate::model::ResourceNotFoundExceptionReason;
 use crate::model::ServiceQuotaExceededExceptionReason;
 use crate::model::ValidationExceptionReason;
+#[derive(::std::fmt::Debug)]
+pub enum CompleteSnapshotError {
+    AccessDeniedError(AccessDeniedError),
+    InternalServerError(InternalServerError),
+    RequestThrottledError(RequestThrottledError),
+    ResourceNotFoundError(ResourceNotFoundError),
+    ServiceQuotaExceededError(ServiceQuotaExceededError),
+    ValidationError(ValidationError),
+
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for CompleteSnapshotError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            CompleteSnapshotError::AccessDeniedError(inner) => inner.fmt(f),
+            CompleteSnapshotError::InternalServerError(inner) => inner.fmt(f),
+            CompleteSnapshotError::RequestThrottledError(inner) => inner.fmt(f),
+            CompleteSnapshotError::ResourceNotFoundError(inner) => inner.fmt(f),
+            CompleteSnapshotError::ServiceQuotaExceededError(inner) => inner.fmt(f),
+            CompleteSnapshotError::ValidationError(inner) => inner.fmt(f),
+
+            CompleteSnapshotError::Generic(inner) => inner.fmt(f),
+            CompleteSnapshotError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for CompleteSnapshotError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            CompleteSnapshotError::AccessDeniedError(inner) => Some(inner),
+            CompleteSnapshotError::InternalServerError(inner) => Some(inner),
+            CompleteSnapshotError::RequestThrottledError(inner) => Some(inner),
+            CompleteSnapshotError::ResourceNotFoundError(inner) => Some(inner),
+            CompleteSnapshotError::ServiceQuotaExceededError(inner) => Some(inner),
+            CompleteSnapshotError::ValidationError(inner) => Some(inner),
+
+            CompleteSnapshotError::Generic(inner) => Some(inner),
+            CompleteSnapshotError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
+#[derive(::std::fmt::Debug)]
+pub enum GetSnapshotBlockError {
+    AccessDeniedError(AccessDeniedError),
+    InternalServerError(InternalServerError),
+    RequestThrottledError(RequestThrottledError),
+    ResourceNotFoundError(ResourceNotFoundError),
+    ServiceQuotaExceededError(ServiceQuotaExceededError),
+    ValidationError(ValidationError),
+
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for GetSnapshotBlockError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            GetSnapshotBlockError::AccessDeniedError(inner) => inner.fmt(f),
+            GetSnapshotBlockError::InternalServerError(inner) => inner.fmt(f),
+            GetSnapshotBlockError::RequestThrottledError(inner) => inner.fmt(f),
+            GetSnapshotBlockError::ResourceNotFoundError(inner) => inner.fmt(f),
+            GetSnapshotBlockError::ServiceQuotaExceededError(inner) => inner.fmt(f),
+            GetSnapshotBlockError::ValidationError(inner) => inner.fmt(f),
+
+            GetSnapshotBlockError::Generic(inner) => inner.fmt(f),
+            GetSnapshotBlockError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for GetSnapshotBlockError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            GetSnapshotBlockError::AccessDeniedError(inner) => Some(inner),
+            GetSnapshotBlockError::InternalServerError(inner) => Some(inner),
+            GetSnapshotBlockError::RequestThrottledError(inner) => Some(inner),
+            GetSnapshotBlockError::ResourceNotFoundError(inner) => Some(inner),
+            GetSnapshotBlockError::ServiceQuotaExceededError(inner) => Some(inner),
+            GetSnapshotBlockError::ValidationError(inner) => Some(inner),
+
+            GetSnapshotBlockError::Generic(inner) => Some(inner),
+            GetSnapshotBlockError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
+#[derive(::std::fmt::Debug)]
+pub enum ListChangedBlocksError {
+    AccessDeniedError(AccessDeniedError),
+    InternalServerError(InternalServerError),
+    RequestThrottledError(RequestThrottledError),
+    ResourceNotFoundError(ResourceNotFoundError),
+    ServiceQuotaExceededError(ServiceQuotaExceededError),
+    ValidationError(ValidationError),
+
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for ListChangedBlocksError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            ListChangedBlocksError::AccessDeniedError(inner) => inner.fmt(f),
+            ListChangedBlocksError::InternalServerError(inner) => inner.fmt(f),
+            ListChangedBlocksError::RequestThrottledError(inner) => inner.fmt(f),
+            ListChangedBlocksError::ResourceNotFoundError(inner) => inner.fmt(f),
+            ListChangedBlocksError::ServiceQuotaExceededError(inner) => inner.fmt(f),
+            ListChangedBlocksError::ValidationError(inner) => inner.fmt(f),
+
+            ListChangedBlocksError::Generic(inner) => inner.fmt(f),
+            ListChangedBlocksError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for ListChangedBlocksError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            ListChangedBlocksError::AccessDeniedError(inner) => Some(inner),
+            ListChangedBlocksError::InternalServerError(inner) => Some(inner),
+            ListChangedBlocksError::RequestThrottledError(inner) => Some(inner),
+            ListChangedBlocksError::ResourceNotFoundError(inner) => Some(inner),
+            ListChangedBlocksError::ServiceQuotaExceededError(inner) => Some(inner),
+            ListChangedBlocksError::ValidationError(inner) => Some(inner),
+
+            ListChangedBlocksError::Generic(inner) => Some(inner),
+            ListChangedBlocksError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
+#[derive(::std::fmt::Debug)]
+pub enum ListSnapshotBlocksError {
+    AccessDeniedError(AccessDeniedError),
+    InternalServerError(InternalServerError),
+    RequestThrottledError(RequestThrottledError),
+    ResourceNotFoundError(ResourceNotFoundError),
+    ServiceQuotaExceededError(ServiceQuotaExceededError),
+    ValidationError(ValidationError),
+
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for ListSnapshotBlocksError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            ListSnapshotBlocksError::AccessDeniedError(inner) => inner.fmt(f),
+            ListSnapshotBlocksError::InternalServerError(inner) => inner.fmt(f),
+            ListSnapshotBlocksError::RequestThrottledError(inner) => inner.fmt(f),
+            ListSnapshotBlocksError::ResourceNotFoundError(inner) => inner.fmt(f),
+            ListSnapshotBlocksError::ServiceQuotaExceededError(inner) => inner.fmt(f),
+            ListSnapshotBlocksError::ValidationError(inner) => inner.fmt(f),
+
+            ListSnapshotBlocksError::Generic(inner) => inner.fmt(f),
+            ListSnapshotBlocksError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for ListSnapshotBlocksError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            ListSnapshotBlocksError::AccessDeniedError(inner) => Some(inner),
+            ListSnapshotBlocksError::InternalServerError(inner) => Some(inner),
+            ListSnapshotBlocksError::RequestThrottledError(inner) => Some(inner),
+            ListSnapshotBlocksError::ResourceNotFoundError(inner) => Some(inner),
+            ListSnapshotBlocksError::ServiceQuotaExceededError(inner) => Some(inner),
+            ListSnapshotBlocksError::ValidationError(inner) => Some(inner),
+
+            ListSnapshotBlocksError::Generic(inner) => Some(inner),
+            ListSnapshotBlocksError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
+#[derive(::std::fmt::Debug)]
+pub enum PutSnapshotBlockError {
+    AccessDeniedError(AccessDeniedError),
+    InternalServerError(InternalServerError),
+    RequestThrottledError(RequestThrottledError),
+    ResourceNotFoundError(ResourceNotFoundError),
+    ServiceQuotaExceededError(ServiceQuotaExceededError),
+    ValidationError(ValidationError),
+
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for PutSnapshotBlockError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            PutSnapshotBlockError::AccessDeniedError(inner) => inner.fmt(f),
+            PutSnapshotBlockError::InternalServerError(inner) => inner.fmt(f),
+            PutSnapshotBlockError::RequestThrottledError(inner) => inner.fmt(f),
+            PutSnapshotBlockError::ResourceNotFoundError(inner) => inner.fmt(f),
+            PutSnapshotBlockError::ServiceQuotaExceededError(inner) => inner.fmt(f),
+            PutSnapshotBlockError::ValidationError(inner) => inner.fmt(f),
+
+            PutSnapshotBlockError::Generic(inner) => inner.fmt(f),
+            PutSnapshotBlockError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for PutSnapshotBlockError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            PutSnapshotBlockError::AccessDeniedError(inner) => Some(inner),
+            PutSnapshotBlockError::InternalServerError(inner) => Some(inner),
+            PutSnapshotBlockError::RequestThrottledError(inner) => Some(inner),
+            PutSnapshotBlockError::ResourceNotFoundError(inner) => Some(inner),
+            PutSnapshotBlockError::ServiceQuotaExceededError(inner) => Some(inner),
+            PutSnapshotBlockError::ValidationError(inner) => Some(inner),
+
+            PutSnapshotBlockError::Generic(inner) => Some(inner),
+            PutSnapshotBlockError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
+#[derive(::std::fmt::Debug)]
+pub enum StartSnapshotError {
+    AccessDeniedError(AccessDeniedError),
+    ConcurrentLimitExceededError(ConcurrentLimitExceededError),
+    ConflictError(ConflictError),
+    InternalServerError(InternalServerError),
+    RequestThrottledError(RequestThrottledError),
+    ResourceNotFoundError(ResourceNotFoundError),
+    ServiceQuotaExceededError(ServiceQuotaExceededError),
+    ValidationError(ValidationError),
+
+    /// An unexpected error, eg. invalid JSON returned by the service
+    Unhandled(Box<dyn ::std::error::Error>),
+    /// An unmodeled error, eg. a new error that was added since this SDK was generated
+    Generic(crate::types::GenericError),
+}
+impl ::std::fmt::Display for StartSnapshotError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            StartSnapshotError::AccessDeniedError(inner) => inner.fmt(f),
+            StartSnapshotError::ConcurrentLimitExceededError(inner) => inner.fmt(f),
+            StartSnapshotError::ConflictError(inner) => inner.fmt(f),
+            StartSnapshotError::InternalServerError(inner) => inner.fmt(f),
+            StartSnapshotError::RequestThrottledError(inner) => inner.fmt(f),
+            StartSnapshotError::ResourceNotFoundError(inner) => inner.fmt(f),
+            StartSnapshotError::ServiceQuotaExceededError(inner) => inner.fmt(f),
+            StartSnapshotError::ValidationError(inner) => inner.fmt(f),
+
+            StartSnapshotError::Generic(inner) => inner.fmt(f),
+            StartSnapshotError::Unhandled(inner) => inner.fmt(f),
+        }
+    }
+}
+impl ::std::error::Error for StartSnapshotError {
+    fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
+        match self {
+            StartSnapshotError::AccessDeniedError(inner) => Some(inner),
+            StartSnapshotError::ConcurrentLimitExceededError(inner) => Some(inner),
+            StartSnapshotError::ConflictError(inner) => Some(inner),
+            StartSnapshotError::InternalServerError(inner) => Some(inner),
+            StartSnapshotError::RequestThrottledError(inner) => Some(inner),
+            StartSnapshotError::ResourceNotFoundError(inner) => Some(inner),
+            StartSnapshotError::ServiceQuotaExceededError(inner) => Some(inner),
+            StartSnapshotError::ValidationError(inner) => Some(inner),
+
+            StartSnapshotError::Generic(inner) => Some(inner),
+            StartSnapshotError::Unhandled(inner) => Some(inner.as_ref()),
+        }
+    }
+}
+
 /// <p>The input fails to satisfy the constraints of the EBS direct APIs.</p>
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]

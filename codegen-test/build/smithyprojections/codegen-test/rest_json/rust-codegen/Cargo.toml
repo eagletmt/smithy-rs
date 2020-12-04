@@ -6,6 +6,7 @@ version = "0.0.1"
 authors = ["TODO@todo.com"]
 edition = "2018"
 [dependencies]
+serde = { version = "1",features = ["derive"] }
 smithy-types = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-types" }
 smithy-http = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-http" }
 http = { version = "0.2" }
