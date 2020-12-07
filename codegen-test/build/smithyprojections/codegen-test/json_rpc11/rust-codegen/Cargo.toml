@@ -3,14 +3,21 @@
 [package]
 name = "json_rpc11"
 version = "0.0.1"
+description = "json_rpc11 client"
 authors = ["TODO@todo.com"]
 edition = "2018"
-[dependencies]
-serde = { version = "1",features = ["derive"] }
-smithy-types = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-types" }
-http = { version = "0.2" }
-serde_json = { version = "1" }
-smithy-http = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-http" }
-[dev-dependencies]
-protocol-test-helpers = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/protocol-test-helpers" }
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+[dependencies.smithy-types]
+path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-types"
+[dependencies.http]
+version = "0.2"
+[dependencies.serde_json]
+version = "1"
+[dependencies.smithy-http]
+path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-http"
+[dev-dependencies.protocol-test-helpers]
+path = "/Users/rcoh/code/smithy-rs/rust-runtime/protocol-test-helpers"
+
 

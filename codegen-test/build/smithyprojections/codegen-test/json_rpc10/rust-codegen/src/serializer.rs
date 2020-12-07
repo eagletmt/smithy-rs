@@ -10,6 +10,13 @@ pub struct JsonUnionsInputBody<'a> {
     pub contents: &'a Option<MyUnion>,
 }
 
+#[non_exhaustive]
+#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+pub struct GreetingWithErrorsOutputBody {
+    #[serde(rename = "greeting")]
+    pub greeting: Option<String>,
+}
+
 /// A shared structure that contains a single union member.
 #[non_exhaustive]
 #[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
@@ -17,11 +24,4 @@ pub struct JsonUnionsOutputBody {
     /// A union with a representative set of types for members.
     #[serde(rename = "contents")]
     pub contents: Option<MyUnion>,
-}
-
-#[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
-pub struct GreetingWithErrorsOutputBody {
-    #[serde(rename = "greeting")]
-    pub greeting: Option<String>,
 }

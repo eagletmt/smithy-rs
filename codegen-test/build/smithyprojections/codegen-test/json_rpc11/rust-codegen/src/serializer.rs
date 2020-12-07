@@ -12,24 +12,6 @@ use std::collections::BTreeSet;
 use std::collections::HashMap;
 #[non_exhaustive]
 #[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
-pub struct OperationWithOptionalInputOutputInputBody<'a> {
-    #[serde(rename = "Value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: &'a Option<String>,
-}
-
-/// A shared structure that contains a single union member.
-#[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
-pub struct JsonUnionsInputBody<'a> {
-    /// A union with a representative set of types for members.
-    #[serde(rename = "contents")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub contents: &'a Option<MyUnion>,
-}
-
-#[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct NullOperationInputBody<'a> {
     #[serde(rename = "string")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -42,27 +24,14 @@ pub struct NullOperationInputBody<'a> {
     pub sparse_string_map: &'a Option<HashMap<String, Option<String>>>,
 }
 
+/// A shared structure that contains a single union member.
 #[non_exhaustive]
 #[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
-pub struct JsonEnumsInputBody<'a> {
-    #[serde(rename = "fooEnum1")]
+pub struct JsonUnionsInputBody<'a> {
+    /// A union with a representative set of types for members.
+    #[serde(rename = "contents")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub foo_enum1: &'a Option<FooEnum>,
-    #[serde(rename = "fooEnum2")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub foo_enum2: &'a Option<FooEnum>,
-    #[serde(rename = "fooEnum3")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub foo_enum3: &'a Option<FooEnum>,
-    #[serde(rename = "fooEnumList")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub foo_enum_list: &'a Option<Vec<FooEnum>>,
-    #[serde(rename = "fooEnumSet")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub foo_enum_set: &'a Option<BTreeSet<FooEnum>>,
-    #[serde(rename = "fooEnumMap")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub foo_enum_map: &'a Option<HashMap<String, FooEnum>>,
+    pub contents: &'a Option<MyUnion>,
 }
 
 #[non_exhaustive]
@@ -155,26 +124,41 @@ pub struct KitchenSinkOperationInputBody<'a> {
 
 #[non_exhaustive]
 #[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+pub struct JsonEnumsInputBody<'a> {
+    #[serde(rename = "fooEnum1")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub foo_enum1: &'a Option<FooEnum>,
+    #[serde(rename = "fooEnum2")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub foo_enum2: &'a Option<FooEnum>,
+    #[serde(rename = "fooEnum3")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub foo_enum3: &'a Option<FooEnum>,
+    #[serde(rename = "fooEnumList")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub foo_enum_list: &'a Option<Vec<FooEnum>>,
+    #[serde(rename = "fooEnumSet")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub foo_enum_set: &'a Option<BTreeSet<FooEnum>>,
+    #[serde(rename = "fooEnumMap")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub foo_enum_map: &'a Option<HashMap<String, FooEnum>>,
+}
+
+#[non_exhaustive]
+#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+pub struct OperationWithOptionalInputOutputInputBody<'a> {
+    #[serde(rename = "Value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: &'a Option<String>,
+}
+
+#[non_exhaustive]
+#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct PutAndGetInlineDocumentsInputBody<'a> {
     #[serde(rename = "inlineDocument")]
     #[serde(serialize_with = "crate::serde_util::document_ser")]
     pub inline_document: &'a Document,
-}
-
-#[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
-pub struct OperationWithOptionalInputOutputOutputBody {
-    #[serde(rename = "Value")]
-    pub value: Option<String>,
-}
-
-/// A shared structure that contains a single union member.
-#[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
-pub struct JsonUnionsOutputBody {
-    /// A union with a representative set of types for members.
-    #[serde(rename = "contents")]
-    pub contents: Option<MyUnion>,
 }
 
 #[non_exhaustive]
@@ -188,21 +172,13 @@ pub struct NullOperationOutputBody {
     pub sparse_string_map: Option<HashMap<String, Option<String>>>,
 }
 
+/// A shared structure that contains a single union member.
 #[non_exhaustive]
 #[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
-pub struct JsonEnumsOutputBody {
-    #[serde(rename = "fooEnum1")]
-    pub foo_enum1: Option<FooEnum>,
-    #[serde(rename = "fooEnum2")]
-    pub foo_enum2: Option<FooEnum>,
-    #[serde(rename = "fooEnum3")]
-    pub foo_enum3: Option<FooEnum>,
-    #[serde(rename = "fooEnumList")]
-    pub foo_enum_list: Option<Vec<FooEnum>>,
-    #[serde(rename = "fooEnumSet")]
-    pub foo_enum_set: Option<BTreeSet<FooEnum>>,
-    #[serde(rename = "fooEnumMap")]
-    pub foo_enum_map: Option<HashMap<String, FooEnum>>,
+pub struct JsonUnionsOutputBody {
+    /// A union with a representative set of types for members.
+    #[serde(rename = "contents")]
+    pub contents: Option<MyUnion>,
 }
 
 #[non_exhaustive]
@@ -269,9 +245,26 @@ pub struct KitchenSinkOperationOutputBody {
 
 #[non_exhaustive]
 #[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
-pub struct GreetingWithErrorsOutputBody {
-    #[serde(rename = "greeting")]
-    pub greeting: Option<String>,
+pub struct JsonEnumsOutputBody {
+    #[serde(rename = "fooEnum1")]
+    pub foo_enum1: Option<FooEnum>,
+    #[serde(rename = "fooEnum2")]
+    pub foo_enum2: Option<FooEnum>,
+    #[serde(rename = "fooEnum3")]
+    pub foo_enum3: Option<FooEnum>,
+    #[serde(rename = "fooEnumList")]
+    pub foo_enum_list: Option<Vec<FooEnum>>,
+    #[serde(rename = "fooEnumSet")]
+    pub foo_enum_set: Option<BTreeSet<FooEnum>>,
+    #[serde(rename = "fooEnumMap")]
+    pub foo_enum_map: Option<HashMap<String, FooEnum>>,
+}
+
+#[non_exhaustive]
+#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+pub struct OperationWithOptionalInputOutputOutputBody {
+    #[serde(rename = "Value")]
+    pub value: Option<String>,
 }
 
 #[non_exhaustive]
@@ -280,4 +273,11 @@ pub struct PutAndGetInlineDocumentsOutputBody {
     #[serde(rename = "inlineDocument")]
     #[serde(deserialize_with = "crate::serde_util::document_deser")]
     pub inline_document: Document,
+}
+
+#[non_exhaustive]
+#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+pub struct GreetingWithErrorsOutputBody {
+    #[serde(rename = "greeting")]
+    pub greeting: Option<String>,
 }

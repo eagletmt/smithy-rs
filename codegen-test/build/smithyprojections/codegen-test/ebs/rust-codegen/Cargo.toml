@@ -3,10 +3,14 @@
 [package]
 name = "ebs"
 version = "0.0.1"
+description = "ebs client"
 authors = ["TODO@todo.com"]
 edition = "2018"
-[dependencies]
-smithy-http = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-http" }
-http = { version = "0.2" }
-smithy-types = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-types" }
+[dependencies.smithy-http]
+path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-http"
+[dependencies.http]
+version = "0.2"
+[dependencies.smithy-types]
+path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-types"
+
 

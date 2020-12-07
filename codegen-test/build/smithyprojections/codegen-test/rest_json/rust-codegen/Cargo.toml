@@ -3,12 +3,16 @@
 [package]
 name = "rest_json"
 version = "0.0.1"
+description = "rest_json client"
 authors = ["TODO@todo.com"]
 edition = "2018"
-[dependencies]
-smithy-types = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-types" }
-smithy-http = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-http" }
-http = { version = "0.2" }
-[dev-dependencies]
-protocol-test-helpers = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/protocol-test-helpers" }
+[dependencies.smithy-types]
+path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-types"
+[dependencies.smithy-http]
+path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-http"
+[dependencies.http]
+version = "0.2"
+[dev-dependencies.protocol-test-helpers]
+path = "/Users/rcoh/code/smithy-rs/rust-runtime/protocol-test-helpers"
+
 
