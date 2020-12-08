@@ -45,7 +45,7 @@ mod empty_operation_request_test {
     /// Sends requests to /
     /// Test ID: sends_requests_to_slash
     #[test]
-    fn test_sends_requests_to_slash() {
+    fn test_sends_requests_to_slash_request() {
         let input = EmptyOperationInput::builder().build();
         let http_request =
             EmptyOperationInput::assemble(input.request_builder_base(), input.build_body());
@@ -59,7 +59,7 @@ mod empty_operation_request_test {
     /// Includes X-Amz-Target header and Content-Type
     /// Test ID: includes_x_amz_target_and_content_type
     #[test]
-    fn test_includes_x_amz_target_and_content_type() {
+    fn test_includes_x_amz_target_and_content_type_request() {
         let input = EmptyOperationInput::builder().build();
         let http_request =
             EmptyOperationInput::assemble(input.request_builder_base(), input.build_body());
@@ -77,6 +77,12 @@ mod empty_operation_request_test {
         ));
         // No body
         assert!(input.build_body().is_empty());
+    }
+    /// Handles empty output shapes
+    /// Test ID: handles_empty_output_shape
+    #[test]
+    fn test_handles_empty_output_shape_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -99,6 +105,87 @@ impl GreetingWithErrorsInput {
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
             .expect("http request should be valid")
+    }
+}
+#[cfg(test)]
+#[allow(unreachable_code, unused_variables)]
+mod greeting_with_errors_request_test {
+
+    /// Parses simple JSON errors
+    /// Test ID: AwsJson11InvalidGreetingError
+    #[test]
+    fn test_aws_json11_invalid_greeting_error_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses a complex error with no message member
+    /// Test ID: AwsJson11ComplexError
+    #[test]
+    fn test_aws_json11_complex_error_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Test ID: AwsJson11EmptyComplexError
+    #[test]
+    fn test_aws_json11_empty_complex_error_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Serializes the X-Amzn-ErrorType header. For an example service, see Amazon EKS.
+    /// Test ID: AwsJson11FooErrorUsingXAmznErrorType
+    #[test]
+    fn test_aws_json11_foo_error_using_x_amzn_error_type_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some X-Amzn-Errortype headers contain URLs. Clients need to split the URL on ':' and take only the first half of the string. For example, 'ValidationException:http://internal.amazon.com/coral/com.amazon.coral.validate/'
+    /// is to be interpreted as 'ValidationException'.
+    ///
+    /// For an example service see Amazon Polly.
+    /// Test ID: AwsJson11FooErrorUsingXAmznErrorTypeWithUri
+    #[test]
+    fn test_aws_json11_foo_error_using_x_amzn_error_type_with_uri_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// X-Amzn-Errortype might contain a URL and a namespace. Client should extract only the shape name. This is a pathalogical case that might not actually happen in any deployed AWS service.
+    /// Test ID: AwsJson11FooErrorUsingXAmznErrorTypeWithUriAndNamespace
+    #[test]
+    fn test_aws_json11_foo_error_using_x_amzn_error_type_with_uri_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// This example uses the 'code' property in the output rather than X-Amzn-Errortype. Some services do this though it's preferable to send the X-Amzn-Errortype. Client implementations must first check for the X-Amzn-Errortype and then check for a top-level 'code' property.
+    ///
+    /// For example service see Amazon S3 Glacier.
+    /// Test ID: AwsJson11FooErrorUsingCode
+    #[test]
+    fn test_aws_json11_foo_error_using_code_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using code, and it might contain a namespace. Clients should just take the last part of the string after '#'.
+    /// Test ID: AwsJson11FooErrorUsingCodeAndNamespace
+    #[test]
+    fn test_aws_json11_foo_error_using_code_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using code, and it might contain a namespace. It also might contain a URI. Clients should just take the last part of the string after '#' and before ":". This is a pathalogical case that might not occur in any deployed AWS service.
+    /// Test ID: AwsJson11FooErrorUsingCodeUriAndNamespace
+    #[test]
+    fn test_aws_json11_foo_error_using_code_uri_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using __type.
+    /// Test ID: AwsJson11FooErrorWithDunderType
+    #[test]
+    fn test_aws_json11_foo_error_with_dunder_type_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using __type, and it might contain a namespace. Clients should just take the last part of the string after '#'.
+    /// Test ID: AwsJson11FooErrorWithDunderTypeAndNamespace
+    #[test]
+    fn test_aws_json11_foo_error_with_dunder_type_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using __type, and it might contain a namespace. It also might contain a URI. Clients should just take the last part of the string after '#' and before ":". This is a pathalogical case that might not occur in any deployed AWS service.
+    /// Test ID: AwsJson11FooErrorWithDunderTypeUriAndNamespace
+    #[test]
+    fn test_aws_json11_foo_error_with_dunder_type_uri_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -133,9 +220,6 @@ impl JsonEnumsInput {
             .expect("http request should be valid")
     }
 }
-#[cfg(test)]
-#[allow(unreachable_code, unused_variables)]
-mod json_enums_request_test {}
 
 impl JsonUnionsInput {
     pub fn request_builder_base(&self) -> ::http::request::Builder {
@@ -174,7 +258,7 @@ mod json_unions_request_test {
     /// Serializes a string union value
     /// Test ID: AwsJson11SerializeStringUnionValue
     #[test]
-    fn test_aws_json11_serialize_string_union_value() {
+    fn test_aws_json11_serialize_string_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::StringValue("foo".to_string()))
             .build();
@@ -205,7 +289,7 @@ mod json_unions_request_test {
     /// Serializes a boolean union value
     /// Test ID: AwsJson11SerializeBooleanUnionValue
     #[test]
-    fn test_aws_json11_serialize_boolean_union_value() {
+    fn test_aws_json11_serialize_boolean_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::BooleanValue(true))
             .build();
@@ -236,7 +320,7 @@ mod json_unions_request_test {
     /// Serializes a number union value
     /// Test ID: AwsJson11SerializeNumberUnionValue
     #[test]
-    fn test_aws_json11_serialize_number_union_value() {
+    fn test_aws_json11_serialize_number_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::NumberValue(1))
             .build();
@@ -267,7 +351,7 @@ mod json_unions_request_test {
     /// Serializes a blob union value
     /// Test ID: AwsJson11SerializeBlobUnionValue
     #[test]
-    fn test_aws_json11_serialize_blob_union_value() {
+    fn test_aws_json11_serialize_blob_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::BlobValue(::smithy_types::Blob::new("foo")))
             .build();
@@ -298,7 +382,7 @@ mod json_unions_request_test {
     /// Serializes a timestamp union value
     /// Test ID: AwsJson11SerializeTimestampUnionValue
     #[test]
-    fn test_aws_json11_serialize_timestamp_union_value() {
+    fn test_aws_json11_serialize_timestamp_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::TimestampValue(
                 ::smithy_types::Instant::from_epoch_seconds(1398796238),
@@ -331,7 +415,7 @@ mod json_unions_request_test {
     /// Serializes an enum union value
     /// Test ID: AwsJson11SerializeEnumUnionValue
     #[test]
-    fn test_aws_json11_serialize_enum_union_value() {
+    fn test_aws_json11_serialize_enum_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::EnumValue(FooEnum::from("Foo")))
             .build();
@@ -362,7 +446,7 @@ mod json_unions_request_test {
     /// Serializes a list union value
     /// Test ID: AwsJson11SerializeListUnionValue
     #[test]
-    fn test_aws_json11_serialize_list_union_value() {
+    fn test_aws_json11_serialize_list_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::ListValue(vec![
                 "foo".to_string(),
@@ -396,7 +480,7 @@ mod json_unions_request_test {
     /// Serializes a map union value
     /// Test ID: AwsJson11SerializeMapUnionValue
     #[test]
-    fn test_aws_json11_serialize_map_union_value() {
+    fn test_aws_json11_serialize_map_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::MapValue({
                 let mut ret = ::std::collections::HashMap::new();
@@ -435,7 +519,7 @@ mod json_unions_request_test {
     /// Serializes a structure union value
     /// Test ID: AwsJson11SerializeStructureUnionValue
     #[test]
-    fn test_aws_json11_serialize_structure_union_value() {
+    fn test_aws_json11_serialize_structure_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::StructureValue(
                 GreetingStruct::builder().hi("hello".to_string()).build(),
@@ -466,6 +550,60 @@ mod json_unions_request_test {
         }",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
+    }
+    /// Deserializes a string union value
+    /// Test ID: AwsJson11DeserializeStringUnionValue
+    #[test]
+    fn test_aws_json11_deserialize_string_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a boolean union value
+    /// Test ID: AwsJson11DeserializeBooleanUnionValue
+    #[test]
+    fn test_aws_json11_deserialize_boolean_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a number union value
+    /// Test ID: AwsJson11DeserializeNumberUnionValue
+    #[test]
+    fn test_aws_json11_deserialize_number_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a blob union value
+    /// Test ID: AwsJson11DeserializeBlobUnionValue
+    #[test]
+    fn test_aws_json11_deserialize_blob_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a timestamp union value
+    /// Test ID: AwsJson11DeserializeTimestampUnionValue
+    #[test]
+    fn test_aws_json11_deserialize_timestamp_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes an enum union value
+    /// Test ID: AwsJson11DeserializeEnumUnionValue
+    #[test]
+    fn test_aws_json11_deserialize_enum_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a list union value
+    /// Test ID: AwsJson11DeserializeListUnionValue
+    #[test]
+    fn test_aws_json11_deserialize_list_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a map union value
+    /// Test ID: AwsJson11DeserializeMapUnionValue
+    #[test]
+    fn test_aws_json11_deserialize_map_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a structure union value
+    /// Test ID: AwsJson11DeserializeStructureUnionValue
+    #[test]
+    fn test_aws_json11_deserialize_structure_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -532,7 +670,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes string shapes
     /// Test ID: serializes_string_shapes
     #[test]
-    fn test_serializes_string_shapes() {
+    fn test_serializes_string_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .string("abc xyz".to_string())
             .build();
@@ -561,7 +699,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes string shapes with jsonvalue trait
     /// Test ID: serializes_string_shapes_with_jsonvalue_trait
     #[test]
-    fn test_serializes_string_shapes_with_jsonvalue_trait() {
+    fn test_serializes_string_shapes_with_jsonvalue_trait_request() {
         let input =KitchenSinkOperationInput::builder()
         .json_value(
             "{\"string\":\"value\",\"number\":1234.5,\"boolTrue\":true,\"boolFalse\":false,\"array\":[1,2,3,4],\"object\":{\"key\":\"value\"},\"null\":null}".to_string()
@@ -591,7 +729,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes integer shapes
     /// Test ID: serializes_integer_shapes
     #[test]
-    fn test_serializes_integer_shapes() {
+    fn test_serializes_integer_shapes_request() {
         let input = KitchenSinkOperationInput::builder().integer(1234).build();
         let http_request =
             KitchenSinkOperationInput::assemble(input.request_builder_base(), input.build_body());
@@ -618,7 +756,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes long shapes
     /// Test ID: serializes_long_shapes
     #[test]
-    fn test_serializes_long_shapes() {
+    fn test_serializes_long_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .long(999999999999)
             .build();
@@ -647,7 +785,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes float shapes
     /// Test ID: serializes_float_shapes
     #[test]
-    fn test_serializes_float_shapes() {
+    fn test_serializes_float_shapes_request() {
         let input = KitchenSinkOperationInput::builder().float(1234.5).build();
         let http_request =
             KitchenSinkOperationInput::assemble(input.request_builder_base(), input.build_body());
@@ -674,7 +812,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes double shapes
     /// Test ID: serializes_double_shapes
     #[test]
-    fn test_serializes_double_shapes() {
+    fn test_serializes_double_shapes_request() {
         let input = KitchenSinkOperationInput::builder().double(1234.5).build();
         let http_request =
             KitchenSinkOperationInput::assemble(input.request_builder_base(), input.build_body());
@@ -701,7 +839,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes blob shapes
     /// Test ID: serializes_blob_shapes
     #[test]
-    fn test_serializes_blob_shapes() {
+    fn test_serializes_blob_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .blob(::smithy_types::Blob::new("binary-value"))
             .build();
@@ -730,7 +868,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes boolean shapes (true)
     /// Test ID: serializes_boolean_shapes_true
     #[test]
-    fn test_serializes_boolean_shapes_true() {
+    fn test_serializes_boolean_shapes_true_request() {
         let input = KitchenSinkOperationInput::builder().boolean(true).build();
         let http_request =
             KitchenSinkOperationInput::assemble(input.request_builder_base(), input.build_body());
@@ -757,7 +895,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes boolean shapes (false)
     /// Test ID: serializes_boolean_shapes_false
     #[test]
-    fn test_serializes_boolean_shapes_false() {
+    fn test_serializes_boolean_shapes_false_request() {
         let input = KitchenSinkOperationInput::builder().boolean(false).build();
         let http_request =
             KitchenSinkOperationInput::assemble(input.request_builder_base(), input.build_body());
@@ -784,7 +922,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes timestamp shapes
     /// Test ID: serializes_timestamp_shapes
     #[test]
-    fn test_serializes_timestamp_shapes() {
+    fn test_serializes_timestamp_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
             .build();
@@ -813,7 +951,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes timestamp shapes with iso8601 timestampFormat
     /// Test ID: serializes_timestamp_shapes_with_iso8601_timestampformat
     #[test]
-    fn test_serializes_timestamp_shapes_with_iso8601_timestampformat() {
+    fn test_serializes_timestamp_shapes_with_iso8601_timestampformat_request() {
         let input = KitchenSinkOperationInput::builder()
             .iso8601_timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
             .build();
@@ -842,7 +980,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes timestamp shapes with httpdate timestampFormat
     /// Test ID: serializes_timestamp_shapes_with_httpdate_timestampformat
     #[test]
-    fn test_serializes_timestamp_shapes_with_httpdate_timestampformat() {
+    fn test_serializes_timestamp_shapes_with_httpdate_timestampformat_request() {
         let input = KitchenSinkOperationInput::builder()
             .httpdate_timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
             .build();
@@ -871,7 +1009,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes timestamp shapes with unixTimestamp timestampFormat
     /// Test ID: serializes_timestamp_shapes_with_unixtimestamp_timestampformat
     #[test]
-    fn test_serializes_timestamp_shapes_with_unixtimestamp_timestampformat() {
+    fn test_serializes_timestamp_shapes_with_unixtimestamp_timestampformat_request() {
         let input = KitchenSinkOperationInput::builder()
             .unix_timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
             .build();
@@ -900,7 +1038,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes list shapes
     /// Test ID: serializes_list_shapes
     #[test]
-    fn test_serializes_list_shapes() {
+    fn test_serializes_list_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .list_of_strings(vec![
                 "abc".to_string(),
@@ -933,7 +1071,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes empty list shapes
     /// Test ID: serializes_empty_list_shapes
     #[test]
-    fn test_serializes_empty_list_shapes() {
+    fn test_serializes_empty_list_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .list_of_strings(vec![])
             .build();
@@ -962,7 +1100,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes list of map shapes
     /// Test ID: serializes_list_of_map_shapes
     #[test]
-    fn test_serializes_list_of_map_shapes() {
+    fn test_serializes_list_of_map_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .list_of_maps_of_strings(vec![
                 {
@@ -1007,7 +1145,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes list of structure shapes
     /// Test ID: serializes_list_of_structure_shapes
     #[test]
-    fn test_serializes_list_of_structure_shapes() {
+    fn test_serializes_list_of_structure_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .list_of_structs(vec![
                 SimpleStruct::builder().value("abc".to_string()).build(),
@@ -1040,7 +1178,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes list of recursive structure shapes
     /// Test ID: serializes_list_of_recursive_structure_shapes
     #[test]
-    fn test_serializes_list_of_recursive_structure_shapes() {
+    fn test_serializes_list_of_recursive_structure_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .recursive_list(vec![KitchenSink::builder()
                 .recursive_list(vec![KitchenSink::builder()
@@ -1073,7 +1211,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes map shapes
     /// Test ID: serializes_map_shapes
     #[test]
-    fn test_serializes_map_shapes() {
+    fn test_serializes_map_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .map_of_strings({
                 let mut ret = ::std::collections::HashMap::new();
@@ -1107,7 +1245,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes empty map shapes
     /// Test ID: serializes_empty_map_shapes
     #[test]
-    fn test_serializes_empty_map_shapes() {
+    fn test_serializes_empty_map_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .map_of_strings(::std::collections::HashMap::new())
             .build();
@@ -1136,7 +1274,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes map of list shapes
     /// Test ID: serializes_map_of_list_shapes
     #[test]
-    fn test_serializes_map_of_list_shapes() {
+    fn test_serializes_map_of_list_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .map_of_lists_of_strings({
                 let mut ret = ::std::collections::HashMap::new();
@@ -1176,7 +1314,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes map of structure shapes
     /// Test ID: serializes_map_of_structure_shapes
     #[test]
-    fn test_serializes_map_of_structure_shapes() {
+    fn test_serializes_map_of_structure_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .map_of_structs({
                 let mut ret = ::std::collections::HashMap::new();
@@ -1214,7 +1352,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes map of recursive structure shapes
     /// Test ID: serializes_map_of_recursive_structure_shapes
     #[test]
-    fn test_serializes_map_of_recursive_structure_shapes() {
+    fn test_serializes_map_of_recursive_structure_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .recursive_map({
                 let mut ret = ::std::collections::HashMap::new();
@@ -1266,7 +1404,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes structure shapes
     /// Test ID: serializes_structure_shapes
     #[test]
-    fn test_serializes_structure_shapes() {
+    fn test_serializes_structure_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .simple_struct(SimpleStruct::builder().value("abc".to_string()).build())
             .build();
@@ -1295,7 +1433,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes structure members with locationName traits
     /// Test ID: serializes_structure_members_with_locationname_traits
     #[test]
-    fn test_serializes_structure_members_with_locationname_traits() {
+    fn test_serializes_structure_members_with_locationname_traits_request() {
         let input = KitchenSinkOperationInput::builder()
             .struct_with_location_name(
                 StructWithLocationName::builder()
@@ -1328,7 +1466,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes empty structure shapes
     /// Test ID: serializes_empty_structure_shapes
     #[test]
-    fn test_serializes_empty_structure_shapes() {
+    fn test_serializes_empty_structure_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .simple_struct(SimpleStruct::builder().build())
             .build();
@@ -1357,7 +1495,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes structure which have no members
     /// Test ID: serializes_structure_which_have_no_members
     #[test]
-    fn test_serializes_structure_which_have_no_members() {
+    fn test_serializes_structure_which_have_no_members_request() {
         let input = KitchenSinkOperationInput::builder()
             .empty_struct(EmptyStruct::builder().build())
             .build();
@@ -1386,7 +1524,7 @@ mod kitchen_sink_operation_request_test {
     /// Serializes recursive structure shapes
     /// Test ID: serializes_recursive_structure_shapes
     #[test]
-    fn test_serializes_recursive_structure_shapes() {
+    fn test_serializes_recursive_structure_shapes_request() {
         let input = KitchenSinkOperationInput::builder()
             .string("top-value".to_string())
             .boolean(false)
@@ -1434,6 +1572,144 @@ mod kitchen_sink_operation_request_test {
         ::protocol_test_helpers::validate_body(input.build_body(), "{\"String\":\"top-value\",\"Boolean\":false,\"RecursiveStruct\":{\"String\":\"nested-value\",\"Boolean\":true,\"RecursiveList\":[{\"String\":\"string-only\"},{\"RecursiveStruct\":{\"MapOfStrings\":{\"color\":\"red\",\"size\":\"large\"}}}]}}", ::protocol_test_helpers::MediaType::from("application/json"))
         );
     }
+    /// Parses operations with empty JSON bodies
+    /// Test ID: parses_operations_with_empty_json_bodies
+    #[test]
+    fn test_parses_operations_with_empty_json_bodies_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses string shapes
+    /// Test ID: parses_string_shapes
+    #[test]
+    fn test_parses_string_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses integer shapes
+    /// Test ID: parses_integer_shapes
+    #[test]
+    fn test_parses_integer_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses long shapes
+    /// Test ID: parses_long_shapes
+    #[test]
+    fn test_parses_long_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses float shapes
+    /// Test ID: parses_float_shapes
+    #[test]
+    fn test_parses_float_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses double shapes
+    /// Test ID: parses_double_shapes
+    #[test]
+    fn test_parses_double_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses boolean shapes (true)
+    /// Test ID: parses_boolean_shapes_true
+    #[test]
+    fn test_parses_boolean_shapes_true_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses boolean (false)
+    /// Test ID: parses_boolean_false
+    #[test]
+    fn test_parses_boolean_false_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses blob shapes
+    /// Test ID: parses_blob_shapes
+    #[test]
+    fn test_parses_blob_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses timestamp shapes
+    /// Test ID: parses_timestamp_shapes
+    #[test]
+    fn test_parses_timestamp_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses iso8601 timestamps
+    /// Test ID: parses_iso8601_timestamps
+    #[test]
+    fn test_parses_iso8601_timestamps_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses httpdate timestamps
+    /// Test ID: parses_httpdate_timestamps
+    #[test]
+    fn test_parses_httpdate_timestamps_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses list shapes
+    /// Test ID: parses_list_shapes
+    #[test]
+    fn test_parses_list_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses list of map shapes
+    /// Test ID: parses_list_of_map_shapes
+    #[test]
+    fn test_parses_list_of_map_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses list of list shapes
+    /// Test ID: parses_list_of_list_shapes
+    #[test]
+    fn test_parses_list_of_list_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses list of structure shapes
+    /// Test ID: parses_list_of_structure_shapes
+    #[test]
+    fn test_parses_list_of_structure_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses list of recursive structure shapes
+    /// Test ID: parses_list_of_recursive_structure_shapes
+    #[test]
+    fn test_parses_list_of_recursive_structure_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses map shapes
+    /// Test ID: parses_map_shapes
+    #[test]
+    fn test_parses_map_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses map of list shapes
+    /// Test ID: parses_map_of_list_shapes
+    #[test]
+    fn test_parses_map_of_list_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses map of map shapes
+    /// Test ID: parses_map_of_map_shapes
+    #[test]
+    fn test_parses_map_of_map_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses map of structure shapes
+    /// Test ID: parses_map_of_structure_shapes
+    #[test]
+    fn test_parses_map_of_structure_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses map of recursive structure shapes
+    /// Test ID: parses_map_of_recursive_structure_shapes
+    #[test]
+    fn test_parses_map_of_recursive_structure_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses the request id from the response
+    /// Test ID: parses_the_request_id_from_the_response
+    #[test]
+    fn test_parses_the_request_id_from_the_response_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
 }
 
 impl NullOperationInput {
@@ -1472,7 +1748,7 @@ mod null_operation_request_test {
     /// Null structure values are dropped
     /// Test ID: AwsJson11StructuresDontSerializeNullValues
     #[test]
-    fn test_aws_json11_structures_dont_serialize_null_values() {
+    fn test_aws_json11_structures_dont_serialize_null_values_request() {
         let input = NullOperationInput::builder().build();
         let http_request =
             NullOperationInput::assemble(input.request_builder_base(), input.build_body());
@@ -1494,7 +1770,7 @@ mod null_operation_request_test {
     /// Serializes null values in maps
     /// Test ID: AwsJson11MapsSerializeNullValues
     #[test]
-    fn test_aws_json11_maps_serialize_null_values() {
+    fn test_aws_json11_maps_serialize_null_values_request() {
         let input = NullOperationInput::builder()
             .sparse_string_map({
                 let mut ret = ::std::collections::HashMap::new();
@@ -1526,7 +1802,7 @@ mod null_operation_request_test {
     /// Serializes null values in lists
     /// Test ID: AwsJson11ListsSerializeNull
     #[test]
-    fn test_aws_json11_lists_serialize_null() {
+    fn test_aws_json11_lists_serialize_null_request() {
         let input = NullOperationInput::builder()
             .sparse_string_list(vec![None])
             .build();
@@ -1550,6 +1826,24 @@ mod null_operation_request_test {
         }",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
+    }
+    /// Null structure values are dropped
+    /// Test ID: AwsJson11StructuresDontDeserializeNullValues
+    #[test]
+    fn test_aws_json11_structures_dont_deserialize_null_values_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes null values in maps
+    /// Test ID: AwsJson11MapsDeserializeNullValues
+    #[test]
+    fn test_aws_json11_maps_deserialize_null_values_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes null values in lists
+    /// Test ID: AwsJson11ListsDeserializeNull
+    #[test]
+    fn test_aws_json11_lists_deserialize_null_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -1588,7 +1882,7 @@ mod operation_with_optional_input_output_request_test {
     /// Can call operations with no input or output
     /// Test ID: can_call_operation_with_no_input_or_output
     #[test]
-    fn test_can_call_operation_with_no_input_or_output() {
+    fn test_can_call_operation_with_no_input_or_output_request() {
         let input = OperationWithOptionalInputOutputInput::builder().build();
         let http_request = OperationWithOptionalInputOutputInput::assemble(
             input.request_builder_base(),
@@ -1618,7 +1912,7 @@ mod operation_with_optional_input_output_request_test {
     /// Can invoke operations with optional input
     /// Test ID: can_call_operation_with_optional_input
     #[test]
-    fn test_can_call_operation_with_optional_input() {
+    fn test_can_call_operation_with_optional_input_request() {
         let input = OperationWithOptionalInputOutputInput::builder()
             .value("Hi".to_string())
             .build();
@@ -1684,10 +1978,10 @@ mod put_and_get_inline_documents_request_test {
     /// Test ID: PutAndGetInlineDocumentsInput
     #[test]
     #[should_panic]
-    fn test_put_and_get_inline_documents_input() {
+    fn test_put_and_get_inline_documents_input_request() {
         let input =PutAndGetInlineDocumentsInput::builder()
         .inline_document(
-            todo!() /* (document: `aws.protocoltests.json#Document`) software.amazon.smithy.model.node.ObjectNode@7f682361 */
+            todo!() /* (document: `aws.protocoltests.json#Document`) software.amazon.smithy.model.node.ObjectNode@b78b91a9 */
         )
         .build()
         .unwrap()
@@ -1717,6 +2011,14 @@ mod put_and_get_inline_documents_request_test {
         }",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
+    }
+    /// Serializes inline documents in a JSON response.
+    /// Test ID: PutAndGetInlineDocumentsInput
+    #[test]
+    #[should_panic]
+    fn test_put_and_get_inline_documents_input_response() {
+        /* test case disabled for this protocol (not yet supported) */
+        todo!()
     }
 }
 

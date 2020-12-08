@@ -137,7 +137,7 @@ mod all_query_string_types_request_test {
     /// Serializes query string parameters with all supported types
     /// Test ID: RestJsonAllQueryStringTypes
     #[test]
-    fn test_rest_json_all_query_string_types() {
+    fn test_rest_json_all_query_string_types_request() {
         let input = AllQueryStringTypesInput::builder()
             .query_string("Hello there".to_string())
             .query_string_list(vec!["a".to_string(), "b".to_string(), "c".to_string()])
@@ -267,7 +267,7 @@ mod constant_and_variable_query_string_request_test {
     /// Test ID: RestJsonConstantAndVariableQueryStringMissingOneValue
     #[test]
     #[should_panic]
-    fn test_rest_json_constant_and_variable_query_string_missing_one_value() {
+    fn test_rest_json_constant_and_variable_query_string_missing_one_value_request() {
         let input = ConstantAndVariableQueryStringInput::builder()
             .baz("bam".to_string())
             .build();
@@ -292,7 +292,7 @@ mod constant_and_variable_query_string_request_test {
     /// Test ID: RestJsonConstantAndVariableQueryStringAllValues
     #[test]
     #[should_panic]
-    fn test_rest_json_constant_and_variable_query_string_all_values() {
+    fn test_rest_json_constant_and_variable_query_string_all_values_request() {
         let input = ConstantAndVariableQueryStringInput::builder()
             .baz("bam".to_string())
             .maybe_set("yes".to_string())
@@ -352,7 +352,7 @@ mod constant_query_string_request_test {
     /// Test ID: RestJsonConstantQueryString
     #[test]
     #[should_panic]
-    fn test_rest_json_constant_query_string() {
+    fn test_rest_json_constant_query_string_request() {
         let input = ConstantQueryStringInput::builder()
             .hello("hi".to_string())
             .build();
@@ -404,13 +404,25 @@ mod empty_input_and_empty_output_request_test {
     /// Empty input serializes no payload
     /// Test ID: RestJsonEmptyInputAndEmptyOutput
     #[test]
-    fn test_rest_json_empty_input_and_empty_output() {
+    fn test_rest_json_empty_input_and_empty_output_request() {
         let input = EmptyInputAndEmptyOutputInput::builder().build();
         let http_request =
             EmptyInputAndEmptyOutputInput::assemble(input.request_builder_base(), vec![]);
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/EmptyInputAndEmptyOutput");
+    }
+    /// Empty output serializes no payload
+    /// Test ID: RestJsonEmptyInputAndEmptyOutput
+    #[test]
+    fn test_rest_json_empty_input_and_empty_output_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Empty output serializes no payload
+    /// Test ID: RestJsonEmptyInputAndEmptyJsonObjectOutput
+    #[test]
+    fn test_rest_json_empty_input_and_empty_json_object_output_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -439,6 +451,93 @@ impl GreetingWithErrorsInput {
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
             .expect("http request should be valid")
+    }
+}
+#[cfg(test)]
+#[allow(unreachable_code, unused_variables)]
+mod greeting_with_errors_request_test {
+
+    /// Ensures that operations with errors successfully know how to deserialize the successful response
+    /// Test ID: RestJsonGreetingWithErrors
+    #[test]
+    fn test_rest_json_greeting_with_errors_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses simple JSON errors
+    /// Test ID: RestJsonInvalidGreetingError
+    #[test]
+    fn test_rest_json_invalid_greeting_error_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Serializes a complex error with no message member
+    /// Test ID: RestJsonComplexErrorWithNoMessage
+    #[test]
+    fn test_rest_json_complex_error_with_no_message_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Test ID: RestJsonEmptyComplexErrorWithNoMessage
+    #[test]
+    fn test_rest_json_empty_complex_error_with_no_message_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Serializes the X-Amzn-ErrorType header. For an example service, see Amazon EKS.
+    /// Test ID: RestJsonFooErrorUsingXAmznErrorType
+    #[test]
+    fn test_rest_json_foo_error_using_x_amzn_error_type_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some X-Amzn-Errortype headers contain URLs. Clients need to split the URL on ':' and take only the first half of the string. For example, 'ValidationException:http://internal.amazon.com/coral/com.amazon.coral.validate/'
+    /// is to be interpreted as 'ValidationException'.
+    ///
+    /// For an example service see Amazon Polly.
+    /// Test ID: RestJsonFooErrorUsingXAmznErrorTypeWithUri
+    #[test]
+    fn test_rest_json_foo_error_using_x_amzn_error_type_with_uri_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// X-Amzn-Errortype might contain a URL and a namespace. Client should extract only the shape name. This is a pathalogical case that might not actually happen in any deployed AWS service.
+    /// Test ID: RestJsonFooErrorUsingXAmznErrorTypeWithUriAndNamespace
+    #[test]
+    fn test_rest_json_foo_error_using_x_amzn_error_type_with_uri_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// This example uses the 'code' property in the output rather than X-Amzn-Errortype. Some services do this though it's preferable to send the X-Amzn-Errortype. Client implementations must first check for the X-Amzn-Errortype and then check for a top-level 'code' property.
+    ///
+    /// For example service see Amazon S3 Glacier.
+    /// Test ID: RestJsonFooErrorUsingCode
+    #[test]
+    fn test_rest_json_foo_error_using_code_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using code, and it might contain a namespace. Clients should just take the last part of the string after '#'.
+    /// Test ID: RestJsonFooErrorUsingCodeAndNamespace
+    #[test]
+    fn test_rest_json_foo_error_using_code_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using code, and it might contain a namespace. It also might contain a URI. Clients should just take the last part of the string after '#' and before ":". This is a pathalogical case that might not occur in any deployed AWS service.
+    /// Test ID: RestJsonFooErrorUsingCodeUriAndNamespace
+    #[test]
+    fn test_rest_json_foo_error_using_code_uri_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using __type.
+    /// Test ID: RestJsonFooErrorWithDunderType
+    #[test]
+    fn test_rest_json_foo_error_with_dunder_type_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using __type, and it might contain a namespace. Clients should just take the last part of the string after '#'.
+    /// Test ID: RestJsonFooErrorWithDunderTypeAndNamespace
+    #[test]
+    fn test_rest_json_foo_error_with_dunder_type_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using __type, and it might contain a namespace. It also might contain a URI. Clients should just take the last part of the string after '#' and before ":". This is a pathalogical case that might not occur in any deployed AWS service.
+    /// Test ID: RestJsonFooErrorWithDunderTypeUriAndNamespace
+    #[test]
+    fn test_rest_json_foo_error_with_dunder_type_uri_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -487,7 +586,7 @@ mod http_payload_traits_request_test {
     /// Serializes a blob in the HTTP payload
     /// Test ID: RestJsonHttpPayloadTraitsWithBlob
     #[test]
-    fn test_rest_json_http_payload_traits_with_blob() {
+    fn test_rest_json_http_payload_traits_with_blob_request() {
         let input = HttpPayloadTraitsInput::builder()
             .foo("Foo".to_string())
             .blob(::smithy_types::Blob::new("blobby blob blob"))
@@ -511,7 +610,7 @@ mod http_payload_traits_request_test {
     /// Serializes an empty blob in the HTTP payload
     /// Test ID: RestJsonHttpPayloadTraitsWithNoBlobBody
     #[test]
-    fn test_rest_json_http_payload_traits_with_no_blob_body() {
+    fn test_rest_json_http_payload_traits_with_no_blob_body_request() {
         let input = HttpPayloadTraitsInput::builder()
             .foo("Foo".to_string())
             .build();
@@ -525,6 +624,18 @@ mod http_payload_traits_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Serializes a blob in the HTTP payload
+    /// Test ID: RestJsonHttpPayloadTraitsWithBlob
+    #[test]
+    fn test_rest_json_http_payload_traits_with_blob_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Serializes an empty blob in the HTTP payload
+    /// Test ID: RestJsonHttpPayloadTraitsWithNoBlobBody
+    #[test]
+    fn test_rest_json_http_payload_traits_with_no_blob_body_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -573,7 +684,7 @@ mod http_payload_traits_with_media_type_request_test {
     /// Serializes a blob in the HTTP payload with a content-type
     /// Test ID: RestJsonHttpPayloadTraitsWithMediaTypeWithBlob
     #[test]
-    fn test_rest_json_http_payload_traits_with_media_type_with_blob() {
+    fn test_rest_json_http_payload_traits_with_media_type_with_blob_request() {
         let input = HttpPayloadTraitsWithMediaTypeInput::builder()
             .foo("Foo".to_string())
             .blob(::smithy_types::Blob::new("blobby blob blob"))
@@ -594,6 +705,12 @@ mod http_payload_traits_with_media_type_request_test {
             &http_request,
             required_headers,
         ));
+    }
+    /// Serializes a blob in the HTTP payload with a content-type
+    /// Test ID: RestJsonHttpPayloadTraitsWithMediaTypeWithBlob
+    #[test]
+    fn test_rest_json_http_payload_traits_with_media_type_with_blob_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -633,7 +750,7 @@ mod http_payload_with_structure_request_test {
     /// Serializes a structure in the payload
     /// Test ID: RestJsonHttpPayloadWithStructure
     #[test]
-    fn test_rest_json_http_payload_with_structure() {
+    fn test_rest_json_http_payload_with_structure_request() {
         let input = HttpPayloadWithStructureInput::builder()
             .nested(
                 NestedPayload::builder()
@@ -658,6 +775,12 @@ mod http_payload_with_structure_request_test {
             &http_request,
             required_headers,
         ));
+    }
+    /// Serializes a structure in the payload
+    /// Test ID: RestJsonHttpPayloadWithStructure
+    #[test]
+    fn test_rest_json_http_payload_with_structure_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -707,7 +830,7 @@ mod http_prefix_headers_request_test {
     /// Test ID: RestJsonHttpPrefixHeadersArePresent
     #[test]
     #[should_panic]
-    fn test_rest_json_http_prefix_headers_are_present() {
+    fn test_rest_json_http_prefix_headers_are_present_request() {
         let input = HttpPrefixHeadersInput::builder()
             .foo("Foo".to_string())
             .foo_map({
@@ -735,7 +858,7 @@ mod http_prefix_headers_request_test {
     /// No prefix headers are serialized because the value is empty
     /// Test ID: RestJsonHttpPrefixHeadersAreNotPresent
     #[test]
-    fn test_rest_json_http_prefix_headers_are_not_present() {
+    fn test_rest_json_http_prefix_headers_are_not_present_request() {
         let input = HttpPrefixHeadersInput::builder()
             .foo("Foo".to_string())
             .foo_map(::std::collections::HashMap::new())
@@ -750,6 +873,14 @@ mod http_prefix_headers_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Adds headers by prefix
+    /// Test ID: RestJsonHttpPrefixHeadersArePresent
+    #[test]
+    #[should_panic]
+    fn test_rest_json_http_prefix_headers_are_present_response() {
+        /* test case disabled for this protocol (not yet supported) */
+        todo!()
     }
 }
 
@@ -778,6 +909,17 @@ impl HttpPrefixHeadersResponseInput {
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
             .expect("http request should be valid")
+    }
+}
+#[cfg(test)]
+#[allow(unreachable_code, unused_variables)]
+mod http_prefix_headers_response_request_test {
+
+    /// (de)serializes all response headers
+    /// Test ID: HttpPrefixHeadersResponse
+    #[test]
+    fn test_http_prefix_headers_response_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -822,7 +964,7 @@ mod http_request_with_greedy_label_in_path_request_test {
     /// Serializes greedy labels and normal labels
     /// Test ID: RestJsonHttpRequestWithGreedyLabelInPath
     #[test]
-    fn test_rest_json_http_request_with_greedy_label_in_path() {
+    fn test_rest_json_http_request_with_greedy_label_in_path_request() {
         let input = HttpRequestWithGreedyLabelInPathInput::builder()
             .foo("hello".to_string())
             .baz("there/guy".to_string())
@@ -873,7 +1015,7 @@ mod http_request_with_labels_request_test {
     /// Sends a GET request that uses URI label bindings
     /// Test ID: RestJsonInputWithHeadersAndAllParams
     #[test]
-    fn test_rest_json_input_with_headers_and_all_params() {
+    fn test_rest_json_input_with_headers_and_all_params_request() {
         let input = HttpRequestWithLabelsInput::builder()
             .string("string".to_string())
             .short(1)
@@ -931,7 +1073,7 @@ mod http_request_with_labels_and_timestamp_format_request_test {
     /// Serializes different timestamp formats in URI labels
     /// Test ID: RestJsonHttpRequestWithLabelsAndTimestampFormat
     #[test]
-    fn test_rest_json_http_request_with_labels_and_timestamp_format() {
+    fn test_rest_json_http_request_with_labels_and_timestamp_format_request() {
         let input = HttpRequestWithLabelsAndTimestampFormatInput::builder()
             .member_epoch_seconds(::smithy_types::Instant::from_epoch_seconds(1576540098))
             .member_http_date(::smithy_types::Instant::from_epoch_seconds(1576540098))
@@ -979,6 +1121,17 @@ impl HttpResponseCodeInput {
             .expect("http request should be valid")
     }
 }
+#[cfg(test)]
+#[allow(unreachable_code, unused_variables)]
+mod http_response_code_request_test {
+
+    /// Binds the http response code to an output structure.
+    /// Test ID: RestJsonHttpResponseCode
+    #[test]
+    fn test_rest_json_http_response_code_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+}
 
 impl IgnoreQueryParamsInResponseInput {
     fn uri_base(&self, output: &mut String) {
@@ -1005,6 +1158,17 @@ impl IgnoreQueryParamsInResponseInput {
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
             .expect("http request should be valid")
+    }
+}
+#[cfg(test)]
+#[allow(unreachable_code, unused_variables)]
+mod ignore_query_params_in_response_request_test {
+
+    /// Query parameters must be ignored when serializing the output of an operation
+    /// Test ID: RestJsonIgnoreQueryParamsInResponse
+    #[test]
+    fn test_rest_json_ignore_query_params_in_response_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -1044,13 +1208,13 @@ mod inline_document_request_test {
     /// Test ID: InlineDocumentInput
     #[test]
     #[should_panic]
-    fn test_inline_document_input() {
+    fn test_inline_document_input_request() {
         let input =InlineDocumentInput::builder()
         .string_value(
             "string".to_string()
         )
         .document_value(
-            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@7f682361 */
+            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@b78b91a9 */
         )
         .build()
         .unwrap()
@@ -1065,6 +1229,12 @@ mod inline_document_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Serializes inline documents as part of the JSON response payload with no escaping.
+    /// Test ID: InlineDocumentOutput
+    #[test]
+    fn test_inline_document_output_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -1104,10 +1274,10 @@ mod inline_document_as_payload_request_test {
     /// Test ID: InlineDocumentAsPayloadInput
     #[test]
     #[should_panic]
-    fn test_inline_document_as_payload_input() {
+    fn test_inline_document_as_payload_input_request() {
         let input =InlineDocumentAsPayloadInput::builder()
         .document_value(
-            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@7f682361 */
+            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@b78b91a9 */
         )
         .build()
         .unwrap()
@@ -1123,6 +1293,12 @@ mod inline_document_as_payload_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Serializes an inline document as the target of the httpPayload trait.
+    /// Test ID: InlineDocumentAsPayloadInputOutput
+    #[test]
+    fn test_inline_document_as_payload_input_output_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -1293,7 +1469,7 @@ mod input_and_output_with_headers_request_test {
     /// Tests requests with string header bindings
     /// Test ID: RestJsonInputAndOutputWithStringHeaders
     #[test]
-    fn test_rest_json_input_and_output_with_string_headers() {
+    fn test_rest_json_input_and_output_with_string_headers_request() {
         let input = InputAndOutputWithHeadersInput::builder()
             .header_string("Hello".to_string())
             .header_string_list(vec!["a".to_string(), "b".to_string(), "c".to_string()])
@@ -1324,7 +1500,7 @@ mod input_and_output_with_headers_request_test {
     /// Tests requests with numeric header bindings
     /// Test ID: RestJsonInputAndOutputWithNumericHeaders
     #[test]
-    fn test_rest_json_input_and_output_with_numeric_headers() {
+    fn test_rest_json_input_and_output_with_numeric_headers_request() {
         let input = InputAndOutputWithHeadersInput::builder()
             .header_byte(1)
             .header_short(123)
@@ -1357,7 +1533,7 @@ mod input_and_output_with_headers_request_test {
     /// Tests requests with boolean header bindings
     /// Test ID: RestJsonInputAndOutputWithBooleanHeaders
     #[test]
-    fn test_rest_json_input_and_output_with_boolean_headers() {
+    fn test_rest_json_input_and_output_with_boolean_headers_request() {
         let input = InputAndOutputWithHeadersInput::builder()
             .header_true_bool(true)
             .header_false_bool(false)
@@ -1382,7 +1558,7 @@ mod input_and_output_with_headers_request_test {
     /// Tests requests with timestamp header bindings
     /// Test ID: RestJsonInputAndOutputWithTimestampHeaders
     #[test]
-    fn test_rest_json_input_and_output_with_timestamp_headers() {
+    fn test_rest_json_input_and_output_with_timestamp_headers_request() {
         let input = InputAndOutputWithHeadersInput::builder()
             .header_timestamp_list(vec![
                 ::smithy_types::Instant::from_epoch_seconds(1576540098),
@@ -1407,7 +1583,7 @@ mod input_and_output_with_headers_request_test {
     /// Tests requests with enum header bindings
     /// Test ID: RestJsonInputAndOutputWithEnumHeaders
     #[test]
-    fn test_rest_json_input_and_output_with_enum_headers() {
+    fn test_rest_json_input_and_output_with_enum_headers_request() {
         let input = InputAndOutputWithHeadersInput::builder()
             .header_enum(FooEnum::from("Foo"))
             .header_enum_list(vec![
@@ -1427,6 +1603,36 @@ mod input_and_output_with_headers_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Tests responses with string header bindings
+    /// Test ID: RestJsonInputAndOutputWithStringHeaders
+    #[test]
+    fn test_rest_json_input_and_output_with_string_headers_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Tests responses with numeric header bindings
+    /// Test ID: RestJsonInputAndOutputWithNumericHeaders
+    #[test]
+    fn test_rest_json_input_and_output_with_numeric_headers_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Tests responses with boolean header bindings
+    /// Test ID: RestJsonInputAndOutputWithBooleanHeaders
+    #[test]
+    fn test_rest_json_input_and_output_with_boolean_headers_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Tests responses with timestamp header bindings
+    /// Test ID: RestJsonInputAndOutputWithTimestampHeaders
+    #[test]
+    fn test_rest_json_input_and_output_with_timestamp_headers_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Tests responses with enum header bindings
+    /// Test ID: RestJsonInputAndOutputWithEnumHeaders
+    #[test]
+    fn test_rest_json_input_and_output_with_enum_headers_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -1465,7 +1671,7 @@ mod json_blobs_request_test {
     /// Blobs are base64 encoded
     /// Test ID: RestJsonJsonBlobs
     #[test]
-    fn test_rest_json_json_blobs() {
+    fn test_rest_json_json_blobs_request() {
         let input = JsonBlobsInput::builder()
             .data(::smithy_types::Blob::new("value"))
             .build();
@@ -1479,6 +1685,12 @@ mod json_blobs_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Blobs are base64 encoded
+    /// Test ID: RestJsonJsonBlobs
+    #[test]
+    fn test_rest_json_json_blobs_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -1518,7 +1730,7 @@ mod json_enums_request_test {
     /// Serializes simple scalar properties
     /// Test ID: RestJsonJsonEnums
     #[test]
-    fn test_rest_json_json_enums() {
+    fn test_rest_json_json_enums_request() {
         let input = JsonEnumsInput::builder()
             .foo_enum1(FooEnum::from("Foo"))
             .foo_enum2(FooEnum::from("0"))
@@ -1547,6 +1759,12 @@ mod json_enums_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Serializes simple scalar properties
+    /// Test ID: RestJsonJsonEnums
+    #[test]
+    fn test_rest_json_json_enums_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -1587,7 +1805,7 @@ mod json_lists_request_test {
     /// Serializes JSON lists
     /// Test ID: RestJsonLists
     #[test]
-    fn test_rest_json_lists() {
+    fn test_rest_json_lists_request() {
         let input = JsonListsInput::builder()
             .string_list(vec!["foo".to_string(), "bar".to_string()])
             .string_set({
@@ -1632,7 +1850,7 @@ mod json_lists_request_test {
     /// Serializes empty JSON lists
     /// Test ID: RestJsonListsEmpty
     #[test]
-    fn test_rest_json_lists_empty() {
+    fn test_rest_json_lists_empty_request() {
         let input = JsonListsInput::builder().string_list(vec![]).build();
         let http_request = JsonListsInput::assemble(input.request_builder_base(), vec![]);
 
@@ -1648,7 +1866,7 @@ mod json_lists_request_test {
     /// Serializes null values in lists
     /// Test ID: RestJsonListsSerializeNull
     #[test]
-    fn test_rest_json_lists_serialize_null() {
+    fn test_rest_json_lists_serialize_null_request() {
         let input = JsonListsInput::builder()
             .sparse_string_list(vec![None, Some("hi".to_string())])
             .build();
@@ -1662,6 +1880,24 @@ mod json_lists_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Serializes JSON lists
+    /// Test ID: RestJsonLists
+    #[test]
+    fn test_rest_json_lists_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Serializes empty JSON lists
+    /// Test ID: RestJsonListsEmpty
+    #[test]
+    fn test_rest_json_lists_empty_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Serializes null values in sparse lists
+    /// Test ID: RestJsonListsSerializeNull
+    #[test]
+    fn test_rest_json_lists_serialize_null_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -1701,7 +1937,7 @@ mod json_maps_request_test {
     /// Serializes JSON maps
     /// Test ID: RestJsonJsonMaps
     #[test]
-    fn test_rest_json_json_maps() {
+    fn test_rest_json_json_maps_request() {
         let input = JsonMapsInput::builder()
             .dense_struct_map({
                 let mut ret = ::std::collections::HashMap::new();
@@ -1742,7 +1978,7 @@ mod json_maps_request_test {
     /// Serializes JSON map values in sparse maps
     /// Test ID: RestJsonSerializesNullMapValues
     #[test]
-    fn test_rest_json_serializes_null_map_values() {
+    fn test_rest_json_serializes_null_map_values_request() {
         let input = JsonMapsInput::builder()
             .sparse_boolean_map({
                 let mut ret = ::std::collections::HashMap::new();
@@ -1779,7 +2015,7 @@ mod json_maps_request_test {
     /// Ensure that 0 and false are sent over the wire in all maps and lists
     /// Test ID: RestJsonSerializesZeroValuesInMaps
     #[test]
-    fn test_rest_json_serializes_zero_values_in_maps() {
+    fn test_rest_json_serializes_zero_values_in_maps_request() {
         let input = JsonMapsInput::builder()
             .dense_number_map({
                 let mut ret = ::std::collections::HashMap::new();
@@ -1812,6 +2048,24 @@ mod json_maps_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Deserializes JSON maps
+    /// Test ID: RestJsonJsonMaps
+    #[test]
+    fn test_rest_json_json_maps_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes null JSON map values
+    /// Test ID: RestJsonDeserializesNullMapValues
+    #[test]
+    fn test_rest_json_deserializes_null_map_values_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Ensure that 0 and false are sent over the wire in all maps and lists
+    /// Test ID: RestJsonDeserializesZeroValuesInMaps
+    #[test]
+    fn test_rest_json_deserializes_zero_values_in_maps_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -1850,7 +2104,7 @@ mod json_timestamps_request_test {
     /// Tests how normal timestamps are serialized
     /// Test ID: RestJsonJsonTimestamps
     #[test]
-    fn test_rest_json_json_timestamps() {
+    fn test_rest_json_json_timestamps_request() {
         let input = JsonTimestampsInput::builder()
             .normal(::smithy_types::Instant::from_epoch_seconds(1398796238))
             .build();
@@ -1868,7 +2122,7 @@ mod json_timestamps_request_test {
     /// Ensures that the timestampFormat of date-time works like normal timestamps
     /// Test ID: RestJsonJsonTimestampsWithDateTimeFormat
     #[test]
-    fn test_rest_json_json_timestamps_with_date_time_format() {
+    fn test_rest_json_json_timestamps_with_date_time_format_request() {
         let input = JsonTimestampsInput::builder()
             .date_time(::smithy_types::Instant::from_epoch_seconds(1398796238))
             .build();
@@ -1886,7 +2140,7 @@ mod json_timestamps_request_test {
     /// Ensures that the timestampFormat of epoch-seconds works
     /// Test ID: RestJsonJsonTimestampsWithEpochSecondsFormat
     #[test]
-    fn test_rest_json_json_timestamps_with_epoch_seconds_format() {
+    fn test_rest_json_json_timestamps_with_epoch_seconds_format_request() {
         let input = JsonTimestampsInput::builder()
             .epoch_seconds(::smithy_types::Instant::from_epoch_seconds(1398796238))
             .build();
@@ -1904,7 +2158,7 @@ mod json_timestamps_request_test {
     /// Ensures that the timestampFormat of http-date works
     /// Test ID: RestJsonJsonTimestampsWithHttpDateFormat
     #[test]
-    fn test_rest_json_json_timestamps_with_http_date_format() {
+    fn test_rest_json_json_timestamps_with_http_date_format_request() {
         let input = JsonTimestampsInput::builder()
             .http_date(::smithy_types::Instant::from_epoch_seconds(1398796238))
             .build();
@@ -1918,6 +2172,30 @@ mod json_timestamps_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Tests how normal timestamps are serialized
+    /// Test ID: RestJsonJsonTimestamps
+    #[test]
+    fn test_rest_json_json_timestamps_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Ensures that the timestampFormat of date-time works like normal timestamps
+    /// Test ID: RestJsonJsonTimestampsWithDateTimeFormat
+    #[test]
+    fn test_rest_json_json_timestamps_with_date_time_format_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Ensures that the timestampFormat of epoch-seconds works
+    /// Test ID: RestJsonJsonTimestampsWithEpochSecondsFormat
+    #[test]
+    fn test_rest_json_json_timestamps_with_epoch_seconds_format_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Ensures that the timestampFormat of http-date works
+    /// Test ID: RestJsonJsonTimestampsWithHttpDateFormat
+    #[test]
+    fn test_rest_json_json_timestamps_with_http_date_format_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -1959,7 +2237,7 @@ mod json_unions_request_test {
     /// Serializes a string union value
     /// Test ID: RestJsonSerializeStringUnionValue
     #[test]
-    fn test_rest_json_serialize_string_union_value() {
+    fn test_rest_json_serialize_string_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::StringValue("foo".to_string()))
             .build();
@@ -1977,7 +2255,7 @@ mod json_unions_request_test {
     /// Serializes a boolean union value
     /// Test ID: RestJsonSerializeBooleanUnionValue
     #[test]
-    fn test_rest_json_serialize_boolean_union_value() {
+    fn test_rest_json_serialize_boolean_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::BooleanValue(true))
             .build();
@@ -1995,7 +2273,7 @@ mod json_unions_request_test {
     /// Serializes a number union value
     /// Test ID: RestJsonSerializeNumberUnionValue
     #[test]
-    fn test_rest_json_serialize_number_union_value() {
+    fn test_rest_json_serialize_number_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::NumberValue(1))
             .build();
@@ -2013,7 +2291,7 @@ mod json_unions_request_test {
     /// Serializes a blob union value
     /// Test ID: RestJsonSerializeBlobUnionValue
     #[test]
-    fn test_rest_json_serialize_blob_union_value() {
+    fn test_rest_json_serialize_blob_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::BlobValue(::smithy_types::Blob::new("foo")))
             .build();
@@ -2031,7 +2309,7 @@ mod json_unions_request_test {
     /// Serializes a timestamp union value
     /// Test ID: RestJsonSerializeTimestampUnionValue
     #[test]
-    fn test_rest_json_serialize_timestamp_union_value() {
+    fn test_rest_json_serialize_timestamp_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::TimestampValue(
                 ::smithy_types::Instant::from_epoch_seconds(1398796238),
@@ -2051,7 +2329,7 @@ mod json_unions_request_test {
     /// Serializes an enum union value
     /// Test ID: RestJsonSerializeEnumUnionValue
     #[test]
-    fn test_rest_json_serialize_enum_union_value() {
+    fn test_rest_json_serialize_enum_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::EnumValue(FooEnum::from("Foo")))
             .build();
@@ -2069,7 +2347,7 @@ mod json_unions_request_test {
     /// Serializes a list union value
     /// Test ID: RestJsonSerializeListUnionValue
     #[test]
-    fn test_rest_json_serialize_list_union_value() {
+    fn test_rest_json_serialize_list_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::ListValue(vec![
                 "foo".to_string(),
@@ -2090,7 +2368,7 @@ mod json_unions_request_test {
     /// Serializes a map union value
     /// Test ID: RestJsonSerializeMapUnionValue
     #[test]
-    fn test_rest_json_serialize_map_union_value() {
+    fn test_rest_json_serialize_map_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::MapValue({
                 let mut ret = ::std::collections::HashMap::new();
@@ -2113,7 +2391,7 @@ mod json_unions_request_test {
     /// Serializes a structure union value
     /// Test ID: RestJsonSerializeStructureUnionValue
     #[test]
-    fn test_rest_json_serialize_structure_union_value() {
+    fn test_rest_json_serialize_structure_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::StructureValue(
                 GreetingStruct::builder().hi("hello".to_string()).build(),
@@ -2129,6 +2407,60 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Deserializes a string union value
+    /// Test ID: RestJsonDeserializeStringUnionValue
+    #[test]
+    fn test_rest_json_deserialize_string_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a boolean union value
+    /// Test ID: RestJsonDeserializeBooleanUnionValue
+    #[test]
+    fn test_rest_json_deserialize_boolean_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a number union value
+    /// Test ID: RestJsonDeserializeNumberUnionValue
+    #[test]
+    fn test_rest_json_deserialize_number_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a blob union value
+    /// Test ID: RestJsonDeserializeBlobUnionValue
+    #[test]
+    fn test_rest_json_deserialize_blob_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a timestamp union value
+    /// Test ID: RestJsonDeserializeTimestampUnionValue
+    #[test]
+    fn test_rest_json_deserialize_timestamp_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes an enum union value
+    /// Test ID: RestJsonDeserializeEnumUnionValue
+    #[test]
+    fn test_rest_json_deserialize_enum_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a list union value
+    /// Test ID: RestJsonDeserializeListUnionValue
+    #[test]
+    fn test_rest_json_deserialize_list_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a map union value
+    /// Test ID: RestJsonDeserializeMapUnionValue
+    #[test]
+    fn test_rest_json_deserialize_map_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a structure union value
+    /// Test ID: RestJsonDeserializeStructureUnionValue
+    #[test]
+    fn test_rest_json_deserialize_structure_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -2177,7 +2509,7 @@ mod media_type_header_request_test {
     /// Headers that target strings with a mediaType are base64 encoded
     /// Test ID: MediaTypeHeaderInputBase64
     #[test]
-    fn test_media_type_header_input_base64() {
+    fn test_media_type_header_input_base64_request() {
         let input = MediaTypeHeaderInput::builder()
             .json("true".to_string())
             .build();
@@ -2191,6 +2523,12 @@ mod media_type_header_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Headers that target strings with a mediaType are base64 encoded
+    /// Test ID: MediaTypeHeaderOutputBase64
+    #[test]
+    fn test_media_type_header_output_base64_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -2229,12 +2567,18 @@ mod no_input_and_no_output_request_test {
     /// No input serializes no payload
     /// Test ID: RestJsonNoInputAndNoOutput
     #[test]
-    fn test_rest_json_no_input_and_no_output() {
+    fn test_rest_json_no_input_and_no_output_request() {
         let input = NoInputAndNoOutputInput::builder().build();
         let http_request = NoInputAndNoOutputInput::assemble(input.request_builder_base(), vec![]);
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/NoInputAndNoOutput");
+    }
+    /// No output serializes no payload
+    /// Test ID: RestJsonNoInputAndNoOutput
+    #[test]
+    fn test_rest_json_no_input_and_no_output_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -2273,12 +2617,18 @@ mod no_input_and_output_request_test {
     /// No input serializes no payload
     /// Test ID: RestJsonNoInputAndOutput
     #[test]
-    fn test_rest_json_no_input_and_output() {
+    fn test_rest_json_no_input_and_output_request() {
         let input = NoInputAndOutputInput::builder().build();
         let http_request = NoInputAndOutputInput::assemble(input.request_builder_base(), vec![]);
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/NoInputAndOutputOutput");
+    }
+    /// Empty output serializes no payload
+    /// Test ID: RestJsonNoInputAndOutput
+    #[test]
+    fn test_rest_json_no_input_and_output_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -2341,7 +2691,7 @@ mod null_and_empty_headers_client_request_test {
     /// Do not send null values, empty strings, or empty lists over the wire in headers
     /// Test ID: RestJsonNullAndEmptyHeaders
     #[test]
-    fn test_rest_json_null_and_empty_headers() {
+    fn test_rest_json_null_and_empty_headers_request() {
         let input = NullAndEmptyHeadersClientInput::builder()
             .b("".to_string())
             .c(vec![])
@@ -2411,6 +2761,17 @@ impl NullAndEmptyHeadersServerInput {
             .expect("http request should be valid")
     }
 }
+#[cfg(test)]
+#[allow(unreachable_code, unused_variables)]
+mod null_and_empty_headers_server_request_test {
+
+    /// Do not send null or empty headers
+    /// Test ID: RestJsonNullAndEmptyHeaders
+    #[test]
+    fn test_rest_json_null_and_empty_headers_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+}
 
 impl OmitsNullSerializesEmptyStringInput {
     fn uri_base(&self, output: &mut String) {
@@ -2458,7 +2819,7 @@ mod omits_null_serializes_empty_string_request_test {
     /// Serializes empty query strings but omits null
     /// Test ID: RestJsonOmitsNullSerializesEmptyString
     #[test]
-    fn test_rest_json_omits_null_serializes_empty_string() {
+    fn test_rest_json_omits_null_serializes_empty_string_request() {
         let input = OmitsNullSerializesEmptyStringInput::builder()
             .empty_string("".to_string())
             .build();
@@ -2520,7 +2881,7 @@ mod query_idempotency_token_auto_fill_request_test {
     /// Test ID: RestJsonQueryIdempotencyTokenAutoFill
     #[test]
     #[should_panic]
-    fn test_rest_json_query_idempotency_token_auto_fill() {
+    fn test_rest_json_query_idempotency_token_auto_fill_request() {
         let input = QueryIdempotencyTokenAutoFillInput::builder().build();
         let http_request =
             QueryIdempotencyTokenAutoFillInput::assemble(input.request_builder_base(), vec![]);
@@ -2537,7 +2898,7 @@ mod query_idempotency_token_auto_fill_request_test {
     /// Uses the given idempotency token as-is
     /// Test ID: RestJsonQueryIdempotencyTokenAutoFillIsSet
     #[test]
-    fn test_rest_json_query_idempotency_token_auto_fill_is_set() {
+    fn test_rest_json_query_idempotency_token_auto_fill_is_set_request() {
         let input = QueryIdempotencyTokenAutoFillInput::builder()
             .token("00000000-0000-4000-8000-000000000000".to_string())
             .build();
@@ -2592,7 +2953,7 @@ mod recursive_shapes_request_test {
     /// Serializes recursive structures
     /// Test ID: RestJsonRecursiveShapes
     #[test]
-    fn test_rest_json_recursive_shapes() {
+    fn test_rest_json_recursive_shapes_request() {
         let input = RecursiveShapesInput::builder()
             .nested(
                 RecursiveShapesInputOutputNested1::builder()
@@ -2625,6 +2986,12 @@ mod recursive_shapes_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Serializes recursive structures
+    /// Test ID: RestJsonRecursiveShapes
+    #[test]
+    fn test_rest_json_recursive_shapes_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -2673,7 +3040,7 @@ mod simple_scalar_properties_request_test {
     /// Serializes simple scalar properties
     /// Test ID: RestJsonSimpleScalarProperties
     #[test]
-    fn test_rest_json_simple_scalar_properties() {
+    fn test_rest_json_simple_scalar_properties_request() {
         let input = SimpleScalarPropertiesInput::builder()
             .foo("Foo".to_string())
             .string_value("string".to_string())
@@ -2701,7 +3068,7 @@ mod simple_scalar_properties_request_test {
     /// Rest Json should not serialize null structure values
     /// Test ID: RestJsonDoesntSerializeNullStructureValues
     #[test]
-    fn test_rest_json_doesnt_serialize_null_structure_values() {
+    fn test_rest_json_doesnt_serialize_null_structure_values_request() {
         let input = SimpleScalarPropertiesInput::builder().build();
         let http_request =
             SimpleScalarPropertiesInput::assemble(input.request_builder_base(), vec![]);
@@ -2714,6 +3081,18 @@ mod simple_scalar_properties_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Serializes simple scalar properties
+    /// Test ID: RestJsonSimpleScalarProperties
+    #[test]
+    fn test_rest_json_simple_scalar_properties_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Rest Json should not deserialize null structure values
+    /// Test ID: RestJsonDoesntDeserializeNullStructureValues
+    #[test]
+    fn test_rest_json_doesnt_deserialize_null_structure_values_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -2762,7 +3141,7 @@ mod streaming_traits_request_test {
     /// Serializes a blob in the HTTP payload
     /// Test ID: RestJsonStreamingTraitsWithBlob
     #[test]
-    fn test_rest_json_streaming_traits_with_blob() {
+    fn test_rest_json_streaming_traits_with_blob_request() {
         let input = StreamingTraitsInput::builder()
             .foo("Foo".to_string())
             .blob(::smithy_types::Blob::new("blobby blob blob"))
@@ -2784,7 +3163,7 @@ mod streaming_traits_request_test {
     /// Serializes an empty blob in the HTTP payload
     /// Test ID: RestJsonStreamingTraitsWithNoBlobBody
     #[test]
-    fn test_rest_json_streaming_traits_with_no_blob_body() {
+    fn test_rest_json_streaming_traits_with_no_blob_body_request() {
         let input = StreamingTraitsInput::builder()
             .foo("Foo".to_string())
             .build();
@@ -2798,6 +3177,18 @@ mod streaming_traits_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Serializes a blob in the HTTP payload
+    /// Test ID: RestJsonStreamingTraitsWithBlob
+    #[test]
+    fn test_rest_json_streaming_traits_with_blob_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Serializes an empty blob in the HTTP payload
+    /// Test ID: RestJsonStreamingTraitsWithNoBlobBody
+    #[test]
+    fn test_rest_json_streaming_traits_with_no_blob_body_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -2846,7 +3237,7 @@ mod streaming_traits_require_length_request_test {
     /// Serializes a blob in the HTTP payload with a required length
     /// Test ID: RestJsonStreamingTraitsRequireLengthWithBlob
     #[test]
-    fn test_rest_json_streaming_traits_require_length_with_blob() {
+    fn test_rest_json_streaming_traits_require_length_with_blob_request() {
         let input = StreamingTraitsRequireLengthInput::builder()
             .foo("Foo".to_string())
             .blob(::smithy_types::Blob::new("blobby blob blob"))
@@ -2874,7 +3265,7 @@ mod streaming_traits_require_length_request_test {
     /// Serializes an empty blob in the HTTP payload
     /// Test ID: RestJsonStreamingTraitsRequireLengthWithNoBlobBody
     #[test]
-    fn test_rest_json_streaming_traits_require_length_with_no_blob_body() {
+    fn test_rest_json_streaming_traits_require_length_with_no_blob_body_request() {
         let input = StreamingTraitsRequireLengthInput::builder()
             .foo("Foo".to_string())
             .build();
@@ -2889,6 +3280,18 @@ mod streaming_traits_require_length_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Serializes a blob in the HTTP payload with a required length
+    /// Test ID: RestJsonStreamingTraitsRequireLengthWithBlob
+    #[test]
+    fn test_rest_json_streaming_traits_require_length_with_blob_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Serializes an empty blob in the HTTP payload
+    /// Test ID: RestJsonStreamingTraitsRequireLengthWithNoBlobBody
+    #[test]
+    fn test_rest_json_streaming_traits_require_length_with_no_blob_body_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -2937,7 +3340,7 @@ mod streaming_traits_with_media_type_request_test {
     /// Serializes a blob in the HTTP payload with a content-type
     /// Test ID: RestJsonStreamingTraitsWithMediaTypeWithBlob
     #[test]
-    fn test_rest_json_streaming_traits_with_media_type_with_blob() {
+    fn test_rest_json_streaming_traits_with_media_type_with_blob_request() {
         let input = StreamingTraitsWithMediaTypeInput::builder()
             .foo("Foo".to_string())
             .blob(::smithy_types::Blob::new("blobby blob blob"))
@@ -2953,6 +3356,12 @@ mod streaming_traits_with_media_type_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Serializes a blob in the HTTP payload with a content-type
+    /// Test ID: RestJsonStreamingTraitsWithMediaTypeWithBlob
+    #[test]
+    fn test_rest_json_streaming_traits_with_media_type_with_blob_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -3058,7 +3467,7 @@ mod timestamp_format_headers_request_test {
     /// Tests how timestamp request headers are serialized
     /// Test ID: RestJsonTimestampFormatHeaders
     #[test]
-    fn test_rest_json_timestamp_format_headers() {
+    fn test_rest_json_timestamp_format_headers_request() {
         let input = TimestampFormatHeadersInput::builder()
             .member_epoch_seconds(::smithy_types::Instant::from_epoch_seconds(1576540098))
             .member_http_date(::smithy_types::Instant::from_epoch_seconds(1576540098))
@@ -3087,6 +3496,12 @@ mod timestamp_format_headers_request_test {
             &http_request,
             expected_headers,
         ));
+    }
+    /// Tests how timestamp response headers are serialized
+    /// Test ID: RestJsonTimestampFormatHeaders
+    #[test]
+    fn test_rest_json_timestamp_format_headers_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 

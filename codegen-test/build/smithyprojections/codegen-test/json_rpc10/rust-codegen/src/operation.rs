@@ -30,7 +30,7 @@ mod empty_input_and_empty_output_request_test {
     /// Empty input serializes no payload
     /// Test ID: AwsJson10EmptyInputAndEmptyOutput
     #[test]
-    fn test_aws_json10_empty_input_and_empty_output() {
+    fn test_aws_json10_empty_input_and_empty_output_request() {
         let input = EmptyInputAndEmptyOutputInput::builder().build();
         let http_request = EmptyInputAndEmptyOutputInput::assemble(
             input.request_builder_base(),
@@ -50,6 +50,18 @@ mod empty_input_and_empty_output_request_test {
         ));
         // No body
         assert!(input.build_body().is_empty());
+    }
+    /// Empty output serializes no payload
+    /// Test ID: AwsJson10EmptyInputAndEmptyOutput
+    #[test]
+    fn test_aws_json10_empty_input_and_empty_output_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Empty output serializes no payload
+    /// Test ID: AwsJson10EmptyInputAndEmptyJsonObjectOutput
+    #[test]
+    fn test_aws_json10_empty_input_and_empty_json_object_output_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -72,6 +84,88 @@ impl GreetingWithErrorsInput {
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
             .expect("http request should be valid")
+    }
+}
+#[cfg(test)]
+#[allow(unreachable_code, unused_variables)]
+mod greeting_with_errors_request_test {
+
+    /// Parses simple JSON errors
+    /// Test ID: AwsJson10InvalidGreetingError
+    #[test]
+    fn test_aws_json10_invalid_greeting_error_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses a complex error with no message member
+    /// Test ID: AwsJson10ComplexError
+    #[test]
+    fn test_aws_json10_complex_error_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Parses a complex error with an empty body
+    /// Test ID: AwsJson10EmptyComplexError
+    #[test]
+    fn test_aws_json10_empty_complex_error_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Serializes the X-Amzn-ErrorType header. For an example service, see Amazon EKS.
+    /// Test ID: AwsJson10FooErrorUsingXAmznErrorType
+    #[test]
+    fn test_aws_json10_foo_error_using_x_amzn_error_type_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some X-Amzn-Errortype headers contain URLs. Clients need to split the URL on ':' and take only the first half of the string. For example, 'ValidationException:http://internal.amazon.com/coral/com.amazon.coral.validate/'
+    /// is to be interpreted as 'ValidationException'.
+    ///
+    /// For an example service see Amazon Polly.
+    /// Test ID: AwsJson10FooErrorUsingXAmznErrorTypeWithUri
+    #[test]
+    fn test_aws_json10_foo_error_using_x_amzn_error_type_with_uri_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// X-Amzn-Errortype might contain a URL and a namespace. Client should extract only the shape name. This is a pathalogical case that might not actually happen in any deployed AWS service.
+    /// Test ID: AwsJson10FooErrorUsingXAmznErrorTypeWithUriAndNamespace
+    #[test]
+    fn test_aws_json10_foo_error_using_x_amzn_error_type_with_uri_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// This example uses the 'code' property in the output rather than X-Amzn-Errortype. Some services do this though it's preferable to send the X-Amzn-Errortype. Client implementations must first check for the X-Amzn-Errortype and then check for a top-level 'code' property.
+    ///
+    /// For example service see Amazon S3 Glacier.
+    /// Test ID: AwsJson10FooErrorUsingCode
+    #[test]
+    fn test_aws_json10_foo_error_using_code_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using code, and it might contain a namespace. Clients should just take the last part of the string after '#'.
+    /// Test ID: AwsJson10FooErrorUsingCodeAndNamespace
+    #[test]
+    fn test_aws_json10_foo_error_using_code_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using code, and it might contain a namespace. It also might contain a URI. Clients should just take the last part of the string after '#' and before ":". This is a pathalogical case that might not occur in any deployed AWS service.
+    /// Test ID: AwsJson10FooErrorUsingCodeUriAndNamespace
+    #[test]
+    fn test_aws_json10_foo_error_using_code_uri_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using __type.
+    /// Test ID: AwsJson10FooErrorWithDunderType
+    #[test]
+    fn test_aws_json10_foo_error_with_dunder_type_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using __type, and it might contain a namespace. Clients should just take the last part of the string after '#'.
+    /// Test ID: AwsJson10FooErrorWithDunderTypeAndNamespace
+    #[test]
+    fn test_aws_json10_foo_error_with_dunder_type_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Some services serialize errors using __type, and it might contain a namespace. It also might contain a URI. Clients should just take the last part of the string after '#' and before ":". This is a pathalogical case that might not occur in any deployed AWS service.
+    /// Test ID: AwsJson10FooErrorWithDunderTypeUriAndNamespace
+    #[test]
+    fn test_aws_json10_foo_error_with_dunder_type_uri_and_namespace_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -112,7 +206,7 @@ mod json_unions_request_test {
     /// Serializes a string union value
     /// Test ID: AwsJson10SerializeStringUnionValue
     #[test]
-    fn test_aws_json10_serialize_string_union_value() {
+    fn test_aws_json10_serialize_string_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::StringValue("foo".to_string()))
             .build();
@@ -143,7 +237,7 @@ mod json_unions_request_test {
     /// Serializes a boolean union value
     /// Test ID: AwsJson10SerializeBooleanUnionValue
     #[test]
-    fn test_aws_json10_serialize_boolean_union_value() {
+    fn test_aws_json10_serialize_boolean_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::BooleanValue(true))
             .build();
@@ -174,7 +268,7 @@ mod json_unions_request_test {
     /// Serializes a number union value
     /// Test ID: AwsJson10SerializeNumberUnionValue
     #[test]
-    fn test_aws_json10_serialize_number_union_value() {
+    fn test_aws_json10_serialize_number_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::NumberValue(1))
             .build();
@@ -205,7 +299,7 @@ mod json_unions_request_test {
     /// Serializes a blob union value
     /// Test ID: AwsJson10SerializeBlobUnionValue
     #[test]
-    fn test_aws_json10_serialize_blob_union_value() {
+    fn test_aws_json10_serialize_blob_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::BlobValue(::smithy_types::Blob::new("foo")))
             .build();
@@ -236,7 +330,7 @@ mod json_unions_request_test {
     /// Serializes a timestamp union value
     /// Test ID: AwsJson10SerializeTimestampUnionValue
     #[test]
-    fn test_aws_json10_serialize_timestamp_union_value() {
+    fn test_aws_json10_serialize_timestamp_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::TimestampValue(
                 ::smithy_types::Instant::from_epoch_seconds(1398796238),
@@ -269,7 +363,7 @@ mod json_unions_request_test {
     /// Serializes an enum union value
     /// Test ID: AwsJson10SerializeEnumUnionValue
     #[test]
-    fn test_aws_json10_serialize_enum_union_value() {
+    fn test_aws_json10_serialize_enum_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::EnumValue(FooEnum::from("Foo")))
             .build();
@@ -300,7 +394,7 @@ mod json_unions_request_test {
     /// Serializes a list union value
     /// Test ID: AwsJson10SerializeListUnionValue
     #[test]
-    fn test_aws_json10_serialize_list_union_value() {
+    fn test_aws_json10_serialize_list_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::ListValue(vec![
                 "foo".to_string(),
@@ -334,7 +428,7 @@ mod json_unions_request_test {
     /// Serializes a map union value
     /// Test ID: AwsJson10SerializeMapUnionValue
     #[test]
-    fn test_aws_json10_serialize_map_union_value() {
+    fn test_aws_json10_serialize_map_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::MapValue({
                 let mut ret = ::std::collections::HashMap::new();
@@ -373,7 +467,7 @@ mod json_unions_request_test {
     /// Serializes a structure union value
     /// Test ID: AwsJson10SerializeStructureUnionValue
     #[test]
-    fn test_aws_json10_serialize_structure_union_value() {
+    fn test_aws_json10_serialize_structure_union_value_request() {
         let input = JsonUnionsInput::builder()
             .contents(MyUnion::StructureValue(
                 GreetingStruct::builder().hi("hello".to_string()).build(),
@@ -404,6 +498,60 @@ mod json_unions_request_test {
         }",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
+    }
+    /// Deserializes a string union value
+    /// Test ID: AwsJson10DeserializeStringUnionValue
+    #[test]
+    fn test_aws_json10_deserialize_string_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a boolean union value
+    /// Test ID: AwsJson10DeserializeBooleanUnionValue
+    #[test]
+    fn test_aws_json10_deserialize_boolean_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a number union value
+    /// Test ID: AwsJson10DeserializeNumberUnionValue
+    #[test]
+    fn test_aws_json10_deserialize_number_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a blob union value
+    /// Test ID: AwsJson10DeserializeBlobUnionValue
+    #[test]
+    fn test_aws_json10_deserialize_blob_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a timestamp union value
+    /// Test ID: AwsJson10DeserializeTimestampUnionValue
+    #[test]
+    fn test_aws_json10_deserialize_timestamp_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes an enum union value
+    /// Test ID: AwsJson10DeserializeEnumUnionValue
+    #[test]
+    fn test_aws_json10_deserialize_enum_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a list union value
+    /// Test ID: AwsJson10DeserializeListUnionValue
+    #[test]
+    fn test_aws_json10_deserialize_list_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a map union value
+    /// Test ID: AwsJson10DeserializeMapUnionValue
+    #[test]
+    fn test_aws_json10_deserialize_map_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
+    }
+    /// Deserializes a structure union value
+    /// Test ID: AwsJson10DeserializeStructureUnionValue
+    #[test]
+    fn test_aws_json10_deserialize_structure_union_value_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -436,7 +584,7 @@ mod no_input_and_no_output_request_test {
     /// No input serializes no payload
     /// Test ID: AwsJson10NoInputAndNoOutput
     #[test]
-    fn test_aws_json10_no_input_and_no_output() {
+    fn test_aws_json10_no_input_and_no_output_request() {
         let input = NoInputAndNoOutputInput::builder().build();
         let http_request =
             NoInputAndNoOutputInput::assemble(input.request_builder_base(), input.build_body());
@@ -454,6 +602,12 @@ mod no_input_and_no_output_request_test {
         ));
         // No body
         assert!(input.build_body().is_empty());
+    }
+    /// No output serializes no payload
+    /// Test ID: AwsJson10NoInputAndNoOutput
+    #[test]
+    fn test_aws_json10_no_input_and_no_output_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
@@ -486,7 +640,7 @@ mod no_input_and_output_request_test {
     /// No input serializes no payload
     /// Test ID: AwsJson10NoInputAndOutput
     #[test]
-    fn test_aws_json10_no_input_and_output() {
+    fn test_aws_json10_no_input_and_output_request() {
         let input = NoInputAndOutputInput::builder().build();
         let http_request =
             NoInputAndOutputInput::assemble(input.request_builder_base(), input.build_body());
@@ -504,6 +658,12 @@ mod no_input_and_output_request_test {
         ));
         // No body
         assert!(input.build_body().is_empty());
+    }
+    /// Empty output serializes no payload
+    /// Test ID: AwsJson10NoInputAndOutput
+    #[test]
+    fn test_aws_json10_no_input_and_output_response() {
+        /* test case disabled for this protocol (not yet supported) */
     }
 }
 
