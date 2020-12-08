@@ -9,6 +9,8 @@ edition = "2018"
 smithy-types = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-types" }
 smithy-http = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-http" }
 http = { version = "0.2" }
+serde_json = { version = "1" }
+serde = { version = "1",features = ["derive"] }
 [dev-dependencies]
 protocol-test-helpers = { path = "/Users/rcoh/code/smithy-rs/rust-runtime/protocol-test-helpers" }
 

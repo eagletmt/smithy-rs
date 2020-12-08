@@ -123,7 +123,8 @@ pub fn document_ser<S>(
 where
     S: ::serde::Serializer,
 {
-    todo!()
+    use ::serde::Serialize;
+    crate::doc_json::SerDoc(_inp).serialize(_serializer)
 }
 
 pub fn document_deser<'de, D>(_deser: D) -> Result<Document, D::Error>

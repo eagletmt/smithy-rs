@@ -1977,15 +1977,16 @@ mod put_and_get_inline_documents_request_test {
     /// Serializes inline documents in a JSON request.
     /// Test ID: PutAndGetInlineDocumentsInput
     #[test]
-    #[should_panic]
     fn test_put_and_get_inline_documents_input_request() {
-        let input =PutAndGetInlineDocumentsInput::builder()
-        .inline_document(
-            todo!() /* (document: `aws.protocoltests.json#Document`) software.amazon.smithy.model.node.ObjectNode@68ff23ca */
-        )
-        .build()
-        .unwrap()
-        ;
+        let input = PutAndGetInlineDocumentsInput::builder()
+            .inline_document({
+                let as_json = ::serde_json::json! { {
+                    "foo": "bar"
+                } };
+                crate::doc_json::json_to_doc(as_json)
+            })
+            .build()
+            .unwrap();
         let http_request = PutAndGetInlineDocumentsInput::assemble(
             input.request_builder_base(),
             input.build_body(),
@@ -2015,10 +2016,8 @@ mod put_and_get_inline_documents_request_test {
     /// Serializes inline documents in a JSON response.
     /// Test ID: PutAndGetInlineDocumentsInput
     #[test]
-    #[should_panic]
     fn test_put_and_get_inline_documents_input_response() {
         /* test case disabled for this protocol (not yet supported) */
-        todo!()
     }
 }
 

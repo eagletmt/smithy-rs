@@ -1207,18 +1207,17 @@ mod inline_document_request_test {
     /// Serializes inline documents as part of the JSON request payload with no escaping.
     /// Test ID: InlineDocumentInput
     #[test]
-    #[should_panic]
     fn test_inline_document_input_request() {
-        let input =InlineDocumentInput::builder()
-        .string_value(
-            "string".to_string()
-        )
-        .document_value(
-            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@68ff23ca */
-        )
-        .build()
-        .unwrap()
-        ;
+        let input = InlineDocumentInput::builder()
+            .string_value("string".to_string())
+            .document_value({
+                let as_json = ::serde_json::json! { {
+                    "foo": "bar"
+                } };
+                crate::doc_json::json_to_doc(as_json)
+            })
+            .build()
+            .unwrap();
         let http_request = InlineDocumentInput::assemble(input.request_builder_base(), vec![]);
 
         assert_eq!(http_request.method(), "PUT");
@@ -1273,15 +1272,16 @@ mod inline_document_as_payload_request_test {
     /// Serializes an inline document as the target of the httpPayload trait.
     /// Test ID: InlineDocumentAsPayloadInput
     #[test]
-    #[should_panic]
     fn test_inline_document_as_payload_input_request() {
-        let input =InlineDocumentAsPayloadInput::builder()
-        .document_value(
-            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@68ff23ca */
-        )
-        .build()
-        .unwrap()
-        ;
+        let input = InlineDocumentAsPayloadInput::builder()
+            .document_value({
+                let as_json = ::serde_json::json! { {
+                    "foo": "bar"
+                } };
+                crate::doc_json::json_to_doc(as_json)
+            })
+            .build()
+            .unwrap();
         let http_request =
             InlineDocumentAsPayloadInput::assemble(input.request_builder_base(), vec![]);
 
