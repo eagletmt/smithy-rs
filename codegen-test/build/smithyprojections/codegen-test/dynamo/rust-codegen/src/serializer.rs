@@ -61,7 +61,6 @@ use crate::model::TransactGetItem;
 use crate::model::TransactWriteItem;
 use crate::model::WriteRequest;
 use smithy_types::Instant;
-use std::collections::HashMap;
 #[non_exhaustive]
 #[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct BatchExecuteStatementInputBody<'a> {
@@ -70,7 +69,7 @@ pub struct BatchExecuteStatementInputBody<'a> {
     /// </p>
     #[serde(rename = "Statements")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub statements: &'a Option<Vec<BatchStatementRequest>>,
+    pub statements: &'a ::std::option::Option<::std::vec::Vec<BatchStatementRequest>>,
 }
 
 /// <p>Represents the input of a <code>BatchGetItem</code> operation.</p>
@@ -157,7 +156,9 @@ pub struct BatchGetItemInputBody<'a> {
     /// </ul>
     #[serde(rename = "RequestItems")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub request_items: &'a Option<HashMap<String, KeysAndAttributes>>,
+    pub request_items: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, KeysAndAttributes>,
+    >,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -176,7 +177,7 @@ pub struct BatchGetItemInputBody<'a> {
     /// </ul>
     #[serde(rename = "ReturnConsumedCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_consumed_capacity: &'a Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: &'a ::std::option::Option<ReturnConsumedCapacity>,
 }
 
 /// <p>Represents the input of a <code>BatchWriteItem</code> operation.</p>
@@ -222,7 +223,9 @@ pub struct BatchWriteItemInputBody<'a> {
     /// </ul>
     #[serde(rename = "RequestItems")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub request_items: &'a Option<HashMap<String, Vec<WriteRequest>>>,
+    pub request_items: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<WriteRequest>>,
+    >,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -241,12 +244,12 @@ pub struct BatchWriteItemInputBody<'a> {
     /// </ul>
     #[serde(rename = "ReturnConsumedCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_consumed_capacity: &'a Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: &'a ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>Determines whether item collection metrics are returned.  If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during
     /// the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
     #[serde(rename = "ReturnItemCollectionMetrics")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_item_collection_metrics: &'a Option<ReturnItemCollectionMetrics>,
+    pub return_item_collection_metrics: &'a ::std::option::Option<ReturnItemCollectionMetrics>,
 }
 
 #[non_exhaustive]
@@ -255,11 +258,11 @@ pub struct CreateBackupInputBody<'a> {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>Specified name for the backup.</p>
     #[serde(rename = "BackupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub backup_name: &'a Option<String>,
+    pub backup_name: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -268,11 +271,11 @@ pub struct CreateGlobalTableInputBody<'a> {
     /// <p>The global table name.</p>
     #[serde(rename = "GlobalTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_table_name: &'a Option<String>,
+    pub global_table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The Regions where the global table needs to be created.</p>
     #[serde(rename = "ReplicationGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replication_group: &'a Option<Vec<Replica>>,
+    pub replication_group: &'a ::std::option::Option<::std::vec::Vec<Replica>>,
 }
 
 /// <p>Represents the input of a <code>CreateTable</code> operation.</p>
@@ -282,11 +285,11 @@ pub struct CreateTableInputBody<'a> {
     /// <p>An array of attributes that describe the key schema for the table and indexes.</p>
     #[serde(rename = "AttributeDefinitions")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attribute_definitions: &'a Option<Vec<AttributeDefinition>>,
+    pub attribute_definitions: &'a ::std::option::Option<::std::vec::Vec<AttributeDefinition>>,
     /// <p>The name of the table to create.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>Specifies the attributes that make up the primary key for a table or an index. The attributes
     /// in <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more
     /// information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in the
@@ -330,7 +333,7 @@ pub struct CreateTableInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "KeySchema")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_schema: &'a Option<Vec<KeySchemaElement>>,
+    pub key_schema: &'a ::std::option::Option<::std::vec::Vec<KeySchemaElement>>,
     /// <p>One or more local secondary indexes (the maximum is 5) to be created on the table. Each index is scoped to a given partition key value. There is a 10 GB size limit per partition key value; otherwise, the size of a local secondary index is unconstrained.</p>
     /// <p>Each local secondary index in the array includes the following:</p>
     /// <ul>
@@ -389,7 +392,7 @@ pub struct CreateTableInputBody<'a> {
     /// </ul>
     #[serde(rename = "LocalSecondaryIndexes")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub local_secondary_indexes: &'a Option<Vec<LocalSecondaryIndex>>,
+    pub local_secondary_indexes: &'a ::std::option::Option<::std::vec::Vec<LocalSecondaryIndex>>,
     /// <p>One or more global secondary indexes (the maximum is 20) to be created on the table. Each global secondary index in the array includes the following:</p>
     /// <ul>
     /// <li>
@@ -447,7 +450,7 @@ pub struct CreateTableInputBody<'a> {
     /// </ul>
     #[serde(rename = "GlobalSecondaryIndexes")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_secondary_indexes: &'a Option<Vec<GlobalSecondaryIndex>>,
+    pub global_secondary_indexes: &'a ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndex>>,
     /// <p>Controls how you are charged for read and write throughput and how you manage capacity. This setting can be changed later.</p>
     /// <ul>
     /// <li>
@@ -462,7 +465,7 @@ pub struct CreateTableInputBody<'a> {
     /// </ul>
     #[serde(rename = "BillingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub billing_mode: &'a Option<BillingMode>,
+    pub billing_mode: &'a ::std::option::Option<BillingMode>,
     /// <p>Represents the provisioned throughput settings for a specified table or index. The
     /// settings can be modified using the <code>UpdateTable</code> operation.</p>
     /// <p> If you set BillingMode as <code>PROVISIONED</code>, you must specify this property. If you
@@ -473,7 +476,7 @@ pub struct CreateTableInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ProvisionedThroughput")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub provisioned_throughput: &'a Option<ProvisionedThroughput>,
+    pub provisioned_throughput: &'a ::std::option::Option<ProvisionedThroughput>,
     /// <p>The settings for DynamoDB Streams on the table. These settings consist of:</p>
     /// <ul>
     /// <li>
@@ -512,15 +515,15 @@ pub struct CreateTableInputBody<'a> {
     /// </ul>
     #[serde(rename = "StreamSpecification")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_specification: &'a Option<StreamSpecification>,
+    pub stream_specification: &'a ::std::option::Option<StreamSpecification>,
     /// <p>Represents the settings used to enable server-side encryption.</p>
     #[serde(rename = "SSESpecification")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sse_specification: &'a Option<SSESpecification>,
+    pub sse_specification: &'a ::std::option::Option<SSESpecification>,
     /// <p>A list of key-value pairs to label the table. For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a>.</p>
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tags: &'a Option<Vec<Tag>>,
+    pub tags: &'a ::std::option::Option<::std::vec::Vec<Tag>>,
 }
 
 #[non_exhaustive]
@@ -529,7 +532,7 @@ pub struct DeleteBackupInputBody<'a> {
     /// <p>The ARN associated with the backup.</p>
     #[serde(rename = "BackupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub backup_arn: &'a Option<String>,
+    pub backup_arn: &'a ::std::option::Option<::std::string::String>,
 }
 
 /// <p>Represents the input of a <code>DeleteItem</code> operation.</p>
@@ -539,23 +542,27 @@ pub struct DeleteItemInputBody<'a> {
     /// <p>The name of the table from which to delete the item.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>A map of attribute names to <code>AttributeValue</code> objects, representing the primary key of
     /// the item to delete.</p>
     /// <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: &'a Option<HashMap<String, AttributeValue>>,
+    pub key: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValue>,
+    >,
     /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "Expected")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expected: &'a Option<HashMap<String, ExpectedAttributeValue>>,
+    pub expected: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ExpectedAttributeValue>,
+    >,
     /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ConditionalOperator")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub conditional_operator: &'a Option<ConditionalOperator>,
+    pub conditional_operator: &'a ::std::option::Option<ConditionalOperator>,
     /// <p>Use <code>ReturnValues</code> if you want to get the item attributes as they appeared before they
     /// were deleted. For <code>DeleteItem</code>, the valid values are:</p>
     /// <ul>
@@ -577,7 +584,7 @@ pub struct DeleteItemInputBody<'a> {
     /// </note>
     #[serde(rename = "ReturnValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_values: &'a Option<ReturnValue>,
+    pub return_values: &'a ::std::option::Option<ReturnValue>,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -596,12 +603,12 @@ pub struct DeleteItemInputBody<'a> {
     /// </ul>
     #[serde(rename = "ReturnConsumedCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_consumed_capacity: &'a Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: &'a ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>Determines whether item collection metrics are returned.  If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during
     /// the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
     #[serde(rename = "ReturnItemCollectionMetrics")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_item_collection_metrics: &'a Option<ReturnItemCollectionMetrics>,
+    pub return_item_collection_metrics: &'a ::std::option::Option<ReturnItemCollectionMetrics>,
     /// <p>A condition that must be satisfied in order for a conditional <code>DeleteItem</code> to
     /// succeed.</p>
     /// <p>An expression can contain any of the following:</p>
@@ -626,7 +633,7 @@ pub struct DeleteItemInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ConditionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub condition_expression: &'a Option<String>,
+    pub condition_expression: &'a ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
     /// <li>
@@ -670,7 +677,9 @@ pub struct DeleteItemInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ExpressionAttributeNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression_attribute_names: &'a Option<HashMap<String, String>>,
+    pub expression_attribute_names: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
     /// <p>One or more values that can be substituted in an expression.</p>
     /// <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the <i>ProductStatus</i> attribute was one of the following: </p>
     /// <p>
@@ -688,7 +697,9 @@ pub struct DeleteItemInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ExpressionAttributeValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression_attribute_values: &'a Option<HashMap<String, AttributeValue>>,
+    pub expression_attribute_values: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValue>,
+    >,
 }
 
 /// <p>Represents the input of a <code>DeleteTable</code> operation.</p>
@@ -698,7 +709,7 @@ pub struct DeleteTableInputBody<'a> {
     /// <p>The name of the table to delete.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -707,7 +718,7 @@ pub struct DescribeBackupInputBody<'a> {
     /// <p>The Amazon Resource Name (ARN) associated with the backup.</p>
     #[serde(rename = "BackupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub backup_arn: &'a Option<String>,
+    pub backup_arn: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -716,7 +727,7 @@ pub struct DescribeContinuousBackupsInputBody<'a> {
     /// <p>Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -725,11 +736,11 @@ pub struct DescribeContributorInsightsInputBody<'a> {
     /// <p>The name of the table to describe.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The name of the global secondary index to describe, if applicable.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub index_name: &'a Option<String>,
+    pub index_name: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -738,7 +749,7 @@ pub struct DescribeExportInputBody<'a> {
     /// <p>The Amazon Resource Name (ARN) associated with the export.</p>
     #[serde(rename = "ExportArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub export_arn: &'a Option<String>,
+    pub export_arn: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -747,7 +758,7 @@ pub struct DescribeGlobalTableInputBody<'a> {
     /// <p>The name of the global table.</p>
     #[serde(rename = "GlobalTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_table_name: &'a Option<String>,
+    pub global_table_name: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -756,7 +767,7 @@ pub struct DescribeGlobalTableSettingsInputBody<'a> {
     /// <p>The name of the global table to describe.</p>
     #[serde(rename = "GlobalTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_table_name: &'a Option<String>,
+    pub global_table_name: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -765,7 +776,7 @@ pub struct DescribeKinesisStreamingDestinationInputBody<'a> {
     /// <p>The name of the table being described.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
 }
 
 /// <p>Represents the input of a <code>DescribeTable</code> operation.</p>
@@ -775,7 +786,7 @@ pub struct DescribeTableInputBody<'a> {
     /// <p>The name of the table to describe.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -784,7 +795,7 @@ pub struct DescribeTableReplicaAutoScalingInputBody<'a> {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -793,7 +804,7 @@ pub struct DescribeTimeToLiveInputBody<'a> {
     /// <p>The name of the table to be described.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -802,11 +813,11 @@ pub struct DisableKinesisStreamingDestinationInputBody<'a> {
     /// <p>The name of the DynamoDB table.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The ARN for a Kinesis data stream.</p>
     #[serde(rename = "StreamArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_arn: &'a Option<String>,
+    pub stream_arn: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -815,11 +826,11 @@ pub struct EnableKinesisStreamingDestinationInputBody<'a> {
     /// <p>The name of the DynamoDB table.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The ARN for a Kinesis data stream.</p>
     #[serde(rename = "StreamArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_arn: &'a Option<String>,
+    pub stream_arn: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -830,25 +841,25 @@ pub struct ExecuteStatementInputBody<'a> {
     /// </p>
     #[serde(rename = "Statement")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub statement: &'a Option<String>,
+    pub statement: &'a ::std::option::Option<::std::string::String>,
     /// <p>
     /// The parameters for the PartiQL statement, if any.
     /// </p>
     #[serde(rename = "Parameters")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub parameters: &'a Option<Vec<AttributeValue>>,
+    pub parameters: &'a ::std::option::Option<::std::vec::Vec<AttributeValue>>,
     /// <p>
     /// The consistency of a read operation. If set to <code>true</code>, then a strongly consistent read is used; otherwise, an eventually consistent read is used.
     /// </p>
     #[serde(rename = "ConsistentRead")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub consistent_read: &'a Option<bool>,
+    pub consistent_read: &'a ::std::option::Option<bool>,
     /// <p>
     /// Set this value to get remaining results, if <code>NextToken</code> was returned in the statement response.
     /// </p>
     #[serde(rename = "NextToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub next_token: &'a Option<String>,
+    pub next_token: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -859,13 +870,13 @@ pub struct ExecuteTransactionInputBody<'a> {
     /// </p>
     #[serde(rename = "TransactStatements")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub transact_statements: &'a Option<Vec<ParameterizedStatement>>,
+    pub transact_statements: &'a ::std::option::Option<::std::vec::Vec<ParameterizedStatement>>,
     /// <p>
     /// Set this value to get remaining results, if <code>NextToken</code> was returned in the statement response.
     /// </p>
     #[serde(rename = "ClientRequestToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_request_token: &'a Option<String>,
+    pub client_request_token: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -874,13 +885,13 @@ pub struct ExportTableToPointInTimeInputBody<'a> {
     /// <p>The Amazon Resource Name (ARN) associated with the table to export.</p>
     #[serde(rename = "TableArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_arn: &'a Option<String>,
+    pub table_arn: &'a ::std::option::Option<::std::string::String>,
     /// <p>Time in the past from which to export table data. The table export will be a snapshot
     /// of the table's state at this point in time.</p>
     #[serde(rename = "ExportTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    #[serde(serialize_with = "crate::serde_util::optioninstant_epoch_seconds_ser")]
-    pub export_time: &'a Option<Instant>,
+    #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
+    pub export_time: &'a ::std::option::Option<Instant>,
     /// <p>Providing a <code>ClientToken</code> makes the call to
     /// <code>ExportTableToPointInTimeInput</code> idempotent, meaning that multiple
     /// identical calls have the same effect as one single call.</p>
@@ -893,20 +904,20 @@ pub struct ExportTableToPointInTimeInputBody<'a> {
     /// <code>IdempotentParameterMismatch</code> exception.</p>
     #[serde(rename = "ClientToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_token: &'a Option<String>,
+    pub client_token: &'a ::std::option::Option<::std::string::String>,
     /// <p>The name of the Amazon S3 bucket to export the snapshot to.</p>
     #[serde(rename = "S3Bucket")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_bucket: &'a Option<String>,
+    pub s3_bucket: &'a ::std::option::Option<::std::string::String>,
     /// <p>The ID of the AWS account that owns the bucket the export will be stored in.</p>
     #[serde(rename = "S3BucketOwner")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_bucket_owner: &'a Option<String>,
+    pub s3_bucket_owner: &'a ::std::option::Option<::std::string::String>,
     /// <p>The Amazon S3 bucket prefix to use as the file name and path of the exported
     /// snapshot.</p>
     #[serde(rename = "S3Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_prefix: &'a Option<String>,
+    pub s3_prefix: &'a ::std::option::Option<::std::string::String>,
     /// <p>Type of encryption used on the bucket where export data will be stored. Valid values
     /// for <code>S3SseAlgorithm</code> are:</p>
     /// <ul>
@@ -921,17 +932,17 @@ pub struct ExportTableToPointInTimeInputBody<'a> {
     /// </ul>
     #[serde(rename = "S3SseAlgorithm")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_sse_algorithm: &'a Option<S3SseAlgorithm>,
+    pub s3_sse_algorithm: &'a ::std::option::Option<S3SseAlgorithm>,
     /// <p>The ID of the AWS KMS managed key used to encrypt the S3 bucket where export data will
     /// be stored (if applicable).</p>
     #[serde(rename = "S3SseKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub s3_sse_kms_key_id: &'a Option<String>,
+    pub s3_sse_kms_key_id: &'a ::std::option::Option<::std::string::String>,
     /// <p>The format for the exported data. Valid values for <code>ExportFormat</code> are
     /// <code>DYNAMODB_JSON</code> or <code>ION</code>.</p>
     #[serde(rename = "ExportFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub export_format: &'a Option<ExportFormat>,
+    pub export_format: &'a ::std::option::Option<ExportFormat>,
 }
 
 /// <p>Represents the input of a <code>GetItem</code> operation.</p>
@@ -941,22 +952,24 @@ pub struct GetItemInputBody<'a> {
     /// <p>The name of the table containing the requested item.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>A map of attribute names to <code>AttributeValue</code> objects, representing the primary key of
     /// the item to retrieve.</p>
     /// <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: &'a Option<HashMap<String, AttributeValue>>,
+    pub key: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValue>,
+    >,
     /// <p>This is a legacy parameter.  Use <code>ProjectionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "AttributesToGet")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attributes_to_get: &'a Option<Vec<String>>,
+    pub attributes_to_get: &'a ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>Determines the read consistency model:  If set to <code>true</code>, then the operation uses strongly consistent reads; otherwise, the operation uses eventually consistent reads.</p>
     #[serde(rename = "ConsistentRead")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub consistent_read: &'a Option<bool>,
+    pub consistent_read: &'a ::std::option::Option<bool>,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -975,7 +988,7 @@ pub struct GetItemInputBody<'a> {
     /// </ul>
     #[serde(rename = "ReturnConsumedCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_consumed_capacity: &'a Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: &'a ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>A string that identifies one or more attributes to retrieve from the table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas.</p>
     /// <p>If no attribute names are specified, then all attributes are returned. If any of the
     /// requested attributes are not found, they do not appear in the result.</p>
@@ -983,7 +996,7 @@ pub struct GetItemInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ProjectionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub projection_expression: &'a Option<String>,
+    pub projection_expression: &'a ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
     /// <li>
@@ -1027,7 +1040,9 @@ pub struct GetItemInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ExpressionAttributeNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression_attribute_names: &'a Option<HashMap<String, String>>,
+    pub expression_attribute_names: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
 }
 
 #[non_exhaustive]
@@ -1036,21 +1051,21 @@ pub struct ListBackupsInputBody<'a> {
     /// <p>The backups from the table specified by <code>TableName</code> are listed. </p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>Maximum number of backups to return at once.</p>
     #[serde(rename = "Limit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: &'a Option<i32>,
+    pub limit: &'a ::std::option::Option<i32>,
     /// <p>Only backups created after this time are listed. <code>TimeRangeLowerBound</code> is inclusive.</p>
     #[serde(rename = "TimeRangeLowerBound")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    #[serde(serialize_with = "crate::serde_util::optioninstant_epoch_seconds_ser")]
-    pub time_range_lower_bound: &'a Option<Instant>,
+    #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
+    pub time_range_lower_bound: &'a ::std::option::Option<Instant>,
     /// <p>Only backups created before this time are listed. <code>TimeRangeUpperBound</code> is exclusive. </p>
     #[serde(rename = "TimeRangeUpperBound")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    #[serde(serialize_with = "crate::serde_util::optioninstant_epoch_seconds_ser")]
-    pub time_range_upper_bound: &'a Option<Instant>,
+    #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
+    pub time_range_upper_bound: &'a ::std::option::Option<Instant>,
     /// <p>
     /// <code>LastEvaluatedBackupArn</code> is the Amazon Resource Name (ARN) of the backup last
     /// evaluated when the current page of results was returned, inclusive of the current page
@@ -1058,7 +1073,7 @@ pub struct ListBackupsInputBody<'a> {
     /// new <code>ListBackups</code> operation in order to fetch the next page of results. </p>
     #[serde(rename = "ExclusiveStartBackupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exclusive_start_backup_arn: &'a Option<String>,
+    pub exclusive_start_backup_arn: &'a ::std::option::Option<::std::string::String>,
     /// <p>The backups from the table specified by <code>BackupType</code> are listed.</p>
     /// <p>Where <code>BackupType</code> can be:</p>
     /// <ul>
@@ -1078,7 +1093,7 @@ pub struct ListBackupsInputBody<'a> {
     /// </ul>
     #[serde(rename = "BackupType")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub backup_type: &'a Option<BackupTypeFilter>,
+    pub backup_type: &'a ::std::option::Option<BackupTypeFilter>,
 }
 
 #[non_exhaustive]
@@ -1087,11 +1102,11 @@ pub struct ListContributorInsightsInputBody<'a> {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>A token to for the desired page, if there is one.</p>
     #[serde(rename = "NextToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub next_token: &'a Option<String>,
+    pub next_token: &'a ::std::option::Option<::std::string::String>,
     /// <p>Maximum number of results to return per page.</p>
     #[serde(rename = "MaxResults")]
     pub max_results: &'a i32,
@@ -1103,17 +1118,17 @@ pub struct ListExportsInputBody<'a> {
     /// <p>The Amazon Resource Name (ARN) associated with the exported table.</p>
     #[serde(rename = "TableArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_arn: &'a Option<String>,
+    pub table_arn: &'a ::std::option::Option<::std::string::String>,
     /// <p>Maximum number of results to return per page.</p>
     #[serde(rename = "MaxResults")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_results: &'a Option<i32>,
+    pub max_results: &'a ::std::option::Option<i32>,
     /// <p>An optional string that, if supplied, must be copied from the output of a previous
     /// call to <code>ListExports</code>. When provided in this manner, the API fetches the next
     /// page of results.</p>
     #[serde(rename = "NextToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub next_token: &'a Option<String>,
+    pub next_token: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -1122,17 +1137,17 @@ pub struct ListGlobalTablesInputBody<'a> {
     /// <p>The first global table name that this operation will evaluate.</p>
     #[serde(rename = "ExclusiveStartGlobalTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exclusive_start_global_table_name: &'a Option<String>,
+    pub exclusive_start_global_table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The maximum number of table names to return, if the parameter is not specified DynamoDB defaults to 100.</p>
     /// <p>If the number of global tables DynamoDB finds reaches this limit, it stops the operation and returns the table names collected up to that point,
     /// with a table name in the <code>LastEvaluatedGlobalTableName</code> to apply in a subsequent operation to the <code>ExclusiveStartGlobalTableName</code> parameter.</p>
     #[serde(rename = "Limit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: &'a Option<i32>,
+    pub limit: &'a ::std::option::Option<i32>,
     /// <p>Lists the global tables in a specific Region.</p>
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub region_name: &'a Option<String>,
+    pub region_name: &'a ::std::option::Option<::std::string::String>,
 }
 
 /// <p>Represents the input of a <code>ListTables</code> operation.</p>
@@ -1144,11 +1159,11 @@ pub struct ListTablesInputBody<'a> {
     /// of results.</p>
     #[serde(rename = "ExclusiveStartTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exclusive_start_table_name: &'a Option<String>,
+    pub exclusive_start_table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>A maximum number of table names to return. If this parameter is not specified, the limit is 100.</p>
     #[serde(rename = "Limit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: &'a Option<i32>,
+    pub limit: &'a ::std::option::Option<i32>,
 }
 
 #[non_exhaustive]
@@ -1157,12 +1172,12 @@ pub struct ListTagsOfResourceInputBody<'a> {
     /// <p>The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).</p>
     #[serde(rename = "ResourceArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_arn: &'a Option<String>,
+    pub resource_arn: &'a ::std::option::Option<::std::string::String>,
     /// <p>An optional string that, if supplied, must be copied from the output of a previous
     /// call to ListTagOfResource. When provided in this manner, this API fetches the next page of results.</p>
     #[serde(rename = "NextToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub next_token: &'a Option<String>,
+    pub next_token: &'a ::std::option::Option<::std::string::String>,
 }
 
 /// <p>Represents the input of a <code>PutItem</code> operation.</p>
@@ -1172,7 +1187,7 @@ pub struct PutItemInputBody<'a> {
     /// <p>The name of the table to contain the item.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>A map of attribute name/value pairs, one for each attribute. Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.</p>
     /// <p>You must provide all of the attributes for the primary key. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide both values for both the partition key and the sort key.</p>
     /// <p>If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table's attribute definition.</p>
@@ -1182,12 +1197,16 @@ pub struct PutItemInputBody<'a> {
     /// <p>Each element in the <code>Item</code> map is an <code>AttributeValue</code> object.</p>
     #[serde(rename = "Item")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub item: &'a Option<HashMap<String, AttributeValue>>,
+    pub item: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValue>,
+    >,
     /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "Expected")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expected: &'a Option<HashMap<String, ExpectedAttributeValue>>,
+    pub expected: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ExpectedAttributeValue>,
+    >,
     /// <p>Use <code>ReturnValues</code> if you want to get the item attributes as they appeared before they
     /// were updated with the <code>PutItem</code> request. For <code>PutItem</code>, the valid values are:</p>
     /// <ul>
@@ -1210,7 +1229,7 @@ pub struct PutItemInputBody<'a> {
     /// </note>
     #[serde(rename = "ReturnValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_values: &'a Option<ReturnValue>,
+    pub return_values: &'a ::std::option::Option<ReturnValue>,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -1229,17 +1248,17 @@ pub struct PutItemInputBody<'a> {
     /// </ul>
     #[serde(rename = "ReturnConsumedCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_consumed_capacity: &'a Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: &'a ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>Determines whether item collection metrics are returned.  If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during
     /// the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
     #[serde(rename = "ReturnItemCollectionMetrics")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_item_collection_metrics: &'a Option<ReturnItemCollectionMetrics>,
+    pub return_item_collection_metrics: &'a ::std::option::Option<ReturnItemCollectionMetrics>,
     /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ConditionalOperator")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub conditional_operator: &'a Option<ConditionalOperator>,
+    pub conditional_operator: &'a ::std::option::Option<ConditionalOperator>,
     /// <p>A condition that must be satisfied in order for a conditional <code>PutItem</code> operation to
     /// succeed.</p>
     /// <p>An expression can contain any of the following:</p>
@@ -1264,7 +1283,7 @@ pub struct PutItemInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ConditionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub condition_expression: &'a Option<String>,
+    pub condition_expression: &'a ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
     /// <li>
@@ -1308,7 +1327,9 @@ pub struct PutItemInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ExpressionAttributeNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression_attribute_names: &'a Option<HashMap<String, String>>,
+    pub expression_attribute_names: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
     /// <p>One or more values that can be substituted in an expression.</p>
     /// <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the <i>ProductStatus</i> attribute was one of the following: </p>
     /// <p>
@@ -1326,7 +1347,9 @@ pub struct PutItemInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ExpressionAttributeValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression_attribute_values: &'a Option<HashMap<String, AttributeValue>>,
+    pub expression_attribute_values: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValue>,
+    >,
 }
 
 /// <p>Represents the input of a <code>Query</code> operation.</p>
@@ -1336,13 +1359,13 @@ pub struct QueryInputBody<'a> {
     /// <p>The name of the table containing the requested items.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The name of an index to query. This index can be any local secondary index or global secondary index on the table. Note that
     /// if you use the <code>IndexName</code> parameter, you must also provide <code>TableName.</code>
     /// </p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub index_name: &'a Option<String>,
+    pub index_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The attributes to be returned in the
     /// result. You can retrieve all item attributes, specific item attributes, the count of
     /// matching items, or in the case of an index, some or all of the attributes projected into
@@ -1401,12 +1424,12 @@ pub struct QueryInputBody<'a> {
     /// </note>
     #[serde(rename = "Select")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub select: &'a Option<Select>,
+    pub select: &'a ::std::option::Option<Select>,
     /// <p>This is a legacy parameter.  Use <code>ProjectionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "AttributesToGet")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attributes_to_get: &'a Option<Vec<String>>,
+    pub attributes_to_get: &'a ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>The maximum number of items to evaluate (not necessarily the number of matching items).
     /// If DynamoDB processes the number of items up to the limit while processing the results,
     /// it stops the operation and returns the matching values up to that point, and a key in
@@ -1418,41 +1441,45 @@ pub struct QueryInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "Limit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: &'a Option<i32>,
+    pub limit: &'a ::std::option::Option<i32>,
     /// <p>Determines the read consistency model:  If set to <code>true</code>, then the operation uses strongly consistent reads; otherwise, the operation uses eventually consistent reads.</p>
     /// <p>Strongly consistent reads
     /// are not supported on global secondary indexes. If you query a global secondary index with <code>ConsistentRead</code> set to
     /// <code>true</code>, you will receive a <code>ValidationException</code>.</p>
     #[serde(rename = "ConsistentRead")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub consistent_read: &'a Option<bool>,
+    pub consistent_read: &'a ::std::option::Option<bool>,
     /// <p>This is a legacy parameter.  Use <code>KeyConditionExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.KeyConditions.html">KeyConditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "KeyConditions")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_conditions: &'a Option<HashMap<String, Condition>>,
+    pub key_conditions:
+        &'a ::std::option::Option<::std::collections::HashMap<::std::string::String, Condition>>,
     /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.QueryFilter.html">QueryFilter</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "QueryFilter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub query_filter: &'a Option<HashMap<String, Condition>>,
+    pub query_filter:
+        &'a ::std::option::Option<::std::collections::HashMap<::std::string::String, Condition>>,
     /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ConditionalOperator")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub conditional_operator: &'a Option<ConditionalOperator>,
+    pub conditional_operator: &'a ::std::option::Option<ConditionalOperator>,
     /// <p>Specifies the order for index traversal: If <code>true</code> (default), the traversal is performed in ascending order; if <code>false</code>, the traversal is performed in descending order. </p>
     /// <p>Items with the same partition key value are stored in sorted order by sort key. If the sort key data type is Number, the results are stored in numeric order. For type String, the results are stored in order of UTF-8 bytes. For type Binary, DynamoDB treats each byte of the binary data as unsigned.</p>
     /// <p>If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which they are stored (by sort key value). This is the default behavior. If <code>ScanIndexForward</code> is <code>false</code>, DynamoDB reads the results in reverse order by sort key value, and then returns the results to the client.</p>
     #[serde(rename = "ScanIndexForward")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scan_index_forward: &'a Option<bool>,
+    pub scan_index_forward: &'a ::std::option::Option<bool>,
     /// <p>The primary key of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedKey</code> in the previous operation.</p>
     /// <p>The data type for <code>ExclusiveStartKey</code> must be String, Number, or Binary. No
     /// set data types are allowed.</p>
     #[serde(rename = "ExclusiveStartKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exclusive_start_key: &'a Option<HashMap<String, AttributeValue>>,
+    pub exclusive_start_key: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValue>,
+    >,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -1471,14 +1498,14 @@ pub struct QueryInputBody<'a> {
     /// </ul>
     #[serde(rename = "ReturnConsumedCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_consumed_capacity: &'a Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: &'a ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>A string that identifies one or more attributes to retrieve from the table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas.</p>
     /// <p>If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are not found, they will not appear in the result.</p>
     /// <p>For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ProjectionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub projection_expression: &'a Option<String>,
+    pub projection_expression: &'a ::std::option::Option<::std::string::String>,
     /// <p>A string that contains conditions that DynamoDB applies after the <code>Query</code> operation, but
     /// before the data is returned to you. Items that do not satisfy the <code>FilterExpression</code>
     /// criteria are not returned.</p>
@@ -1491,7 +1518,7 @@ pub struct QueryInputBody<'a> {
     /// Expressions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "FilterExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub filter_expression: &'a Option<String>,
+    pub filter_expression: &'a ::std::option::Option<::std::string::String>,
     /// <p>The condition that specifies the key values for items to be retrieved by the
     /// <code>Query</code> action.</p>
     /// <p>The condition must perform an equality test on a single partition key value.</p>
@@ -1598,7 +1625,7 @@ pub struct QueryInputBody<'a> {
     /// Names and Values</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "KeyConditionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key_condition_expression: &'a Option<String>,
+    pub key_condition_expression: &'a ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
     /// <li>
@@ -1643,7 +1670,9 @@ pub struct QueryInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ExpressionAttributeNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression_attribute_names: &'a Option<HashMap<String, String>>,
+    pub expression_attribute_names: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
     /// <p>One or more values that can be substituted in an expression.</p>
     /// <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the
     /// <i>ProductStatus</i> attribute was one of the following: </p>
@@ -1661,7 +1690,9 @@ pub struct QueryInputBody<'a> {
     /// <p>For more information on expression attribute values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Specifying Conditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ExpressionAttributeValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression_attribute_values: &'a Option<HashMap<String, AttributeValue>>,
+    pub expression_attribute_values: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValue>,
+    >,
 }
 
 #[non_exhaustive]
@@ -1670,35 +1701,37 @@ pub struct RestoreTableFromBackupInputBody<'a> {
     /// <p>The name of the new table to which the backup must be restored.</p>
     #[serde(rename = "TargetTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_table_name: &'a Option<String>,
+    pub target_table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The Amazon Resource Name (ARN) associated with the backup.</p>
     #[serde(rename = "BackupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub backup_arn: &'a Option<String>,
+    pub backup_arn: &'a ::std::option::Option<::std::string::String>,
     /// <p>The billing mode of the restored table.</p>
     #[serde(rename = "BillingModeOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub billing_mode_override: &'a Option<BillingMode>,
+    pub billing_mode_override: &'a ::std::option::Option<BillingMode>,
     /// <p>List of global secondary indexes for the restored table. The indexes
     /// provided should match existing secondary indexes. You can choose to exclude
     /// some or all of the indexes at the time of restore.</p>
     #[serde(rename = "GlobalSecondaryIndexOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_secondary_index_override: &'a Option<Vec<GlobalSecondaryIndex>>,
+    pub global_secondary_index_override:
+        &'a ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndex>>,
     /// <p>List of local secondary indexes for the restored table. The indexes
     /// provided should match existing secondary indexes. You can choose to exclude
     /// some or all of the indexes at the time of restore.</p>
     #[serde(rename = "LocalSecondaryIndexOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub local_secondary_index_override: &'a Option<Vec<LocalSecondaryIndex>>,
+    pub local_secondary_index_override:
+        &'a ::std::option::Option<::std::vec::Vec<LocalSecondaryIndex>>,
     /// <p>Provisioned throughput settings for the restored table.</p>
     #[serde(rename = "ProvisionedThroughputOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub provisioned_throughput_override: &'a Option<ProvisionedThroughput>,
+    pub provisioned_throughput_override: &'a ::std::option::Option<ProvisionedThroughput>,
     /// <p>The new server-side encryption settings for the restored table.</p>
     #[serde(rename = "SSESpecificationOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sse_specification_override: &'a Option<SSESpecification>,
+    pub sse_specification_override: &'a ::std::option::Option<SSESpecification>,
 }
 
 #[non_exhaustive]
@@ -1708,49 +1741,51 @@ pub struct RestoreTableToPointInTimeInputBody<'a> {
     /// Resource Name (ARN).</p>
     #[serde(rename = "SourceTableArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_table_arn: &'a Option<String>,
+    pub source_table_arn: &'a ::std::option::Option<::std::string::String>,
     /// <p>Name of the source table that is being restored.</p>
     #[serde(rename = "SourceTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_table_name: &'a Option<String>,
+    pub source_table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The name of the new table to which it must be restored to.</p>
     #[serde(rename = "TargetTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub target_table_name: &'a Option<String>,
+    pub target_table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>Restore the table to the latest possible time. <code>LatestRestorableDateTime</code>
     /// is typically 5 minutes before the current time. </p>
     #[serde(rename = "UseLatestRestorableTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub use_latest_restorable_time: &'a Option<bool>,
+    pub use_latest_restorable_time: &'a ::std::option::Option<bool>,
     /// <p>Time in the past to restore the table to.</p>
     #[serde(rename = "RestoreDateTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    #[serde(serialize_with = "crate::serde_util::optioninstant_epoch_seconds_ser")]
-    pub restore_date_time: &'a Option<Instant>,
+    #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
+    pub restore_date_time: &'a ::std::option::Option<Instant>,
     /// <p>The billing mode of the restored table.</p>
     #[serde(rename = "BillingModeOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub billing_mode_override: &'a Option<BillingMode>,
+    pub billing_mode_override: &'a ::std::option::Option<BillingMode>,
     /// <p>List of global secondary indexes for the restored table. The indexes
     /// provided should match existing secondary indexes. You can choose to exclude
     /// some or all of the indexes at the time of restore.</p>
     #[serde(rename = "GlobalSecondaryIndexOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_secondary_index_override: &'a Option<Vec<GlobalSecondaryIndex>>,
+    pub global_secondary_index_override:
+        &'a ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndex>>,
     /// <p>List of local secondary indexes for the restored table. The indexes
     /// provided should match existing secondary indexes. You can choose to exclude
     /// some or all of the indexes at the time of restore.</p>
     #[serde(rename = "LocalSecondaryIndexOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub local_secondary_index_override: &'a Option<Vec<LocalSecondaryIndex>>,
+    pub local_secondary_index_override:
+        &'a ::std::option::Option<::std::vec::Vec<LocalSecondaryIndex>>,
     /// <p>Provisioned throughput settings for the restored table.</p>
     #[serde(rename = "ProvisionedThroughputOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub provisioned_throughput_override: &'a Option<ProvisionedThroughput>,
+    pub provisioned_throughput_override: &'a ::std::option::Option<ProvisionedThroughput>,
     /// <p>The new server-side encryption settings for the restored table.</p>
     #[serde(rename = "SSESpecificationOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sse_specification_override: &'a Option<SSESpecification>,
+    pub sse_specification_override: &'a ::std::option::Option<SSESpecification>,
 }
 
 /// <p>Represents the input of a <code>Scan</code> operation.</p>
@@ -1761,16 +1796,16 @@ pub struct ScanInputBody<'a> {
     /// <code>IndexName</code>, the name of the table to which that index belongs.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The name of a secondary index to scan. This index can be any local secondary index or global secondary index.  Note that if you use the <code>IndexName</code> parameter, you must also provide <code>TableName</code>.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub index_name: &'a Option<String>,
+    pub index_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>This is a legacy parameter.  Use <code>ProjectionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "AttributesToGet")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attributes_to_get: &'a Option<Vec<String>>,
+    pub attributes_to_get: &'a ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>The maximum number of items to evaluate (not necessarily the number of matching items).
     /// If DynamoDB processes the number of items up to the limit while processing the results,
     /// it stops the operation and returns the matching values up to that point, and a key in
@@ -1782,7 +1817,7 @@ pub struct ScanInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "Limit")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: &'a Option<i32>,
+    pub limit: &'a ::std::option::Option<i32>,
     /// <p>The attributes to be returned in the
     /// result. You can retrieve all item attributes, specific item attributes, the count of
     /// matching items, or in the case of an index, some or all of the attributes projected into
@@ -1841,17 +1876,18 @@ pub struct ScanInputBody<'a> {
     /// </note>
     #[serde(rename = "Select")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub select: &'a Option<Select>,
+    pub select: &'a ::std::option::Option<Select>,
     /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ScanFilter.html">ScanFilter</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ScanFilter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub scan_filter: &'a Option<HashMap<String, Condition>>,
+    pub scan_filter:
+        &'a ::std::option::Option<::std::collections::HashMap<::std::string::String, Condition>>,
     /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ConditionalOperator")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub conditional_operator: &'a Option<ConditionalOperator>,
+    pub conditional_operator: &'a ::std::option::Option<ConditionalOperator>,
     /// <p>The primary key of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedKey</code> in the previous operation.</p>
     /// <p>The data type for <code>ExclusiveStartKey</code> must be String, Number or Binary. No set data types are allowed.</p>
     /// <p>In a parallel scan, a
@@ -1859,7 +1895,9 @@ pub struct ScanInputBody<'a> {
     /// whose previous <code>Scan</code> returned the corresponding value of <code>LastEvaluatedKey</code>.</p>
     #[serde(rename = "ExclusiveStartKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub exclusive_start_key: &'a Option<HashMap<String, AttributeValue>>,
+    pub exclusive_start_key: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValue>,
+    >,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -1878,7 +1916,7 @@ pub struct ScanInputBody<'a> {
     /// </ul>
     #[serde(rename = "ReturnConsumedCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_consumed_capacity: &'a Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: &'a ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>For a parallel <code>Scan</code> request, <code>TotalSegments</code> represents the total number of
     /// segments into which the <code>Scan</code> operation will be divided. The value of
     /// <code>TotalSegments</code> corresponds to the number of application workers that will perform the
@@ -1890,7 +1928,7 @@ pub struct ScanInputBody<'a> {
     /// <p>If you specify <code>TotalSegments</code>, you must also specify <code>Segment</code>.</p>
     #[serde(rename = "TotalSegments")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub total_segments: &'a Option<i32>,
+    pub total_segments: &'a ::std::option::Option<i32>,
     /// <p>For a parallel <code>Scan</code> request, <code>Segment</code> identifies an individual segment to be
     /// scanned by an application worker.</p>
     /// <p>Segment IDs are zero-based, so the first segment is always 0. For example, if you want to
@@ -1904,14 +1942,14 @@ pub struct ScanInputBody<'a> {
     /// <p>If you provide <code>Segment</code>, you must also provide <code>TotalSegments</code>.</p>
     #[serde(rename = "Segment")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub segment: &'a Option<i32>,
+    pub segment: &'a ::std::option::Option<i32>,
     /// <p>A string that identifies one or more attributes to retrieve from the specified table or index. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas.</p>
     /// <p>If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are not found, they will not appear in the result.</p>
     /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
     #[serde(rename = "ProjectionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub projection_expression: &'a Option<String>,
+    pub projection_expression: &'a ::std::option::Option<::std::string::String>,
     /// <p>A string that contains conditions that DynamoDB applies after the <code>Scan</code> operation, but
     /// before the data is returned to you. Items that do not satisfy the <code>FilterExpression</code>
     /// criteria are not returned.</p>
@@ -1923,7 +1961,7 @@ pub struct ScanInputBody<'a> {
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults">Filter Expressions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "FilterExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub filter_expression: &'a Option<String>,
+    pub filter_expression: &'a ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
     /// <li>
@@ -1967,7 +2005,9 @@ pub struct ScanInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ExpressionAttributeNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression_attribute_names: &'a Option<HashMap<String, String>>,
+    pub expression_attribute_names: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
     /// <p>One or more values that can be substituted in an expression.</p>
     /// <p>Use the <b>:</b> (colon) character in an expression to
     /// dereference an attribute value. For example, suppose that you wanted to check whether
@@ -1987,7 +2027,9 @@ pub struct ScanInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ExpressionAttributeValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression_attribute_values: &'a Option<HashMap<String, AttributeValue>>,
+    pub expression_attribute_values: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValue>,
+    >,
     /// <p>A Boolean value that determines the read consistency model during the scan:</p>
     /// <ul>
     /// <li>
@@ -2004,7 +2046,7 @@ pub struct ScanInputBody<'a> {
     /// <p>The <code>ConsistentRead</code> parameter is not supported on global secondary indexes. If you scan a global secondary index with <code>ConsistentRead</code> set to true, you will receive a <code>ValidationException</code>.</p>
     #[serde(rename = "ConsistentRead")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub consistent_read: &'a Option<bool>,
+    pub consistent_read: &'a ::std::option::Option<bool>,
 }
 
 #[non_exhaustive]
@@ -2013,11 +2055,11 @@ pub struct TagResourceInputBody<'a> {
     /// <p>Identifies the Amazon DynamoDB resource to which tags should be added. This value is an Amazon Resource Name (ARN).</p>
     #[serde(rename = "ResourceArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_arn: &'a Option<String>,
+    pub resource_arn: &'a ::std::option::Option<::std::string::String>,
     /// <p>The tags to be assigned to the Amazon DynamoDB resource.</p>
     #[serde(rename = "Tags")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tags: &'a Option<Vec<Tag>>,
+    pub tags: &'a ::std::option::Option<::std::vec::Vec<Tag>>,
 }
 
 #[non_exhaustive]
@@ -2027,13 +2069,13 @@ pub struct TransactGetItemsInputBody<'a> {
     /// each of which contains a <code>Get</code> structure.</p>
     #[serde(rename = "TransactItems")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub transact_items: &'a Option<Vec<TransactGetItem>>,
+    pub transact_items: &'a ::std::option::Option<::std::vec::Vec<TransactGetItem>>,
     /// <p>A value of <code>TOTAL</code> causes consumed capacity information
     /// to be returned, and a value of <code>NONE</code> prevents that information
     /// from being returned. No other value is valid.</p>
     #[serde(rename = "ReturnConsumedCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_consumed_capacity: &'a Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: &'a ::std::option::Option<ReturnConsumedCapacity>,
 }
 
 #[non_exhaustive]
@@ -2046,7 +2088,7 @@ pub struct TransactWriteItemsInputBody<'a> {
     /// the same item. </p>
     #[serde(rename = "TransactItems")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub transact_items: &'a Option<Vec<TransactWriteItem>>,
+    pub transact_items: &'a ::std::option::Option<::std::vec::Vec<TransactWriteItem>>,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -2065,7 +2107,7 @@ pub struct TransactWriteItemsInputBody<'a> {
     /// </ul>
     #[serde(rename = "ReturnConsumedCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_consumed_capacity: &'a Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: &'a ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>Determines whether item collection metrics are returned. If set to
     /// <code>SIZE</code>, the response includes statistics about item collections (if any), that
     /// were modified during the operation and are returned in the response.
@@ -2073,7 +2115,7 @@ pub struct TransactWriteItemsInputBody<'a> {
     /// </p>
     #[serde(rename = "ReturnItemCollectionMetrics")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_item_collection_metrics: &'a Option<ReturnItemCollectionMetrics>,
+    pub return_item_collection_metrics: &'a ::std::option::Option<ReturnItemCollectionMetrics>,
     /// <p>Providing a <code>ClientRequestToken</code> makes the call to <code>TransactWriteItems</code>
     /// idempotent, meaning that multiple identical calls have the same effect as one single call.</p>
     /// <p>Although multiple identical calls using the same client request token produce the same
@@ -2092,7 +2134,7 @@ pub struct TransactWriteItemsInputBody<'a> {
     /// <code>IdempotentParameterMismatch</code> exception.</p>
     #[serde(rename = "ClientRequestToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub client_request_token: &'a Option<String>,
+    pub client_request_token: &'a ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -2102,12 +2144,12 @@ pub struct UntagResourceInputBody<'a> {
     /// Resource Name (ARN).</p>
     #[serde(rename = "ResourceArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub resource_arn: &'a Option<String>,
+    pub resource_arn: &'a ::std::option::Option<::std::string::String>,
     /// <p>A list of tag keys. Existing tags of the resource whose keys are members of this list
     /// will be removed from the DynamoDB resource.</p>
     #[serde(rename = "TagKeys")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub tag_keys: &'a Option<Vec<String>>,
+    pub tag_keys: &'a ::std::option::Option<::std::vec::Vec<::std::string::String>>,
 }
 
 #[non_exhaustive]
@@ -2116,11 +2158,12 @@ pub struct UpdateContinuousBackupsInputBody<'a> {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>Represents the settings used to enable point in time recovery.</p>
     #[serde(rename = "PointInTimeRecoverySpecification")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub point_in_time_recovery_specification: &'a Option<PointInTimeRecoverySpecification>,
+    pub point_in_time_recovery_specification:
+        &'a ::std::option::Option<PointInTimeRecoverySpecification>,
 }
 
 #[non_exhaustive]
@@ -2129,15 +2172,15 @@ pub struct UpdateContributorInsightsInputBody<'a> {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The global secondary index name, if applicable.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub index_name: &'a Option<String>,
+    pub index_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>Represents the contributor insights action.</p>
     #[serde(rename = "ContributorInsightsAction")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub contributor_insights_action: &'a Option<ContributorInsightsAction>,
+    pub contributor_insights_action: &'a ::std::option::Option<ContributorInsightsAction>,
 }
 
 #[non_exhaustive]
@@ -2146,11 +2189,11 @@ pub struct UpdateGlobalTableInputBody<'a> {
     /// <p>The global table name.</p>
     #[serde(rename = "GlobalTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_table_name: &'a Option<String>,
+    pub global_table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>A list of Regions that should be added or removed from the global table.</p>
     #[serde(rename = "ReplicaUpdates")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replica_updates: &'a Option<Vec<ReplicaUpdate>>,
+    pub replica_updates: &'a ::std::option::Option<::std::vec::Vec<ReplicaUpdate>>,
 }
 
 #[non_exhaustive]
@@ -2159,7 +2202,7 @@ pub struct UpdateGlobalTableSettingsInputBody<'a> {
     /// <p>The name of the global table</p>
     #[serde(rename = "GlobalTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_table_name: &'a Option<String>,
+    pub global_table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The billing mode of the global table. If <code>GlobalTableBillingMode</code> is not specified, the global table defaults to <code>PROVISIONED</code> capacity billing mode.</p>
     /// <ul>
     /// <li>
@@ -2174,27 +2217,27 @@ pub struct UpdateGlobalTableSettingsInputBody<'a> {
     /// </ul>
     #[serde(rename = "GlobalTableBillingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_table_billing_mode: &'a Option<BillingMode>,
+    pub global_table_billing_mode: &'a ::std::option::Option<BillingMode>,
     /// <p>The maximum number of writes consumed per second before DynamoDB returns a <code>ThrottlingException.</code>
     /// </p>
     #[serde(rename = "GlobalTableProvisionedWriteCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_table_provisioned_write_capacity_units: &'a Option<i64>,
+    pub global_table_provisioned_write_capacity_units: &'a ::std::option::Option<i64>,
     /// <p>Auto scaling settings for managing provisioned write capacity for the global
     /// table.</p>
     #[serde(rename = "GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub global_table_provisioned_write_capacity_auto_scaling_settings_update:
-        &'a Option<AutoScalingSettingsUpdate>,
+        &'a ::std::option::Option<AutoScalingSettingsUpdate>,
     /// <p>Represents the settings of a global secondary index for a global table that will be modified.</p>
     #[serde(rename = "GlobalTableGlobalSecondaryIndexSettingsUpdate")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub global_table_global_secondary_index_settings_update:
-        &'a Option<Vec<GlobalTableGlobalSecondaryIndexSettingsUpdate>>,
+        &'a ::std::option::Option<::std::vec::Vec<GlobalTableGlobalSecondaryIndexSettingsUpdate>>,
     /// <p>Represents the settings for a global table in a Region that will be modified.</p>
     #[serde(rename = "ReplicaSettingsUpdate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replica_settings_update: &'a Option<Vec<ReplicaSettingsUpdate>>,
+    pub replica_settings_update: &'a ::std::option::Option<::std::vec::Vec<ReplicaSettingsUpdate>>,
 }
 
 /// <p>Represents the input of an <code>UpdateItem</code> operation.</p>
@@ -2204,27 +2247,33 @@ pub struct UpdateItemInputBody<'a> {
     /// <p>The name of the table containing the item to update.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>The primary key of the item to be updated. Each element consists of an attribute name and a value for that attribute.</p>
     /// <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub key: &'a Option<HashMap<String, AttributeValue>>,
+    pub key: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValue>,
+    >,
     /// <p>This is a legacy parameter.  Use <code>UpdateExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html">AttributeUpdates</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "AttributeUpdates")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attribute_updates: &'a Option<HashMap<String, AttributeValueUpdate>>,
+    pub attribute_updates: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValueUpdate>,
+    >,
     /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "Expected")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expected: &'a Option<HashMap<String, ExpectedAttributeValue>>,
+    pub expected: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ExpectedAttributeValue>,
+    >,
     /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ConditionalOperator")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub conditional_operator: &'a Option<ConditionalOperator>,
+    pub conditional_operator: &'a ::std::option::Option<ConditionalOperator>,
     /// <p>Use <code>ReturnValues</code> if you want to get the item attributes as they appear
     /// before or after they are updated. For <code>UpdateItem</code>, the valid values
     /// are:</p>
@@ -2258,7 +2307,7 @@ pub struct UpdateItemInputBody<'a> {
     /// <p>The values returned are strongly consistent.</p>
     #[serde(rename = "ReturnValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_values: &'a Option<ReturnValue>,
+    pub return_values: &'a ::std::option::Option<ReturnValue>,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -2277,12 +2326,12 @@ pub struct UpdateItemInputBody<'a> {
     /// </ul>
     #[serde(rename = "ReturnConsumedCapacity")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_consumed_capacity: &'a Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: &'a ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>Determines whether item collection metrics are returned.  If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during
     /// the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
     #[serde(rename = "ReturnItemCollectionMetrics")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub return_item_collection_metrics: &'a Option<ReturnItemCollectionMetrics>,
+    pub return_item_collection_metrics: &'a ::std::option::Option<ReturnItemCollectionMetrics>,
     /// <p>An expression that defines one or more attributes to be updated, the action to be
     /// performed on them, and new values for them.</p>
     /// <p>The following action values are available for <code>UpdateExpression</code>.</p>
@@ -2373,7 +2422,7 @@ pub struct UpdateItemInputBody<'a> {
     /// <p>For more information on update expressions, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html">Modifying Items and Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "UpdateExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub update_expression: &'a Option<String>,
+    pub update_expression: &'a ::std::option::Option<::std::string::String>,
     /// <p>A condition that must be satisfied in order for a conditional update to succeed.</p>
     /// <p>An expression can contain any of the following:</p>
     /// <ul>
@@ -2397,7 +2446,7 @@ pub struct UpdateItemInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ConditionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub condition_expression: &'a Option<String>,
+    pub condition_expression: &'a ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
     /// <li>
@@ -2444,7 +2493,9 @@ pub struct UpdateItemInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ExpressionAttributeNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression_attribute_names: &'a Option<HashMap<String, String>>,
+    pub expression_attribute_names: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
     /// <p>One or more values that can be substituted in an expression.</p>
     /// <p>Use the <b>:</b> (colon) character in an expression to
     /// dereference an attribute value. For example, suppose that you wanted to check whether
@@ -2464,7 +2515,9 @@ pub struct UpdateItemInputBody<'a> {
     /// Guide</i>.</p>
     #[serde(rename = "ExpressionAttributeValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub expression_attribute_values: &'a Option<HashMap<String, AttributeValue>>,
+    pub expression_attribute_values: &'a ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValue>,
+    >,
 }
 
 /// <p>Represents the input of an <code>UpdateTable</code> operation.</p>
@@ -2474,11 +2527,11 @@ pub struct UpdateTableInputBody<'a> {
     /// <p>An array of attributes that describe the key schema for the table and indexes. If you are adding a new global secondary index to the table, <code>AttributeDefinitions</code> must include the key element(s) of the new index.</p>
     #[serde(rename = "AttributeDefinitions")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub attribute_definitions: &'a Option<Vec<AttributeDefinition>>,
+    pub attribute_definitions: &'a ::std::option::Option<::std::vec::Vec<AttributeDefinition>>,
     /// <p>The name of the table to be updated.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>Controls how you are charged for read and write throughput and how you manage capacity.
     /// When switching from pay-per-request to provisioned capacity, initial provisioned capacity values must be set. The initial
     /// provisioned capacity values are estimated based on the consumed read and write capacity of your table and global secondary indexes
@@ -2496,11 +2549,11 @@ pub struct UpdateTableInputBody<'a> {
     /// </ul>
     #[serde(rename = "BillingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub billing_mode: &'a Option<BillingMode>,
+    pub billing_mode: &'a ::std::option::Option<BillingMode>,
     /// <p>The new provisioned throughput settings for the specified table or index.</p>
     #[serde(rename = "ProvisionedThroughput")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub provisioned_throughput: &'a Option<ProvisionedThroughput>,
+    pub provisioned_throughput: &'a ::std::option::Option<ProvisionedThroughput>,
     /// <p>An array of one or more global secondary indexes for the table. For each index in the array, you can request one action:</p>
     /// <ul>
     /// <li>
@@ -2521,7 +2574,8 @@ pub struct UpdateTableInputBody<'a> {
     /// Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
     #[serde(rename = "GlobalSecondaryIndexUpdates")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_secondary_index_updates: &'a Option<Vec<GlobalSecondaryIndexUpdate>>,
+    pub global_secondary_index_updates:
+        &'a ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndexUpdate>>,
     /// <p>Represents the DynamoDB Streams configuration for the table.</p>
     /// <note>
     /// <p>You receive a <code>ResourceInUseException</code> if you try to enable a stream on a
@@ -2530,18 +2584,18 @@ pub struct UpdateTableInputBody<'a> {
     /// </note>
     #[serde(rename = "StreamSpecification")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stream_specification: &'a Option<StreamSpecification>,
+    pub stream_specification: &'a ::std::option::Option<StreamSpecification>,
     /// <p>The new server-side encryption settings for the specified table.</p>
     #[serde(rename = "SSESpecification")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub sse_specification: &'a Option<SSESpecification>,
+    pub sse_specification: &'a ::std::option::Option<SSESpecification>,
     /// <p>A list of replica update actions (create, delete, or update) for the table.</p>
     /// <note>
     /// <p>This property only applies to <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version 2019.11.21</a> of global tables.</p>
     /// </note>
     #[serde(rename = "ReplicaUpdates")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replica_updates: &'a Option<Vec<ReplicationGroupUpdate>>,
+    pub replica_updates: &'a ::std::option::Option<::std::vec::Vec<ReplicationGroupUpdate>>,
 }
 
 #[non_exhaustive]
@@ -2551,21 +2605,23 @@ pub struct UpdateTableReplicaAutoScalingInputBody<'a> {
     /// to be updated.</p>
     #[serde(rename = "GlobalSecondaryIndexUpdates")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub global_secondary_index_updates: &'a Option<Vec<GlobalSecondaryIndexAutoScalingUpdate>>,
+    pub global_secondary_index_updates:
+        &'a ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndexAutoScalingUpdate>>,
     /// <p>The name of the global table to be updated.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>Represents the auto scaling settings to be modified for a global table or global
     /// secondary index.</p>
     #[serde(rename = "ProvisionedWriteCapacityAutoScalingUpdate")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub provisioned_write_capacity_auto_scaling_update: &'a Option<AutoScalingSettingsUpdate>,
+    pub provisioned_write_capacity_auto_scaling_update:
+        &'a ::std::option::Option<AutoScalingSettingsUpdate>,
     /// <p>Represents the auto scaling settings of replicas of the table that will be
     /// modified.</p>
     #[serde(rename = "ReplicaUpdates")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub replica_updates: &'a Option<Vec<ReplicaAutoScalingUpdate>>,
+    pub replica_updates: &'a ::std::option::Option<::std::vec::Vec<ReplicaAutoScalingUpdate>>,
 }
 
 /// <p>Represents the input of an <code>UpdateTimeToLive</code> operation.</p>
@@ -2575,11 +2631,11 @@ pub struct UpdateTimeToLiveInputBody<'a> {
     /// <p>The name of the table to be configured.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub table_name: &'a Option<String>,
+    pub table_name: &'a ::std::option::Option<::std::string::String>,
     /// <p>Represents the settings used to enable or disable Time to Live for the specified table.</p>
     #[serde(rename = "TimeToLiveSpecification")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub time_to_live_specification: &'a Option<TimeToLiveSpecification>,
+    pub time_to_live_specification: &'a ::std::option::Option<TimeToLiveSpecification>,
 }
 
 #[non_exhaustive]
@@ -2589,7 +2645,7 @@ pub struct BatchExecuteStatementOutputBody {
     /// The response to each PartiQL statement in the batch.
     /// </p>
     #[serde(rename = "Responses")]
-    pub responses: Option<Vec<BatchStatementResponse>>,
+    pub responses: ::std::option::Option<::std::vec::Vec<BatchStatementResponse>>,
 }
 
 /// <p>Represents the output of a <code>BatchGetItem</code> operation.</p>
@@ -2599,7 +2655,12 @@ pub struct BatchGetItemOutputBody {
     /// <p>A map of table name to a list of items. Each object in <code>Responses</code> consists of a table
     /// name, along with a map of attribute data consisting of the data type and attribute value.</p>
     #[serde(rename = "Responses")]
-    pub responses: Option<HashMap<String, Vec<HashMap<String, AttributeValue>>>>,
+    pub responses: ::std::option::Option<
+        ::std::collections::HashMap<
+            ::std::string::String,
+            ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+        >,
+    >,
     /// <p>A map of tables and their respective keys that were not processed with the current response.
     /// The <code>UnprocessedKeys</code> value is in the same form as <code>RequestItems</code>, so the value can
     /// be provided directly to a subsequent <code>BatchGetItem</code> operation. For more information, see
@@ -2627,7 +2688,9 @@ pub struct BatchGetItemOutputBody {
     /// <p>If there are no unprocessed keys remaining, the response contains an empty
     /// <code>UnprocessedKeys</code> map.</p>
     #[serde(rename = "UnprocessedKeys")]
-    pub unprocessed_keys: Option<HashMap<String, KeysAndAttributes>>,
+    pub unprocessed_keys: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, KeysAndAttributes>,
+    >,
     /// <p>The read capacity units consumed by the entire <code>BatchGetItem</code> operation.</p>
     /// <p>Each element consists of:</p>
     /// <ul>
@@ -2641,7 +2704,7 @@ pub struct BatchGetItemOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "ConsumedCapacity")]
-    pub consumed_capacity: Option<Vec<ConsumedCapacity>>,
+    pub consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
 }
 
 /// <p>Represents the output of a <code>BatchWriteItem</code> operation.</p>
@@ -2687,7 +2750,9 @@ pub struct BatchWriteItemOutputBody {
     /// <p>If there are no unprocessed items remaining, the response contains an empty
     /// <code>UnprocessedItems</code> map.</p>
     #[serde(rename = "UnprocessedItems")]
-    pub unprocessed_items: Option<HashMap<String, Vec<WriteRequest>>>,
+    pub unprocessed_items: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<WriteRequest>>,
+    >,
     /// <p>A list of tables that were processed by <code>BatchWriteItem</code> and, for each table,
     /// information about any item collections that were affected by individual <code>DeleteItem</code> or
     /// <code>PutItem</code> operations.</p>
@@ -2709,7 +2774,9 @@ pub struct BatchWriteItemOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "ItemCollectionMetrics")]
-    pub item_collection_metrics: Option<HashMap<String, Vec<ItemCollectionMetrics>>>,
+    pub item_collection_metrics: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<ItemCollectionMetrics>>,
+    >,
     /// <p>The capacity units consumed by the entire <code>BatchWriteItem</code> operation.</p>
     /// <p>Each element consists of:</p>
     /// <ul>
@@ -2723,7 +2790,7 @@ pub struct BatchWriteItemOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "ConsumedCapacity")]
-    pub consumed_capacity: Option<Vec<ConsumedCapacity>>,
+    pub consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
 }
 
 #[non_exhaustive]
@@ -2731,7 +2798,7 @@ pub struct BatchWriteItemOutputBody {
 pub struct CreateBackupOutputBody {
     /// <p>Contains the details of the backup created for the table.</p>
     #[serde(rename = "BackupDetails")]
-    pub backup_details: Option<BackupDetails>,
+    pub backup_details: ::std::option::Option<BackupDetails>,
 }
 
 #[non_exhaustive]
@@ -2739,7 +2806,7 @@ pub struct CreateBackupOutputBody {
 pub struct CreateGlobalTableOutputBody {
     /// <p>Contains the details of the global table.</p>
     #[serde(rename = "GlobalTableDescription")]
-    pub global_table_description: Option<GlobalTableDescription>,
+    pub global_table_description: ::std::option::Option<GlobalTableDescription>,
 }
 
 /// <p>Represents the output of a <code>CreateTable</code> operation.</p>
@@ -2748,7 +2815,7 @@ pub struct CreateGlobalTableOutputBody {
 pub struct CreateTableOutputBody {
     /// <p>Represents the properties of the table.</p>
     #[serde(rename = "TableDescription")]
-    pub table_description: Option<TableDescription>,
+    pub table_description: ::std::option::Option<TableDescription>,
 }
 
 #[non_exhaustive]
@@ -2756,7 +2823,7 @@ pub struct CreateTableOutputBody {
 pub struct DeleteBackupOutputBody {
     /// <p>Contains the description of the backup created for the table.</p>
     #[serde(rename = "BackupDescription")]
-    pub backup_description: Option<BackupDescription>,
+    pub backup_description: ::std::option::Option<BackupDescription>,
 }
 
 /// <p>Represents the output of a <code>DeleteItem</code> operation.</p>
@@ -2767,7 +2834,8 @@ pub struct DeleteItemOutputBody {
     /// appeared before the <code>DeleteItem</code> operation. This map appears in the response only if
     /// <code>ReturnValues</code> was specified as <code>ALL_OLD</code> in the request.</p>
     #[serde(rename = "Attributes")]
-    pub attributes: Option<HashMap<String, AttributeValue>>,
+    pub attributes:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>DeleteItem</code> operation. The data
     /// returned includes the total provisioned throughput consumed, along with statistics for
     /// the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is
@@ -2775,7 +2843,7 @@ pub struct DeleteItemOutputBody {
     /// more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Mode</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
     #[serde(rename = "ConsumedCapacity")]
-    pub consumed_capacity: Option<ConsumedCapacity>,
+    pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
     /// <p>Information about item collections, if any, that were affected by the
     /// <code>DeleteItem</code> operation.
     /// <code>ItemCollectionMetrics</code> is only returned if the
@@ -2803,7 +2871,7 @@ pub struct DeleteItemOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "ItemCollectionMetrics")]
-    pub item_collection_metrics: Option<ItemCollectionMetrics>,
+    pub item_collection_metrics: ::std::option::Option<ItemCollectionMetrics>,
 }
 
 /// <p>Represents the output of a <code>DeleteTable</code> operation.</p>
@@ -2812,7 +2880,7 @@ pub struct DeleteItemOutputBody {
 pub struct DeleteTableOutputBody {
     /// <p>Represents the properties of a table.</p>
     #[serde(rename = "TableDescription")]
-    pub table_description: Option<TableDescription>,
+    pub table_description: ::std::option::Option<TableDescription>,
 }
 
 #[non_exhaustive]
@@ -2820,7 +2888,7 @@ pub struct DeleteTableOutputBody {
 pub struct DescribeBackupOutputBody {
     /// <p>Contains the description of the backup created for the table.</p>
     #[serde(rename = "BackupDescription")]
-    pub backup_description: Option<BackupDescription>,
+    pub backup_description: ::std::option::Option<BackupDescription>,
 }
 
 #[non_exhaustive]
@@ -2828,7 +2896,7 @@ pub struct DescribeBackupOutputBody {
 pub struct DescribeContinuousBackupsOutputBody {
     /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
     #[serde(rename = "ContinuousBackupsDescription")]
-    pub continuous_backups_description: Option<ContinuousBackupsDescription>,
+    pub continuous_backups_description: ::std::option::Option<ContinuousBackupsDescription>,
 }
 
 #[non_exhaustive]
@@ -2836,20 +2904,21 @@ pub struct DescribeContinuousBackupsOutputBody {
 pub struct DescribeContributorInsightsOutputBody {
     /// <p>The name of the table being described.</p>
     #[serde(rename = "TableName")]
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The name of the global secondary index being described.</p>
     #[serde(rename = "IndexName")]
-    pub index_name: Option<String>,
+    pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>List of names of the associated Alpine rules.</p>
     #[serde(rename = "ContributorInsightsRuleList")]
-    pub contributor_insights_rule_list: Option<Vec<String>>,
+    pub contributor_insights_rule_list:
+        ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>Current Status contributor insights.</p>
     #[serde(rename = "ContributorInsightsStatus")]
-    pub contributor_insights_status: Option<ContributorInsightsStatus>,
+    pub contributor_insights_status: ::std::option::Option<ContributorInsightsStatus>,
     /// <p>Timestamp of the last time the status was changed.</p>
     #[serde(rename = "LastUpdateDateTime")]
-    #[serde(deserialize_with = "crate::serde_util::optioninstant_epoch_seconds_deser")]
-    pub last_update_date_time: Option<Instant>,
+    #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    pub last_update_date_time: ::std::option::Option<Instant>,
     /// <p>Returns information about the last failure that encountered.</p>
     /// <p>The most common exceptions for a FAILED status are:</p>
     /// <ul>
@@ -2868,7 +2937,7 @@ pub struct DescribeContributorInsightsOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "FailureException")]
-    pub failure_exception: Option<FailureException>,
+    pub failure_exception: ::std::option::Option<FailureException>,
 }
 
 #[non_exhaustive]
@@ -2876,7 +2945,7 @@ pub struct DescribeContributorInsightsOutputBody {
 pub struct DescribeEndpointsOutputBody {
     /// <p>List of endpoints.</p>
     #[serde(rename = "Endpoints")]
-    pub endpoints: Option<Vec<Endpoint>>,
+    pub endpoints: ::std::option::Option<::std::vec::Vec<Endpoint>>,
 }
 
 #[non_exhaustive]
@@ -2884,7 +2953,7 @@ pub struct DescribeEndpointsOutputBody {
 pub struct DescribeExportOutputBody {
     /// <p>Represents the properties of the export.</p>
     #[serde(rename = "ExportDescription")]
-    pub export_description: Option<ExportDescription>,
+    pub export_description: ::std::option::Option<ExportDescription>,
 }
 
 #[non_exhaustive]
@@ -2892,7 +2961,7 @@ pub struct DescribeExportOutputBody {
 pub struct DescribeGlobalTableOutputBody {
     /// <p>Contains the details of the global table.</p>
     #[serde(rename = "GlobalTableDescription")]
-    pub global_table_description: Option<GlobalTableDescription>,
+    pub global_table_description: ::std::option::Option<GlobalTableDescription>,
 }
 
 #[non_exhaustive]
@@ -2900,10 +2969,10 @@ pub struct DescribeGlobalTableOutputBody {
 pub struct DescribeGlobalTableSettingsOutputBody {
     /// <p>The name of the global table.</p>
     #[serde(rename = "GlobalTableName")]
-    pub global_table_name: Option<String>,
+    pub global_table_name: ::std::option::Option<::std::string::String>,
     /// <p>The Region-specific settings for the global table.</p>
     #[serde(rename = "ReplicaSettings")]
-    pub replica_settings: Option<Vec<ReplicaSettingsDescription>>,
+    pub replica_settings: ::std::option::Option<::std::vec::Vec<ReplicaSettingsDescription>>,
 }
 
 #[non_exhaustive]
@@ -2911,10 +2980,11 @@ pub struct DescribeGlobalTableSettingsOutputBody {
 pub struct DescribeKinesisStreamingDestinationOutputBody {
     /// <p>The name of the table being described.</p>
     #[serde(rename = "TableName")]
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The list of replica structures for the table being described.</p>
     #[serde(rename = "KinesisDataStreamDestinations")]
-    pub kinesis_data_stream_destinations: Option<Vec<KinesisDataStreamDestination>>,
+    pub kinesis_data_stream_destinations:
+        ::std::option::Option<::std::vec::Vec<KinesisDataStreamDestination>>,
 }
 
 /// <p>Represents the output of a <code>DescribeLimits</code> operation.</p>
@@ -2924,21 +2994,21 @@ pub struct DescribeLimitsOutputBody {
     /// <p>The maximum total read capacity units that your account allows you to provision across
     /// all of your tables in this Region.</p>
     #[serde(rename = "AccountMaxReadCapacityUnits")]
-    pub account_max_read_capacity_units: Option<i64>,
+    pub account_max_read_capacity_units: ::std::option::Option<i64>,
     /// <p>The maximum total write capacity units that your account allows you to provision across
     /// all of your tables in this Region.</p>
     #[serde(rename = "AccountMaxWriteCapacityUnits")]
-    pub account_max_write_capacity_units: Option<i64>,
+    pub account_max_write_capacity_units: ::std::option::Option<i64>,
     /// <p>The maximum read capacity units that your account allows you to provision for a new
     /// table that you are creating in this Region, including the read capacity units
     /// provisioned for its global secondary indexes (GSIs).</p>
     #[serde(rename = "TableMaxReadCapacityUnits")]
-    pub table_max_read_capacity_units: Option<i64>,
+    pub table_max_read_capacity_units: ::std::option::Option<i64>,
     /// <p>The maximum write capacity units that your account allows you to provision for a new
     /// table that you are creating in this Region, including the write capacity units
     /// provisioned for its global secondary indexes (GSIs).</p>
     #[serde(rename = "TableMaxWriteCapacityUnits")]
-    pub table_max_write_capacity_units: Option<i64>,
+    pub table_max_write_capacity_units: ::std::option::Option<i64>,
 }
 
 /// <p>Represents the output of a <code>DescribeTable</code> operation.</p>
@@ -2947,7 +3017,7 @@ pub struct DescribeLimitsOutputBody {
 pub struct DescribeTableOutputBody {
     /// <p>The properties of the table.</p>
     #[serde(rename = "Table")]
-    pub table: Option<TableDescription>,
+    pub table: ::std::option::Option<TableDescription>,
 }
 
 #[non_exhaustive]
@@ -2955,7 +3025,7 @@ pub struct DescribeTableOutputBody {
 pub struct DescribeTableReplicaAutoScalingOutputBody {
     /// <p>Represents the auto scaling properties of the table.</p>
     #[serde(rename = "TableAutoScalingDescription")]
-    pub table_auto_scaling_description: Option<TableAutoScalingDescription>,
+    pub table_auto_scaling_description: ::std::option::Option<TableAutoScalingDescription>,
 }
 
 #[non_exhaustive]
@@ -2963,7 +3033,7 @@ pub struct DescribeTableReplicaAutoScalingOutputBody {
 pub struct DescribeTimeToLiveOutputBody {
     /// <p></p>
     #[serde(rename = "TimeToLiveDescription")]
-    pub time_to_live_description: Option<TimeToLiveDescription>,
+    pub time_to_live_description: ::std::option::Option<TimeToLiveDescription>,
 }
 
 #[non_exhaustive]
@@ -2971,13 +3041,13 @@ pub struct DescribeTimeToLiveOutputBody {
 pub struct DisableKinesisStreamingDestinationOutputBody {
     /// <p>The name of the table being modified.</p>
     #[serde(rename = "TableName")]
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The ARN for the specific Kinesis data stream.</p>
     #[serde(rename = "StreamArn")]
-    pub stream_arn: Option<String>,
+    pub stream_arn: ::std::option::Option<::std::string::String>,
     /// <p>The current status of the replication.</p>
     #[serde(rename = "DestinationStatus")]
-    pub destination_status: Option<DestinationStatus>,
+    pub destination_status: ::std::option::Option<DestinationStatus>,
 }
 
 #[non_exhaustive]
@@ -2985,13 +3055,13 @@ pub struct DisableKinesisStreamingDestinationOutputBody {
 pub struct EnableKinesisStreamingDestinationOutputBody {
     /// <p>The name of the table being modified.</p>
     #[serde(rename = "TableName")]
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The ARN for the specific Kinesis data stream.</p>
     #[serde(rename = "StreamArn")]
-    pub stream_arn: Option<String>,
+    pub stream_arn: ::std::option::Option<::std::string::String>,
     /// <p>The current status of the replication.</p>
     #[serde(rename = "DestinationStatus")]
-    pub destination_status: Option<DestinationStatus>,
+    pub destination_status: ::std::option::Option<DestinationStatus>,
 }
 
 #[non_exhaustive]
@@ -3001,12 +3071,14 @@ pub struct ExecuteStatementOutputBody {
     /// If a read operation was used, this property will contain the result of the reade operation; a map of attribute names and their values. For the write operations this value will be empty.
     /// </p>
     #[serde(rename = "Items")]
-    pub items: Option<Vec<HashMap<String, AttributeValue>>>,
+    pub items: ::std::option::Option<
+        ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+    >,
     /// <p>
     /// If the response of a read request exceeds the response payload limit DynamoDB will set this value in the response. If set, you can use that this value in the subsequent request to get the remaining results.
     /// </p>
     #[serde(rename = "NextToken")]
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -3016,7 +3088,7 @@ pub struct ExecuteTransactionOutputBody {
     /// The response to a PartiQL transaction.
     /// </p>
     #[serde(rename = "Responses")]
-    pub responses: Option<Vec<ItemResponse>>,
+    pub responses: ::std::option::Option<::std::vec::Vec<ItemResponse>>,
 }
 
 #[non_exhaustive]
@@ -3024,7 +3096,7 @@ pub struct ExecuteTransactionOutputBody {
 pub struct ExportTableToPointInTimeOutputBody {
     /// <p>Contains a description of the table export.</p>
     #[serde(rename = "ExportDescription")]
-    pub export_description: Option<ExportDescription>,
+    pub export_description: ::std::option::Option<ExportDescription>,
 }
 
 /// <p>Represents the output of a <code>GetItem</code> operation.</p>
@@ -3034,7 +3106,8 @@ pub struct GetItemOutputBody {
     /// <p>A map of attribute names to <code>AttributeValue</code> objects, as specified
     /// by <code>ProjectionExpression</code>.</p>
     #[serde(rename = "Item")]
-    pub item: Option<HashMap<String, AttributeValue>>,
+    pub item:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>GetItem</code> operation. The data returned
     /// includes the total provisioned throughput consumed, along with statistics for the table
     /// and any indexes involved in the operation. <code>ConsumedCapacity</code> is only
@@ -3042,7 +3115,7 @@ pub struct GetItemOutputBody {
     /// information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Read/Write Capacity Mode</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
     #[serde(rename = "ConsumedCapacity")]
-    pub consumed_capacity: Option<ConsumedCapacity>,
+    pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
 }
 
 #[non_exhaustive]
@@ -3050,7 +3123,7 @@ pub struct GetItemOutputBody {
 pub struct ListBackupsOutputBody {
     /// <p>List of <code>BackupSummary</code> objects.</p>
     #[serde(rename = "BackupSummaries")]
-    pub backup_summaries: Option<Vec<BackupSummary>>,
+    pub backup_summaries: ::std::option::Option<::std::vec::Vec<BackupSummary>>,
     /// <p>
     /// The ARN of the backup last evaluated when the current page of results was returned,
     /// inclusive of the current page of results. This value may be specified as the
@@ -3064,7 +3137,7 @@ pub struct ListBackupsOutputBody {
     /// there is more data to be returned. All results are guaranteed to have been returned if
     /// and only if no value for <code>LastEvaluatedBackupArn</code> is returned. </p>
     #[serde(rename = "LastEvaluatedBackupArn")]
-    pub last_evaluated_backup_arn: Option<String>,
+    pub last_evaluated_backup_arn: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -3072,10 +3145,11 @@ pub struct ListBackupsOutputBody {
 pub struct ListContributorInsightsOutputBody {
     /// <p>A list of ContributorInsightsSummary.</p>
     #[serde(rename = "ContributorInsightsSummaries")]
-    pub contributor_insights_summaries: Option<Vec<ContributorInsightsSummary>>,
+    pub contributor_insights_summaries:
+        ::std::option::Option<::std::vec::Vec<ContributorInsightsSummary>>,
     /// <p>A token to go to the next page if there is one.</p>
     #[serde(rename = "NextToken")]
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -3083,12 +3157,12 @@ pub struct ListContributorInsightsOutputBody {
 pub struct ListExportsOutputBody {
     /// <p>A list of <code>ExportSummary</code> objects.</p>
     #[serde(rename = "ExportSummaries")]
-    pub export_summaries: Option<Vec<ExportSummary>>,
+    pub export_summaries: ::std::option::Option<::std::vec::Vec<ExportSummary>>,
     /// <p>If this value is returned, there are additional results to be displayed. To retrieve
     /// them, call <code>ListExports</code> again, with <code>NextToken</code> set to this
     /// value.</p>
     #[serde(rename = "NextToken")]
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -3096,10 +3170,10 @@ pub struct ListExportsOutputBody {
 pub struct ListGlobalTablesOutputBody {
     /// <p>List of global table names.</p>
     #[serde(rename = "GlobalTables")]
-    pub global_tables: Option<Vec<GlobalTable>>,
+    pub global_tables: ::std::option::Option<::std::vec::Vec<GlobalTable>>,
     /// <p>Last evaluated global table name.</p>
     #[serde(rename = "LastEvaluatedGlobalTableName")]
-    pub last_evaluated_global_table_name: Option<String>,
+    pub last_evaluated_global_table_name: ::std::option::Option<::std::string::String>,
 }
 
 /// <p>Represents the output of a <code>ListTables</code> operation.</p>
@@ -3111,14 +3185,14 @@ pub struct ListTablesOutputBody {
     /// <code>ExclusiveStartTableName</code> parameter in a subsequent <code>ListTables</code> request and
     /// obtain the next page of results.</p>
     #[serde(rename = "TableNames")]
-    pub table_names: Option<Vec<String>>,
+    pub table_names: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>The name of the last table in the current page of results. Use this value as the
     /// <code>ExclusiveStartTableName</code> in a new request to obtain the next page of results, until
     /// all the table names are returned.</p>
     /// <p>If you do not receive a <code>LastEvaluatedTableName</code> value in the response, this means that
     /// there are no more table names to be retrieved.</p>
     #[serde(rename = "LastEvaluatedTableName")]
-    pub last_evaluated_table_name: Option<String>,
+    pub last_evaluated_table_name: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
@@ -3126,11 +3200,11 @@ pub struct ListTablesOutputBody {
 pub struct ListTagsOfResourceOutputBody {
     /// <p>The tags currently associated with the Amazon DynamoDB resource.</p>
     #[serde(rename = "Tags")]
-    pub tags: Option<Vec<Tag>>,
+    pub tags: ::std::option::Option<::std::vec::Vec<Tag>>,
     /// <p>If this value is returned, there are additional results to be displayed. To retrieve them,
     /// call ListTagsOfResource again, with NextToken set to this value.</p>
     #[serde(rename = "NextToken")]
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
 }
 
 /// <p>Represents the output of a <code>PutItem</code> operation.</p>
@@ -3141,7 +3215,8 @@ pub struct PutItemOutputBody {
     /// <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element
     /// consists of an attribute name and an attribute value.</p>
     #[serde(rename = "Attributes")]
-    pub attributes: Option<HashMap<String, AttributeValue>>,
+    pub attributes:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>PutItem</code> operation. The data returned
     /// includes the total provisioned throughput consumed, along with statistics for the table
     /// and any indexes involved in the operation. <code>ConsumedCapacity</code> is only
@@ -3149,7 +3224,7 @@ pub struct PutItemOutputBody {
     /// information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Read/Write Capacity Mode</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
     #[serde(rename = "ConsumedCapacity")]
-    pub consumed_capacity: Option<ConsumedCapacity>,
+    pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
     /// <p>Information about item collections, if any, that were affected by the
     /// <code>PutItem</code> operation. <code>ItemCollectionMetrics</code>
     /// is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was specified. If the table does not have any local
@@ -3175,7 +3250,7 @@ pub struct PutItemOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "ItemCollectionMetrics")]
-    pub item_collection_metrics: Option<ItemCollectionMetrics>,
+    pub item_collection_metrics: ::std::option::Option<ItemCollectionMetrics>,
 }
 
 /// <p>Represents the output of a <code>Query</code> operation.</p>
@@ -3184,7 +3259,9 @@ pub struct PutItemOutputBody {
 pub struct QueryOutputBody {
     /// <p>An array of item attributes that match the query criteria. Each element in this array consists of an attribute name and the value for that attribute.</p>
     #[serde(rename = "Items")]
-    pub items: Option<Vec<HashMap<String, AttributeValue>>>,
+    pub items: ::std::option::Option<
+        ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+    >,
     /// <p>The number of items in the response.</p>
     /// <p>If you used a <code>QueryFilter</code> in the request, then <code>Count</code> is the number of items
     /// returned after the filter was applied, and <code>ScannedCount</code> is the number of
@@ -3205,7 +3282,8 @@ pub struct QueryOutputBody {
     /// <p>If <code>LastEvaluatedKey</code> is empty, then the "last page" of results has been processed and there is no more data to be retrieved.</p>
     /// <p>If <code>LastEvaluatedKey</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedKey</code> is empty.</p>
     #[serde(rename = "LastEvaluatedKey")]
-    pub last_evaluated_key: Option<HashMap<String, AttributeValue>>,
+    pub last_evaluated_key:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>Query</code> operation. The data returned
     /// includes the total provisioned throughput consumed, along with statistics for the table
     /// and any indexes involved in the operation. <code>ConsumedCapacity</code> is only
@@ -3213,7 +3291,7 @@ pub struct QueryOutputBody {
     /// information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
     #[serde(rename = "ConsumedCapacity")]
-    pub consumed_capacity: Option<ConsumedCapacity>,
+    pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
 }
 
 #[non_exhaustive]
@@ -3221,7 +3299,7 @@ pub struct QueryOutputBody {
 pub struct RestoreTableFromBackupOutputBody {
     /// <p>The description of the table created from an existing backup.</p>
     #[serde(rename = "TableDescription")]
-    pub table_description: Option<TableDescription>,
+    pub table_description: ::std::option::Option<TableDescription>,
 }
 
 #[non_exhaustive]
@@ -3229,7 +3307,7 @@ pub struct RestoreTableFromBackupOutputBody {
 pub struct RestoreTableToPointInTimeOutputBody {
     /// <p>Represents the properties of a table.</p>
     #[serde(rename = "TableDescription")]
-    pub table_description: Option<TableDescription>,
+    pub table_description: ::std::option::Option<TableDescription>,
 }
 
 /// <p>Represents the output of a <code>Scan</code> operation.</p>
@@ -3238,7 +3316,9 @@ pub struct RestoreTableToPointInTimeOutputBody {
 pub struct ScanOutputBody {
     /// <p>An array of item attributes that match the scan criteria. Each element in this array consists of an attribute name and the value for that attribute.</p>
     #[serde(rename = "Items")]
-    pub items: Option<Vec<HashMap<String, AttributeValue>>>,
+    pub items: ::std::option::Option<
+        ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+    >,
     /// <p>The number of items in the response.</p>
     /// <p>If you set <code>ScanFilter</code> in the request, then <code>Count</code> is the number of items
     /// returned after the filter was applied, and <code>ScannedCount</code> is the number of matching items
@@ -3265,14 +3345,15 @@ pub struct ScanOutputBody {
     /// the end of the result set is when <code>LastEvaluatedKey</code> is
     /// empty.</p>
     #[serde(rename = "LastEvaluatedKey")]
-    pub last_evaluated_key: Option<HashMap<String, AttributeValue>>,
+    pub last_evaluated_key:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>Scan</code> operation. The data returned includes the total
     /// provisioned throughput consumed, along with statistics for the table and any indexes involved
     /// in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified.
     /// For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
     /// Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ConsumedCapacity")]
-    pub consumed_capacity: Option<ConsumedCapacity>,
+    pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
 }
 
 #[non_exhaustive]
@@ -3284,7 +3365,7 @@ pub struct TransactGetItemsOutputBody {
     /// parameter. These <code>ConsumedCapacity</code> objects report the read-capacity
     /// units consumed by the <code>TransactGetItems</code> call in that table.</p>
     #[serde(rename = "ConsumedCapacity")]
-    pub consumed_capacity: Option<Vec<ConsumedCapacity>>,
+    pub consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
     /// <p>An ordered array of up to 25 <code>ItemResponse</code> objects, each of which corresponds
     /// to the <code>TransactGetItem</code> object in the same position in the
     /// <i>TransactItems</i> array. Each <code>ItemResponse</code> object
@@ -3294,7 +3375,7 @@ pub struct TransactGetItemsOutputBody {
     /// object is Null, or if the requested item has no projected attributes, the corresponding
     /// <code>ItemResponse</code> object is an empty Map. </p>
     #[serde(rename = "Responses")]
-    pub responses: Option<Vec<ItemResponse>>,
+    pub responses: ::std::option::Option<::std::vec::Vec<ItemResponse>>,
 }
 
 #[non_exhaustive]
@@ -3305,13 +3386,15 @@ pub struct TransactWriteItemsOutputBody {
     /// the ordering of the <code>TransactItems</code> request parameter.
     /// </p>
     #[serde(rename = "ConsumedCapacity")]
-    pub consumed_capacity: Option<Vec<ConsumedCapacity>>,
+    pub consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
     /// <p>A list of tables that were processed by <code>TransactWriteItems</code> and, for each
     /// table, information about any item collections that were affected by individual
     /// <code>UpdateItem</code>, <code>PutItem</code>, or <code>DeleteItem</code>
     /// operations. </p>
     #[serde(rename = "ItemCollectionMetrics")]
-    pub item_collection_metrics: Option<HashMap<String, Vec<ItemCollectionMetrics>>>,
+    pub item_collection_metrics: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<ItemCollectionMetrics>>,
+    >,
 }
 
 #[non_exhaustive]
@@ -3319,7 +3402,7 @@ pub struct TransactWriteItemsOutputBody {
 pub struct UpdateContinuousBackupsOutputBody {
     /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
     #[serde(rename = "ContinuousBackupsDescription")]
-    pub continuous_backups_description: Option<ContinuousBackupsDescription>,
+    pub continuous_backups_description: ::std::option::Option<ContinuousBackupsDescription>,
 }
 
 #[non_exhaustive]
@@ -3327,13 +3410,13 @@ pub struct UpdateContinuousBackupsOutputBody {
 pub struct UpdateContributorInsightsOutputBody {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The name of the global secondary index, if applicable.</p>
     #[serde(rename = "IndexName")]
-    pub index_name: Option<String>,
+    pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The status of contributor insights</p>
     #[serde(rename = "ContributorInsightsStatus")]
-    pub contributor_insights_status: Option<ContributorInsightsStatus>,
+    pub contributor_insights_status: ::std::option::Option<ContributorInsightsStatus>,
 }
 
 #[non_exhaustive]
@@ -3341,7 +3424,7 @@ pub struct UpdateContributorInsightsOutputBody {
 pub struct UpdateGlobalTableOutputBody {
     /// <p>Contains the details of the global table.</p>
     #[serde(rename = "GlobalTableDescription")]
-    pub global_table_description: Option<GlobalTableDescription>,
+    pub global_table_description: ::std::option::Option<GlobalTableDescription>,
 }
 
 #[non_exhaustive]
@@ -3349,10 +3432,10 @@ pub struct UpdateGlobalTableOutputBody {
 pub struct UpdateGlobalTableSettingsOutputBody {
     /// <p>The name of the global table.</p>
     #[serde(rename = "GlobalTableName")]
-    pub global_table_name: Option<String>,
+    pub global_table_name: ::std::option::Option<::std::string::String>,
     /// <p>The Region-specific settings for the global table.</p>
     #[serde(rename = "ReplicaSettings")]
-    pub replica_settings: Option<Vec<ReplicaSettingsDescription>>,
+    pub replica_settings: ::std::option::Option<::std::vec::Vec<ReplicaSettingsDescription>>,
 }
 
 /// <p>Represents the output of an <code>UpdateItem</code> operation.</p>
@@ -3365,14 +3448,15 @@ pub struct UpdateItemOutputBody {
     /// specified as something other than <code>NONE</code> in the request. Each element
     /// represents one attribute.</p>
     #[serde(rename = "Attributes")]
-    pub attributes: Option<HashMap<String, AttributeValue>>,
+    pub attributes:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>UpdateItem</code> operation. The data returned includes the total
     /// provisioned throughput consumed, along with statistics for the table and any indexes involved
     /// in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified.
     /// For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
     /// Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ConsumedCapacity")]
-    pub consumed_capacity: Option<ConsumedCapacity>,
+    pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
     /// <p>Information about item collections, if any, that were affected by the
     /// <code>UpdateItem</code> operation.
     /// <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was specified. If the table
@@ -3399,7 +3483,7 @@ pub struct UpdateItemOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "ItemCollectionMetrics")]
-    pub item_collection_metrics: Option<ItemCollectionMetrics>,
+    pub item_collection_metrics: ::std::option::Option<ItemCollectionMetrics>,
 }
 
 /// <p>Represents the output of an <code>UpdateTable</code> operation.</p>
@@ -3408,7 +3492,7 @@ pub struct UpdateItemOutputBody {
 pub struct UpdateTableOutputBody {
     /// <p>Represents the properties of the table.</p>
     #[serde(rename = "TableDescription")]
-    pub table_description: Option<TableDescription>,
+    pub table_description: ::std::option::Option<TableDescription>,
 }
 
 #[non_exhaustive]
@@ -3416,7 +3500,7 @@ pub struct UpdateTableOutputBody {
 pub struct UpdateTableReplicaAutoScalingOutputBody {
     /// <p>Returns information about the auto scaling settings of a table with replicas.</p>
     #[serde(rename = "TableAutoScalingDescription")]
-    pub table_auto_scaling_description: Option<TableAutoScalingDescription>,
+    pub table_auto_scaling_description: ::std::option::Option<TableAutoScalingDescription>,
 }
 
 #[non_exhaustive]
@@ -3424,5 +3508,5 @@ pub struct UpdateTableReplicaAutoScalingOutputBody {
 pub struct UpdateTimeToLiveOutputBody {
     /// <p>Represents the output of an <code>UpdateTimeToLive</code> operation.</p>
     #[serde(rename = "TimeToLiveSpecification")]
-    pub time_to_live_specification: Option<TimeToLiveSpecification>,
+    pub time_to_live_specification: ::std::option::Option<TimeToLiveSpecification>,
 }

@@ -3,7 +3,7 @@ use crate::model::CancellationReason;
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum BatchExecuteStatementError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     RequestLimitExceeded(RequestLimitExceeded),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -12,7 +12,7 @@ pub enum BatchExecuteStatementError {
 impl ::std::fmt::Display for BatchExecuteStatementError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            BatchExecuteStatementError::InternalServerError(inner) => inner.fmt(f),
+            BatchExecuteStatementError::InternalServerError2(inner) => inner.fmt(f),
             BatchExecuteStatementError::RequestLimitExceeded(inner) => inner.fmt(f),
             BatchExecuteStatementError::Unhandled(inner) => inner.fmt(f),
         }
@@ -21,7 +21,7 @@ impl ::std::fmt::Display for BatchExecuteStatementError {
 impl ::std::error::Error for BatchExecuteStatementError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            BatchExecuteStatementError::InternalServerError(inner) => Some(inner),
+            BatchExecuteStatementError::InternalServerError2(inner) => Some(inner),
             BatchExecuteStatementError::RequestLimitExceeded(inner) => Some(inner),
             BatchExecuteStatementError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -31,7 +31,7 @@ impl ::std::error::Error for BatchExecuteStatementError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum BatchGetItemError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
     RequestLimitExceeded(RequestLimitExceeded),
@@ -43,7 +43,7 @@ pub enum BatchGetItemError {
 impl ::std::fmt::Display for BatchGetItemError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            BatchGetItemError::InternalServerError(inner) => inner.fmt(f),
+            BatchGetItemError::InternalServerError2(inner) => inner.fmt(f),
             BatchGetItemError::InvalidEndpointError(inner) => inner.fmt(f),
             BatchGetItemError::ProvisionedThroughputExceededError(inner) => inner.fmt(f),
             BatchGetItemError::RequestLimitExceeded(inner) => inner.fmt(f),
@@ -55,7 +55,7 @@ impl ::std::fmt::Display for BatchGetItemError {
 impl ::std::error::Error for BatchGetItemError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            BatchGetItemError::InternalServerError(inner) => Some(inner),
+            BatchGetItemError::InternalServerError2(inner) => Some(inner),
             BatchGetItemError::InvalidEndpointError(inner) => Some(inner),
             BatchGetItemError::ProvisionedThroughputExceededError(inner) => Some(inner),
             BatchGetItemError::RequestLimitExceeded(inner) => Some(inner),
@@ -68,7 +68,7 @@ impl ::std::error::Error for BatchGetItemError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum BatchWriteItemError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ItemCollectionSizeLimitExceededError(ItemCollectionSizeLimitExceededError),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
@@ -81,7 +81,7 @@ pub enum BatchWriteItemError {
 impl ::std::fmt::Display for BatchWriteItemError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            BatchWriteItemError::InternalServerError(inner) => inner.fmt(f),
+            BatchWriteItemError::InternalServerError2(inner) => inner.fmt(f),
             BatchWriteItemError::InvalidEndpointError(inner) => inner.fmt(f),
             BatchWriteItemError::ItemCollectionSizeLimitExceededError(inner) => inner.fmt(f),
             BatchWriteItemError::ProvisionedThroughputExceededError(inner) => inner.fmt(f),
@@ -94,7 +94,7 @@ impl ::std::fmt::Display for BatchWriteItemError {
 impl ::std::error::Error for BatchWriteItemError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            BatchWriteItemError::InternalServerError(inner) => Some(inner),
+            BatchWriteItemError::InternalServerError2(inner) => Some(inner),
             BatchWriteItemError::InvalidEndpointError(inner) => Some(inner),
             BatchWriteItemError::ItemCollectionSizeLimitExceededError(inner) => Some(inner),
             BatchWriteItemError::ProvisionedThroughputExceededError(inner) => Some(inner),
@@ -110,7 +110,7 @@ impl ::std::error::Error for BatchWriteItemError {
 pub enum CreateBackupError {
     BackupInUseError(BackupInUseError),
     ContinuousBackupsUnavailableError(ContinuousBackupsUnavailableError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
     TableInUseError(TableInUseError),
@@ -124,7 +124,7 @@ impl ::std::fmt::Display for CreateBackupError {
         match self {
             CreateBackupError::BackupInUseError(inner) => inner.fmt(f),
             CreateBackupError::ContinuousBackupsUnavailableError(inner) => inner.fmt(f),
-            CreateBackupError::InternalServerError(inner) => inner.fmt(f),
+            CreateBackupError::InternalServerError2(inner) => inner.fmt(f),
             CreateBackupError::InvalidEndpointError(inner) => inner.fmt(f),
             CreateBackupError::LimitExceededError(inner) => inner.fmt(f),
             CreateBackupError::TableInUseError(inner) => inner.fmt(f),
@@ -138,7 +138,7 @@ impl ::std::error::Error for CreateBackupError {
         match self {
             CreateBackupError::BackupInUseError(inner) => Some(inner),
             CreateBackupError::ContinuousBackupsUnavailableError(inner) => Some(inner),
-            CreateBackupError::InternalServerError(inner) => Some(inner),
+            CreateBackupError::InternalServerError2(inner) => Some(inner),
             CreateBackupError::InvalidEndpointError(inner) => Some(inner),
             CreateBackupError::LimitExceededError(inner) => Some(inner),
             CreateBackupError::TableInUseError(inner) => Some(inner),
@@ -152,7 +152,7 @@ impl ::std::error::Error for CreateBackupError {
 #[derive(::std::fmt::Debug)]
 pub enum CreateGlobalTableError {
     GlobalTableAlreadyExistsError(GlobalTableAlreadyExistsError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
     TableNotFoundError(TableNotFoundError),
@@ -164,7 +164,7 @@ impl ::std::fmt::Display for CreateGlobalTableError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             CreateGlobalTableError::GlobalTableAlreadyExistsError(inner) => inner.fmt(f),
-            CreateGlobalTableError::InternalServerError(inner) => inner.fmt(f),
+            CreateGlobalTableError::InternalServerError2(inner) => inner.fmt(f),
             CreateGlobalTableError::InvalidEndpointError(inner) => inner.fmt(f),
             CreateGlobalTableError::LimitExceededError(inner) => inner.fmt(f),
             CreateGlobalTableError::TableNotFoundError(inner) => inner.fmt(f),
@@ -176,7 +176,7 @@ impl ::std::error::Error for CreateGlobalTableError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             CreateGlobalTableError::GlobalTableAlreadyExistsError(inner) => Some(inner),
-            CreateGlobalTableError::InternalServerError(inner) => Some(inner),
+            CreateGlobalTableError::InternalServerError2(inner) => Some(inner),
             CreateGlobalTableError::InvalidEndpointError(inner) => Some(inner),
             CreateGlobalTableError::LimitExceededError(inner) => Some(inner),
             CreateGlobalTableError::TableNotFoundError(inner) => Some(inner),
@@ -188,7 +188,7 @@ impl ::std::error::Error for CreateGlobalTableError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum CreateTableError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
@@ -199,7 +199,7 @@ pub enum CreateTableError {
 impl ::std::fmt::Display for CreateTableError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            CreateTableError::InternalServerError(inner) => inner.fmt(f),
+            CreateTableError::InternalServerError2(inner) => inner.fmt(f),
             CreateTableError::InvalidEndpointError(inner) => inner.fmt(f),
             CreateTableError::LimitExceededError(inner) => inner.fmt(f),
             CreateTableError::ResourceInUseError(inner) => inner.fmt(f),
@@ -210,7 +210,7 @@ impl ::std::fmt::Display for CreateTableError {
 impl ::std::error::Error for CreateTableError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            CreateTableError::InternalServerError(inner) => Some(inner),
+            CreateTableError::InternalServerError2(inner) => Some(inner),
             CreateTableError::InvalidEndpointError(inner) => Some(inner),
             CreateTableError::LimitExceededError(inner) => Some(inner),
             CreateTableError::ResourceInUseError(inner) => Some(inner),
@@ -224,7 +224,7 @@ impl ::std::error::Error for CreateTableError {
 pub enum DeleteBackupError {
     BackupInUseError(BackupInUseError),
     BackupNotFoundError(BackupNotFoundError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
 
@@ -236,7 +236,7 @@ impl ::std::fmt::Display for DeleteBackupError {
         match self {
             DeleteBackupError::BackupInUseError(inner) => inner.fmt(f),
             DeleteBackupError::BackupNotFoundError(inner) => inner.fmt(f),
-            DeleteBackupError::InternalServerError(inner) => inner.fmt(f),
+            DeleteBackupError::InternalServerError2(inner) => inner.fmt(f),
             DeleteBackupError::InvalidEndpointError(inner) => inner.fmt(f),
             DeleteBackupError::LimitExceededError(inner) => inner.fmt(f),
             DeleteBackupError::Unhandled(inner) => inner.fmt(f),
@@ -248,7 +248,7 @@ impl ::std::error::Error for DeleteBackupError {
         match self {
             DeleteBackupError::BackupInUseError(inner) => Some(inner),
             DeleteBackupError::BackupNotFoundError(inner) => Some(inner),
-            DeleteBackupError::InternalServerError(inner) => Some(inner),
+            DeleteBackupError::InternalServerError2(inner) => Some(inner),
             DeleteBackupError::InvalidEndpointError(inner) => Some(inner),
             DeleteBackupError::LimitExceededError(inner) => Some(inner),
             DeleteBackupError::Unhandled(inner) => Some(inner.as_ref()),
@@ -260,7 +260,7 @@ impl ::std::error::Error for DeleteBackupError {
 #[derive(::std::fmt::Debug)]
 pub enum DeleteItemError {
     ConditionalCheckFailedError(ConditionalCheckFailedError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ItemCollectionSizeLimitExceededError(ItemCollectionSizeLimitExceededError),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
@@ -275,7 +275,7 @@ impl ::std::fmt::Display for DeleteItemError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             DeleteItemError::ConditionalCheckFailedError(inner) => inner.fmt(f),
-            DeleteItemError::InternalServerError(inner) => inner.fmt(f),
+            DeleteItemError::InternalServerError2(inner) => inner.fmt(f),
             DeleteItemError::InvalidEndpointError(inner) => inner.fmt(f),
             DeleteItemError::ItemCollectionSizeLimitExceededError(inner) => inner.fmt(f),
             DeleteItemError::ProvisionedThroughputExceededError(inner) => inner.fmt(f),
@@ -290,7 +290,7 @@ impl ::std::error::Error for DeleteItemError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             DeleteItemError::ConditionalCheckFailedError(inner) => Some(inner),
-            DeleteItemError::InternalServerError(inner) => Some(inner),
+            DeleteItemError::InternalServerError2(inner) => Some(inner),
             DeleteItemError::InvalidEndpointError(inner) => Some(inner),
             DeleteItemError::ItemCollectionSizeLimitExceededError(inner) => Some(inner),
             DeleteItemError::ProvisionedThroughputExceededError(inner) => Some(inner),
@@ -305,7 +305,7 @@ impl ::std::error::Error for DeleteItemError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum DeleteTableError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
@@ -317,7 +317,7 @@ pub enum DeleteTableError {
 impl ::std::fmt::Display for DeleteTableError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            DeleteTableError::InternalServerError(inner) => inner.fmt(f),
+            DeleteTableError::InternalServerError2(inner) => inner.fmt(f),
             DeleteTableError::InvalidEndpointError(inner) => inner.fmt(f),
             DeleteTableError::LimitExceededError(inner) => inner.fmt(f),
             DeleteTableError::ResourceInUseError(inner) => inner.fmt(f),
@@ -329,7 +329,7 @@ impl ::std::fmt::Display for DeleteTableError {
 impl ::std::error::Error for DeleteTableError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            DeleteTableError::InternalServerError(inner) => Some(inner),
+            DeleteTableError::InternalServerError2(inner) => Some(inner),
             DeleteTableError::InvalidEndpointError(inner) => Some(inner),
             DeleteTableError::LimitExceededError(inner) => Some(inner),
             DeleteTableError::ResourceInUseError(inner) => Some(inner),
@@ -343,7 +343,7 @@ impl ::std::error::Error for DeleteTableError {
 #[derive(::std::fmt::Debug)]
 pub enum DescribeBackupError {
     BackupNotFoundError(BackupNotFoundError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -353,7 +353,7 @@ impl ::std::fmt::Display for DescribeBackupError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             DescribeBackupError::BackupNotFoundError(inner) => inner.fmt(f),
-            DescribeBackupError::InternalServerError(inner) => inner.fmt(f),
+            DescribeBackupError::InternalServerError2(inner) => inner.fmt(f),
             DescribeBackupError::InvalidEndpointError(inner) => inner.fmt(f),
             DescribeBackupError::Unhandled(inner) => inner.fmt(f),
         }
@@ -363,7 +363,7 @@ impl ::std::error::Error for DescribeBackupError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             DescribeBackupError::BackupNotFoundError(inner) => Some(inner),
-            DescribeBackupError::InternalServerError(inner) => Some(inner),
+            DescribeBackupError::InternalServerError2(inner) => Some(inner),
             DescribeBackupError::InvalidEndpointError(inner) => Some(inner),
             DescribeBackupError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -373,7 +373,7 @@ impl ::std::error::Error for DescribeBackupError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum DescribeContinuousBackupsError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     TableNotFoundError(TableNotFoundError),
 
@@ -383,7 +383,7 @@ pub enum DescribeContinuousBackupsError {
 impl ::std::fmt::Display for DescribeContinuousBackupsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            DescribeContinuousBackupsError::InternalServerError(inner) => inner.fmt(f),
+            DescribeContinuousBackupsError::InternalServerError2(inner) => inner.fmt(f),
             DescribeContinuousBackupsError::InvalidEndpointError(inner) => inner.fmt(f),
             DescribeContinuousBackupsError::TableNotFoundError(inner) => inner.fmt(f),
             DescribeContinuousBackupsError::Unhandled(inner) => inner.fmt(f),
@@ -393,7 +393,7 @@ impl ::std::fmt::Display for DescribeContinuousBackupsError {
 impl ::std::error::Error for DescribeContinuousBackupsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            DescribeContinuousBackupsError::InternalServerError(inner) => Some(inner),
+            DescribeContinuousBackupsError::InternalServerError2(inner) => Some(inner),
             DescribeContinuousBackupsError::InvalidEndpointError(inner) => Some(inner),
             DescribeContinuousBackupsError::TableNotFoundError(inner) => Some(inner),
             DescribeContinuousBackupsError::Unhandled(inner) => Some(inner.as_ref()),
@@ -404,7 +404,7 @@ impl ::std::error::Error for DescribeContinuousBackupsError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum DescribeContributorInsightsError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     ResourceNotFoundError(ResourceNotFoundError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -413,7 +413,7 @@ pub enum DescribeContributorInsightsError {
 impl ::std::fmt::Display for DescribeContributorInsightsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            DescribeContributorInsightsError::InternalServerError(inner) => inner.fmt(f),
+            DescribeContributorInsightsError::InternalServerError2(inner) => inner.fmt(f),
             DescribeContributorInsightsError::ResourceNotFoundError(inner) => inner.fmt(f),
             DescribeContributorInsightsError::Unhandled(inner) => inner.fmt(f),
         }
@@ -422,7 +422,7 @@ impl ::std::fmt::Display for DescribeContributorInsightsError {
 impl ::std::error::Error for DescribeContributorInsightsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            DescribeContributorInsightsError::InternalServerError(inner) => Some(inner),
+            DescribeContributorInsightsError::InternalServerError2(inner) => Some(inner),
             DescribeContributorInsightsError::ResourceNotFoundError(inner) => Some(inner),
             DescribeContributorInsightsError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -454,7 +454,7 @@ impl ::std::error::Error for DescribeEndpointsError {
 #[derive(::std::fmt::Debug)]
 pub enum DescribeExportError {
     ExportNotFoundError(ExportNotFoundError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     LimitExceededError(LimitExceededError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -464,7 +464,7 @@ impl ::std::fmt::Display for DescribeExportError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             DescribeExportError::ExportNotFoundError(inner) => inner.fmt(f),
-            DescribeExportError::InternalServerError(inner) => inner.fmt(f),
+            DescribeExportError::InternalServerError2(inner) => inner.fmt(f),
             DescribeExportError::LimitExceededError(inner) => inner.fmt(f),
             DescribeExportError::Unhandled(inner) => inner.fmt(f),
         }
@@ -474,7 +474,7 @@ impl ::std::error::Error for DescribeExportError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             DescribeExportError::ExportNotFoundError(inner) => Some(inner),
-            DescribeExportError::InternalServerError(inner) => Some(inner),
+            DescribeExportError::InternalServerError2(inner) => Some(inner),
             DescribeExportError::LimitExceededError(inner) => Some(inner),
             DescribeExportError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -485,7 +485,7 @@ impl ::std::error::Error for DescribeExportError {
 #[derive(::std::fmt::Debug)]
 pub enum DescribeGlobalTableError {
     GlobalTableNotFoundError(GlobalTableNotFoundError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -495,7 +495,7 @@ impl ::std::fmt::Display for DescribeGlobalTableError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             DescribeGlobalTableError::GlobalTableNotFoundError(inner) => inner.fmt(f),
-            DescribeGlobalTableError::InternalServerError(inner) => inner.fmt(f),
+            DescribeGlobalTableError::InternalServerError2(inner) => inner.fmt(f),
             DescribeGlobalTableError::InvalidEndpointError(inner) => inner.fmt(f),
             DescribeGlobalTableError::Unhandled(inner) => inner.fmt(f),
         }
@@ -505,7 +505,7 @@ impl ::std::error::Error for DescribeGlobalTableError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             DescribeGlobalTableError::GlobalTableNotFoundError(inner) => Some(inner),
-            DescribeGlobalTableError::InternalServerError(inner) => Some(inner),
+            DescribeGlobalTableError::InternalServerError2(inner) => Some(inner),
             DescribeGlobalTableError::InvalidEndpointError(inner) => Some(inner),
             DescribeGlobalTableError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -516,7 +516,7 @@ impl ::std::error::Error for DescribeGlobalTableError {
 #[derive(::std::fmt::Debug)]
 pub enum DescribeGlobalTableSettingsError {
     GlobalTableNotFoundError(GlobalTableNotFoundError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -526,7 +526,7 @@ impl ::std::fmt::Display for DescribeGlobalTableSettingsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             DescribeGlobalTableSettingsError::GlobalTableNotFoundError(inner) => inner.fmt(f),
-            DescribeGlobalTableSettingsError::InternalServerError(inner) => inner.fmt(f),
+            DescribeGlobalTableSettingsError::InternalServerError2(inner) => inner.fmt(f),
             DescribeGlobalTableSettingsError::InvalidEndpointError(inner) => inner.fmt(f),
             DescribeGlobalTableSettingsError::Unhandled(inner) => inner.fmt(f),
         }
@@ -536,7 +536,7 @@ impl ::std::error::Error for DescribeGlobalTableSettingsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             DescribeGlobalTableSettingsError::GlobalTableNotFoundError(inner) => Some(inner),
-            DescribeGlobalTableSettingsError::InternalServerError(inner) => Some(inner),
+            DescribeGlobalTableSettingsError::InternalServerError2(inner) => Some(inner),
             DescribeGlobalTableSettingsError::InvalidEndpointError(inner) => Some(inner),
             DescribeGlobalTableSettingsError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -546,7 +546,7 @@ impl ::std::error::Error for DescribeGlobalTableSettingsError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum DescribeKinesisStreamingDestinationError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ResourceNotFoundError(ResourceNotFoundError),
 
@@ -556,7 +556,7 @@ pub enum DescribeKinesisStreamingDestinationError {
 impl ::std::fmt::Display for DescribeKinesisStreamingDestinationError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            DescribeKinesisStreamingDestinationError::InternalServerError(inner) => inner.fmt(f),
+            DescribeKinesisStreamingDestinationError::InternalServerError2(inner) => inner.fmt(f),
             DescribeKinesisStreamingDestinationError::InvalidEndpointError(inner) => inner.fmt(f),
             DescribeKinesisStreamingDestinationError::ResourceNotFoundError(inner) => inner.fmt(f),
             DescribeKinesisStreamingDestinationError::Unhandled(inner) => inner.fmt(f),
@@ -566,7 +566,7 @@ impl ::std::fmt::Display for DescribeKinesisStreamingDestinationError {
 impl ::std::error::Error for DescribeKinesisStreamingDestinationError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            DescribeKinesisStreamingDestinationError::InternalServerError(inner) => Some(inner),
+            DescribeKinesisStreamingDestinationError::InternalServerError2(inner) => Some(inner),
             DescribeKinesisStreamingDestinationError::InvalidEndpointError(inner) => Some(inner),
             DescribeKinesisStreamingDestinationError::ResourceNotFoundError(inner) => Some(inner),
             DescribeKinesisStreamingDestinationError::Unhandled(inner) => Some(inner.as_ref()),
@@ -577,7 +577,7 @@ impl ::std::error::Error for DescribeKinesisStreamingDestinationError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum DescribeLimitsError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -586,7 +586,7 @@ pub enum DescribeLimitsError {
 impl ::std::fmt::Display for DescribeLimitsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            DescribeLimitsError::InternalServerError(inner) => inner.fmt(f),
+            DescribeLimitsError::InternalServerError2(inner) => inner.fmt(f),
             DescribeLimitsError::InvalidEndpointError(inner) => inner.fmt(f),
             DescribeLimitsError::Unhandled(inner) => inner.fmt(f),
         }
@@ -595,7 +595,7 @@ impl ::std::fmt::Display for DescribeLimitsError {
 impl ::std::error::Error for DescribeLimitsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            DescribeLimitsError::InternalServerError(inner) => Some(inner),
+            DescribeLimitsError::InternalServerError2(inner) => Some(inner),
             DescribeLimitsError::InvalidEndpointError(inner) => Some(inner),
             DescribeLimitsError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -605,7 +605,7 @@ impl ::std::error::Error for DescribeLimitsError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum DescribeTableError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ResourceNotFoundError(ResourceNotFoundError),
 
@@ -615,7 +615,7 @@ pub enum DescribeTableError {
 impl ::std::fmt::Display for DescribeTableError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            DescribeTableError::InternalServerError(inner) => inner.fmt(f),
+            DescribeTableError::InternalServerError2(inner) => inner.fmt(f),
             DescribeTableError::InvalidEndpointError(inner) => inner.fmt(f),
             DescribeTableError::ResourceNotFoundError(inner) => inner.fmt(f),
             DescribeTableError::Unhandled(inner) => inner.fmt(f),
@@ -625,7 +625,7 @@ impl ::std::fmt::Display for DescribeTableError {
 impl ::std::error::Error for DescribeTableError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            DescribeTableError::InternalServerError(inner) => Some(inner),
+            DescribeTableError::InternalServerError2(inner) => Some(inner),
             DescribeTableError::InvalidEndpointError(inner) => Some(inner),
             DescribeTableError::ResourceNotFoundError(inner) => Some(inner),
             DescribeTableError::Unhandled(inner) => Some(inner.as_ref()),
@@ -636,7 +636,7 @@ impl ::std::error::Error for DescribeTableError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum DescribeTableReplicaAutoScalingError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     ResourceNotFoundError(ResourceNotFoundError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -645,7 +645,7 @@ pub enum DescribeTableReplicaAutoScalingError {
 impl ::std::fmt::Display for DescribeTableReplicaAutoScalingError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            DescribeTableReplicaAutoScalingError::InternalServerError(inner) => inner.fmt(f),
+            DescribeTableReplicaAutoScalingError::InternalServerError2(inner) => inner.fmt(f),
             DescribeTableReplicaAutoScalingError::ResourceNotFoundError(inner) => inner.fmt(f),
             DescribeTableReplicaAutoScalingError::Unhandled(inner) => inner.fmt(f),
         }
@@ -654,7 +654,7 @@ impl ::std::fmt::Display for DescribeTableReplicaAutoScalingError {
 impl ::std::error::Error for DescribeTableReplicaAutoScalingError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            DescribeTableReplicaAutoScalingError::InternalServerError(inner) => Some(inner),
+            DescribeTableReplicaAutoScalingError::InternalServerError2(inner) => Some(inner),
             DescribeTableReplicaAutoScalingError::ResourceNotFoundError(inner) => Some(inner),
             DescribeTableReplicaAutoScalingError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -664,7 +664,7 @@ impl ::std::error::Error for DescribeTableReplicaAutoScalingError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum DescribeTimeToLiveError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ResourceNotFoundError(ResourceNotFoundError),
 
@@ -674,7 +674,7 @@ pub enum DescribeTimeToLiveError {
 impl ::std::fmt::Display for DescribeTimeToLiveError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            DescribeTimeToLiveError::InternalServerError(inner) => inner.fmt(f),
+            DescribeTimeToLiveError::InternalServerError2(inner) => inner.fmt(f),
             DescribeTimeToLiveError::InvalidEndpointError(inner) => inner.fmt(f),
             DescribeTimeToLiveError::ResourceNotFoundError(inner) => inner.fmt(f),
             DescribeTimeToLiveError::Unhandled(inner) => inner.fmt(f),
@@ -684,7 +684,7 @@ impl ::std::fmt::Display for DescribeTimeToLiveError {
 impl ::std::error::Error for DescribeTimeToLiveError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            DescribeTimeToLiveError::InternalServerError(inner) => Some(inner),
+            DescribeTimeToLiveError::InternalServerError2(inner) => Some(inner),
             DescribeTimeToLiveError::InvalidEndpointError(inner) => Some(inner),
             DescribeTimeToLiveError::ResourceNotFoundError(inner) => Some(inner),
             DescribeTimeToLiveError::Unhandled(inner) => Some(inner.as_ref()),
@@ -695,7 +695,7 @@ impl ::std::error::Error for DescribeTimeToLiveError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum DisableKinesisStreamingDestinationError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
@@ -707,7 +707,7 @@ pub enum DisableKinesisStreamingDestinationError {
 impl ::std::fmt::Display for DisableKinesisStreamingDestinationError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            DisableKinesisStreamingDestinationError::InternalServerError(inner) => inner.fmt(f),
+            DisableKinesisStreamingDestinationError::InternalServerError2(inner) => inner.fmt(f),
             DisableKinesisStreamingDestinationError::InvalidEndpointError(inner) => inner.fmt(f),
             DisableKinesisStreamingDestinationError::LimitExceededError(inner) => inner.fmt(f),
             DisableKinesisStreamingDestinationError::ResourceInUseError(inner) => inner.fmt(f),
@@ -719,7 +719,7 @@ impl ::std::fmt::Display for DisableKinesisStreamingDestinationError {
 impl ::std::error::Error for DisableKinesisStreamingDestinationError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            DisableKinesisStreamingDestinationError::InternalServerError(inner) => Some(inner),
+            DisableKinesisStreamingDestinationError::InternalServerError2(inner) => Some(inner),
             DisableKinesisStreamingDestinationError::InvalidEndpointError(inner) => Some(inner),
             DisableKinesisStreamingDestinationError::LimitExceededError(inner) => Some(inner),
             DisableKinesisStreamingDestinationError::ResourceInUseError(inner) => Some(inner),
@@ -732,7 +732,7 @@ impl ::std::error::Error for DisableKinesisStreamingDestinationError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum EnableKinesisStreamingDestinationError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
@@ -744,7 +744,7 @@ pub enum EnableKinesisStreamingDestinationError {
 impl ::std::fmt::Display for EnableKinesisStreamingDestinationError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            EnableKinesisStreamingDestinationError::InternalServerError(inner) => inner.fmt(f),
+            EnableKinesisStreamingDestinationError::InternalServerError2(inner) => inner.fmt(f),
             EnableKinesisStreamingDestinationError::InvalidEndpointError(inner) => inner.fmt(f),
             EnableKinesisStreamingDestinationError::LimitExceededError(inner) => inner.fmt(f),
             EnableKinesisStreamingDestinationError::ResourceInUseError(inner) => inner.fmt(f),
@@ -756,7 +756,7 @@ impl ::std::fmt::Display for EnableKinesisStreamingDestinationError {
 impl ::std::error::Error for EnableKinesisStreamingDestinationError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            EnableKinesisStreamingDestinationError::InternalServerError(inner) => Some(inner),
+            EnableKinesisStreamingDestinationError::InternalServerError2(inner) => Some(inner),
             EnableKinesisStreamingDestinationError::InvalidEndpointError(inner) => Some(inner),
             EnableKinesisStreamingDestinationError::LimitExceededError(inner) => Some(inner),
             EnableKinesisStreamingDestinationError::ResourceInUseError(inner) => Some(inner),
@@ -771,7 +771,7 @@ impl ::std::error::Error for EnableKinesisStreamingDestinationError {
 pub enum ExecuteStatementError {
     ConditionalCheckFailedError(ConditionalCheckFailedError),
     DuplicateItemError(DuplicateItemError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     ItemCollectionSizeLimitExceededError(ItemCollectionSizeLimitExceededError),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
     RequestLimitExceeded(RequestLimitExceeded),
@@ -786,7 +786,7 @@ impl ::std::fmt::Display for ExecuteStatementError {
         match self {
             ExecuteStatementError::ConditionalCheckFailedError(inner) => inner.fmt(f),
             ExecuteStatementError::DuplicateItemError(inner) => inner.fmt(f),
-            ExecuteStatementError::InternalServerError(inner) => inner.fmt(f),
+            ExecuteStatementError::InternalServerError2(inner) => inner.fmt(f),
             ExecuteStatementError::ItemCollectionSizeLimitExceededError(inner) => inner.fmt(f),
             ExecuteStatementError::ProvisionedThroughputExceededError(inner) => inner.fmt(f),
             ExecuteStatementError::RequestLimitExceeded(inner) => inner.fmt(f),
@@ -801,7 +801,7 @@ impl ::std::error::Error for ExecuteStatementError {
         match self {
             ExecuteStatementError::ConditionalCheckFailedError(inner) => Some(inner),
             ExecuteStatementError::DuplicateItemError(inner) => Some(inner),
-            ExecuteStatementError::InternalServerError(inner) => Some(inner),
+            ExecuteStatementError::InternalServerError2(inner) => Some(inner),
             ExecuteStatementError::ItemCollectionSizeLimitExceededError(inner) => Some(inner),
             ExecuteStatementError::ProvisionedThroughputExceededError(inner) => Some(inner),
             ExecuteStatementError::RequestLimitExceeded(inner) => Some(inner),
@@ -816,7 +816,7 @@ impl ::std::error::Error for ExecuteStatementError {
 #[derive(::std::fmt::Debug)]
 pub enum ExecuteTransactionError {
     IdempotentParameterMismatchError(IdempotentParameterMismatchError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
     RequestLimitExceeded(RequestLimitExceeded),
     ResourceNotFoundError(ResourceNotFoundError),
@@ -830,7 +830,7 @@ impl ::std::fmt::Display for ExecuteTransactionError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             ExecuteTransactionError::IdempotentParameterMismatchError(inner) => inner.fmt(f),
-            ExecuteTransactionError::InternalServerError(inner) => inner.fmt(f),
+            ExecuteTransactionError::InternalServerError2(inner) => inner.fmt(f),
             ExecuteTransactionError::ProvisionedThroughputExceededError(inner) => inner.fmt(f),
             ExecuteTransactionError::RequestLimitExceeded(inner) => inner.fmt(f),
             ExecuteTransactionError::ResourceNotFoundError(inner) => inner.fmt(f),
@@ -844,7 +844,7 @@ impl ::std::error::Error for ExecuteTransactionError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             ExecuteTransactionError::IdempotentParameterMismatchError(inner) => Some(inner),
-            ExecuteTransactionError::InternalServerError(inner) => Some(inner),
+            ExecuteTransactionError::InternalServerError2(inner) => Some(inner),
             ExecuteTransactionError::ProvisionedThroughputExceededError(inner) => Some(inner),
             ExecuteTransactionError::RequestLimitExceeded(inner) => Some(inner),
             ExecuteTransactionError::ResourceNotFoundError(inner) => Some(inner),
@@ -859,7 +859,7 @@ impl ::std::error::Error for ExecuteTransactionError {
 #[derive(::std::fmt::Debug)]
 pub enum ExportTableToPointInTimeError {
     ExportConflictError(ExportConflictError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidExportTimeError(InvalidExportTimeError),
     LimitExceededError(LimitExceededError),
     PointInTimeRecoveryUnavailableError(PointInTimeRecoveryUnavailableError),
@@ -872,7 +872,7 @@ impl ::std::fmt::Display for ExportTableToPointInTimeError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             ExportTableToPointInTimeError::ExportConflictError(inner) => inner.fmt(f),
-            ExportTableToPointInTimeError::InternalServerError(inner) => inner.fmt(f),
+            ExportTableToPointInTimeError::InternalServerError2(inner) => inner.fmt(f),
             ExportTableToPointInTimeError::InvalidExportTimeError(inner) => inner.fmt(f),
             ExportTableToPointInTimeError::LimitExceededError(inner) => inner.fmt(f),
             ExportTableToPointInTimeError::PointInTimeRecoveryUnavailableError(inner) => {
@@ -887,7 +887,7 @@ impl ::std::error::Error for ExportTableToPointInTimeError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             ExportTableToPointInTimeError::ExportConflictError(inner) => Some(inner),
-            ExportTableToPointInTimeError::InternalServerError(inner) => Some(inner),
+            ExportTableToPointInTimeError::InternalServerError2(inner) => Some(inner),
             ExportTableToPointInTimeError::InvalidExportTimeError(inner) => Some(inner),
             ExportTableToPointInTimeError::LimitExceededError(inner) => Some(inner),
             ExportTableToPointInTimeError::PointInTimeRecoveryUnavailableError(inner) => {
@@ -902,7 +902,7 @@ impl ::std::error::Error for ExportTableToPointInTimeError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum GetItemError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
     RequestLimitExceeded(RequestLimitExceeded),
@@ -914,7 +914,7 @@ pub enum GetItemError {
 impl ::std::fmt::Display for GetItemError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            GetItemError::InternalServerError(inner) => inner.fmt(f),
+            GetItemError::InternalServerError2(inner) => inner.fmt(f),
             GetItemError::InvalidEndpointError(inner) => inner.fmt(f),
             GetItemError::ProvisionedThroughputExceededError(inner) => inner.fmt(f),
             GetItemError::RequestLimitExceeded(inner) => inner.fmt(f),
@@ -926,7 +926,7 @@ impl ::std::fmt::Display for GetItemError {
 impl ::std::error::Error for GetItemError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            GetItemError::InternalServerError(inner) => Some(inner),
+            GetItemError::InternalServerError2(inner) => Some(inner),
             GetItemError::InvalidEndpointError(inner) => Some(inner),
             GetItemError::ProvisionedThroughputExceededError(inner) => Some(inner),
             GetItemError::RequestLimitExceeded(inner) => Some(inner),
@@ -939,7 +939,7 @@ impl ::std::error::Error for GetItemError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum ListBackupsError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -948,7 +948,7 @@ pub enum ListBackupsError {
 impl ::std::fmt::Display for ListBackupsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            ListBackupsError::InternalServerError(inner) => inner.fmt(f),
+            ListBackupsError::InternalServerError2(inner) => inner.fmt(f),
             ListBackupsError::InvalidEndpointError(inner) => inner.fmt(f),
             ListBackupsError::Unhandled(inner) => inner.fmt(f),
         }
@@ -957,7 +957,7 @@ impl ::std::fmt::Display for ListBackupsError {
 impl ::std::error::Error for ListBackupsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            ListBackupsError::InternalServerError(inner) => Some(inner),
+            ListBackupsError::InternalServerError2(inner) => Some(inner),
             ListBackupsError::InvalidEndpointError(inner) => Some(inner),
             ListBackupsError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -967,7 +967,7 @@ impl ::std::error::Error for ListBackupsError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum ListContributorInsightsError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     ResourceNotFoundError(ResourceNotFoundError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -976,7 +976,7 @@ pub enum ListContributorInsightsError {
 impl ::std::fmt::Display for ListContributorInsightsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            ListContributorInsightsError::InternalServerError(inner) => inner.fmt(f),
+            ListContributorInsightsError::InternalServerError2(inner) => inner.fmt(f),
             ListContributorInsightsError::ResourceNotFoundError(inner) => inner.fmt(f),
             ListContributorInsightsError::Unhandled(inner) => inner.fmt(f),
         }
@@ -985,7 +985,7 @@ impl ::std::fmt::Display for ListContributorInsightsError {
 impl ::std::error::Error for ListContributorInsightsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            ListContributorInsightsError::InternalServerError(inner) => Some(inner),
+            ListContributorInsightsError::InternalServerError2(inner) => Some(inner),
             ListContributorInsightsError::ResourceNotFoundError(inner) => Some(inner),
             ListContributorInsightsError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -995,7 +995,7 @@ impl ::std::error::Error for ListContributorInsightsError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum ListExportsError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     LimitExceededError(LimitExceededError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -1004,7 +1004,7 @@ pub enum ListExportsError {
 impl ::std::fmt::Display for ListExportsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            ListExportsError::InternalServerError(inner) => inner.fmt(f),
+            ListExportsError::InternalServerError2(inner) => inner.fmt(f),
             ListExportsError::LimitExceededError(inner) => inner.fmt(f),
             ListExportsError::Unhandled(inner) => inner.fmt(f),
         }
@@ -1013,7 +1013,7 @@ impl ::std::fmt::Display for ListExportsError {
 impl ::std::error::Error for ListExportsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            ListExportsError::InternalServerError(inner) => Some(inner),
+            ListExportsError::InternalServerError2(inner) => Some(inner),
             ListExportsError::LimitExceededError(inner) => Some(inner),
             ListExportsError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -1023,7 +1023,7 @@ impl ::std::error::Error for ListExportsError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum ListGlobalTablesError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -1032,7 +1032,7 @@ pub enum ListGlobalTablesError {
 impl ::std::fmt::Display for ListGlobalTablesError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            ListGlobalTablesError::InternalServerError(inner) => inner.fmt(f),
+            ListGlobalTablesError::InternalServerError2(inner) => inner.fmt(f),
             ListGlobalTablesError::InvalidEndpointError(inner) => inner.fmt(f),
             ListGlobalTablesError::Unhandled(inner) => inner.fmt(f),
         }
@@ -1041,7 +1041,7 @@ impl ::std::fmt::Display for ListGlobalTablesError {
 impl ::std::error::Error for ListGlobalTablesError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            ListGlobalTablesError::InternalServerError(inner) => Some(inner),
+            ListGlobalTablesError::InternalServerError2(inner) => Some(inner),
             ListGlobalTablesError::InvalidEndpointError(inner) => Some(inner),
             ListGlobalTablesError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -1051,7 +1051,7 @@ impl ::std::error::Error for ListGlobalTablesError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum ListTablesError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -1060,7 +1060,7 @@ pub enum ListTablesError {
 impl ::std::fmt::Display for ListTablesError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            ListTablesError::InternalServerError(inner) => inner.fmt(f),
+            ListTablesError::InternalServerError2(inner) => inner.fmt(f),
             ListTablesError::InvalidEndpointError(inner) => inner.fmt(f),
             ListTablesError::Unhandled(inner) => inner.fmt(f),
         }
@@ -1069,7 +1069,7 @@ impl ::std::fmt::Display for ListTablesError {
 impl ::std::error::Error for ListTablesError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            ListTablesError::InternalServerError(inner) => Some(inner),
+            ListTablesError::InternalServerError2(inner) => Some(inner),
             ListTablesError::InvalidEndpointError(inner) => Some(inner),
             ListTablesError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -1079,7 +1079,7 @@ impl ::std::error::Error for ListTablesError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum ListTagsOfResourceError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ResourceNotFoundError(ResourceNotFoundError),
 
@@ -1089,7 +1089,7 @@ pub enum ListTagsOfResourceError {
 impl ::std::fmt::Display for ListTagsOfResourceError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            ListTagsOfResourceError::InternalServerError(inner) => inner.fmt(f),
+            ListTagsOfResourceError::InternalServerError2(inner) => inner.fmt(f),
             ListTagsOfResourceError::InvalidEndpointError(inner) => inner.fmt(f),
             ListTagsOfResourceError::ResourceNotFoundError(inner) => inner.fmt(f),
             ListTagsOfResourceError::Unhandled(inner) => inner.fmt(f),
@@ -1099,7 +1099,7 @@ impl ::std::fmt::Display for ListTagsOfResourceError {
 impl ::std::error::Error for ListTagsOfResourceError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            ListTagsOfResourceError::InternalServerError(inner) => Some(inner),
+            ListTagsOfResourceError::InternalServerError2(inner) => Some(inner),
             ListTagsOfResourceError::InvalidEndpointError(inner) => Some(inner),
             ListTagsOfResourceError::ResourceNotFoundError(inner) => Some(inner),
             ListTagsOfResourceError::Unhandled(inner) => Some(inner.as_ref()),
@@ -1111,7 +1111,7 @@ impl ::std::error::Error for ListTagsOfResourceError {
 #[derive(::std::fmt::Debug)]
 pub enum PutItemError {
     ConditionalCheckFailedError(ConditionalCheckFailedError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ItemCollectionSizeLimitExceededError(ItemCollectionSizeLimitExceededError),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
@@ -1126,7 +1126,7 @@ impl ::std::fmt::Display for PutItemError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             PutItemError::ConditionalCheckFailedError(inner) => inner.fmt(f),
-            PutItemError::InternalServerError(inner) => inner.fmt(f),
+            PutItemError::InternalServerError2(inner) => inner.fmt(f),
             PutItemError::InvalidEndpointError(inner) => inner.fmt(f),
             PutItemError::ItemCollectionSizeLimitExceededError(inner) => inner.fmt(f),
             PutItemError::ProvisionedThroughputExceededError(inner) => inner.fmt(f),
@@ -1141,7 +1141,7 @@ impl ::std::error::Error for PutItemError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             PutItemError::ConditionalCheckFailedError(inner) => Some(inner),
-            PutItemError::InternalServerError(inner) => Some(inner),
+            PutItemError::InternalServerError2(inner) => Some(inner),
             PutItemError::InvalidEndpointError(inner) => Some(inner),
             PutItemError::ItemCollectionSizeLimitExceededError(inner) => Some(inner),
             PutItemError::ProvisionedThroughputExceededError(inner) => Some(inner),
@@ -1156,7 +1156,7 @@ impl ::std::error::Error for PutItemError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum QueryError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
     RequestLimitExceeded(RequestLimitExceeded),
@@ -1168,7 +1168,7 @@ pub enum QueryError {
 impl ::std::fmt::Display for QueryError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            QueryError::InternalServerError(inner) => inner.fmt(f),
+            QueryError::InternalServerError2(inner) => inner.fmt(f),
             QueryError::InvalidEndpointError(inner) => inner.fmt(f),
             QueryError::ProvisionedThroughputExceededError(inner) => inner.fmt(f),
             QueryError::RequestLimitExceeded(inner) => inner.fmt(f),
@@ -1180,7 +1180,7 @@ impl ::std::fmt::Display for QueryError {
 impl ::std::error::Error for QueryError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            QueryError::InternalServerError(inner) => Some(inner),
+            QueryError::InternalServerError2(inner) => Some(inner),
             QueryError::InvalidEndpointError(inner) => Some(inner),
             QueryError::ProvisionedThroughputExceededError(inner) => Some(inner),
             QueryError::RequestLimitExceeded(inner) => Some(inner),
@@ -1195,7 +1195,7 @@ impl ::std::error::Error for QueryError {
 pub enum RestoreTableFromBackupError {
     BackupInUseError(BackupInUseError),
     BackupNotFoundError(BackupNotFoundError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
     TableAlreadyExistsError(TableAlreadyExistsError),
@@ -1209,7 +1209,7 @@ impl ::std::fmt::Display for RestoreTableFromBackupError {
         match self {
             RestoreTableFromBackupError::BackupInUseError(inner) => inner.fmt(f),
             RestoreTableFromBackupError::BackupNotFoundError(inner) => inner.fmt(f),
-            RestoreTableFromBackupError::InternalServerError(inner) => inner.fmt(f),
+            RestoreTableFromBackupError::InternalServerError2(inner) => inner.fmt(f),
             RestoreTableFromBackupError::InvalidEndpointError(inner) => inner.fmt(f),
             RestoreTableFromBackupError::LimitExceededError(inner) => inner.fmt(f),
             RestoreTableFromBackupError::TableAlreadyExistsError(inner) => inner.fmt(f),
@@ -1223,7 +1223,7 @@ impl ::std::error::Error for RestoreTableFromBackupError {
         match self {
             RestoreTableFromBackupError::BackupInUseError(inner) => Some(inner),
             RestoreTableFromBackupError::BackupNotFoundError(inner) => Some(inner),
-            RestoreTableFromBackupError::InternalServerError(inner) => Some(inner),
+            RestoreTableFromBackupError::InternalServerError2(inner) => Some(inner),
             RestoreTableFromBackupError::InvalidEndpointError(inner) => Some(inner),
             RestoreTableFromBackupError::LimitExceededError(inner) => Some(inner),
             RestoreTableFromBackupError::TableAlreadyExistsError(inner) => Some(inner),
@@ -1236,7 +1236,7 @@ impl ::std::error::Error for RestoreTableFromBackupError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum RestoreTableToPointInTimeError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     InvalidRestoreTimeError(InvalidRestoreTimeError),
     LimitExceededError(LimitExceededError),
@@ -1251,7 +1251,7 @@ pub enum RestoreTableToPointInTimeError {
 impl ::std::fmt::Display for RestoreTableToPointInTimeError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            RestoreTableToPointInTimeError::InternalServerError(inner) => inner.fmt(f),
+            RestoreTableToPointInTimeError::InternalServerError2(inner) => inner.fmt(f),
             RestoreTableToPointInTimeError::InvalidEndpointError(inner) => inner.fmt(f),
             RestoreTableToPointInTimeError::InvalidRestoreTimeError(inner) => inner.fmt(f),
             RestoreTableToPointInTimeError::LimitExceededError(inner) => inner.fmt(f),
@@ -1268,7 +1268,7 @@ impl ::std::fmt::Display for RestoreTableToPointInTimeError {
 impl ::std::error::Error for RestoreTableToPointInTimeError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            RestoreTableToPointInTimeError::InternalServerError(inner) => Some(inner),
+            RestoreTableToPointInTimeError::InternalServerError2(inner) => Some(inner),
             RestoreTableToPointInTimeError::InvalidEndpointError(inner) => Some(inner),
             RestoreTableToPointInTimeError::InvalidRestoreTimeError(inner) => Some(inner),
             RestoreTableToPointInTimeError::LimitExceededError(inner) => Some(inner),
@@ -1286,7 +1286,7 @@ impl ::std::error::Error for RestoreTableToPointInTimeError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum ScanError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
     RequestLimitExceeded(RequestLimitExceeded),
@@ -1298,7 +1298,7 @@ pub enum ScanError {
 impl ::std::fmt::Display for ScanError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            ScanError::InternalServerError(inner) => inner.fmt(f),
+            ScanError::InternalServerError2(inner) => inner.fmt(f),
             ScanError::InvalidEndpointError(inner) => inner.fmt(f),
             ScanError::ProvisionedThroughputExceededError(inner) => inner.fmt(f),
             ScanError::RequestLimitExceeded(inner) => inner.fmt(f),
@@ -1310,7 +1310,7 @@ impl ::std::fmt::Display for ScanError {
 impl ::std::error::Error for ScanError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            ScanError::InternalServerError(inner) => Some(inner),
+            ScanError::InternalServerError2(inner) => Some(inner),
             ScanError::InvalidEndpointError(inner) => Some(inner),
             ScanError::ProvisionedThroughputExceededError(inner) => Some(inner),
             ScanError::RequestLimitExceeded(inner) => Some(inner),
@@ -1323,7 +1323,7 @@ impl ::std::error::Error for ScanError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum TagResourceError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
@@ -1335,7 +1335,7 @@ pub enum TagResourceError {
 impl ::std::fmt::Display for TagResourceError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            TagResourceError::InternalServerError(inner) => inner.fmt(f),
+            TagResourceError::InternalServerError2(inner) => inner.fmt(f),
             TagResourceError::InvalidEndpointError(inner) => inner.fmt(f),
             TagResourceError::LimitExceededError(inner) => inner.fmt(f),
             TagResourceError::ResourceInUseError(inner) => inner.fmt(f),
@@ -1347,7 +1347,7 @@ impl ::std::fmt::Display for TagResourceError {
 impl ::std::error::Error for TagResourceError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            TagResourceError::InternalServerError(inner) => Some(inner),
+            TagResourceError::InternalServerError2(inner) => Some(inner),
             TagResourceError::InvalidEndpointError(inner) => Some(inner),
             TagResourceError::LimitExceededError(inner) => Some(inner),
             TagResourceError::ResourceInUseError(inner) => Some(inner),
@@ -1360,7 +1360,7 @@ impl ::std::error::Error for TagResourceError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum TransactGetItemsError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
     RequestLimitExceeded(RequestLimitExceeded),
@@ -1373,7 +1373,7 @@ pub enum TransactGetItemsError {
 impl ::std::fmt::Display for TransactGetItemsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            TransactGetItemsError::InternalServerError(inner) => inner.fmt(f),
+            TransactGetItemsError::InternalServerError2(inner) => inner.fmt(f),
             TransactGetItemsError::InvalidEndpointError(inner) => inner.fmt(f),
             TransactGetItemsError::ProvisionedThroughputExceededError(inner) => inner.fmt(f),
             TransactGetItemsError::RequestLimitExceeded(inner) => inner.fmt(f),
@@ -1386,7 +1386,7 @@ impl ::std::fmt::Display for TransactGetItemsError {
 impl ::std::error::Error for TransactGetItemsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            TransactGetItemsError::InternalServerError(inner) => Some(inner),
+            TransactGetItemsError::InternalServerError2(inner) => Some(inner),
             TransactGetItemsError::InvalidEndpointError(inner) => Some(inner),
             TransactGetItemsError::ProvisionedThroughputExceededError(inner) => Some(inner),
             TransactGetItemsError::RequestLimitExceeded(inner) => Some(inner),
@@ -1401,7 +1401,7 @@ impl ::std::error::Error for TransactGetItemsError {
 #[derive(::std::fmt::Debug)]
 pub enum TransactWriteItemsError {
     IdempotentParameterMismatchError(IdempotentParameterMismatchError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
     RequestLimitExceeded(RequestLimitExceeded),
@@ -1416,7 +1416,7 @@ impl ::std::fmt::Display for TransactWriteItemsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             TransactWriteItemsError::IdempotentParameterMismatchError(inner) => inner.fmt(f),
-            TransactWriteItemsError::InternalServerError(inner) => inner.fmt(f),
+            TransactWriteItemsError::InternalServerError2(inner) => inner.fmt(f),
             TransactWriteItemsError::InvalidEndpointError(inner) => inner.fmt(f),
             TransactWriteItemsError::ProvisionedThroughputExceededError(inner) => inner.fmt(f),
             TransactWriteItemsError::RequestLimitExceeded(inner) => inner.fmt(f),
@@ -1431,7 +1431,7 @@ impl ::std::error::Error for TransactWriteItemsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             TransactWriteItemsError::IdempotentParameterMismatchError(inner) => Some(inner),
-            TransactWriteItemsError::InternalServerError(inner) => Some(inner),
+            TransactWriteItemsError::InternalServerError2(inner) => Some(inner),
             TransactWriteItemsError::InvalidEndpointError(inner) => Some(inner),
             TransactWriteItemsError::ProvisionedThroughputExceededError(inner) => Some(inner),
             TransactWriteItemsError::RequestLimitExceeded(inner) => Some(inner),
@@ -1446,7 +1446,7 @@ impl ::std::error::Error for TransactWriteItemsError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum UntagResourceError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
@@ -1458,7 +1458,7 @@ pub enum UntagResourceError {
 impl ::std::fmt::Display for UntagResourceError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            UntagResourceError::InternalServerError(inner) => inner.fmt(f),
+            UntagResourceError::InternalServerError2(inner) => inner.fmt(f),
             UntagResourceError::InvalidEndpointError(inner) => inner.fmt(f),
             UntagResourceError::LimitExceededError(inner) => inner.fmt(f),
             UntagResourceError::ResourceInUseError(inner) => inner.fmt(f),
@@ -1470,7 +1470,7 @@ impl ::std::fmt::Display for UntagResourceError {
 impl ::std::error::Error for UntagResourceError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            UntagResourceError::InternalServerError(inner) => Some(inner),
+            UntagResourceError::InternalServerError2(inner) => Some(inner),
             UntagResourceError::InvalidEndpointError(inner) => Some(inner),
             UntagResourceError::LimitExceededError(inner) => Some(inner),
             UntagResourceError::ResourceInUseError(inner) => Some(inner),
@@ -1484,7 +1484,7 @@ impl ::std::error::Error for UntagResourceError {
 #[derive(::std::fmt::Debug)]
 pub enum UpdateContinuousBackupsError {
     ContinuousBackupsUnavailableError(ContinuousBackupsUnavailableError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     TableNotFoundError(TableNotFoundError),
 
@@ -1495,7 +1495,7 @@ impl ::std::fmt::Display for UpdateContinuousBackupsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             UpdateContinuousBackupsError::ContinuousBackupsUnavailableError(inner) => inner.fmt(f),
-            UpdateContinuousBackupsError::InternalServerError(inner) => inner.fmt(f),
+            UpdateContinuousBackupsError::InternalServerError2(inner) => inner.fmt(f),
             UpdateContinuousBackupsError::InvalidEndpointError(inner) => inner.fmt(f),
             UpdateContinuousBackupsError::TableNotFoundError(inner) => inner.fmt(f),
             UpdateContinuousBackupsError::Unhandled(inner) => inner.fmt(f),
@@ -1506,7 +1506,7 @@ impl ::std::error::Error for UpdateContinuousBackupsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             UpdateContinuousBackupsError::ContinuousBackupsUnavailableError(inner) => Some(inner),
-            UpdateContinuousBackupsError::InternalServerError(inner) => Some(inner),
+            UpdateContinuousBackupsError::InternalServerError2(inner) => Some(inner),
             UpdateContinuousBackupsError::InvalidEndpointError(inner) => Some(inner),
             UpdateContinuousBackupsError::TableNotFoundError(inner) => Some(inner),
             UpdateContinuousBackupsError::Unhandled(inner) => Some(inner.as_ref()),
@@ -1517,7 +1517,7 @@ impl ::std::error::Error for UpdateContinuousBackupsError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum UpdateContributorInsightsError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     ResourceNotFoundError(ResourceNotFoundError),
 
     /// An unexpected error, eg. invalid JSON returned by the service
@@ -1526,7 +1526,7 @@ pub enum UpdateContributorInsightsError {
 impl ::std::fmt::Display for UpdateContributorInsightsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            UpdateContributorInsightsError::InternalServerError(inner) => inner.fmt(f),
+            UpdateContributorInsightsError::InternalServerError2(inner) => inner.fmt(f),
             UpdateContributorInsightsError::ResourceNotFoundError(inner) => inner.fmt(f),
             UpdateContributorInsightsError::Unhandled(inner) => inner.fmt(f),
         }
@@ -1535,7 +1535,7 @@ impl ::std::fmt::Display for UpdateContributorInsightsError {
 impl ::std::error::Error for UpdateContributorInsightsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            UpdateContributorInsightsError::InternalServerError(inner) => Some(inner),
+            UpdateContributorInsightsError::InternalServerError2(inner) => Some(inner),
             UpdateContributorInsightsError::ResourceNotFoundError(inner) => Some(inner),
             UpdateContributorInsightsError::Unhandled(inner) => Some(inner.as_ref()),
         }
@@ -1546,7 +1546,7 @@ impl ::std::error::Error for UpdateContributorInsightsError {
 #[derive(::std::fmt::Debug)]
 pub enum UpdateGlobalTableError {
     GlobalTableNotFoundError(GlobalTableNotFoundError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ReplicaAlreadyExistsError(ReplicaAlreadyExistsError),
     ReplicaNotFoundError(ReplicaNotFoundError),
@@ -1559,7 +1559,7 @@ impl ::std::fmt::Display for UpdateGlobalTableError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             UpdateGlobalTableError::GlobalTableNotFoundError(inner) => inner.fmt(f),
-            UpdateGlobalTableError::InternalServerError(inner) => inner.fmt(f),
+            UpdateGlobalTableError::InternalServerError2(inner) => inner.fmt(f),
             UpdateGlobalTableError::InvalidEndpointError(inner) => inner.fmt(f),
             UpdateGlobalTableError::ReplicaAlreadyExistsError(inner) => inner.fmt(f),
             UpdateGlobalTableError::ReplicaNotFoundError(inner) => inner.fmt(f),
@@ -1572,7 +1572,7 @@ impl ::std::error::Error for UpdateGlobalTableError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             UpdateGlobalTableError::GlobalTableNotFoundError(inner) => Some(inner),
-            UpdateGlobalTableError::InternalServerError(inner) => Some(inner),
+            UpdateGlobalTableError::InternalServerError2(inner) => Some(inner),
             UpdateGlobalTableError::InvalidEndpointError(inner) => Some(inner),
             UpdateGlobalTableError::ReplicaAlreadyExistsError(inner) => Some(inner),
             UpdateGlobalTableError::ReplicaNotFoundError(inner) => Some(inner),
@@ -1587,7 +1587,7 @@ impl ::std::error::Error for UpdateGlobalTableError {
 pub enum UpdateGlobalTableSettingsError {
     GlobalTableNotFoundError(GlobalTableNotFoundError),
     IndexNotFoundError(IndexNotFoundError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
     ReplicaNotFoundError(ReplicaNotFoundError),
@@ -1601,7 +1601,7 @@ impl ::std::fmt::Display for UpdateGlobalTableSettingsError {
         match self {
             UpdateGlobalTableSettingsError::GlobalTableNotFoundError(inner) => inner.fmt(f),
             UpdateGlobalTableSettingsError::IndexNotFoundError(inner) => inner.fmt(f),
-            UpdateGlobalTableSettingsError::InternalServerError(inner) => inner.fmt(f),
+            UpdateGlobalTableSettingsError::InternalServerError2(inner) => inner.fmt(f),
             UpdateGlobalTableSettingsError::InvalidEndpointError(inner) => inner.fmt(f),
             UpdateGlobalTableSettingsError::LimitExceededError(inner) => inner.fmt(f),
             UpdateGlobalTableSettingsError::ReplicaNotFoundError(inner) => inner.fmt(f),
@@ -1615,7 +1615,7 @@ impl ::std::error::Error for UpdateGlobalTableSettingsError {
         match self {
             UpdateGlobalTableSettingsError::GlobalTableNotFoundError(inner) => Some(inner),
             UpdateGlobalTableSettingsError::IndexNotFoundError(inner) => Some(inner),
-            UpdateGlobalTableSettingsError::InternalServerError(inner) => Some(inner),
+            UpdateGlobalTableSettingsError::InternalServerError2(inner) => Some(inner),
             UpdateGlobalTableSettingsError::InvalidEndpointError(inner) => Some(inner),
             UpdateGlobalTableSettingsError::LimitExceededError(inner) => Some(inner),
             UpdateGlobalTableSettingsError::ReplicaNotFoundError(inner) => Some(inner),
@@ -1629,7 +1629,7 @@ impl ::std::error::Error for UpdateGlobalTableSettingsError {
 #[derive(::std::fmt::Debug)]
 pub enum UpdateItemError {
     ConditionalCheckFailedError(ConditionalCheckFailedError),
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     ItemCollectionSizeLimitExceededError(ItemCollectionSizeLimitExceededError),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
@@ -1644,7 +1644,7 @@ impl ::std::fmt::Display for UpdateItemError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             UpdateItemError::ConditionalCheckFailedError(inner) => inner.fmt(f),
-            UpdateItemError::InternalServerError(inner) => inner.fmt(f),
+            UpdateItemError::InternalServerError2(inner) => inner.fmt(f),
             UpdateItemError::InvalidEndpointError(inner) => inner.fmt(f),
             UpdateItemError::ItemCollectionSizeLimitExceededError(inner) => inner.fmt(f),
             UpdateItemError::ProvisionedThroughputExceededError(inner) => inner.fmt(f),
@@ -1659,7 +1659,7 @@ impl ::std::error::Error for UpdateItemError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             UpdateItemError::ConditionalCheckFailedError(inner) => Some(inner),
-            UpdateItemError::InternalServerError(inner) => Some(inner),
+            UpdateItemError::InternalServerError2(inner) => Some(inner),
             UpdateItemError::InvalidEndpointError(inner) => Some(inner),
             UpdateItemError::ItemCollectionSizeLimitExceededError(inner) => Some(inner),
             UpdateItemError::ProvisionedThroughputExceededError(inner) => Some(inner),
@@ -1674,7 +1674,7 @@ impl ::std::error::Error for UpdateItemError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum UpdateTableError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
@@ -1686,7 +1686,7 @@ pub enum UpdateTableError {
 impl ::std::fmt::Display for UpdateTableError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            UpdateTableError::InternalServerError(inner) => inner.fmt(f),
+            UpdateTableError::InternalServerError2(inner) => inner.fmt(f),
             UpdateTableError::InvalidEndpointError(inner) => inner.fmt(f),
             UpdateTableError::LimitExceededError(inner) => inner.fmt(f),
             UpdateTableError::ResourceInUseError(inner) => inner.fmt(f),
@@ -1698,7 +1698,7 @@ impl ::std::fmt::Display for UpdateTableError {
 impl ::std::error::Error for UpdateTableError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            UpdateTableError::InternalServerError(inner) => Some(inner),
+            UpdateTableError::InternalServerError2(inner) => Some(inner),
             UpdateTableError::InvalidEndpointError(inner) => Some(inner),
             UpdateTableError::LimitExceededError(inner) => Some(inner),
             UpdateTableError::ResourceInUseError(inner) => Some(inner),
@@ -1711,7 +1711,7 @@ impl ::std::error::Error for UpdateTableError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum UpdateTableReplicaAutoScalingError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
@@ -1722,7 +1722,7 @@ pub enum UpdateTableReplicaAutoScalingError {
 impl ::std::fmt::Display for UpdateTableReplicaAutoScalingError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            UpdateTableReplicaAutoScalingError::InternalServerError(inner) => inner.fmt(f),
+            UpdateTableReplicaAutoScalingError::InternalServerError2(inner) => inner.fmt(f),
             UpdateTableReplicaAutoScalingError::LimitExceededError(inner) => inner.fmt(f),
             UpdateTableReplicaAutoScalingError::ResourceInUseError(inner) => inner.fmt(f),
             UpdateTableReplicaAutoScalingError::ResourceNotFoundError(inner) => inner.fmt(f),
@@ -1733,7 +1733,7 @@ impl ::std::fmt::Display for UpdateTableReplicaAutoScalingError {
 impl ::std::error::Error for UpdateTableReplicaAutoScalingError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            UpdateTableReplicaAutoScalingError::InternalServerError(inner) => Some(inner),
+            UpdateTableReplicaAutoScalingError::InternalServerError2(inner) => Some(inner),
             UpdateTableReplicaAutoScalingError::LimitExceededError(inner) => Some(inner),
             UpdateTableReplicaAutoScalingError::ResourceInUseError(inner) => Some(inner),
             UpdateTableReplicaAutoScalingError::ResourceNotFoundError(inner) => Some(inner),
@@ -1745,7 +1745,7 @@ impl ::std::error::Error for UpdateTableReplicaAutoScalingError {
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
 pub enum UpdateTimeToLiveError {
-    InternalServerError(InternalServerError),
+    InternalServerError2(InternalServerError2),
     InvalidEndpointError(InvalidEndpointError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
@@ -1757,7 +1757,7 @@ pub enum UpdateTimeToLiveError {
 impl ::std::fmt::Display for UpdateTimeToLiveError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            UpdateTimeToLiveError::InternalServerError(inner) => inner.fmt(f),
+            UpdateTimeToLiveError::InternalServerError2(inner) => inner.fmt(f),
             UpdateTimeToLiveError::InvalidEndpointError(inner) => inner.fmt(f),
             UpdateTimeToLiveError::LimitExceededError(inner) => inner.fmt(f),
             UpdateTimeToLiveError::ResourceInUseError(inner) => inner.fmt(f),
@@ -1769,7 +1769,7 @@ impl ::std::fmt::Display for UpdateTimeToLiveError {
 impl ::std::error::Error for UpdateTimeToLiveError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
-            UpdateTimeToLiveError::InternalServerError(inner) => Some(inner),
+            UpdateTimeToLiveError::InternalServerError2(inner) => Some(inner),
             UpdateTimeToLiveError::InvalidEndpointError(inner) => Some(inner),
             UpdateTimeToLiveError::LimitExceededError(inner) => Some(inner),
             UpdateTimeToLiveError::ResourceInUseError(inner) => Some(inner),
@@ -1793,7 +1793,7 @@ pub struct ResourceNotFoundError {
     /// <p>The resource which is being requested does not exist.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ResourceNotFoundError {
     /// Creates a new builder-style object to manufacture [`ResourceNotFoundError`](crate::error::ResourceNotFoundError)
@@ -1833,11 +1833,11 @@ pub mod resource_not_found_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The resource which is being requested does not exist.</p>
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -1865,7 +1865,7 @@ pub struct ResourceInUseError {
     /// <p>The resource which is being attempted to be changed is in use.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ResourceInUseError {
     /// Creates a new builder-style object to manufacture [`ResourceInUseError`](crate::error::ResourceInUseError)
@@ -1905,11 +1905,11 @@ pub mod resource_in_use_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The resource which is being attempted to be changed is in use.</p>
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -1943,7 +1943,7 @@ pub struct LimitExceededError {
     /// <p>Too many operations for a given subscriber.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl LimitExceededError {
     /// Creates a new builder-style object to manufacture [`LimitExceededError`](crate::error::LimitExceededError)
@@ -1983,11 +1983,11 @@ pub mod limit_exceeded_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>Too many operations for a given subscriber.</p>
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2011,7 +2011,7 @@ pub mod limit_exceeded_error {
 pub struct InvalidEndpointError {
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidEndpointError {
     /// Creates a new builder-style object to manufacture [`InvalidEndpointError`](crate::error::InvalidEndpointError)
@@ -2048,10 +2048,10 @@ pub mod invalid_endpoint_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2073,19 +2073,19 @@ pub mod invalid_endpoint_error {
     ::std::cmp::PartialEq,
     ::std::fmt::Debug,
 )]
-pub struct InternalServerError {
+pub struct InternalServerError2 {
     /// <p>The server encountered an internal error trying to fulfill the request.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
-impl InternalServerError {
-    /// Creates a new builder-style object to manufacture [`InternalServerError`](crate::error::InternalServerError)
-    pub fn builder() -> crate::error::internal_server_error::Builder {
-        crate::error::internal_server_error::Builder::default()
+impl InternalServerError2 {
+    /// Creates a new builder-style object to manufacture [`InternalServerError2`](crate::error::InternalServerError2)
+    pub fn builder() -> crate::error::internal_server_error2::Builder {
+        crate::error::internal_server_error2::Builder::default()
     }
 }
-impl InternalServerError {
+impl InternalServerError2 {
     pub fn retryable(&self) -> bool {
         false
     }
@@ -2099,35 +2099,35 @@ impl InternalServerError {
         self.message.as_deref()
     }
 }
-impl ::std::fmt::Display for InternalServerError {
+impl ::std::fmt::Display for InternalServerError2 {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InternalServerError")?;
+        write!(f, "InternalServerError2")?;
         if let Some(inner_4) = &self.message {
             write!(f, ": {}", inner_4)?;
         }
         Ok(())
     }
 }
-impl ::std::error::Error for InternalServerError {}
-/// See [`InternalServerError`](crate::error::InternalServerError)
-pub mod internal_server_error {
+impl ::std::error::Error for InternalServerError2 {}
+/// See [`InternalServerError2`](crate::error::InternalServerError2)
+pub mod internal_server_error2 {
 
-    use crate::error::InternalServerError;
-    /// A builder for [`InternalServerError`](crate::error::InternalServerError)
+    use crate::error::InternalServerError2;
+    /// A builder for [`InternalServerError2`](crate::error::InternalServerError2)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The server encountered an internal error trying to fulfill the request.</p>
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`InternalServerError`](crate::error::InternalServerError)
-        pub fn build(self) -> InternalServerError {
-            InternalServerError {
+        /// Consumes the builder and constructs a [`InternalServerError2`](crate::error::InternalServerError2)
+        pub fn build(self) -> InternalServerError2 {
+            InternalServerError2 {
                 message: self.message,
             }
         }
@@ -2146,7 +2146,7 @@ pub mod internal_server_error {
 pub struct TransactionConflictError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl TransactionConflictError {
     /// Creates a new builder-style object to manufacture [`TransactionConflictError`](crate::error::TransactionConflictError)
@@ -2186,10 +2186,10 @@ pub mod transaction_conflict_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2214,7 +2214,7 @@ pub mod transaction_conflict_error {
 pub struct RequestLimitExceeded {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl RequestLimitExceeded {
     /// Creates a new builder-style object to manufacture [`RequestLimitExceeded`](crate::error::RequestLimitExceeded)
@@ -2254,10 +2254,10 @@ pub mod request_limit_exceeded {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2287,7 +2287,7 @@ pub struct ProvisionedThroughputExceededError {
     /// <p>You exceeded your maximum allowed provisioned throughput.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ProvisionedThroughputExceededError {
     /// Creates a new builder-style object to manufacture [`ProvisionedThroughputExceededError`](crate::error::ProvisionedThroughputExceededError)
@@ -2327,11 +2327,11 @@ pub mod provisioned_throughput_exceeded_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>You exceeded your maximum allowed provisioned throughput.</p>
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2357,7 +2357,7 @@ pub struct ItemCollectionSizeLimitExceededError {
     /// <p>The total size of an item collection has exceeded the maximum limit of 10 gigabytes.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ItemCollectionSizeLimitExceededError {
     /// Creates a new builder-style object to manufacture [`ItemCollectionSizeLimitExceededError`](crate::error::ItemCollectionSizeLimitExceededError)
@@ -2397,11 +2397,11 @@ pub mod item_collection_size_limit_exceeded_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The total size of an item collection has exceeded the maximum limit of 10 gigabytes.</p>
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2427,7 +2427,7 @@ pub struct ConditionalCheckFailedError {
     /// <p>The conditional request failed.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ConditionalCheckFailedError {
     /// Creates a new builder-style object to manufacture [`ConditionalCheckFailedError`](crate::error::ConditionalCheckFailedError)
@@ -2467,11 +2467,11 @@ pub mod conditional_check_failed_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The conditional request failed.</p>
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2496,7 +2496,7 @@ pub mod conditional_check_failed_error {
 pub struct ReplicaNotFoundError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ReplicaNotFoundError {
     /// Creates a new builder-style object to manufacture [`ReplicaNotFoundError`](crate::error::ReplicaNotFoundError)
@@ -2536,10 +2536,10 @@ pub mod replica_not_found_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2564,7 +2564,7 @@ pub mod replica_not_found_error {
 pub struct IndexNotFoundError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl IndexNotFoundError {
     /// Creates a new builder-style object to manufacture [`IndexNotFoundError`](crate::error::IndexNotFoundError)
@@ -2604,10 +2604,10 @@ pub mod index_not_found_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2632,7 +2632,7 @@ pub mod index_not_found_error {
 pub struct GlobalTableNotFoundError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl GlobalTableNotFoundError {
     /// Creates a new builder-style object to manufacture [`GlobalTableNotFoundError`](crate::error::GlobalTableNotFoundError)
@@ -2672,10 +2672,10 @@ pub mod global_table_not_found_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2700,7 +2700,7 @@ pub mod global_table_not_found_error {
 pub struct TableNotFoundError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl TableNotFoundError {
     /// Creates a new builder-style object to manufacture [`TableNotFoundError`](crate::error::TableNotFoundError)
@@ -2740,10 +2740,10 @@ pub mod table_not_found_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2768,7 +2768,7 @@ pub mod table_not_found_error {
 pub struct ReplicaAlreadyExistsError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ReplicaAlreadyExistsError {
     /// Creates a new builder-style object to manufacture [`ReplicaAlreadyExistsError`](crate::error::ReplicaAlreadyExistsError)
@@ -2808,10 +2808,10 @@ pub mod replica_already_exists_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2836,7 +2836,7 @@ pub mod replica_already_exists_error {
 pub struct ContinuousBackupsUnavailableError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ContinuousBackupsUnavailableError {
     /// Creates a new builder-style object to manufacture [`ContinuousBackupsUnavailableError`](crate::error::ContinuousBackupsUnavailableError)
@@ -2876,10 +2876,10 @@ pub mod continuous_backups_unavailable_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -2904,7 +2904,7 @@ pub mod continuous_backups_unavailable_error {
 pub struct TransactionInProgressError {
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl TransactionInProgressError {
     /// Creates a new builder-style object to manufacture [`TransactionInProgressError`](crate::error::TransactionInProgressError)
@@ -2941,10 +2941,10 @@ pub mod transaction_in_progress_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -3166,11 +3166,11 @@ pub mod transaction_in_progress_error {
 pub struct TransactionCanceledError {
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
     /// <p>A list of cancellation reasons.</p>
     #[serde(rename = "CancellationReasons")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub cancellation_reasons: Option<Vec<CancellationReason>>,
+    pub cancellation_reasons: ::std::option::Option<::std::vec::Vec<CancellationReason>>,
 }
 impl TransactionCanceledError {
     /// Creates a new builder-style object to manufacture [`TransactionCanceledError`](crate::error::TransactionCanceledError)
@@ -3208,16 +3208,16 @@ pub mod transaction_canceled_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
-        cancellation_reasons: Option<Vec<CancellationReason>>,
+        message: ::std::option::Option<::std::string::String>,
+        cancellation_reasons: ::std::option::Option<::std::vec::Vec<CancellationReason>>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
         /// <p>A list of cancellation reasons.</p>
-        pub fn cancellation_reasons(mut self, inp: Vec<CancellationReason>) -> Self {
+        pub fn cancellation_reasons(mut self, inp: ::std::vec::Vec<CancellationReason>) -> Self {
             self.cancellation_reasons = Some(inp);
             self
         }
@@ -3244,7 +3244,7 @@ pub mod transaction_canceled_error {
 pub struct IdempotentParameterMismatchError {
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl IdempotentParameterMismatchError {
     /// Creates a new builder-style object to manufacture [`IdempotentParameterMismatchError`](crate::error::IdempotentParameterMismatchError)
@@ -3281,10 +3281,10 @@ pub mod idempotent_parameter_mismatch_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -3309,7 +3309,7 @@ pub mod idempotent_parameter_mismatch_error {
 pub struct TableInUseError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl TableInUseError {
     /// Creates a new builder-style object to manufacture [`TableInUseError`](crate::error::TableInUseError)
@@ -3349,10 +3349,10 @@ pub mod table_in_use_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -3377,7 +3377,7 @@ pub mod table_in_use_error {
 pub struct TableAlreadyExistsError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl TableAlreadyExistsError {
     /// Creates a new builder-style object to manufacture [`TableAlreadyExistsError`](crate::error::TableAlreadyExistsError)
@@ -3417,10 +3417,10 @@ pub mod table_already_exists_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -3445,7 +3445,7 @@ pub mod table_already_exists_error {
 pub struct PointInTimeRecoveryUnavailableError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl PointInTimeRecoveryUnavailableError {
     /// Creates a new builder-style object to manufacture [`PointInTimeRecoveryUnavailableError`](crate::error::PointInTimeRecoveryUnavailableError)
@@ -3485,10 +3485,10 @@ pub mod point_in_time_recovery_unavailable_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -3513,7 +3513,7 @@ pub mod point_in_time_recovery_unavailable_error {
 pub struct InvalidRestoreTimeError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidRestoreTimeError {
     /// Creates a new builder-style object to manufacture [`InvalidRestoreTimeError`](crate::error::InvalidRestoreTimeError)
@@ -3553,10 +3553,10 @@ pub mod invalid_restore_time_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -3581,7 +3581,7 @@ pub mod invalid_restore_time_error {
 pub struct BackupNotFoundError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl BackupNotFoundError {
     /// Creates a new builder-style object to manufacture [`BackupNotFoundError`](crate::error::BackupNotFoundError)
@@ -3621,10 +3621,10 @@ pub mod backup_not_found_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -3649,7 +3649,7 @@ pub mod backup_not_found_error {
 pub struct BackupInUseError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl BackupInUseError {
     /// Creates a new builder-style object to manufacture [`BackupInUseError`](crate::error::BackupInUseError)
@@ -3689,10 +3689,10 @@ pub mod backup_in_use_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -3718,7 +3718,7 @@ pub mod backup_in_use_error {
 pub struct InvalidExportTimeError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidExportTimeError {
     /// Creates a new builder-style object to manufacture [`InvalidExportTimeError`](crate::error::InvalidExportTimeError)
@@ -3758,10 +3758,10 @@ pub mod invalid_export_time_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -3786,7 +3786,7 @@ pub mod invalid_export_time_error {
 pub struct ExportConflictError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ExportConflictError {
     /// Creates a new builder-style object to manufacture [`ExportConflictError`](crate::error::ExportConflictError)
@@ -3826,10 +3826,10 @@ pub mod export_conflict_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -3856,7 +3856,7 @@ pub mod export_conflict_error {
 pub struct DuplicateItemError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl DuplicateItemError {
     /// Creates a new builder-style object to manufacture [`DuplicateItemError`](crate::error::DuplicateItemError)
@@ -3896,10 +3896,10 @@ pub mod duplicate_item_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -3924,7 +3924,7 @@ pub mod duplicate_item_error {
 pub struct ExportNotFoundError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ExportNotFoundError {
     /// Creates a new builder-style object to manufacture [`ExportNotFoundError`](crate::error::ExportNotFoundError)
@@ -3964,10 +3964,10 @@ pub mod export_not_found_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -3992,7 +3992,7 @@ pub mod export_not_found_error {
 pub struct GlobalTableAlreadyExistsError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl GlobalTableAlreadyExistsError {
     /// Creates a new builder-style object to manufacture [`GlobalTableAlreadyExistsError`](crate::error::GlobalTableAlreadyExistsError)
@@ -4032,10 +4032,10 @@ pub mod global_table_already_exists_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }

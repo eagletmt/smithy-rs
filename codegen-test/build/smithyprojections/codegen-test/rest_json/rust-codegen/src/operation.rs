@@ -8,8 +8,6 @@ use crate::model::StructureListMember;
 use smithy_types::Blob;
 use smithy_types::Document;
 use smithy_types::Instant;
-use std::collections::BTreeSet;
-use std::collections::HashMap;
 use std::fmt::Write;
 impl AllQueryStringTypesInput {
     fn uri_base(&self, output: &mut String) {
@@ -115,13 +113,13 @@ impl AllQueryStringTypesInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -245,13 +243,13 @@ impl ConstantAndVariableQueryStringInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -330,13 +328,13 @@ impl ConstantQueryStringInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -383,13 +381,13 @@ impl EmptyInputAndEmptyOutputInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -440,13 +438,13 @@ impl GreetingWithErrorsInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -565,13 +563,13 @@ impl HttpPayloadTraitsInput {
         let builder = builder.header("Content-Type", "application/octet-stream");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -663,13 +661,13 @@ impl HttpPayloadTraitsWithMediaTypeInput {
         let builder = builder.header("Content-Type", "text/plain");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -728,13 +726,13 @@ impl HttpPayloadWithStructureInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -808,13 +806,13 @@ impl HttpPrefixHeadersInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -898,13 +896,13 @@ impl HttpPrefixHeadersResponseInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -943,13 +941,13 @@ impl HttpRequestWithGreedyLabelInPathInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -994,13 +992,13 @@ impl HttpRequestWithLabelsInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1052,13 +1050,13 @@ impl HttpRequestWithLabelsAndTimestampFormatInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1108,13 +1106,13 @@ impl HttpResponseCodeInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1147,13 +1145,13 @@ impl IgnoreQueryParamsInResponseInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1186,13 +1184,13 @@ impl InlineDocumentInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1214,7 +1212,7 @@ mod inline_document_request_test {
             "string".to_string()
         )
         .document_value(
-            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@2cd3bb4e */
+            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@2bc86bdd */
         )
         .build()
         .unwrap()
@@ -1252,13 +1250,13 @@ impl InlineDocumentAsPayloadInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1277,7 +1275,7 @@ mod inline_document_as_payload_request_test {
     fn test_inline_document_as_payload_input_request() {
         let input =InlineDocumentAsPayloadInput::builder()
         .document_value(
-            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@2cd3bb4e */
+            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@2bc86bdd */
         )
         .build()
         .unwrap()
@@ -1447,13 +1445,13 @@ impl InputAndOutputWithHeadersInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1650,13 +1648,13 @@ impl JsonBlobsInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1708,13 +1706,13 @@ impl JsonEnumsInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1782,13 +1780,13 @@ impl JsonListsInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1915,13 +1913,13 @@ impl JsonMapsInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -2083,13 +2081,13 @@ impl JsonTimestampsInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -2213,13 +2211,13 @@ impl JsonUnionsInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -2488,13 +2486,13 @@ impl MediaTypeHeaderInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -2546,13 +2544,13 @@ impl NoInputAndNoOutputInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -2596,13 +2594,13 @@ impl NoInputAndOutputInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -2670,13 +2668,13 @@ impl NullAndEmptyHeadersClientInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -2748,13 +2746,13 @@ impl NullAndEmptyHeadersServerInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -2798,13 +2796,13 @@ impl OmitsNullSerializesEmptyStringInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -2859,13 +2857,13 @@ impl QueryIdempotencyTokenAutoFillInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -2930,13 +2928,13 @@ impl RecursiveShapesInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -3019,13 +3017,13 @@ impl SimpleScalarPropertiesInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -3120,13 +3118,13 @@ impl StreamingTraitsInput {
         let builder = builder.header("Content-Type", "application/octet-stream");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -3216,13 +3214,13 @@ impl StreamingTraitsRequireLengthInput {
         let builder = builder.header("Content-Type", "application/octet-stream");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -3319,13 +3317,13 @@ impl StreamingTraitsWithMediaTypeInput {
         let builder = builder.header("Content-Type", "text/plain");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -3446,13 +3444,13 @@ impl TimestampFormatHeadersInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -3510,7 +3508,7 @@ mod timestamp_format_headers_request_test {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonUnionsOutput {
     /// A union with a representative set of types for members.
-    pub contents: Option<MyUnion>,
+    pub contents: ::std::option::Option<MyUnion>,
 }
 impl JsonUnionsOutput {
     /// Creates a new builder-style object to manufacture [`JsonUnionsOutput`](crate::operation::JsonUnionsOutput)
@@ -3527,7 +3525,7 @@ pub mod json_unions_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        contents: Option<MyUnion>,
+        contents: ::std::option::Option<MyUnion>,
     }
     impl Builder {
         /// A union with a representative set of types for members.
@@ -3549,7 +3547,7 @@ pub mod json_unions_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonUnionsInput {
     /// A union with a representative set of types for members.
-    pub contents: Option<MyUnion>,
+    pub contents: ::std::option::Option<MyUnion>,
 }
 impl JsonUnionsInput {
     /// Creates a new builder-style object to manufacture [`JsonUnionsInput`](crate::operation::JsonUnionsInput)
@@ -3566,7 +3564,7 @@ pub mod json_unions_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        contents: Option<MyUnion>,
+        contents: ::std::option::Option<MyUnion>,
     }
     impl Builder {
         /// A union with a representative set of types for members.
@@ -3603,7 +3601,7 @@ pub mod inline_document_as_payload_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        document_value: Option<Document>,
+        document_value: ::std::option::Option<Document>,
     }
     impl Builder {
         pub fn document_value(mut self, inp: Document) -> Self {
@@ -3641,7 +3639,7 @@ pub mod inline_document_as_payload_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        document_value: Option<Document>,
+        document_value: ::std::option::Option<Document>,
     }
     impl Builder {
         pub fn document_value(mut self, inp: Document) -> Self {
@@ -3662,7 +3660,7 @@ pub mod inline_document_as_payload_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct InlineDocumentOutput {
-    pub string_value: Option<String>,
+    pub string_value: ::std::option::Option<::std::string::String>,
     pub document_value: Document,
 }
 impl InlineDocumentOutput {
@@ -3680,11 +3678,11 @@ pub mod inline_document_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        string_value: Option<String>,
-        document_value: Option<Document>,
+        string_value: ::std::option::Option<::std::string::String>,
+        document_value: ::std::option::Option<Document>,
     }
     impl Builder {
-        pub fn string_value(mut self, inp: impl Into<String>) -> Self {
+        pub fn string_value(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.string_value = Some(inp.into());
             self
         }
@@ -3707,7 +3705,7 @@ pub mod inline_document_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct InlineDocumentInput {
-    pub string_value: Option<String>,
+    pub string_value: ::std::option::Option<::std::string::String>,
     pub document_value: Document,
 }
 impl InlineDocumentInput {
@@ -3725,11 +3723,11 @@ pub mod inline_document_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        string_value: Option<String>,
-        document_value: Option<Document>,
+        string_value: ::std::option::Option<::std::string::String>,
+        document_value: ::std::option::Option<Document>,
     }
     impl Builder {
-        pub fn string_value(mut self, inp: impl Into<String>) -> Self {
+        pub fn string_value(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.string_value = Some(inp.into());
             self
         }
@@ -3752,7 +3750,7 @@ pub mod inline_document_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonBlobsOutput {
-    pub data: Option<Blob>,
+    pub data: ::std::option::Option<Blob>,
 }
 impl JsonBlobsOutput {
     /// Creates a new builder-style object to manufacture [`JsonBlobsOutput`](crate::operation::JsonBlobsOutput)
@@ -3769,7 +3767,7 @@ pub mod json_blobs_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        data: Option<Blob>,
+        data: ::std::option::Option<Blob>,
     }
     impl Builder {
         pub fn data(mut self, inp: Blob) -> Self {
@@ -3786,7 +3784,7 @@ pub mod json_blobs_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonBlobsInput {
-    pub data: Option<Blob>,
+    pub data: ::std::option::Option<Blob>,
 }
 impl JsonBlobsInput {
     /// Creates a new builder-style object to manufacture [`JsonBlobsInput`](crate::operation::JsonBlobsInput)
@@ -3803,7 +3801,7 @@ pub mod json_blobs_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        data: Option<Blob>,
+        data: ::std::option::Option<Blob>,
     }
     impl Builder {
         pub fn data(mut self, inp: Blob) -> Self {
@@ -3820,14 +3818,30 @@ pub mod json_blobs_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonMapsOutput {
-    pub dense_struct_map: Option<HashMap<String, GreetingStruct>>,
-    pub sparse_struct_map: Option<HashMap<String, Option<GreetingStruct>>>,
-    pub dense_number_map: Option<HashMap<String, i32>>,
-    pub dense_boolean_map: Option<HashMap<String, bool>>,
-    pub dense_string_map: Option<HashMap<String, String>>,
-    pub sparse_number_map: Option<HashMap<String, Option<i32>>>,
-    pub sparse_boolean_map: Option<HashMap<String, Option<bool>>>,
-    pub sparse_string_map: Option<HashMap<String, Option<String>>>,
+    pub dense_struct_map:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, GreetingStruct>>,
+    pub sparse_struct_map: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::option::Option<GreetingStruct>>,
+    >,
+    pub dense_number_map:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, i32>>,
+    pub dense_boolean_map:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, bool>>,
+    pub dense_string_map: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
+    pub sparse_number_map: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::option::Option<i32>>,
+    >,
+    pub sparse_boolean_map: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::option::Option<bool>>,
+    >,
+    pub sparse_string_map: ::std::option::Option<
+        ::std::collections::HashMap<
+            ::std::string::String,
+            ::std::option::Option<::std::string::String>,
+        >,
+    >,
 }
 impl JsonMapsOutput {
     /// Creates a new builder-style object to manufacture [`JsonMapsOutput`](crate::operation::JsonMapsOutput)
@@ -3840,50 +3854,99 @@ pub mod json_maps_output {
 
     use crate::model::GreetingStruct;
     use crate::operation::JsonMapsOutput;
-    use std::collections::HashMap;
     /// A builder for [`JsonMapsOutput`](crate::operation::JsonMapsOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        dense_struct_map: Option<HashMap<String, GreetingStruct>>,
-        sparse_struct_map: Option<HashMap<String, Option<GreetingStruct>>>,
-        dense_number_map: Option<HashMap<String, i32>>,
-        dense_boolean_map: Option<HashMap<String, bool>>,
-        dense_string_map: Option<HashMap<String, String>>,
-        sparse_number_map: Option<HashMap<String, Option<i32>>>,
-        sparse_boolean_map: Option<HashMap<String, Option<bool>>>,
-        sparse_string_map: Option<HashMap<String, Option<String>>>,
+        dense_struct_map: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, GreetingStruct>,
+        >,
+        sparse_struct_map: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::option::Option<GreetingStruct>,
+            >,
+        >,
+        dense_number_map:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, i32>>,
+        dense_boolean_map:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, bool>>,
+        dense_string_map: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
+        sparse_number_map: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::option::Option<i32>>,
+        >,
+        sparse_boolean_map: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::option::Option<bool>>,
+        >,
+        sparse_string_map: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::option::Option<::std::string::String>,
+            >,
+        >,
     }
     impl Builder {
-        pub fn dense_struct_map(mut self, inp: HashMap<String, GreetingStruct>) -> Self {
+        pub fn dense_struct_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, GreetingStruct>,
+        ) -> Self {
             self.dense_struct_map = Some(inp);
             self
         }
-        pub fn sparse_struct_map(mut self, inp: HashMap<String, Option<GreetingStruct>>) -> Self {
+        pub fn sparse_struct_map(
+            mut self,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::option::Option<GreetingStruct>,
+            >,
+        ) -> Self {
             self.sparse_struct_map = Some(inp);
             self
         }
-        pub fn dense_number_map(mut self, inp: HashMap<String, i32>) -> Self {
+        pub fn dense_number_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, i32>,
+        ) -> Self {
             self.dense_number_map = Some(inp);
             self
         }
-        pub fn dense_boolean_map(mut self, inp: HashMap<String, bool>) -> Self {
+        pub fn dense_boolean_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, bool>,
+        ) -> Self {
             self.dense_boolean_map = Some(inp);
             self
         }
-        pub fn dense_string_map(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn dense_string_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.dense_string_map = Some(inp);
             self
         }
-        pub fn sparse_number_map(mut self, inp: HashMap<String, Option<i32>>) -> Self {
+        pub fn sparse_number_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::option::Option<i32>>,
+        ) -> Self {
             self.sparse_number_map = Some(inp);
             self
         }
-        pub fn sparse_boolean_map(mut self, inp: HashMap<String, Option<bool>>) -> Self {
+        pub fn sparse_boolean_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::option::Option<bool>>,
+        ) -> Self {
             self.sparse_boolean_map = Some(inp);
             self
         }
-        pub fn sparse_string_map(mut self, inp: HashMap<String, Option<String>>) -> Self {
+        pub fn sparse_string_map(
+            mut self,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::option::Option<::std::string::String>,
+            >,
+        ) -> Self {
             self.sparse_string_map = Some(inp);
             self
         }
@@ -3906,14 +3969,30 @@ pub mod json_maps_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonMapsInput {
-    pub dense_struct_map: Option<HashMap<String, GreetingStruct>>,
-    pub sparse_struct_map: Option<HashMap<String, Option<GreetingStruct>>>,
-    pub dense_number_map: Option<HashMap<String, i32>>,
-    pub dense_boolean_map: Option<HashMap<String, bool>>,
-    pub dense_string_map: Option<HashMap<String, String>>,
-    pub sparse_number_map: Option<HashMap<String, Option<i32>>>,
-    pub sparse_boolean_map: Option<HashMap<String, Option<bool>>>,
-    pub sparse_string_map: Option<HashMap<String, Option<String>>>,
+    pub dense_struct_map:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, GreetingStruct>>,
+    pub sparse_struct_map: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::option::Option<GreetingStruct>>,
+    >,
+    pub dense_number_map:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, i32>>,
+    pub dense_boolean_map:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, bool>>,
+    pub dense_string_map: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
+    pub sparse_number_map: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::option::Option<i32>>,
+    >,
+    pub sparse_boolean_map: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::option::Option<bool>>,
+    >,
+    pub sparse_string_map: ::std::option::Option<
+        ::std::collections::HashMap<
+            ::std::string::String,
+            ::std::option::Option<::std::string::String>,
+        >,
+    >,
 }
 impl JsonMapsInput {
     /// Creates a new builder-style object to manufacture [`JsonMapsInput`](crate::operation::JsonMapsInput)
@@ -3926,50 +4005,99 @@ pub mod json_maps_input {
 
     use crate::model::GreetingStruct;
     use crate::operation::JsonMapsInput;
-    use std::collections::HashMap;
     /// A builder for [`JsonMapsInput`](crate::operation::JsonMapsInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        dense_struct_map: Option<HashMap<String, GreetingStruct>>,
-        sparse_struct_map: Option<HashMap<String, Option<GreetingStruct>>>,
-        dense_number_map: Option<HashMap<String, i32>>,
-        dense_boolean_map: Option<HashMap<String, bool>>,
-        dense_string_map: Option<HashMap<String, String>>,
-        sparse_number_map: Option<HashMap<String, Option<i32>>>,
-        sparse_boolean_map: Option<HashMap<String, Option<bool>>>,
-        sparse_string_map: Option<HashMap<String, Option<String>>>,
+        dense_struct_map: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, GreetingStruct>,
+        >,
+        sparse_struct_map: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::option::Option<GreetingStruct>,
+            >,
+        >,
+        dense_number_map:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, i32>>,
+        dense_boolean_map:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, bool>>,
+        dense_string_map: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
+        sparse_number_map: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::option::Option<i32>>,
+        >,
+        sparse_boolean_map: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::option::Option<bool>>,
+        >,
+        sparse_string_map: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::option::Option<::std::string::String>,
+            >,
+        >,
     }
     impl Builder {
-        pub fn dense_struct_map(mut self, inp: HashMap<String, GreetingStruct>) -> Self {
+        pub fn dense_struct_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, GreetingStruct>,
+        ) -> Self {
             self.dense_struct_map = Some(inp);
             self
         }
-        pub fn sparse_struct_map(mut self, inp: HashMap<String, Option<GreetingStruct>>) -> Self {
+        pub fn sparse_struct_map(
+            mut self,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::option::Option<GreetingStruct>,
+            >,
+        ) -> Self {
             self.sparse_struct_map = Some(inp);
             self
         }
-        pub fn dense_number_map(mut self, inp: HashMap<String, i32>) -> Self {
+        pub fn dense_number_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, i32>,
+        ) -> Self {
             self.dense_number_map = Some(inp);
             self
         }
-        pub fn dense_boolean_map(mut self, inp: HashMap<String, bool>) -> Self {
+        pub fn dense_boolean_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, bool>,
+        ) -> Self {
             self.dense_boolean_map = Some(inp);
             self
         }
-        pub fn dense_string_map(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn dense_string_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.dense_string_map = Some(inp);
             self
         }
-        pub fn sparse_number_map(mut self, inp: HashMap<String, Option<i32>>) -> Self {
+        pub fn sparse_number_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::option::Option<i32>>,
+        ) -> Self {
             self.sparse_number_map = Some(inp);
             self
         }
-        pub fn sparse_boolean_map(mut self, inp: HashMap<String, Option<bool>>) -> Self {
+        pub fn sparse_boolean_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::option::Option<bool>>,
+        ) -> Self {
             self.sparse_boolean_map = Some(inp);
             self
         }
-        pub fn sparse_string_map(mut self, inp: HashMap<String, Option<String>>) -> Self {
+        pub fn sparse_string_map(
+            mut self,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::option::Option<::std::string::String>,
+            >,
+        ) -> Self {
             self.sparse_string_map = Some(inp);
             self
         }
@@ -3992,16 +4120,18 @@ pub mod json_maps_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonListsOutput {
-    pub string_list: Option<Vec<String>>,
-    pub sparse_string_list: Option<Vec<Option<String>>>,
-    pub string_set: Option<BTreeSet<String>>,
-    pub integer_list: Option<Vec<i32>>,
-    pub boolean_list: Option<Vec<bool>>,
-    pub timestamp_list: Option<Vec<Instant>>,
-    pub enum_list: Option<Vec<FooEnum>>,
+    pub string_list: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+    pub sparse_string_list:
+        ::std::option::Option<::std::vec::Vec<::std::option::Option<::std::string::String>>>,
+    pub string_set: ::std::option::Option<::std::collections::BTreeSet<::std::string::String>>,
+    pub integer_list: ::std::option::Option<::std::vec::Vec<i32>>,
+    pub boolean_list: ::std::option::Option<::std::vec::Vec<bool>>,
+    pub timestamp_list: ::std::option::Option<::std::vec::Vec<Instant>>,
+    pub enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
     /// A list of lists of strings.
-    pub nested_string_list: Option<Vec<Vec<String>>>,
-    pub structure_list: Option<Vec<StructureListMember>>,
+    pub nested_string_list:
+        ::std::option::Option<::std::vec::Vec<::std::vec::Vec<::std::string::String>>>,
+    pub structure_list: ::std::option::Option<::std::vec::Vec<StructureListMember>>,
 }
 impl JsonListsOutput {
     /// Creates a new builder-style object to manufacture [`JsonListsOutput`](crate::operation::JsonListsOutput)
@@ -4016,56 +4146,66 @@ pub mod json_lists_output {
     use crate::model::StructureListMember;
     use crate::operation::JsonListsOutput;
     use smithy_types::Instant;
-    use std::collections::BTreeSet;
     /// A builder for [`JsonListsOutput`](crate::operation::JsonListsOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        string_list: Option<Vec<String>>,
-        sparse_string_list: Option<Vec<Option<String>>>,
-        string_set: Option<BTreeSet<String>>,
-        integer_list: Option<Vec<i32>>,
-        boolean_list: Option<Vec<bool>>,
-        timestamp_list: Option<Vec<Instant>>,
-        enum_list: Option<Vec<FooEnum>>,
-        nested_string_list: Option<Vec<Vec<String>>>,
-        structure_list: Option<Vec<StructureListMember>>,
+        string_list: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+        sparse_string_list:
+            ::std::option::Option<::std::vec::Vec<::std::option::Option<::std::string::String>>>,
+        string_set: ::std::option::Option<::std::collections::BTreeSet<::std::string::String>>,
+        integer_list: ::std::option::Option<::std::vec::Vec<i32>>,
+        boolean_list: ::std::option::Option<::std::vec::Vec<bool>>,
+        timestamp_list: ::std::option::Option<::std::vec::Vec<Instant>>,
+        enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
+        nested_string_list:
+            ::std::option::Option<::std::vec::Vec<::std::vec::Vec<::std::string::String>>>,
+        structure_list: ::std::option::Option<::std::vec::Vec<StructureListMember>>,
     }
     impl Builder {
-        pub fn string_list(mut self, inp: Vec<String>) -> Self {
+        pub fn string_list(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.string_list = Some(inp);
             self
         }
-        pub fn sparse_string_list(mut self, inp: Vec<Option<String>>) -> Self {
+        pub fn sparse_string_list(
+            mut self,
+            inp: ::std::vec::Vec<::std::option::Option<::std::string::String>>,
+        ) -> Self {
             self.sparse_string_list = Some(inp);
             self
         }
-        pub fn string_set(mut self, inp: BTreeSet<String>) -> Self {
+        pub fn string_set(
+            mut self,
+            inp: ::std::collections::BTreeSet<::std::string::String>,
+        ) -> Self {
             self.string_set = Some(inp);
             self
         }
-        pub fn integer_list(mut self, inp: Vec<i32>) -> Self {
+        pub fn integer_list(mut self, inp: ::std::vec::Vec<i32>) -> Self {
             self.integer_list = Some(inp);
             self
         }
-        pub fn boolean_list(mut self, inp: Vec<bool>) -> Self {
+        pub fn boolean_list(mut self, inp: ::std::vec::Vec<bool>) -> Self {
             self.boolean_list = Some(inp);
             self
         }
-        pub fn timestamp_list(mut self, inp: Vec<Instant>) -> Self {
+        pub fn timestamp_list(mut self, inp: ::std::vec::Vec<Instant>) -> Self {
             self.timestamp_list = Some(inp);
             self
         }
-        pub fn enum_list(mut self, inp: Vec<FooEnum>) -> Self {
+        pub fn enum_list(mut self, inp: ::std::vec::Vec<FooEnum>) -> Self {
             self.enum_list = Some(inp);
             self
         }
         /// A list of lists of strings.
-        pub fn nested_string_list(mut self, inp: Vec<Vec<String>>) -> Self {
+        pub fn nested_string_list(
+            mut self,
+            inp: ::std::vec::Vec<::std::vec::Vec<::std::string::String>>,
+        ) -> Self {
             self.nested_string_list = Some(inp);
             self
         }
-        pub fn structure_list(mut self, inp: Vec<StructureListMember>) -> Self {
+        pub fn structure_list(mut self, inp: ::std::vec::Vec<StructureListMember>) -> Self {
             self.structure_list = Some(inp);
             self
         }
@@ -4089,16 +4229,18 @@ pub mod json_lists_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonListsInput {
-    pub string_list: Option<Vec<String>>,
-    pub sparse_string_list: Option<Vec<Option<String>>>,
-    pub string_set: Option<BTreeSet<String>>,
-    pub integer_list: Option<Vec<i32>>,
-    pub boolean_list: Option<Vec<bool>>,
-    pub timestamp_list: Option<Vec<Instant>>,
-    pub enum_list: Option<Vec<FooEnum>>,
+    pub string_list: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+    pub sparse_string_list:
+        ::std::option::Option<::std::vec::Vec<::std::option::Option<::std::string::String>>>,
+    pub string_set: ::std::option::Option<::std::collections::BTreeSet<::std::string::String>>,
+    pub integer_list: ::std::option::Option<::std::vec::Vec<i32>>,
+    pub boolean_list: ::std::option::Option<::std::vec::Vec<bool>>,
+    pub timestamp_list: ::std::option::Option<::std::vec::Vec<Instant>>,
+    pub enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
     /// A list of lists of strings.
-    pub nested_string_list: Option<Vec<Vec<String>>>,
-    pub structure_list: Option<Vec<StructureListMember>>,
+    pub nested_string_list:
+        ::std::option::Option<::std::vec::Vec<::std::vec::Vec<::std::string::String>>>,
+    pub structure_list: ::std::option::Option<::std::vec::Vec<StructureListMember>>,
 }
 impl JsonListsInput {
     /// Creates a new builder-style object to manufacture [`JsonListsInput`](crate::operation::JsonListsInput)
@@ -4113,56 +4255,66 @@ pub mod json_lists_input {
     use crate::model::StructureListMember;
     use crate::operation::JsonListsInput;
     use smithy_types::Instant;
-    use std::collections::BTreeSet;
     /// A builder for [`JsonListsInput`](crate::operation::JsonListsInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        string_list: Option<Vec<String>>,
-        sparse_string_list: Option<Vec<Option<String>>>,
-        string_set: Option<BTreeSet<String>>,
-        integer_list: Option<Vec<i32>>,
-        boolean_list: Option<Vec<bool>>,
-        timestamp_list: Option<Vec<Instant>>,
-        enum_list: Option<Vec<FooEnum>>,
-        nested_string_list: Option<Vec<Vec<String>>>,
-        structure_list: Option<Vec<StructureListMember>>,
+        string_list: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+        sparse_string_list:
+            ::std::option::Option<::std::vec::Vec<::std::option::Option<::std::string::String>>>,
+        string_set: ::std::option::Option<::std::collections::BTreeSet<::std::string::String>>,
+        integer_list: ::std::option::Option<::std::vec::Vec<i32>>,
+        boolean_list: ::std::option::Option<::std::vec::Vec<bool>>,
+        timestamp_list: ::std::option::Option<::std::vec::Vec<Instant>>,
+        enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
+        nested_string_list:
+            ::std::option::Option<::std::vec::Vec<::std::vec::Vec<::std::string::String>>>,
+        structure_list: ::std::option::Option<::std::vec::Vec<StructureListMember>>,
     }
     impl Builder {
-        pub fn string_list(mut self, inp: Vec<String>) -> Self {
+        pub fn string_list(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.string_list = Some(inp);
             self
         }
-        pub fn sparse_string_list(mut self, inp: Vec<Option<String>>) -> Self {
+        pub fn sparse_string_list(
+            mut self,
+            inp: ::std::vec::Vec<::std::option::Option<::std::string::String>>,
+        ) -> Self {
             self.sparse_string_list = Some(inp);
             self
         }
-        pub fn string_set(mut self, inp: BTreeSet<String>) -> Self {
+        pub fn string_set(
+            mut self,
+            inp: ::std::collections::BTreeSet<::std::string::String>,
+        ) -> Self {
             self.string_set = Some(inp);
             self
         }
-        pub fn integer_list(mut self, inp: Vec<i32>) -> Self {
+        pub fn integer_list(mut self, inp: ::std::vec::Vec<i32>) -> Self {
             self.integer_list = Some(inp);
             self
         }
-        pub fn boolean_list(mut self, inp: Vec<bool>) -> Self {
+        pub fn boolean_list(mut self, inp: ::std::vec::Vec<bool>) -> Self {
             self.boolean_list = Some(inp);
             self
         }
-        pub fn timestamp_list(mut self, inp: Vec<Instant>) -> Self {
+        pub fn timestamp_list(mut self, inp: ::std::vec::Vec<Instant>) -> Self {
             self.timestamp_list = Some(inp);
             self
         }
-        pub fn enum_list(mut self, inp: Vec<FooEnum>) -> Self {
+        pub fn enum_list(mut self, inp: ::std::vec::Vec<FooEnum>) -> Self {
             self.enum_list = Some(inp);
             self
         }
         /// A list of lists of strings.
-        pub fn nested_string_list(mut self, inp: Vec<Vec<String>>) -> Self {
+        pub fn nested_string_list(
+            mut self,
+            inp: ::std::vec::Vec<::std::vec::Vec<::std::string::String>>,
+        ) -> Self {
             self.nested_string_list = Some(inp);
             self
         }
-        pub fn structure_list(mut self, inp: Vec<StructureListMember>) -> Self {
+        pub fn structure_list(mut self, inp: ::std::vec::Vec<StructureListMember>) -> Self {
             self.structure_list = Some(inp);
             self
         }
@@ -4186,7 +4338,7 @@ pub mod json_lists_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct RecursiveShapesOutput {
-    pub nested: Option<RecursiveShapesInputOutputNested1>,
+    pub nested: ::std::option::Option<RecursiveShapesInputOutputNested1>,
 }
 impl RecursiveShapesOutput {
     /// Creates a new builder-style object to manufacture [`RecursiveShapesOutput`](crate::operation::RecursiveShapesOutput)
@@ -4203,7 +4355,7 @@ pub mod recursive_shapes_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        nested: Option<RecursiveShapesInputOutputNested1>,
+        nested: ::std::option::Option<RecursiveShapesInputOutputNested1>,
     }
     impl Builder {
         pub fn nested(mut self, inp: RecursiveShapesInputOutputNested1) -> Self {
@@ -4222,7 +4374,7 @@ pub mod recursive_shapes_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct RecursiveShapesInput {
-    pub nested: Option<RecursiveShapesInputOutputNested1>,
+    pub nested: ::std::option::Option<RecursiveShapesInputOutputNested1>,
 }
 impl RecursiveShapesInput {
     /// Creates a new builder-style object to manufacture [`RecursiveShapesInput`](crate::operation::RecursiveShapesInput)
@@ -4239,7 +4391,7 @@ pub mod recursive_shapes_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        nested: Option<RecursiveShapesInputOutputNested1>,
+        nested: ::std::option::Option<RecursiveShapesInputOutputNested1>,
     }
     impl Builder {
         pub fn nested(mut self, inp: RecursiveShapesInputOutputNested1) -> Self {
@@ -4258,12 +4410,13 @@ pub mod recursive_shapes_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonEnumsOutput {
-    pub foo_enum1: Option<FooEnum>,
-    pub foo_enum2: Option<FooEnum>,
-    pub foo_enum3: Option<FooEnum>,
-    pub foo_enum_list: Option<Vec<FooEnum>>,
-    pub foo_enum_set: Option<BTreeSet<FooEnum>>,
-    pub foo_enum_map: Option<HashMap<String, FooEnum>>,
+    pub foo_enum1: ::std::option::Option<FooEnum>,
+    pub foo_enum2: ::std::option::Option<FooEnum>,
+    pub foo_enum3: ::std::option::Option<FooEnum>,
+    pub foo_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
+    pub foo_enum_set: ::std::option::Option<::std::collections::BTreeSet<FooEnum>>,
+    pub foo_enum_map:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, FooEnum>>,
 }
 impl JsonEnumsOutput {
     /// Creates a new builder-style object to manufacture [`JsonEnumsOutput`](crate::operation::JsonEnumsOutput)
@@ -4276,18 +4429,17 @@ pub mod json_enums_output {
 
     use crate::model::FooEnum;
     use crate::operation::JsonEnumsOutput;
-    use std::collections::BTreeSet;
-    use std::collections::HashMap;
     /// A builder for [`JsonEnumsOutput`](crate::operation::JsonEnumsOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo_enum1: Option<FooEnum>,
-        foo_enum2: Option<FooEnum>,
-        foo_enum3: Option<FooEnum>,
-        foo_enum_list: Option<Vec<FooEnum>>,
-        foo_enum_set: Option<BTreeSet<FooEnum>>,
-        foo_enum_map: Option<HashMap<String, FooEnum>>,
+        foo_enum1: ::std::option::Option<FooEnum>,
+        foo_enum2: ::std::option::Option<FooEnum>,
+        foo_enum3: ::std::option::Option<FooEnum>,
+        foo_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
+        foo_enum_set: ::std::option::Option<::std::collections::BTreeSet<FooEnum>>,
+        foo_enum_map:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, FooEnum>>,
     }
     impl Builder {
         pub fn foo_enum1(mut self, inp: FooEnum) -> Self {
@@ -4302,15 +4454,18 @@ pub mod json_enums_output {
             self.foo_enum3 = Some(inp);
             self
         }
-        pub fn foo_enum_list(mut self, inp: Vec<FooEnum>) -> Self {
+        pub fn foo_enum_list(mut self, inp: ::std::vec::Vec<FooEnum>) -> Self {
             self.foo_enum_list = Some(inp);
             self
         }
-        pub fn foo_enum_set(mut self, inp: BTreeSet<FooEnum>) -> Self {
+        pub fn foo_enum_set(mut self, inp: ::std::collections::BTreeSet<FooEnum>) -> Self {
             self.foo_enum_set = Some(inp);
             self
         }
-        pub fn foo_enum_map(mut self, inp: HashMap<String, FooEnum>) -> Self {
+        pub fn foo_enum_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, FooEnum>,
+        ) -> Self {
             self.foo_enum_map = Some(inp);
             self
         }
@@ -4331,12 +4486,13 @@ pub mod json_enums_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonEnumsInput {
-    pub foo_enum1: Option<FooEnum>,
-    pub foo_enum2: Option<FooEnum>,
-    pub foo_enum3: Option<FooEnum>,
-    pub foo_enum_list: Option<Vec<FooEnum>>,
-    pub foo_enum_set: Option<BTreeSet<FooEnum>>,
-    pub foo_enum_map: Option<HashMap<String, FooEnum>>,
+    pub foo_enum1: ::std::option::Option<FooEnum>,
+    pub foo_enum2: ::std::option::Option<FooEnum>,
+    pub foo_enum3: ::std::option::Option<FooEnum>,
+    pub foo_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
+    pub foo_enum_set: ::std::option::Option<::std::collections::BTreeSet<FooEnum>>,
+    pub foo_enum_map:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, FooEnum>>,
 }
 impl JsonEnumsInput {
     /// Creates a new builder-style object to manufacture [`JsonEnumsInput`](crate::operation::JsonEnumsInput)
@@ -4349,18 +4505,17 @@ pub mod json_enums_input {
 
     use crate::model::FooEnum;
     use crate::operation::JsonEnumsInput;
-    use std::collections::BTreeSet;
-    use std::collections::HashMap;
     /// A builder for [`JsonEnumsInput`](crate::operation::JsonEnumsInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo_enum1: Option<FooEnum>,
-        foo_enum2: Option<FooEnum>,
-        foo_enum3: Option<FooEnum>,
-        foo_enum_list: Option<Vec<FooEnum>>,
-        foo_enum_set: Option<BTreeSet<FooEnum>>,
-        foo_enum_map: Option<HashMap<String, FooEnum>>,
+        foo_enum1: ::std::option::Option<FooEnum>,
+        foo_enum2: ::std::option::Option<FooEnum>,
+        foo_enum3: ::std::option::Option<FooEnum>,
+        foo_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
+        foo_enum_set: ::std::option::Option<::std::collections::BTreeSet<FooEnum>>,
+        foo_enum_map:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, FooEnum>>,
     }
     impl Builder {
         pub fn foo_enum1(mut self, inp: FooEnum) -> Self {
@@ -4375,15 +4530,18 @@ pub mod json_enums_input {
             self.foo_enum3 = Some(inp);
             self
         }
-        pub fn foo_enum_list(mut self, inp: Vec<FooEnum>) -> Self {
+        pub fn foo_enum_list(mut self, inp: ::std::vec::Vec<FooEnum>) -> Self {
             self.foo_enum_list = Some(inp);
             self
         }
-        pub fn foo_enum_set(mut self, inp: BTreeSet<FooEnum>) -> Self {
+        pub fn foo_enum_set(mut self, inp: ::std::collections::BTreeSet<FooEnum>) -> Self {
             self.foo_enum_set = Some(inp);
             self
         }
-        pub fn foo_enum_map(mut self, inp: HashMap<String, FooEnum>) -> Self {
+        pub fn foo_enum_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, FooEnum>,
+        ) -> Self {
             self.foo_enum_map = Some(inp);
             self
         }
@@ -4404,10 +4562,10 @@ pub mod json_enums_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonTimestampsOutput {
-    pub normal: Option<Instant>,
-    pub date_time: Option<Instant>,
-    pub epoch_seconds: Option<Instant>,
-    pub http_date: Option<Instant>,
+    pub normal: ::std::option::Option<Instant>,
+    pub date_time: ::std::option::Option<Instant>,
+    pub epoch_seconds: ::std::option::Option<Instant>,
+    pub http_date: ::std::option::Option<Instant>,
 }
 impl JsonTimestampsOutput {
     /// Creates a new builder-style object to manufacture [`JsonTimestampsOutput`](crate::operation::JsonTimestampsOutput)
@@ -4424,10 +4582,10 @@ pub mod json_timestamps_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        normal: Option<Instant>,
-        date_time: Option<Instant>,
-        epoch_seconds: Option<Instant>,
-        http_date: Option<Instant>,
+        normal: ::std::option::Option<Instant>,
+        date_time: ::std::option::Option<Instant>,
+        epoch_seconds: ::std::option::Option<Instant>,
+        http_date: ::std::option::Option<Instant>,
     }
     impl Builder {
         pub fn normal(mut self, inp: Instant) -> Self {
@@ -4461,10 +4619,10 @@ pub mod json_timestamps_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonTimestampsInput {
-    pub normal: Option<Instant>,
-    pub date_time: Option<Instant>,
-    pub epoch_seconds: Option<Instant>,
-    pub http_date: Option<Instant>,
+    pub normal: ::std::option::Option<Instant>,
+    pub date_time: ::std::option::Option<Instant>,
+    pub epoch_seconds: ::std::option::Option<Instant>,
+    pub http_date: ::std::option::Option<Instant>,
 }
 impl JsonTimestampsInput {
     /// Creates a new builder-style object to manufacture [`JsonTimestampsInput`](crate::operation::JsonTimestampsInput)
@@ -4481,10 +4639,10 @@ pub mod json_timestamps_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        normal: Option<Instant>,
-        date_time: Option<Instant>,
-        epoch_seconds: Option<Instant>,
-        http_date: Option<Instant>,
+        normal: ::std::option::Option<Instant>,
+        date_time: ::std::option::Option<Instant>,
+        epoch_seconds: ::std::option::Option<Instant>,
+        http_date: ::std::option::Option<Instant>,
     }
     impl Builder {
         pub fn normal(mut self, inp: Instant) -> Self {
@@ -4518,16 +4676,16 @@ pub mod json_timestamps_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct SimpleScalarPropertiesOutput {
-    pub foo: Option<String>,
-    pub string_value: Option<String>,
-    pub true_boolean_value: Option<bool>,
-    pub false_boolean_value: Option<bool>,
-    pub byte_value: Option<i8>,
-    pub short_value: Option<i16>,
-    pub integer_value: Option<i32>,
-    pub long_value: Option<i64>,
-    pub float_value: Option<f32>,
-    pub double_value: Option<f64>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub string_value: ::std::option::Option<::std::string::String>,
+    pub true_boolean_value: ::std::option::Option<bool>,
+    pub false_boolean_value: ::std::option::Option<bool>,
+    pub byte_value: ::std::option::Option<i8>,
+    pub short_value: ::std::option::Option<i16>,
+    pub integer_value: ::std::option::Option<i32>,
+    pub long_value: ::std::option::Option<i64>,
+    pub float_value: ::std::option::Option<f32>,
+    pub double_value: ::std::option::Option<f64>,
 }
 impl SimpleScalarPropertiesOutput {
     /// Creates a new builder-style object to manufacture [`SimpleScalarPropertiesOutput`](crate::operation::SimpleScalarPropertiesOutput)
@@ -4543,23 +4701,23 @@ pub mod simple_scalar_properties_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        string_value: Option<String>,
-        true_boolean_value: Option<bool>,
-        false_boolean_value: Option<bool>,
-        byte_value: Option<i8>,
-        short_value: Option<i16>,
-        integer_value: Option<i32>,
-        long_value: Option<i64>,
-        float_value: Option<f32>,
-        double_value: Option<f64>,
+        foo: ::std::option::Option<::std::string::String>,
+        string_value: ::std::option::Option<::std::string::String>,
+        true_boolean_value: ::std::option::Option<bool>,
+        false_boolean_value: ::std::option::Option<bool>,
+        byte_value: ::std::option::Option<i8>,
+        short_value: ::std::option::Option<i16>,
+        integer_value: ::std::option::Option<i32>,
+        long_value: ::std::option::Option<i64>,
+        float_value: ::std::option::Option<f32>,
+        double_value: ::std::option::Option<f64>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
-        pub fn string_value(mut self, inp: impl Into<String>) -> Self {
+        pub fn string_value(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.string_value = Some(inp.into());
             self
         }
@@ -4616,16 +4774,16 @@ pub mod simple_scalar_properties_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct SimpleScalarPropertiesInput {
-    pub foo: Option<String>,
-    pub string_value: Option<String>,
-    pub true_boolean_value: Option<bool>,
-    pub false_boolean_value: Option<bool>,
-    pub byte_value: Option<i8>,
-    pub short_value: Option<i16>,
-    pub integer_value: Option<i32>,
-    pub long_value: Option<i64>,
-    pub float_value: Option<f32>,
-    pub double_value: Option<f64>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub string_value: ::std::option::Option<::std::string::String>,
+    pub true_boolean_value: ::std::option::Option<bool>,
+    pub false_boolean_value: ::std::option::Option<bool>,
+    pub byte_value: ::std::option::Option<i8>,
+    pub short_value: ::std::option::Option<i16>,
+    pub integer_value: ::std::option::Option<i32>,
+    pub long_value: ::std::option::Option<i64>,
+    pub float_value: ::std::option::Option<f32>,
+    pub double_value: ::std::option::Option<f64>,
 }
 impl SimpleScalarPropertiesInput {
     /// Creates a new builder-style object to manufacture [`SimpleScalarPropertiesInput`](crate::operation::SimpleScalarPropertiesInput)
@@ -4641,23 +4799,23 @@ pub mod simple_scalar_properties_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        string_value: Option<String>,
-        true_boolean_value: Option<bool>,
-        false_boolean_value: Option<bool>,
-        byte_value: Option<i8>,
-        short_value: Option<i16>,
-        integer_value: Option<i32>,
-        long_value: Option<i64>,
-        float_value: Option<f32>,
-        double_value: Option<f64>,
+        foo: ::std::option::Option<::std::string::String>,
+        string_value: ::std::option::Option<::std::string::String>,
+        true_boolean_value: ::std::option::Option<bool>,
+        false_boolean_value: ::std::option::Option<bool>,
+        byte_value: ::std::option::Option<i8>,
+        short_value: ::std::option::Option<i16>,
+        integer_value: ::std::option::Option<i32>,
+        long_value: ::std::option::Option<i64>,
+        float_value: ::std::option::Option<f32>,
+        double_value: ::std::option::Option<f64>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
-        pub fn string_value(mut self, inp: impl Into<String>) -> Self {
+        pub fn string_value(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.string_value = Some(inp.into());
             self
         }
@@ -4714,7 +4872,7 @@ pub mod simple_scalar_properties_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct GreetingWithErrorsOutput {
-    pub greeting: Option<String>,
+    pub greeting: ::std::option::Option<::std::string::String>,
 }
 impl GreetingWithErrorsOutput {
     /// Creates a new builder-style object to manufacture [`GreetingWithErrorsOutput`](crate::operation::GreetingWithErrorsOutput)
@@ -4730,10 +4888,10 @@ pub mod greeting_with_errors_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        greeting: Option<String>,
+        greeting: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn greeting(mut self, inp: impl Into<String>) -> Self {
+        pub fn greeting(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.greeting = Some(inp.into());
             self
         }
@@ -4774,8 +4932,8 @@ pub mod greeting_with_errors_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct StreamingTraitsWithMediaTypeOutput {
-    pub foo: Option<String>,
-    pub blob: Option<Blob>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub blob: ::std::option::Option<Blob>,
 }
 impl StreamingTraitsWithMediaTypeOutput {
     /// Creates a new builder-style object to manufacture [`StreamingTraitsWithMediaTypeOutput`](crate::operation::StreamingTraitsWithMediaTypeOutput)
@@ -4792,11 +4950,11 @@ pub mod streaming_traits_with_media_type_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        blob: Option<Blob>,
+        foo: ::std::option::Option<::std::string::String>,
+        blob: ::std::option::Option<Blob>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
@@ -4817,8 +4975,8 @@ pub mod streaming_traits_with_media_type_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct StreamingTraitsWithMediaTypeInput {
-    pub foo: Option<String>,
-    pub blob: Option<Blob>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub blob: ::std::option::Option<Blob>,
 }
 impl StreamingTraitsWithMediaTypeInput {
     /// Creates a new builder-style object to manufacture [`StreamingTraitsWithMediaTypeInput`](crate::operation::StreamingTraitsWithMediaTypeInput)
@@ -4835,11 +4993,11 @@ pub mod streaming_traits_with_media_type_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        blob: Option<Blob>,
+        foo: ::std::option::Option<::std::string::String>,
+        blob: ::std::option::Option<Blob>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
@@ -4860,8 +5018,8 @@ pub mod streaming_traits_with_media_type_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct StreamingTraitsRequireLengthOutput {
-    pub foo: Option<String>,
-    pub blob: Option<Blob>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub blob: ::std::option::Option<Blob>,
 }
 impl StreamingTraitsRequireLengthOutput {
     /// Creates a new builder-style object to manufacture [`StreamingTraitsRequireLengthOutput`](crate::operation::StreamingTraitsRequireLengthOutput)
@@ -4878,11 +5036,11 @@ pub mod streaming_traits_require_length_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        blob: Option<Blob>,
+        foo: ::std::option::Option<::std::string::String>,
+        blob: ::std::option::Option<Blob>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
@@ -4903,8 +5061,8 @@ pub mod streaming_traits_require_length_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct StreamingTraitsRequireLengthInput {
-    pub foo: Option<String>,
-    pub blob: Option<Blob>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub blob: ::std::option::Option<Blob>,
 }
 impl StreamingTraitsRequireLengthInput {
     /// Creates a new builder-style object to manufacture [`StreamingTraitsRequireLengthInput`](crate::operation::StreamingTraitsRequireLengthInput)
@@ -4921,11 +5079,11 @@ pub mod streaming_traits_require_length_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        blob: Option<Blob>,
+        foo: ::std::option::Option<::std::string::String>,
+        blob: ::std::option::Option<Blob>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
@@ -4946,8 +5104,8 @@ pub mod streaming_traits_require_length_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct StreamingTraitsOutput {
-    pub foo: Option<String>,
-    pub blob: Option<Blob>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub blob: ::std::option::Option<Blob>,
 }
 impl StreamingTraitsOutput {
     /// Creates a new builder-style object to manufacture [`StreamingTraitsOutput`](crate::operation::StreamingTraitsOutput)
@@ -4964,11 +5122,11 @@ pub mod streaming_traits_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        blob: Option<Blob>,
+        foo: ::std::option::Option<::std::string::String>,
+        blob: ::std::option::Option<Blob>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
@@ -4989,8 +5147,8 @@ pub mod streaming_traits_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct StreamingTraitsInput {
-    pub foo: Option<String>,
-    pub blob: Option<Blob>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub blob: ::std::option::Option<Blob>,
 }
 impl StreamingTraitsInput {
     /// Creates a new builder-style object to manufacture [`StreamingTraitsInput`](crate::operation::StreamingTraitsInput)
@@ -5007,11 +5165,11 @@ pub mod streaming_traits_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        blob: Option<Blob>,
+        foo: ::std::option::Option<::std::string::String>,
+        blob: ::std::option::Option<Blob>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
@@ -5032,7 +5190,7 @@ pub mod streaming_traits_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct HttpResponseCodeOutput {
-    pub status: Option<i32>,
+    pub status: ::std::option::Option<i32>,
 }
 impl HttpResponseCodeOutput {
     /// Creates a new builder-style object to manufacture [`HttpResponseCodeOutput`](crate::operation::HttpResponseCodeOutput)
@@ -5048,7 +5206,7 @@ pub mod http_response_code_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        status: Option<i32>,
+        status: ::std::option::Option<i32>,
     }
     impl Builder {
         pub fn status(mut self, inp: i32) -> Self {
@@ -5092,7 +5250,7 @@ pub mod http_response_code_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct HttpPayloadWithStructureOutput {
-    pub nested: Option<NestedPayload>,
+    pub nested: ::std::option::Option<NestedPayload>,
 }
 impl HttpPayloadWithStructureOutput {
     /// Creates a new builder-style object to manufacture [`HttpPayloadWithStructureOutput`](crate::operation::HttpPayloadWithStructureOutput)
@@ -5109,7 +5267,7 @@ pub mod http_payload_with_structure_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        nested: Option<NestedPayload>,
+        nested: ::std::option::Option<NestedPayload>,
     }
     impl Builder {
         pub fn nested(mut self, inp: NestedPayload) -> Self {
@@ -5128,7 +5286,7 @@ pub mod http_payload_with_structure_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct HttpPayloadWithStructureInput {
-    pub nested: Option<NestedPayload>,
+    pub nested: ::std::option::Option<NestedPayload>,
 }
 impl HttpPayloadWithStructureInput {
     /// Creates a new builder-style object to manufacture [`HttpPayloadWithStructureInput`](crate::operation::HttpPayloadWithStructureInput)
@@ -5145,7 +5303,7 @@ pub mod http_payload_with_structure_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        nested: Option<NestedPayload>,
+        nested: ::std::option::Option<NestedPayload>,
     }
     impl Builder {
         pub fn nested(mut self, inp: NestedPayload) -> Self {
@@ -5164,8 +5322,8 @@ pub mod http_payload_with_structure_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct HttpPayloadTraitsWithMediaTypeOutput {
-    pub foo: Option<String>,
-    pub blob: Option<Blob>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub blob: ::std::option::Option<Blob>,
 }
 impl HttpPayloadTraitsWithMediaTypeOutput {
     /// Creates a new builder-style object to manufacture [`HttpPayloadTraitsWithMediaTypeOutput`](crate::operation::HttpPayloadTraitsWithMediaTypeOutput)
@@ -5182,11 +5340,11 @@ pub mod http_payload_traits_with_media_type_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        blob: Option<Blob>,
+        foo: ::std::option::Option<::std::string::String>,
+        blob: ::std::option::Option<Blob>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
@@ -5207,8 +5365,8 @@ pub mod http_payload_traits_with_media_type_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct HttpPayloadTraitsWithMediaTypeInput {
-    pub foo: Option<String>,
-    pub blob: Option<Blob>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub blob: ::std::option::Option<Blob>,
 }
 impl HttpPayloadTraitsWithMediaTypeInput {
     /// Creates a new builder-style object to manufacture [`HttpPayloadTraitsWithMediaTypeInput`](crate::operation::HttpPayloadTraitsWithMediaTypeInput)
@@ -5225,11 +5383,11 @@ pub mod http_payload_traits_with_media_type_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        blob: Option<Blob>,
+        foo: ::std::option::Option<::std::string::String>,
+        blob: ::std::option::Option<Blob>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
@@ -5250,8 +5408,8 @@ pub mod http_payload_traits_with_media_type_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct HttpPayloadTraitsOutput {
-    pub foo: Option<String>,
-    pub blob: Option<Blob>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub blob: ::std::option::Option<Blob>,
 }
 impl HttpPayloadTraitsOutput {
     /// Creates a new builder-style object to manufacture [`HttpPayloadTraitsOutput`](crate::operation::HttpPayloadTraitsOutput)
@@ -5268,11 +5426,11 @@ pub mod http_payload_traits_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        blob: Option<Blob>,
+        foo: ::std::option::Option<::std::string::String>,
+        blob: ::std::option::Option<Blob>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
@@ -5293,8 +5451,8 @@ pub mod http_payload_traits_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct HttpPayloadTraitsInput {
-    pub foo: Option<String>,
-    pub blob: Option<Blob>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub blob: ::std::option::Option<Blob>,
 }
 impl HttpPayloadTraitsInput {
     /// Creates a new builder-style object to manufacture [`HttpPayloadTraitsInput`](crate::operation::HttpPayloadTraitsInput)
@@ -5311,11 +5469,11 @@ pub mod http_payload_traits_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        blob: Option<Blob>,
+        foo: ::std::option::Option<::std::string::String>,
+        blob: ::std::option::Option<Blob>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
@@ -5336,7 +5494,9 @@ pub mod http_payload_traits_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct HttpPrefixHeadersResponseOutput {
-    pub prefix_headers: Option<HashMap<String, String>>,
+    pub prefix_headers: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
 }
 impl HttpPrefixHeadersResponseOutput {
     /// Creates a new builder-style object to manufacture [`HttpPrefixHeadersResponseOutput`](crate::operation::HttpPrefixHeadersResponseOutput)
@@ -5348,15 +5508,19 @@ impl HttpPrefixHeadersResponseOutput {
 pub mod http_prefix_headers_response_output {
 
     use crate::operation::HttpPrefixHeadersResponseOutput;
-    use std::collections::HashMap;
     /// A builder for [`HttpPrefixHeadersResponseOutput`](crate::operation::HttpPrefixHeadersResponseOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        prefix_headers: Option<HashMap<String, String>>,
+        prefix_headers: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
     }
     impl Builder {
-        pub fn prefix_headers(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn prefix_headers(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.prefix_headers = Some(inp);
             self
         }
@@ -5397,8 +5561,10 @@ pub mod http_prefix_headers_response_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct HttpPrefixHeadersOutput {
-    pub foo: Option<String>,
-    pub foo_map: Option<HashMap<String, String>>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub foo_map: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
 }
 impl HttpPrefixHeadersOutput {
     /// Creates a new builder-style object to manufacture [`HttpPrefixHeadersOutput`](crate::operation::HttpPrefixHeadersOutput)
@@ -5410,20 +5576,24 @@ impl HttpPrefixHeadersOutput {
 pub mod http_prefix_headers_output {
 
     use crate::operation::HttpPrefixHeadersOutput;
-    use std::collections::HashMap;
     /// A builder for [`HttpPrefixHeadersOutput`](crate::operation::HttpPrefixHeadersOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        foo_map: Option<HashMap<String, String>>,
+        foo: ::std::option::Option<::std::string::String>,
+        foo_map: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
-        pub fn foo_map(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn foo_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.foo_map = Some(inp);
             self
         }
@@ -5440,8 +5610,10 @@ pub mod http_prefix_headers_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct HttpPrefixHeadersInput {
-    pub foo: Option<String>,
-    pub foo_map: Option<HashMap<String, String>>,
+    pub foo: ::std::option::Option<::std::string::String>,
+    pub foo_map: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
 }
 impl HttpPrefixHeadersInput {
     /// Creates a new builder-style object to manufacture [`HttpPrefixHeadersInput`](crate::operation::HttpPrefixHeadersInput)
@@ -5453,20 +5625,24 @@ impl HttpPrefixHeadersInput {
 pub mod http_prefix_headers_input {
 
     use crate::operation::HttpPrefixHeadersInput;
-    use std::collections::HashMap;
     /// A builder for [`HttpPrefixHeadersInput`](crate::operation::HttpPrefixHeadersInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        foo_map: Option<HashMap<String, String>>,
+        foo: ::std::option::Option<::std::string::String>,
+        foo_map: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
-        pub fn foo_map(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn foo_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.foo_map = Some(inp);
             self
         }
@@ -5508,7 +5684,7 @@ pub mod query_idempotency_token_auto_fill_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct QueryIdempotencyTokenAutoFillInput {
-    pub token: Option<String>,
+    pub token: ::std::option::Option<::std::string::String>,
 }
 impl QueryIdempotencyTokenAutoFillInput {
     /// Creates a new builder-style object to manufacture [`QueryIdempotencyTokenAutoFillInput`](crate::operation::QueryIdempotencyTokenAutoFillInput)
@@ -5524,10 +5700,10 @@ pub mod query_idempotency_token_auto_fill_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        token: Option<String>,
+        token: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn token(mut self, inp: impl Into<String>) -> Self {
+        pub fn token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.token = Some(inp.into());
             self
         }
@@ -5566,8 +5742,8 @@ pub mod omits_null_serializes_empty_string_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct OmitsNullSerializesEmptyStringInput {
-    pub null_value: Option<String>,
-    pub empty_string: Option<String>,
+    pub null_value: ::std::option::Option<::std::string::String>,
+    pub empty_string: ::std::option::Option<::std::string::String>,
 }
 impl OmitsNullSerializesEmptyStringInput {
     /// Creates a new builder-style object to manufacture [`OmitsNullSerializesEmptyStringInput`](crate::operation::OmitsNullSerializesEmptyStringInput)
@@ -5583,15 +5759,15 @@ pub mod omits_null_serializes_empty_string_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        null_value: Option<String>,
-        empty_string: Option<String>,
+        null_value: ::std::option::Option<::std::string::String>,
+        empty_string: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn null_value(mut self, inp: impl Into<String>) -> Self {
+        pub fn null_value(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.null_value = Some(inp.into());
             self
         }
-        pub fn empty_string(mut self, inp: impl Into<String>) -> Self {
+        pub fn empty_string(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.empty_string = Some(inp.into());
             self
         }
@@ -5608,7 +5784,7 @@ pub mod omits_null_serializes_empty_string_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct IgnoreQueryParamsInResponseOutput {
-    pub baz: Option<String>,
+    pub baz: ::std::option::Option<::std::string::String>,
 }
 impl IgnoreQueryParamsInResponseOutput {
     /// Creates a new builder-style object to manufacture [`IgnoreQueryParamsInResponseOutput`](crate::operation::IgnoreQueryParamsInResponseOutput)
@@ -5624,10 +5800,10 @@ pub mod ignore_query_params_in_response_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        baz: Option<String>,
+        baz: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn baz(mut self, inp: impl Into<String>) -> Self {
+        pub fn baz(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.baz = Some(inp.into());
             self
         }
@@ -5691,8 +5867,8 @@ pub mod constant_and_variable_query_string_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ConstantAndVariableQueryStringInput {
-    pub baz: Option<String>,
-    pub maybe_set: Option<String>,
+    pub baz: ::std::option::Option<::std::string::String>,
+    pub maybe_set: ::std::option::Option<::std::string::String>,
 }
 impl ConstantAndVariableQueryStringInput {
     /// Creates a new builder-style object to manufacture [`ConstantAndVariableQueryStringInput`](crate::operation::ConstantAndVariableQueryStringInput)
@@ -5708,15 +5884,15 @@ pub mod constant_and_variable_query_string_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        baz: Option<String>,
-        maybe_set: Option<String>,
+        baz: ::std::option::Option<::std::string::String>,
+        maybe_set: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn baz(mut self, inp: impl Into<String>) -> Self {
+        pub fn baz(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.baz = Some(inp.into());
             self
         }
-        pub fn maybe_set(mut self, inp: impl Into<String>) -> Self {
+        pub fn maybe_set(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.maybe_set = Some(inp.into());
             self
         }
@@ -5758,7 +5934,7 @@ pub mod constant_query_string_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ConstantQueryStringInput {
-    pub hello: String,
+    pub hello: ::std::string::String,
 }
 impl ConstantQueryStringInput {
     /// Creates a new builder-style object to manufacture [`ConstantQueryStringInput`](crate::operation::ConstantQueryStringInput)
@@ -5774,10 +5950,10 @@ pub mod constant_query_string_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        hello: Option<String>,
+        hello: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn hello(mut self, inp: impl Into<String>) -> Self {
+        pub fn hello(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.hello = Some(inp.into());
             self
         }
@@ -5818,24 +5994,25 @@ pub mod all_query_string_types_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct AllQueryStringTypesInput {
-    pub query_string: Option<String>,
-    pub query_string_list: Option<Vec<String>>,
-    pub query_string_set: Option<BTreeSet<String>>,
-    pub query_byte: Option<i8>,
-    pub query_short: Option<i16>,
-    pub query_integer: Option<i32>,
-    pub query_integer_list: Option<Vec<i32>>,
-    pub query_integer_set: Option<Vec<i32>>,
-    pub query_long: Option<i64>,
-    pub query_float: Option<f32>,
-    pub query_double: Option<f64>,
-    pub query_double_list: Option<Vec<f64>>,
-    pub query_boolean: Option<bool>,
-    pub query_boolean_list: Option<Vec<bool>>,
-    pub query_timestamp: Option<Instant>,
-    pub query_timestamp_list: Option<Vec<Instant>>,
-    pub query_enum: Option<FooEnum>,
-    pub query_enum_list: Option<Vec<FooEnum>>,
+    pub query_string: ::std::option::Option<::std::string::String>,
+    pub query_string_list: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+    pub query_string_set:
+        ::std::option::Option<::std::collections::BTreeSet<::std::string::String>>,
+    pub query_byte: ::std::option::Option<i8>,
+    pub query_short: ::std::option::Option<i16>,
+    pub query_integer: ::std::option::Option<i32>,
+    pub query_integer_list: ::std::option::Option<::std::vec::Vec<i32>>,
+    pub query_integer_set: ::std::option::Option<::std::vec::Vec<i32>>,
+    pub query_long: ::std::option::Option<i64>,
+    pub query_float: ::std::option::Option<f32>,
+    pub query_double: ::std::option::Option<f64>,
+    pub query_double_list: ::std::option::Option<::std::vec::Vec<f64>>,
+    pub query_boolean: ::std::option::Option<bool>,
+    pub query_boolean_list: ::std::option::Option<::std::vec::Vec<bool>>,
+    pub query_timestamp: ::std::option::Option<Instant>,
+    pub query_timestamp_list: ::std::option::Option<::std::vec::Vec<Instant>>,
+    pub query_enum: ::std::option::Option<FooEnum>,
+    pub query_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
 }
 impl AllQueryStringTypesInput {
     /// Creates a new builder-style object to manufacture [`AllQueryStringTypesInput`](crate::operation::AllQueryStringTypesInput)
@@ -5849,40 +6026,43 @@ pub mod all_query_string_types_input {
     use crate::model::FooEnum;
     use crate::operation::AllQueryStringTypesInput;
     use smithy_types::Instant;
-    use std::collections::BTreeSet;
     /// A builder for [`AllQueryStringTypesInput`](crate::operation::AllQueryStringTypesInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        query_string: Option<String>,
-        query_string_list: Option<Vec<String>>,
-        query_string_set: Option<BTreeSet<String>>,
-        query_byte: Option<i8>,
-        query_short: Option<i16>,
-        query_integer: Option<i32>,
-        query_integer_list: Option<Vec<i32>>,
-        query_integer_set: Option<Vec<i32>>,
-        query_long: Option<i64>,
-        query_float: Option<f32>,
-        query_double: Option<f64>,
-        query_double_list: Option<Vec<f64>>,
-        query_boolean: Option<bool>,
-        query_boolean_list: Option<Vec<bool>>,
-        query_timestamp: Option<Instant>,
-        query_timestamp_list: Option<Vec<Instant>>,
-        query_enum: Option<FooEnum>,
-        query_enum_list: Option<Vec<FooEnum>>,
+        query_string: ::std::option::Option<::std::string::String>,
+        query_string_list: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+        query_string_set:
+            ::std::option::Option<::std::collections::BTreeSet<::std::string::String>>,
+        query_byte: ::std::option::Option<i8>,
+        query_short: ::std::option::Option<i16>,
+        query_integer: ::std::option::Option<i32>,
+        query_integer_list: ::std::option::Option<::std::vec::Vec<i32>>,
+        query_integer_set: ::std::option::Option<::std::vec::Vec<i32>>,
+        query_long: ::std::option::Option<i64>,
+        query_float: ::std::option::Option<f32>,
+        query_double: ::std::option::Option<f64>,
+        query_double_list: ::std::option::Option<::std::vec::Vec<f64>>,
+        query_boolean: ::std::option::Option<bool>,
+        query_boolean_list: ::std::option::Option<::std::vec::Vec<bool>>,
+        query_timestamp: ::std::option::Option<Instant>,
+        query_timestamp_list: ::std::option::Option<::std::vec::Vec<Instant>>,
+        query_enum: ::std::option::Option<FooEnum>,
+        query_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
     }
     impl Builder {
-        pub fn query_string(mut self, inp: impl Into<String>) -> Self {
+        pub fn query_string(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.query_string = Some(inp.into());
             self
         }
-        pub fn query_string_list(mut self, inp: Vec<String>) -> Self {
+        pub fn query_string_list(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.query_string_list = Some(inp);
             self
         }
-        pub fn query_string_set(mut self, inp: BTreeSet<String>) -> Self {
+        pub fn query_string_set(
+            mut self,
+            inp: ::std::collections::BTreeSet<::std::string::String>,
+        ) -> Self {
             self.query_string_set = Some(inp);
             self
         }
@@ -5898,11 +6078,11 @@ pub mod all_query_string_types_input {
             self.query_integer = Some(inp);
             self
         }
-        pub fn query_integer_list(mut self, inp: Vec<i32>) -> Self {
+        pub fn query_integer_list(mut self, inp: ::std::vec::Vec<i32>) -> Self {
             self.query_integer_list = Some(inp);
             self
         }
-        pub fn query_integer_set(mut self, inp: Vec<i32>) -> Self {
+        pub fn query_integer_set(mut self, inp: ::std::vec::Vec<i32>) -> Self {
             self.query_integer_set = Some(inp);
             self
         }
@@ -5918,7 +6098,7 @@ pub mod all_query_string_types_input {
             self.query_double = Some(inp);
             self
         }
-        pub fn query_double_list(mut self, inp: Vec<f64>) -> Self {
+        pub fn query_double_list(mut self, inp: ::std::vec::Vec<f64>) -> Self {
             self.query_double_list = Some(inp);
             self
         }
@@ -5926,7 +6106,7 @@ pub mod all_query_string_types_input {
             self.query_boolean = Some(inp);
             self
         }
-        pub fn query_boolean_list(mut self, inp: Vec<bool>) -> Self {
+        pub fn query_boolean_list(mut self, inp: ::std::vec::Vec<bool>) -> Self {
             self.query_boolean_list = Some(inp);
             self
         }
@@ -5934,7 +6114,7 @@ pub mod all_query_string_types_input {
             self.query_timestamp = Some(inp);
             self
         }
-        pub fn query_timestamp_list(mut self, inp: Vec<Instant>) -> Self {
+        pub fn query_timestamp_list(mut self, inp: ::std::vec::Vec<Instant>) -> Self {
             self.query_timestamp_list = Some(inp);
             self
         }
@@ -5942,7 +6122,7 @@ pub mod all_query_string_types_input {
             self.query_enum = Some(inp);
             self
         }
-        pub fn query_enum_list(mut self, inp: Vec<FooEnum>) -> Self {
+        pub fn query_enum_list(mut self, inp: ::std::vec::Vec<FooEnum>) -> Self {
             self.query_enum_list = Some(inp);
             self
         }
@@ -6000,8 +6180,8 @@ pub mod http_request_with_greedy_label_in_path_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct HttpRequestWithGreedyLabelInPathInput {
-    pub foo: String,
-    pub baz: String,
+    pub foo: ::std::string::String,
+    pub baz: ::std::string::String,
 }
 impl HttpRequestWithGreedyLabelInPathInput {
     /// Creates a new builder-style object to manufacture [`HttpRequestWithGreedyLabelInPathInput`](crate::operation::HttpRequestWithGreedyLabelInPathInput)
@@ -6017,15 +6197,15 @@ pub mod http_request_with_greedy_label_in_path_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo: Option<String>,
-        baz: Option<String>,
+        foo: ::std::option::Option<::std::string::String>,
+        baz: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn foo(mut self, inp: impl Into<String>) -> Self {
+        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.foo = Some(inp.into());
             self
         }
-        pub fn baz(mut self, inp: impl Into<String>) -> Self {
+        pub fn baz(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.baz = Some(inp.into());
             self
         }
@@ -6092,13 +6272,13 @@ pub mod http_request_with_labels_and_timestamp_format_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        member_epoch_seconds: Option<Instant>,
-        member_http_date: Option<Instant>,
-        member_date_time: Option<Instant>,
-        default_format: Option<Instant>,
-        target_epoch_seconds: Option<Instant>,
-        target_http_date: Option<Instant>,
-        target_date_time: Option<Instant>,
+        member_epoch_seconds: ::std::option::Option<Instant>,
+        member_http_date: ::std::option::Option<Instant>,
+        member_date_time: ::std::option::Option<Instant>,
+        default_format: ::std::option::Option<Instant>,
+        target_epoch_seconds: ::std::option::Option<Instant>,
+        target_http_date: ::std::option::Option<Instant>,
+        target_date_time: ::std::option::Option<Instant>,
     }
     impl Builder {
         pub fn member_epoch_seconds(mut self, inp: Instant) -> Self {
@@ -6174,7 +6354,7 @@ pub mod http_request_with_labels_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct HttpRequestWithLabelsInput {
-    pub string: String,
+    pub string: ::std::string::String,
     pub short: i16,
     pub integer: i32,
     pub long: i64,
@@ -6200,17 +6380,17 @@ pub mod http_request_with_labels_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        string: Option<String>,
-        short: Option<i16>,
-        integer: Option<i32>,
-        long: Option<i64>,
-        float: Option<f32>,
-        double: Option<f64>,
-        boolean: Option<bool>,
-        timestamp: Option<Instant>,
+        string: ::std::option::Option<::std::string::String>,
+        short: ::std::option::Option<i16>,
+        integer: ::std::option::Option<i32>,
+        long: ::std::option::Option<i64>,
+        float: ::std::option::Option<f32>,
+        double: ::std::option::Option<f64>,
+        boolean: ::std::option::Option<bool>,
+        timestamp: ::std::option::Option<Instant>,
     }
     impl Builder {
-        pub fn string(mut self, inp: impl Into<String>) -> Self {
+        pub fn string(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.string = Some(inp.into());
             self
         }
@@ -6265,7 +6445,7 @@ pub mod http_request_with_labels_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct MediaTypeHeaderOutput {
-    pub json: Option<String>,
+    pub json: ::std::option::Option<::std::string::String>,
 }
 impl MediaTypeHeaderOutput {
     /// Creates a new builder-style object to manufacture [`MediaTypeHeaderOutput`](crate::operation::MediaTypeHeaderOutput)
@@ -6281,10 +6461,10 @@ pub mod media_type_header_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        json: Option<String>,
+        json: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn json(mut self, inp: impl Into<String>) -> Self {
+        pub fn json(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.json = Some(inp.into());
             self
         }
@@ -6298,7 +6478,7 @@ pub mod media_type_header_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct MediaTypeHeaderInput {
-    pub json: Option<String>,
+    pub json: ::std::option::Option<::std::string::String>,
 }
 impl MediaTypeHeaderInput {
     /// Creates a new builder-style object to manufacture [`MediaTypeHeaderInput`](crate::operation::MediaTypeHeaderInput)
@@ -6314,10 +6494,10 @@ pub mod media_type_header_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        json: Option<String>,
+        json: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn json(mut self, inp: impl Into<String>) -> Self {
+        pub fn json(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.json = Some(inp.into());
             self
         }
@@ -6331,13 +6511,13 @@ pub mod media_type_header_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct TimestampFormatHeadersOutput {
-    pub member_epoch_seconds: Option<Instant>,
-    pub member_http_date: Option<Instant>,
-    pub member_date_time: Option<Instant>,
-    pub default_format: Option<Instant>,
-    pub target_epoch_seconds: Option<Instant>,
-    pub target_http_date: Option<Instant>,
-    pub target_date_time: Option<Instant>,
+    pub member_epoch_seconds: ::std::option::Option<Instant>,
+    pub member_http_date: ::std::option::Option<Instant>,
+    pub member_date_time: ::std::option::Option<Instant>,
+    pub default_format: ::std::option::Option<Instant>,
+    pub target_epoch_seconds: ::std::option::Option<Instant>,
+    pub target_http_date: ::std::option::Option<Instant>,
+    pub target_date_time: ::std::option::Option<Instant>,
 }
 impl TimestampFormatHeadersOutput {
     /// Creates a new builder-style object to manufacture [`TimestampFormatHeadersOutput`](crate::operation::TimestampFormatHeadersOutput)
@@ -6354,13 +6534,13 @@ pub mod timestamp_format_headers_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        member_epoch_seconds: Option<Instant>,
-        member_http_date: Option<Instant>,
-        member_date_time: Option<Instant>,
-        default_format: Option<Instant>,
-        target_epoch_seconds: Option<Instant>,
-        target_http_date: Option<Instant>,
-        target_date_time: Option<Instant>,
+        member_epoch_seconds: ::std::option::Option<Instant>,
+        member_http_date: ::std::option::Option<Instant>,
+        member_date_time: ::std::option::Option<Instant>,
+        default_format: ::std::option::Option<Instant>,
+        target_epoch_seconds: ::std::option::Option<Instant>,
+        target_http_date: ::std::option::Option<Instant>,
+        target_date_time: ::std::option::Option<Instant>,
     }
     impl Builder {
         pub fn member_epoch_seconds(mut self, inp: Instant) -> Self {
@@ -6409,13 +6589,13 @@ pub mod timestamp_format_headers_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct TimestampFormatHeadersInput {
-    pub member_epoch_seconds: Option<Instant>,
-    pub member_http_date: Option<Instant>,
-    pub member_date_time: Option<Instant>,
-    pub default_format: Option<Instant>,
-    pub target_epoch_seconds: Option<Instant>,
-    pub target_http_date: Option<Instant>,
-    pub target_date_time: Option<Instant>,
+    pub member_epoch_seconds: ::std::option::Option<Instant>,
+    pub member_http_date: ::std::option::Option<Instant>,
+    pub member_date_time: ::std::option::Option<Instant>,
+    pub default_format: ::std::option::Option<Instant>,
+    pub target_epoch_seconds: ::std::option::Option<Instant>,
+    pub target_http_date: ::std::option::Option<Instant>,
+    pub target_date_time: ::std::option::Option<Instant>,
 }
 impl TimestampFormatHeadersInput {
     /// Creates a new builder-style object to manufacture [`TimestampFormatHeadersInput`](crate::operation::TimestampFormatHeadersInput)
@@ -6432,13 +6612,13 @@ pub mod timestamp_format_headers_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        member_epoch_seconds: Option<Instant>,
-        member_http_date: Option<Instant>,
-        member_date_time: Option<Instant>,
-        default_format: Option<Instant>,
-        target_epoch_seconds: Option<Instant>,
-        target_http_date: Option<Instant>,
-        target_date_time: Option<Instant>,
+        member_epoch_seconds: ::std::option::Option<Instant>,
+        member_http_date: ::std::option::Option<Instant>,
+        member_date_time: ::std::option::Option<Instant>,
+        default_format: ::std::option::Option<Instant>,
+        target_epoch_seconds: ::std::option::Option<Instant>,
+        target_http_date: ::std::option::Option<Instant>,
+        target_date_time: ::std::option::Option<Instant>,
     }
     impl Builder {
         pub fn member_epoch_seconds(mut self, inp: Instant) -> Self {
@@ -6487,9 +6667,9 @@ pub mod timestamp_format_headers_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct NullAndEmptyHeadersServerOutput {
-    pub a: Option<String>,
-    pub b: Option<String>,
-    pub c: Option<Vec<String>>,
+    pub a: ::std::option::Option<::std::string::String>,
+    pub b: ::std::option::Option<::std::string::String>,
+    pub c: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
 }
 impl NullAndEmptyHeadersServerOutput {
     /// Creates a new builder-style object to manufacture [`NullAndEmptyHeadersServerOutput`](crate::operation::NullAndEmptyHeadersServerOutput)
@@ -6505,20 +6685,20 @@ pub mod null_and_empty_headers_server_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        a: Option<String>,
-        b: Option<String>,
-        c: Option<Vec<String>>,
+        a: ::std::option::Option<::std::string::String>,
+        b: ::std::option::Option<::std::string::String>,
+        c: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     }
     impl Builder {
-        pub fn a(mut self, inp: impl Into<String>) -> Self {
+        pub fn a(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.a = Some(inp.into());
             self
         }
-        pub fn b(mut self, inp: impl Into<String>) -> Self {
+        pub fn b(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.b = Some(inp.into());
             self
         }
-        pub fn c(mut self, inp: Vec<String>) -> Self {
+        pub fn c(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.c = Some(inp);
             self
         }
@@ -6536,9 +6716,9 @@ pub mod null_and_empty_headers_server_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct NullAndEmptyHeadersServerInput {
-    pub a: Option<String>,
-    pub b: Option<String>,
-    pub c: Option<Vec<String>>,
+    pub a: ::std::option::Option<::std::string::String>,
+    pub b: ::std::option::Option<::std::string::String>,
+    pub c: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
 }
 impl NullAndEmptyHeadersServerInput {
     /// Creates a new builder-style object to manufacture [`NullAndEmptyHeadersServerInput`](crate::operation::NullAndEmptyHeadersServerInput)
@@ -6554,20 +6734,20 @@ pub mod null_and_empty_headers_server_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        a: Option<String>,
-        b: Option<String>,
-        c: Option<Vec<String>>,
+        a: ::std::option::Option<::std::string::String>,
+        b: ::std::option::Option<::std::string::String>,
+        c: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     }
     impl Builder {
-        pub fn a(mut self, inp: impl Into<String>) -> Self {
+        pub fn a(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.a = Some(inp.into());
             self
         }
-        pub fn b(mut self, inp: impl Into<String>) -> Self {
+        pub fn b(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.b = Some(inp.into());
             self
         }
-        pub fn c(mut self, inp: Vec<String>) -> Self {
+        pub fn c(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.c = Some(inp);
             self
         }
@@ -6585,9 +6765,9 @@ pub mod null_and_empty_headers_server_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct NullAndEmptyHeadersClientOutput {
-    pub a: Option<String>,
-    pub b: Option<String>,
-    pub c: Option<Vec<String>>,
+    pub a: ::std::option::Option<::std::string::String>,
+    pub b: ::std::option::Option<::std::string::String>,
+    pub c: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
 }
 impl NullAndEmptyHeadersClientOutput {
     /// Creates a new builder-style object to manufacture [`NullAndEmptyHeadersClientOutput`](crate::operation::NullAndEmptyHeadersClientOutput)
@@ -6603,20 +6783,20 @@ pub mod null_and_empty_headers_client_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        a: Option<String>,
-        b: Option<String>,
-        c: Option<Vec<String>>,
+        a: ::std::option::Option<::std::string::String>,
+        b: ::std::option::Option<::std::string::String>,
+        c: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     }
     impl Builder {
-        pub fn a(mut self, inp: impl Into<String>) -> Self {
+        pub fn a(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.a = Some(inp.into());
             self
         }
-        pub fn b(mut self, inp: impl Into<String>) -> Self {
+        pub fn b(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.b = Some(inp.into());
             self
         }
-        pub fn c(mut self, inp: Vec<String>) -> Self {
+        pub fn c(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.c = Some(inp);
             self
         }
@@ -6634,9 +6814,9 @@ pub mod null_and_empty_headers_client_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct NullAndEmptyHeadersClientInput {
-    pub a: Option<String>,
-    pub b: Option<String>,
-    pub c: Option<Vec<String>>,
+    pub a: ::std::option::Option<::std::string::String>,
+    pub b: ::std::option::Option<::std::string::String>,
+    pub c: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
 }
 impl NullAndEmptyHeadersClientInput {
     /// Creates a new builder-style object to manufacture [`NullAndEmptyHeadersClientInput`](crate::operation::NullAndEmptyHeadersClientInput)
@@ -6652,20 +6832,20 @@ pub mod null_and_empty_headers_client_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        a: Option<String>,
-        b: Option<String>,
-        c: Option<Vec<String>>,
+        a: ::std::option::Option<::std::string::String>,
+        b: ::std::option::Option<::std::string::String>,
+        c: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     }
     impl Builder {
-        pub fn a(mut self, inp: impl Into<String>) -> Self {
+        pub fn a(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.a = Some(inp.into());
             self
         }
-        pub fn b(mut self, inp: impl Into<String>) -> Self {
+        pub fn b(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.b = Some(inp.into());
             self
         }
-        pub fn c(mut self, inp: Vec<String>) -> Self {
+        pub fn c(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.c = Some(inp);
             self
         }
@@ -6683,22 +6863,23 @@ pub mod null_and_empty_headers_client_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct InputAndOutputWithHeadersOutput {
-    pub header_string: Option<String>,
-    pub header_byte: Option<i8>,
-    pub header_short: Option<i16>,
-    pub header_integer: Option<i32>,
-    pub header_long: Option<i64>,
-    pub header_float: Option<f32>,
-    pub header_double: Option<f64>,
-    pub header_true_bool: Option<bool>,
-    pub header_false_bool: Option<bool>,
-    pub header_string_list: Option<Vec<String>>,
-    pub header_string_set: Option<BTreeSet<String>>,
-    pub header_integer_list: Option<Vec<i32>>,
-    pub header_boolean_list: Option<Vec<bool>>,
-    pub header_timestamp_list: Option<Vec<Instant>>,
-    pub header_enum: Option<FooEnum>,
-    pub header_enum_list: Option<Vec<FooEnum>>,
+    pub header_string: ::std::option::Option<::std::string::String>,
+    pub header_byte: ::std::option::Option<i8>,
+    pub header_short: ::std::option::Option<i16>,
+    pub header_integer: ::std::option::Option<i32>,
+    pub header_long: ::std::option::Option<i64>,
+    pub header_float: ::std::option::Option<f32>,
+    pub header_double: ::std::option::Option<f64>,
+    pub header_true_bool: ::std::option::Option<bool>,
+    pub header_false_bool: ::std::option::Option<bool>,
+    pub header_string_list: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+    pub header_string_set:
+        ::std::option::Option<::std::collections::BTreeSet<::std::string::String>>,
+    pub header_integer_list: ::std::option::Option<::std::vec::Vec<i32>>,
+    pub header_boolean_list: ::std::option::Option<::std::vec::Vec<bool>>,
+    pub header_timestamp_list: ::std::option::Option<::std::vec::Vec<Instant>>,
+    pub header_enum: ::std::option::Option<FooEnum>,
+    pub header_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
 }
 impl InputAndOutputWithHeadersOutput {
     /// Creates a new builder-style object to manufacture [`InputAndOutputWithHeadersOutput`](crate::operation::InputAndOutputWithHeadersOutput)
@@ -6712,30 +6893,30 @@ pub mod input_and_output_with_headers_output {
     use crate::model::FooEnum;
     use crate::operation::InputAndOutputWithHeadersOutput;
     use smithy_types::Instant;
-    use std::collections::BTreeSet;
     /// A builder for [`InputAndOutputWithHeadersOutput`](crate::operation::InputAndOutputWithHeadersOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        header_string: Option<String>,
-        header_byte: Option<i8>,
-        header_short: Option<i16>,
-        header_integer: Option<i32>,
-        header_long: Option<i64>,
-        header_float: Option<f32>,
-        header_double: Option<f64>,
-        header_true_bool: Option<bool>,
-        header_false_bool: Option<bool>,
-        header_string_list: Option<Vec<String>>,
-        header_string_set: Option<BTreeSet<String>>,
-        header_integer_list: Option<Vec<i32>>,
-        header_boolean_list: Option<Vec<bool>>,
-        header_timestamp_list: Option<Vec<Instant>>,
-        header_enum: Option<FooEnum>,
-        header_enum_list: Option<Vec<FooEnum>>,
+        header_string: ::std::option::Option<::std::string::String>,
+        header_byte: ::std::option::Option<i8>,
+        header_short: ::std::option::Option<i16>,
+        header_integer: ::std::option::Option<i32>,
+        header_long: ::std::option::Option<i64>,
+        header_float: ::std::option::Option<f32>,
+        header_double: ::std::option::Option<f64>,
+        header_true_bool: ::std::option::Option<bool>,
+        header_false_bool: ::std::option::Option<bool>,
+        header_string_list: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+        header_string_set:
+            ::std::option::Option<::std::collections::BTreeSet<::std::string::String>>,
+        header_integer_list: ::std::option::Option<::std::vec::Vec<i32>>,
+        header_boolean_list: ::std::option::Option<::std::vec::Vec<bool>>,
+        header_timestamp_list: ::std::option::Option<::std::vec::Vec<Instant>>,
+        header_enum: ::std::option::Option<FooEnum>,
+        header_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
     }
     impl Builder {
-        pub fn header_string(mut self, inp: impl Into<String>) -> Self {
+        pub fn header_string(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.header_string = Some(inp.into());
             self
         }
@@ -6771,23 +6952,26 @@ pub mod input_and_output_with_headers_output {
             self.header_false_bool = Some(inp);
             self
         }
-        pub fn header_string_list(mut self, inp: Vec<String>) -> Self {
+        pub fn header_string_list(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.header_string_list = Some(inp);
             self
         }
-        pub fn header_string_set(mut self, inp: BTreeSet<String>) -> Self {
+        pub fn header_string_set(
+            mut self,
+            inp: ::std::collections::BTreeSet<::std::string::String>,
+        ) -> Self {
             self.header_string_set = Some(inp);
             self
         }
-        pub fn header_integer_list(mut self, inp: Vec<i32>) -> Self {
+        pub fn header_integer_list(mut self, inp: ::std::vec::Vec<i32>) -> Self {
             self.header_integer_list = Some(inp);
             self
         }
-        pub fn header_boolean_list(mut self, inp: Vec<bool>) -> Self {
+        pub fn header_boolean_list(mut self, inp: ::std::vec::Vec<bool>) -> Self {
             self.header_boolean_list = Some(inp);
             self
         }
-        pub fn header_timestamp_list(mut self, inp: Vec<Instant>) -> Self {
+        pub fn header_timestamp_list(mut self, inp: ::std::vec::Vec<Instant>) -> Self {
             self.header_timestamp_list = Some(inp);
             self
         }
@@ -6795,7 +6979,7 @@ pub mod input_and_output_with_headers_output {
             self.header_enum = Some(inp);
             self
         }
-        pub fn header_enum_list(mut self, inp: Vec<FooEnum>) -> Self {
+        pub fn header_enum_list(mut self, inp: ::std::vec::Vec<FooEnum>) -> Self {
             self.header_enum_list = Some(inp);
             self
         }
@@ -6826,22 +7010,23 @@ pub mod input_and_output_with_headers_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct InputAndOutputWithHeadersInput {
-    pub header_string: Option<String>,
-    pub header_byte: Option<i8>,
-    pub header_short: Option<i16>,
-    pub header_integer: Option<i32>,
-    pub header_long: Option<i64>,
-    pub header_float: Option<f32>,
-    pub header_double: Option<f64>,
-    pub header_true_bool: Option<bool>,
-    pub header_false_bool: Option<bool>,
-    pub header_string_list: Option<Vec<String>>,
-    pub header_string_set: Option<BTreeSet<String>>,
-    pub header_integer_list: Option<Vec<i32>>,
-    pub header_boolean_list: Option<Vec<bool>>,
-    pub header_timestamp_list: Option<Vec<Instant>>,
-    pub header_enum: Option<FooEnum>,
-    pub header_enum_list: Option<Vec<FooEnum>>,
+    pub header_string: ::std::option::Option<::std::string::String>,
+    pub header_byte: ::std::option::Option<i8>,
+    pub header_short: ::std::option::Option<i16>,
+    pub header_integer: ::std::option::Option<i32>,
+    pub header_long: ::std::option::Option<i64>,
+    pub header_float: ::std::option::Option<f32>,
+    pub header_double: ::std::option::Option<f64>,
+    pub header_true_bool: ::std::option::Option<bool>,
+    pub header_false_bool: ::std::option::Option<bool>,
+    pub header_string_list: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+    pub header_string_set:
+        ::std::option::Option<::std::collections::BTreeSet<::std::string::String>>,
+    pub header_integer_list: ::std::option::Option<::std::vec::Vec<i32>>,
+    pub header_boolean_list: ::std::option::Option<::std::vec::Vec<bool>>,
+    pub header_timestamp_list: ::std::option::Option<::std::vec::Vec<Instant>>,
+    pub header_enum: ::std::option::Option<FooEnum>,
+    pub header_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
 }
 impl InputAndOutputWithHeadersInput {
     /// Creates a new builder-style object to manufacture [`InputAndOutputWithHeadersInput`](crate::operation::InputAndOutputWithHeadersInput)
@@ -6855,30 +7040,30 @@ pub mod input_and_output_with_headers_input {
     use crate::model::FooEnum;
     use crate::operation::InputAndOutputWithHeadersInput;
     use smithy_types::Instant;
-    use std::collections::BTreeSet;
     /// A builder for [`InputAndOutputWithHeadersInput`](crate::operation::InputAndOutputWithHeadersInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        header_string: Option<String>,
-        header_byte: Option<i8>,
-        header_short: Option<i16>,
-        header_integer: Option<i32>,
-        header_long: Option<i64>,
-        header_float: Option<f32>,
-        header_double: Option<f64>,
-        header_true_bool: Option<bool>,
-        header_false_bool: Option<bool>,
-        header_string_list: Option<Vec<String>>,
-        header_string_set: Option<BTreeSet<String>>,
-        header_integer_list: Option<Vec<i32>>,
-        header_boolean_list: Option<Vec<bool>>,
-        header_timestamp_list: Option<Vec<Instant>>,
-        header_enum: Option<FooEnum>,
-        header_enum_list: Option<Vec<FooEnum>>,
+        header_string: ::std::option::Option<::std::string::String>,
+        header_byte: ::std::option::Option<i8>,
+        header_short: ::std::option::Option<i16>,
+        header_integer: ::std::option::Option<i32>,
+        header_long: ::std::option::Option<i64>,
+        header_float: ::std::option::Option<f32>,
+        header_double: ::std::option::Option<f64>,
+        header_true_bool: ::std::option::Option<bool>,
+        header_false_bool: ::std::option::Option<bool>,
+        header_string_list: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+        header_string_set:
+            ::std::option::Option<::std::collections::BTreeSet<::std::string::String>>,
+        header_integer_list: ::std::option::Option<::std::vec::Vec<i32>>,
+        header_boolean_list: ::std::option::Option<::std::vec::Vec<bool>>,
+        header_timestamp_list: ::std::option::Option<::std::vec::Vec<Instant>>,
+        header_enum: ::std::option::Option<FooEnum>,
+        header_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
     }
     impl Builder {
-        pub fn header_string(mut self, inp: impl Into<String>) -> Self {
+        pub fn header_string(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.header_string = Some(inp.into());
             self
         }
@@ -6914,23 +7099,26 @@ pub mod input_and_output_with_headers_input {
             self.header_false_bool = Some(inp);
             self
         }
-        pub fn header_string_list(mut self, inp: Vec<String>) -> Self {
+        pub fn header_string_list(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.header_string_list = Some(inp);
             self
         }
-        pub fn header_string_set(mut self, inp: BTreeSet<String>) -> Self {
+        pub fn header_string_set(
+            mut self,
+            inp: ::std::collections::BTreeSet<::std::string::String>,
+        ) -> Self {
             self.header_string_set = Some(inp);
             self
         }
-        pub fn header_integer_list(mut self, inp: Vec<i32>) -> Self {
+        pub fn header_integer_list(mut self, inp: ::std::vec::Vec<i32>) -> Self {
             self.header_integer_list = Some(inp);
             self
         }
-        pub fn header_boolean_list(mut self, inp: Vec<bool>) -> Self {
+        pub fn header_boolean_list(mut self, inp: ::std::vec::Vec<bool>) -> Self {
             self.header_boolean_list = Some(inp);
             self
         }
-        pub fn header_timestamp_list(mut self, inp: Vec<Instant>) -> Self {
+        pub fn header_timestamp_list(mut self, inp: ::std::vec::Vec<Instant>) -> Self {
             self.header_timestamp_list = Some(inp);
             self
         }
@@ -6938,7 +7126,7 @@ pub mod input_and_output_with_headers_input {
             self.header_enum = Some(inp);
             self
         }
-        pub fn header_enum_list(mut self, inp: Vec<FooEnum>) -> Self {
+        pub fn header_enum_list(mut self, inp: ::std::vec::Vec<FooEnum>) -> Self {
             self.header_enum_list = Some(inp);
             self
         }

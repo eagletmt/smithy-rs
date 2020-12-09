@@ -266,9 +266,9 @@ impl Status {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct Tag {
     /// <p>The key of the tag.</p>
-    pub key: Option<String>,
+    pub key: ::std::option::Option<::std::string::String>,
     /// <p>The value of the tag.</p>
-    pub value: Option<String>,
+    pub value: ::std::option::Option<::std::string::String>,
 }
 impl Tag {
     /// Creates a new builder-style object to manufacture [`Tag`](crate::model::Tag)
@@ -284,17 +284,17 @@ pub mod tag {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        key: Option<String>,
-        value: Option<String>,
+        key: ::std::option::Option<::std::string::String>,
+        value: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The key of the tag.</p>
-        pub fn key(mut self, inp: impl Into<String>) -> Self {
+        pub fn key(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.key = Some(inp.into());
             self
         }
         /// <p>The value of the tag.</p>
-        pub fn value(mut self, inp: impl Into<String>) -> Self {
+        pub fn value(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.value = Some(inp.into());
             self
         }
@@ -347,9 +347,9 @@ impl ChecksumAlgorithm {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct Block {
     /// <p>The block token for the block index.</p>
-    pub block_token: Option<String>,
+    pub block_token: ::std::option::Option<::std::string::String>,
     /// <p>The block index.</p>
-    pub block_index: Option<i32>,
+    pub block_index: ::std::option::Option<i32>,
 }
 impl Block {
     /// Creates a new builder-style object to manufacture [`Block`](crate::model::Block)
@@ -365,12 +365,12 @@ pub mod block {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        block_token: Option<String>,
-        block_index: Option<i32>,
+        block_token: ::std::option::Option<::std::string::String>,
+        block_index: ::std::option::Option<i32>,
     }
     impl Builder {
         /// <p>The block token for the block index.</p>
-        pub fn block_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn block_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.block_token = Some(inp.into());
             self
         }
@@ -397,12 +397,12 @@ pub struct ChangedBlock {
     /// <p>The block token for the block index of the <code>FirstSnapshotId</code> specified in
     /// the <code>ListChangedBlocks</code> operation. This value is absent if the first snapshot
     /// does not have the changed block that is on the second snapshot.</p>
-    pub first_block_token: Option<String>,
+    pub first_block_token: ::std::option::Option<::std::string::String>,
     /// <p>The block index.</p>
-    pub block_index: Option<i32>,
+    pub block_index: ::std::option::Option<i32>,
     /// <p>The block token for the block index of the <code>SecondSnapshotId</code> specified in
     /// the <code>ListChangedBlocks</code> operation.</p>
-    pub second_block_token: Option<String>,
+    pub second_block_token: ::std::option::Option<::std::string::String>,
 }
 impl ChangedBlock {
     /// Creates a new builder-style object to manufacture [`ChangedBlock`](crate::model::ChangedBlock)
@@ -418,15 +418,15 @@ pub mod changed_block {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        first_block_token: Option<String>,
-        block_index: Option<i32>,
-        second_block_token: Option<String>,
+        first_block_token: ::std::option::Option<::std::string::String>,
+        block_index: ::std::option::Option<i32>,
+        second_block_token: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The block token for the block index of the <code>FirstSnapshotId</code> specified in
         /// the <code>ListChangedBlocks</code> operation. This value is absent if the first snapshot
         /// does not have the changed block that is on the second snapshot.</p>
-        pub fn first_block_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn first_block_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.first_block_token = Some(inp.into());
             self
         }
@@ -437,7 +437,7 @@ pub mod changed_block {
         }
         /// <p>The block token for the block index of the <code>SecondSnapshotId</code> specified in
         /// the <code>ListChangedBlocks</code> operation.</p>
-        pub fn second_block_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn second_block_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.second_block_token = Some(inp.into());
             self
         }

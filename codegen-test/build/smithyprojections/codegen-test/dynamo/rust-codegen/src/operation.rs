@@ -109,7 +109,6 @@ use crate::serializer::UpdateTableInputBody;
 use crate::serializer::UpdateTableReplicaAutoScalingInputBody;
 use crate::serializer::UpdateTimeToLiveInputBody;
 use smithy_types::Instant;
-use std::collections::HashMap;
 impl BatchExecuteStatementInput {
     pub fn request_builder_base(&self) -> ::http::request::Builder {
         let builder = ::http::request::Builder::new();
@@ -123,13 +122,13 @@ impl BatchExecuteStatementInput {
             statements: &self.statements,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -151,13 +150,13 @@ impl BatchGetItemInput {
             return_consumed_capacity: &self.return_consumed_capacity,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -180,13 +179,13 @@ impl BatchWriteItemInput {
             return_item_collection_metrics: &self.return_item_collection_metrics,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -208,13 +207,13 @@ impl CreateBackupInput {
             backup_name: &self.backup_name,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -236,13 +235,13 @@ impl CreateGlobalTableInput {
             replication_group: &self.replication_group,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -272,13 +271,13 @@ impl CreateTableInput {
             tags: &self.tags,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -299,13 +298,13 @@ impl DeleteBackupInput {
             backup_arn: &self.backup_arn,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -335,13 +334,13 @@ impl DeleteItemInput {
             expression_attribute_values: &self.expression_attribute_values,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -362,13 +361,13 @@ impl DeleteTableInput {
             table_name: &self.table_name,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -389,13 +388,13 @@ impl DescribeBackupInput {
             backup_arn: &self.backup_arn,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -419,13 +418,13 @@ impl DescribeContinuousBackupsInput {
             table_name: &self.table_name,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -450,13 +449,13 @@ impl DescribeContributorInsightsInput {
             index_name: &self.index_name,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -472,13 +471,13 @@ impl DescribeEndpointsInput {
             .header("Content-Type", "application/x-amz-json-1.0")
             .header("X-Amz-Target", "DynamoDB_20120810.DescribeEndpoints")
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         vec![]
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -499,13 +498,13 @@ impl DescribeExportInput {
             export_arn: &self.export_arn,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -526,13 +525,13 @@ impl DescribeGlobalTableInput {
             global_table_name: &self.global_table_name,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -556,13 +555,13 @@ impl DescribeGlobalTableSettingsInput {
             global_table_name: &self.global_table_name,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -586,13 +585,13 @@ impl DescribeKinesisStreamingDestinationInput {
             table_name: &self.table_name,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -608,13 +607,13 @@ impl DescribeLimitsInput {
             .header("Content-Type", "application/x-amz-json-1.0")
             .header("X-Amz-Target", "DynamoDB_20120810.DescribeLimits")
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         vec![]
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -635,13 +634,13 @@ impl DescribeTableInput {
             table_name: &self.table_name,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -665,13 +664,13 @@ impl DescribeTableReplicaAutoScalingInput {
             table_name: &self.table_name,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -692,13 +691,13 @@ impl DescribeTimeToLiveInput {
             table_name: &self.table_name,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -723,13 +722,13 @@ impl DisableKinesisStreamingDestinationInput {
             stream_arn: &self.stream_arn,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -754,13 +753,13 @@ impl EnableKinesisStreamingDestinationInput {
             stream_arn: &self.stream_arn,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -784,13 +783,13 @@ impl ExecuteStatementInput {
             next_token: &self.next_token,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -812,13 +811,13 @@ impl ExecuteTransactionInput {
             client_request_token: &self.client_request_token,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -847,13 +846,13 @@ impl ExportTableToPointInTimeInput {
             export_format: &self.export_format,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -880,13 +879,13 @@ impl GetItemInput {
             expression_attribute_names: &self.expression_attribute_names,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -912,13 +911,13 @@ impl ListBackupsInput {
             backup_type: &self.backup_type,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -941,13 +940,13 @@ impl ListContributorInsightsInput {
             max_results: &self.max_results,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -970,13 +969,13 @@ impl ListExportsInput {
             next_token: &self.next_token,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -999,13 +998,13 @@ impl ListGlobalTablesInput {
             region_name: &self.region_name,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1027,13 +1026,13 @@ impl ListTablesInput {
             limit: &self.limit,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1055,13 +1054,13 @@ impl ListTagsOfResourceInput {
             next_token: &self.next_token,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1091,13 +1090,13 @@ impl PutItemInput {
             expression_attribute_values: &self.expression_attribute_values,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1134,13 +1133,13 @@ impl QueryInput {
             expression_attribute_values: &self.expression_attribute_values,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1167,13 +1166,13 @@ impl RestoreTableFromBackupInput {
             sse_specification_override: &self.sse_specification_override,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1206,13 +1205,13 @@ impl RestoreTableToPointInTimeInput {
             sse_specification_override: &self.sse_specification_override,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1248,13 +1247,13 @@ impl ScanInput {
             consistent_read: &self.consistent_read,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1276,13 +1275,13 @@ impl TagResourceInput {
             tags: &self.tags,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1304,13 +1303,13 @@ impl TransactGetItemsInput {
             return_consumed_capacity: &self.return_consumed_capacity,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1334,13 +1333,13 @@ impl TransactWriteItemsInput {
             client_request_token: &self.client_request_token,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1362,13 +1361,13 @@ impl UntagResourceInput {
             tag_keys: &self.tag_keys,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1390,13 +1389,13 @@ impl UpdateContinuousBackupsInput {
             point_in_time_recovery_specification: &self.point_in_time_recovery_specification,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1422,13 +1421,13 @@ impl UpdateContributorInsightsInput {
             contributor_insights_action: &self.contributor_insights_action,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1450,13 +1449,13 @@ impl UpdateGlobalTableInput {
             replica_updates: &self.replica_updates,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1488,13 +1487,13 @@ impl UpdateGlobalTableSettingsInput {
             replica_settings_update: &self.replica_settings_update,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1526,13 +1525,13 @@ impl UpdateItemInput {
             expression_attribute_values: &self.expression_attribute_values,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1560,13 +1559,13 @@ impl UpdateTableInput {
             replica_updates: &self.replica_updates,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1594,13 +1593,13 @@ impl UpdateTableReplicaAutoScalingInput {
             replica_updates: &self.replica_updates,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1622,13 +1621,13 @@ impl UpdateTimeToLiveInput {
             time_to_live_specification: &self.time_to_live_specification,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1640,7 +1639,7 @@ impl UpdateTimeToLiveInput {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateTimeToLiveOutput {
     /// <p>Represents the output of an <code>UpdateTimeToLive</code> operation.</p>
-    pub time_to_live_specification: Option<TimeToLiveSpecification>,
+    pub time_to_live_specification: ::std::option::Option<TimeToLiveSpecification>,
 }
 impl UpdateTimeToLiveOutput {
     /// Creates a new builder-style object to manufacture [`UpdateTimeToLiveOutput`](crate::operation::UpdateTimeToLiveOutput)
@@ -1657,7 +1656,7 @@ pub mod update_time_to_live_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        time_to_live_specification: Option<TimeToLiveSpecification>,
+        time_to_live_specification: ::std::option::Option<TimeToLiveSpecification>,
     }
     impl Builder {
         /// <p>Represents the output of an <code>UpdateTimeToLive</code> operation.</p>
@@ -1679,9 +1678,9 @@ pub mod update_time_to_live_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateTimeToLiveInput {
     /// <p>The name of the table to be configured.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>Represents the settings used to enable or disable Time to Live for the specified table.</p>
-    pub time_to_live_specification: Option<TimeToLiveSpecification>,
+    pub time_to_live_specification: ::std::option::Option<TimeToLiveSpecification>,
 }
 impl UpdateTimeToLiveInput {
     /// Creates a new builder-style object to manufacture [`UpdateTimeToLiveInput`](crate::operation::UpdateTimeToLiveInput)
@@ -1698,12 +1697,12 @@ pub mod update_time_to_live_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        time_to_live_specification: Option<TimeToLiveSpecification>,
+        table_name: ::std::option::Option<::std::string::String>,
+        time_to_live_specification: ::std::option::Option<TimeToLiveSpecification>,
     }
     impl Builder {
         /// <p>The name of the table to be configured.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -1726,7 +1725,7 @@ pub mod update_time_to_live_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateTableReplicaAutoScalingOutput {
     /// <p>Returns information about the auto scaling settings of a table with replicas.</p>
-    pub table_auto_scaling_description: Option<TableAutoScalingDescription>,
+    pub table_auto_scaling_description: ::std::option::Option<TableAutoScalingDescription>,
 }
 impl UpdateTableReplicaAutoScalingOutput {
     /// Creates a new builder-style object to manufacture [`UpdateTableReplicaAutoScalingOutput`](crate::operation::UpdateTableReplicaAutoScalingOutput)
@@ -1743,7 +1742,7 @@ pub mod update_table_replica_auto_scaling_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_auto_scaling_description: Option<TableAutoScalingDescription>,
+        table_auto_scaling_description: ::std::option::Option<TableAutoScalingDescription>,
     }
     impl Builder {
         /// <p>Returns information about the auto scaling settings of a table with replicas.</p>
@@ -1765,15 +1764,17 @@ pub mod update_table_replica_auto_scaling_output {
 pub struct UpdateTableReplicaAutoScalingInput {
     /// <p>Represents the auto scaling settings of the global secondary indexes of the replica
     /// to be updated.</p>
-    pub global_secondary_index_updates: Option<Vec<GlobalSecondaryIndexAutoScalingUpdate>>,
+    pub global_secondary_index_updates:
+        ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndexAutoScalingUpdate>>,
     /// <p>The name of the global table to be updated.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>Represents the auto scaling settings to be modified for a global table or global
     /// secondary index.</p>
-    pub provisioned_write_capacity_auto_scaling_update: Option<AutoScalingSettingsUpdate>,
+    pub provisioned_write_capacity_auto_scaling_update:
+        ::std::option::Option<AutoScalingSettingsUpdate>,
     /// <p>Represents the auto scaling settings of replicas of the table that will be
     /// modified.</p>
-    pub replica_updates: Option<Vec<ReplicaAutoScalingUpdate>>,
+    pub replica_updates: ::std::option::Option<::std::vec::Vec<ReplicaAutoScalingUpdate>>,
 }
 impl UpdateTableReplicaAutoScalingInput {
     /// Creates a new builder-style object to manufacture [`UpdateTableReplicaAutoScalingInput`](crate::operation::UpdateTableReplicaAutoScalingInput)
@@ -1792,23 +1793,25 @@ pub mod update_table_replica_auto_scaling_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        global_secondary_index_updates: Option<Vec<GlobalSecondaryIndexAutoScalingUpdate>>,
-        table_name: Option<String>,
-        provisioned_write_capacity_auto_scaling_update: Option<AutoScalingSettingsUpdate>,
-        replica_updates: Option<Vec<ReplicaAutoScalingUpdate>>,
+        global_secondary_index_updates:
+            ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndexAutoScalingUpdate>>,
+        table_name: ::std::option::Option<::std::string::String>,
+        provisioned_write_capacity_auto_scaling_update:
+            ::std::option::Option<AutoScalingSettingsUpdate>,
+        replica_updates: ::std::option::Option<::std::vec::Vec<ReplicaAutoScalingUpdate>>,
     }
     impl Builder {
         /// <p>Represents the auto scaling settings of the global secondary indexes of the replica
         /// to be updated.</p>
         pub fn global_secondary_index_updates(
             mut self,
-            inp: Vec<GlobalSecondaryIndexAutoScalingUpdate>,
+            inp: ::std::vec::Vec<GlobalSecondaryIndexAutoScalingUpdate>,
         ) -> Self {
             self.global_secondary_index_updates = Some(inp);
             self
         }
         /// <p>The name of the global table to be updated.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -1823,7 +1826,7 @@ pub mod update_table_replica_auto_scaling_input {
         }
         /// <p>Represents the auto scaling settings of replicas of the table that will be
         /// modified.</p>
-        pub fn replica_updates(mut self, inp: Vec<ReplicaAutoScalingUpdate>) -> Self {
+        pub fn replica_updates(mut self, inp: ::std::vec::Vec<ReplicaAutoScalingUpdate>) -> Self {
             self.replica_updates = Some(inp);
             self
         }
@@ -1845,7 +1848,7 @@ pub mod update_table_replica_auto_scaling_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateTableOutput {
     /// <p>Represents the properties of the table.</p>
-    pub table_description: Option<TableDescription>,
+    pub table_description: ::std::option::Option<TableDescription>,
 }
 impl UpdateTableOutput {
     /// Creates a new builder-style object to manufacture [`UpdateTableOutput`](crate::operation::UpdateTableOutput)
@@ -1862,7 +1865,7 @@ pub mod update_table_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_description: Option<TableDescription>,
+        table_description: ::std::option::Option<TableDescription>,
     }
     impl Builder {
         /// <p>Represents the properties of the table.</p>
@@ -1884,9 +1887,9 @@ pub mod update_table_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateTableInput {
     /// <p>An array of attributes that describe the key schema for the table and indexes. If you are adding a new global secondary index to the table, <code>AttributeDefinitions</code> must include the key element(s) of the new index.</p>
-    pub attribute_definitions: Option<Vec<AttributeDefinition>>,
+    pub attribute_definitions: ::std::option::Option<::std::vec::Vec<AttributeDefinition>>,
     /// <p>The name of the table to be updated.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>Controls how you are charged for read and write throughput and how you manage capacity.
     /// When switching from pay-per-request to provisioned capacity, initial provisioned capacity values must be set. The initial
     /// provisioned capacity values are estimated based on the consumed read and write capacity of your table and global secondary indexes
@@ -1902,9 +1905,9 @@ pub struct UpdateTableInput {
     /// </p>
     /// </li>
     /// </ul>
-    pub billing_mode: Option<BillingMode>,
+    pub billing_mode: ::std::option::Option<BillingMode>,
     /// <p>The new provisioned throughput settings for the specified table or index.</p>
-    pub provisioned_throughput: Option<ProvisionedThroughput>,
+    pub provisioned_throughput: ::std::option::Option<ProvisionedThroughput>,
     /// <p>An array of one or more global secondary indexes for the table. For each index in the array, you can request one action:</p>
     /// <ul>
     /// <li>
@@ -1923,21 +1926,22 @@ pub struct UpdateTableInput {
     /// <p>You can create or delete only one global secondary index per <code>UpdateTable</code> operation.</p>
     /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html">Managing Global Secondary
     /// Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
-    pub global_secondary_index_updates: Option<Vec<GlobalSecondaryIndexUpdate>>,
+    pub global_secondary_index_updates:
+        ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndexUpdate>>,
     /// <p>Represents the DynamoDB Streams configuration for the table.</p>
     /// <note>
     /// <p>You receive a <code>ResourceInUseException</code> if you try to enable a stream on a
     /// table that already has a stream, or if you try to disable a stream on a table that
     /// doesn't have a stream.</p>
     /// </note>
-    pub stream_specification: Option<StreamSpecification>,
+    pub stream_specification: ::std::option::Option<StreamSpecification>,
     /// <p>The new server-side encryption settings for the specified table.</p>
-    pub sse_specification: Option<SSESpecification>,
+    pub sse_specification: ::std::option::Option<SSESpecification>,
     /// <p>A list of replica update actions (create, delete, or update) for the table.</p>
     /// <note>
     /// <p>This property only applies to <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version 2019.11.21</a> of global tables.</p>
     /// </note>
-    pub replica_updates: Option<Vec<ReplicationGroupUpdate>>,
+    pub replica_updates: ::std::option::Option<::std::vec::Vec<ReplicationGroupUpdate>>,
 }
 impl UpdateTableInput {
     /// Creates a new builder-style object to manufacture [`UpdateTableInput`](crate::operation::UpdateTableInput)
@@ -1960,23 +1964,24 @@ pub mod update_table_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        attribute_definitions: Option<Vec<AttributeDefinition>>,
-        table_name: Option<String>,
-        billing_mode: Option<BillingMode>,
-        provisioned_throughput: Option<ProvisionedThroughput>,
-        global_secondary_index_updates: Option<Vec<GlobalSecondaryIndexUpdate>>,
-        stream_specification: Option<StreamSpecification>,
-        sse_specification: Option<SSESpecification>,
-        replica_updates: Option<Vec<ReplicationGroupUpdate>>,
+        attribute_definitions: ::std::option::Option<::std::vec::Vec<AttributeDefinition>>,
+        table_name: ::std::option::Option<::std::string::String>,
+        billing_mode: ::std::option::Option<BillingMode>,
+        provisioned_throughput: ::std::option::Option<ProvisionedThroughput>,
+        global_secondary_index_updates:
+            ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndexUpdate>>,
+        stream_specification: ::std::option::Option<StreamSpecification>,
+        sse_specification: ::std::option::Option<SSESpecification>,
+        replica_updates: ::std::option::Option<::std::vec::Vec<ReplicationGroupUpdate>>,
     }
     impl Builder {
         /// <p>An array of attributes that describe the key schema for the table and indexes. If you are adding a new global secondary index to the table, <code>AttributeDefinitions</code> must include the key element(s) of the new index.</p>
-        pub fn attribute_definitions(mut self, inp: Vec<AttributeDefinition>) -> Self {
+        pub fn attribute_definitions(mut self, inp: ::std::vec::Vec<AttributeDefinition>) -> Self {
             self.attribute_definitions = Some(inp);
             self
         }
         /// <p>The name of the table to be updated.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -2024,7 +2029,7 @@ pub mod update_table_input {
         /// Indexes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
         pub fn global_secondary_index_updates(
             mut self,
-            inp: Vec<GlobalSecondaryIndexUpdate>,
+            inp: ::std::vec::Vec<GlobalSecondaryIndexUpdate>,
         ) -> Self {
             self.global_secondary_index_updates = Some(inp);
             self
@@ -2048,7 +2053,7 @@ pub mod update_table_input {
         /// <note>
         /// <p>This property only applies to <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version 2019.11.21</a> of global tables.</p>
         /// </note>
-        pub fn replica_updates(mut self, inp: Vec<ReplicationGroupUpdate>) -> Self {
+        pub fn replica_updates(mut self, inp: ::std::vec::Vec<ReplicationGroupUpdate>) -> Self {
             self.replica_updates = Some(inp);
             self
         }
@@ -2077,13 +2082,14 @@ pub struct UpdateItemOutput {
     /// <p>The <code>Attributes</code> map is only present if <code>ReturnValues</code> was
     /// specified as something other than <code>NONE</code> in the request. Each element
     /// represents one attribute.</p>
-    pub attributes: Option<HashMap<String, AttributeValue>>,
+    pub attributes:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>UpdateItem</code> operation. The data returned includes the total
     /// provisioned throughput consumed, along with statistics for the table and any indexes involved
     /// in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified.
     /// For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
     /// Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub consumed_capacity: Option<ConsumedCapacity>,
+    pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
     /// <p>Information about item collections, if any, that were affected by the
     /// <code>UpdateItem</code> operation.
     /// <code>ItemCollectionMetrics</code> is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was specified. If the table
@@ -2109,7 +2115,7 @@ pub struct UpdateItemOutput {
     /// <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p>
     /// </li>
     /// </ul>
-    pub item_collection_metrics: Option<ItemCollectionMetrics>,
+    pub item_collection_metrics: ::std::option::Option<ItemCollectionMetrics>,
 }
 impl UpdateItemOutput {
     /// Creates a new builder-style object to manufacture [`UpdateItemOutput`](crate::operation::UpdateItemOutput)
@@ -2124,14 +2130,15 @@ pub mod update_item_output {
     use crate::model::ConsumedCapacity;
     use crate::model::ItemCollectionMetrics;
     use crate::operation::UpdateItemOutput;
-    use std::collections::HashMap;
     /// A builder for [`UpdateItemOutput`](crate::operation::UpdateItemOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        attributes: Option<HashMap<String, AttributeValue>>,
-        consumed_capacity: Option<ConsumedCapacity>,
-        item_collection_metrics: Option<ItemCollectionMetrics>,
+        attributes: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        consumed_capacity: ::std::option::Option<ConsumedCapacity>,
+        item_collection_metrics: ::std::option::Option<ItemCollectionMetrics>,
     }
     impl Builder {
         /// <p>A map of attribute values as they appear before or after the <code>UpdateItem</code>
@@ -2139,7 +2146,10 @@ pub mod update_item_output {
         /// <p>The <code>Attributes</code> map is only present if <code>ReturnValues</code> was
         /// specified as something other than <code>NONE</code> in the request. Each element
         /// represents one attribute.</p>
-        pub fn attributes(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn attributes(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.attributes = Some(inp);
             self
         }
@@ -2197,19 +2207,24 @@ pub mod update_item_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateItemInput {
     /// <p>The name of the table containing the item to update.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The primary key of the item to be updated. Each element consists of an attribute name and a value for that attribute.</p>
     /// <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
-    pub key: Option<HashMap<String, AttributeValue>>,
+    pub key:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>This is a legacy parameter.  Use <code>UpdateExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html">AttributeUpdates</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub attribute_updates: Option<HashMap<String, AttributeValueUpdate>>,
+    pub attribute_updates: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, AttributeValueUpdate>,
+    >,
     /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub expected: Option<HashMap<String, ExpectedAttributeValue>>,
+    pub expected: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ExpectedAttributeValue>,
+    >,
     /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub conditional_operator: Option<ConditionalOperator>,
+    pub conditional_operator: ::std::option::Option<ConditionalOperator>,
     /// <p>Use <code>ReturnValues</code> if you want to get the item attributes as they appear
     /// before or after they are updated. For <code>UpdateItem</code>, the valid values
     /// are:</p>
@@ -2241,7 +2256,7 @@ pub struct UpdateItemInput {
     /// small network and processing overhead of receiving a larger response. No read capacity
     /// units are consumed.</p>
     /// <p>The values returned are strongly consistent.</p>
-    pub return_values: Option<ReturnValue>,
+    pub return_values: ::std::option::Option<ReturnValue>,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -2258,10 +2273,10 @@ pub struct UpdateItemInput {
     /// <code>NONE</code> - No <code>ConsumedCapacity</code> details are included in the response.</p>
     /// </li>
     /// </ul>
-    pub return_consumed_capacity: Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>Determines whether item collection metrics are returned.  If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during
     /// the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
-    pub return_item_collection_metrics: Option<ReturnItemCollectionMetrics>,
+    pub return_item_collection_metrics: ::std::option::Option<ReturnItemCollectionMetrics>,
     /// <p>An expression that defines one or more attributes to be updated, the action to be
     /// performed on them, and new values for them.</p>
     /// <p>The following action values are available for <code>UpdateExpression</code>.</p>
@@ -2350,7 +2365,7 @@ pub struct UpdateItemInput {
     /// b=:value2 DELETE :value3, :value4, :value5</code>
     /// </p>
     /// <p>For more information on update expressions, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html">Modifying Items and Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub update_expression: Option<String>,
+    pub update_expression: ::std::option::Option<::std::string::String>,
     /// <p>A condition that must be satisfied in order for a conditional update to succeed.</p>
     /// <p>An expression can contain any of the following:</p>
     /// <ul>
@@ -2372,7 +2387,7 @@ pub struct UpdateItemInput {
     /// </ul>
     /// <p>For more information about condition expressions, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Specifying Conditions</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub condition_expression: Option<String>,
+    pub condition_expression: ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
     /// <li>
@@ -2417,7 +2432,9 @@ pub struct UpdateItemInput {
     /// </note>
     /// <p>For more information about expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub expression_attribute_names: Option<HashMap<String, String>>,
+    pub expression_attribute_names: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
     /// <p>One or more values that can be substituted in an expression.</p>
     /// <p>Use the <b>:</b> (colon) character in an expression to
     /// dereference an attribute value. For example, suppose that you wanted to check whether
@@ -2435,7 +2452,8 @@ pub struct UpdateItemInput {
     /// </p>
     /// <p>For more information on expression attribute values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Condition Expressions</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub expression_attribute_values: Option<HashMap<String, AttributeValue>>,
+    pub expression_attribute_values:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
 }
 impl UpdateItemInput {
     /// Creates a new builder-style object to manufacture [`UpdateItemInput`](crate::operation::UpdateItemInput)
@@ -2454,45 +2472,63 @@ pub mod update_item_input {
     use crate::model::ReturnItemCollectionMetrics;
     use crate::model::ReturnValue;
     use crate::operation::UpdateItemInput;
-    use std::collections::HashMap;
     /// A builder for [`UpdateItemInput`](crate::operation::UpdateItemInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        key: Option<HashMap<String, AttributeValue>>,
-        attribute_updates: Option<HashMap<String, AttributeValueUpdate>>,
-        expected: Option<HashMap<String, ExpectedAttributeValue>>,
-        conditional_operator: Option<ConditionalOperator>,
-        return_values: Option<ReturnValue>,
-        return_consumed_capacity: Option<ReturnConsumedCapacity>,
-        return_item_collection_metrics: Option<ReturnItemCollectionMetrics>,
-        update_expression: Option<String>,
-        condition_expression: Option<String>,
-        expression_attribute_names: Option<HashMap<String, String>>,
-        expression_attribute_values: Option<HashMap<String, AttributeValue>>,
+        table_name: ::std::option::Option<::std::string::String>,
+        key: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        attribute_updates: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValueUpdate>,
+        >,
+        expected: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ExpectedAttributeValue>,
+        >,
+        conditional_operator: ::std::option::Option<ConditionalOperator>,
+        return_values: ::std::option::Option<ReturnValue>,
+        return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
+        return_item_collection_metrics: ::std::option::Option<ReturnItemCollectionMetrics>,
+        update_expression: ::std::option::Option<::std::string::String>,
+        condition_expression: ::std::option::Option<::std::string::String>,
+        expression_attribute_names: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
+        expression_attribute_values: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
     }
     impl Builder {
         /// <p>The name of the table containing the item to update.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>The primary key of the item to be updated. Each element consists of an attribute name and a value for that attribute.</p>
         /// <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
-        pub fn key(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn key(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.key = Some(inp);
             self
         }
         /// <p>This is a legacy parameter.  Use <code>UpdateExpression</code> instead.   For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html">AttributeUpdates</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn attribute_updates(mut self, inp: HashMap<String, AttributeValueUpdate>) -> Self {
+        pub fn attribute_updates(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValueUpdate>,
+        ) -> Self {
             self.attribute_updates = Some(inp);
             self
         }
         /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.   For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn expected(mut self, inp: HashMap<String, ExpectedAttributeValue>) -> Self {
+        pub fn expected(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ExpectedAttributeValue>,
+        ) -> Self {
             self.expected = Some(inp);
             self
         }
@@ -2651,7 +2687,7 @@ pub mod update_item_input {
         /// b=:value2 DELETE :value3, :value4, :value5</code>
         /// </p>
         /// <p>For more information on update expressions, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html">Modifying Items and Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn update_expression(mut self, inp: impl Into<String>) -> Self {
+        pub fn update_expression(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.update_expression = Some(inp.into());
             self
         }
@@ -2676,7 +2712,7 @@ pub mod update_item_input {
         /// </ul>
         /// <p>For more information about condition expressions, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Specifying Conditions</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn condition_expression(mut self, inp: impl Into<String>) -> Self {
+        pub fn condition_expression(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.condition_expression = Some(inp.into());
             self
         }
@@ -2724,7 +2760,10 @@ pub mod update_item_input {
         /// </note>
         /// <p>For more information about expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn expression_attribute_names(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn expression_attribute_names(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.expression_attribute_names = Some(inp);
             self
         }
@@ -2745,7 +2784,10 @@ pub mod update_item_input {
         /// </p>
         /// <p>For more information on expression attribute values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Condition Expressions</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn expression_attribute_values(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn expression_attribute_values(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.expression_attribute_values = Some(inp);
             self
         }
@@ -2773,9 +2815,9 @@ pub mod update_item_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateGlobalTableSettingsOutput {
     /// <p>The name of the global table.</p>
-    pub global_table_name: Option<String>,
+    pub global_table_name: ::std::option::Option<::std::string::String>,
     /// <p>The Region-specific settings for the global table.</p>
-    pub replica_settings: Option<Vec<ReplicaSettingsDescription>>,
+    pub replica_settings: ::std::option::Option<::std::vec::Vec<ReplicaSettingsDescription>>,
 }
 impl UpdateGlobalTableSettingsOutput {
     /// Creates a new builder-style object to manufacture [`UpdateGlobalTableSettingsOutput`](crate::operation::UpdateGlobalTableSettingsOutput)
@@ -2792,17 +2834,20 @@ pub mod update_global_table_settings_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        global_table_name: Option<String>,
-        replica_settings: Option<Vec<ReplicaSettingsDescription>>,
+        global_table_name: ::std::option::Option<::std::string::String>,
+        replica_settings: ::std::option::Option<::std::vec::Vec<ReplicaSettingsDescription>>,
     }
     impl Builder {
         /// <p>The name of the global table.</p>
-        pub fn global_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn global_table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.global_table_name = Some(inp.into());
             self
         }
         /// <p>The Region-specific settings for the global table.</p>
-        pub fn replica_settings(mut self, inp: Vec<ReplicaSettingsDescription>) -> Self {
+        pub fn replica_settings(
+            mut self,
+            inp: ::std::vec::Vec<ReplicaSettingsDescription>,
+        ) -> Self {
             self.replica_settings = Some(inp);
             self
         }
@@ -2820,7 +2865,7 @@ pub mod update_global_table_settings_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateGlobalTableSettingsInput {
     /// <p>The name of the global table</p>
-    pub global_table_name: Option<String>,
+    pub global_table_name: ::std::option::Option<::std::string::String>,
     /// <p>The billing mode of the global table. If <code>GlobalTableBillingMode</code> is not specified, the global table defaults to <code>PROVISIONED</code> capacity billing mode.</p>
     /// <ul>
     /// <li>
@@ -2833,19 +2878,19 @@ pub struct UpdateGlobalTableSettingsInput {
     /// </p>
     /// </li>
     /// </ul>
-    pub global_table_billing_mode: Option<BillingMode>,
+    pub global_table_billing_mode: ::std::option::Option<BillingMode>,
     /// <p>The maximum number of writes consumed per second before DynamoDB returns a <code>ThrottlingException.</code>
     /// </p>
-    pub global_table_provisioned_write_capacity_units: Option<i64>,
+    pub global_table_provisioned_write_capacity_units: ::std::option::Option<i64>,
     /// <p>Auto scaling settings for managing provisioned write capacity for the global
     /// table.</p>
     pub global_table_provisioned_write_capacity_auto_scaling_settings_update:
-        Option<AutoScalingSettingsUpdate>,
+        ::std::option::Option<AutoScalingSettingsUpdate>,
     /// <p>Represents the settings of a global secondary index for a global table that will be modified.</p>
     pub global_table_global_secondary_index_settings_update:
-        Option<Vec<GlobalTableGlobalSecondaryIndexSettingsUpdate>>,
+        ::std::option::Option<::std::vec::Vec<GlobalTableGlobalSecondaryIndexSettingsUpdate>>,
     /// <p>Represents the settings for a global table in a Region that will be modified.</p>
-    pub replica_settings_update: Option<Vec<ReplicaSettingsUpdate>>,
+    pub replica_settings_update: ::std::option::Option<::std::vec::Vec<ReplicaSettingsUpdate>>,
 }
 impl UpdateGlobalTableSettingsInput {
     /// Creates a new builder-style object to manufacture [`UpdateGlobalTableSettingsInput`](crate::operation::UpdateGlobalTableSettingsInput)
@@ -2865,18 +2910,18 @@ pub mod update_global_table_settings_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        global_table_name: Option<String>,
-        global_table_billing_mode: Option<BillingMode>,
-        global_table_provisioned_write_capacity_units: Option<i64>,
+        global_table_name: ::std::option::Option<::std::string::String>,
+        global_table_billing_mode: ::std::option::Option<BillingMode>,
+        global_table_provisioned_write_capacity_units: ::std::option::Option<i64>,
         global_table_provisioned_write_capacity_auto_scaling_settings_update:
-            Option<AutoScalingSettingsUpdate>,
+            ::std::option::Option<AutoScalingSettingsUpdate>,
         global_table_global_secondary_index_settings_update:
-            Option<Vec<GlobalTableGlobalSecondaryIndexSettingsUpdate>>,
-        replica_settings_update: Option<Vec<ReplicaSettingsUpdate>>,
+            ::std::option::Option<::std::vec::Vec<GlobalTableGlobalSecondaryIndexSettingsUpdate>>,
+        replica_settings_update: ::std::option::Option<::std::vec::Vec<ReplicaSettingsUpdate>>,
     }
     impl Builder {
         /// <p>The name of the global table</p>
-        pub fn global_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn global_table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.global_table_name = Some(inp.into());
             self
         }
@@ -2914,13 +2959,16 @@ pub mod update_global_table_settings_input {
         /// <p>Represents the settings of a global secondary index for a global table that will be modified.</p>
         pub fn global_table_global_secondary_index_settings_update(
             mut self,
-            inp: Vec<GlobalTableGlobalSecondaryIndexSettingsUpdate>,
+            inp: ::std::vec::Vec<GlobalTableGlobalSecondaryIndexSettingsUpdate>,
         ) -> Self {
             self.global_table_global_secondary_index_settings_update = Some(inp);
             self
         }
         /// <p>Represents the settings for a global table in a Region that will be modified.</p>
-        pub fn replica_settings_update(mut self, inp: Vec<ReplicaSettingsUpdate>) -> Self {
+        pub fn replica_settings_update(
+            mut self,
+            inp: ::std::vec::Vec<ReplicaSettingsUpdate>,
+        ) -> Self {
             self.replica_settings_update = Some(inp);
             self
         }
@@ -2945,7 +2993,7 @@ pub mod update_global_table_settings_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateGlobalTableOutput {
     /// <p>Contains the details of the global table.</p>
-    pub global_table_description: Option<GlobalTableDescription>,
+    pub global_table_description: ::std::option::Option<GlobalTableDescription>,
 }
 impl UpdateGlobalTableOutput {
     /// Creates a new builder-style object to manufacture [`UpdateGlobalTableOutput`](crate::operation::UpdateGlobalTableOutput)
@@ -2962,7 +3010,7 @@ pub mod update_global_table_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        global_table_description: Option<GlobalTableDescription>,
+        global_table_description: ::std::option::Option<GlobalTableDescription>,
     }
     impl Builder {
         /// <p>Contains the details of the global table.</p>
@@ -2983,9 +3031,9 @@ pub mod update_global_table_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateGlobalTableInput {
     /// <p>The global table name.</p>
-    pub global_table_name: Option<String>,
+    pub global_table_name: ::std::option::Option<::std::string::String>,
     /// <p>A list of Regions that should be added or removed from the global table.</p>
-    pub replica_updates: Option<Vec<ReplicaUpdate>>,
+    pub replica_updates: ::std::option::Option<::std::vec::Vec<ReplicaUpdate>>,
 }
 impl UpdateGlobalTableInput {
     /// Creates a new builder-style object to manufacture [`UpdateGlobalTableInput`](crate::operation::UpdateGlobalTableInput)
@@ -3002,17 +3050,17 @@ pub mod update_global_table_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        global_table_name: Option<String>,
-        replica_updates: Option<Vec<ReplicaUpdate>>,
+        global_table_name: ::std::option::Option<::std::string::String>,
+        replica_updates: ::std::option::Option<::std::vec::Vec<ReplicaUpdate>>,
     }
     impl Builder {
         /// <p>The global table name.</p>
-        pub fn global_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn global_table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.global_table_name = Some(inp.into());
             self
         }
         /// <p>A list of Regions that should be added or removed from the global table.</p>
-        pub fn replica_updates(mut self, inp: Vec<ReplicaUpdate>) -> Self {
+        pub fn replica_updates(mut self, inp: ::std::vec::Vec<ReplicaUpdate>) -> Self {
             self.replica_updates = Some(inp);
             self
         }
@@ -3030,11 +3078,11 @@ pub mod update_global_table_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateContributorInsightsOutput {
     /// <p>The name of the table.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The name of the global secondary index, if applicable.</p>
-    pub index_name: Option<String>,
+    pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The status of contributor insights</p>
-    pub contributor_insights_status: Option<ContributorInsightsStatus>,
+    pub contributor_insights_status: ::std::option::Option<ContributorInsightsStatus>,
 }
 impl UpdateContributorInsightsOutput {
     /// Creates a new builder-style object to manufacture [`UpdateContributorInsightsOutput`](crate::operation::UpdateContributorInsightsOutput)
@@ -3051,18 +3099,18 @@ pub mod update_contributor_insights_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        index_name: Option<String>,
-        contributor_insights_status: Option<ContributorInsightsStatus>,
+        table_name: ::std::option::Option<::std::string::String>,
+        index_name: ::std::option::Option<::std::string::String>,
+        contributor_insights_status: ::std::option::Option<ContributorInsightsStatus>,
     }
     impl Builder {
         /// <p>The name of the table.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>The name of the global secondary index, if applicable.</p>
-        pub fn index_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn index_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.index_name = Some(inp.into());
             self
         }
@@ -3086,11 +3134,11 @@ pub mod update_contributor_insights_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateContributorInsightsInput {
     /// <p>The name of the table.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The global secondary index name, if applicable.</p>
-    pub index_name: Option<String>,
+    pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>Represents the contributor insights action.</p>
-    pub contributor_insights_action: Option<ContributorInsightsAction>,
+    pub contributor_insights_action: ::std::option::Option<ContributorInsightsAction>,
 }
 impl UpdateContributorInsightsInput {
     /// Creates a new builder-style object to manufacture [`UpdateContributorInsightsInput`](crate::operation::UpdateContributorInsightsInput)
@@ -3107,18 +3155,18 @@ pub mod update_contributor_insights_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        index_name: Option<String>,
-        contributor_insights_action: Option<ContributorInsightsAction>,
+        table_name: ::std::option::Option<::std::string::String>,
+        index_name: ::std::option::Option<::std::string::String>,
+        contributor_insights_action: ::std::option::Option<ContributorInsightsAction>,
     }
     impl Builder {
         /// <p>The name of the table.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>The global secondary index name, if applicable.</p>
-        pub fn index_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn index_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.index_name = Some(inp.into());
             self
         }
@@ -3142,7 +3190,7 @@ pub mod update_contributor_insights_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateContinuousBackupsOutput {
     /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
-    pub continuous_backups_description: Option<ContinuousBackupsDescription>,
+    pub continuous_backups_description: ::std::option::Option<ContinuousBackupsDescription>,
 }
 impl UpdateContinuousBackupsOutput {
     /// Creates a new builder-style object to manufacture [`UpdateContinuousBackupsOutput`](crate::operation::UpdateContinuousBackupsOutput)
@@ -3159,7 +3207,7 @@ pub mod update_continuous_backups_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        continuous_backups_description: Option<ContinuousBackupsDescription>,
+        continuous_backups_description: ::std::option::Option<ContinuousBackupsDescription>,
     }
     impl Builder {
         /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
@@ -3180,9 +3228,10 @@ pub mod update_continuous_backups_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct UpdateContinuousBackupsInput {
     /// <p>The name of the table.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>Represents the settings used to enable point in time recovery.</p>
-    pub point_in_time_recovery_specification: Option<PointInTimeRecoverySpecification>,
+    pub point_in_time_recovery_specification:
+        ::std::option::Option<PointInTimeRecoverySpecification>,
 }
 impl UpdateContinuousBackupsInput {
     /// Creates a new builder-style object to manufacture [`UpdateContinuousBackupsInput`](crate::operation::UpdateContinuousBackupsInput)
@@ -3199,12 +3248,13 @@ pub mod update_continuous_backups_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        point_in_time_recovery_specification: Option<PointInTimeRecoverySpecification>,
+        table_name: ::std::option::Option<::std::string::String>,
+        point_in_time_recovery_specification:
+            ::std::option::Option<PointInTimeRecoverySpecification>,
     }
     impl Builder {
         /// <p>The name of the table.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -3256,10 +3306,10 @@ pub mod untag_resource_output {
 pub struct UntagResourceInput {
     /// <p>The DynamoDB resource that the tags will be removed from. This value is an Amazon
     /// Resource Name (ARN).</p>
-    pub resource_arn: Option<String>,
+    pub resource_arn: ::std::option::Option<::std::string::String>,
     /// <p>A list of tag keys. Existing tags of the resource whose keys are members of this list
     /// will be removed from the DynamoDB resource.</p>
-    pub tag_keys: Option<Vec<String>>,
+    pub tag_keys: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
 }
 impl UntagResourceInput {
     /// Creates a new builder-style object to manufacture [`UntagResourceInput`](crate::operation::UntagResourceInput)
@@ -3275,19 +3325,19 @@ pub mod untag_resource_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        resource_arn: Option<String>,
-        tag_keys: Option<Vec<String>>,
+        resource_arn: ::std::option::Option<::std::string::String>,
+        tag_keys: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     }
     impl Builder {
         /// <p>The DynamoDB resource that the tags will be removed from. This value is an Amazon
         /// Resource Name (ARN).</p>
-        pub fn resource_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn resource_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.resource_arn = Some(inp.into());
             self
         }
         /// <p>A list of tag keys. Existing tags of the resource whose keys are members of this list
         /// will be removed from the DynamoDB resource.</p>
-        pub fn tag_keys(mut self, inp: Vec<String>) -> Self {
+        pub fn tag_keys(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.tag_keys = Some(inp);
             self
         }
@@ -3308,12 +3358,14 @@ pub struct TransactWriteItemsOutput {
     /// operation. The values of the list are ordered according to
     /// the ordering of the <code>TransactItems</code> request parameter.
     /// </p>
-    pub consumed_capacity: Option<Vec<ConsumedCapacity>>,
+    pub consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
     /// <p>A list of tables that were processed by <code>TransactWriteItems</code> and, for each
     /// table, information about any item collections that were affected by individual
     /// <code>UpdateItem</code>, <code>PutItem</code>, or <code>DeleteItem</code>
     /// operations. </p>
-    pub item_collection_metrics: Option<HashMap<String, Vec<ItemCollectionMetrics>>>,
+    pub item_collection_metrics: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<ItemCollectionMetrics>>,
+    >,
 }
 impl TransactWriteItemsOutput {
     /// Creates a new builder-style object to manufacture [`TransactWriteItemsOutput`](crate::operation::TransactWriteItemsOutput)
@@ -3327,20 +3379,24 @@ pub mod transact_write_items_output {
     use crate::model::ConsumedCapacity;
     use crate::model::ItemCollectionMetrics;
     use crate::operation::TransactWriteItemsOutput;
-    use std::collections::HashMap;
     /// A builder for [`TransactWriteItemsOutput`](crate::operation::TransactWriteItemsOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        consumed_capacity: Option<Vec<ConsumedCapacity>>,
-        item_collection_metrics: Option<HashMap<String, Vec<ItemCollectionMetrics>>>,
+        consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
+        item_collection_metrics: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::vec::Vec<ItemCollectionMetrics>,
+            >,
+        >,
     }
     impl Builder {
         /// <p>The capacity units consumed by the entire <code>TransactWriteItems</code>
         /// operation. The values of the list are ordered according to
         /// the ordering of the <code>TransactItems</code> request parameter.
         /// </p>
-        pub fn consumed_capacity(mut self, inp: Vec<ConsumedCapacity>) -> Self {
+        pub fn consumed_capacity(mut self, inp: ::std::vec::Vec<ConsumedCapacity>) -> Self {
             self.consumed_capacity = Some(inp);
             self
         }
@@ -3350,7 +3406,10 @@ pub mod transact_write_items_output {
         /// operations. </p>
         pub fn item_collection_metrics(
             mut self,
-            inp: HashMap<String, Vec<ItemCollectionMetrics>>,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::vec::Vec<ItemCollectionMetrics>,
+            >,
         ) -> Self {
             self.item_collection_metrics = Some(inp);
             self
@@ -3373,7 +3432,7 @@ pub struct TransactWriteItemsInput {
     /// <code>Delete</code> object. These can operate on items in different tables, but the
     /// tables must reside in the same AWS account and Region, and no two of them can operate on
     /// the same item. </p>
-    pub transact_items: Option<Vec<TransactWriteItem>>,
+    pub transact_items: ::std::option::Option<::std::vec::Vec<TransactWriteItem>>,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -3390,13 +3449,13 @@ pub struct TransactWriteItemsInput {
     /// <code>NONE</code> - No <code>ConsumedCapacity</code> details are included in the response.</p>
     /// </li>
     /// </ul>
-    pub return_consumed_capacity: Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>Determines whether item collection metrics are returned. If set to
     /// <code>SIZE</code>, the response includes statistics about item collections (if any), that
     /// were modified during the operation and are returned in the response.
     /// If set to <code>NONE</code> (the default), no statistics are returned.
     /// </p>
-    pub return_item_collection_metrics: Option<ReturnItemCollectionMetrics>,
+    pub return_item_collection_metrics: ::std::option::Option<ReturnItemCollectionMetrics>,
     /// <p>Providing a <code>ClientRequestToken</code> makes the call to <code>TransactWriteItems</code>
     /// idempotent, meaning that multiple identical calls have the same effect as one single call.</p>
     /// <p>Although multiple identical calls using the same client request token produce the same
@@ -3413,7 +3472,7 @@ pub struct TransactWriteItemsInput {
     /// <p>If you submit a request with the same client token but a change in other parameters
     /// within the 10-minute idempotency window, DynamoDB returns an
     /// <code>IdempotentParameterMismatch</code> exception.</p>
-    pub client_request_token: Option<String>,
+    pub client_request_token: ::std::option::Option<::std::string::String>,
 }
 impl TransactWriteItemsInput {
     /// Creates a new builder-style object to manufacture [`TransactWriteItemsInput`](crate::operation::TransactWriteItemsInput)
@@ -3432,10 +3491,10 @@ pub mod transact_write_items_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        transact_items: Option<Vec<TransactWriteItem>>,
-        return_consumed_capacity: Option<ReturnConsumedCapacity>,
-        return_item_collection_metrics: Option<ReturnItemCollectionMetrics>,
-        client_request_token: Option<String>,
+        transact_items: ::std::option::Option<::std::vec::Vec<TransactWriteItem>>,
+        return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
+        return_item_collection_metrics: ::std::option::Option<ReturnItemCollectionMetrics>,
+        client_request_token: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>An ordered array of up to 25 <code>TransactWriteItem</code> objects, each of which
@@ -3443,7 +3502,7 @@ pub mod transact_write_items_input {
         /// <code>Delete</code> object. These can operate on items in different tables, but the
         /// tables must reside in the same AWS account and Region, and no two of them can operate on
         /// the same item. </p>
-        pub fn transact_items(mut self, inp: Vec<TransactWriteItem>) -> Self {
+        pub fn transact_items(mut self, inp: ::std::vec::Vec<TransactWriteItem>) -> Self {
             self.transact_items = Some(inp);
             self
         }
@@ -3492,7 +3551,7 @@ pub mod transact_write_items_input {
         /// <p>If you submit a request with the same client token but a change in other parameters
         /// within the 10-minute idempotency window, DynamoDB returns an
         /// <code>IdempotentParameterMismatch</code> exception.</p>
-        pub fn client_request_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn client_request_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.client_request_token = Some(inp.into());
             self
         }
@@ -3516,7 +3575,7 @@ pub struct TransactGetItemsOutput {
     /// addressed by <code>TransactGetItem</code> objects in the <i>TransactItems</i>
     /// parameter. These <code>ConsumedCapacity</code> objects report the read-capacity
     /// units consumed by the <code>TransactGetItems</code> call in that table.</p>
-    pub consumed_capacity: Option<Vec<ConsumedCapacity>>,
+    pub consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
     /// <p>An ordered array of up to 25 <code>ItemResponse</code> objects, each of which corresponds
     /// to the <code>TransactGetItem</code> object in the same position in the
     /// <i>TransactItems</i> array. Each <code>ItemResponse</code> object
@@ -3525,7 +3584,7 @@ pub struct TransactGetItemsOutput {
     /// <p>If a requested item could not be retrieved, the corresponding <code>ItemResponse</code>
     /// object is Null, or if the requested item has no projected attributes, the corresponding
     /// <code>ItemResponse</code> object is an empty Map. </p>
-    pub responses: Option<Vec<ItemResponse>>,
+    pub responses: ::std::option::Option<::std::vec::Vec<ItemResponse>>,
 }
 impl TransactGetItemsOutput {
     /// Creates a new builder-style object to manufacture [`TransactGetItemsOutput`](crate::operation::TransactGetItemsOutput)
@@ -3543,8 +3602,8 @@ pub mod transact_get_items_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        consumed_capacity: Option<Vec<ConsumedCapacity>>,
-        responses: Option<Vec<ItemResponse>>,
+        consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
+        responses: ::std::option::Option<::std::vec::Vec<ItemResponse>>,
     }
     impl Builder {
         /// <p>If the <i>ReturnConsumedCapacity</i> value was <code>TOTAL</code>,
@@ -3552,7 +3611,7 @@ pub mod transact_get_items_output {
         /// addressed by <code>TransactGetItem</code> objects in the <i>TransactItems</i>
         /// parameter. These <code>ConsumedCapacity</code> objects report the read-capacity
         /// units consumed by the <code>TransactGetItems</code> call in that table.</p>
-        pub fn consumed_capacity(mut self, inp: Vec<ConsumedCapacity>) -> Self {
+        pub fn consumed_capacity(mut self, inp: ::std::vec::Vec<ConsumedCapacity>) -> Self {
             self.consumed_capacity = Some(inp);
             self
         }
@@ -3564,7 +3623,7 @@ pub mod transact_get_items_output {
         /// <p>If a requested item could not be retrieved, the corresponding <code>ItemResponse</code>
         /// object is Null, or if the requested item has no projected attributes, the corresponding
         /// <code>ItemResponse</code> object is an empty Map. </p>
-        pub fn responses(mut self, inp: Vec<ItemResponse>) -> Self {
+        pub fn responses(mut self, inp: ::std::vec::Vec<ItemResponse>) -> Self {
             self.responses = Some(inp);
             self
         }
@@ -3583,11 +3642,11 @@ pub mod transact_get_items_output {
 pub struct TransactGetItemsInput {
     /// <p>An ordered array of up to 25 <code>TransactGetItem</code> objects,
     /// each of which contains a <code>Get</code> structure.</p>
-    pub transact_items: Option<Vec<TransactGetItem>>,
+    pub transact_items: ::std::option::Option<::std::vec::Vec<TransactGetItem>>,
     /// <p>A value of <code>TOTAL</code> causes consumed capacity information
     /// to be returned, and a value of <code>NONE</code> prevents that information
     /// from being returned. No other value is valid.</p>
-    pub return_consumed_capacity: Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
 }
 impl TransactGetItemsInput {
     /// Creates a new builder-style object to manufacture [`TransactGetItemsInput`](crate::operation::TransactGetItemsInput)
@@ -3605,13 +3664,13 @@ pub mod transact_get_items_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        transact_items: Option<Vec<TransactGetItem>>,
-        return_consumed_capacity: Option<ReturnConsumedCapacity>,
+        transact_items: ::std::option::Option<::std::vec::Vec<TransactGetItem>>,
+        return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
     }
     impl Builder {
         /// <p>An ordered array of up to 25 <code>TransactGetItem</code> objects,
         /// each of which contains a <code>Get</code> structure.</p>
-        pub fn transact_items(mut self, inp: Vec<TransactGetItem>) -> Self {
+        pub fn transact_items(mut self, inp: ::std::vec::Vec<TransactGetItem>) -> Self {
             self.transact_items = Some(inp);
             self
         }
@@ -3661,9 +3720,9 @@ pub mod tag_resource_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct TagResourceInput {
     /// <p>Identifies the Amazon DynamoDB resource to which tags should be added. This value is an Amazon Resource Name (ARN).</p>
-    pub resource_arn: Option<String>,
+    pub resource_arn: ::std::option::Option<::std::string::String>,
     /// <p>The tags to be assigned to the Amazon DynamoDB resource.</p>
-    pub tags: Option<Vec<Tag>>,
+    pub tags: ::std::option::Option<::std::vec::Vec<Tag>>,
 }
 impl TagResourceInput {
     /// Creates a new builder-style object to manufacture [`TagResourceInput`](crate::operation::TagResourceInput)
@@ -3680,17 +3739,17 @@ pub mod tag_resource_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        resource_arn: Option<String>,
-        tags: Option<Vec<Tag>>,
+        resource_arn: ::std::option::Option<::std::string::String>,
+        tags: ::std::option::Option<::std::vec::Vec<Tag>>,
     }
     impl Builder {
         /// <p>Identifies the Amazon DynamoDB resource to which tags should be added. This value is an Amazon Resource Name (ARN).</p>
-        pub fn resource_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn resource_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.resource_arn = Some(inp.into());
             self
         }
         /// <p>The tags to be assigned to the Amazon DynamoDB resource.</p>
-        pub fn tags(mut self, inp: Vec<Tag>) -> Self {
+        pub fn tags(mut self, inp: ::std::vec::Vec<Tag>) -> Self {
             self.tags = Some(inp);
             self
         }
@@ -3709,7 +3768,9 @@ pub mod tag_resource_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ScanOutput {
     /// <p>An array of item attributes that match the scan criteria. Each element in this array consists of an attribute name and the value for that attribute.</p>
-    pub items: Option<Vec<HashMap<String, AttributeValue>>>,
+    pub items: ::std::option::Option<
+        ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+    >,
     /// <p>The number of items in the response.</p>
     /// <p>If you set <code>ScanFilter</code> in the request, then <code>Count</code> is the number of items
     /// returned after the filter was applied, and <code>ScannedCount</code> is the number of matching items
@@ -3733,13 +3794,14 @@ pub struct ScanOutput {
     /// that there is more data in the result set. The only way to know when you have reached
     /// the end of the result set is when <code>LastEvaluatedKey</code> is
     /// empty.</p>
-    pub last_evaluated_key: Option<HashMap<String, AttributeValue>>,
+    pub last_evaluated_key:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>Scan</code> operation. The data returned includes the total
     /// provisioned throughput consumed, along with statistics for the table and any indexes involved
     /// in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified.
     /// For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
     /// Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub consumed_capacity: Option<ConsumedCapacity>,
+    pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
 }
 impl ScanOutput {
     /// Creates a new builder-style object to manufacture [`ScanOutput`](crate::operation::ScanOutput)
@@ -3753,20 +3815,28 @@ pub mod scan_output {
     use crate::model::AttributeValue;
     use crate::model::ConsumedCapacity;
     use crate::operation::ScanOutput;
-    use std::collections::HashMap;
     /// A builder for [`ScanOutput`](crate::operation::ScanOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        items: Option<Vec<HashMap<String, AttributeValue>>>,
-        count: Option<i32>,
-        scanned_count: Option<i32>,
-        last_evaluated_key: Option<HashMap<String, AttributeValue>>,
-        consumed_capacity: Option<ConsumedCapacity>,
+        items: ::std::option::Option<
+            ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+        >,
+        count: ::std::option::Option<i32>,
+        scanned_count: ::std::option::Option<i32>,
+        last_evaluated_key: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        consumed_capacity: ::std::option::Option<ConsumedCapacity>,
     }
     impl Builder {
         /// <p>An array of item attributes that match the scan criteria. Each element in this array consists of an attribute name and the value for that attribute.</p>
-        pub fn items(mut self, inp: Vec<HashMap<String, AttributeValue>>) -> Self {
+        pub fn items(
+            mut self,
+            inp: ::std::vec::Vec<
+                ::std::collections::HashMap<::std::string::String, AttributeValue>,
+            >,
+        ) -> Self {
             self.items = Some(inp);
             self
         }
@@ -3799,7 +3869,10 @@ pub mod scan_output {
         /// that there is more data in the result set. The only way to know when you have reached
         /// the end of the result set is when <code>LastEvaluatedKey</code> is
         /// empty.</p>
-        pub fn last_evaluated_key(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn last_evaluated_key(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.last_evaluated_key = Some(inp);
             self
         }
@@ -3831,12 +3904,12 @@ pub mod scan_output {
 pub struct ScanInput {
     /// <p>The name of the table containing the requested items; or, if you provide
     /// <code>IndexName</code>, the name of the table to which that index belongs.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The name of a secondary index to scan. This index can be any local secondary index or global secondary index.  Note that if you use the <code>IndexName</code> parameter, you must also provide <code>TableName</code>.</p>
-    pub index_name: Option<String>,
+    pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>This is a legacy parameter.  Use <code>ProjectionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub attributes_to_get: Option<Vec<String>>,
+    pub attributes_to_get: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>The maximum number of items to evaluate (not necessarily the number of matching items).
     /// If DynamoDB processes the number of items up to the limit while processing the results,
     /// it stops the operation and returns the matching values up to that point, and a key in
@@ -3846,7 +3919,7 @@ pub struct ScanInput {
     /// to the limit, and a key in <code>LastEvaluatedKey</code> to apply in a subsequent
     /// operation to continue the operation. For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html">Working with Queries</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub limit: Option<i32>,
+    pub limit: ::std::option::Option<i32>,
     /// <p>The attributes to be returned in the
     /// result. You can retrieve all item attributes, specific item attributes, the count of
     /// matching items, or in the case of an index, some or all of the attributes projected into
@@ -3903,19 +3976,21 @@ pub struct ScanInput {
     /// <code>SPECIFIC_ATTRIBUTES</code>. Any other value for
     /// <code>Select</code> will return an error.</p>
     /// </note>
-    pub select: Option<Select>,
+    pub select: ::std::option::Option<Select>,
     /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ScanFilter.html">ScanFilter</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub scan_filter: Option<HashMap<String, Condition>>,
+    pub scan_filter:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, Condition>>,
     /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub conditional_operator: Option<ConditionalOperator>,
+    pub conditional_operator: ::std::option::Option<ConditionalOperator>,
     /// <p>The primary key of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedKey</code> in the previous operation.</p>
     /// <p>The data type for <code>ExclusiveStartKey</code> must be String, Number or Binary. No set data types are allowed.</p>
     /// <p>In a parallel scan, a
     /// <code>Scan</code> request that includes <code>ExclusiveStartKey</code> must specify the same segment
     /// whose previous <code>Scan</code> returned the corresponding value of <code>LastEvaluatedKey</code>.</p>
-    pub exclusive_start_key: Option<HashMap<String, AttributeValue>>,
+    pub exclusive_start_key:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -3932,7 +4007,7 @@ pub struct ScanInput {
     /// <code>NONE</code> - No <code>ConsumedCapacity</code> details are included in the response.</p>
     /// </li>
     /// </ul>
-    pub return_consumed_capacity: Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>For a parallel <code>Scan</code> request, <code>TotalSegments</code> represents the total number of
     /// segments into which the <code>Scan</code> operation will be divided. The value of
     /// <code>TotalSegments</code> corresponds to the number of application workers that will perform the
@@ -3942,7 +4017,7 @@ pub struct ScanInput {
     /// to 1000000. If you specify a <code>TotalSegments</code> value of 1, the <code>Scan</code> operation will
     /// be sequential rather than parallel.</p>
     /// <p>If you specify <code>TotalSegments</code>, you must also specify <code>Segment</code>.</p>
-    pub total_segments: Option<i32>,
+    pub total_segments: ::std::option::Option<i32>,
     /// <p>For a parallel <code>Scan</code> request, <code>Segment</code> identifies an individual segment to be
     /// scanned by an application worker.</p>
     /// <p>Segment IDs are zero-based, so the first segment is always 0. For example, if you want to
@@ -3954,12 +4029,12 @@ pub struct ScanInput {
     /// <p>The value for <code>Segment</code> must be greater than or equal to 0, and less than the value
     /// provided for <code>TotalSegments</code>.</p>
     /// <p>If you provide <code>Segment</code>, you must also provide <code>TotalSegments</code>.</p>
-    pub segment: Option<i32>,
+    pub segment: ::std::option::Option<i32>,
     /// <p>A string that identifies one or more attributes to retrieve from the specified table or index. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas.</p>
     /// <p>If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are not found, they will not appear in the result.</p>
     /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub projection_expression: Option<String>,
+    pub projection_expression: ::std::option::Option<::std::string::String>,
     /// <p>A string that contains conditions that DynamoDB applies after the <code>Scan</code> operation, but
     /// before the data is returned to you. Items that do not satisfy the <code>FilterExpression</code>
     /// criteria are not returned.</p>
@@ -3969,7 +4044,7 @@ pub struct ScanInput {
     /// </note>
     /// <p>For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults">Filter Expressions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub filter_expression: Option<String>,
+    pub filter_expression: ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
     /// <li>
@@ -4011,7 +4086,9 @@ pub struct ScanInput {
     /// </note>
     /// <p>For more information on expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub expression_attribute_names: Option<HashMap<String, String>>,
+    pub expression_attribute_names: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
     /// <p>One or more values that can be substituted in an expression.</p>
     /// <p>Use the <b>:</b> (colon) character in an expression to
     /// dereference an attribute value. For example, suppose that you wanted to check whether
@@ -4029,7 +4106,8 @@ pub struct ScanInput {
     /// </p>
     /// <p>For more information on expression attribute values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Condition Expressions</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub expression_attribute_values: Option<HashMap<String, AttributeValue>>,
+    pub expression_attribute_values:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>A Boolean value that determines the read consistency model during the scan:</p>
     /// <ul>
     /// <li>
@@ -4044,7 +4122,7 @@ pub struct ScanInput {
     /// </ul>
     /// <p>The default setting for <code>ConsistentRead</code> is <code>false</code>.</p>
     /// <p>The <code>ConsistentRead</code> parameter is not supported on global secondary indexes. If you scan a global secondary index with <code>ConsistentRead</code> set to true, you will receive a <code>ValidationException</code>.</p>
-    pub consistent_read: Option<bool>,
+    pub consistent_read: ::std::option::Option<bool>,
 }
 impl ScanInput {
     /// Creates a new builder-style object to manufacture [`ScanInput`](crate::operation::ScanInput)
@@ -4061,43 +4139,49 @@ pub mod scan_input {
     use crate::model::ReturnConsumedCapacity;
     use crate::model::Select;
     use crate::operation::ScanInput;
-    use std::collections::HashMap;
     /// A builder for [`ScanInput`](crate::operation::ScanInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        index_name: Option<String>,
-        attributes_to_get: Option<Vec<String>>,
-        limit: Option<i32>,
-        select: Option<Select>,
-        scan_filter: Option<HashMap<String, Condition>>,
-        conditional_operator: Option<ConditionalOperator>,
-        exclusive_start_key: Option<HashMap<String, AttributeValue>>,
-        return_consumed_capacity: Option<ReturnConsumedCapacity>,
-        total_segments: Option<i32>,
-        segment: Option<i32>,
-        projection_expression: Option<String>,
-        filter_expression: Option<String>,
-        expression_attribute_names: Option<HashMap<String, String>>,
-        expression_attribute_values: Option<HashMap<String, AttributeValue>>,
-        consistent_read: Option<bool>,
+        table_name: ::std::option::Option<::std::string::String>,
+        index_name: ::std::option::Option<::std::string::String>,
+        attributes_to_get: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+        limit: ::std::option::Option<i32>,
+        select: ::std::option::Option<Select>,
+        scan_filter:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, Condition>>,
+        conditional_operator: ::std::option::Option<ConditionalOperator>,
+        exclusive_start_key: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
+        total_segments: ::std::option::Option<i32>,
+        segment: ::std::option::Option<i32>,
+        projection_expression: ::std::option::Option<::std::string::String>,
+        filter_expression: ::std::option::Option<::std::string::String>,
+        expression_attribute_names: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
+        expression_attribute_values: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        consistent_read: ::std::option::Option<bool>,
     }
     impl Builder {
         /// <p>The name of the table containing the requested items; or, if you provide
         /// <code>IndexName</code>, the name of the table to which that index belongs.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>The name of a secondary index to scan. This index can be any local secondary index or global secondary index.  Note that if you use the <code>IndexName</code> parameter, you must also provide <code>TableName</code>.</p>
-        pub fn index_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn index_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.index_name = Some(inp.into());
             self
         }
         /// <p>This is a legacy parameter.  Use <code>ProjectionExpression</code> instead.  For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn attributes_to_get(mut self, inp: Vec<String>) -> Self {
+        pub fn attributes_to_get(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.attributes_to_get = Some(inp);
             self
         }
@@ -4176,7 +4260,10 @@ pub mod scan_input {
         }
         /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.   For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ScanFilter.html">ScanFilter</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn scan_filter(mut self, inp: HashMap<String, Condition>) -> Self {
+        pub fn scan_filter(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, Condition>,
+        ) -> Self {
             self.scan_filter = Some(inp);
             self
         }
@@ -4191,7 +4278,10 @@ pub mod scan_input {
         /// <p>In a parallel scan, a
         /// <code>Scan</code> request that includes <code>ExclusiveStartKey</code> must specify the same segment
         /// whose previous <code>Scan</code> returned the corresponding value of <code>LastEvaluatedKey</code>.</p>
-        pub fn exclusive_start_key(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn exclusive_start_key(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.exclusive_start_key = Some(inp);
             self
         }
@@ -4247,7 +4337,7 @@ pub mod scan_input {
         /// <p>If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are not found, they will not appear in the result.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn projection_expression(mut self, inp: impl Into<String>) -> Self {
+        pub fn projection_expression(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.projection_expression = Some(inp.into());
             self
         }
@@ -4260,7 +4350,7 @@ pub mod scan_input {
         /// </note>
         /// <p>For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults">Filter Expressions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn filter_expression(mut self, inp: impl Into<String>) -> Self {
+        pub fn filter_expression(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.filter_expression = Some(inp.into());
             self
         }
@@ -4305,7 +4395,10 @@ pub mod scan_input {
         /// </note>
         /// <p>For more information on expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn expression_attribute_names(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn expression_attribute_names(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.expression_attribute_names = Some(inp);
             self
         }
@@ -4326,7 +4419,10 @@ pub mod scan_input {
         /// </p>
         /// <p>For more information on expression attribute values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Condition Expressions</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn expression_attribute_values(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn expression_attribute_values(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.expression_attribute_values = Some(inp);
             self
         }
@@ -4376,7 +4472,7 @@ pub mod scan_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct RestoreTableToPointInTimeOutput {
     /// <p>Represents the properties of a table.</p>
-    pub table_description: Option<TableDescription>,
+    pub table_description: ::std::option::Option<TableDescription>,
 }
 impl RestoreTableToPointInTimeOutput {
     /// Creates a new builder-style object to manufacture [`RestoreTableToPointInTimeOutput`](crate::operation::RestoreTableToPointInTimeOutput)
@@ -4393,7 +4489,7 @@ pub mod restore_table_to_point_in_time_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_description: Option<TableDescription>,
+        table_description: ::std::option::Option<TableDescription>,
     }
     impl Builder {
         /// <p>Represents the properties of a table.</p>
@@ -4415,30 +4511,31 @@ pub mod restore_table_to_point_in_time_output {
 pub struct RestoreTableToPointInTimeInput {
     /// <p>The DynamoDB table that will be restored. This value is an Amazon
     /// Resource Name (ARN).</p>
-    pub source_table_arn: Option<String>,
+    pub source_table_arn: ::std::option::Option<::std::string::String>,
     /// <p>Name of the source table that is being restored.</p>
-    pub source_table_name: Option<String>,
+    pub source_table_name: ::std::option::Option<::std::string::String>,
     /// <p>The name of the new table to which it must be restored to.</p>
-    pub target_table_name: Option<String>,
+    pub target_table_name: ::std::option::Option<::std::string::String>,
     /// <p>Restore the table to the latest possible time. <code>LatestRestorableDateTime</code>
     /// is typically 5 minutes before the current time. </p>
-    pub use_latest_restorable_time: Option<bool>,
+    pub use_latest_restorable_time: ::std::option::Option<bool>,
     /// <p>Time in the past to restore the table to.</p>
-    pub restore_date_time: Option<Instant>,
+    pub restore_date_time: ::std::option::Option<Instant>,
     /// <p>The billing mode of the restored table.</p>
-    pub billing_mode_override: Option<BillingMode>,
+    pub billing_mode_override: ::std::option::Option<BillingMode>,
     /// <p>List of global secondary indexes for the restored table. The indexes
     /// provided should match existing secondary indexes. You can choose to exclude
     /// some or all of the indexes at the time of restore.</p>
-    pub global_secondary_index_override: Option<Vec<GlobalSecondaryIndex>>,
+    pub global_secondary_index_override:
+        ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndex>>,
     /// <p>List of local secondary indexes for the restored table. The indexes
     /// provided should match existing secondary indexes. You can choose to exclude
     /// some or all of the indexes at the time of restore.</p>
-    pub local_secondary_index_override: Option<Vec<LocalSecondaryIndex>>,
+    pub local_secondary_index_override: ::std::option::Option<::std::vec::Vec<LocalSecondaryIndex>>,
     /// <p>Provisioned throughput settings for the restored table.</p>
-    pub provisioned_throughput_override: Option<ProvisionedThroughput>,
+    pub provisioned_throughput_override: ::std::option::Option<ProvisionedThroughput>,
     /// <p>The new server-side encryption settings for the restored table.</p>
-    pub sse_specification_override: Option<SSESpecification>,
+    pub sse_specification_override: ::std::option::Option<SSESpecification>,
 }
 impl RestoreTableToPointInTimeInput {
     /// Creates a new builder-style object to manufacture [`RestoreTableToPointInTimeInput`](crate::operation::RestoreTableToPointInTimeInput)
@@ -4460,31 +4557,32 @@ pub mod restore_table_to_point_in_time_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        source_table_arn: Option<String>,
-        source_table_name: Option<String>,
-        target_table_name: Option<String>,
-        use_latest_restorable_time: Option<bool>,
-        restore_date_time: Option<Instant>,
-        billing_mode_override: Option<BillingMode>,
-        global_secondary_index_override: Option<Vec<GlobalSecondaryIndex>>,
-        local_secondary_index_override: Option<Vec<LocalSecondaryIndex>>,
-        provisioned_throughput_override: Option<ProvisionedThroughput>,
-        sse_specification_override: Option<SSESpecification>,
+        source_table_arn: ::std::option::Option<::std::string::String>,
+        source_table_name: ::std::option::Option<::std::string::String>,
+        target_table_name: ::std::option::Option<::std::string::String>,
+        use_latest_restorable_time: ::std::option::Option<bool>,
+        restore_date_time: ::std::option::Option<Instant>,
+        billing_mode_override: ::std::option::Option<BillingMode>,
+        global_secondary_index_override:
+            ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndex>>,
+        local_secondary_index_override: ::std::option::Option<::std::vec::Vec<LocalSecondaryIndex>>,
+        provisioned_throughput_override: ::std::option::Option<ProvisionedThroughput>,
+        sse_specification_override: ::std::option::Option<SSESpecification>,
     }
     impl Builder {
         /// <p>The DynamoDB table that will be restored. This value is an Amazon
         /// Resource Name (ARN).</p>
-        pub fn source_table_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn source_table_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.source_table_arn = Some(inp.into());
             self
         }
         /// <p>Name of the source table that is being restored.</p>
-        pub fn source_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn source_table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.source_table_name = Some(inp.into());
             self
         }
         /// <p>The name of the new table to which it must be restored to.</p>
-        pub fn target_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn target_table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.target_table_name = Some(inp.into());
             self
         }
@@ -4507,14 +4605,20 @@ pub mod restore_table_to_point_in_time_input {
         /// <p>List of global secondary indexes for the restored table. The indexes
         /// provided should match existing secondary indexes. You can choose to exclude
         /// some or all of the indexes at the time of restore.</p>
-        pub fn global_secondary_index_override(mut self, inp: Vec<GlobalSecondaryIndex>) -> Self {
+        pub fn global_secondary_index_override(
+            mut self,
+            inp: ::std::vec::Vec<GlobalSecondaryIndex>,
+        ) -> Self {
             self.global_secondary_index_override = Some(inp);
             self
         }
         /// <p>List of local secondary indexes for the restored table. The indexes
         /// provided should match existing secondary indexes. You can choose to exclude
         /// some or all of the indexes at the time of restore.</p>
-        pub fn local_secondary_index_override(mut self, inp: Vec<LocalSecondaryIndex>) -> Self {
+        pub fn local_secondary_index_override(
+            mut self,
+            inp: ::std::vec::Vec<LocalSecondaryIndex>,
+        ) -> Self {
             self.local_secondary_index_override = Some(inp);
             self
         }
@@ -4550,7 +4654,7 @@ pub mod restore_table_to_point_in_time_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct RestoreTableFromBackupOutput {
     /// <p>The description of the table created from an existing backup.</p>
-    pub table_description: Option<TableDescription>,
+    pub table_description: ::std::option::Option<TableDescription>,
 }
 impl RestoreTableFromBackupOutput {
     /// Creates a new builder-style object to manufacture [`RestoreTableFromBackupOutput`](crate::operation::RestoreTableFromBackupOutput)
@@ -4567,7 +4671,7 @@ pub mod restore_table_from_backup_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_description: Option<TableDescription>,
+        table_description: ::std::option::Option<TableDescription>,
     }
     impl Builder {
         /// <p>The description of the table created from an existing backup.</p>
@@ -4588,23 +4692,24 @@ pub mod restore_table_from_backup_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct RestoreTableFromBackupInput {
     /// <p>The name of the new table to which the backup must be restored.</p>
-    pub target_table_name: Option<String>,
+    pub target_table_name: ::std::option::Option<::std::string::String>,
     /// <p>The Amazon Resource Name (ARN) associated with the backup.</p>
-    pub backup_arn: Option<String>,
+    pub backup_arn: ::std::option::Option<::std::string::String>,
     /// <p>The billing mode of the restored table.</p>
-    pub billing_mode_override: Option<BillingMode>,
+    pub billing_mode_override: ::std::option::Option<BillingMode>,
     /// <p>List of global secondary indexes for the restored table. The indexes
     /// provided should match existing secondary indexes. You can choose to exclude
     /// some or all of the indexes at the time of restore.</p>
-    pub global_secondary_index_override: Option<Vec<GlobalSecondaryIndex>>,
+    pub global_secondary_index_override:
+        ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndex>>,
     /// <p>List of local secondary indexes for the restored table. The indexes
     /// provided should match existing secondary indexes. You can choose to exclude
     /// some or all of the indexes at the time of restore.</p>
-    pub local_secondary_index_override: Option<Vec<LocalSecondaryIndex>>,
+    pub local_secondary_index_override: ::std::option::Option<::std::vec::Vec<LocalSecondaryIndex>>,
     /// <p>Provisioned throughput settings for the restored table.</p>
-    pub provisioned_throughput_override: Option<ProvisionedThroughput>,
+    pub provisioned_throughput_override: ::std::option::Option<ProvisionedThroughput>,
     /// <p>The new server-side encryption settings for the restored table.</p>
-    pub sse_specification_override: Option<SSESpecification>,
+    pub sse_specification_override: ::std::option::Option<SSESpecification>,
 }
 impl RestoreTableFromBackupInput {
     /// Creates a new builder-style object to manufacture [`RestoreTableFromBackupInput`](crate::operation::RestoreTableFromBackupInput)
@@ -4625,22 +4730,23 @@ pub mod restore_table_from_backup_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        target_table_name: Option<String>,
-        backup_arn: Option<String>,
-        billing_mode_override: Option<BillingMode>,
-        global_secondary_index_override: Option<Vec<GlobalSecondaryIndex>>,
-        local_secondary_index_override: Option<Vec<LocalSecondaryIndex>>,
-        provisioned_throughput_override: Option<ProvisionedThroughput>,
-        sse_specification_override: Option<SSESpecification>,
+        target_table_name: ::std::option::Option<::std::string::String>,
+        backup_arn: ::std::option::Option<::std::string::String>,
+        billing_mode_override: ::std::option::Option<BillingMode>,
+        global_secondary_index_override:
+            ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndex>>,
+        local_secondary_index_override: ::std::option::Option<::std::vec::Vec<LocalSecondaryIndex>>,
+        provisioned_throughput_override: ::std::option::Option<ProvisionedThroughput>,
+        sse_specification_override: ::std::option::Option<SSESpecification>,
     }
     impl Builder {
         /// <p>The name of the new table to which the backup must be restored.</p>
-        pub fn target_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn target_table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.target_table_name = Some(inp.into());
             self
         }
         /// <p>The Amazon Resource Name (ARN) associated with the backup.</p>
-        pub fn backup_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn backup_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.backup_arn = Some(inp.into());
             self
         }
@@ -4652,14 +4758,20 @@ pub mod restore_table_from_backup_input {
         /// <p>List of global secondary indexes for the restored table. The indexes
         /// provided should match existing secondary indexes. You can choose to exclude
         /// some or all of the indexes at the time of restore.</p>
-        pub fn global_secondary_index_override(mut self, inp: Vec<GlobalSecondaryIndex>) -> Self {
+        pub fn global_secondary_index_override(
+            mut self,
+            inp: ::std::vec::Vec<GlobalSecondaryIndex>,
+        ) -> Self {
             self.global_secondary_index_override = Some(inp);
             self
         }
         /// <p>List of local secondary indexes for the restored table. The indexes
         /// provided should match existing secondary indexes. You can choose to exclude
         /// some or all of the indexes at the time of restore.</p>
-        pub fn local_secondary_index_override(mut self, inp: Vec<LocalSecondaryIndex>) -> Self {
+        pub fn local_secondary_index_override(
+            mut self,
+            inp: ::std::vec::Vec<LocalSecondaryIndex>,
+        ) -> Self {
             self.local_secondary_index_override = Some(inp);
             self
         }
@@ -4693,7 +4805,9 @@ pub mod restore_table_from_backup_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct QueryOutput {
     /// <p>An array of item attributes that match the query criteria. Each element in this array consists of an attribute name and the value for that attribute.</p>
-    pub items: Option<Vec<HashMap<String, AttributeValue>>>,
+    pub items: ::std::option::Option<
+        ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+    >,
     /// <p>The number of items in the response.</p>
     /// <p>If you used a <code>QueryFilter</code> in the request, then <code>Count</code> is the number of items
     /// returned after the filter was applied, and <code>ScannedCount</code> is the number of
@@ -4711,14 +4825,15 @@ pub struct QueryOutput {
     /// <p>The primary key of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p>
     /// <p>If <code>LastEvaluatedKey</code> is empty, then the "last page" of results has been processed and there is no more data to be retrieved.</p>
     /// <p>If <code>LastEvaluatedKey</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedKey</code> is empty.</p>
-    pub last_evaluated_key: Option<HashMap<String, AttributeValue>>,
+    pub last_evaluated_key:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>Query</code> operation. The data returned
     /// includes the total provisioned throughput consumed, along with statistics for the table
     /// and any indexes involved in the operation. <code>ConsumedCapacity</code> is only
     /// returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more
     /// information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub consumed_capacity: Option<ConsumedCapacity>,
+    pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
 }
 impl QueryOutput {
     /// Creates a new builder-style object to manufacture [`QueryOutput`](crate::operation::QueryOutput)
@@ -4732,20 +4847,28 @@ pub mod query_output {
     use crate::model::AttributeValue;
     use crate::model::ConsumedCapacity;
     use crate::operation::QueryOutput;
-    use std::collections::HashMap;
     /// A builder for [`QueryOutput`](crate::operation::QueryOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        items: Option<Vec<HashMap<String, AttributeValue>>>,
-        count: Option<i32>,
-        scanned_count: Option<i32>,
-        last_evaluated_key: Option<HashMap<String, AttributeValue>>,
-        consumed_capacity: Option<ConsumedCapacity>,
+        items: ::std::option::Option<
+            ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+        >,
+        count: ::std::option::Option<i32>,
+        scanned_count: ::std::option::Option<i32>,
+        last_evaluated_key: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        consumed_capacity: ::std::option::Option<ConsumedCapacity>,
     }
     impl Builder {
         /// <p>An array of item attributes that match the query criteria. Each element in this array consists of an attribute name and the value for that attribute.</p>
-        pub fn items(mut self, inp: Vec<HashMap<String, AttributeValue>>) -> Self {
+        pub fn items(
+            mut self,
+            inp: ::std::vec::Vec<
+                ::std::collections::HashMap<::std::string::String, AttributeValue>,
+            >,
+        ) -> Self {
             self.items = Some(inp);
             self
         }
@@ -4772,7 +4895,10 @@ pub mod query_output {
         /// <p>The primary key of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p>
         /// <p>If <code>LastEvaluatedKey</code> is empty, then the "last page" of results has been processed and there is no more data to be retrieved.</p>
         /// <p>If <code>LastEvaluatedKey</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedKey</code> is empty.</p>
-        pub fn last_evaluated_key(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn last_evaluated_key(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.last_evaluated_key = Some(inp);
             self
         }
@@ -4804,11 +4930,11 @@ pub mod query_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct QueryInput {
     /// <p>The name of the table containing the requested items.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The name of an index to query. This index can be any local secondary index or global secondary index on the table. Note that
     /// if you use the <code>IndexName</code> parameter, you must also provide <code>TableName.</code>
     /// </p>
-    pub index_name: Option<String>,
+    pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The attributes to be returned in the
     /// result. You can retrieve all item attributes, specific item attributes, the count of
     /// matching items, or in the case of an index, some or all of the attributes projected into
@@ -4865,10 +4991,10 @@ pub struct QueryInput {
     /// <code>SPECIFIC_ATTRIBUTES</code>. Any other value for
     /// <code>Select</code> will return an error.</p>
     /// </note>
-    pub select: Option<Select>,
+    pub select: ::std::option::Option<Select>,
     /// <p>This is a legacy parameter.  Use <code>ProjectionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub attributes_to_get: Option<Vec<String>>,
+    pub attributes_to_get: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>The maximum number of items to evaluate (not necessarily the number of matching items).
     /// If DynamoDB processes the number of items up to the limit while processing the results,
     /// it stops the operation and returns the matching values up to that point, and a key in
@@ -4878,29 +5004,32 @@ pub struct QueryInput {
     /// to the limit, and a key in <code>LastEvaluatedKey</code> to apply in a subsequent
     /// operation to continue the operation. For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html">Query and Scan</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub limit: Option<i32>,
+    pub limit: ::std::option::Option<i32>,
     /// <p>Determines the read consistency model:  If set to <code>true</code>, then the operation uses strongly consistent reads; otherwise, the operation uses eventually consistent reads.</p>
     /// <p>Strongly consistent reads
     /// are not supported on global secondary indexes. If you query a global secondary index with <code>ConsistentRead</code> set to
     /// <code>true</code>, you will receive a <code>ValidationException</code>.</p>
-    pub consistent_read: Option<bool>,
+    pub consistent_read: ::std::option::Option<bool>,
     /// <p>This is a legacy parameter.  Use <code>KeyConditionExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.KeyConditions.html">KeyConditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub key_conditions: Option<HashMap<String, Condition>>,
+    pub key_conditions:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, Condition>>,
     /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.   For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.QueryFilter.html">QueryFilter</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub query_filter: Option<HashMap<String, Condition>>,
+    pub query_filter:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, Condition>>,
     /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub conditional_operator: Option<ConditionalOperator>,
+    pub conditional_operator: ::std::option::Option<ConditionalOperator>,
     /// <p>Specifies the order for index traversal: If <code>true</code> (default), the traversal is performed in ascending order; if <code>false</code>, the traversal is performed in descending order. </p>
     /// <p>Items with the same partition key value are stored in sorted order by sort key. If the sort key data type is Number, the results are stored in numeric order. For type String, the results are stored in order of UTF-8 bytes. For type Binary, DynamoDB treats each byte of the binary data as unsigned.</p>
     /// <p>If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which they are stored (by sort key value). This is the default behavior. If <code>ScanIndexForward</code> is <code>false</code>, DynamoDB reads the results in reverse order by sort key value, and then returns the results to the client.</p>
-    pub scan_index_forward: Option<bool>,
+    pub scan_index_forward: ::std::option::Option<bool>,
     /// <p>The primary key of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedKey</code> in the previous operation.</p>
     /// <p>The data type for <code>ExclusiveStartKey</code> must be String, Number, or Binary. No
     /// set data types are allowed.</p>
-    pub exclusive_start_key: Option<HashMap<String, AttributeValue>>,
+    pub exclusive_start_key:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -4917,12 +5046,12 @@ pub struct QueryInput {
     /// <code>NONE</code> - No <code>ConsumedCapacity</code> details are included in the response.</p>
     /// </li>
     /// </ul>
-    pub return_consumed_capacity: Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>A string that identifies one or more attributes to retrieve from the table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas.</p>
     /// <p>If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are not found, they will not appear in the result.</p>
     /// <p>For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub projection_expression: Option<String>,
+    pub projection_expression: ::std::option::Option<::std::string::String>,
     /// <p>A string that contains conditions that DynamoDB applies after the <code>Query</code> operation, but
     /// before the data is returned to you. Items that do not satisfy the <code>FilterExpression</code>
     /// criteria are not returned.</p>
@@ -4933,7 +5062,7 @@ pub struct QueryInput {
     /// </note>
     /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults">Filter
     /// Expressions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub filter_expression: Option<String>,
+    pub filter_expression: ::std::option::Option<::std::string::String>,
     /// <p>The condition that specifies the key values for items to be retrieved by the
     /// <code>Query</code> action.</p>
     /// <p>The condition must perform an equality test on a single partition key value.</p>
@@ -5038,7 +5167,7 @@ pub struct QueryInput {
     /// <p>For more information on <code>ExpressionAttributeNames</code> and <code>ExpressionAttributeValues</code>,
     /// see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ExpressionPlaceholders.html">Using Placeholders for Attribute
     /// Names and Values</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub key_condition_expression: Option<String>,
+    pub key_condition_expression: ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
     /// <li>
@@ -5081,7 +5210,9 @@ pub struct QueryInput {
     /// </note>
     /// <p>For more information on expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub expression_attribute_names: Option<HashMap<String, String>>,
+    pub expression_attribute_names: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
     /// <p>One or more values that can be substituted in an expression.</p>
     /// <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the
     /// <i>ProductStatus</i> attribute was one of the following: </p>
@@ -5097,7 +5228,8 @@ pub struct QueryInput {
     /// <code>ProductStatus IN (:avail, :back, :disc)</code>
     /// </p>
     /// <p>For more information on expression attribute values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Specifying Conditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub expression_attribute_values: Option<HashMap<String, AttributeValue>>,
+    pub expression_attribute_values:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
 }
 impl QueryInput {
     /// Creates a new builder-style object to manufacture [`QueryInput`](crate::operation::QueryInput)
@@ -5114,39 +5246,46 @@ pub mod query_input {
     use crate::model::ReturnConsumedCapacity;
     use crate::model::Select;
     use crate::operation::QueryInput;
-    use std::collections::HashMap;
     /// A builder for [`QueryInput`](crate::operation::QueryInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        index_name: Option<String>,
-        select: Option<Select>,
-        attributes_to_get: Option<Vec<String>>,
-        limit: Option<i32>,
-        consistent_read: Option<bool>,
-        key_conditions: Option<HashMap<String, Condition>>,
-        query_filter: Option<HashMap<String, Condition>>,
-        conditional_operator: Option<ConditionalOperator>,
-        scan_index_forward: Option<bool>,
-        exclusive_start_key: Option<HashMap<String, AttributeValue>>,
-        return_consumed_capacity: Option<ReturnConsumedCapacity>,
-        projection_expression: Option<String>,
-        filter_expression: Option<String>,
-        key_condition_expression: Option<String>,
-        expression_attribute_names: Option<HashMap<String, String>>,
-        expression_attribute_values: Option<HashMap<String, AttributeValue>>,
+        table_name: ::std::option::Option<::std::string::String>,
+        index_name: ::std::option::Option<::std::string::String>,
+        select: ::std::option::Option<Select>,
+        attributes_to_get: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+        limit: ::std::option::Option<i32>,
+        consistent_read: ::std::option::Option<bool>,
+        key_conditions:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, Condition>>,
+        query_filter:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, Condition>>,
+        conditional_operator: ::std::option::Option<ConditionalOperator>,
+        scan_index_forward: ::std::option::Option<bool>,
+        exclusive_start_key: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
+        projection_expression: ::std::option::Option<::std::string::String>,
+        filter_expression: ::std::option::Option<::std::string::String>,
+        key_condition_expression: ::std::option::Option<::std::string::String>,
+        expression_attribute_names: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
+        expression_attribute_values: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
     }
     impl Builder {
         /// <p>The name of the table containing the requested items.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>The name of an index to query. This index can be any local secondary index or global secondary index on the table. Note that
         /// if you use the <code>IndexName</code> parameter, you must also provide <code>TableName.</code>
         /// </p>
-        pub fn index_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn index_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.index_name = Some(inp.into());
             self
         }
@@ -5212,7 +5351,7 @@ pub mod query_input {
         }
         /// <p>This is a legacy parameter.  Use <code>ProjectionExpression</code> instead.  For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn attributes_to_get(mut self, inp: Vec<String>) -> Self {
+        pub fn attributes_to_get(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.attributes_to_get = Some(inp);
             self
         }
@@ -5239,13 +5378,19 @@ pub mod query_input {
         }
         /// <p>This is a legacy parameter.  Use <code>KeyConditionExpression</code> instead.   For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.KeyConditions.html">KeyConditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn key_conditions(mut self, inp: HashMap<String, Condition>) -> Self {
+        pub fn key_conditions(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, Condition>,
+        ) -> Self {
             self.key_conditions = Some(inp);
             self
         }
         /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.   For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.QueryFilter.html">QueryFilter</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn query_filter(mut self, inp: HashMap<String, Condition>) -> Self {
+        pub fn query_filter(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, Condition>,
+        ) -> Self {
             self.query_filter = Some(inp);
             self
         }
@@ -5265,7 +5410,10 @@ pub mod query_input {
         /// <p>The primary key of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedKey</code> in the previous operation.</p>
         /// <p>The data type for <code>ExclusiveStartKey</code> must be String, Number, or Binary. No
         /// set data types are allowed.</p>
-        pub fn exclusive_start_key(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn exclusive_start_key(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.exclusive_start_key = Some(inp);
             self
         }
@@ -5293,7 +5441,7 @@ pub mod query_input {
         /// <p>If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are not found, they will not appear in the result.</p>
         /// <p>For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn projection_expression(mut self, inp: impl Into<String>) -> Self {
+        pub fn projection_expression(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.projection_expression = Some(inp.into());
             self
         }
@@ -5307,7 +5455,7 @@ pub mod query_input {
         /// </note>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults">Filter
         /// Expressions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn filter_expression(mut self, inp: impl Into<String>) -> Self {
+        pub fn filter_expression(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.filter_expression = Some(inp.into());
             self
         }
@@ -5415,7 +5563,7 @@ pub mod query_input {
         /// <p>For more information on <code>ExpressionAttributeNames</code> and <code>ExpressionAttributeValues</code>,
         /// see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ExpressionPlaceholders.html">Using Placeholders for Attribute
         /// Names and Values</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn key_condition_expression(mut self, inp: impl Into<String>) -> Self {
+        pub fn key_condition_expression(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.key_condition_expression = Some(inp.into());
             self
         }
@@ -5461,7 +5609,10 @@ pub mod query_input {
         /// </note>
         /// <p>For more information on expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn expression_attribute_names(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn expression_attribute_names(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.expression_attribute_names = Some(inp);
             self
         }
@@ -5480,7 +5631,10 @@ pub mod query_input {
         /// <code>ProductStatus IN (:avail, :back, :disc)</code>
         /// </p>
         /// <p>For more information on expression attribute values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Specifying Conditions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn expression_attribute_values(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn expression_attribute_values(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.expression_attribute_values = Some(inp);
             self
         }
@@ -5516,14 +5670,15 @@ pub struct PutItemOutput {
     /// <p>The attribute values as they appeared before the <code>PutItem</code> operation, but only if
     /// <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element
     /// consists of an attribute name and an attribute value.</p>
-    pub attributes: Option<HashMap<String, AttributeValue>>,
+    pub attributes:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>PutItem</code> operation. The data returned
     /// includes the total provisioned throughput consumed, along with statistics for the table
     /// and any indexes involved in the operation. <code>ConsumedCapacity</code> is only
     /// returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more
     /// information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Read/Write Capacity Mode</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub consumed_capacity: Option<ConsumedCapacity>,
+    pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
     /// <p>Information about item collections, if any, that were affected by the
     /// <code>PutItem</code> operation. <code>ItemCollectionMetrics</code>
     /// is only returned if the <code>ReturnItemCollectionMetrics</code> parameter was specified. If the table does not have any local
@@ -5548,7 +5703,7 @@ pub struct PutItemOutput {
     /// <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p>
     /// </li>
     /// </ul>
-    pub item_collection_metrics: Option<ItemCollectionMetrics>,
+    pub item_collection_metrics: ::std::option::Option<ItemCollectionMetrics>,
 }
 impl PutItemOutput {
     /// Creates a new builder-style object to manufacture [`PutItemOutput`](crate::operation::PutItemOutput)
@@ -5563,20 +5718,24 @@ pub mod put_item_output {
     use crate::model::ConsumedCapacity;
     use crate::model::ItemCollectionMetrics;
     use crate::operation::PutItemOutput;
-    use std::collections::HashMap;
     /// A builder for [`PutItemOutput`](crate::operation::PutItemOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        attributes: Option<HashMap<String, AttributeValue>>,
-        consumed_capacity: Option<ConsumedCapacity>,
-        item_collection_metrics: Option<ItemCollectionMetrics>,
+        attributes: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        consumed_capacity: ::std::option::Option<ConsumedCapacity>,
+        item_collection_metrics: ::std::option::Option<ItemCollectionMetrics>,
     }
     impl Builder {
         /// <p>The attribute values as they appeared before the <code>PutItem</code> operation, but only if
         /// <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element
         /// consists of an attribute name and an attribute value.</p>
-        pub fn attributes(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn attributes(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.attributes = Some(inp);
             self
         }
@@ -5634,7 +5793,7 @@ pub mod put_item_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct PutItemInput {
     /// <p>The name of the table to contain the item.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>A map of attribute name/value pairs, one for each attribute. Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.</p>
     /// <p>You must provide all of the attributes for the primary key. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide both values for both the partition key and the sort key.</p>
     /// <p>If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table's attribute definition.</p>
@@ -5642,10 +5801,13 @@ pub struct PutItemInput {
     /// <p>For more information about primary keys, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey">Primary Key</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
     /// <p>Each element in the <code>Item</code> map is an <code>AttributeValue</code> object.</p>
-    pub item: Option<HashMap<String, AttributeValue>>,
+    pub item:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub expected: Option<HashMap<String, ExpectedAttributeValue>>,
+    pub expected: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ExpectedAttributeValue>,
+    >,
     /// <p>Use <code>ReturnValues</code> if you want to get the item attributes as they appeared before they
     /// were updated with the <code>PutItem</code> request. For <code>PutItem</code>, the valid values are:</p>
     /// <ul>
@@ -5666,7 +5828,7 @@ pub struct PutItemInput {
     /// <code>PutItem</code> does not recognize any values other than <code>NONE</code> or
     /// <code>ALL_OLD</code>.</p>
     /// </note>
-    pub return_values: Option<ReturnValue>,
+    pub return_values: ::std::option::Option<ReturnValue>,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -5683,13 +5845,13 @@ pub struct PutItemInput {
     /// <code>NONE</code> - No <code>ConsumedCapacity</code> details are included in the response.</p>
     /// </li>
     /// </ul>
-    pub return_consumed_capacity: Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>Determines whether item collection metrics are returned.  If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during
     /// the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
-    pub return_item_collection_metrics: Option<ReturnItemCollectionMetrics>,
+    pub return_item_collection_metrics: ::std::option::Option<ReturnItemCollectionMetrics>,
     /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub conditional_operator: Option<ConditionalOperator>,
+    pub conditional_operator: ::std::option::Option<ConditionalOperator>,
     /// <p>A condition that must be satisfied in order for a conditional <code>PutItem</code> operation to
     /// succeed.</p>
     /// <p>An expression can contain any of the following:</p>
@@ -5712,7 +5874,7 @@ pub struct PutItemInput {
     /// </ul>
     /// <p>For more information on condition expressions, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Condition Expressions</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub condition_expression: Option<String>,
+    pub condition_expression: ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
     /// <li>
@@ -5754,7 +5916,9 @@ pub struct PutItemInput {
     /// </note>
     /// <p>For more information on expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub expression_attribute_names: Option<HashMap<String, String>>,
+    pub expression_attribute_names: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
     /// <p>One or more values that can be substituted in an expression.</p>
     /// <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the <i>ProductStatus</i> attribute was one of the following: </p>
     /// <p>
@@ -5770,7 +5934,8 @@ pub struct PutItemInput {
     /// </p>
     /// <p>For more information on expression attribute values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Condition Expressions</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub expression_attribute_values: Option<HashMap<String, AttributeValue>>,
+    pub expression_attribute_values:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
 }
 impl PutItemInput {
     /// Creates a new builder-style object to manufacture [`PutItemInput`](crate::operation::PutItemInput)
@@ -5788,25 +5953,32 @@ pub mod put_item_input {
     use crate::model::ReturnItemCollectionMetrics;
     use crate::model::ReturnValue;
     use crate::operation::PutItemInput;
-    use std::collections::HashMap;
     /// A builder for [`PutItemInput`](crate::operation::PutItemInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        item: Option<HashMap<String, AttributeValue>>,
-        expected: Option<HashMap<String, ExpectedAttributeValue>>,
-        return_values: Option<ReturnValue>,
-        return_consumed_capacity: Option<ReturnConsumedCapacity>,
-        return_item_collection_metrics: Option<ReturnItemCollectionMetrics>,
-        conditional_operator: Option<ConditionalOperator>,
-        condition_expression: Option<String>,
-        expression_attribute_names: Option<HashMap<String, String>>,
-        expression_attribute_values: Option<HashMap<String, AttributeValue>>,
+        table_name: ::std::option::Option<::std::string::String>,
+        item: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        expected: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ExpectedAttributeValue>,
+        >,
+        return_values: ::std::option::Option<ReturnValue>,
+        return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
+        return_item_collection_metrics: ::std::option::Option<ReturnItemCollectionMetrics>,
+        conditional_operator: ::std::option::Option<ConditionalOperator>,
+        condition_expression: ::std::option::Option<::std::string::String>,
+        expression_attribute_names: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
+        expression_attribute_values: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
     }
     impl Builder {
         /// <p>The name of the table to contain the item.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -5817,13 +5989,19 @@ pub mod put_item_input {
         /// <p>For more information about primary keys, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey">Primary Key</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
         /// <p>Each element in the <code>Item</code> map is an <code>AttributeValue</code> object.</p>
-        pub fn item(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn item(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.item = Some(inp);
             self
         }
         /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn expected(mut self, inp: HashMap<String, ExpectedAttributeValue>) -> Self {
+        pub fn expected(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ExpectedAttributeValue>,
+        ) -> Self {
             self.expected = Some(inp);
             self
         }
@@ -5905,7 +6083,7 @@ pub mod put_item_input {
         /// </ul>
         /// <p>For more information on condition expressions, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Condition Expressions</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn condition_expression(mut self, inp: impl Into<String>) -> Self {
+        pub fn condition_expression(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.condition_expression = Some(inp.into());
             self
         }
@@ -5950,7 +6128,10 @@ pub mod put_item_input {
         /// </note>
         /// <p>For more information on expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn expression_attribute_names(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn expression_attribute_names(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.expression_attribute_names = Some(inp);
             self
         }
@@ -5969,7 +6150,10 @@ pub mod put_item_input {
         /// </p>
         /// <p>For more information on expression attribute values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Condition Expressions</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn expression_attribute_values(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn expression_attribute_values(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.expression_attribute_values = Some(inp);
             self
         }
@@ -5995,10 +6179,10 @@ pub mod put_item_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListTagsOfResourceOutput {
     /// <p>The tags currently associated with the Amazon DynamoDB resource.</p>
-    pub tags: Option<Vec<Tag>>,
+    pub tags: ::std::option::Option<::std::vec::Vec<Tag>>,
     /// <p>If this value is returned, there are additional results to be displayed. To retrieve them,
     /// call ListTagsOfResource again, with NextToken set to this value.</p>
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
 }
 impl ListTagsOfResourceOutput {
     /// Creates a new builder-style object to manufacture [`ListTagsOfResourceOutput`](crate::operation::ListTagsOfResourceOutput)
@@ -6015,18 +6199,18 @@ pub mod list_tags_of_resource_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        tags: Option<Vec<Tag>>,
-        next_token: Option<String>,
+        tags: ::std::option::Option<::std::vec::Vec<Tag>>,
+        next_token: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The tags currently associated with the Amazon DynamoDB resource.</p>
-        pub fn tags(mut self, inp: Vec<Tag>) -> Self {
+        pub fn tags(mut self, inp: ::std::vec::Vec<Tag>) -> Self {
             self.tags = Some(inp);
             self
         }
         /// <p>If this value is returned, there are additional results to be displayed. To retrieve them,
         /// call ListTagsOfResource again, with NextToken set to this value.</p>
-        pub fn next_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn next_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
@@ -6044,10 +6228,10 @@ pub mod list_tags_of_resource_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListTagsOfResourceInput {
     /// <p>The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).</p>
-    pub resource_arn: Option<String>,
+    pub resource_arn: ::std::option::Option<::std::string::String>,
     /// <p>An optional string that, if supplied, must be copied from the output of a previous
     /// call to ListTagOfResource. When provided in this manner, this API fetches the next page of results.</p>
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
 }
 impl ListTagsOfResourceInput {
     /// Creates a new builder-style object to manufacture [`ListTagsOfResourceInput`](crate::operation::ListTagsOfResourceInput)
@@ -6063,18 +6247,18 @@ pub mod list_tags_of_resource_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        resource_arn: Option<String>,
-        next_token: Option<String>,
+        resource_arn: ::std::option::Option<::std::string::String>,
+        next_token: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).</p>
-        pub fn resource_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn resource_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.resource_arn = Some(inp.into());
             self
         }
         /// <p>An optional string that, if supplied, must be copied from the output of a previous
         /// call to ListTagOfResource. When provided in this manner, this API fetches the next page of results.</p>
-        pub fn next_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn next_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
@@ -6096,13 +6280,13 @@ pub struct ListTablesOutput {
     /// <p>If <code>LastEvaluatedTableName</code> also appears in the output, you can use this value as the
     /// <code>ExclusiveStartTableName</code> parameter in a subsequent <code>ListTables</code> request and
     /// obtain the next page of results.</p>
-    pub table_names: Option<Vec<String>>,
+    pub table_names: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>The name of the last table in the current page of results. Use this value as the
     /// <code>ExclusiveStartTableName</code> in a new request to obtain the next page of results, until
     /// all the table names are returned.</p>
     /// <p>If you do not receive a <code>LastEvaluatedTableName</code> value in the response, this means that
     /// there are no more table names to be retrieved.</p>
-    pub last_evaluated_table_name: Option<String>,
+    pub last_evaluated_table_name: ::std::option::Option<::std::string::String>,
 }
 impl ListTablesOutput {
     /// Creates a new builder-style object to manufacture [`ListTablesOutput`](crate::operation::ListTablesOutput)
@@ -6118,15 +6302,15 @@ pub mod list_tables_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_names: Option<Vec<String>>,
-        last_evaluated_table_name: Option<String>,
+        table_names: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+        last_evaluated_table_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The names of the tables associated with the current account at the current endpoint. The maximum size of this array is 100.</p>
         /// <p>If <code>LastEvaluatedTableName</code> also appears in the output, you can use this value as the
         /// <code>ExclusiveStartTableName</code> parameter in a subsequent <code>ListTables</code> request and
         /// obtain the next page of results.</p>
-        pub fn table_names(mut self, inp: Vec<String>) -> Self {
+        pub fn table_names(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.table_names = Some(inp);
             self
         }
@@ -6135,7 +6319,7 @@ pub mod list_tables_output {
         /// all the table names are returned.</p>
         /// <p>If you do not receive a <code>LastEvaluatedTableName</code> value in the response, this means that
         /// there are no more table names to be retrieved.</p>
-        pub fn last_evaluated_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn last_evaluated_table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.last_evaluated_table_name = Some(inp.into());
             self
         }
@@ -6156,9 +6340,9 @@ pub struct ListTablesInput {
     /// <p>The first table name that this operation will evaluate. Use the value that was returned for
     /// <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page
     /// of results.</p>
-    pub exclusive_start_table_name: Option<String>,
+    pub exclusive_start_table_name: ::std::option::Option<::std::string::String>,
     /// <p>A maximum number of table names to return. If this parameter is not specified, the limit is 100.</p>
-    pub limit: Option<i32>,
+    pub limit: ::std::option::Option<i32>,
 }
 impl ListTablesInput {
     /// Creates a new builder-style object to manufacture [`ListTablesInput`](crate::operation::ListTablesInput)
@@ -6174,14 +6358,14 @@ pub mod list_tables_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        exclusive_start_table_name: Option<String>,
-        limit: Option<i32>,
+        exclusive_start_table_name: ::std::option::Option<::std::string::String>,
+        limit: ::std::option::Option<i32>,
     }
     impl Builder {
         /// <p>The first table name that this operation will evaluate. Use the value that was returned for
         /// <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page
         /// of results.</p>
-        pub fn exclusive_start_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn exclusive_start_table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.exclusive_start_table_name = Some(inp.into());
             self
         }
@@ -6204,9 +6388,9 @@ pub mod list_tables_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListGlobalTablesOutput {
     /// <p>List of global table names.</p>
-    pub global_tables: Option<Vec<GlobalTable>>,
+    pub global_tables: ::std::option::Option<::std::vec::Vec<GlobalTable>>,
     /// <p>Last evaluated global table name.</p>
-    pub last_evaluated_global_table_name: Option<String>,
+    pub last_evaluated_global_table_name: ::std::option::Option<::std::string::String>,
 }
 impl ListGlobalTablesOutput {
     /// Creates a new builder-style object to manufacture [`ListGlobalTablesOutput`](crate::operation::ListGlobalTablesOutput)
@@ -6223,17 +6407,20 @@ pub mod list_global_tables_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        global_tables: Option<Vec<GlobalTable>>,
-        last_evaluated_global_table_name: Option<String>,
+        global_tables: ::std::option::Option<::std::vec::Vec<GlobalTable>>,
+        last_evaluated_global_table_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>List of global table names.</p>
-        pub fn global_tables(mut self, inp: Vec<GlobalTable>) -> Self {
+        pub fn global_tables(mut self, inp: ::std::vec::Vec<GlobalTable>) -> Self {
             self.global_tables = Some(inp);
             self
         }
         /// <p>Last evaluated global table name.</p>
-        pub fn last_evaluated_global_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn last_evaluated_global_table_name(
+            mut self,
+            inp: impl Into<::std::string::String>,
+        ) -> Self {
             self.last_evaluated_global_table_name = Some(inp.into());
             self
         }
@@ -6251,13 +6438,13 @@ pub mod list_global_tables_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListGlobalTablesInput {
     /// <p>The first global table name that this operation will evaluate.</p>
-    pub exclusive_start_global_table_name: Option<String>,
+    pub exclusive_start_global_table_name: ::std::option::Option<::std::string::String>,
     /// <p>The maximum number of table names to return, if the parameter is not specified DynamoDB defaults to 100.</p>
     /// <p>If the number of global tables DynamoDB finds reaches this limit, it stops the operation and returns the table names collected up to that point,
     /// with a table name in the <code>LastEvaluatedGlobalTableName</code> to apply in a subsequent operation to the <code>ExclusiveStartGlobalTableName</code> parameter.</p>
-    pub limit: Option<i32>,
+    pub limit: ::std::option::Option<i32>,
     /// <p>Lists the global tables in a specific Region.</p>
-    pub region_name: Option<String>,
+    pub region_name: ::std::option::Option<::std::string::String>,
 }
 impl ListGlobalTablesInput {
     /// Creates a new builder-style object to manufacture [`ListGlobalTablesInput`](crate::operation::ListGlobalTablesInput)
@@ -6273,13 +6460,16 @@ pub mod list_global_tables_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        exclusive_start_global_table_name: Option<String>,
-        limit: Option<i32>,
-        region_name: Option<String>,
+        exclusive_start_global_table_name: ::std::option::Option<::std::string::String>,
+        limit: ::std::option::Option<i32>,
+        region_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The first global table name that this operation will evaluate.</p>
-        pub fn exclusive_start_global_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn exclusive_start_global_table_name(
+            mut self,
+            inp: impl Into<::std::string::String>,
+        ) -> Self {
             self.exclusive_start_global_table_name = Some(inp.into());
             self
         }
@@ -6291,7 +6481,7 @@ pub mod list_global_tables_input {
             self
         }
         /// <p>Lists the global tables in a specific Region.</p>
-        pub fn region_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn region_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.region_name = Some(inp.into());
             self
         }
@@ -6310,11 +6500,11 @@ pub mod list_global_tables_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListExportsOutput {
     /// <p>A list of <code>ExportSummary</code> objects.</p>
-    pub export_summaries: Option<Vec<ExportSummary>>,
+    pub export_summaries: ::std::option::Option<::std::vec::Vec<ExportSummary>>,
     /// <p>If this value is returned, there are additional results to be displayed. To retrieve
     /// them, call <code>ListExports</code> again, with <code>NextToken</code> set to this
     /// value.</p>
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
 }
 impl ListExportsOutput {
     /// Creates a new builder-style object to manufacture [`ListExportsOutput`](crate::operation::ListExportsOutput)
@@ -6331,19 +6521,19 @@ pub mod list_exports_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        export_summaries: Option<Vec<ExportSummary>>,
-        next_token: Option<String>,
+        export_summaries: ::std::option::Option<::std::vec::Vec<ExportSummary>>,
+        next_token: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>A list of <code>ExportSummary</code> objects.</p>
-        pub fn export_summaries(mut self, inp: Vec<ExportSummary>) -> Self {
+        pub fn export_summaries(mut self, inp: ::std::vec::Vec<ExportSummary>) -> Self {
             self.export_summaries = Some(inp);
             self
         }
         /// <p>If this value is returned, there are additional results to be displayed. To retrieve
         /// them, call <code>ListExports</code> again, with <code>NextToken</code> set to this
         /// value.</p>
-        pub fn next_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn next_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
@@ -6361,13 +6551,13 @@ pub mod list_exports_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListExportsInput {
     /// <p>The Amazon Resource Name (ARN) associated with the exported table.</p>
-    pub table_arn: Option<String>,
+    pub table_arn: ::std::option::Option<::std::string::String>,
     /// <p>Maximum number of results to return per page.</p>
-    pub max_results: Option<i32>,
+    pub max_results: ::std::option::Option<i32>,
     /// <p>An optional string that, if supplied, must be copied from the output of a previous
     /// call to <code>ListExports</code>. When provided in this manner, the API fetches the next
     /// page of results.</p>
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
 }
 impl ListExportsInput {
     /// Creates a new builder-style object to manufacture [`ListExportsInput`](crate::operation::ListExportsInput)
@@ -6383,13 +6573,13 @@ pub mod list_exports_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_arn: Option<String>,
-        max_results: Option<i32>,
-        next_token: Option<String>,
+        table_arn: ::std::option::Option<::std::string::String>,
+        max_results: ::std::option::Option<i32>,
+        next_token: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The Amazon Resource Name (ARN) associated with the exported table.</p>
-        pub fn table_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_arn = Some(inp.into());
             self
         }
@@ -6401,7 +6591,7 @@ pub mod list_exports_input {
         /// <p>An optional string that, if supplied, must be copied from the output of a previous
         /// call to <code>ListExports</code>. When provided in this manner, the API fetches the next
         /// page of results.</p>
-        pub fn next_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn next_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
@@ -6420,9 +6610,10 @@ pub mod list_exports_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListContributorInsightsOutput {
     /// <p>A list of ContributorInsightsSummary.</p>
-    pub contributor_insights_summaries: Option<Vec<ContributorInsightsSummary>>,
+    pub contributor_insights_summaries:
+        ::std::option::Option<::std::vec::Vec<ContributorInsightsSummary>>,
     /// <p>A token to go to the next page if there is one.</p>
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
 }
 impl ListContributorInsightsOutput {
     /// Creates a new builder-style object to manufacture [`ListContributorInsightsOutput`](crate::operation::ListContributorInsightsOutput)
@@ -6439,20 +6630,21 @@ pub mod list_contributor_insights_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        contributor_insights_summaries: Option<Vec<ContributorInsightsSummary>>,
-        next_token: Option<String>,
+        contributor_insights_summaries:
+            ::std::option::Option<::std::vec::Vec<ContributorInsightsSummary>>,
+        next_token: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>A list of ContributorInsightsSummary.</p>
         pub fn contributor_insights_summaries(
             mut self,
-            inp: Vec<ContributorInsightsSummary>,
+            inp: ::std::vec::Vec<ContributorInsightsSummary>,
         ) -> Self {
             self.contributor_insights_summaries = Some(inp);
             self
         }
         /// <p>A token to go to the next page if there is one.</p>
-        pub fn next_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn next_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
@@ -6470,9 +6662,9 @@ pub mod list_contributor_insights_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListContributorInsightsInput {
     /// <p>The name of the table.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>A token to for the desired page, if there is one.</p>
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
     /// <p>Maximum number of results to return per page.</p>
     pub max_results: i32,
 }
@@ -6490,18 +6682,18 @@ pub mod list_contributor_insights_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        next_token: Option<String>,
-        max_results: Option<i32>,
+        table_name: ::std::option::Option<::std::string::String>,
+        next_token: ::std::option::Option<::std::string::String>,
+        max_results: ::std::option::Option<i32>,
     }
     impl Builder {
         /// <p>The name of the table.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>A token to for the desired page, if there is one.</p>
-        pub fn next_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn next_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
@@ -6525,7 +6717,7 @@ pub mod list_contributor_insights_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListBackupsOutput {
     /// <p>List of <code>BackupSummary</code> objects.</p>
-    pub backup_summaries: Option<Vec<BackupSummary>>,
+    pub backup_summaries: ::std::option::Option<::std::vec::Vec<BackupSummary>>,
     /// <p>
     /// The ARN of the backup last evaluated when the current page of results was returned,
     /// inclusive of the current page of results. This value may be specified as the
@@ -6538,7 +6730,7 @@ pub struct ListBackupsOutput {
     /// <p> If <code>LastEvaluatedBackupArn</code> is not empty, this may or may not indicate that
     /// there is more data to be returned. All results are guaranteed to have been returned if
     /// and only if no value for <code>LastEvaluatedBackupArn</code> is returned. </p>
-    pub last_evaluated_backup_arn: Option<String>,
+    pub last_evaluated_backup_arn: ::std::option::Option<::std::string::String>,
 }
 impl ListBackupsOutput {
     /// Creates a new builder-style object to manufacture [`ListBackupsOutput`](crate::operation::ListBackupsOutput)
@@ -6555,12 +6747,12 @@ pub mod list_backups_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        backup_summaries: Option<Vec<BackupSummary>>,
-        last_evaluated_backup_arn: Option<String>,
+        backup_summaries: ::std::option::Option<::std::vec::Vec<BackupSummary>>,
+        last_evaluated_backup_arn: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>List of <code>BackupSummary</code> objects.</p>
-        pub fn backup_summaries(mut self, inp: Vec<BackupSummary>) -> Self {
+        pub fn backup_summaries(mut self, inp: ::std::vec::Vec<BackupSummary>) -> Self {
             self.backup_summaries = Some(inp);
             self
         }
@@ -6576,7 +6768,7 @@ pub mod list_backups_output {
         /// <p> If <code>LastEvaluatedBackupArn</code> is not empty, this may or may not indicate that
         /// there is more data to be returned. All results are guaranteed to have been returned if
         /// and only if no value for <code>LastEvaluatedBackupArn</code> is returned. </p>
-        pub fn last_evaluated_backup_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn last_evaluated_backup_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.last_evaluated_backup_arn = Some(inp.into());
             self
         }
@@ -6594,19 +6786,19 @@ pub mod list_backups_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListBackupsInput {
     /// <p>The backups from the table specified by <code>TableName</code> are listed. </p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>Maximum number of backups to return at once.</p>
-    pub limit: Option<i32>,
+    pub limit: ::std::option::Option<i32>,
     /// <p>Only backups created after this time are listed. <code>TimeRangeLowerBound</code> is inclusive.</p>
-    pub time_range_lower_bound: Option<Instant>,
+    pub time_range_lower_bound: ::std::option::Option<Instant>,
     /// <p>Only backups created before this time are listed. <code>TimeRangeUpperBound</code> is exclusive. </p>
-    pub time_range_upper_bound: Option<Instant>,
+    pub time_range_upper_bound: ::std::option::Option<Instant>,
     /// <p>
     /// <code>LastEvaluatedBackupArn</code> is the Amazon Resource Name (ARN) of the backup last
     /// evaluated when the current page of results was returned, inclusive of the current page
     /// of results. This value may be specified as the <code>ExclusiveStartBackupArn</code> of a
     /// new <code>ListBackups</code> operation in order to fetch the next page of results. </p>
-    pub exclusive_start_backup_arn: Option<String>,
+    pub exclusive_start_backup_arn: ::std::option::Option<::std::string::String>,
     /// <p>The backups from the table specified by <code>BackupType</code> are listed.</p>
     /// <p>Where <code>BackupType</code> can be:</p>
     /// <ul>
@@ -6624,7 +6816,7 @@ pub struct ListBackupsInput {
     /// <code>ALL</code> - All types of on-demand backups (USER and SYSTEM).</p>
     /// </li>
     /// </ul>
-    pub backup_type: Option<BackupTypeFilter>,
+    pub backup_type: ::std::option::Option<BackupTypeFilter>,
 }
 impl ListBackupsInput {
     /// Creates a new builder-style object to manufacture [`ListBackupsInput`](crate::operation::ListBackupsInput)
@@ -6642,16 +6834,16 @@ pub mod list_backups_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        limit: Option<i32>,
-        time_range_lower_bound: Option<Instant>,
-        time_range_upper_bound: Option<Instant>,
-        exclusive_start_backup_arn: Option<String>,
-        backup_type: Option<BackupTypeFilter>,
+        table_name: ::std::option::Option<::std::string::String>,
+        limit: ::std::option::Option<i32>,
+        time_range_lower_bound: ::std::option::Option<Instant>,
+        time_range_upper_bound: ::std::option::Option<Instant>,
+        exclusive_start_backup_arn: ::std::option::Option<::std::string::String>,
+        backup_type: ::std::option::Option<BackupTypeFilter>,
     }
     impl Builder {
         /// <p>The backups from the table specified by <code>TableName</code> are listed. </p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -6675,7 +6867,7 @@ pub mod list_backups_input {
         /// evaluated when the current page of results was returned, inclusive of the current page
         /// of results. This value may be specified as the <code>ExclusiveStartBackupArn</code> of a
         /// new <code>ListBackups</code> operation in order to fetch the next page of results. </p>
-        pub fn exclusive_start_backup_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn exclusive_start_backup_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.exclusive_start_backup_arn = Some(inp.into());
             self
         }
@@ -6720,14 +6912,15 @@ pub mod list_backups_input {
 pub struct GetItemOutput {
     /// <p>A map of attribute names to <code>AttributeValue</code> objects, as specified
     /// by <code>ProjectionExpression</code>.</p>
-    pub item: Option<HashMap<String, AttributeValue>>,
+    pub item:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>GetItem</code> operation. The data returned
     /// includes the total provisioned throughput consumed, along with statistics for the table
     /// and any indexes involved in the operation. <code>ConsumedCapacity</code> is only
     /// returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more
     /// information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Read/Write Capacity Mode</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub consumed_capacity: Option<ConsumedCapacity>,
+    pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
 }
 impl GetItemOutput {
     /// Creates a new builder-style object to manufacture [`GetItemOutput`](crate::operation::GetItemOutput)
@@ -6741,18 +6934,22 @@ pub mod get_item_output {
     use crate::model::AttributeValue;
     use crate::model::ConsumedCapacity;
     use crate::operation::GetItemOutput;
-    use std::collections::HashMap;
     /// A builder for [`GetItemOutput`](crate::operation::GetItemOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        item: Option<HashMap<String, AttributeValue>>,
-        consumed_capacity: Option<ConsumedCapacity>,
+        item: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        consumed_capacity: ::std::option::Option<ConsumedCapacity>,
     }
     impl Builder {
         /// <p>A map of attribute names to <code>AttributeValue</code> objects, as specified
         /// by <code>ProjectionExpression</code>.</p>
-        pub fn item(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn item(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.item = Some(inp);
             self
         }
@@ -6781,16 +6978,17 @@ pub mod get_item_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct GetItemInput {
     /// <p>The name of the table containing the requested item.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>A map of attribute names to <code>AttributeValue</code> objects, representing the primary key of
     /// the item to retrieve.</p>
     /// <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
-    pub key: Option<HashMap<String, AttributeValue>>,
+    pub key:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>This is a legacy parameter.  Use <code>ProjectionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub attributes_to_get: Option<Vec<String>>,
+    pub attributes_to_get: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>Determines the read consistency model:  If set to <code>true</code>, then the operation uses strongly consistent reads; otherwise, the operation uses eventually consistent reads.</p>
-    pub consistent_read: Option<bool>,
+    pub consistent_read: ::std::option::Option<bool>,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -6807,13 +7005,13 @@ pub struct GetItemInput {
     /// <code>NONE</code> - No <code>ConsumedCapacity</code> details are included in the response.</p>
     /// </li>
     /// </ul>
-    pub return_consumed_capacity: Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>A string that identifies one or more attributes to retrieve from the table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas.</p>
     /// <p>If no attribute names are specified, then all attributes are returned. If any of the
     /// requested attributes are not found, they do not appear in the result.</p>
     /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub projection_expression: Option<String>,
+    pub projection_expression: ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
     /// <li>
@@ -6855,7 +7053,9 @@ pub struct GetItemInput {
     /// </note>
     /// <p>For more information on expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub expression_attribute_names: Option<HashMap<String, String>>,
+    pub expression_attribute_names: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
 }
 impl GetItemInput {
     /// Creates a new builder-style object to manufacture [`GetItemInput`](crate::operation::GetItemInput)
@@ -6869,35 +7069,41 @@ pub mod get_item_input {
     use crate::model::AttributeValue;
     use crate::model::ReturnConsumedCapacity;
     use crate::operation::GetItemInput;
-    use std::collections::HashMap;
     /// A builder for [`GetItemInput`](crate::operation::GetItemInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        key: Option<HashMap<String, AttributeValue>>,
-        attributes_to_get: Option<Vec<String>>,
-        consistent_read: Option<bool>,
-        return_consumed_capacity: Option<ReturnConsumedCapacity>,
-        projection_expression: Option<String>,
-        expression_attribute_names: Option<HashMap<String, String>>,
+        table_name: ::std::option::Option<::std::string::String>,
+        key: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        attributes_to_get: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+        consistent_read: ::std::option::Option<bool>,
+        return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
+        projection_expression: ::std::option::Option<::std::string::String>,
+        expression_attribute_names: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
     }
     impl Builder {
         /// <p>The name of the table containing the requested item.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>A map of attribute names to <code>AttributeValue</code> objects, representing the primary key of
         /// the item to retrieve.</p>
         /// <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
-        pub fn key(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn key(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.key = Some(inp);
             self
         }
         /// <p>This is a legacy parameter.  Use <code>ProjectionExpression</code> instead.  For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn attributes_to_get(mut self, inp: Vec<String>) -> Self {
+        pub fn attributes_to_get(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.attributes_to_get = Some(inp);
             self
         }
@@ -6931,7 +7137,7 @@ pub mod get_item_input {
         /// requested attributes are not found, they do not appear in the result.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn projection_expression(mut self, inp: impl Into<String>) -> Self {
+        pub fn projection_expression(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.projection_expression = Some(inp.into());
             self
         }
@@ -6976,7 +7182,10 @@ pub mod get_item_input {
         /// </note>
         /// <p>For more information on expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn expression_attribute_names(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn expression_attribute_names(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.expression_attribute_names = Some(inp);
             self
         }
@@ -6999,7 +7208,7 @@ pub mod get_item_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ExportTableToPointInTimeOutput {
     /// <p>Contains a description of the table export.</p>
-    pub export_description: Option<ExportDescription>,
+    pub export_description: ::std::option::Option<ExportDescription>,
 }
 impl ExportTableToPointInTimeOutput {
     /// Creates a new builder-style object to manufacture [`ExportTableToPointInTimeOutput`](crate::operation::ExportTableToPointInTimeOutput)
@@ -7016,7 +7225,7 @@ pub mod export_table_to_point_in_time_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        export_description: Option<ExportDescription>,
+        export_description: ::std::option::Option<ExportDescription>,
     }
     impl Builder {
         /// <p>Contains a description of the table export.</p>
@@ -7037,10 +7246,10 @@ pub mod export_table_to_point_in_time_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ExportTableToPointInTimeInput {
     /// <p>The Amazon Resource Name (ARN) associated with the table to export.</p>
-    pub table_arn: Option<String>,
+    pub table_arn: ::std::option::Option<::std::string::String>,
     /// <p>Time in the past from which to export table data. The table export will be a snapshot
     /// of the table's state at this point in time.</p>
-    pub export_time: Option<Instant>,
+    pub export_time: ::std::option::Option<Instant>,
     /// <p>Providing a <code>ClientToken</code> makes the call to
     /// <code>ExportTableToPointInTimeInput</code> idempotent, meaning that multiple
     /// identical calls have the same effect as one single call.</p>
@@ -7051,14 +7260,14 @@ pub struct ExportTableToPointInTimeInput {
     /// <p>If you submit a request with the same client token but a change in other parameters
     /// within the 8-hour idempotency window, DynamoDB returns an
     /// <code>IdempotentParameterMismatch</code> exception.</p>
-    pub client_token: Option<String>,
+    pub client_token: ::std::option::Option<::std::string::String>,
     /// <p>The name of the Amazon S3 bucket to export the snapshot to.</p>
-    pub s3_bucket: Option<String>,
+    pub s3_bucket: ::std::option::Option<::std::string::String>,
     /// <p>The ID of the AWS account that owns the bucket the export will be stored in.</p>
-    pub s3_bucket_owner: Option<String>,
+    pub s3_bucket_owner: ::std::option::Option<::std::string::String>,
     /// <p>The Amazon S3 bucket prefix to use as the file name and path of the exported
     /// snapshot.</p>
-    pub s3_prefix: Option<String>,
+    pub s3_prefix: ::std::option::Option<::std::string::String>,
     /// <p>Type of encryption used on the bucket where export data will be stored. Valid values
     /// for <code>S3SseAlgorithm</code> are:</p>
     /// <ul>
@@ -7071,13 +7280,13 @@ pub struct ExportTableToPointInTimeInput {
     /// <code>KMS</code> - server-side encryption with AWS KMS managed keys</p>
     /// </li>
     /// </ul>
-    pub s3_sse_algorithm: Option<S3SseAlgorithm>,
+    pub s3_sse_algorithm: ::std::option::Option<S3SseAlgorithm>,
     /// <p>The ID of the AWS KMS managed key used to encrypt the S3 bucket where export data will
     /// be stored (if applicable).</p>
-    pub s3_sse_kms_key_id: Option<String>,
+    pub s3_sse_kms_key_id: ::std::option::Option<::std::string::String>,
     /// <p>The format for the exported data. Valid values for <code>ExportFormat</code> are
     /// <code>DYNAMODB_JSON</code> or <code>ION</code>.</p>
-    pub export_format: Option<ExportFormat>,
+    pub export_format: ::std::option::Option<ExportFormat>,
 }
 impl ExportTableToPointInTimeInput {
     /// Creates a new builder-style object to manufacture [`ExportTableToPointInTimeInput`](crate::operation::ExportTableToPointInTimeInput)
@@ -7096,19 +7305,19 @@ pub mod export_table_to_point_in_time_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_arn: Option<String>,
-        export_time: Option<Instant>,
-        client_token: Option<String>,
-        s3_bucket: Option<String>,
-        s3_bucket_owner: Option<String>,
-        s3_prefix: Option<String>,
-        s3_sse_algorithm: Option<S3SseAlgorithm>,
-        s3_sse_kms_key_id: Option<String>,
-        export_format: Option<ExportFormat>,
+        table_arn: ::std::option::Option<::std::string::String>,
+        export_time: ::std::option::Option<Instant>,
+        client_token: ::std::option::Option<::std::string::String>,
+        s3_bucket: ::std::option::Option<::std::string::String>,
+        s3_bucket_owner: ::std::option::Option<::std::string::String>,
+        s3_prefix: ::std::option::Option<::std::string::String>,
+        s3_sse_algorithm: ::std::option::Option<S3SseAlgorithm>,
+        s3_sse_kms_key_id: ::std::option::Option<::std::string::String>,
+        export_format: ::std::option::Option<ExportFormat>,
     }
     impl Builder {
         /// <p>The Amazon Resource Name (ARN) associated with the table to export.</p>
-        pub fn table_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_arn = Some(inp.into());
             self
         }
@@ -7128,23 +7337,23 @@ pub mod export_table_to_point_in_time_input {
         /// <p>If you submit a request with the same client token but a change in other parameters
         /// within the 8-hour idempotency window, DynamoDB returns an
         /// <code>IdempotentParameterMismatch</code> exception.</p>
-        pub fn client_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn client_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.client_token = Some(inp.into());
             self
         }
         /// <p>The name of the Amazon S3 bucket to export the snapshot to.</p>
-        pub fn s3_bucket(mut self, inp: impl Into<String>) -> Self {
+        pub fn s3_bucket(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.s3_bucket = Some(inp.into());
             self
         }
         /// <p>The ID of the AWS account that owns the bucket the export will be stored in.</p>
-        pub fn s3_bucket_owner(mut self, inp: impl Into<String>) -> Self {
+        pub fn s3_bucket_owner(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.s3_bucket_owner = Some(inp.into());
             self
         }
         /// <p>The Amazon S3 bucket prefix to use as the file name and path of the exported
         /// snapshot.</p>
-        pub fn s3_prefix(mut self, inp: impl Into<String>) -> Self {
+        pub fn s3_prefix(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.s3_prefix = Some(inp.into());
             self
         }
@@ -7166,7 +7375,7 @@ pub mod export_table_to_point_in_time_input {
         }
         /// <p>The ID of the AWS KMS managed key used to encrypt the S3 bucket where export data will
         /// be stored (if applicable).</p>
-        pub fn s3_sse_kms_key_id(mut self, inp: impl Into<String>) -> Self {
+        pub fn s3_sse_kms_key_id(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.s3_sse_kms_key_id = Some(inp.into());
             self
         }
@@ -7199,7 +7408,7 @@ pub struct ExecuteTransactionOutput {
     /// <p>
     /// The response to a PartiQL transaction.
     /// </p>
-    pub responses: Option<Vec<ItemResponse>>,
+    pub responses: ::std::option::Option<::std::vec::Vec<ItemResponse>>,
 }
 impl ExecuteTransactionOutput {
     /// Creates a new builder-style object to manufacture [`ExecuteTransactionOutput`](crate::operation::ExecuteTransactionOutput)
@@ -7216,13 +7425,13 @@ pub mod execute_transaction_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        responses: Option<Vec<ItemResponse>>,
+        responses: ::std::option::Option<::std::vec::Vec<ItemResponse>>,
     }
     impl Builder {
         /// <p>
         /// The response to a PartiQL transaction.
         /// </p>
-        pub fn responses(mut self, inp: Vec<ItemResponse>) -> Self {
+        pub fn responses(mut self, inp: ::std::vec::Vec<ItemResponse>) -> Self {
             self.responses = Some(inp);
             self
         }
@@ -7241,11 +7450,11 @@ pub struct ExecuteTransactionInput {
     /// <p>
     /// The list of PartiQL statements representing the transaction to run.
     /// </p>
-    pub transact_statements: Option<Vec<ParameterizedStatement>>,
+    pub transact_statements: ::std::option::Option<::std::vec::Vec<ParameterizedStatement>>,
     /// <p>
     /// Set this value to get remaining results, if <code>NextToken</code> was returned in the statement response.
     /// </p>
-    pub client_request_token: Option<String>,
+    pub client_request_token: ::std::option::Option<::std::string::String>,
 }
 impl ExecuteTransactionInput {
     /// Creates a new builder-style object to manufacture [`ExecuteTransactionInput`](crate::operation::ExecuteTransactionInput)
@@ -7262,21 +7471,21 @@ pub mod execute_transaction_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        transact_statements: Option<Vec<ParameterizedStatement>>,
-        client_request_token: Option<String>,
+        transact_statements: ::std::option::Option<::std::vec::Vec<ParameterizedStatement>>,
+        client_request_token: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>
         /// The list of PartiQL statements representing the transaction to run.
         /// </p>
-        pub fn transact_statements(mut self, inp: Vec<ParameterizedStatement>) -> Self {
+        pub fn transact_statements(mut self, inp: ::std::vec::Vec<ParameterizedStatement>) -> Self {
             self.transact_statements = Some(inp);
             self
         }
         /// <p>
         /// Set this value to get remaining results, if <code>NextToken</code> was returned in the statement response.
         /// </p>
-        pub fn client_request_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn client_request_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.client_request_token = Some(inp.into());
             self
         }
@@ -7296,11 +7505,13 @@ pub struct ExecuteStatementOutput {
     /// <p>
     /// If a read operation was used, this property will contain the result of the reade operation; a map of attribute names and their values. For the write operations this value will be empty.
     /// </p>
-    pub items: Option<Vec<HashMap<String, AttributeValue>>>,
+    pub items: ::std::option::Option<
+        ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+    >,
     /// <p>
     /// If the response of a read request exceeds the response payload limit DynamoDB will set this value in the response. If set, you can use that this value in the subsequent request to get the remaining results.
     /// </p>
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
 }
 impl ExecuteStatementOutput {
     /// Creates a new builder-style object to manufacture [`ExecuteStatementOutput`](crate::operation::ExecuteStatementOutput)
@@ -7313,26 +7524,32 @@ pub mod execute_statement_output {
 
     use crate::model::AttributeValue;
     use crate::operation::ExecuteStatementOutput;
-    use std::collections::HashMap;
     /// A builder for [`ExecuteStatementOutput`](crate::operation::ExecuteStatementOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        items: Option<Vec<HashMap<String, AttributeValue>>>,
-        next_token: Option<String>,
+        items: ::std::option::Option<
+            ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+        >,
+        next_token: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>
         /// If a read operation was used, this property will contain the result of the reade operation; a map of attribute names and their values. For the write operations this value will be empty.
         /// </p>
-        pub fn items(mut self, inp: Vec<HashMap<String, AttributeValue>>) -> Self {
+        pub fn items(
+            mut self,
+            inp: ::std::vec::Vec<
+                ::std::collections::HashMap<::std::string::String, AttributeValue>,
+            >,
+        ) -> Self {
             self.items = Some(inp);
             self
         }
         /// <p>
         /// If the response of a read request exceeds the response payload limit DynamoDB will set this value in the response. If set, you can use that this value in the subsequent request to get the remaining results.
         /// </p>
-        pub fn next_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn next_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
@@ -7352,19 +7569,19 @@ pub struct ExecuteStatementInput {
     /// <p>
     /// The PartiQL statement representing the operation to run.
     /// </p>
-    pub statement: Option<String>,
+    pub statement: ::std::option::Option<::std::string::String>,
     /// <p>
     /// The parameters for the PartiQL statement, if any.
     /// </p>
-    pub parameters: Option<Vec<AttributeValue>>,
+    pub parameters: ::std::option::Option<::std::vec::Vec<AttributeValue>>,
     /// <p>
     /// The consistency of a read operation. If set to <code>true</code>, then a strongly consistent read is used; otherwise, an eventually consistent read is used.
     /// </p>
-    pub consistent_read: Option<bool>,
+    pub consistent_read: ::std::option::Option<bool>,
     /// <p>
     /// Set this value to get remaining results, if <code>NextToken</code> was returned in the statement response.
     /// </p>
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
 }
 impl ExecuteStatementInput {
     /// Creates a new builder-style object to manufacture [`ExecuteStatementInput`](crate::operation::ExecuteStatementInput)
@@ -7381,23 +7598,23 @@ pub mod execute_statement_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        statement: Option<String>,
-        parameters: Option<Vec<AttributeValue>>,
-        consistent_read: Option<bool>,
-        next_token: Option<String>,
+        statement: ::std::option::Option<::std::string::String>,
+        parameters: ::std::option::Option<::std::vec::Vec<AttributeValue>>,
+        consistent_read: ::std::option::Option<bool>,
+        next_token: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>
         /// The PartiQL statement representing the operation to run.
         /// </p>
-        pub fn statement(mut self, inp: impl Into<String>) -> Self {
+        pub fn statement(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.statement = Some(inp.into());
             self
         }
         /// <p>
         /// The parameters for the PartiQL statement, if any.
         /// </p>
-        pub fn parameters(mut self, inp: Vec<AttributeValue>) -> Self {
+        pub fn parameters(mut self, inp: ::std::vec::Vec<AttributeValue>) -> Self {
             self.parameters = Some(inp);
             self
         }
@@ -7411,7 +7628,7 @@ pub mod execute_statement_input {
         /// <p>
         /// Set this value to get remaining results, if <code>NextToken</code> was returned in the statement response.
         /// </p>
-        pub fn next_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn next_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
@@ -7431,11 +7648,11 @@ pub mod execute_statement_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct EnableKinesisStreamingDestinationOutput {
     /// <p>The name of the table being modified.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The ARN for the specific Kinesis data stream.</p>
-    pub stream_arn: Option<String>,
+    pub stream_arn: ::std::option::Option<::std::string::String>,
     /// <p>The current status of the replication.</p>
-    pub destination_status: Option<DestinationStatus>,
+    pub destination_status: ::std::option::Option<DestinationStatus>,
 }
 impl EnableKinesisStreamingDestinationOutput {
     /// Creates a new builder-style object to manufacture [`EnableKinesisStreamingDestinationOutput`](crate::operation::EnableKinesisStreamingDestinationOutput)
@@ -7452,18 +7669,18 @@ pub mod enable_kinesis_streaming_destination_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        stream_arn: Option<String>,
-        destination_status: Option<DestinationStatus>,
+        table_name: ::std::option::Option<::std::string::String>,
+        stream_arn: ::std::option::Option<::std::string::String>,
+        destination_status: ::std::option::Option<DestinationStatus>,
     }
     impl Builder {
         /// <p>The name of the table being modified.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>The ARN for the specific Kinesis data stream.</p>
-        pub fn stream_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn stream_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.stream_arn = Some(inp.into());
             self
         }
@@ -7487,9 +7704,9 @@ pub mod enable_kinesis_streaming_destination_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct EnableKinesisStreamingDestinationInput {
     /// <p>The name of the DynamoDB table.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The ARN for a Kinesis data stream.</p>
-    pub stream_arn: Option<String>,
+    pub stream_arn: ::std::option::Option<::std::string::String>,
 }
 impl EnableKinesisStreamingDestinationInput {
     /// Creates a new builder-style object to manufacture [`EnableKinesisStreamingDestinationInput`](crate::operation::EnableKinesisStreamingDestinationInput)
@@ -7505,17 +7722,17 @@ pub mod enable_kinesis_streaming_destination_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        stream_arn: Option<String>,
+        table_name: ::std::option::Option<::std::string::String>,
+        stream_arn: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The name of the DynamoDB table.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>The ARN for a Kinesis data stream.</p>
-        pub fn stream_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn stream_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.stream_arn = Some(inp.into());
             self
         }
@@ -7533,11 +7750,11 @@ pub mod enable_kinesis_streaming_destination_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DisableKinesisStreamingDestinationOutput {
     /// <p>The name of the table being modified.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The ARN for the specific Kinesis data stream.</p>
-    pub stream_arn: Option<String>,
+    pub stream_arn: ::std::option::Option<::std::string::String>,
     /// <p>The current status of the replication.</p>
-    pub destination_status: Option<DestinationStatus>,
+    pub destination_status: ::std::option::Option<DestinationStatus>,
 }
 impl DisableKinesisStreamingDestinationOutput {
     /// Creates a new builder-style object to manufacture [`DisableKinesisStreamingDestinationOutput`](crate::operation::DisableKinesisStreamingDestinationOutput)
@@ -7554,18 +7771,18 @@ pub mod disable_kinesis_streaming_destination_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        stream_arn: Option<String>,
-        destination_status: Option<DestinationStatus>,
+        table_name: ::std::option::Option<::std::string::String>,
+        stream_arn: ::std::option::Option<::std::string::String>,
+        destination_status: ::std::option::Option<DestinationStatus>,
     }
     impl Builder {
         /// <p>The name of the table being modified.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>The ARN for the specific Kinesis data stream.</p>
-        pub fn stream_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn stream_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.stream_arn = Some(inp.into());
             self
         }
@@ -7589,9 +7806,9 @@ pub mod disable_kinesis_streaming_destination_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DisableKinesisStreamingDestinationInput {
     /// <p>The name of the DynamoDB table.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The ARN for a Kinesis data stream.</p>
-    pub stream_arn: Option<String>,
+    pub stream_arn: ::std::option::Option<::std::string::String>,
 }
 impl DisableKinesisStreamingDestinationInput {
     /// Creates a new builder-style object to manufacture [`DisableKinesisStreamingDestinationInput`](crate::operation::DisableKinesisStreamingDestinationInput)
@@ -7607,17 +7824,17 @@ pub mod disable_kinesis_streaming_destination_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        stream_arn: Option<String>,
+        table_name: ::std::option::Option<::std::string::String>,
+        stream_arn: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The name of the DynamoDB table.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>The ARN for a Kinesis data stream.</p>
-        pub fn stream_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn stream_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.stream_arn = Some(inp.into());
             self
         }
@@ -7635,7 +7852,7 @@ pub mod disable_kinesis_streaming_destination_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeTimeToLiveOutput {
     /// <p></p>
-    pub time_to_live_description: Option<TimeToLiveDescription>,
+    pub time_to_live_description: ::std::option::Option<TimeToLiveDescription>,
 }
 impl DescribeTimeToLiveOutput {
     /// Creates a new builder-style object to manufacture [`DescribeTimeToLiveOutput`](crate::operation::DescribeTimeToLiveOutput)
@@ -7652,7 +7869,7 @@ pub mod describe_time_to_live_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        time_to_live_description: Option<TimeToLiveDescription>,
+        time_to_live_description: ::std::option::Option<TimeToLiveDescription>,
     }
     impl Builder {
         /// <p></p>
@@ -7673,7 +7890,7 @@ pub mod describe_time_to_live_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeTimeToLiveInput {
     /// <p>The name of the table to be described.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
 }
 impl DescribeTimeToLiveInput {
     /// Creates a new builder-style object to manufacture [`DescribeTimeToLiveInput`](crate::operation::DescribeTimeToLiveInput)
@@ -7689,11 +7906,11 @@ pub mod describe_time_to_live_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
+        table_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The name of the table to be described.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -7710,7 +7927,7 @@ pub mod describe_time_to_live_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeTableReplicaAutoScalingOutput {
     /// <p>Represents the auto scaling properties of the table.</p>
-    pub table_auto_scaling_description: Option<TableAutoScalingDescription>,
+    pub table_auto_scaling_description: ::std::option::Option<TableAutoScalingDescription>,
 }
 impl DescribeTableReplicaAutoScalingOutput {
     /// Creates a new builder-style object to manufacture [`DescribeTableReplicaAutoScalingOutput`](crate::operation::DescribeTableReplicaAutoScalingOutput)
@@ -7727,7 +7944,7 @@ pub mod describe_table_replica_auto_scaling_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_auto_scaling_description: Option<TableAutoScalingDescription>,
+        table_auto_scaling_description: ::std::option::Option<TableAutoScalingDescription>,
     }
     impl Builder {
         /// <p>Represents the auto scaling properties of the table.</p>
@@ -7748,7 +7965,7 @@ pub mod describe_table_replica_auto_scaling_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeTableReplicaAutoScalingInput {
     /// <p>The name of the table.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
 }
 impl DescribeTableReplicaAutoScalingInput {
     /// Creates a new builder-style object to manufacture [`DescribeTableReplicaAutoScalingInput`](crate::operation::DescribeTableReplicaAutoScalingInput)
@@ -7764,11 +7981,11 @@ pub mod describe_table_replica_auto_scaling_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
+        table_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The name of the table.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -7786,7 +8003,7 @@ pub mod describe_table_replica_auto_scaling_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeTableOutput {
     /// <p>The properties of the table.</p>
-    pub table: Option<TableDescription>,
+    pub table: ::std::option::Option<TableDescription>,
 }
 impl DescribeTableOutput {
     /// Creates a new builder-style object to manufacture [`DescribeTableOutput`](crate::operation::DescribeTableOutput)
@@ -7803,7 +8020,7 @@ pub mod describe_table_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table: Option<TableDescription>,
+        table: ::std::option::Option<TableDescription>,
     }
     impl Builder {
         /// <p>The properties of the table.</p>
@@ -7823,7 +8040,7 @@ pub mod describe_table_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeTableInput {
     /// <p>The name of the table to describe.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
 }
 impl DescribeTableInput {
     /// Creates a new builder-style object to manufacture [`DescribeTableInput`](crate::operation::DescribeTableInput)
@@ -7839,11 +8056,11 @@ pub mod describe_table_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
+        table_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The name of the table to describe.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -7862,18 +8079,18 @@ pub mod describe_table_input {
 pub struct DescribeLimitsOutput {
     /// <p>The maximum total read capacity units that your account allows you to provision across
     /// all of your tables in this Region.</p>
-    pub account_max_read_capacity_units: Option<i64>,
+    pub account_max_read_capacity_units: ::std::option::Option<i64>,
     /// <p>The maximum total write capacity units that your account allows you to provision across
     /// all of your tables in this Region.</p>
-    pub account_max_write_capacity_units: Option<i64>,
+    pub account_max_write_capacity_units: ::std::option::Option<i64>,
     /// <p>The maximum read capacity units that your account allows you to provision for a new
     /// table that you are creating in this Region, including the read capacity units
     /// provisioned for its global secondary indexes (GSIs).</p>
-    pub table_max_read_capacity_units: Option<i64>,
+    pub table_max_read_capacity_units: ::std::option::Option<i64>,
     /// <p>The maximum write capacity units that your account allows you to provision for a new
     /// table that you are creating in this Region, including the write capacity units
     /// provisioned for its global secondary indexes (GSIs).</p>
-    pub table_max_write_capacity_units: Option<i64>,
+    pub table_max_write_capacity_units: ::std::option::Option<i64>,
 }
 impl DescribeLimitsOutput {
     /// Creates a new builder-style object to manufacture [`DescribeLimitsOutput`](crate::operation::DescribeLimitsOutput)
@@ -7889,10 +8106,10 @@ pub mod describe_limits_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        account_max_read_capacity_units: Option<i64>,
-        account_max_write_capacity_units: Option<i64>,
-        table_max_read_capacity_units: Option<i64>,
-        table_max_write_capacity_units: Option<i64>,
+        account_max_read_capacity_units: ::std::option::Option<i64>,
+        account_max_write_capacity_units: ::std::option::Option<i64>,
+        table_max_read_capacity_units: ::std::option::Option<i64>,
+        table_max_write_capacity_units: ::std::option::Option<i64>,
     }
     impl Builder {
         /// <p>The maximum total read capacity units that your account allows you to provision across
@@ -7963,9 +8180,10 @@ pub mod describe_limits_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeKinesisStreamingDestinationOutput {
     /// <p>The name of the table being described.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The list of replica structures for the table being described.</p>
-    pub kinesis_data_stream_destinations: Option<Vec<KinesisDataStreamDestination>>,
+    pub kinesis_data_stream_destinations:
+        ::std::option::Option<::std::vec::Vec<KinesisDataStreamDestination>>,
 }
 impl DescribeKinesisStreamingDestinationOutput {
     /// Creates a new builder-style object to manufacture [`DescribeKinesisStreamingDestinationOutput`](crate::operation::DescribeKinesisStreamingDestinationOutput)
@@ -7982,19 +8200,20 @@ pub mod describe_kinesis_streaming_destination_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        kinesis_data_stream_destinations: Option<Vec<KinesisDataStreamDestination>>,
+        table_name: ::std::option::Option<::std::string::String>,
+        kinesis_data_stream_destinations:
+            ::std::option::Option<::std::vec::Vec<KinesisDataStreamDestination>>,
     }
     impl Builder {
         /// <p>The name of the table being described.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>The list of replica structures for the table being described.</p>
         pub fn kinesis_data_stream_destinations(
             mut self,
-            inp: Vec<KinesisDataStreamDestination>,
+            inp: ::std::vec::Vec<KinesisDataStreamDestination>,
         ) -> Self {
             self.kinesis_data_stream_destinations = Some(inp);
             self
@@ -8013,7 +8232,7 @@ pub mod describe_kinesis_streaming_destination_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeKinesisStreamingDestinationInput {
     /// <p>The name of the table being described.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
 }
 impl DescribeKinesisStreamingDestinationInput {
     /// Creates a new builder-style object to manufacture [`DescribeKinesisStreamingDestinationInput`](crate::operation::DescribeKinesisStreamingDestinationInput)
@@ -8029,11 +8248,11 @@ pub mod describe_kinesis_streaming_destination_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
+        table_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The name of the table being described.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -8050,9 +8269,9 @@ pub mod describe_kinesis_streaming_destination_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeGlobalTableSettingsOutput {
     /// <p>The name of the global table.</p>
-    pub global_table_name: Option<String>,
+    pub global_table_name: ::std::option::Option<::std::string::String>,
     /// <p>The Region-specific settings for the global table.</p>
-    pub replica_settings: Option<Vec<ReplicaSettingsDescription>>,
+    pub replica_settings: ::std::option::Option<::std::vec::Vec<ReplicaSettingsDescription>>,
 }
 impl DescribeGlobalTableSettingsOutput {
     /// Creates a new builder-style object to manufacture [`DescribeGlobalTableSettingsOutput`](crate::operation::DescribeGlobalTableSettingsOutput)
@@ -8069,17 +8288,20 @@ pub mod describe_global_table_settings_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        global_table_name: Option<String>,
-        replica_settings: Option<Vec<ReplicaSettingsDescription>>,
+        global_table_name: ::std::option::Option<::std::string::String>,
+        replica_settings: ::std::option::Option<::std::vec::Vec<ReplicaSettingsDescription>>,
     }
     impl Builder {
         /// <p>The name of the global table.</p>
-        pub fn global_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn global_table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.global_table_name = Some(inp.into());
             self
         }
         /// <p>The Region-specific settings for the global table.</p>
-        pub fn replica_settings(mut self, inp: Vec<ReplicaSettingsDescription>) -> Self {
+        pub fn replica_settings(
+            mut self,
+            inp: ::std::vec::Vec<ReplicaSettingsDescription>,
+        ) -> Self {
             self.replica_settings = Some(inp);
             self
         }
@@ -8097,7 +8319,7 @@ pub mod describe_global_table_settings_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeGlobalTableSettingsInput {
     /// <p>The name of the global table to describe.</p>
-    pub global_table_name: Option<String>,
+    pub global_table_name: ::std::option::Option<::std::string::String>,
 }
 impl DescribeGlobalTableSettingsInput {
     /// Creates a new builder-style object to manufacture [`DescribeGlobalTableSettingsInput`](crate::operation::DescribeGlobalTableSettingsInput)
@@ -8113,11 +8335,11 @@ pub mod describe_global_table_settings_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        global_table_name: Option<String>,
+        global_table_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The name of the global table to describe.</p>
-        pub fn global_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn global_table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.global_table_name = Some(inp.into());
             self
         }
@@ -8134,7 +8356,7 @@ pub mod describe_global_table_settings_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeGlobalTableOutput {
     /// <p>Contains the details of the global table.</p>
-    pub global_table_description: Option<GlobalTableDescription>,
+    pub global_table_description: ::std::option::Option<GlobalTableDescription>,
 }
 impl DescribeGlobalTableOutput {
     /// Creates a new builder-style object to manufacture [`DescribeGlobalTableOutput`](crate::operation::DescribeGlobalTableOutput)
@@ -8151,7 +8373,7 @@ pub mod describe_global_table_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        global_table_description: Option<GlobalTableDescription>,
+        global_table_description: ::std::option::Option<GlobalTableDescription>,
     }
     impl Builder {
         /// <p>Contains the details of the global table.</p>
@@ -8172,7 +8394,7 @@ pub mod describe_global_table_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeGlobalTableInput {
     /// <p>The name of the global table.</p>
-    pub global_table_name: Option<String>,
+    pub global_table_name: ::std::option::Option<::std::string::String>,
 }
 impl DescribeGlobalTableInput {
     /// Creates a new builder-style object to manufacture [`DescribeGlobalTableInput`](crate::operation::DescribeGlobalTableInput)
@@ -8188,11 +8410,11 @@ pub mod describe_global_table_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        global_table_name: Option<String>,
+        global_table_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The name of the global table.</p>
-        pub fn global_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn global_table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.global_table_name = Some(inp.into());
             self
         }
@@ -8209,7 +8431,7 @@ pub mod describe_global_table_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeExportOutput {
     /// <p>Represents the properties of the export.</p>
-    pub export_description: Option<ExportDescription>,
+    pub export_description: ::std::option::Option<ExportDescription>,
 }
 impl DescribeExportOutput {
     /// Creates a new builder-style object to manufacture [`DescribeExportOutput`](crate::operation::DescribeExportOutput)
@@ -8226,7 +8448,7 @@ pub mod describe_export_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        export_description: Option<ExportDescription>,
+        export_description: ::std::option::Option<ExportDescription>,
     }
     impl Builder {
         /// <p>Represents the properties of the export.</p>
@@ -8247,7 +8469,7 @@ pub mod describe_export_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeExportInput {
     /// <p>The Amazon Resource Name (ARN) associated with the export.</p>
-    pub export_arn: Option<String>,
+    pub export_arn: ::std::option::Option<::std::string::String>,
 }
 impl DescribeExportInput {
     /// Creates a new builder-style object to manufacture [`DescribeExportInput`](crate::operation::DescribeExportInput)
@@ -8263,11 +8485,11 @@ pub mod describe_export_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        export_arn: Option<String>,
+        export_arn: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The Amazon Resource Name (ARN) associated with the export.</p>
-        pub fn export_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn export_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.export_arn = Some(inp.into());
             self
         }
@@ -8284,7 +8506,7 @@ pub mod describe_export_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeEndpointsOutput {
     /// <p>List of endpoints.</p>
-    pub endpoints: Option<Vec<Endpoint>>,
+    pub endpoints: ::std::option::Option<::std::vec::Vec<Endpoint>>,
 }
 impl DescribeEndpointsOutput {
     /// Creates a new builder-style object to manufacture [`DescribeEndpointsOutput`](crate::operation::DescribeEndpointsOutput)
@@ -8301,11 +8523,11 @@ pub mod describe_endpoints_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        endpoints: Option<Vec<Endpoint>>,
+        endpoints: ::std::option::Option<::std::vec::Vec<Endpoint>>,
     }
     impl Builder {
         /// <p>List of endpoints.</p>
-        pub fn endpoints(mut self, inp: Vec<Endpoint>) -> Self {
+        pub fn endpoints(mut self, inp: ::std::vec::Vec<Endpoint>) -> Self {
             self.endpoints = Some(inp);
             self
         }
@@ -8347,15 +8569,16 @@ pub mod describe_endpoints_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeContributorInsightsOutput {
     /// <p>The name of the table being described.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The name of the global secondary index being described.</p>
-    pub index_name: Option<String>,
+    pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>List of names of the associated Alpine rules.</p>
-    pub contributor_insights_rule_list: Option<Vec<String>>,
+    pub contributor_insights_rule_list:
+        ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>Current Status contributor insights.</p>
-    pub contributor_insights_status: Option<ContributorInsightsStatus>,
+    pub contributor_insights_status: ::std::option::Option<ContributorInsightsStatus>,
     /// <p>Timestamp of the last time the status was changed.</p>
-    pub last_update_date_time: Option<Instant>,
+    pub last_update_date_time: ::std::option::Option<Instant>,
     /// <p>Returns information about the last failure that encountered.</p>
     /// <p>The most common exceptions for a FAILED status are:</p>
     /// <ul>
@@ -8373,7 +8596,7 @@ pub struct DescribeContributorInsightsOutput {
     /// <p>InternalServerError - Failed to create Amazon CloudWatch Contributor Insights rules. Please retry request.</p>
     /// </li>
     /// </ul>
-    pub failure_exception: Option<FailureException>,
+    pub failure_exception: ::std::option::Option<FailureException>,
 }
 impl DescribeContributorInsightsOutput {
     /// Creates a new builder-style object to manufacture [`DescribeContributorInsightsOutput`](crate::operation::DescribeContributorInsightsOutput)
@@ -8392,26 +8615,30 @@ pub mod describe_contributor_insights_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        index_name: Option<String>,
-        contributor_insights_rule_list: Option<Vec<String>>,
-        contributor_insights_status: Option<ContributorInsightsStatus>,
-        last_update_date_time: Option<Instant>,
-        failure_exception: Option<FailureException>,
+        table_name: ::std::option::Option<::std::string::String>,
+        index_name: ::std::option::Option<::std::string::String>,
+        contributor_insights_rule_list:
+            ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+        contributor_insights_status: ::std::option::Option<ContributorInsightsStatus>,
+        last_update_date_time: ::std::option::Option<Instant>,
+        failure_exception: ::std::option::Option<FailureException>,
     }
     impl Builder {
         /// <p>The name of the table being described.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>The name of the global secondary index being described.</p>
-        pub fn index_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn index_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.index_name = Some(inp.into());
             self
         }
         /// <p>List of names of the associated Alpine rules.</p>
-        pub fn contributor_insights_rule_list(mut self, inp: Vec<String>) -> Self {
+        pub fn contributor_insights_rule_list(
+            mut self,
+            inp: ::std::vec::Vec<::std::string::String>,
+        ) -> Self {
             self.contributor_insights_rule_list = Some(inp);
             self
         }
@@ -8464,9 +8691,9 @@ pub mod describe_contributor_insights_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeContributorInsightsInput {
     /// <p>The name of the table to describe.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The name of the global secondary index to describe, if applicable.</p>
-    pub index_name: Option<String>,
+    pub index_name: ::std::option::Option<::std::string::String>,
 }
 impl DescribeContributorInsightsInput {
     /// Creates a new builder-style object to manufacture [`DescribeContributorInsightsInput`](crate::operation::DescribeContributorInsightsInput)
@@ -8482,17 +8709,17 @@ pub mod describe_contributor_insights_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        index_name: Option<String>,
+        table_name: ::std::option::Option<::std::string::String>,
+        index_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The name of the table to describe.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>The name of the global secondary index to describe, if applicable.</p>
-        pub fn index_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn index_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.index_name = Some(inp.into());
             self
         }
@@ -8510,7 +8737,7 @@ pub mod describe_contributor_insights_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeContinuousBackupsOutput {
     /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
-    pub continuous_backups_description: Option<ContinuousBackupsDescription>,
+    pub continuous_backups_description: ::std::option::Option<ContinuousBackupsDescription>,
 }
 impl DescribeContinuousBackupsOutput {
     /// Creates a new builder-style object to manufacture [`DescribeContinuousBackupsOutput`](crate::operation::DescribeContinuousBackupsOutput)
@@ -8527,7 +8754,7 @@ pub mod describe_continuous_backups_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        continuous_backups_description: Option<ContinuousBackupsDescription>,
+        continuous_backups_description: ::std::option::Option<ContinuousBackupsDescription>,
     }
     impl Builder {
         /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
@@ -8548,7 +8775,7 @@ pub mod describe_continuous_backups_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeContinuousBackupsInput {
     /// <p>Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
 }
 impl DescribeContinuousBackupsInput {
     /// Creates a new builder-style object to manufacture [`DescribeContinuousBackupsInput`](crate::operation::DescribeContinuousBackupsInput)
@@ -8564,11 +8791,11 @@ pub mod describe_continuous_backups_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
+        table_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -8585,7 +8812,7 @@ pub mod describe_continuous_backups_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeBackupOutput {
     /// <p>Contains the description of the backup created for the table.</p>
-    pub backup_description: Option<BackupDescription>,
+    pub backup_description: ::std::option::Option<BackupDescription>,
 }
 impl DescribeBackupOutput {
     /// Creates a new builder-style object to manufacture [`DescribeBackupOutput`](crate::operation::DescribeBackupOutput)
@@ -8602,7 +8829,7 @@ pub mod describe_backup_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        backup_description: Option<BackupDescription>,
+        backup_description: ::std::option::Option<BackupDescription>,
     }
     impl Builder {
         /// <p>Contains the description of the backup created for the table.</p>
@@ -8623,7 +8850,7 @@ pub mod describe_backup_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DescribeBackupInput {
     /// <p>The Amazon Resource Name (ARN) associated with the backup.</p>
-    pub backup_arn: Option<String>,
+    pub backup_arn: ::std::option::Option<::std::string::String>,
 }
 impl DescribeBackupInput {
     /// Creates a new builder-style object to manufacture [`DescribeBackupInput`](crate::operation::DescribeBackupInput)
@@ -8639,11 +8866,11 @@ pub mod describe_backup_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        backup_arn: Option<String>,
+        backup_arn: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The Amazon Resource Name (ARN) associated with the backup.</p>
-        pub fn backup_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn backup_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.backup_arn = Some(inp.into());
             self
         }
@@ -8661,7 +8888,7 @@ pub mod describe_backup_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DeleteTableOutput {
     /// <p>Represents the properties of a table.</p>
-    pub table_description: Option<TableDescription>,
+    pub table_description: ::std::option::Option<TableDescription>,
 }
 impl DeleteTableOutput {
     /// Creates a new builder-style object to manufacture [`DeleteTableOutput`](crate::operation::DeleteTableOutput)
@@ -8678,7 +8905,7 @@ pub mod delete_table_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_description: Option<TableDescription>,
+        table_description: ::std::option::Option<TableDescription>,
     }
     impl Builder {
         /// <p>Represents the properties of a table.</p>
@@ -8700,7 +8927,7 @@ pub mod delete_table_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DeleteTableInput {
     /// <p>The name of the table to delete.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
 }
 impl DeleteTableInput {
     /// Creates a new builder-style object to manufacture [`DeleteTableInput`](crate::operation::DeleteTableInput)
@@ -8716,11 +8943,11 @@ pub mod delete_table_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
+        table_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The name of the table to delete.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -8740,14 +8967,15 @@ pub struct DeleteItemOutput {
     /// <p>A map of attribute names to <code>AttributeValue</code> objects, representing the item as it
     /// appeared before the <code>DeleteItem</code> operation. This map appears in the response only if
     /// <code>ReturnValues</code> was specified as <code>ALL_OLD</code> in the request.</p>
-    pub attributes: Option<HashMap<String, AttributeValue>>,
+    pub attributes:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>DeleteItem</code> operation. The data
     /// returned includes the total provisioned throughput consumed, along with statistics for
     /// the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is
     /// only returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For
     /// more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Mode</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub consumed_capacity: Option<ConsumedCapacity>,
+    pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
     /// <p>Information about item collections, if any, that were affected by the
     /// <code>DeleteItem</code> operation.
     /// <code>ItemCollectionMetrics</code> is only returned if the
@@ -8774,7 +9002,7 @@ pub struct DeleteItemOutput {
     /// <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p>
     /// </li>
     /// </ul>
-    pub item_collection_metrics: Option<ItemCollectionMetrics>,
+    pub item_collection_metrics: ::std::option::Option<ItemCollectionMetrics>,
 }
 impl DeleteItemOutput {
     /// Creates a new builder-style object to manufacture [`DeleteItemOutput`](crate::operation::DeleteItemOutput)
@@ -8789,20 +9017,24 @@ pub mod delete_item_output {
     use crate::model::ConsumedCapacity;
     use crate::model::ItemCollectionMetrics;
     use crate::operation::DeleteItemOutput;
-    use std::collections::HashMap;
     /// A builder for [`DeleteItemOutput`](crate::operation::DeleteItemOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        attributes: Option<HashMap<String, AttributeValue>>,
-        consumed_capacity: Option<ConsumedCapacity>,
-        item_collection_metrics: Option<ItemCollectionMetrics>,
+        attributes: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        consumed_capacity: ::std::option::Option<ConsumedCapacity>,
+        item_collection_metrics: ::std::option::Option<ItemCollectionMetrics>,
     }
     impl Builder {
         /// <p>A map of attribute names to <code>AttributeValue</code> objects, representing the item as it
         /// appeared before the <code>DeleteItem</code> operation. This map appears in the response only if
         /// <code>ReturnValues</code> was specified as <code>ALL_OLD</code> in the request.</p>
-        pub fn attributes(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn attributes(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.attributes = Some(inp);
             self
         }
@@ -8862,17 +9094,20 @@ pub mod delete_item_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DeleteItemInput {
     /// <p>The name of the table from which to delete the item.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>A map of attribute names to <code>AttributeValue</code> objects, representing the primary key of
     /// the item to delete.</p>
     /// <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
-    pub key: Option<HashMap<String, AttributeValue>>,
+    pub key:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub expected: Option<HashMap<String, ExpectedAttributeValue>>,
+    pub expected: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ExpectedAttributeValue>,
+    >,
     /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-    pub conditional_operator: Option<ConditionalOperator>,
+    pub conditional_operator: ::std::option::Option<ConditionalOperator>,
     /// <p>Use <code>ReturnValues</code> if you want to get the item attributes as they appeared before they
     /// were deleted. For <code>DeleteItem</code>, the valid values are:</p>
     /// <ul>
@@ -8892,7 +9127,7 @@ pub struct DeleteItemInput {
     /// <code>DeleteItem</code> does not recognize any values other than <code>NONE</code> or
     /// <code>ALL_OLD</code>.</p>
     /// </note>
-    pub return_values: Option<ReturnValue>,
+    pub return_values: ::std::option::Option<ReturnValue>,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -8909,10 +9144,10 @@ pub struct DeleteItemInput {
     /// <code>NONE</code> - No <code>ConsumedCapacity</code> details are included in the response.</p>
     /// </li>
     /// </ul>
-    pub return_consumed_capacity: Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>Determines whether item collection metrics are returned.  If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during
     /// the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
-    pub return_item_collection_metrics: Option<ReturnItemCollectionMetrics>,
+    pub return_item_collection_metrics: ::std::option::Option<ReturnItemCollectionMetrics>,
     /// <p>A condition that must be satisfied in order for a conditional <code>DeleteItem</code> to
     /// succeed.</p>
     /// <p>An expression can contain any of the following:</p>
@@ -8935,7 +9170,7 @@ pub struct DeleteItemInput {
     /// </ul>
     /// <p>For more information about condition expressions, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Condition Expressions</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub condition_expression: Option<String>,
+    pub condition_expression: ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
     /// <li>
@@ -8977,7 +9212,9 @@ pub struct DeleteItemInput {
     /// </note>
     /// <p>For more information on expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub expression_attribute_names: Option<HashMap<String, String>>,
+    pub expression_attribute_names: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
     /// <p>One or more values that can be substituted in an expression.</p>
     /// <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the <i>ProductStatus</i> attribute was one of the following: </p>
     /// <p>
@@ -8993,7 +9230,8 @@ pub struct DeleteItemInput {
     /// </p>
     /// <p>For more information on expression attribute values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Condition Expressions</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub expression_attribute_values: Option<HashMap<String, AttributeValue>>,
+    pub expression_attribute_values:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
 }
 impl DeleteItemInput {
     /// Creates a new builder-style object to manufacture [`DeleteItemInput`](crate::operation::DeleteItemInput)
@@ -9011,38 +9249,51 @@ pub mod delete_item_input {
     use crate::model::ReturnItemCollectionMetrics;
     use crate::model::ReturnValue;
     use crate::operation::DeleteItemInput;
-    use std::collections::HashMap;
     /// A builder for [`DeleteItemInput`](crate::operation::DeleteItemInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        key: Option<HashMap<String, AttributeValue>>,
-        expected: Option<HashMap<String, ExpectedAttributeValue>>,
-        conditional_operator: Option<ConditionalOperator>,
-        return_values: Option<ReturnValue>,
-        return_consumed_capacity: Option<ReturnConsumedCapacity>,
-        return_item_collection_metrics: Option<ReturnItemCollectionMetrics>,
-        condition_expression: Option<String>,
-        expression_attribute_names: Option<HashMap<String, String>>,
-        expression_attribute_values: Option<HashMap<String, AttributeValue>>,
+        table_name: ::std::option::Option<::std::string::String>,
+        key: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
+        expected: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ExpectedAttributeValue>,
+        >,
+        conditional_operator: ::std::option::Option<ConditionalOperator>,
+        return_values: ::std::option::Option<ReturnValue>,
+        return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
+        return_item_collection_metrics: ::std::option::Option<ReturnItemCollectionMetrics>,
+        condition_expression: ::std::option::Option<::std::string::String>,
+        expression_attribute_names: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
+        expression_attribute_values: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        >,
     }
     impl Builder {
         /// <p>The name of the table from which to delete the item.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>A map of attribute names to <code>AttributeValue</code> objects, representing the primary key of
         /// the item to delete.</p>
         /// <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
-        pub fn key(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn key(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.key = Some(inp);
             self
         }
         /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-        pub fn expected(mut self, inp: HashMap<String, ExpectedAttributeValue>) -> Self {
+        pub fn expected(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ExpectedAttributeValue>,
+        ) -> Self {
             self.expected = Some(inp);
             self
         }
@@ -9123,7 +9374,7 @@ pub mod delete_item_input {
         /// </ul>
         /// <p>For more information about condition expressions, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Condition Expressions</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn condition_expression(mut self, inp: impl Into<String>) -> Self {
+        pub fn condition_expression(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.condition_expression = Some(inp.into());
             self
         }
@@ -9168,7 +9419,10 @@ pub mod delete_item_input {
         /// </note>
         /// <p>For more information on expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn expression_attribute_names(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn expression_attribute_names(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.expression_attribute_names = Some(inp);
             self
         }
@@ -9187,7 +9441,10 @@ pub mod delete_item_input {
         /// </p>
         /// <p>For more information on expression attribute values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html">Condition Expressions</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn expression_attribute_values(mut self, inp: HashMap<String, AttributeValue>) -> Self {
+        pub fn expression_attribute_values(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, AttributeValue>,
+        ) -> Self {
             self.expression_attribute_values = Some(inp);
             self
         }
@@ -9213,7 +9470,7 @@ pub mod delete_item_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DeleteBackupOutput {
     /// <p>Contains the description of the backup created for the table.</p>
-    pub backup_description: Option<BackupDescription>,
+    pub backup_description: ::std::option::Option<BackupDescription>,
 }
 impl DeleteBackupOutput {
     /// Creates a new builder-style object to manufacture [`DeleteBackupOutput`](crate::operation::DeleteBackupOutput)
@@ -9230,7 +9487,7 @@ pub mod delete_backup_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        backup_description: Option<BackupDescription>,
+        backup_description: ::std::option::Option<BackupDescription>,
     }
     impl Builder {
         /// <p>Contains the description of the backup created for the table.</p>
@@ -9251,7 +9508,7 @@ pub mod delete_backup_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct DeleteBackupInput {
     /// <p>The ARN associated with the backup.</p>
-    pub backup_arn: Option<String>,
+    pub backup_arn: ::std::option::Option<::std::string::String>,
 }
 impl DeleteBackupInput {
     /// Creates a new builder-style object to manufacture [`DeleteBackupInput`](crate::operation::DeleteBackupInput)
@@ -9267,11 +9524,11 @@ pub mod delete_backup_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        backup_arn: Option<String>,
+        backup_arn: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The ARN associated with the backup.</p>
-        pub fn backup_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn backup_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.backup_arn = Some(inp.into());
             self
         }
@@ -9289,7 +9546,7 @@ pub mod delete_backup_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct CreateTableOutput {
     /// <p>Represents the properties of the table.</p>
-    pub table_description: Option<TableDescription>,
+    pub table_description: ::std::option::Option<TableDescription>,
 }
 impl CreateTableOutput {
     /// Creates a new builder-style object to manufacture [`CreateTableOutput`](crate::operation::CreateTableOutput)
@@ -9306,7 +9563,7 @@ pub mod create_table_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_description: Option<TableDescription>,
+        table_description: ::std::option::Option<TableDescription>,
     }
     impl Builder {
         /// <p>Represents the properties of the table.</p>
@@ -9328,9 +9585,9 @@ pub mod create_table_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct CreateTableInput {
     /// <p>An array of attributes that describe the key schema for the table and indexes.</p>
-    pub attribute_definitions: Option<Vec<AttributeDefinition>>,
+    pub attribute_definitions: ::std::option::Option<::std::vec::Vec<AttributeDefinition>>,
     /// <p>The name of the table to create.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>Specifies the attributes that make up the primary key for a table or an index. The attributes
     /// in <code>KeySchema</code> must also be defined in the <code>AttributeDefinitions</code> array. For more
     /// information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html">Data Model</a> in the
@@ -9372,7 +9629,7 @@ pub struct CreateTableInput {
     /// and the second element must have a <code>KeyType</code> of <code>RANGE</code>.</p>
     /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key">Working with Tables</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub key_schema: Option<Vec<KeySchemaElement>>,
+    pub key_schema: ::std::option::Option<::std::vec::Vec<KeySchemaElement>>,
     /// <p>One or more local secondary indexes (the maximum is 5) to be created on the table. Each index is scoped to a given partition key value. There is a 10 GB size limit per partition key value; otherwise, the size of a local secondary index is unconstrained.</p>
     /// <p>Each local secondary index in the array includes the following:</p>
     /// <ul>
@@ -9429,7 +9686,7 @@ pub struct CreateTableInput {
     /// </ul>
     /// </li>
     /// </ul>
-    pub local_secondary_indexes: Option<Vec<LocalSecondaryIndex>>,
+    pub local_secondary_indexes: ::std::option::Option<::std::vec::Vec<LocalSecondaryIndex>>,
     /// <p>One or more global secondary indexes (the maximum is 20) to be created on the table. Each global secondary index in the array includes the following:</p>
     /// <ul>
     /// <li>
@@ -9485,7 +9742,7 @@ pub struct CreateTableInput {
     /// consisting of read and write capacity units.</p>
     /// </li>
     /// </ul>
-    pub global_secondary_indexes: Option<Vec<GlobalSecondaryIndex>>,
+    pub global_secondary_indexes: ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndex>>,
     /// <p>Controls how you are charged for read and write throughput and how you manage capacity. This setting can be changed later.</p>
     /// <ul>
     /// <li>
@@ -9498,7 +9755,7 @@ pub struct CreateTableInput {
     /// </p>
     /// </li>
     /// </ul>
-    pub billing_mode: Option<BillingMode>,
+    pub billing_mode: ::std::option::Option<BillingMode>,
     /// <p>Represents the provisioned throughput settings for a specified table or index. The
     /// settings can be modified using the <code>UpdateTable</code> operation.</p>
     /// <p> If you set BillingMode as <code>PROVISIONED</code>, you must specify this property. If you
@@ -9507,7 +9764,7 @@ pub struct CreateTableInput {
     /// <p>For current minimum and maximum provisioned throughput values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Service,
     /// Account, and Table Quotas</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
-    pub provisioned_throughput: Option<ProvisionedThroughput>,
+    pub provisioned_throughput: ::std::option::Option<ProvisionedThroughput>,
     /// <p>The settings for DynamoDB Streams on the table. These settings consist of:</p>
     /// <ul>
     /// <li>
@@ -9544,11 +9801,11 @@ pub struct CreateTableInput {
     /// </ul>
     /// </li>
     /// </ul>
-    pub stream_specification: Option<StreamSpecification>,
+    pub stream_specification: ::std::option::Option<StreamSpecification>,
     /// <p>Represents the settings used to enable server-side encryption.</p>
-    pub sse_specification: Option<SSESpecification>,
+    pub sse_specification: ::std::option::Option<SSESpecification>,
     /// <p>A list of key-value pairs to label the table. For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a>.</p>
-    pub tags: Option<Vec<Tag>>,
+    pub tags: ::std::option::Option<::std::vec::Vec<Tag>>,
 }
 impl CreateTableInput {
     /// Creates a new builder-style object to manufacture [`CreateTableInput`](crate::operation::CreateTableInput)
@@ -9573,25 +9830,25 @@ pub mod create_table_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        attribute_definitions: Option<Vec<AttributeDefinition>>,
-        table_name: Option<String>,
-        key_schema: Option<Vec<KeySchemaElement>>,
-        local_secondary_indexes: Option<Vec<LocalSecondaryIndex>>,
-        global_secondary_indexes: Option<Vec<GlobalSecondaryIndex>>,
-        billing_mode: Option<BillingMode>,
-        provisioned_throughput: Option<ProvisionedThroughput>,
-        stream_specification: Option<StreamSpecification>,
-        sse_specification: Option<SSESpecification>,
-        tags: Option<Vec<Tag>>,
+        attribute_definitions: ::std::option::Option<::std::vec::Vec<AttributeDefinition>>,
+        table_name: ::std::option::Option<::std::string::String>,
+        key_schema: ::std::option::Option<::std::vec::Vec<KeySchemaElement>>,
+        local_secondary_indexes: ::std::option::Option<::std::vec::Vec<LocalSecondaryIndex>>,
+        global_secondary_indexes: ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndex>>,
+        billing_mode: ::std::option::Option<BillingMode>,
+        provisioned_throughput: ::std::option::Option<ProvisionedThroughput>,
+        stream_specification: ::std::option::Option<StreamSpecification>,
+        sse_specification: ::std::option::Option<SSESpecification>,
+        tags: ::std::option::Option<::std::vec::Vec<Tag>>,
     }
     impl Builder {
         /// <p>An array of attributes that describe the key schema for the table and indexes.</p>
-        pub fn attribute_definitions(mut self, inp: Vec<AttributeDefinition>) -> Self {
+        pub fn attribute_definitions(mut self, inp: ::std::vec::Vec<AttributeDefinition>) -> Self {
             self.attribute_definitions = Some(inp);
             self
         }
         /// <p>The name of the table to create.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
@@ -9636,7 +9893,7 @@ pub mod create_table_input {
         /// and the second element must have a <code>KeyType</code> of <code>RANGE</code>.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key">Working with Tables</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
-        pub fn key_schema(mut self, inp: Vec<KeySchemaElement>) -> Self {
+        pub fn key_schema(mut self, inp: ::std::vec::Vec<KeySchemaElement>) -> Self {
             self.key_schema = Some(inp);
             self
         }
@@ -9696,7 +9953,10 @@ pub mod create_table_input {
         /// </ul>
         /// </li>
         /// </ul>
-        pub fn local_secondary_indexes(mut self, inp: Vec<LocalSecondaryIndex>) -> Self {
+        pub fn local_secondary_indexes(
+            mut self,
+            inp: ::std::vec::Vec<LocalSecondaryIndex>,
+        ) -> Self {
             self.local_secondary_indexes = Some(inp);
             self
         }
@@ -9755,7 +10015,10 @@ pub mod create_table_input {
         /// consisting of read and write capacity units.</p>
         /// </li>
         /// </ul>
-        pub fn global_secondary_indexes(mut self, inp: Vec<GlobalSecondaryIndex>) -> Self {
+        pub fn global_secondary_indexes(
+            mut self,
+            inp: ::std::vec::Vec<GlobalSecondaryIndex>,
+        ) -> Self {
             self.global_secondary_indexes = Some(inp);
             self
         }
@@ -9833,7 +10096,7 @@ pub mod create_table_input {
             self
         }
         /// <p>A list of key-value pairs to label the table. For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a>.</p>
-        pub fn tags(mut self, inp: Vec<Tag>) -> Self {
+        pub fn tags(mut self, inp: ::std::vec::Vec<Tag>) -> Self {
             self.tags = Some(inp);
             self
         }
@@ -9859,7 +10122,7 @@ pub mod create_table_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct CreateGlobalTableOutput {
     /// <p>Contains the details of the global table.</p>
-    pub global_table_description: Option<GlobalTableDescription>,
+    pub global_table_description: ::std::option::Option<GlobalTableDescription>,
 }
 impl CreateGlobalTableOutput {
     /// Creates a new builder-style object to manufacture [`CreateGlobalTableOutput`](crate::operation::CreateGlobalTableOutput)
@@ -9876,7 +10139,7 @@ pub mod create_global_table_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        global_table_description: Option<GlobalTableDescription>,
+        global_table_description: ::std::option::Option<GlobalTableDescription>,
     }
     impl Builder {
         /// <p>Contains the details of the global table.</p>
@@ -9897,9 +10160,9 @@ pub mod create_global_table_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct CreateGlobalTableInput {
     /// <p>The global table name.</p>
-    pub global_table_name: Option<String>,
+    pub global_table_name: ::std::option::Option<::std::string::String>,
     /// <p>The Regions where the global table needs to be created.</p>
-    pub replication_group: Option<Vec<Replica>>,
+    pub replication_group: ::std::option::Option<::std::vec::Vec<Replica>>,
 }
 impl CreateGlobalTableInput {
     /// Creates a new builder-style object to manufacture [`CreateGlobalTableInput`](crate::operation::CreateGlobalTableInput)
@@ -9916,17 +10179,17 @@ pub mod create_global_table_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        global_table_name: Option<String>,
-        replication_group: Option<Vec<Replica>>,
+        global_table_name: ::std::option::Option<::std::string::String>,
+        replication_group: ::std::option::Option<::std::vec::Vec<Replica>>,
     }
     impl Builder {
         /// <p>The global table name.</p>
-        pub fn global_table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn global_table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.global_table_name = Some(inp.into());
             self
         }
         /// <p>The Regions where the global table needs to be created.</p>
-        pub fn replication_group(mut self, inp: Vec<Replica>) -> Self {
+        pub fn replication_group(mut self, inp: ::std::vec::Vec<Replica>) -> Self {
             self.replication_group = Some(inp);
             self
         }
@@ -9944,7 +10207,7 @@ pub mod create_global_table_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct CreateBackupOutput {
     /// <p>Contains the details of the backup created for the table.</p>
-    pub backup_details: Option<BackupDetails>,
+    pub backup_details: ::std::option::Option<BackupDetails>,
 }
 impl CreateBackupOutput {
     /// Creates a new builder-style object to manufacture [`CreateBackupOutput`](crate::operation::CreateBackupOutput)
@@ -9961,7 +10224,7 @@ pub mod create_backup_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        backup_details: Option<BackupDetails>,
+        backup_details: ::std::option::Option<BackupDetails>,
     }
     impl Builder {
         /// <p>Contains the details of the backup created for the table.</p>
@@ -9982,9 +10245,9 @@ pub mod create_backup_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct CreateBackupInput {
     /// <p>The name of the table.</p>
-    pub table_name: Option<String>,
+    pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>Specified name for the backup.</p>
-    pub backup_name: Option<String>,
+    pub backup_name: ::std::option::Option<::std::string::String>,
 }
 impl CreateBackupInput {
     /// Creates a new builder-style object to manufacture [`CreateBackupInput`](crate::operation::CreateBackupInput)
@@ -10000,17 +10263,17 @@ pub mod create_backup_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        table_name: Option<String>,
-        backup_name: Option<String>,
+        table_name: ::std::option::Option<::std::string::String>,
+        backup_name: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The name of the table.</p>
-        pub fn table_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn table_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.table_name = Some(inp.into());
             self
         }
         /// <p>Specified name for the backup.</p>
-        pub fn backup_name(mut self, inp: impl Into<String>) -> Self {
+        pub fn backup_name(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.backup_name = Some(inp.into());
             self
         }
@@ -10066,7 +10329,9 @@ pub struct BatchWriteItemOutput {
     /// </ul>
     /// <p>If there are no unprocessed items remaining, the response contains an empty
     /// <code>UnprocessedItems</code> map.</p>
-    pub unprocessed_items: Option<HashMap<String, Vec<WriteRequest>>>,
+    pub unprocessed_items: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<WriteRequest>>,
+    >,
     /// <p>A list of tables that were processed by <code>BatchWriteItem</code> and, for each table,
     /// information about any item collections that were affected by individual <code>DeleteItem</code> or
     /// <code>PutItem</code> operations.</p>
@@ -10087,7 +10352,9 @@ pub struct BatchWriteItemOutput {
     /// <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p>
     /// </li>
     /// </ul>
-    pub item_collection_metrics: Option<HashMap<String, Vec<ItemCollectionMetrics>>>,
+    pub item_collection_metrics: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<ItemCollectionMetrics>>,
+    >,
     /// <p>The capacity units consumed by the entire <code>BatchWriteItem</code> operation.</p>
     /// <p>Each element consists of:</p>
     /// <ul>
@@ -10100,7 +10367,7 @@ pub struct BatchWriteItemOutput {
     /// <code>CapacityUnits</code> - The total number of capacity units consumed.</p>
     /// </li>
     /// </ul>
-    pub consumed_capacity: Option<Vec<ConsumedCapacity>>,
+    pub consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
 }
 impl BatchWriteItemOutput {
     /// Creates a new builder-style object to manufacture [`BatchWriteItemOutput`](crate::operation::BatchWriteItemOutput)
@@ -10115,14 +10382,20 @@ pub mod batch_write_item_output {
     use crate::model::ItemCollectionMetrics;
     use crate::model::WriteRequest;
     use crate::operation::BatchWriteItemOutput;
-    use std::collections::HashMap;
     /// A builder for [`BatchWriteItemOutput`](crate::operation::BatchWriteItemOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        unprocessed_items: Option<HashMap<String, Vec<WriteRequest>>>,
-        item_collection_metrics: Option<HashMap<String, Vec<ItemCollectionMetrics>>>,
-        consumed_capacity: Option<Vec<ConsumedCapacity>>,
+        unprocessed_items: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<WriteRequest>>,
+        >,
+        item_collection_metrics: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::vec::Vec<ItemCollectionMetrics>,
+            >,
+        >,
+        consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
     }
     impl Builder {
         /// <p>A map of tables and requests against those tables that were not processed. The
@@ -10163,7 +10436,10 @@ pub mod batch_write_item_output {
         /// </ul>
         /// <p>If there are no unprocessed items remaining, the response contains an empty
         /// <code>UnprocessedItems</code> map.</p>
-        pub fn unprocessed_items(mut self, inp: HashMap<String, Vec<WriteRequest>>) -> Self {
+        pub fn unprocessed_items(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<WriteRequest>>,
+        ) -> Self {
             self.unprocessed_items = Some(inp);
             self
         }
@@ -10189,7 +10465,10 @@ pub mod batch_write_item_output {
         /// </ul>
         pub fn item_collection_metrics(
             mut self,
-            inp: HashMap<String, Vec<ItemCollectionMetrics>>,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::vec::Vec<ItemCollectionMetrics>,
+            >,
         ) -> Self {
             self.item_collection_metrics = Some(inp);
             self
@@ -10206,7 +10485,7 @@ pub mod batch_write_item_output {
         /// <code>CapacityUnits</code> - The total number of capacity units consumed.</p>
         /// </li>
         /// </ul>
-        pub fn consumed_capacity(mut self, inp: Vec<ConsumedCapacity>) -> Self {
+        pub fn consumed_capacity(mut self, inp: ::std::vec::Vec<ConsumedCapacity>) -> Self {
             self.consumed_capacity = Some(inp);
             self
         }
@@ -10262,7 +10541,9 @@ pub struct BatchWriteItemInput {
     /// </ul>
     /// </li>
     /// </ul>
-    pub request_items: Option<HashMap<String, Vec<WriteRequest>>>,
+    pub request_items: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<WriteRequest>>,
+    >,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -10279,10 +10560,10 @@ pub struct BatchWriteItemInput {
     /// <code>NONE</code> - No <code>ConsumedCapacity</code> details are included in the response.</p>
     /// </li>
     /// </ul>
-    pub return_consumed_capacity: Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
     /// <p>Determines whether item collection metrics are returned.  If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during
     /// the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
-    pub return_item_collection_metrics: Option<ReturnItemCollectionMetrics>,
+    pub return_item_collection_metrics: ::std::option::Option<ReturnItemCollectionMetrics>,
 }
 impl BatchWriteItemInput {
     /// Creates a new builder-style object to manufacture [`BatchWriteItemInput`](crate::operation::BatchWriteItemInput)
@@ -10297,14 +10578,15 @@ pub mod batch_write_item_input {
     use crate::model::ReturnItemCollectionMetrics;
     use crate::model::WriteRequest;
     use crate::operation::BatchWriteItemInput;
-    use std::collections::HashMap;
     /// A builder for [`BatchWriteItemInput`](crate::operation::BatchWriteItemInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        request_items: Option<HashMap<String, Vec<WriteRequest>>>,
-        return_consumed_capacity: Option<ReturnConsumedCapacity>,
-        return_item_collection_metrics: Option<ReturnItemCollectionMetrics>,
+        request_items: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<WriteRequest>>,
+        >,
+        return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
+        return_item_collection_metrics: ::std::option::Option<ReturnItemCollectionMetrics>,
     }
     impl Builder {
         /// <p>A map of one or more table names and, for each table, a list of operations to be performed
@@ -10344,7 +10626,10 @@ pub mod batch_write_item_input {
         /// </ul>
         /// </li>
         /// </ul>
-        pub fn request_items(mut self, inp: HashMap<String, Vec<WriteRequest>>) -> Self {
+        pub fn request_items(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<WriteRequest>>,
+        ) -> Self {
             self.request_items = Some(inp);
             self
         }
@@ -10391,7 +10676,12 @@ pub mod batch_write_item_input {
 pub struct BatchGetItemOutput {
     /// <p>A map of table name to a list of items. Each object in <code>Responses</code> consists of a table
     /// name, along with a map of attribute data consisting of the data type and attribute value.</p>
-    pub responses: Option<HashMap<String, Vec<HashMap<String, AttributeValue>>>>,
+    pub responses: ::std::option::Option<
+        ::std::collections::HashMap<
+            ::std::string::String,
+            ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+        >,
+    >,
     /// <p>A map of tables and their respective keys that were not processed with the current response.
     /// The <code>UnprocessedKeys</code> value is in the same form as <code>RequestItems</code>, so the value can
     /// be provided directly to a subsequent <code>BatchGetItem</code> operation. For more information, see
@@ -10418,7 +10708,9 @@ pub struct BatchGetItemOutput {
     /// </ul>
     /// <p>If there are no unprocessed keys remaining, the response contains an empty
     /// <code>UnprocessedKeys</code> map.</p>
-    pub unprocessed_keys: Option<HashMap<String, KeysAndAttributes>>,
+    pub unprocessed_keys: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, KeysAndAttributes>,
+    >,
     /// <p>The read capacity units consumed by the entire <code>BatchGetItem</code> operation.</p>
     /// <p>Each element consists of:</p>
     /// <ul>
@@ -10431,7 +10723,7 @@ pub struct BatchGetItemOutput {
     /// <code>CapacityUnits</code> - The total number of capacity units consumed.</p>
     /// </li>
     /// </ul>
-    pub consumed_capacity: Option<Vec<ConsumedCapacity>>,
+    pub consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
 }
 impl BatchGetItemOutput {
     /// Creates a new builder-style object to manufacture [`BatchGetItemOutput`](crate::operation::BatchGetItemOutput)
@@ -10446,21 +10738,30 @@ pub mod batch_get_item_output {
     use crate::model::ConsumedCapacity;
     use crate::model::KeysAndAttributes;
     use crate::operation::BatchGetItemOutput;
-    use std::collections::HashMap;
     /// A builder for [`BatchGetItemOutput`](crate::operation::BatchGetItemOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        responses: Option<HashMap<String, Vec<HashMap<String, AttributeValue>>>>,
-        unprocessed_keys: Option<HashMap<String, KeysAndAttributes>>,
-        consumed_capacity: Option<Vec<ConsumedCapacity>>,
+        responses: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+            >,
+        >,
+        unprocessed_keys: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, KeysAndAttributes>,
+        >,
+        consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
     }
     impl Builder {
         /// <p>A map of table name to a list of items. Each object in <code>Responses</code> consists of a table
         /// name, along with a map of attribute data consisting of the data type and attribute value.</p>
         pub fn responses(
             mut self,
-            inp: HashMap<String, Vec<HashMap<String, AttributeValue>>>,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
+            >,
         ) -> Self {
             self.responses = Some(inp);
             self
@@ -10491,7 +10792,10 @@ pub mod batch_get_item_output {
         /// </ul>
         /// <p>If there are no unprocessed keys remaining, the response contains an empty
         /// <code>UnprocessedKeys</code> map.</p>
-        pub fn unprocessed_keys(mut self, inp: HashMap<String, KeysAndAttributes>) -> Self {
+        pub fn unprocessed_keys(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, KeysAndAttributes>,
+        ) -> Self {
             self.unprocessed_keys = Some(inp);
             self
         }
@@ -10507,7 +10811,7 @@ pub mod batch_get_item_output {
         /// <code>CapacityUnits</code> - The total number of capacity units consumed.</p>
         /// </li>
         /// </ul>
-        pub fn consumed_capacity(mut self, inp: Vec<ConsumedCapacity>) -> Self {
+        pub fn consumed_capacity(mut self, inp: ::std::vec::Vec<ConsumedCapacity>) -> Self {
             self.consumed_capacity = Some(inp);
             self
         }
@@ -10604,7 +10908,9 @@ pub struct BatchGetItemInput {
     /// </p>
     /// </li>
     /// </ul>
-    pub request_items: Option<HashMap<String, KeysAndAttributes>>,
+    pub request_items: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, KeysAndAttributes>,
+    >,
     /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
     /// <ul>
     /// <li>
@@ -10621,7 +10927,7 @@ pub struct BatchGetItemInput {
     /// <code>NONE</code> - No <code>ConsumedCapacity</code> details are included in the response.</p>
     /// </li>
     /// </ul>
-    pub return_consumed_capacity: Option<ReturnConsumedCapacity>,
+    pub return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
 }
 impl BatchGetItemInput {
     /// Creates a new builder-style object to manufacture [`BatchGetItemInput`](crate::operation::BatchGetItemInput)
@@ -10635,13 +10941,14 @@ pub mod batch_get_item_input {
     use crate::model::KeysAndAttributes;
     use crate::model::ReturnConsumedCapacity;
     use crate::operation::BatchGetItemInput;
-    use std::collections::HashMap;
     /// A builder for [`BatchGetItemInput`](crate::operation::BatchGetItemInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        request_items: Option<HashMap<String, KeysAndAttributes>>,
-        return_consumed_capacity: Option<ReturnConsumedCapacity>,
+        request_items: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, KeysAndAttributes>,
+        >,
+        return_consumed_capacity: ::std::option::Option<ReturnConsumedCapacity>,
     }
     impl Builder {
         /// <p>A map of one or more table names and, for each table, a map that describes one or more items to retrieve from that table. Each table name can be used only once per <code>BatchGetItem</code> request.</p>
@@ -10722,7 +11029,10 @@ pub mod batch_get_item_input {
         /// </p>
         /// </li>
         /// </ul>
-        pub fn request_items(mut self, inp: HashMap<String, KeysAndAttributes>) -> Self {
+        pub fn request_items(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, KeysAndAttributes>,
+        ) -> Self {
             self.request_items = Some(inp);
             self
         }
@@ -10762,7 +11072,7 @@ pub struct BatchExecuteStatementOutput {
     /// <p>
     /// The response to each PartiQL statement in the batch.
     /// </p>
-    pub responses: Option<Vec<BatchStatementResponse>>,
+    pub responses: ::std::option::Option<::std::vec::Vec<BatchStatementResponse>>,
 }
 impl BatchExecuteStatementOutput {
     /// Creates a new builder-style object to manufacture [`BatchExecuteStatementOutput`](crate::operation::BatchExecuteStatementOutput)
@@ -10779,13 +11089,13 @@ pub mod batch_execute_statement_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        responses: Option<Vec<BatchStatementResponse>>,
+        responses: ::std::option::Option<::std::vec::Vec<BatchStatementResponse>>,
     }
     impl Builder {
         /// <p>
         /// The response to each PartiQL statement in the batch.
         /// </p>
-        pub fn responses(mut self, inp: Vec<BatchStatementResponse>) -> Self {
+        pub fn responses(mut self, inp: ::std::vec::Vec<BatchStatementResponse>) -> Self {
             self.responses = Some(inp);
             self
         }
@@ -10804,7 +11114,7 @@ pub struct BatchExecuteStatementInput {
     /// <p>
     /// The list of PartiQL statements representing the batch to run.
     /// </p>
-    pub statements: Option<Vec<BatchStatementRequest>>,
+    pub statements: ::std::option::Option<::std::vec::Vec<BatchStatementRequest>>,
 }
 impl BatchExecuteStatementInput {
     /// Creates a new builder-style object to manufacture [`BatchExecuteStatementInput`](crate::operation::BatchExecuteStatementInput)
@@ -10821,13 +11131,13 @@ pub mod batch_execute_statement_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        statements: Option<Vec<BatchStatementRequest>>,
+        statements: ::std::option::Option<::std::vec::Vec<BatchStatementRequest>>,
     }
     impl Builder {
         /// <p>
         /// The list of PartiQL statements representing the batch to run.
         /// </p>
-        pub fn statements(mut self, inp: Vec<BatchStatementRequest>) -> Self {
+        pub fn statements(mut self, inp: ::std::vec::Vec<BatchStatementRequest>) -> Self {
             self.statements = Some(inp);
             self
         }

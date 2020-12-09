@@ -14,8 +14,6 @@ use crate::serializer::PutAndGetInlineDocumentsInputBody;
 use smithy_types::Blob;
 use smithy_types::Document;
 use smithy_types::Instant;
-use std::collections::BTreeSet;
-use std::collections::HashMap;
 impl EmptyOperationInput {
     pub fn request_builder_base(&self) -> ::http::request::Builder {
         let builder = ::http::request::Builder::new();
@@ -24,13 +22,13 @@ impl EmptyOperationInput {
             .header("Content-Type", "application/x-amz-json-1.1")
             .header("X-Amz-Target", "JsonProtocol.EmptyOperation")
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         vec![]
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -94,13 +92,13 @@ impl GreetingWithErrorsInput {
             .header("Content-Type", "application/x-amz-json-1.1")
             .header("X-Amz-Target", "JsonProtocol.GreetingWithErrors")
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         vec![]
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -207,13 +205,13 @@ impl JsonEnumsInput {
             foo_enum_map: &self.foo_enum_map,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -234,13 +232,13 @@ impl JsonUnionsInput {
             contents: &self.contents,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -645,13 +643,13 @@ impl KitchenSinkOperationInput {
             unix_timestamp: &self.unix_timestamp,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1727,13 +1725,13 @@ impl NullOperationInput {
             sparse_string_map: &self.sparse_string_map,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1861,13 +1859,13 @@ impl OperationWithOptionalInputOutputInput {
     fn body(&self) -> OperationWithOptionalInputOutputInputBody {
         OperationWithOptionalInputOutputInputBody { value: &self.value }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1956,13 +1954,13 @@ impl PutAndGetInlineDocumentsInput {
             inline_document: &self.inline_document,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -1981,7 +1979,7 @@ mod put_and_get_inline_documents_request_test {
     fn test_put_and_get_inline_documents_input_request() {
         let input =PutAndGetInlineDocumentsInput::builder()
         .inline_document(
-            todo!() /* (document: `aws.protocoltests.json#Document`) software.amazon.smithy.model.node.ObjectNode@2cd3bb4e */
+            todo!() /* (document: `aws.protocoltests.json#Document`) software.amazon.smithy.model.node.ObjectNode@2bc86bdd */
         )
         .build()
         .unwrap()
@@ -2027,7 +2025,7 @@ mod put_and_get_inline_documents_request_test {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonUnionsOutput {
     /// A union with a representative set of types for members.
-    pub contents: Option<MyUnion>,
+    pub contents: ::std::option::Option<MyUnion>,
 }
 impl JsonUnionsOutput {
     /// Creates a new builder-style object to manufacture [`JsonUnionsOutput`](crate::operation::JsonUnionsOutput)
@@ -2044,7 +2042,7 @@ pub mod json_unions_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        contents: Option<MyUnion>,
+        contents: ::std::option::Option<MyUnion>,
     }
     impl Builder {
         /// A union with a representative set of types for members.
@@ -2066,7 +2064,7 @@ pub mod json_unions_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonUnionsInput {
     /// A union with a representative set of types for members.
-    pub contents: Option<MyUnion>,
+    pub contents: ::std::option::Option<MyUnion>,
 }
 impl JsonUnionsInput {
     /// Creates a new builder-style object to manufacture [`JsonUnionsInput`](crate::operation::JsonUnionsInput)
@@ -2083,7 +2081,7 @@ pub mod json_unions_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        contents: Option<MyUnion>,
+        contents: ::std::option::Option<MyUnion>,
     }
     impl Builder {
         /// A union with a representative set of types for members.
@@ -2103,7 +2101,7 @@ pub mod json_unions_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct GreetingWithErrorsOutput {
-    pub greeting: Option<String>,
+    pub greeting: ::std::option::Option<::std::string::String>,
 }
 impl GreetingWithErrorsOutput {
     /// Creates a new builder-style object to manufacture [`GreetingWithErrorsOutput`](crate::operation::GreetingWithErrorsOutput)
@@ -2119,10 +2117,10 @@ pub mod greeting_with_errors_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        greeting: Option<String>,
+        greeting: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn greeting(mut self, inp: impl Into<String>) -> Self {
+        pub fn greeting(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.greeting = Some(inp.into());
             self
         }
@@ -2163,9 +2161,15 @@ pub mod greeting_with_errors_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct NullOperationOutput {
-    pub string: Option<String>,
-    pub sparse_string_list: Option<Vec<Option<String>>>,
-    pub sparse_string_map: Option<HashMap<String, Option<String>>>,
+    pub string: ::std::option::Option<::std::string::String>,
+    pub sparse_string_list:
+        ::std::option::Option<::std::vec::Vec<::std::option::Option<::std::string::String>>>,
+    pub sparse_string_map: ::std::option::Option<
+        ::std::collections::HashMap<
+            ::std::string::String,
+            ::std::option::Option<::std::string::String>,
+        >,
+    >,
 }
 impl NullOperationOutput {
     /// Creates a new builder-style object to manufacture [`NullOperationOutput`](crate::operation::NullOperationOutput)
@@ -2177,25 +2181,39 @@ impl NullOperationOutput {
 pub mod null_operation_output {
 
     use crate::operation::NullOperationOutput;
-    use std::collections::HashMap;
     /// A builder for [`NullOperationOutput`](crate::operation::NullOperationOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        string: Option<String>,
-        sparse_string_list: Option<Vec<Option<String>>>,
-        sparse_string_map: Option<HashMap<String, Option<String>>>,
+        string: ::std::option::Option<::std::string::String>,
+        sparse_string_list:
+            ::std::option::Option<::std::vec::Vec<::std::option::Option<::std::string::String>>>,
+        sparse_string_map: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::option::Option<::std::string::String>,
+            >,
+        >,
     }
     impl Builder {
-        pub fn string(mut self, inp: impl Into<String>) -> Self {
+        pub fn string(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.string = Some(inp.into());
             self
         }
-        pub fn sparse_string_list(mut self, inp: Vec<Option<String>>) -> Self {
+        pub fn sparse_string_list(
+            mut self,
+            inp: ::std::vec::Vec<::std::option::Option<::std::string::String>>,
+        ) -> Self {
             self.sparse_string_list = Some(inp);
             self
         }
-        pub fn sparse_string_map(mut self, inp: HashMap<String, Option<String>>) -> Self {
+        pub fn sparse_string_map(
+            mut self,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::option::Option<::std::string::String>,
+            >,
+        ) -> Self {
             self.sparse_string_map = Some(inp);
             self
         }
@@ -2213,9 +2231,15 @@ pub mod null_operation_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct NullOperationInput {
-    pub string: Option<String>,
-    pub sparse_string_list: Option<Vec<Option<String>>>,
-    pub sparse_string_map: Option<HashMap<String, Option<String>>>,
+    pub string: ::std::option::Option<::std::string::String>,
+    pub sparse_string_list:
+        ::std::option::Option<::std::vec::Vec<::std::option::Option<::std::string::String>>>,
+    pub sparse_string_map: ::std::option::Option<
+        ::std::collections::HashMap<
+            ::std::string::String,
+            ::std::option::Option<::std::string::String>,
+        >,
+    >,
 }
 impl NullOperationInput {
     /// Creates a new builder-style object to manufacture [`NullOperationInput`](crate::operation::NullOperationInput)
@@ -2227,25 +2251,39 @@ impl NullOperationInput {
 pub mod null_operation_input {
 
     use crate::operation::NullOperationInput;
-    use std::collections::HashMap;
     /// A builder for [`NullOperationInput`](crate::operation::NullOperationInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        string: Option<String>,
-        sparse_string_list: Option<Vec<Option<String>>>,
-        sparse_string_map: Option<HashMap<String, Option<String>>>,
+        string: ::std::option::Option<::std::string::String>,
+        sparse_string_list:
+            ::std::option::Option<::std::vec::Vec<::std::option::Option<::std::string::String>>>,
+        sparse_string_map: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::option::Option<::std::string::String>,
+            >,
+        >,
     }
     impl Builder {
-        pub fn string(mut self, inp: impl Into<String>) -> Self {
+        pub fn string(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.string = Some(inp.into());
             self
         }
-        pub fn sparse_string_list(mut self, inp: Vec<Option<String>>) -> Self {
+        pub fn sparse_string_list(
+            mut self,
+            inp: ::std::vec::Vec<::std::option::Option<::std::string::String>>,
+        ) -> Self {
             self.sparse_string_list = Some(inp);
             self
         }
-        pub fn sparse_string_map(mut self, inp: HashMap<String, Option<String>>) -> Self {
+        pub fn sparse_string_map(
+            mut self,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::option::Option<::std::string::String>,
+            >,
+        ) -> Self {
             self.sparse_string_map = Some(inp);
             self
         }
@@ -2263,12 +2301,13 @@ pub mod null_operation_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonEnumsOutput {
-    pub foo_enum1: Option<FooEnum>,
-    pub foo_enum2: Option<FooEnum>,
-    pub foo_enum3: Option<FooEnum>,
-    pub foo_enum_list: Option<Vec<FooEnum>>,
-    pub foo_enum_set: Option<BTreeSet<FooEnum>>,
-    pub foo_enum_map: Option<HashMap<String, FooEnum>>,
+    pub foo_enum1: ::std::option::Option<FooEnum>,
+    pub foo_enum2: ::std::option::Option<FooEnum>,
+    pub foo_enum3: ::std::option::Option<FooEnum>,
+    pub foo_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
+    pub foo_enum_set: ::std::option::Option<::std::collections::BTreeSet<FooEnum>>,
+    pub foo_enum_map:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, FooEnum>>,
 }
 impl JsonEnumsOutput {
     /// Creates a new builder-style object to manufacture [`JsonEnumsOutput`](crate::operation::JsonEnumsOutput)
@@ -2281,18 +2320,17 @@ pub mod json_enums_output {
 
     use crate::model::FooEnum;
     use crate::operation::JsonEnumsOutput;
-    use std::collections::BTreeSet;
-    use std::collections::HashMap;
     /// A builder for [`JsonEnumsOutput`](crate::operation::JsonEnumsOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo_enum1: Option<FooEnum>,
-        foo_enum2: Option<FooEnum>,
-        foo_enum3: Option<FooEnum>,
-        foo_enum_list: Option<Vec<FooEnum>>,
-        foo_enum_set: Option<BTreeSet<FooEnum>>,
-        foo_enum_map: Option<HashMap<String, FooEnum>>,
+        foo_enum1: ::std::option::Option<FooEnum>,
+        foo_enum2: ::std::option::Option<FooEnum>,
+        foo_enum3: ::std::option::Option<FooEnum>,
+        foo_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
+        foo_enum_set: ::std::option::Option<::std::collections::BTreeSet<FooEnum>>,
+        foo_enum_map:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, FooEnum>>,
     }
     impl Builder {
         pub fn foo_enum1(mut self, inp: FooEnum) -> Self {
@@ -2307,15 +2345,18 @@ pub mod json_enums_output {
             self.foo_enum3 = Some(inp);
             self
         }
-        pub fn foo_enum_list(mut self, inp: Vec<FooEnum>) -> Self {
+        pub fn foo_enum_list(mut self, inp: ::std::vec::Vec<FooEnum>) -> Self {
             self.foo_enum_list = Some(inp);
             self
         }
-        pub fn foo_enum_set(mut self, inp: BTreeSet<FooEnum>) -> Self {
+        pub fn foo_enum_set(mut self, inp: ::std::collections::BTreeSet<FooEnum>) -> Self {
             self.foo_enum_set = Some(inp);
             self
         }
-        pub fn foo_enum_map(mut self, inp: HashMap<String, FooEnum>) -> Self {
+        pub fn foo_enum_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, FooEnum>,
+        ) -> Self {
             self.foo_enum_map = Some(inp);
             self
         }
@@ -2336,12 +2377,13 @@ pub mod json_enums_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonEnumsInput {
-    pub foo_enum1: Option<FooEnum>,
-    pub foo_enum2: Option<FooEnum>,
-    pub foo_enum3: Option<FooEnum>,
-    pub foo_enum_list: Option<Vec<FooEnum>>,
-    pub foo_enum_set: Option<BTreeSet<FooEnum>>,
-    pub foo_enum_map: Option<HashMap<String, FooEnum>>,
+    pub foo_enum1: ::std::option::Option<FooEnum>,
+    pub foo_enum2: ::std::option::Option<FooEnum>,
+    pub foo_enum3: ::std::option::Option<FooEnum>,
+    pub foo_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
+    pub foo_enum_set: ::std::option::Option<::std::collections::BTreeSet<FooEnum>>,
+    pub foo_enum_map:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, FooEnum>>,
 }
 impl JsonEnumsInput {
     /// Creates a new builder-style object to manufacture [`JsonEnumsInput`](crate::operation::JsonEnumsInput)
@@ -2354,18 +2396,17 @@ pub mod json_enums_input {
 
     use crate::model::FooEnum;
     use crate::operation::JsonEnumsInput;
-    use std::collections::BTreeSet;
-    use std::collections::HashMap;
     /// A builder for [`JsonEnumsInput`](crate::operation::JsonEnumsInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        foo_enum1: Option<FooEnum>,
-        foo_enum2: Option<FooEnum>,
-        foo_enum3: Option<FooEnum>,
-        foo_enum_list: Option<Vec<FooEnum>>,
-        foo_enum_set: Option<BTreeSet<FooEnum>>,
-        foo_enum_map: Option<HashMap<String, FooEnum>>,
+        foo_enum1: ::std::option::Option<FooEnum>,
+        foo_enum2: ::std::option::Option<FooEnum>,
+        foo_enum3: ::std::option::Option<FooEnum>,
+        foo_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
+        foo_enum_set: ::std::option::Option<::std::collections::BTreeSet<FooEnum>>,
+        foo_enum_map:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, FooEnum>>,
     }
     impl Builder {
         pub fn foo_enum1(mut self, inp: FooEnum) -> Self {
@@ -2380,15 +2421,18 @@ pub mod json_enums_input {
             self.foo_enum3 = Some(inp);
             self
         }
-        pub fn foo_enum_list(mut self, inp: Vec<FooEnum>) -> Self {
+        pub fn foo_enum_list(mut self, inp: ::std::vec::Vec<FooEnum>) -> Self {
             self.foo_enum_list = Some(inp);
             self
         }
-        pub fn foo_enum_set(mut self, inp: BTreeSet<FooEnum>) -> Self {
+        pub fn foo_enum_set(mut self, inp: ::std::collections::BTreeSet<FooEnum>) -> Self {
             self.foo_enum_set = Some(inp);
             self
         }
-        pub fn foo_enum_map(mut self, inp: HashMap<String, FooEnum>) -> Self {
+        pub fn foo_enum_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, FooEnum>,
+        ) -> Self {
             self.foo_enum_map = Some(inp);
             self
         }
@@ -2426,7 +2470,7 @@ pub mod put_and_get_inline_documents_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        inline_document: Option<Document>,
+        inline_document: ::std::option::Option<Document>,
     }
     impl Builder {
         pub fn inline_document(mut self, inp: Document) -> Self {
@@ -2464,7 +2508,7 @@ pub mod put_and_get_inline_documents_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        inline_document: Option<Document>,
+        inline_document: ::std::option::Option<Document>,
     }
     impl Builder {
         pub fn inline_document(mut self, inp: Document) -> Self {
@@ -2485,7 +2529,7 @@ pub mod put_and_get_inline_documents_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct OperationWithOptionalInputOutputOutput {
-    pub value: Option<String>,
+    pub value: ::std::option::Option<::std::string::String>,
 }
 impl OperationWithOptionalInputOutputOutput {
     /// Creates a new builder-style object to manufacture [`OperationWithOptionalInputOutputOutput`](crate::operation::OperationWithOptionalInputOutputOutput)
@@ -2501,10 +2545,10 @@ pub mod operation_with_optional_input_output_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        value: Option<String>,
+        value: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn value(mut self, inp: impl Into<String>) -> Self {
+        pub fn value(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.value = Some(inp.into());
             self
         }
@@ -2518,7 +2562,7 @@ pub mod operation_with_optional_input_output_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct OperationWithOptionalInputOutputInput {
-    pub value: Option<String>,
+    pub value: ::std::option::Option<::std::string::String>,
 }
 impl OperationWithOptionalInputOutputInput {
     /// Creates a new builder-style object to manufacture [`OperationWithOptionalInputOutputInput`](crate::operation::OperationWithOptionalInputOutputInput)
@@ -2534,10 +2578,10 @@ pub mod operation_with_optional_input_output_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        value: Option<String>,
+        value: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn value(mut self, inp: impl Into<String>) -> Self {
+        pub fn value(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.value = Some(inp.into());
             self
         }
@@ -2551,32 +2595,46 @@ pub mod operation_with_optional_input_output_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct KitchenSinkOperationOutput {
-    pub blob: Option<Blob>,
-    pub boolean: Option<bool>,
-    pub double: Option<f64>,
-    pub empty_struct: Option<EmptyStruct>,
-    pub float: Option<f32>,
-    pub httpdate_timestamp: Option<Instant>,
-    pub integer: Option<i32>,
-    pub iso8601_timestamp: Option<Instant>,
-    pub json_value: Option<String>,
-    pub list_of_lists: Option<Vec<Vec<String>>>,
-    pub list_of_maps_of_strings: Option<Vec<HashMap<String, String>>>,
-    pub list_of_strings: Option<Vec<String>>,
-    pub list_of_structs: Option<Vec<SimpleStruct>>,
-    pub long: Option<i64>,
-    pub map_of_lists_of_strings: Option<HashMap<String, Vec<String>>>,
-    pub map_of_maps: Option<HashMap<String, HashMap<String, String>>>,
-    pub map_of_strings: Option<HashMap<String, String>>,
-    pub map_of_structs: Option<HashMap<String, SimpleStruct>>,
-    pub recursive_list: Option<Vec<KitchenSink>>,
-    pub recursive_map: Option<HashMap<String, KitchenSink>>,
-    pub recursive_struct: Option<Box<KitchenSink>>,
-    pub simple_struct: Option<SimpleStruct>,
-    pub string: Option<String>,
-    pub struct_with_location_name: Option<StructWithLocationName>,
-    pub timestamp: Option<Instant>,
-    pub unix_timestamp: Option<Instant>,
+    pub blob: ::std::option::Option<Blob>,
+    pub boolean: ::std::option::Option<bool>,
+    pub double: ::std::option::Option<f64>,
+    pub empty_struct: ::std::option::Option<EmptyStruct>,
+    pub float: ::std::option::Option<f32>,
+    pub httpdate_timestamp: ::std::option::Option<Instant>,
+    pub integer: ::std::option::Option<i32>,
+    pub iso8601_timestamp: ::std::option::Option<Instant>,
+    pub json_value: ::std::option::Option<::std::string::String>,
+    pub list_of_lists:
+        ::std::option::Option<::std::vec::Vec<::std::vec::Vec<::std::string::String>>>,
+    pub list_of_maps_of_strings: ::std::option::Option<
+        ::std::vec::Vec<::std::collections::HashMap<::std::string::String, ::std::string::String>>,
+    >,
+    pub list_of_strings: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+    pub list_of_structs: ::std::option::Option<::std::vec::Vec<SimpleStruct>>,
+    pub long: ::std::option::Option<i64>,
+    pub map_of_lists_of_strings: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<::std::string::String>>,
+    >,
+    pub map_of_maps: ::std::option::Option<
+        ::std::collections::HashMap<
+            ::std::string::String,
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
+    >,
+    pub map_of_strings: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
+    pub map_of_structs:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, SimpleStruct>>,
+    pub recursive_list: ::std::option::Option<::std::vec::Vec<KitchenSink>>,
+    pub recursive_map:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, KitchenSink>>,
+    pub recursive_struct: ::std::option::Option<::std::boxed::Box<KitchenSink>>,
+    pub simple_struct: ::std::option::Option<SimpleStruct>,
+    pub string: ::std::option::Option<::std::string::String>,
+    pub struct_with_location_name: ::std::option::Option<StructWithLocationName>,
+    pub timestamp: ::std::option::Option<Instant>,
+    pub unix_timestamp: ::std::option::Option<Instant>,
 }
 impl KitchenSinkOperationOutput {
     /// Creates a new builder-style object to manufacture [`KitchenSinkOperationOutput`](crate::operation::KitchenSinkOperationOutput)
@@ -2594,37 +2652,55 @@ pub mod kitchen_sink_operation_output {
     use crate::operation::KitchenSinkOperationOutput;
     use smithy_types::Blob;
     use smithy_types::Instant;
-    use std::collections::HashMap;
     /// A builder for [`KitchenSinkOperationOutput`](crate::operation::KitchenSinkOperationOutput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        blob: Option<Blob>,
-        boolean: Option<bool>,
-        double: Option<f64>,
-        empty_struct: Option<EmptyStruct>,
-        float: Option<f32>,
-        httpdate_timestamp: Option<Instant>,
-        integer: Option<i32>,
-        iso8601_timestamp: Option<Instant>,
-        json_value: Option<String>,
-        list_of_lists: Option<Vec<Vec<String>>>,
-        list_of_maps_of_strings: Option<Vec<HashMap<String, String>>>,
-        list_of_strings: Option<Vec<String>>,
-        list_of_structs: Option<Vec<SimpleStruct>>,
-        long: Option<i64>,
-        map_of_lists_of_strings: Option<HashMap<String, Vec<String>>>,
-        map_of_maps: Option<HashMap<String, HashMap<String, String>>>,
-        map_of_strings: Option<HashMap<String, String>>,
-        map_of_structs: Option<HashMap<String, SimpleStruct>>,
-        recursive_list: Option<Vec<KitchenSink>>,
-        recursive_map: Option<HashMap<String, KitchenSink>>,
-        recursive_struct: Option<Box<KitchenSink>>,
-        simple_struct: Option<SimpleStruct>,
-        string: Option<String>,
-        struct_with_location_name: Option<StructWithLocationName>,
-        timestamp: Option<Instant>,
-        unix_timestamp: Option<Instant>,
+        blob: ::std::option::Option<Blob>,
+        boolean: ::std::option::Option<bool>,
+        double: ::std::option::Option<f64>,
+        empty_struct: ::std::option::Option<EmptyStruct>,
+        float: ::std::option::Option<f32>,
+        httpdate_timestamp: ::std::option::Option<Instant>,
+        integer: ::std::option::Option<i32>,
+        iso8601_timestamp: ::std::option::Option<Instant>,
+        json_value: ::std::option::Option<::std::string::String>,
+        list_of_lists:
+            ::std::option::Option<::std::vec::Vec<::std::vec::Vec<::std::string::String>>>,
+        list_of_maps_of_strings: ::std::option::Option<
+            ::std::vec::Vec<
+                ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+            >,
+        >,
+        list_of_strings: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+        list_of_structs: ::std::option::Option<::std::vec::Vec<SimpleStruct>>,
+        long: ::std::option::Option<i64>,
+        map_of_lists_of_strings: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::vec::Vec<::std::string::String>,
+            >,
+        >,
+        map_of_maps: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+            >,
+        >,
+        map_of_strings: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
+        map_of_structs:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, SimpleStruct>>,
+        recursive_list: ::std::option::Option<::std::vec::Vec<KitchenSink>>,
+        recursive_map:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, KitchenSink>>,
+        recursive_struct: ::std::option::Option<::std::boxed::Box<KitchenSink>>,
+        simple_struct: ::std::option::Option<SimpleStruct>,
+        string: ::std::option::Option<::std::string::String>,
+        struct_with_location_name: ::std::option::Option<StructWithLocationName>,
+        timestamp: ::std::option::Option<Instant>,
+        unix_timestamp: ::std::option::Option<Instant>,
     }
     impl Builder {
         pub fn blob(mut self, inp: Blob) -> Self {
@@ -2659,23 +2735,31 @@ pub mod kitchen_sink_operation_output {
             self.iso8601_timestamp = Some(inp);
             self
         }
-        pub fn json_value(mut self, inp: impl Into<String>) -> Self {
+        pub fn json_value(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.json_value = Some(inp.into());
             self
         }
-        pub fn list_of_lists(mut self, inp: Vec<Vec<String>>) -> Self {
+        pub fn list_of_lists(
+            mut self,
+            inp: ::std::vec::Vec<::std::vec::Vec<::std::string::String>>,
+        ) -> Self {
             self.list_of_lists = Some(inp);
             self
         }
-        pub fn list_of_maps_of_strings(mut self, inp: Vec<HashMap<String, String>>) -> Self {
+        pub fn list_of_maps_of_strings(
+            mut self,
+            inp: ::std::vec::Vec<
+                ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+            >,
+        ) -> Self {
             self.list_of_maps_of_strings = Some(inp);
             self
         }
-        pub fn list_of_strings(mut self, inp: Vec<String>) -> Self {
+        pub fn list_of_strings(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.list_of_strings = Some(inp);
             self
         }
-        pub fn list_of_structs(mut self, inp: Vec<SimpleStruct>) -> Self {
+        pub fn list_of_structs(mut self, inp: ::std::vec::Vec<SimpleStruct>) -> Self {
             self.list_of_structs = Some(inp);
             self
         }
@@ -2683,31 +2767,52 @@ pub mod kitchen_sink_operation_output {
             self.long = Some(inp);
             self
         }
-        pub fn map_of_lists_of_strings(mut self, inp: HashMap<String, Vec<String>>) -> Self {
+        pub fn map_of_lists_of_strings(
+            mut self,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::vec::Vec<::std::string::String>,
+            >,
+        ) -> Self {
             self.map_of_lists_of_strings = Some(inp);
             self
         }
-        pub fn map_of_maps(mut self, inp: HashMap<String, HashMap<String, String>>) -> Self {
+        pub fn map_of_maps(
+            mut self,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+            >,
+        ) -> Self {
             self.map_of_maps = Some(inp);
             self
         }
-        pub fn map_of_strings(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn map_of_strings(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.map_of_strings = Some(inp);
             self
         }
-        pub fn map_of_structs(mut self, inp: HashMap<String, SimpleStruct>) -> Self {
+        pub fn map_of_structs(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, SimpleStruct>,
+        ) -> Self {
             self.map_of_structs = Some(inp);
             self
         }
-        pub fn recursive_list(mut self, inp: Vec<KitchenSink>) -> Self {
+        pub fn recursive_list(mut self, inp: ::std::vec::Vec<KitchenSink>) -> Self {
             self.recursive_list = Some(inp);
             self
         }
-        pub fn recursive_map(mut self, inp: HashMap<String, KitchenSink>) -> Self {
+        pub fn recursive_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, KitchenSink>,
+        ) -> Self {
             self.recursive_map = Some(inp);
             self
         }
-        pub fn recursive_struct(mut self, inp: impl Into<Box<KitchenSink>>) -> Self {
+        pub fn recursive_struct(mut self, inp: impl Into<::std::boxed::Box<KitchenSink>>) -> Self {
             self.recursive_struct = Some(inp.into());
             self
         }
@@ -2715,7 +2820,7 @@ pub mod kitchen_sink_operation_output {
             self.simple_struct = Some(inp);
             self
         }
-        pub fn string(mut self, inp: impl Into<String>) -> Self {
+        pub fn string(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.string = Some(inp.into());
             self
         }
@@ -2768,32 +2873,46 @@ pub mod kitchen_sink_operation_output {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct KitchenSinkOperationInput {
-    pub blob: Option<Blob>,
-    pub boolean: Option<bool>,
-    pub double: Option<f64>,
-    pub empty_struct: Option<EmptyStruct>,
-    pub float: Option<f32>,
-    pub httpdate_timestamp: Option<Instant>,
-    pub integer: Option<i32>,
-    pub iso8601_timestamp: Option<Instant>,
-    pub json_value: Option<String>,
-    pub list_of_lists: Option<Vec<Vec<String>>>,
-    pub list_of_maps_of_strings: Option<Vec<HashMap<String, String>>>,
-    pub list_of_strings: Option<Vec<String>>,
-    pub list_of_structs: Option<Vec<SimpleStruct>>,
-    pub long: Option<i64>,
-    pub map_of_lists_of_strings: Option<HashMap<String, Vec<String>>>,
-    pub map_of_maps: Option<HashMap<String, HashMap<String, String>>>,
-    pub map_of_strings: Option<HashMap<String, String>>,
-    pub map_of_structs: Option<HashMap<String, SimpleStruct>>,
-    pub recursive_list: Option<Vec<KitchenSink>>,
-    pub recursive_map: Option<HashMap<String, KitchenSink>>,
-    pub recursive_struct: Option<Box<KitchenSink>>,
-    pub simple_struct: Option<SimpleStruct>,
-    pub string: Option<String>,
-    pub struct_with_location_name: Option<StructWithLocationName>,
-    pub timestamp: Option<Instant>,
-    pub unix_timestamp: Option<Instant>,
+    pub blob: ::std::option::Option<Blob>,
+    pub boolean: ::std::option::Option<bool>,
+    pub double: ::std::option::Option<f64>,
+    pub empty_struct: ::std::option::Option<EmptyStruct>,
+    pub float: ::std::option::Option<f32>,
+    pub httpdate_timestamp: ::std::option::Option<Instant>,
+    pub integer: ::std::option::Option<i32>,
+    pub iso8601_timestamp: ::std::option::Option<Instant>,
+    pub json_value: ::std::option::Option<::std::string::String>,
+    pub list_of_lists:
+        ::std::option::Option<::std::vec::Vec<::std::vec::Vec<::std::string::String>>>,
+    pub list_of_maps_of_strings: ::std::option::Option<
+        ::std::vec::Vec<::std::collections::HashMap<::std::string::String, ::std::string::String>>,
+    >,
+    pub list_of_strings: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+    pub list_of_structs: ::std::option::Option<::std::vec::Vec<SimpleStruct>>,
+    pub long: ::std::option::Option<i64>,
+    pub map_of_lists_of_strings: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<::std::string::String>>,
+    >,
+    pub map_of_maps: ::std::option::Option<
+        ::std::collections::HashMap<
+            ::std::string::String,
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
+    >,
+    pub map_of_strings: ::std::option::Option<
+        ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+    >,
+    pub map_of_structs:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, SimpleStruct>>,
+    pub recursive_list: ::std::option::Option<::std::vec::Vec<KitchenSink>>,
+    pub recursive_map:
+        ::std::option::Option<::std::collections::HashMap<::std::string::String, KitchenSink>>,
+    pub recursive_struct: ::std::option::Option<::std::boxed::Box<KitchenSink>>,
+    pub simple_struct: ::std::option::Option<SimpleStruct>,
+    pub string: ::std::option::Option<::std::string::String>,
+    pub struct_with_location_name: ::std::option::Option<StructWithLocationName>,
+    pub timestamp: ::std::option::Option<Instant>,
+    pub unix_timestamp: ::std::option::Option<Instant>,
 }
 impl KitchenSinkOperationInput {
     /// Creates a new builder-style object to manufacture [`KitchenSinkOperationInput`](crate::operation::KitchenSinkOperationInput)
@@ -2811,37 +2930,55 @@ pub mod kitchen_sink_operation_input {
     use crate::operation::KitchenSinkOperationInput;
     use smithy_types::Blob;
     use smithy_types::Instant;
-    use std::collections::HashMap;
     /// A builder for [`KitchenSinkOperationInput`](crate::operation::KitchenSinkOperationInput)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        blob: Option<Blob>,
-        boolean: Option<bool>,
-        double: Option<f64>,
-        empty_struct: Option<EmptyStruct>,
-        float: Option<f32>,
-        httpdate_timestamp: Option<Instant>,
-        integer: Option<i32>,
-        iso8601_timestamp: Option<Instant>,
-        json_value: Option<String>,
-        list_of_lists: Option<Vec<Vec<String>>>,
-        list_of_maps_of_strings: Option<Vec<HashMap<String, String>>>,
-        list_of_strings: Option<Vec<String>>,
-        list_of_structs: Option<Vec<SimpleStruct>>,
-        long: Option<i64>,
-        map_of_lists_of_strings: Option<HashMap<String, Vec<String>>>,
-        map_of_maps: Option<HashMap<String, HashMap<String, String>>>,
-        map_of_strings: Option<HashMap<String, String>>,
-        map_of_structs: Option<HashMap<String, SimpleStruct>>,
-        recursive_list: Option<Vec<KitchenSink>>,
-        recursive_map: Option<HashMap<String, KitchenSink>>,
-        recursive_struct: Option<Box<KitchenSink>>,
-        simple_struct: Option<SimpleStruct>,
-        string: Option<String>,
-        struct_with_location_name: Option<StructWithLocationName>,
-        timestamp: Option<Instant>,
-        unix_timestamp: Option<Instant>,
+        blob: ::std::option::Option<Blob>,
+        boolean: ::std::option::Option<bool>,
+        double: ::std::option::Option<f64>,
+        empty_struct: ::std::option::Option<EmptyStruct>,
+        float: ::std::option::Option<f32>,
+        httpdate_timestamp: ::std::option::Option<Instant>,
+        integer: ::std::option::Option<i32>,
+        iso8601_timestamp: ::std::option::Option<Instant>,
+        json_value: ::std::option::Option<::std::string::String>,
+        list_of_lists:
+            ::std::option::Option<::std::vec::Vec<::std::vec::Vec<::std::string::String>>>,
+        list_of_maps_of_strings: ::std::option::Option<
+            ::std::vec::Vec<
+                ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+            >,
+        >,
+        list_of_strings: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+        list_of_structs: ::std::option::Option<::std::vec::Vec<SimpleStruct>>,
+        long: ::std::option::Option<i64>,
+        map_of_lists_of_strings: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::vec::Vec<::std::string::String>,
+            >,
+        >,
+        map_of_maps: ::std::option::Option<
+            ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+            >,
+        >,
+        map_of_strings: ::std::option::Option<
+            ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        >,
+        map_of_structs:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, SimpleStruct>>,
+        recursive_list: ::std::option::Option<::std::vec::Vec<KitchenSink>>,
+        recursive_map:
+            ::std::option::Option<::std::collections::HashMap<::std::string::String, KitchenSink>>,
+        recursive_struct: ::std::option::Option<::std::boxed::Box<KitchenSink>>,
+        simple_struct: ::std::option::Option<SimpleStruct>,
+        string: ::std::option::Option<::std::string::String>,
+        struct_with_location_name: ::std::option::Option<StructWithLocationName>,
+        timestamp: ::std::option::Option<Instant>,
+        unix_timestamp: ::std::option::Option<Instant>,
     }
     impl Builder {
         pub fn blob(mut self, inp: Blob) -> Self {
@@ -2876,23 +3013,31 @@ pub mod kitchen_sink_operation_input {
             self.iso8601_timestamp = Some(inp);
             self
         }
-        pub fn json_value(mut self, inp: impl Into<String>) -> Self {
+        pub fn json_value(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.json_value = Some(inp.into());
             self
         }
-        pub fn list_of_lists(mut self, inp: Vec<Vec<String>>) -> Self {
+        pub fn list_of_lists(
+            mut self,
+            inp: ::std::vec::Vec<::std::vec::Vec<::std::string::String>>,
+        ) -> Self {
             self.list_of_lists = Some(inp);
             self
         }
-        pub fn list_of_maps_of_strings(mut self, inp: Vec<HashMap<String, String>>) -> Self {
+        pub fn list_of_maps_of_strings(
+            mut self,
+            inp: ::std::vec::Vec<
+                ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+            >,
+        ) -> Self {
             self.list_of_maps_of_strings = Some(inp);
             self
         }
-        pub fn list_of_strings(mut self, inp: Vec<String>) -> Self {
+        pub fn list_of_strings(mut self, inp: ::std::vec::Vec<::std::string::String>) -> Self {
             self.list_of_strings = Some(inp);
             self
         }
-        pub fn list_of_structs(mut self, inp: Vec<SimpleStruct>) -> Self {
+        pub fn list_of_structs(mut self, inp: ::std::vec::Vec<SimpleStruct>) -> Self {
             self.list_of_structs = Some(inp);
             self
         }
@@ -2900,31 +3045,52 @@ pub mod kitchen_sink_operation_input {
             self.long = Some(inp);
             self
         }
-        pub fn map_of_lists_of_strings(mut self, inp: HashMap<String, Vec<String>>) -> Self {
+        pub fn map_of_lists_of_strings(
+            mut self,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::vec::Vec<::std::string::String>,
+            >,
+        ) -> Self {
             self.map_of_lists_of_strings = Some(inp);
             self
         }
-        pub fn map_of_maps(mut self, inp: HashMap<String, HashMap<String, String>>) -> Self {
+        pub fn map_of_maps(
+            mut self,
+            inp: ::std::collections::HashMap<
+                ::std::string::String,
+                ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+            >,
+        ) -> Self {
             self.map_of_maps = Some(inp);
             self
         }
-        pub fn map_of_strings(mut self, inp: HashMap<String, String>) -> Self {
+        pub fn map_of_strings(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
+        ) -> Self {
             self.map_of_strings = Some(inp);
             self
         }
-        pub fn map_of_structs(mut self, inp: HashMap<String, SimpleStruct>) -> Self {
+        pub fn map_of_structs(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, SimpleStruct>,
+        ) -> Self {
             self.map_of_structs = Some(inp);
             self
         }
-        pub fn recursive_list(mut self, inp: Vec<KitchenSink>) -> Self {
+        pub fn recursive_list(mut self, inp: ::std::vec::Vec<KitchenSink>) -> Self {
             self.recursive_list = Some(inp);
             self
         }
-        pub fn recursive_map(mut self, inp: HashMap<String, KitchenSink>) -> Self {
+        pub fn recursive_map(
+            mut self,
+            inp: ::std::collections::HashMap<::std::string::String, KitchenSink>,
+        ) -> Self {
             self.recursive_map = Some(inp);
             self
         }
-        pub fn recursive_struct(mut self, inp: impl Into<Box<KitchenSink>>) -> Self {
+        pub fn recursive_struct(mut self, inp: impl Into<::std::boxed::Box<KitchenSink>>) -> Self {
             self.recursive_struct = Some(inp.into());
             self
         }
@@ -2932,7 +3098,7 @@ pub mod kitchen_sink_operation_input {
             self.simple_struct = Some(inp);
             self
         }
-        pub fn string(mut self, inp: impl Into<String>) -> Self {
+        pub fn string(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.string = Some(inp.into());
             self
         }

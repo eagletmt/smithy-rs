@@ -9,13 +9,13 @@ impl EmptyInputAndEmptyOutputInput {
             .header("Content-Type", "application/x-amz-json-1.0")
             .header("X-Amz-Target", "JsonRpc10.EmptyInputAndEmptyOutput")
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         vec![]
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -73,13 +73,13 @@ impl GreetingWithErrorsInput {
             .header("Content-Type", "application/x-amz-json-1.0")
             .header("X-Amz-Target", "JsonRpc10.GreetingWithErrors")
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         vec![]
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -182,13 +182,13 @@ impl JsonUnionsInput {
             contents: &self.contents,
         }
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         ::serde_json::to_vec(&self.body()).expect("serialization should succeed")
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -563,13 +563,13 @@ impl NoInputAndNoOutputInput {
             .header("Content-Type", "application/x-amz-json-1.0")
             .header("X-Amz-Target", "JsonRpc10.NoInputAndNoOutput")
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         vec![]
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -619,13 +619,13 @@ impl NoInputAndOutputInput {
             .header("Content-Type", "application/x-amz-json-1.0")
             .header("X-Amz-Target", "JsonRpc10.NoInputAndOutput")
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         vec![]
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -672,7 +672,7 @@ mod no_input_and_output_request_test {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonUnionsOutput {
     /// A union with a representative set of types for members.
-    pub contents: Option<MyUnion>,
+    pub contents: ::std::option::Option<MyUnion>,
 }
 impl JsonUnionsOutput {
     /// Creates a new builder-style object to manufacture [`JsonUnionsOutput`](crate::operation::JsonUnionsOutput)
@@ -689,7 +689,7 @@ pub mod json_unions_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        contents: Option<MyUnion>,
+        contents: ::std::option::Option<MyUnion>,
     }
     impl Builder {
         /// A union with a representative set of types for members.
@@ -711,7 +711,7 @@ pub mod json_unions_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonUnionsInput {
     /// A union with a representative set of types for members.
-    pub contents: Option<MyUnion>,
+    pub contents: ::std::option::Option<MyUnion>,
 }
 impl JsonUnionsInput {
     /// Creates a new builder-style object to manufacture [`JsonUnionsInput`](crate::operation::JsonUnionsInput)
@@ -728,7 +728,7 @@ pub mod json_unions_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        contents: Option<MyUnion>,
+        contents: ::std::option::Option<MyUnion>,
     }
     impl Builder {
         /// A union with a representative set of types for members.
@@ -748,7 +748,7 @@ pub mod json_unions_input {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct GreetingWithErrorsOutput {
-    pub greeting: Option<String>,
+    pub greeting: ::std::option::Option<::std::string::String>,
 }
 impl GreetingWithErrorsOutput {
     /// Creates a new builder-style object to manufacture [`GreetingWithErrorsOutput`](crate::operation::GreetingWithErrorsOutput)
@@ -764,10 +764,10 @@ pub mod greeting_with_errors_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        greeting: Option<String>,
+        greeting: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn greeting(mut self, inp: impl Into<String>) -> Self {
+        pub fn greeting(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.greeting = Some(inp.into());
             self
         }

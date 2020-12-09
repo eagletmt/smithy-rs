@@ -65,13 +65,13 @@ impl CompleteSnapshotInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -107,13 +107,13 @@ impl GetSnapshotBlockInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -163,13 +163,13 @@ impl ListChangedBlocksInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -213,13 +213,13 @@ impl ListSnapshotBlocksInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -287,13 +287,13 @@ impl PutSnapshotBlockInput {
         let builder = builder.header("Content-Type", "application/octet-stream");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -315,13 +315,13 @@ impl StartSnapshotInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    pub fn build_body(&self) -> Vec<u8> {
+    pub fn build_body(&self) -> ::std::vec::Vec<u8> {
         todo!()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
-        body: Vec<u8>,
-    ) -> ::http::request::Request<Vec<u8>> {
+        body: ::std::vec::Vec<u8>,
+    ) -> ::http::request::Request<::std::vec::Vec<u8>> {
         builder
             .header(::http::header::CONTENT_LENGTH, body.len())
             .body(body)
@@ -335,26 +335,26 @@ pub struct StartSnapshotOutput {
     /// <p>The tags applied to the snapshot. You can specify up to 50 tags per snapshot. For more
     /// information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html"> Tagging your Amazon EC2
     /// resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-    pub tags: Option<Vec<Tag>>,
+    pub tags: ::std::option::Option<::std::vec::Vec<Tag>>,
     /// <p>The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS) customer
     /// master key (CMK) used to encrypt the snapshot.</p>
-    pub kms_key_arn: Option<String>,
+    pub kms_key_arn: ::std::option::Option<::std::string::String>,
     /// <p>The AWS account ID of the snapshot owner.</p>
-    pub owner_id: Option<String>,
+    pub owner_id: ::std::option::Option<::std::string::String>,
     /// <p>The size of the volume, in GiB.</p>
-    pub volume_size: Option<i64>,
+    pub volume_size: ::std::option::Option<i64>,
     /// <p>The ID of the parent snapshot.</p>
-    pub parent_snapshot_id: Option<String>,
+    pub parent_snapshot_id: ::std::option::Option<::std::string::String>,
     /// <p>The description of the snapshot.</p>
-    pub description: Option<String>,
+    pub description: ::std::option::Option<::std::string::String>,
     /// <p>The ID of the snapshot.</p>
-    pub snapshot_id: Option<String>,
+    pub snapshot_id: ::std::option::Option<::std::string::String>,
     /// <p>The size of the blocks in the snapshot, in bytes.</p>
-    pub block_size: Option<i32>,
+    pub block_size: ::std::option::Option<i32>,
     /// <p>The timestamp when the snapshot was created.</p>
-    pub start_time: Option<Instant>,
+    pub start_time: ::std::option::Option<Instant>,
     /// <p>The status of the snapshot.</p>
-    pub status: Option<Status>,
+    pub status: ::std::option::Option<Status>,
 }
 impl StartSnapshotOutput {
     /// Creates a new builder-style object to manufacture [`StartSnapshotOutput`](crate::operation::StartSnapshotOutput)
@@ -373,33 +373,33 @@ pub mod start_snapshot_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        tags: Option<Vec<Tag>>,
-        kms_key_arn: Option<String>,
-        owner_id: Option<String>,
-        volume_size: Option<i64>,
-        parent_snapshot_id: Option<String>,
-        description: Option<String>,
-        snapshot_id: Option<String>,
-        block_size: Option<i32>,
-        start_time: Option<Instant>,
-        status: Option<Status>,
+        tags: ::std::option::Option<::std::vec::Vec<Tag>>,
+        kms_key_arn: ::std::option::Option<::std::string::String>,
+        owner_id: ::std::option::Option<::std::string::String>,
+        volume_size: ::std::option::Option<i64>,
+        parent_snapshot_id: ::std::option::Option<::std::string::String>,
+        description: ::std::option::Option<::std::string::String>,
+        snapshot_id: ::std::option::Option<::std::string::String>,
+        block_size: ::std::option::Option<i32>,
+        start_time: ::std::option::Option<Instant>,
+        status: ::std::option::Option<Status>,
     }
     impl Builder {
         /// <p>The tags applied to the snapshot. You can specify up to 50 tags per snapshot. For more
         /// information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html"> Tagging your Amazon EC2
         /// resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-        pub fn tags(mut self, inp: Vec<Tag>) -> Self {
+        pub fn tags(mut self, inp: ::std::vec::Vec<Tag>) -> Self {
             self.tags = Some(inp);
             self
         }
         /// <p>The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS) customer
         /// master key (CMK) used to encrypt the snapshot.</p>
-        pub fn kms_key_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn kms_key_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.kms_key_arn = Some(inp.into());
             self
         }
         /// <p>The AWS account ID of the snapshot owner.</p>
-        pub fn owner_id(mut self, inp: impl Into<String>) -> Self {
+        pub fn owner_id(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.owner_id = Some(inp.into());
             self
         }
@@ -409,17 +409,17 @@ pub mod start_snapshot_output {
             self
         }
         /// <p>The ID of the parent snapshot.</p>
-        pub fn parent_snapshot_id(mut self, inp: impl Into<String>) -> Self {
+        pub fn parent_snapshot_id(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.parent_snapshot_id = Some(inp.into());
             self
         }
         /// <p>The description of the snapshot.</p>
-        pub fn description(mut self, inp: impl Into<String>) -> Self {
+        pub fn description(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.description = Some(inp.into());
             self
         }
         /// <p>The ID of the snapshot.</p>
-        pub fn snapshot_id(mut self, inp: impl Into<String>) -> Self {
+        pub fn snapshot_id(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.snapshot_id = Some(inp.into());
             self
         }
@@ -470,7 +470,7 @@ pub struct StartSnapshotInput {
     /// </li>
     /// </ul>
     /// <p>If no value is specified, the timeout defaults to <code>60</code> minutes.</p>
-    pub timeout: Option<i32>,
+    pub timeout: ::std::option::Option<i32>,
     /// <p>A unique, case-sensitive identifier that you provide to ensure the idempotency of the
     /// request. Idempotency ensures that an API request completes only once. With an idempotent
     /// request, if the original request completes successfully. The subsequent retries with the same
@@ -479,12 +479,12 @@ pub struct StartSnapshotInput {
     /// <p>If you do not specify a client token, one is automatically generated by the AWS SDK.</p>
     /// <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-direct-api-idempotency.html">
     /// Idempotency for StartSnapshot API</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-    pub client_token: Option<String>,
+    pub client_token: ::std::option::Option<::std::string::String>,
     /// <p>The size of the volume, in GiB. The maximum size is <code>16384</code> GiB (16
     /// TiB).</p>
-    pub volume_size: Option<i64>,
+    pub volume_size: ::std::option::Option<i64>,
     /// <p>The tags to apply to the snapshot.</p>
-    pub tags: Option<Vec<Tag>>,
+    pub tags: ::std::option::Option<::std::vec::Vec<Tag>>,
     /// <p>Indicates whether to encrypt the snapshot. To create an encrypted snapshot, specify
     /// <code>true</code>. To create an unencrypted snapshot, omit this parameter.</p>
     /// <p>If you specify a value for <b>ParentSnapshotId</b>, omit
@@ -499,7 +499,7 @@ pub struct StartSnapshotInput {
     /// <code>false</code>. In this case, you can omit this parameter.</p>
     /// <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html#ebsapis-using-encryption">
     /// Using encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-    pub encrypted: Option<bool>,
+    pub encrypted: ::std::option::Option<bool>,
     /// <p>The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS)
     /// customer master key (CMK) to be used to encrypt the snapshot. If you do not specify a
     /// CMK, the default AWS managed CMK is used.</p>
@@ -508,15 +508,15 @@ pub struct StartSnapshotInput {
     /// the parent snapshot.</p>
     /// <p>If <b>Encrypted</b> is set to <code>true</code>,
     /// you must specify a CMK ARN. </p>
-    pub kms_key_arn: Option<String>,
+    pub kms_key_arn: ::std::option::Option<::std::string::String>,
     /// <p>The ID of the parent snapshot. If there is no parent snapshot, or if you are creating
     /// the first snapshot for an on-premises volume, omit this parameter.</p>
     /// <p>If your account is enabled for encryption by default, you cannot use an unencrypted
     /// snapshot as a parent snapshot. You must first create an encrypted copy of the parent
     /// snapshot using <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CopySnapshot.html">CopySnapshot</a>.</p>
-    pub parent_snapshot_id: Option<String>,
+    pub parent_snapshot_id: ::std::option::Option<::std::string::String>,
     /// <p>A description for the snapshot.</p>
-    pub description: Option<String>,
+    pub description: ::std::option::Option<::std::string::String>,
 }
 impl StartSnapshotInput {
     /// Creates a new builder-style object to manufacture [`StartSnapshotInput`](crate::operation::StartSnapshotInput)
@@ -533,14 +533,14 @@ pub mod start_snapshot_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        timeout: Option<i32>,
-        client_token: Option<String>,
-        volume_size: Option<i64>,
-        tags: Option<Vec<Tag>>,
-        encrypted: Option<bool>,
-        kms_key_arn: Option<String>,
-        parent_snapshot_id: Option<String>,
-        description: Option<String>,
+        timeout: ::std::option::Option<i32>,
+        client_token: ::std::option::Option<::std::string::String>,
+        volume_size: ::std::option::Option<i64>,
+        tags: ::std::option::Option<::std::vec::Vec<Tag>>,
+        encrypted: ::std::option::Option<bool>,
+        kms_key_arn: ::std::option::Option<::std::string::String>,
+        parent_snapshot_id: ::std::option::Option<::std::string::String>,
+        description: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The amount of time (in minutes) after which the snapshot is automatically cancelled
@@ -566,7 +566,7 @@ pub mod start_snapshot_input {
         /// <p>If you do not specify a client token, one is automatically generated by the AWS SDK.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-direct-api-idempotency.html">
         /// Idempotency for StartSnapshot API</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-        pub fn client_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn client_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.client_token = Some(inp.into());
             self
         }
@@ -577,7 +577,7 @@ pub mod start_snapshot_input {
             self
         }
         /// <p>The tags to apply to the snapshot.</p>
-        pub fn tags(mut self, inp: Vec<Tag>) -> Self {
+        pub fn tags(mut self, inp: ::std::vec::Vec<Tag>) -> Self {
             self.tags = Some(inp);
             self
         }
@@ -607,7 +607,7 @@ pub mod start_snapshot_input {
         /// the parent snapshot.</p>
         /// <p>If <b>Encrypted</b> is set to <code>true</code>,
         /// you must specify a CMK ARN. </p>
-        pub fn kms_key_arn(mut self, inp: impl Into<String>) -> Self {
+        pub fn kms_key_arn(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.kms_key_arn = Some(inp.into());
             self
         }
@@ -616,12 +616,12 @@ pub mod start_snapshot_input {
         /// <p>If your account is enabled for encryption by default, you cannot use an unencrypted
         /// snapshot as a parent snapshot. You must first create an encrypted copy of the parent
         /// snapshot using <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CopySnapshot.html">CopySnapshot</a>.</p>
-        pub fn parent_snapshot_id(mut self, inp: impl Into<String>) -> Self {
+        pub fn parent_snapshot_id(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.parent_snapshot_id = Some(inp.into());
             self
         }
         /// <p>A description for the snapshot.</p>
-        pub fn description(mut self, inp: impl Into<String>) -> Self {
+        pub fn description(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.description = Some(inp.into());
             self
         }
@@ -645,9 +645,9 @@ pub mod start_snapshot_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct PutSnapshotBlockOutput {
     /// <p>The algorithm used by Amazon EBS to generate the checksum.</p>
-    pub checksum_algorithm: Option<ChecksumAlgorithm>,
+    pub checksum_algorithm: ::std::option::Option<ChecksumAlgorithm>,
     /// <p>The SHA256 checksum generated for the block data by Amazon EBS.</p>
-    pub checksum: Option<String>,
+    pub checksum: ::std::option::Option<::std::string::String>,
 }
 impl PutSnapshotBlockOutput {
     /// Creates a new builder-style object to manufacture [`PutSnapshotBlockOutput`](crate::operation::PutSnapshotBlockOutput)
@@ -664,8 +664,8 @@ pub mod put_snapshot_block_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        checksum_algorithm: Option<ChecksumAlgorithm>,
-        checksum: Option<String>,
+        checksum_algorithm: ::std::option::Option<ChecksumAlgorithm>,
+        checksum: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The algorithm used by Amazon EBS to generate the checksum.</p>
@@ -674,7 +674,7 @@ pub mod put_snapshot_block_output {
             self
         }
         /// <p>The SHA256 checksum generated for the block data by Amazon EBS.</p>
-        pub fn checksum(mut self, inp: impl Into<String>) -> Self {
+        pub fn checksum(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.checksum = Some(inp.into());
             self
         }
@@ -692,7 +692,7 @@ pub mod put_snapshot_block_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct PutSnapshotBlockInput {
     /// <p>The ID of the snapshot.</p>
-    pub snapshot_id: String,
+    pub snapshot_id: ::std::string::String,
     /// <p>The block index of the block in which to write the data. A block index is a logical
     /// index in units of <code>512</code> KiB blocks. To identify the block index, divide
     /// the logical offset of the data in the logical volume by the block size (logical offset of
@@ -701,9 +701,9 @@ pub struct PutSnapshotBlockInput {
     pub block_index: i32,
     /// <p>A Base64-encoded SHA256 checksum of the data. Only SHA256 checksums are
     /// supported.</p>
-    pub checksum: Option<String>,
+    pub checksum: ::std::option::Option<::std::string::String>,
     /// <p>The progress of the write process, as a percentage.</p>
-    pub progress: Option<i32>,
+    pub progress: ::std::option::Option<i32>,
     /// <p>The data to write to the block.</p>
     /// <p>The block data is not signed as part of the Signature Version 4 signing process. As a
     /// result, you must generate and provide a Base64-encoded SHA256 checksum for the block
@@ -715,15 +715,15 @@ pub struct PutSnapshotBlockInput {
     /// see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html#ebsapis-using-checksums">
     /// Using checksums with the EBS direct APIs</a> in the <i>Amazon Elastic Compute Cloud User
     /// Guide</i>.</p>
-    pub block_data: Option<Blob>,
+    pub block_data: ::std::option::Option<Blob>,
     /// <p>The size of the data to write to the block, in bytes. Currently, the only supported
     /// size is <code>524288</code>.</p>
     /// <p>Valid values: <code>524288</code>
     /// </p>
-    pub data_length: Option<i32>,
+    pub data_length: ::std::option::Option<i32>,
     /// <p>The algorithm used to generate the checksum. Currently, the only supported algorithm
     /// is <code>SHA256</code>.</p>
-    pub checksum_algorithm: Option<ChecksumAlgorithm>,
+    pub checksum_algorithm: ::std::option::Option<ChecksumAlgorithm>,
 }
 impl PutSnapshotBlockInput {
     /// Creates a new builder-style object to manufacture [`PutSnapshotBlockInput`](crate::operation::PutSnapshotBlockInput)
@@ -741,17 +741,17 @@ pub mod put_snapshot_block_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        snapshot_id: Option<String>,
-        block_index: Option<i32>,
-        checksum: Option<String>,
-        progress: Option<i32>,
-        block_data: Option<Blob>,
-        data_length: Option<i32>,
-        checksum_algorithm: Option<ChecksumAlgorithm>,
+        snapshot_id: ::std::option::Option<::std::string::String>,
+        block_index: ::std::option::Option<i32>,
+        checksum: ::std::option::Option<::std::string::String>,
+        progress: ::std::option::Option<i32>,
+        block_data: ::std::option::Option<Blob>,
+        data_length: ::std::option::Option<i32>,
+        checksum_algorithm: ::std::option::Option<ChecksumAlgorithm>,
     }
     impl Builder {
         /// <p>The ID of the snapshot.</p>
-        pub fn snapshot_id(mut self, inp: impl Into<String>) -> Self {
+        pub fn snapshot_id(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.snapshot_id = Some(inp.into());
             self
         }
@@ -766,7 +766,7 @@ pub mod put_snapshot_block_input {
         }
         /// <p>A Base64-encoded SHA256 checksum of the data. Only SHA256 checksums are
         /// supported.</p>
-        pub fn checksum(mut self, inp: impl Into<String>) -> Self {
+        pub fn checksum(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.checksum = Some(inp.into());
             self
         }
@@ -823,16 +823,16 @@ pub mod put_snapshot_block_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListSnapshotBlocksOutput {
     /// <p>The size of the volume in GB.</p>
-    pub volume_size: Option<i64>,
+    pub volume_size: ::std::option::Option<i64>,
     /// <p>The token to use to retrieve the next page of results. This value is null when there
     /// are no more results to return.</p>
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
     /// <p>The time when the <code>BlockToken</code> expires.</p>
-    pub expiry_time: Option<Instant>,
+    pub expiry_time: ::std::option::Option<Instant>,
     /// <p>An array of objects containing information about the blocks.</p>
-    pub blocks: Option<Vec<Block>>,
+    pub blocks: ::std::option::Option<::std::vec::Vec<Block>>,
     /// <p>The size of the block.</p>
-    pub block_size: Option<i32>,
+    pub block_size: ::std::option::Option<i32>,
 }
 impl ListSnapshotBlocksOutput {
     /// Creates a new builder-style object to manufacture [`ListSnapshotBlocksOutput`](crate::operation::ListSnapshotBlocksOutput)
@@ -850,11 +850,11 @@ pub mod list_snapshot_blocks_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        volume_size: Option<i64>,
-        next_token: Option<String>,
-        expiry_time: Option<Instant>,
-        blocks: Option<Vec<Block>>,
-        block_size: Option<i32>,
+        volume_size: ::std::option::Option<i64>,
+        next_token: ::std::option::Option<::std::string::String>,
+        expiry_time: ::std::option::Option<Instant>,
+        blocks: ::std::option::Option<::std::vec::Vec<Block>>,
+        block_size: ::std::option::Option<i32>,
     }
     impl Builder {
         /// <p>The size of the volume in GB.</p>
@@ -864,7 +864,7 @@ pub mod list_snapshot_blocks_output {
         }
         /// <p>The token to use to retrieve the next page of results. This value is null when there
         /// are no more results to return.</p>
-        pub fn next_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn next_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
@@ -874,7 +874,7 @@ pub mod list_snapshot_blocks_output {
             self
         }
         /// <p>An array of objects containing information about the blocks.</p>
-        pub fn blocks(mut self, inp: Vec<Block>) -> Self {
+        pub fn blocks(mut self, inp: ::std::vec::Vec<Block>) -> Self {
             self.blocks = Some(inp);
             self
         }
@@ -900,14 +900,14 @@ pub mod list_snapshot_blocks_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListSnapshotBlocksInput {
     /// <p>The number of results to return.</p>
-    pub max_results: Option<i32>,
+    pub max_results: ::std::option::Option<i32>,
     /// <p>The block index from which the list should start. The list in the response will start
     /// from this block index or the next valid block index in the snapshot.</p>
-    pub starting_block_index: Option<i32>,
+    pub starting_block_index: ::std::option::Option<i32>,
     /// <p>The token to request the next page of results.</p>
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
     /// <p>The ID of the snapshot from which to get block indexes and block tokens.</p>
-    pub snapshot_id: String,
+    pub snapshot_id: ::std::string::String,
 }
 impl ListSnapshotBlocksInput {
     /// Creates a new builder-style object to manufacture [`ListSnapshotBlocksInput`](crate::operation::ListSnapshotBlocksInput)
@@ -923,10 +923,10 @@ pub mod list_snapshot_blocks_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        max_results: Option<i32>,
-        starting_block_index: Option<i32>,
-        next_token: Option<String>,
-        snapshot_id: Option<String>,
+        max_results: ::std::option::Option<i32>,
+        starting_block_index: ::std::option::Option<i32>,
+        next_token: ::std::option::Option<::std::string::String>,
+        snapshot_id: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The number of results to return.</p>
@@ -941,12 +941,12 @@ pub mod list_snapshot_blocks_input {
             self
         }
         /// <p>The token to request the next page of results.</p>
-        pub fn next_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn next_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
         /// <p>The ID of the snapshot from which to get block indexes and block tokens.</p>
-        pub fn snapshot_id(mut self, inp: impl Into<String>) -> Self {
+        pub fn snapshot_id(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.snapshot_id = Some(inp.into());
             self
         }
@@ -966,16 +966,16 @@ pub mod list_snapshot_blocks_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ListChangedBlocksOutput {
     /// <p>The size of the block.</p>
-    pub block_size: Option<i32>,
+    pub block_size: ::std::option::Option<i32>,
     /// <p>The time when the <code>BlockToken</code> expires.</p>
-    pub expiry_time: Option<Instant>,
+    pub expiry_time: ::std::option::Option<Instant>,
     /// <p>The size of the volume in GB.</p>
-    pub volume_size: Option<i64>,
+    pub volume_size: ::std::option::Option<i64>,
     /// <p>The token to use to retrieve the next page of results. This value is null when there
     /// are no more results to return.</p>
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
     /// <p>An array of objects containing information about the changed blocks.</p>
-    pub changed_blocks: Option<Vec<ChangedBlock>>,
+    pub changed_blocks: ::std::option::Option<::std::vec::Vec<ChangedBlock>>,
 }
 impl ListChangedBlocksOutput {
     /// Creates a new builder-style object to manufacture [`ListChangedBlocksOutput`](crate::operation::ListChangedBlocksOutput)
@@ -993,11 +993,11 @@ pub mod list_changed_blocks_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        block_size: Option<i32>,
-        expiry_time: Option<Instant>,
-        volume_size: Option<i64>,
-        next_token: Option<String>,
-        changed_blocks: Option<Vec<ChangedBlock>>,
+        block_size: ::std::option::Option<i32>,
+        expiry_time: ::std::option::Option<Instant>,
+        volume_size: ::std::option::Option<i64>,
+        next_token: ::std::option::Option<::std::string::String>,
+        changed_blocks: ::std::option::Option<::std::vec::Vec<ChangedBlock>>,
     }
     impl Builder {
         /// <p>The size of the block.</p>
@@ -1017,12 +1017,12 @@ pub mod list_changed_blocks_output {
         }
         /// <p>The token to use to retrieve the next page of results. This value is null when there
         /// are no more results to return.</p>
-        pub fn next_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn next_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
         /// <p>An array of objects containing information about the changed blocks.</p>
-        pub fn changed_blocks(mut self, inp: Vec<ChangedBlock>) -> Self {
+        pub fn changed_blocks(mut self, inp: ::std::vec::Vec<ChangedBlock>) -> Self {
             self.changed_blocks = Some(inp);
             self
         }
@@ -1047,21 +1047,21 @@ pub struct ListChangedBlocksInput {
     /// <p>The <code>SecondSnapshotId</code> parameter must be specified with a
     /// <code>FirstSnapshotID</code> parameter; otherwise, an error occurs.</p>
     /// </important>
-    pub second_snapshot_id: String,
+    pub second_snapshot_id: ::std::string::String,
     /// <p>The ID of the first snapshot to use for the comparison.</p>
     /// <important>
     /// <p>The <code>FirstSnapshotID</code> parameter must be specified with a
     /// <code>SecondSnapshotId</code> parameter; otherwise, an error occurs.</p>
     /// </important>
-    pub first_snapshot_id: Option<String>,
+    pub first_snapshot_id: ::std::option::Option<::std::string::String>,
     /// <p>The token to request the next page of results.</p>
-    pub next_token: Option<String>,
+    pub next_token: ::std::option::Option<::std::string::String>,
     /// <p>The number of results to return.</p>
-    pub max_results: Option<i32>,
+    pub max_results: ::std::option::Option<i32>,
     /// <p>The block index from which the comparison should start.</p>
     /// <p>The list in the response will start from this block index or the next valid block
     /// index in the snapshots.</p>
-    pub starting_block_index: Option<i32>,
+    pub starting_block_index: ::std::option::Option<i32>,
 }
 impl ListChangedBlocksInput {
     /// Creates a new builder-style object to manufacture [`ListChangedBlocksInput`](crate::operation::ListChangedBlocksInput)
@@ -1077,11 +1077,11 @@ pub mod list_changed_blocks_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        second_snapshot_id: Option<String>,
-        first_snapshot_id: Option<String>,
-        next_token: Option<String>,
-        max_results: Option<i32>,
-        starting_block_index: Option<i32>,
+        second_snapshot_id: ::std::option::Option<::std::string::String>,
+        first_snapshot_id: ::std::option::Option<::std::string::String>,
+        next_token: ::std::option::Option<::std::string::String>,
+        max_results: ::std::option::Option<i32>,
+        starting_block_index: ::std::option::Option<i32>,
     }
     impl Builder {
         /// <p>The ID of the second snapshot to use for the comparison.</p>
@@ -1089,7 +1089,7 @@ pub mod list_changed_blocks_input {
         /// <p>The <code>SecondSnapshotId</code> parameter must be specified with a
         /// <code>FirstSnapshotID</code> parameter; otherwise, an error occurs.</p>
         /// </important>
-        pub fn second_snapshot_id(mut self, inp: impl Into<String>) -> Self {
+        pub fn second_snapshot_id(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.second_snapshot_id = Some(inp.into());
             self
         }
@@ -1098,12 +1098,12 @@ pub mod list_changed_blocks_input {
         /// <p>The <code>FirstSnapshotID</code> parameter must be specified with a
         /// <code>SecondSnapshotId</code> parameter; otherwise, an error occurs.</p>
         /// </important>
-        pub fn first_snapshot_id(mut self, inp: impl Into<String>) -> Self {
+        pub fn first_snapshot_id(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.first_snapshot_id = Some(inp.into());
             self
         }
         /// <p>The token to request the next page of results.</p>
-        pub fn next_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn next_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
@@ -1136,13 +1136,13 @@ pub mod list_changed_blocks_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct GetSnapshotBlockOutput {
     /// <p>The size of the data in the block.</p>
-    pub data_length: Option<i32>,
+    pub data_length: ::std::option::Option<i32>,
     /// <p>The algorithm used to generate the checksum for the block, such as SHA256.</p>
-    pub checksum_algorithm: Option<ChecksumAlgorithm>,
+    pub checksum_algorithm: ::std::option::Option<ChecksumAlgorithm>,
     /// <p>The checksum generated for the block, which is Base64 encoded.</p>
-    pub checksum: Option<String>,
+    pub checksum: ::std::option::Option<::std::string::String>,
     /// <p>The data content of the block.</p>
-    pub block_data: Option<Blob>,
+    pub block_data: ::std::option::Option<Blob>,
 }
 impl GetSnapshotBlockOutput {
     /// Creates a new builder-style object to manufacture [`GetSnapshotBlockOutput`](crate::operation::GetSnapshotBlockOutput)
@@ -1160,10 +1160,10 @@ pub mod get_snapshot_block_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        data_length: Option<i32>,
-        checksum_algorithm: Option<ChecksumAlgorithm>,
-        checksum: Option<String>,
-        block_data: Option<Blob>,
+        data_length: ::std::option::Option<i32>,
+        checksum_algorithm: ::std::option::Option<ChecksumAlgorithm>,
+        checksum: ::std::option::Option<::std::string::String>,
+        block_data: ::std::option::Option<Blob>,
     }
     impl Builder {
         /// <p>The size of the data in the block.</p>
@@ -1177,7 +1177,7 @@ pub mod get_snapshot_block_output {
             self
         }
         /// <p>The checksum generated for the block, which is Base64 encoded.</p>
-        pub fn checksum(mut self, inp: impl Into<String>) -> Self {
+        pub fn checksum(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.checksum = Some(inp.into());
             self
         }
@@ -1202,11 +1202,11 @@ pub mod get_snapshot_block_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct GetSnapshotBlockInput {
     /// <p>The ID of the snapshot containing the block from which to get data.</p>
-    pub snapshot_id: String,
+    pub snapshot_id: ::std::string::String,
     /// <p>The block token of the block from which to get data.</p>
     /// <p>Obtain the <code>BlockToken</code> by running the <code>ListChangedBlocks</code> or
     /// <code>ListSnapshotBlocks</code> operations.</p>
-    pub block_token: Option<String>,
+    pub block_token: ::std::option::Option<::std::string::String>,
     /// <p>The block index of the block from which to get data.</p>
     /// <p>Obtain the <code>BlockIndex</code> by running the <code>ListChangedBlocks</code> or
     /// <code>ListSnapshotBlocks</code> operations.</p>
@@ -1226,20 +1226,20 @@ pub mod get_snapshot_block_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        snapshot_id: Option<String>,
-        block_token: Option<String>,
-        block_index: Option<i32>,
+        snapshot_id: ::std::option::Option<::std::string::String>,
+        block_token: ::std::option::Option<::std::string::String>,
+        block_index: ::std::option::Option<i32>,
     }
     impl Builder {
         /// <p>The ID of the snapshot containing the block from which to get data.</p>
-        pub fn snapshot_id(mut self, inp: impl Into<String>) -> Self {
+        pub fn snapshot_id(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.snapshot_id = Some(inp.into());
             self
         }
         /// <p>The block token of the block from which to get data.</p>
         /// <p>Obtain the <code>BlockToken</code> by running the <code>ListChangedBlocks</code> or
         /// <code>ListSnapshotBlocks</code> operations.</p>
-        pub fn block_token(mut self, inp: impl Into<String>) -> Self {
+        pub fn block_token(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.block_token = Some(inp.into());
             self
         }
@@ -1265,7 +1265,7 @@ pub mod get_snapshot_block_input {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct CompleteSnapshotOutput {
     /// <p>The status of the snapshot.</p>
-    pub status: Option<Status>,
+    pub status: ::std::option::Option<Status>,
 }
 impl CompleteSnapshotOutput {
     /// Creates a new builder-style object to manufacture [`CompleteSnapshotOutput`](crate::operation::CompleteSnapshotOutput)
@@ -1282,7 +1282,7 @@ pub mod complete_snapshot_output {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        status: Option<Status>,
+        status: ::std::option::Option<Status>,
     }
     impl Builder {
         /// <p>The status of the snapshot.</p>
@@ -1303,22 +1303,22 @@ pub mod complete_snapshot_output {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct CompleteSnapshotInput {
     /// <p>The number of blocks that were written to the snapshot.</p>
-    pub changed_blocks_count: Option<i32>,
+    pub changed_blocks_count: ::std::option::Option<i32>,
     /// <p>The aggregation method used to generate the checksum. Currently, the only supported
     /// aggregation method is <code>LINEAR</code>.</p>
-    pub checksum_aggregation_method: Option<ChecksumAggregationMethod>,
+    pub checksum_aggregation_method: ::std::option::Option<ChecksumAggregationMethod>,
     /// <p>The algorithm used to generate the checksum. Currently, the only supported algorithm
     /// is <code>SHA256</code>.</p>
-    pub checksum_algorithm: Option<ChecksumAlgorithm>,
+    pub checksum_algorithm: ::std::option::Option<ChecksumAlgorithm>,
     /// <p>The ID of the snapshot.</p>
-    pub snapshot_id: String,
+    pub snapshot_id: ::std::string::String,
     /// <p>An aggregated Base-64 SHA256 checksum based on the checksums of each written
     /// block.</p>
     /// <p>To generate the aggregated checksum using the linear aggregation method, arrange the
     /// checksums for each written block in ascending order of their block index, concatenate
     /// them to form a single string, and then generate the checksum on the entire string using
     /// the SHA256 algorithm.</p>
-    pub checksum: Option<String>,
+    pub checksum: ::std::option::Option<::std::string::String>,
 }
 impl CompleteSnapshotInput {
     /// Creates a new builder-style object to manufacture [`CompleteSnapshotInput`](crate::operation::CompleteSnapshotInput)
@@ -1336,11 +1336,11 @@ pub mod complete_snapshot_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        changed_blocks_count: Option<i32>,
-        checksum_aggregation_method: Option<ChecksumAggregationMethod>,
-        checksum_algorithm: Option<ChecksumAlgorithm>,
-        snapshot_id: Option<String>,
-        checksum: Option<String>,
+        changed_blocks_count: ::std::option::Option<i32>,
+        checksum_aggregation_method: ::std::option::Option<ChecksumAggregationMethod>,
+        checksum_algorithm: ::std::option::Option<ChecksumAlgorithm>,
+        snapshot_id: ::std::option::Option<::std::string::String>,
+        checksum: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The number of blocks that were written to the snapshot.</p>
@@ -1361,7 +1361,7 @@ pub mod complete_snapshot_input {
             self
         }
         /// <p>The ID of the snapshot.</p>
-        pub fn snapshot_id(mut self, inp: impl Into<String>) -> Self {
+        pub fn snapshot_id(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.snapshot_id = Some(inp.into());
             self
         }
@@ -1371,7 +1371,7 @@ pub mod complete_snapshot_input {
         /// checksums for each written block in ascending order of their block index, concatenate
         /// them to form a single string, and then generate the checksum on the entire string using
         /// the SHA256 algorithm.</p>
-        pub fn checksum(mut self, inp: impl Into<String>) -> Self {
+        pub fn checksum(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.checksum = Some(inp.into());
             self
         }

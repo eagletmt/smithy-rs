@@ -25,8 +25,8 @@ impl ::std::error::Error for EmptyInputAndEmptyOutputError {
 #[derive(::std::fmt::Debug)]
 pub enum GreetingWithErrorsError {
     InvalidGreeting(InvalidGreeting),
-    ComplexError(ComplexError),
-    FooError(FooError),
+    ComplexError2(ComplexError2),
+    FooError2(FooError2),
 
     /// An unexpected error, eg. invalid JSON returned by the service
     Unhandled(Box<dyn ::std::error::Error>),
@@ -35,8 +35,8 @@ impl ::std::fmt::Display for GreetingWithErrorsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             GreetingWithErrorsError::InvalidGreeting(inner) => inner.fmt(f),
-            GreetingWithErrorsError::ComplexError(inner) => inner.fmt(f),
-            GreetingWithErrorsError::FooError(inner) => inner.fmt(f),
+            GreetingWithErrorsError::ComplexError2(inner) => inner.fmt(f),
+            GreetingWithErrorsError::FooError2(inner) => inner.fmt(f),
             GreetingWithErrorsError::Unhandled(inner) => inner.fmt(f),
         }
     }
@@ -45,8 +45,8 @@ impl ::std::error::Error for GreetingWithErrorsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
             GreetingWithErrorsError::InvalidGreeting(inner) => Some(inner),
-            GreetingWithErrorsError::ComplexError(inner) => Some(inner),
-            GreetingWithErrorsError::FooError(inner) => Some(inner),
+            GreetingWithErrorsError::ComplexError2(inner) => Some(inner),
+            GreetingWithErrorsError::FooError2(inner) => Some(inner),
             GreetingWithErrorsError::Unhandled(inner) => Some(inner.as_ref()),
         }
     }
@@ -125,14 +125,14 @@ impl ::std::error::Error for NoInputAndOutputError {
     ::std::cmp::PartialEq,
     ::std::fmt::Debug,
 )]
-pub struct FooError {}
-impl FooError {
-    /// Creates a new builder-style object to manufacture [`FooError`](crate::error::FooError)
-    pub fn builder() -> crate::error::foo_error::Builder {
-        crate::error::foo_error::Builder::default()
+pub struct FooError2 {}
+impl FooError2 {
+    /// Creates a new builder-style object to manufacture [`FooError2`](crate::error::FooError2)
+    pub fn builder() -> crate::error::foo_error2::Builder {
+        crate::error::foo_error2::Builder::default()
     }
 }
-impl FooError {
+impl FooError2 {
     pub fn retryable(&self) -> bool {
         false
     }
@@ -146,25 +146,25 @@ impl FooError {
         None
     }
 }
-impl ::std::fmt::Display for FooError {
+impl ::std::fmt::Display for FooError2 {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "FooError")?;
+        write!(f, "FooError2")?;
         Ok(())
     }
 }
-impl ::std::error::Error for FooError {}
-/// See [`FooError`](crate::error::FooError)
-pub mod foo_error {
+impl ::std::error::Error for FooError2 {}
+/// See [`FooError2`](crate::error::FooError2)
+pub mod foo_error2 {
 
-    use crate::error::FooError;
-    /// A builder for [`FooError`](crate::error::FooError)
+    use crate::error::FooError2;
+    /// A builder for [`FooError2`](crate::error::FooError2)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`FooError`](crate::error::FooError)
-        pub fn build(self) -> FooError {
-            FooError {}
+        /// Consumes the builder and constructs a [`FooError2`](crate::error::FooError2)
+        pub fn build(self) -> FooError2 {
+            FooError2 {}
         }
     }
 }
@@ -178,21 +178,21 @@ pub mod foo_error {
     ::std::cmp::PartialEq,
     ::std::fmt::Debug,
 )]
-pub struct ComplexError {
+pub struct ComplexError2 {
     #[serde(rename = "TopLevel")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub top_level: Option<String>,
+    pub top_level: ::std::option::Option<::std::string::String>,
     #[serde(rename = "Nested")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub nested: Option<ComplexNestedErrorData>,
+    pub nested: ::std::option::Option<ComplexNestedErrorData>,
 }
-impl ComplexError {
-    /// Creates a new builder-style object to manufacture [`ComplexError`](crate::error::ComplexError)
-    pub fn builder() -> crate::error::complex_error::Builder {
-        crate::error::complex_error::Builder::default()
+impl ComplexError2 {
+    /// Creates a new builder-style object to manufacture [`ComplexError2`](crate::error::ComplexError2)
+    pub fn builder() -> crate::error::complex_error2::Builder {
+        crate::error::complex_error2::Builder::default()
     }
 }
-impl ComplexError {
+impl ComplexError2 {
     pub fn retryable(&self) -> bool {
         false
     }
@@ -206,27 +206,27 @@ impl ComplexError {
         None
     }
 }
-impl ::std::fmt::Display for ComplexError {
+impl ::std::fmt::Display for ComplexError2 {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "ComplexError")?;
+        write!(f, "ComplexError2")?;
         Ok(())
     }
 }
-impl ::std::error::Error for ComplexError {}
-/// See [`ComplexError`](crate::error::ComplexError)
-pub mod complex_error {
+impl ::std::error::Error for ComplexError2 {}
+/// See [`ComplexError2`](crate::error::ComplexError2)
+pub mod complex_error2 {
 
-    use crate::error::ComplexError;
+    use crate::error::ComplexError2;
     use crate::model::ComplexNestedErrorData;
-    /// A builder for [`ComplexError`](crate::error::ComplexError)
+    /// A builder for [`ComplexError2`](crate::error::ComplexError2)
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        top_level: Option<String>,
-        nested: Option<ComplexNestedErrorData>,
+        top_level: ::std::option::Option<::std::string::String>,
+        nested: ::std::option::Option<ComplexNestedErrorData>,
     }
     impl Builder {
-        pub fn top_level(mut self, inp: impl Into<String>) -> Self {
+        pub fn top_level(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.top_level = Some(inp.into());
             self
         }
@@ -234,9 +234,9 @@ pub mod complex_error {
             self.nested = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`ComplexError`](crate::error::ComplexError)
-        pub fn build(self) -> ComplexError {
-            ComplexError {
+        /// Consumes the builder and constructs a [`ComplexError2`](crate::error::ComplexError2)
+        pub fn build(self) -> ComplexError2 {
+            ComplexError2 {
                 top_level: self.top_level,
                 nested: self.nested,
             }
@@ -256,7 +256,7 @@ pub mod complex_error {
 pub struct InvalidGreeting {
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidGreeting {
     /// Creates a new builder-style object to manufacture [`InvalidGreeting`](crate::error::InvalidGreeting)
@@ -293,10 +293,10 @@ pub mod invalid_greeting {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }

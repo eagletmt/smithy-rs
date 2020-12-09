@@ -36,8 +36,8 @@ where
     todo!()
 }
 
-pub fn optionblob_ser<S>(
-    _inp: &Option<Blob>,
+pub fn stdoptionoptionblob_ser<S>(
+    _inp: &::std::option::Option<Blob>,
     _serializer: S,
 ) -> Result<<S as ::serde::Serializer>::Ok, <S as ::serde::Serializer>::Error>
 where
@@ -49,15 +49,15 @@ where
     }
 }
 
-pub fn optionblob_deser<'de, D>(_deser: D) -> Result<Option<Blob>, D::Error>
+pub fn stdoptionoptionblob_deser<'de, D>(_deser: D) -> Result<::std::option::Option<Blob>, D::Error>
 where
     D: ::serde::Deserializer<'de>,
 {
     todo!()
 }
 
-pub fn optioninstant_http_date_ser<S>(
-    _inp: &Option<Instant>,
+pub fn stdoptionoptioninstant_http_date_ser<S>(
+    _inp: &::std::option::Option<Instant>,
     _serializer: S,
 ) -> Result<<S as ::serde::Serializer>::Ok, <S as ::serde::Serializer>::Error>
 where
@@ -69,15 +69,17 @@ where
     }
 }
 
-pub fn optioninstant_http_date_deser<'de, D>(_deser: D) -> Result<Option<Instant>, D::Error>
+pub fn stdoptionoptioninstant_http_date_deser<'de, D>(
+    _deser: D,
+) -> Result<::std::option::Option<Instant>, D::Error>
 where
     D: ::serde::Deserializer<'de>,
 {
     todo!()
 }
 
-pub fn optioninstant_date_time_ser<S>(
-    _inp: &Option<Instant>,
+pub fn stdoptionoptioninstant_date_time_ser<S>(
+    _inp: &::std::option::Option<Instant>,
     _serializer: S,
 ) -> Result<<S as ::serde::Serializer>::Ok, <S as ::serde::Serializer>::Error>
 where
@@ -89,15 +91,17 @@ where
     }
 }
 
-pub fn optioninstant_date_time_deser<'de, D>(_deser: D) -> Result<Option<Instant>, D::Error>
+pub fn stdoptionoptioninstant_date_time_deser<'de, D>(
+    _deser: D,
+) -> Result<::std::option::Option<Instant>, D::Error>
 where
     D: ::serde::Deserializer<'de>,
 {
     todo!()
 }
 
-pub fn optioninstant_epoch_seconds_ser<S>(
-    _inp: &Option<Instant>,
+pub fn stdoptionoptioninstant_epoch_seconds_ser<S>(
+    _inp: &::std::option::Option<Instant>,
     _serializer: S,
 ) -> Result<<S as ::serde::Serializer>::Ok, <S as ::serde::Serializer>::Error>
 where
@@ -109,7 +113,9 @@ where
     }
 }
 
-pub fn optioninstant_epoch_seconds_deser<'de, D>(_deser: D) -> Result<Option<Instant>, D::Error>
+pub fn stdoptionoptioninstant_epoch_seconds_deser<'de, D>(
+    _deser: D,
+) -> Result<::std::option::Option<Instant>, D::Error>
 where
     D: ::serde::Deserializer<'de>,
 {

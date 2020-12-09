@@ -254,9 +254,9 @@ impl ::std::error::Error for StartSnapshotError {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ValidationError {
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
     /// <p>The reason for the validation exception.</p>
-    pub reason: Option<ValidationExceptionReason>,
+    pub reason: ::std::option::Option<ValidationExceptionReason>,
 }
 impl ValidationError {
     /// Creates a new builder-style object to manufacture [`ValidationError`](crate::error::ValidationError)
@@ -294,11 +294,11 @@ pub mod validation_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
-        reason: Option<ValidationExceptionReason>,
+        message: ::std::option::Option<::std::string::String>,
+        reason: ::std::option::Option<ValidationExceptionReason>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -322,8 +322,8 @@ pub mod validation_error {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ServiceQuotaExceededError {
     /// <p>The reason for the exception.</p>
-    pub reason: Option<ServiceQuotaExceededExceptionReason>,
-    pub message: Option<String>,
+    pub reason: ::std::option::Option<ServiceQuotaExceededExceptionReason>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ServiceQuotaExceededError {
     /// Creates a new builder-style object to manufacture [`ServiceQuotaExceededError`](crate::error::ServiceQuotaExceededError)
@@ -361,8 +361,8 @@ pub mod service_quota_exceeded_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        reason: Option<ServiceQuotaExceededExceptionReason>,
-        message: Option<String>,
+        reason: ::std::option::Option<ServiceQuotaExceededExceptionReason>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
         /// <p>The reason for the exception.</p>
@@ -370,7 +370,7 @@ pub mod service_quota_exceeded_error {
             self.reason = Some(inp);
             self
         }
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -388,9 +388,9 @@ pub mod service_quota_exceeded_error {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ResourceNotFoundError {
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
     /// <p>The reason for the exception.</p>
-    pub reason: Option<ResourceNotFoundExceptionReason>,
+    pub reason: ::std::option::Option<ResourceNotFoundExceptionReason>,
 }
 impl ResourceNotFoundError {
     /// Creates a new builder-style object to manufacture [`ResourceNotFoundError`](crate::error::ResourceNotFoundError)
@@ -428,11 +428,11 @@ pub mod resource_not_found_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
-        reason: Option<ResourceNotFoundExceptionReason>,
+        message: ::std::option::Option<::std::string::String>,
+        reason: ::std::option::Option<ResourceNotFoundExceptionReason>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -456,9 +456,9 @@ pub mod resource_not_found_error {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct RequestThrottledError {
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
     /// <p>The reason for the exception.</p>
-    pub reason: Option<RequestThrottledExceptionReason>,
+    pub reason: ::std::option::Option<RequestThrottledExceptionReason>,
 }
 impl RequestThrottledError {
     /// Creates a new builder-style object to manufacture [`RequestThrottledError`](crate::error::RequestThrottledError)
@@ -496,11 +496,11 @@ pub mod request_throttled_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
-        reason: Option<RequestThrottledExceptionReason>,
+        message: ::std::option::Option<::std::string::String>,
+        reason: ::std::option::Option<RequestThrottledExceptionReason>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -523,7 +523,7 @@ pub mod request_throttled_error {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct InternalServerError {
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl InternalServerError {
     /// Creates a new builder-style object to manufacture [`InternalServerError`](crate::error::InternalServerError)
@@ -560,10 +560,10 @@ pub mod internal_server_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -581,7 +581,7 @@ pub mod internal_server_error {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ConflictError {
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ConflictError {
     /// Creates a new builder-style object to manufacture [`ConflictError`](crate::error::ConflictError)
@@ -618,10 +618,10 @@ pub mod conflict_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -640,7 +640,7 @@ pub mod conflict_error {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct ConcurrentLimitExceededError {
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
 }
 impl ConcurrentLimitExceededError {
     /// Creates a new builder-style object to manufacture [`ConcurrentLimitExceededError`](crate::error::ConcurrentLimitExceededError)
@@ -677,10 +677,10 @@ pub mod concurrent_limit_exceeded_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
+        message: ::std::option::Option<::std::string::String>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
@@ -697,9 +697,9 @@ pub mod concurrent_limit_exceeded_error {
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct AccessDeniedError {
-    pub message: Option<String>,
+    pub message: ::std::option::Option<::std::string::String>,
     /// <p>The reason for the exception.</p>
-    pub reason: Option<AccessDeniedExceptionReason>,
+    pub reason: ::std::option::Option<AccessDeniedExceptionReason>,
 }
 impl AccessDeniedError {
     /// Creates a new builder-style object to manufacture [`AccessDeniedError`](crate::error::AccessDeniedError)
@@ -737,11 +737,11 @@ pub mod access_denied_error {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
-        message: Option<String>,
-        reason: Option<AccessDeniedExceptionReason>,
+        message: ::std::option::Option<::std::string::String>,
+        reason: ::std::option::Option<AccessDeniedExceptionReason>,
     }
     impl Builder {
-        pub fn message(mut self, inp: impl Into<String>) -> Self {
+        pub fn message(mut self, inp: impl Into<::std::string::String>) -> Self {
             self.message = Some(inp.into());
             self
         }
