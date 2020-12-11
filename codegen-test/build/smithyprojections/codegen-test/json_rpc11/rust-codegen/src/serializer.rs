@@ -184,6 +184,7 @@ pub struct PutAndGetInlineDocumentsInputBody<'a> {
 #[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct GreetingWithErrorsOutputBody {
     #[serde(rename = "greeting")]
+    #[serde(default)]
     pub greeting: ::std::option::Option<::std::string::String>,
 }
 
@@ -191,16 +192,22 @@ pub struct GreetingWithErrorsOutputBody {
 #[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct JsonEnumsOutputBody {
     #[serde(rename = "fooEnum1")]
+    #[serde(default)]
     pub foo_enum1: ::std::option::Option<FooEnum>,
     #[serde(rename = "fooEnum2")]
+    #[serde(default)]
     pub foo_enum2: ::std::option::Option<FooEnum>,
     #[serde(rename = "fooEnum3")]
+    #[serde(default)]
     pub foo_enum3: ::std::option::Option<FooEnum>,
     #[serde(rename = "fooEnumList")]
+    #[serde(default)]
     pub foo_enum_list: ::std::option::Option<::std::vec::Vec<FooEnum>>,
     #[serde(rename = "fooEnumSet")]
+    #[serde(default)]
     pub foo_enum_set: ::std::option::Option<::std::collections::BTreeSet<FooEnum>>,
     #[serde(rename = "fooEnumMap")]
+    #[serde(default)]
     pub foo_enum_map:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, FooEnum>>,
 }
@@ -211,6 +218,7 @@ pub struct JsonEnumsOutputBody {
 pub struct JsonUnionsOutputBody {
     /// A union with a representative set of types for members.
     #[serde(rename = "contents")]
+    #[serde(default)]
     pub contents: ::std::option::Option<MyUnion>,
 }
 
@@ -219,43 +227,59 @@ pub struct JsonUnionsOutputBody {
 pub struct KitchenSinkOperationOutputBody {
     #[serde(rename = "Blob")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptionblob_deser")]
+    #[serde(default)]
     pub blob: ::std::option::Option<Blob>,
     #[serde(rename = "Boolean")]
+    #[serde(default)]
     pub boolean: ::std::option::Option<bool>,
     #[serde(rename = "Double")]
+    #[serde(default)]
     pub double: ::std::option::Option<f64>,
     #[serde(rename = "EmptyStruct")]
+    #[serde(default)]
     pub empty_struct: ::std::option::Option<EmptyStruct>,
     #[serde(rename = "Float")]
+    #[serde(default)]
     pub float: ::std::option::Option<f32>,
     #[serde(rename = "HttpdateTimestamp")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_http_date_deser")]
+    #[serde(default)]
     pub httpdate_timestamp: ::std::option::Option<Instant>,
     #[serde(rename = "Integer")]
+    #[serde(default)]
     pub integer: ::std::option::Option<i32>,
     #[serde(rename = "Iso8601Timestamp")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_date_time_deser")]
+    #[serde(default)]
     pub iso8601_timestamp: ::std::option::Option<Instant>,
     #[serde(rename = "JsonValue")]
+    #[serde(default)]
     pub json_value: ::std::option::Option<::std::string::String>,
     #[serde(rename = "ListOfLists")]
+    #[serde(default)]
     pub list_of_lists:
         ::std::option::Option<::std::vec::Vec<::std::vec::Vec<::std::string::String>>>,
     #[serde(rename = "ListOfMapsOfStrings")]
+    #[serde(default)]
     pub list_of_maps_of_strings: ::std::option::Option<
         ::std::vec::Vec<::std::collections::HashMap<::std::string::String, ::std::string::String>>,
     >,
     #[serde(rename = "ListOfStrings")]
+    #[serde(default)]
     pub list_of_strings: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     #[serde(rename = "ListOfStructs")]
+    #[serde(default)]
     pub list_of_structs: ::std::option::Option<::std::vec::Vec<SimpleStruct>>,
     #[serde(rename = "Long")]
+    #[serde(default)]
     pub long: ::std::option::Option<i64>,
     #[serde(rename = "MapOfListsOfStrings")]
+    #[serde(default)]
     pub map_of_lists_of_strings: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<::std::string::String>>,
     >,
     #[serde(rename = "MapOfMaps")]
+    #[serde(default)]
     pub map_of_maps: ::std::option::Option<
         ::std::collections::HashMap<
             ::std::string::String,
@@ -263,30 +287,40 @@ pub struct KitchenSinkOperationOutputBody {
         >,
     >,
     #[serde(rename = "MapOfStrings")]
+    #[serde(default)]
     pub map_of_strings: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::string::String>,
     >,
     #[serde(rename = "MapOfStructs")]
+    #[serde(default)]
     pub map_of_structs:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, SimpleStruct>>,
     #[serde(rename = "RecursiveList")]
+    #[serde(default)]
     pub recursive_list: ::std::option::Option<::std::vec::Vec<KitchenSink>>,
     #[serde(rename = "RecursiveMap")]
+    #[serde(default)]
     pub recursive_map:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, KitchenSink>>,
     #[serde(rename = "RecursiveStruct")]
+    #[serde(default)]
     pub recursive_struct: ::std::option::Option<::std::boxed::Box<KitchenSink>>,
     #[serde(rename = "SimpleStruct")]
+    #[serde(default)]
     pub simple_struct: ::std::option::Option<SimpleStruct>,
     #[serde(rename = "String")]
+    #[serde(default)]
     pub string: ::std::option::Option<::std::string::String>,
     #[serde(rename = "StructWithLocationName")]
+    #[serde(default)]
     pub struct_with_location_name: ::std::option::Option<StructWithLocationName>,
     #[serde(rename = "Timestamp")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub timestamp: ::std::option::Option<Instant>,
     #[serde(rename = "UnixTimestamp")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub unix_timestamp: ::std::option::Option<Instant>,
 }
 
@@ -294,11 +328,14 @@ pub struct KitchenSinkOperationOutputBody {
 #[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct NullOperationOutputBody {
     #[serde(rename = "string")]
+    #[serde(default)]
     pub string: ::std::option::Option<::std::string::String>,
     #[serde(rename = "sparseStringList")]
+    #[serde(default)]
     pub sparse_string_list:
         ::std::option::Option<::std::vec::Vec<::std::option::Option<::std::string::String>>>,
     #[serde(rename = "sparseStringMap")]
+    #[serde(default)]
     pub sparse_string_map: ::std::option::Option<
         ::std::collections::HashMap<
             ::std::string::String,
@@ -311,6 +348,7 @@ pub struct NullOperationOutputBody {
 #[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct OperationWithOptionalInputOutputOutputBody {
     #[serde(rename = "Value")]
+    #[serde(default)]
     pub value: ::std::option::Option<::std::string::String>,
 }
 

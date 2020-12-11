@@ -49,6 +49,104 @@ use crate::input::UpdateItemInput;
 use crate::input::UpdateTableInput;
 use crate::input::UpdateTableReplicaAutoScalingInput;
 use crate::input::UpdateTimeToLiveInput;
+use crate::output::BatchExecuteStatementOutput;
+use crate::output::BatchGetItemOutput;
+use crate::output::BatchWriteItemOutput;
+use crate::output::CreateBackupOutput;
+use crate::output::CreateGlobalTableOutput;
+use crate::output::CreateTableOutput;
+use crate::output::DeleteBackupOutput;
+use crate::output::DeleteItemOutput;
+use crate::output::DeleteTableOutput;
+use crate::output::DescribeBackupOutput;
+use crate::output::DescribeContinuousBackupsOutput;
+use crate::output::DescribeContributorInsightsOutput;
+use crate::output::DescribeEndpointsOutput;
+use crate::output::DescribeExportOutput;
+use crate::output::DescribeGlobalTableOutput;
+use crate::output::DescribeGlobalTableSettingsOutput;
+use crate::output::DescribeKinesisStreamingDestinationOutput;
+use crate::output::DescribeLimitsOutput;
+use crate::output::DescribeTableOutput;
+use crate::output::DescribeTableReplicaAutoScalingOutput;
+use crate::output::DescribeTimeToLiveOutput;
+use crate::output::DisableKinesisStreamingDestinationOutput;
+use crate::output::EnableKinesisStreamingDestinationOutput;
+use crate::output::ExecuteStatementOutput;
+use crate::output::ExecuteTransactionOutput;
+use crate::output::ExportTableToPointInTimeOutput;
+use crate::output::GetItemOutput;
+use crate::output::ListBackupsOutput;
+use crate::output::ListContributorInsightsOutput;
+use crate::output::ListExportsOutput;
+use crate::output::ListGlobalTablesOutput;
+use crate::output::ListTablesOutput;
+use crate::output::ListTagsOfResourceOutput;
+use crate::output::PutItemOutput;
+use crate::output::QueryOutput;
+use crate::output::RestoreTableFromBackupOutput;
+use crate::output::RestoreTableToPointInTimeOutput;
+use crate::output::ScanOutput;
+use crate::output::TagResourceOutput;
+use crate::output::TransactGetItemsOutput;
+use crate::output::TransactWriteItemsOutput;
+use crate::output::UntagResourceOutput;
+use crate::output::UpdateContinuousBackupsOutput;
+use crate::output::UpdateContributorInsightsOutput;
+use crate::output::UpdateGlobalTableOutput;
+use crate::output::UpdateGlobalTableSettingsOutput;
+use crate::output::UpdateItemOutput;
+use crate::output::UpdateTableOutput;
+use crate::output::UpdateTableReplicaAutoScalingOutput;
+use crate::output::UpdateTimeToLiveOutput;
+use crate::serializer::BatchExecuteStatementOutputBody;
+use crate::serializer::BatchGetItemOutputBody;
+use crate::serializer::BatchWriteItemOutputBody;
+use crate::serializer::CreateBackupOutputBody;
+use crate::serializer::CreateGlobalTableOutputBody;
+use crate::serializer::CreateTableOutputBody;
+use crate::serializer::DeleteBackupOutputBody;
+use crate::serializer::DeleteItemOutputBody;
+use crate::serializer::DeleteTableOutputBody;
+use crate::serializer::DescribeBackupOutputBody;
+use crate::serializer::DescribeContinuousBackupsOutputBody;
+use crate::serializer::DescribeContributorInsightsOutputBody;
+use crate::serializer::DescribeEndpointsOutputBody;
+use crate::serializer::DescribeExportOutputBody;
+use crate::serializer::DescribeGlobalTableOutputBody;
+use crate::serializer::DescribeGlobalTableSettingsOutputBody;
+use crate::serializer::DescribeKinesisStreamingDestinationOutputBody;
+use crate::serializer::DescribeLimitsOutputBody;
+use crate::serializer::DescribeTableOutputBody;
+use crate::serializer::DescribeTableReplicaAutoScalingOutputBody;
+use crate::serializer::DescribeTimeToLiveOutputBody;
+use crate::serializer::DisableKinesisStreamingDestinationOutputBody;
+use crate::serializer::EnableKinesisStreamingDestinationOutputBody;
+use crate::serializer::ExecuteStatementOutputBody;
+use crate::serializer::ExecuteTransactionOutputBody;
+use crate::serializer::ExportTableToPointInTimeOutputBody;
+use crate::serializer::GetItemOutputBody;
+use crate::serializer::ListBackupsOutputBody;
+use crate::serializer::ListContributorInsightsOutputBody;
+use crate::serializer::ListExportsOutputBody;
+use crate::serializer::ListGlobalTablesOutputBody;
+use crate::serializer::ListTablesOutputBody;
+use crate::serializer::ListTagsOfResourceOutputBody;
+use crate::serializer::PutItemOutputBody;
+use crate::serializer::QueryOutputBody;
+use crate::serializer::RestoreTableFromBackupOutputBody;
+use crate::serializer::RestoreTableToPointInTimeOutputBody;
+use crate::serializer::ScanOutputBody;
+use crate::serializer::TransactGetItemsOutputBody;
+use crate::serializer::TransactWriteItemsOutputBody;
+use crate::serializer::UpdateContinuousBackupsOutputBody;
+use crate::serializer::UpdateContributorInsightsOutputBody;
+use crate::serializer::UpdateGlobalTableOutputBody;
+use crate::serializer::UpdateGlobalTableSettingsOutputBody;
+use crate::serializer::UpdateItemOutputBody;
+use crate::serializer::UpdateTableOutputBody;
+use crate::serializer::UpdateTableReplicaAutoScalingOutputBody;
+use crate::serializer::UpdateTimeToLiveOutputBody;
 /// <p>
 /// This operation allows you to perform batch reads and writes on data stored in DynamoDB, using PartiQL.
 /// </p>
@@ -65,6 +163,47 @@ impl BatchExecuteStatement {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<BatchExecuteStatementOutput, crate::error::BatchExecuteStatementError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::BatchExecuteStatementError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::BatchExecuteStatementError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::BatchExecuteStatementError::InternalServerError(body),
+                    Err(e) => crate::error::BatchExecuteStatementError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::BatchExecuteStatementError::RequestLimitExceeded(body)
+                    }
+                    Err(e) => crate::error::BatchExecuteStatementError::unhandled(e),
+                },
+                unknown => crate::error::BatchExecuteStatementError::unhandled(unknown),
+            });
+        }
+        let body: BatchExecuteStatementOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::BatchExecuteStatementError::unhandled)?;
+        Ok(BatchExecuteStatementOutput {
+            responses: body.responses,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<BatchExecuteStatementOutput, crate::error::BatchExecuteStatementError> {
+        Self::from_response(response)
     }
     pub fn new(input: BatchExecuteStatementInput) -> Self {
         Self { input }
@@ -127,6 +266,60 @@ impl BatchGetItem {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         BatchGetItemInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<BatchGetItemOutput, crate::error::BatchGetItemError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::BatchGetItemError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::BatchGetItemError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::BatchGetItemError::InternalServerError(body),
+                    Err(e) => crate::error::BatchGetItemError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::BatchGetItemError::InvalidEndpointError(body),
+                    Err(e) => crate::error::BatchGetItemError::unhandled(e),
+                },
+                "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::BatchGetItemError::ProvisionedThroughputExceededError(body)
+                    }
+                    Err(e) => crate::error::BatchGetItemError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::BatchGetItemError::RequestLimitExceeded(body),
+                    Err(e) => crate::error::BatchGetItemError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::BatchGetItemError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::BatchGetItemError::unhandled(e),
+                },
+                unknown => crate::error::BatchGetItemError::unhandled(unknown),
+            });
+        }
+        let body: BatchGetItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::BatchGetItemError::unhandled)?;
+        Ok(BatchGetItemOutput {
+            responses: body.responses,
+            unprocessed_keys: body.unprocessed_keys,
+            consumed_capacity: body.consumed_capacity,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<BatchGetItemOutput, crate::error::BatchGetItemError> {
+        Self::from_response(response)
     }
     pub fn new(input: BatchGetItemInput) -> Self {
         Self { input }
@@ -218,6 +411,70 @@ impl BatchWriteItem {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         BatchWriteItemInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<BatchWriteItemOutput, crate::error::BatchWriteItemError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::BatchWriteItemError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::BatchWriteItemError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::BatchWriteItemError::InternalServerError(body),
+                    Err(e) => crate::error::BatchWriteItemError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::BatchWriteItemError::InvalidEndpointError(body),
+                    Err(e) => crate::error::BatchWriteItemError::unhandled(e),
+                },
+                "ItemCollectionSizeLimitExceededException" => {
+                    match ::serde_json::from_value(body) {
+                        Ok(body) => {
+                            crate::error::BatchWriteItemError::ItemCollectionSizeLimitExceededError(
+                                body,
+                            )
+                        }
+                        Err(e) => crate::error::BatchWriteItemError::unhandled(e),
+                    }
+                }
+                "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::BatchWriteItemError::ProvisionedThroughputExceededError(body)
+                    }
+                    Err(e) => crate::error::BatchWriteItemError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::BatchWriteItemError::RequestLimitExceeded(body),
+                    Err(e) => crate::error::BatchWriteItemError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::BatchWriteItemError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::BatchWriteItemError::unhandled(e),
+                },
+                unknown => crate::error::BatchWriteItemError::unhandled(unknown),
+            });
+        }
+        let body: BatchWriteItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::BatchWriteItemError::unhandled)?;
+        Ok(BatchWriteItemOutput {
+            unprocessed_items: body.unprocessed_items,
+            item_collection_metrics: body.item_collection_metrics,
+            consumed_capacity: body.consumed_capacity,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<BatchWriteItemOutput, crate::error::BatchWriteItemError> {
+        Self::from_response(response)
+    }
     pub fn new(input: BatchWriteItemInput) -> Self {
         Self { input }
     }
@@ -263,6 +520,66 @@ impl CreateBackup {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         CreateBackupInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<CreateBackupOutput, crate::error::CreateBackupError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::CreateBackupError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::CreateBackupError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "BackupInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateBackupError::BackupInUseError(body),
+                    Err(e) => crate::error::CreateBackupError::unhandled(e),
+                },
+                "ContinuousBackupsUnavailableException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::CreateBackupError::ContinuousBackupsUnavailableError(body)
+                    }
+                    Err(e) => crate::error::CreateBackupError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateBackupError::InternalServerError(body),
+                    Err(e) => crate::error::CreateBackupError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateBackupError::InvalidEndpointError(body),
+                    Err(e) => crate::error::CreateBackupError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateBackupError::LimitExceededError(body),
+                    Err(e) => crate::error::CreateBackupError::unhandled(e),
+                },
+                "TableInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateBackupError::TableInUseError(body),
+                    Err(e) => crate::error::CreateBackupError::unhandled(e),
+                },
+                "TableNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateBackupError::TableNotFoundError(body),
+                    Err(e) => crate::error::CreateBackupError::unhandled(e),
+                },
+                unknown => crate::error::CreateBackupError::unhandled(unknown),
+            });
+        }
+        let body: CreateBackupOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::CreateBackupError::unhandled)?;
+        Ok(CreateBackupOutput {
+            backup_details: body.backup_details,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<CreateBackupOutput, crate::error::CreateBackupError> {
+        Self::from_response(response)
     }
     pub fn new(input: CreateBackupInput) -> Self {
         Self { input }
@@ -346,6 +663,58 @@ impl CreateGlobalTable {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         CreateGlobalTableInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<CreateGlobalTableOutput, crate::error::CreateGlobalTableError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::CreateGlobalTableError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::CreateGlobalTableError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "GlobalTableAlreadyExistsException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::CreateGlobalTableError::GlobalTableAlreadyExistsError(body)
+                    }
+                    Err(e) => crate::error::CreateGlobalTableError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateGlobalTableError::InternalServerError(body),
+                    Err(e) => crate::error::CreateGlobalTableError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateGlobalTableError::InvalidEndpointError(body),
+                    Err(e) => crate::error::CreateGlobalTableError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateGlobalTableError::LimitExceededError(body),
+                    Err(e) => crate::error::CreateGlobalTableError::unhandled(e),
+                },
+                "TableNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateGlobalTableError::TableNotFoundError(body),
+                    Err(e) => crate::error::CreateGlobalTableError::unhandled(e),
+                },
+                unknown => crate::error::CreateGlobalTableError::unhandled(unknown),
+            });
+        }
+        let body: CreateGlobalTableOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::CreateGlobalTableError::unhandled)?;
+        Ok(CreateGlobalTableOutput {
+            global_table_description: body.global_table_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<CreateGlobalTableOutput, crate::error::CreateGlobalTableError> {
+        Self::from_response(response)
+    }
     pub fn new(input: CreateGlobalTableInput) -> Self {
         Self { input }
     }
@@ -375,6 +744,52 @@ impl CreateTable {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         CreateTableInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<CreateTableOutput, crate::error::CreateTableError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::CreateTableError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::CreateTableError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateTableError::InternalServerError(body),
+                    Err(e) => crate::error::CreateTableError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateTableError::InvalidEndpointError(body),
+                    Err(e) => crate::error::CreateTableError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateTableError::LimitExceededError(body),
+                    Err(e) => crate::error::CreateTableError::unhandled(e),
+                },
+                "ResourceInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateTableError::ResourceInUseError(body),
+                    Err(e) => crate::error::CreateTableError::unhandled(e),
+                },
+                unknown => crate::error::CreateTableError::unhandled(unknown),
+            });
+        }
+        let body: CreateTableOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::CreateTableError::unhandled)?;
+        Ok(CreateTableOutput {
+            table_description: body.table_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<CreateTableOutput, crate::error::CreateTableError> {
+        Self::from_response(response)
+    }
     pub fn new(input: CreateTableInput) -> Self {
         Self { input }
     }
@@ -392,6 +807,56 @@ impl DeleteBackup {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         DeleteBackupInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DeleteBackupOutput, crate::error::DeleteBackupError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DeleteBackupError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DeleteBackupError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "BackupInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteBackupError::BackupInUseError(body),
+                    Err(e) => crate::error::DeleteBackupError::unhandled(e),
+                },
+                "BackupNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteBackupError::BackupNotFoundError(body),
+                    Err(e) => crate::error::DeleteBackupError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteBackupError::InternalServerError(body),
+                    Err(e) => crate::error::DeleteBackupError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteBackupError::InvalidEndpointError(body),
+                    Err(e) => crate::error::DeleteBackupError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteBackupError::LimitExceededError(body),
+                    Err(e) => crate::error::DeleteBackupError::unhandled(e),
+                },
+                unknown => crate::error::DeleteBackupError::unhandled(unknown),
+            });
+        }
+        let body: DeleteBackupOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::DeleteBackupError::unhandled)?;
+        Ok(DeleteBackupOutput {
+            backup_description: body.backup_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DeleteBackupOutput, crate::error::DeleteBackupError> {
+        Self::from_response(response)
     }
     pub fn new(input: DeleteBackupInput) -> Self {
         Self { input }
@@ -414,6 +879,78 @@ impl DeleteItem {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         DeleteItemInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DeleteItemOutput, crate::error::DeleteItemError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DeleteItemError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DeleteItemError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "ConditionalCheckFailedException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteItemError::ConditionalCheckFailedError(body),
+                    Err(e) => crate::error::DeleteItemError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteItemError::InternalServerError(body),
+                    Err(e) => crate::error::DeleteItemError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteItemError::InvalidEndpointError(body),
+                    Err(e) => crate::error::DeleteItemError::unhandled(e),
+                },
+                "ItemCollectionSizeLimitExceededException" => {
+                    match ::serde_json::from_value(body) {
+                        Ok(body) => {
+                            crate::error::DeleteItemError::ItemCollectionSizeLimitExceededError(
+                                body,
+                            )
+                        }
+                        Err(e) => crate::error::DeleteItemError::unhandled(e),
+                    }
+                }
+                "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DeleteItemError::ProvisionedThroughputExceededError(body)
+                    }
+                    Err(e) => crate::error::DeleteItemError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteItemError::RequestLimitExceeded(body),
+                    Err(e) => crate::error::DeleteItemError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteItemError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::DeleteItemError::unhandled(e),
+                },
+                "TransactionConflictException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteItemError::TransactionConflictError(body),
+                    Err(e) => crate::error::DeleteItemError::unhandled(e),
+                },
+                unknown => crate::error::DeleteItemError::unhandled(unknown),
+            });
+        }
+        let body: DeleteItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::DeleteItemError::unhandled)?;
+        Ok(DeleteItemOutput {
+            attributes: body.attributes,
+            consumed_capacity: body.consumed_capacity,
+            item_collection_metrics: body.item_collection_metrics,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DeleteItemOutput, crate::error::DeleteItemError> {
+        Self::from_response(response)
     }
     pub fn new(input: DeleteItemInput) -> Self {
         Self { input }
@@ -447,6 +984,56 @@ impl DeleteTable {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         DeleteTableInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DeleteTableOutput, crate::error::DeleteTableError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DeleteTableError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DeleteTableError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteTableError::InternalServerError(body),
+                    Err(e) => crate::error::DeleteTableError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteTableError::InvalidEndpointError(body),
+                    Err(e) => crate::error::DeleteTableError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteTableError::LimitExceededError(body),
+                    Err(e) => crate::error::DeleteTableError::unhandled(e),
+                },
+                "ResourceInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteTableError::ResourceInUseError(body),
+                    Err(e) => crate::error::DeleteTableError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteTableError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::DeleteTableError::unhandled(e),
+                },
+                unknown => crate::error::DeleteTableError::unhandled(unknown),
+            });
+        }
+        let body: DeleteTableOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::DeleteTableError::unhandled)?;
+        Ok(DeleteTableOutput {
+            table_description: body.table_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DeleteTableOutput, crate::error::DeleteTableError> {
+        Self::from_response(response)
+    }
     pub fn new(input: DeleteTableInput) -> Self {
         Self { input }
     }
@@ -464,6 +1051,48 @@ impl DescribeBackup {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         DescribeBackupInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeBackupOutput, crate::error::DescribeBackupError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DescribeBackupError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DescribeBackupError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "BackupNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeBackupError::BackupNotFoundError(body),
+                    Err(e) => crate::error::DescribeBackupError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeBackupError::InternalServerError(body),
+                    Err(e) => crate::error::DescribeBackupError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeBackupError::InvalidEndpointError(body),
+                    Err(e) => crate::error::DescribeBackupError::unhandled(e),
+                },
+                unknown => crate::error::DescribeBackupError::unhandled(unknown),
+            });
+        }
+        let body: DescribeBackupOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::DescribeBackupError::unhandled)?;
+        Ok(DescribeBackupOutput {
+            backup_description: body.backup_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeBackupOutput, crate::error::DescribeBackupError> {
+        Self::from_response(response)
     }
     pub fn new(input: DescribeBackupInput) -> Self {
         Self { input }
@@ -495,6 +1124,55 @@ impl DescribeContinuousBackups {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeContinuousBackupsOutput, crate::error::DescribeContinuousBackupsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DescribeContinuousBackupsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DescribeContinuousBackupsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DescribeContinuousBackupsError::InternalServerError(body)
+                    }
+                    Err(e) => crate::error::DescribeContinuousBackupsError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DescribeContinuousBackupsError::InvalidEndpointError(body)
+                    }
+                    Err(e) => crate::error::DescribeContinuousBackupsError::unhandled(e),
+                },
+                "TableNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DescribeContinuousBackupsError::TableNotFoundError(body)
+                    }
+                    Err(e) => crate::error::DescribeContinuousBackupsError::unhandled(e),
+                },
+                unknown => crate::error::DescribeContinuousBackupsError::unhandled(unknown),
+            });
+        }
+        let body: DescribeContinuousBackupsOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::DescribeContinuousBackupsError::unhandled)?;
+        Ok(DescribeContinuousBackupsOutput {
+            continuous_backups_description: body.continuous_backups_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeContinuousBackupsOutput, crate::error::DescribeContinuousBackupsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: DescribeContinuousBackupsInput) -> Self {
         Self { input }
     }
@@ -515,6 +1193,58 @@ impl DescribeContributorInsights {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeContributorInsightsOutput, crate::error::DescribeContributorInsightsError>
+    {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DescribeContributorInsightsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DescribeContributorInsightsError::unhandled(
+                    "no error code".to_string(),
+                )
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DescribeContributorInsightsError::InternalServerError(body)
+                    }
+                    Err(e) => crate::error::DescribeContributorInsightsError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DescribeContributorInsightsError::ResourceNotFoundError(body)
+                    }
+                    Err(e) => crate::error::DescribeContributorInsightsError::unhandled(e),
+                },
+                unknown => crate::error::DescribeContributorInsightsError::unhandled(unknown),
+            });
+        }
+        let body: DescribeContributorInsightsOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::DescribeContributorInsightsError::unhandled)?;
+        Ok(DescribeContributorInsightsOutput {
+            table_name: body.table_name,
+            index_name: body.index_name,
+            contributor_insights_rule_list: body.contributor_insights_rule_list,
+            contributor_insights_status: body.contributor_insights_status,
+            last_update_date_time: body.last_update_date_time,
+            failure_exception: body.failure_exception,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeContributorInsightsOutput, crate::error::DescribeContributorInsightsError>
+    {
+        Self::from_response(response)
+    }
     pub fn new(input: DescribeContributorInsightsInput) -> Self {
         Self { input }
     }
@@ -532,6 +1262,34 @@ impl DescribeEndpoints {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         DescribeEndpointsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeEndpointsOutput, crate::error::DescribeEndpointsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DescribeEndpointsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DescribeEndpointsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::DescribeEndpointsError::unhandled(error_code));
+        }
+        let body: DescribeEndpointsOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::DescribeEndpointsError::unhandled)?;
+        Ok(DescribeEndpointsOutput {
+            endpoints: body.endpoints,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeEndpointsOutput, crate::error::DescribeEndpointsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: DescribeEndpointsInput) -> Self {
         Self { input }
     }
@@ -548,6 +1306,48 @@ impl DescribeExport {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         DescribeExportInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeExportOutput, crate::error::DescribeExportError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DescribeExportError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DescribeExportError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "ExportNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeExportError::ExportNotFoundError(body),
+                    Err(e) => crate::error::DescribeExportError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeExportError::InternalServerError(body),
+                    Err(e) => crate::error::DescribeExportError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeExportError::LimitExceededError(body),
+                    Err(e) => crate::error::DescribeExportError::unhandled(e),
+                },
+                unknown => crate::error::DescribeExportError::unhandled(unknown),
+            });
+        }
+        let body: DescribeExportOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::DescribeExportError::unhandled)?;
+        Ok(DescribeExportOutput {
+            export_description: body.export_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeExportOutput, crate::error::DescribeExportError> {
+        Self::from_response(response)
     }
     pub fn new(input: DescribeExportInput) -> Self {
         Self { input }
@@ -573,6 +1373,51 @@ impl DescribeGlobalTable {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeGlobalTableOutput, crate::error::DescribeGlobalTableError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DescribeGlobalTableError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DescribeGlobalTableError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "GlobalTableNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DescribeGlobalTableError::GlobalTableNotFoundError(body)
+                    }
+                    Err(e) => crate::error::DescribeGlobalTableError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeGlobalTableError::InternalServerError(body),
+                    Err(e) => crate::error::DescribeGlobalTableError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeGlobalTableError::InvalidEndpointError(body),
+                    Err(e) => crate::error::DescribeGlobalTableError::unhandled(e),
+                },
+                unknown => crate::error::DescribeGlobalTableError::unhandled(unknown),
+            });
+        }
+        let body: DescribeGlobalTableOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::DescribeGlobalTableError::unhandled)?;
+        Ok(DescribeGlobalTableOutput {
+            global_table_description: body.global_table_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeGlobalTableOutput, crate::error::DescribeGlobalTableError> {
+        Self::from_response(response)
+    }
     pub fn new(input: DescribeGlobalTableInput) -> Self {
         Self { input }
     }
@@ -596,6 +1441,62 @@ impl DescribeGlobalTableSettings {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeGlobalTableSettingsOutput, crate::error::DescribeGlobalTableSettingsError>
+    {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DescribeGlobalTableSettingsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DescribeGlobalTableSettingsError::unhandled(
+                    "no error code".to_string(),
+                )
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "GlobalTableNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DescribeGlobalTableSettingsError::GlobalTableNotFoundError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::DescribeGlobalTableSettingsError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DescribeGlobalTableSettingsError::InternalServerError(body)
+                    }
+                    Err(e) => crate::error::DescribeGlobalTableSettingsError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DescribeGlobalTableSettingsError::InvalidEndpointError(body)
+                    }
+                    Err(e) => crate::error::DescribeGlobalTableSettingsError::unhandled(e),
+                },
+                unknown => crate::error::DescribeGlobalTableSettingsError::unhandled(unknown),
+            });
+        }
+        let body: DescribeGlobalTableSettingsOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::DescribeGlobalTableSettingsError::unhandled)?;
+        Ok(DescribeGlobalTableSettingsOutput {
+            global_table_name: body.global_table_name,
+            replica_settings: body.replica_settings,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeGlobalTableSettingsOutput, crate::error::DescribeGlobalTableSettingsError>
+    {
+        Self::from_response(response)
+    }
     pub fn new(input: DescribeGlobalTableSettingsInput) -> Self {
         Self { input }
     }
@@ -615,6 +1516,58 @@ impl DescribeKinesisStreamingDestination {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        DescribeKinesisStreamingDestinationOutput,
+        crate::error::DescribeKinesisStreamingDestinationError,
+    > {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DescribeKinesisStreamingDestinationError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DescribeKinesisStreamingDestinationError::unhandled(
+                    "no error code".to_string(),
+                )
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeKinesisStreamingDestinationError::InternalServerError(body),
+                    Err(e) => crate::error::DescribeKinesisStreamingDestinationError::unhandled(e)
+                }
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeKinesisStreamingDestinationError::InvalidEndpointError(body),
+                    Err(e) => crate::error::DescribeKinesisStreamingDestinationError::unhandled(e)
+                }
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeKinesisStreamingDestinationError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::DescribeKinesisStreamingDestinationError::unhandled(e)
+                }
+                unknown => crate::error::DescribeKinesisStreamingDestinationError::unhandled(unknown)
+            });
+        }
+        let body: DescribeKinesisStreamingDestinationOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::DescribeKinesisStreamingDestinationError::unhandled)?;
+        Ok(DescribeKinesisStreamingDestinationOutput {
+            table_name: body.table_name,
+            kinesis_data_stream_destinations: body.kinesis_data_stream_destinations,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        DescribeKinesisStreamingDestinationOutput,
+        crate::error::DescribeKinesisStreamingDestinationError,
+    > {
+        Self::from_response(response)
     }
     pub fn new(input: DescribeKinesisStreamingDestinationInput) -> Self {
         Self { input }
@@ -692,6 +1645,47 @@ impl DescribeLimits {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         DescribeLimitsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeLimitsOutput, crate::error::DescribeLimitsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DescribeLimitsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DescribeLimitsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeLimitsError::InternalServerError(body),
+                    Err(e) => crate::error::DescribeLimitsError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeLimitsError::InvalidEndpointError(body),
+                    Err(e) => crate::error::DescribeLimitsError::unhandled(e),
+                },
+                unknown => crate::error::DescribeLimitsError::unhandled(unknown),
+            });
+        }
+        let body: DescribeLimitsOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::DescribeLimitsError::unhandled)?;
+        Ok(DescribeLimitsOutput {
+            account_max_read_capacity_units: body.account_max_read_capacity_units,
+            account_max_write_capacity_units: body.account_max_write_capacity_units,
+            table_max_read_capacity_units: body.table_max_read_capacity_units,
+            table_max_write_capacity_units: body.table_max_write_capacity_units,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeLimitsOutput, crate::error::DescribeLimitsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: DescribeLimitsInput) -> Self {
         Self { input }
     }
@@ -714,6 +1708,46 @@ impl DescribeTable {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         DescribeTableInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeTableOutput, crate::error::DescribeTableError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DescribeTableError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DescribeTableError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeTableError::InternalServerError(body),
+                    Err(e) => crate::error::DescribeTableError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeTableError::InvalidEndpointError(body),
+                    Err(e) => crate::error::DescribeTableError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeTableError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::DescribeTableError::unhandled(e),
+                },
+                unknown => crate::error::DescribeTableError::unhandled(unknown),
+            });
+        }
+        let body: DescribeTableOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::DescribeTableError::unhandled)?;
+        Ok(DescribeTableOutput { table: body.table })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeTableOutput, crate::error::DescribeTableError> {
+        Self::from_response(response)
     }
     pub fn new(input: DescribeTableInput) -> Self {
         Self { input }
@@ -738,6 +1772,61 @@ impl DescribeTableReplicaAutoScaling {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        DescribeTableReplicaAutoScalingOutput,
+        crate::error::DescribeTableReplicaAutoScalingError,
+    > {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DescribeTableReplicaAutoScalingError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DescribeTableReplicaAutoScalingError::unhandled(
+                    "no error code".to_string(),
+                )
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DescribeTableReplicaAutoScalingError::InternalServerError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::DescribeTableReplicaAutoScalingError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DescribeTableReplicaAutoScalingError::ResourceNotFoundError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::DescribeTableReplicaAutoScalingError::unhandled(e),
+                },
+                unknown => crate::error::DescribeTableReplicaAutoScalingError::unhandled(unknown),
+            });
+        }
+        let body: DescribeTableReplicaAutoScalingOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::DescribeTableReplicaAutoScalingError::unhandled)?;
+        Ok(DescribeTableReplicaAutoScalingOutput {
+            table_auto_scaling_description: body.table_auto_scaling_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        DescribeTableReplicaAutoScalingOutput,
+        crate::error::DescribeTableReplicaAutoScalingError,
+    > {
+        Self::from_response(response)
+    }
     pub fn new(input: DescribeTableReplicaAutoScalingInput) -> Self {
         Self { input }
     }
@@ -757,6 +1846,48 @@ impl DescribeTimeToLive {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeTimeToLiveOutput, crate::error::DescribeTimeToLiveError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DescribeTimeToLiveError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DescribeTimeToLiveError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeTimeToLiveError::InternalServerError(body),
+                    Err(e) => crate::error::DescribeTimeToLiveError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeTimeToLiveError::InvalidEndpointError(body),
+                    Err(e) => crate::error::DescribeTimeToLiveError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DescribeTimeToLiveError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::DescribeTimeToLiveError::unhandled(e),
+                },
+                unknown => crate::error::DescribeTimeToLiveError::unhandled(unknown),
+            });
+        }
+        let body: DescribeTimeToLiveOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::DescribeTimeToLiveError::unhandled)?;
+        Ok(DescribeTimeToLiveOutput {
+            time_to_live_description: body.time_to_live_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<DescribeTimeToLiveOutput, crate::error::DescribeTimeToLiveError> {
+        Self::from_response(response)
     }
     pub fn new(input: DescribeTimeToLiveInput) -> Self {
         Self { input }
@@ -778,6 +1909,89 @@ impl DisableKinesisStreamingDestination {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        DisableKinesisStreamingDestinationOutput,
+        crate::error::DisableKinesisStreamingDestinationError,
+    > {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::DisableKinesisStreamingDestinationError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::DisableKinesisStreamingDestinationError::unhandled(
+                    "no error code".to_string(),
+                )
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DisableKinesisStreamingDestinationError::InternalServerError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DisableKinesisStreamingDestinationError::InvalidEndpointError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DisableKinesisStreamingDestinationError::LimitExceededError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e),
+                },
+                "ResourceInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DisableKinesisStreamingDestinationError::ResourceInUseError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::DisableKinesisStreamingDestinationError::ResourceNotFoundError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e),
+                },
+                unknown => {
+                    crate::error::DisableKinesisStreamingDestinationError::unhandled(unknown)
+                }
+            });
+        }
+        let body: DisableKinesisStreamingDestinationOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::DisableKinesisStreamingDestinationError::unhandled)?;
+        Ok(DisableKinesisStreamingDestinationOutput {
+            table_name: body.table_name,
+            stream_arn: body.stream_arn,
+            destination_status: body.destination_status,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        DisableKinesisStreamingDestinationOutput,
+        crate::error::DisableKinesisStreamingDestinationError,
+    > {
+        Self::from_response(response)
     }
     pub fn new(input: DisableKinesisStreamingDestinationInput) -> Self {
         Self { input }
@@ -802,6 +2016,87 @@ impl EnableKinesisStreamingDestination {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        EnableKinesisStreamingDestinationOutput,
+        crate::error::EnableKinesisStreamingDestinationError,
+    > {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::EnableKinesisStreamingDestinationError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::EnableKinesisStreamingDestinationError::unhandled(
+                    "no error code".to_string(),
+                )
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::EnableKinesisStreamingDestinationError::InternalServerError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::EnableKinesisStreamingDestinationError::InvalidEndpointError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::EnableKinesisStreamingDestinationError::LimitExceededError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e),
+                },
+                "ResourceInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::EnableKinesisStreamingDestinationError::ResourceInUseError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::EnableKinesisStreamingDestinationError::ResourceNotFoundError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e),
+                },
+                unknown => crate::error::EnableKinesisStreamingDestinationError::unhandled(unknown),
+            });
+        }
+        let body: EnableKinesisStreamingDestinationOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::EnableKinesisStreamingDestinationError::unhandled)?;
+        Ok(EnableKinesisStreamingDestinationOutput {
+            table_name: body.table_name,
+            stream_arn: body.stream_arn,
+            destination_status: body.destination_status,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        EnableKinesisStreamingDestinationOutput,
+        crate::error::EnableKinesisStreamingDestinationError,
+    > {
+        Self::from_response(response)
+    }
     pub fn new(input: EnableKinesisStreamingDestinationInput) -> Self {
         Self { input }
     }
@@ -820,6 +2115,80 @@ impl ExecuteStatement {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         ExecuteStatementInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ExecuteStatementOutput, crate::error::ExecuteStatementError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::ExecuteStatementError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::ExecuteStatementError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "ConditionalCheckFailedException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::ExecuteStatementError::ConditionalCheckFailedError(body)
+                    }
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
+                },
+                "DuplicateItemException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExecuteStatementError::DuplicateItemError(body),
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExecuteStatementError::InternalServerError(body),
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
+                },
+                "ItemCollectionSizeLimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::ExecuteStatementError::ItemCollectionSizeLimitExceededError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
+                },
+                "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::ExecuteStatementError::ProvisionedThroughputExceededError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExecuteStatementError::RequestLimitExceeded(body),
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExecuteStatementError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
+                },
+                "TransactionConflictException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExecuteStatementError::TransactionConflictError(body),
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
+                },
+                unknown => crate::error::ExecuteStatementError::unhandled(unknown),
+            });
+        }
+        let body: ExecuteStatementOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::ExecuteStatementError::unhandled)?;
+        Ok(ExecuteStatementOutput {
+            items: body.items,
+            next_token: body.next_token,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ExecuteStatementOutput, crate::error::ExecuteStatementError> {
+        Self::from_response(response)
     }
     pub fn new(input: ExecuteStatementInput) -> Self {
         Self { input }
@@ -843,6 +2212,76 @@ impl ExecuteTransaction {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ExecuteTransactionOutput, crate::error::ExecuteTransactionError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::ExecuteTransactionError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::ExecuteTransactionError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "IdempotentParameterMismatchException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::ExecuteTransactionError::IdempotentParameterMismatchError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExecuteTransactionError::InternalServerError(body),
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
+                },
+                "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::ExecuteTransactionError::ProvisionedThroughputExceededError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExecuteTransactionError::RequestLimitExceeded(body),
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExecuteTransactionError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
+                },
+                "TransactionCanceledException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::ExecuteTransactionError::TransactionCanceledError(body)
+                    }
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
+                },
+                "TransactionInProgressException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::ExecuteTransactionError::TransactionInProgressError(body)
+                    }
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
+                },
+                unknown => crate::error::ExecuteTransactionError::unhandled(unknown),
+            });
+        }
+        let body: ExecuteTransactionOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::ExecuteTransactionError::unhandled)?;
+        Ok(ExecuteTransactionOutput {
+            responses: body.responses,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ExecuteTransactionOutput, crate::error::ExecuteTransactionError> {
+        Self::from_response(response)
+    }
     pub fn new(input: ExecuteTransactionInput) -> Self {
         Self { input }
     }
@@ -864,6 +2303,61 @@ impl ExportTableToPointInTime {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ExportTableToPointInTimeOutput, crate::error::ExportTableToPointInTimeError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::ExportTableToPointInTimeError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::ExportTableToPointInTimeError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "ExportConflictException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExportTableToPointInTimeError::ExportConflictError(body),
+                    Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
+                }
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExportTableToPointInTimeError::InternalServerError(body),
+                    Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
+                }
+                "InvalidExportTimeException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExportTableToPointInTimeError::InvalidExportTimeError(body),
+                    Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
+                }
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExportTableToPointInTimeError::LimitExceededError(body),
+                    Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
+                }
+                "PointInTimeRecoveryUnavailableException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExportTableToPointInTimeError::PointInTimeRecoveryUnavailableError(body),
+                    Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
+                }
+                "TableNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ExportTableToPointInTimeError::TableNotFoundError(body),
+                    Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
+                }
+                unknown => crate::error::ExportTableToPointInTimeError::unhandled(unknown)
+            });
+        }
+        let body: ExportTableToPointInTimeOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::ExportTableToPointInTimeError::unhandled)?;
+        Ok(ExportTableToPointInTimeOutput {
+            export_description: body.export_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ExportTableToPointInTimeOutput, crate::error::ExportTableToPointInTimeError> {
+        Self::from_response(response)
     }
     pub fn new(input: ExportTableToPointInTimeInput) -> Self {
         Self { input }
@@ -888,6 +2382,59 @@ impl GetItem {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         GetItemInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<GetItemOutput, crate::error::GetItemError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::GetItemError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::GetItemError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::GetItemError::InternalServerError(body),
+                    Err(e) => crate::error::GetItemError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::GetItemError::InvalidEndpointError(body),
+                    Err(e) => crate::error::GetItemError::unhandled(e),
+                },
+                "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::GetItemError::ProvisionedThroughputExceededError(body)
+                    }
+                    Err(e) => crate::error::GetItemError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::GetItemError::RequestLimitExceeded(body),
+                    Err(e) => crate::error::GetItemError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::GetItemError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::GetItemError::unhandled(e),
+                },
+                unknown => crate::error::GetItemError::unhandled(unknown),
+            });
+        }
+        let body: GetItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::GetItemError::unhandled)?;
+        Ok(GetItemOutput {
+            item: body.item,
+            consumed_capacity: body.consumed_capacity,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<GetItemOutput, crate::error::GetItemError> {
+        Self::from_response(response)
+    }
     pub fn new(input: GetItemInput) -> Self {
         Self { input }
     }
@@ -911,6 +2458,45 @@ impl ListBackups {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         ListBackupsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListBackupsOutput, crate::error::ListBackupsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::ListBackupsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::ListBackupsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ListBackupsError::InternalServerError(body),
+                    Err(e) => crate::error::ListBackupsError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ListBackupsError::InvalidEndpointError(body),
+                    Err(e) => crate::error::ListBackupsError::unhandled(e),
+                },
+                unknown => crate::error::ListBackupsError::unhandled(unknown),
+            });
+        }
+        let body: ListBackupsOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::ListBackupsError::unhandled)?;
+        Ok(ListBackupsOutput {
+            backup_summaries: body.backup_summaries,
+            last_evaluated_backup_arn: body.last_evaluated_backup_arn,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListBackupsOutput, crate::error::ListBackupsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: ListBackupsInput) -> Self {
         Self { input }
     }
@@ -931,6 +2517,50 @@ impl ListContributorInsights {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListContributorInsightsOutput, crate::error::ListContributorInsightsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::ListContributorInsightsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::ListContributorInsightsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::ListContributorInsightsError::InternalServerError(body)
+                    }
+                    Err(e) => crate::error::ListContributorInsightsError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::ListContributorInsightsError::ResourceNotFoundError(body)
+                    }
+                    Err(e) => crate::error::ListContributorInsightsError::unhandled(e),
+                },
+                unknown => crate::error::ListContributorInsightsError::unhandled(unknown),
+            });
+        }
+        let body: ListContributorInsightsOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::ListContributorInsightsError::unhandled)?;
+        Ok(ListContributorInsightsOutput {
+            contributor_insights_summaries: body.contributor_insights_summaries,
+            next_token: body.next_token,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListContributorInsightsOutput, crate::error::ListContributorInsightsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: ListContributorInsightsInput) -> Self {
         Self { input }
     }
@@ -947,6 +2577,45 @@ impl ListExports {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         ListExportsInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListExportsOutput, crate::error::ListExportsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::ListExportsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::ListExportsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ListExportsError::InternalServerError(body),
+                    Err(e) => crate::error::ListExportsError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ListExportsError::LimitExceededError(body),
+                    Err(e) => crate::error::ListExportsError::unhandled(e),
+                },
+                unknown => crate::error::ListExportsError::unhandled(unknown),
+            });
+        }
+        let body: ListExportsOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::ListExportsError::unhandled)?;
+        Ok(ListExportsOutput {
+            export_summaries: body.export_summaries,
+            next_token: body.next_token,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListExportsOutput, crate::error::ListExportsError> {
+        Self::from_response(response)
     }
     pub fn new(input: ListExportsInput) -> Self {
         Self { input }
@@ -968,6 +2637,46 @@ impl ListGlobalTables {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         ListGlobalTablesInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListGlobalTablesOutput, crate::error::ListGlobalTablesError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::ListGlobalTablesError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::ListGlobalTablesError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ListGlobalTablesError::InternalServerError(body),
+                    Err(e) => crate::error::ListGlobalTablesError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ListGlobalTablesError::InvalidEndpointError(body),
+                    Err(e) => crate::error::ListGlobalTablesError::unhandled(e),
+                },
+                unknown => crate::error::ListGlobalTablesError::unhandled(unknown),
+            });
+        }
+        let body: ListGlobalTablesOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::ListGlobalTablesError::unhandled)?;
+        Ok(ListGlobalTablesOutput {
+            global_tables: body.global_tables,
+            last_evaluated_global_table_name: body.last_evaluated_global_table_name,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListGlobalTablesOutput, crate::error::ListGlobalTablesError> {
+        Self::from_response(response)
+    }
     pub fn new(input: ListGlobalTablesInput) -> Self {
         Self { input }
     }
@@ -986,6 +2695,45 @@ impl ListTables {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         ListTablesInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListTablesOutput, crate::error::ListTablesError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::ListTablesError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::ListTablesError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ListTablesError::InternalServerError(body),
+                    Err(e) => crate::error::ListTablesError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ListTablesError::InvalidEndpointError(body),
+                    Err(e) => crate::error::ListTablesError::unhandled(e),
+                },
+                unknown => crate::error::ListTablesError::unhandled(unknown),
+            });
+        }
+        let body: ListTablesOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::ListTablesError::unhandled)?;
+        Ok(ListTablesOutput {
+            table_names: body.table_names,
+            last_evaluated_table_name: body.last_evaluated_table_name,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListTablesOutput, crate::error::ListTablesError> {
+        Self::from_response(response)
     }
     pub fn new(input: ListTablesInput) -> Self {
         Self { input }
@@ -1009,6 +2757,49 @@ impl ListTagsOfResource {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListTagsOfResourceOutput, crate::error::ListTagsOfResourceError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::ListTagsOfResourceError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::ListTagsOfResourceError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ListTagsOfResourceError::InternalServerError(body),
+                    Err(e) => crate::error::ListTagsOfResourceError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ListTagsOfResourceError::InvalidEndpointError(body),
+                    Err(e) => crate::error::ListTagsOfResourceError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ListTagsOfResourceError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::ListTagsOfResourceError::unhandled(e),
+                },
+                unknown => crate::error::ListTagsOfResourceError::unhandled(unknown),
+            });
+        }
+        let body: ListTagsOfResourceOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::ListTagsOfResourceError::unhandled)?;
+        Ok(ListTagsOfResourceOutput {
+            tags: body.tags,
+            next_token: body.next_token,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListTagsOfResourceOutput, crate::error::ListTagsOfResourceError> {
+        Self::from_response(response)
     }
     pub fn new(input: ListTagsOfResourceInput) -> Self {
         Self { input }
@@ -1093,6 +2884,76 @@ impl PutItem {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         PutItemInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<PutItemOutput, crate::error::PutItemError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::PutItemError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::PutItemError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "ConditionalCheckFailedException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::PutItemError::ConditionalCheckFailedError(body),
+                    Err(e) => crate::error::PutItemError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::PutItemError::InternalServerError(body),
+                    Err(e) => crate::error::PutItemError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::PutItemError::InvalidEndpointError(body),
+                    Err(e) => crate::error::PutItemError::unhandled(e),
+                },
+                "ItemCollectionSizeLimitExceededException" => {
+                    match ::serde_json::from_value(body) {
+                        Ok(body) => {
+                            crate::error::PutItemError::ItemCollectionSizeLimitExceededError(body)
+                        }
+                        Err(e) => crate::error::PutItemError::unhandled(e),
+                    }
+                }
+                "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::PutItemError::ProvisionedThroughputExceededError(body)
+                    }
+                    Err(e) => crate::error::PutItemError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::PutItemError::RequestLimitExceeded(body),
+                    Err(e) => crate::error::PutItemError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::PutItemError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::PutItemError::unhandled(e),
+                },
+                "TransactionConflictException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::PutItemError::TransactionConflictError(body),
+                    Err(e) => crate::error::PutItemError::unhandled(e),
+                },
+                unknown => crate::error::PutItemError::unhandled(unknown),
+            });
+        }
+        let body: PutItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::PutItemError::unhandled)?;
+        Ok(PutItemOutput {
+            attributes: body.attributes,
+            consumed_capacity: body.consumed_capacity,
+            item_collection_metrics: body.item_collection_metrics,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<PutItemOutput, crate::error::PutItemError> {
+        Self::from_response(response)
+    }
     pub fn new(input: PutItemInput) -> Self {
         Self { input }
     }
@@ -1165,6 +3026,59 @@ impl Query {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         QueryInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<QueryOutput, crate::error::QueryError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::QueryError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code
+                .ok_or_else(|| crate::error::QueryError::unhandled("no error code".to_string()))?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::QueryError::InternalServerError(body),
+                    Err(e) => crate::error::QueryError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::QueryError::InvalidEndpointError(body),
+                    Err(e) => crate::error::QueryError::unhandled(e),
+                },
+                "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::QueryError::ProvisionedThroughputExceededError(body),
+                    Err(e) => crate::error::QueryError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::QueryError::RequestLimitExceeded(body),
+                    Err(e) => crate::error::QueryError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::QueryError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::QueryError::unhandled(e),
+                },
+                unknown => crate::error::QueryError::unhandled(unknown),
+            });
+        }
+        let body: QueryOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::QueryError::unhandled)?;
+        Ok(QueryOutput {
+            items: body.items,
+            count: body.count,
+            scanned_count: body.scanned_count,
+            last_evaluated_key: body.last_evaluated_key,
+            consumed_capacity: body.consumed_capacity,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<QueryOutput, crate::error::QueryError> {
+        Self::from_response(response)
+    }
     pub fn new(input: QueryInput) -> Self {
         Self { input }
     }
@@ -1208,6 +3122,73 @@ impl RestoreTableFromBackup {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<RestoreTableFromBackupOutput, crate::error::RestoreTableFromBackupError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::RestoreTableFromBackupError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::RestoreTableFromBackupError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "BackupInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::RestoreTableFromBackupError::BackupInUseError(body),
+                    Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
+                },
+                "BackupNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::RestoreTableFromBackupError::BackupNotFoundError(body)
+                    }
+                    Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::RestoreTableFromBackupError::InternalServerError(body)
+                    }
+                    Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::RestoreTableFromBackupError::InvalidEndpointError(body)
+                    }
+                    Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::RestoreTableFromBackupError::LimitExceededError(body),
+                    Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
+                },
+                "TableAlreadyExistsException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::RestoreTableFromBackupError::TableAlreadyExistsError(body)
+                    }
+                    Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
+                },
+                "TableInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::RestoreTableFromBackupError::TableInUseError(body),
+                    Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
+                },
+                unknown => crate::error::RestoreTableFromBackupError::unhandled(unknown),
+            });
+        }
+        let body: RestoreTableFromBackupOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::RestoreTableFromBackupError::unhandled)?;
+        Ok(RestoreTableFromBackupOutput {
+            table_description: body.table_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<RestoreTableFromBackupOutput, crate::error::RestoreTableFromBackupError> {
+        Self::from_response(response)
     }
     pub fn new(input: RestoreTableFromBackupInput) -> Self {
         Self { input }
@@ -1283,6 +3264,69 @@ impl RestoreTableToPointInTime {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<RestoreTableToPointInTimeOutput, crate::error::RestoreTableToPointInTimeError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::RestoreTableToPointInTimeError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::RestoreTableToPointInTimeError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError::InternalServerError(body),
+                    Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
+                }
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError::InvalidEndpointError(body),
+                    Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
+                }
+                "InvalidRestoreTimeException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError::InvalidRestoreTimeError(body),
+                    Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
+                }
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError::LimitExceededError(body),
+                    Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
+                }
+                "PointInTimeRecoveryUnavailableException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError::PointInTimeRecoveryUnavailableError(body),
+                    Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
+                }
+                "TableAlreadyExistsException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError::TableAlreadyExistsError(body),
+                    Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
+                }
+                "TableInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError::TableInUseError(body),
+                    Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
+                }
+                "TableNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError::TableNotFoundError(body),
+                    Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
+                }
+                unknown => crate::error::RestoreTableToPointInTimeError::unhandled(unknown)
+            });
+        }
+        let body: RestoreTableToPointInTimeOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::RestoreTableToPointInTimeError::unhandled)?;
+        Ok(RestoreTableToPointInTimeOutput {
+            table_description: body.table_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<RestoreTableToPointInTimeOutput, crate::error::RestoreTableToPointInTimeError> {
+        Self::from_response(response)
+    }
     pub fn new(input: RestoreTableToPointInTimeInput) -> Self {
         Self { input }
     }
@@ -1324,6 +3368,59 @@ impl Scan {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         ScanInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ScanOutput, crate::error::ScanError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::ScanError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code
+                .ok_or_else(|| crate::error::ScanError::unhandled("no error code".to_string()))?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ScanError::InternalServerError(body),
+                    Err(e) => crate::error::ScanError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ScanError::InvalidEndpointError(body),
+                    Err(e) => crate::error::ScanError::unhandled(e),
+                },
+                "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ScanError::ProvisionedThroughputExceededError(body),
+                    Err(e) => crate::error::ScanError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ScanError::RequestLimitExceeded(body),
+                    Err(e) => crate::error::ScanError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ScanError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::ScanError::unhandled(e),
+                },
+                unknown => crate::error::ScanError::unhandled(unknown),
+            });
+        }
+        let body: ScanOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::ScanError::unhandled)?;
+        Ok(ScanOutput {
+            items: body.items,
+            count: body.count,
+            scanned_count: body.scanned_count,
+            last_evaluated_key: body.last_evaluated_key,
+            consumed_capacity: body.consumed_capacity,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ScanOutput, crate::error::ScanError> {
+        Self::from_response(response)
+    }
     pub fn new(input: ScanInput) -> Self {
         Self { input }
     }
@@ -1346,6 +3443,52 @@ impl TagResource {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         TagResourceInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<TagResourceOutput, crate::error::TagResourceError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::TagResourceError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::TagResourceError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TagResourceError::InternalServerError(body),
+                    Err(e) => crate::error::TagResourceError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TagResourceError::InvalidEndpointError(body),
+                    Err(e) => crate::error::TagResourceError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TagResourceError::LimitExceededError(body),
+                    Err(e) => crate::error::TagResourceError::unhandled(e),
+                },
+                "ResourceInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TagResourceError::ResourceInUseError(body),
+                    Err(e) => crate::error::TagResourceError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TagResourceError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::TagResourceError::unhandled(e),
+                },
+                unknown => crate::error::TagResourceError::unhandled(unknown),
+            });
+        }
+        Ok(TagResourceOutput {})
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<TagResourceOutput, crate::error::TagResourceError> {
+        Self::from_response(response)
     }
     pub fn new(input: TagResourceInput) -> Self {
         Self { input }
@@ -1388,6 +3531,66 @@ impl TransactGetItems {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         TransactGetItemsInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<TransactGetItemsOutput, crate::error::TransactGetItemsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::TransactGetItemsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::TransactGetItemsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TransactGetItemsError::InternalServerError(body),
+                    Err(e) => crate::error::TransactGetItemsError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TransactGetItemsError::InvalidEndpointError(body),
+                    Err(e) => crate::error::TransactGetItemsError::unhandled(e),
+                },
+                "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::TransactGetItemsError::ProvisionedThroughputExceededError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::TransactGetItemsError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TransactGetItemsError::RequestLimitExceeded(body),
+                    Err(e) => crate::error::TransactGetItemsError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TransactGetItemsError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::TransactGetItemsError::unhandled(e),
+                },
+                "TransactionCanceledException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TransactGetItemsError::TransactionCanceledError(body),
+                    Err(e) => crate::error::TransactGetItemsError::unhandled(e),
+                },
+                unknown => crate::error::TransactGetItemsError::unhandled(unknown),
+            });
+        }
+        let body: TransactGetItemsOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::TransactGetItemsError::unhandled)?;
+        Ok(TransactGetItemsOutput {
+            consumed_capacity: body.consumed_capacity,
+            responses: body.responses,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<TransactGetItemsOutput, crate::error::TransactGetItemsError> {
+        Self::from_response(response)
     }
     pub fn new(input: TransactGetItemsInput) -> Self {
         Self { input }
@@ -1479,6 +3682,81 @@ impl TransactWriteItems {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<TransactWriteItemsOutput, crate::error::TransactWriteItemsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::TransactWriteItemsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::TransactWriteItemsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "IdempotentParameterMismatchException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::TransactWriteItemsError::IdempotentParameterMismatchError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TransactWriteItemsError::InternalServerError(body),
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TransactWriteItemsError::InvalidEndpointError(body),
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
+                },
+                "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::TransactWriteItemsError::ProvisionedThroughputExceededError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TransactWriteItemsError::RequestLimitExceeded(body),
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::TransactWriteItemsError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
+                },
+                "TransactionCanceledException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::TransactWriteItemsError::TransactionCanceledError(body)
+                    }
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
+                },
+                "TransactionInProgressException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::TransactWriteItemsError::TransactionInProgressError(body)
+                    }
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
+                },
+                unknown => crate::error::TransactWriteItemsError::unhandled(unknown),
+            });
+        }
+        let body: TransactWriteItemsOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::TransactWriteItemsError::unhandled)?;
+        Ok(TransactWriteItemsOutput {
+            consumed_capacity: body.consumed_capacity,
+            item_collection_metrics: body.item_collection_metrics,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<TransactWriteItemsOutput, crate::error::TransactWriteItemsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: TransactWriteItemsInput) -> Self {
         Self { input }
     }
@@ -1499,6 +3777,52 @@ impl UntagResource {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         UntagResourceInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UntagResourceOutput, crate::error::UntagResourceError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::UntagResourceError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::UntagResourceError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UntagResourceError::InternalServerError(body),
+                    Err(e) => crate::error::UntagResourceError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UntagResourceError::InvalidEndpointError(body),
+                    Err(e) => crate::error::UntagResourceError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UntagResourceError::LimitExceededError(body),
+                    Err(e) => crate::error::UntagResourceError::unhandled(e),
+                },
+                "ResourceInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UntagResourceError::ResourceInUseError(body),
+                    Err(e) => crate::error::UntagResourceError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UntagResourceError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::UntagResourceError::unhandled(e),
+                },
+                unknown => crate::error::UntagResourceError::unhandled(unknown),
+            });
+        }
+        Ok(UntagResourceOutput {})
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UntagResourceOutput, crate::error::UntagResourceError> {
+        Self::from_response(response)
     }
     pub fn new(input: UntagResourceInput) -> Self {
         Self { input }
@@ -1531,6 +3855,53 @@ impl UpdateContinuousBackups {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateContinuousBackupsOutput, crate::error::UpdateContinuousBackupsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::UpdateContinuousBackupsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::UpdateContinuousBackupsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "ContinuousBackupsUnavailableException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateContinuousBackupsError::ContinuousBackupsUnavailableError(body),
+                    Err(e) => crate::error::UpdateContinuousBackupsError::unhandled(e)
+                }
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateContinuousBackupsError::InternalServerError(body),
+                    Err(e) => crate::error::UpdateContinuousBackupsError::unhandled(e)
+                }
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateContinuousBackupsError::InvalidEndpointError(body),
+                    Err(e) => crate::error::UpdateContinuousBackupsError::unhandled(e)
+                }
+                "TableNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateContinuousBackupsError::TableNotFoundError(body),
+                    Err(e) => crate::error::UpdateContinuousBackupsError::unhandled(e)
+                }
+                unknown => crate::error::UpdateContinuousBackupsError::unhandled(unknown)
+            });
+        }
+        let body: UpdateContinuousBackupsOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::UpdateContinuousBackupsError::unhandled)?;
+        Ok(UpdateContinuousBackupsOutput {
+            continuous_backups_description: body.continuous_backups_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateContinuousBackupsOutput, crate::error::UpdateContinuousBackupsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: UpdateContinuousBackupsInput) -> Self {
         Self { input }
     }
@@ -1550,6 +3921,51 @@ impl UpdateContributorInsights {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateContributorInsightsOutput, crate::error::UpdateContributorInsightsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::UpdateContributorInsightsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::UpdateContributorInsightsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateContributorInsightsError::InternalServerError(body)
+                    }
+                    Err(e) => crate::error::UpdateContributorInsightsError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateContributorInsightsError::ResourceNotFoundError(body)
+                    }
+                    Err(e) => crate::error::UpdateContributorInsightsError::unhandled(e),
+                },
+                unknown => crate::error::UpdateContributorInsightsError::unhandled(unknown),
+            });
+        }
+        let body: UpdateContributorInsightsOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::UpdateContributorInsightsError::unhandled)?;
+        Ok(UpdateContributorInsightsOutput {
+            table_name: body.table_name,
+            index_name: body.index_name,
+            contributor_insights_status: body.contributor_insights_status,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateContributorInsightsOutput, crate::error::UpdateContributorInsightsError> {
+        Self::from_response(response)
     }
     pub fn new(input: UpdateContributorInsightsInput) -> Self {
         Self { input }
@@ -1596,6 +4012,64 @@ impl UpdateGlobalTable {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         UpdateGlobalTableInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateGlobalTableOutput, crate::error::UpdateGlobalTableError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::UpdateGlobalTableError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::UpdateGlobalTableError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "GlobalTableNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateGlobalTableError::GlobalTableNotFoundError(body)
+                    }
+                    Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateGlobalTableError::InternalServerError(body),
+                    Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateGlobalTableError::InvalidEndpointError(body),
+                    Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
+                },
+                "ReplicaAlreadyExistsException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateGlobalTableError::ReplicaAlreadyExistsError(body)
+                    }
+                    Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
+                },
+                "ReplicaNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateGlobalTableError::ReplicaNotFoundError(body),
+                    Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
+                },
+                "TableNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateGlobalTableError::TableNotFoundError(body),
+                    Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
+                },
+                unknown => crate::error::UpdateGlobalTableError::unhandled(unknown),
+            });
+        }
+        let body: UpdateGlobalTableOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::UpdateGlobalTableError::unhandled)?;
+        Ok(UpdateGlobalTableOutput {
+            global_table_description: body.global_table_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateGlobalTableOutput, crate::error::UpdateGlobalTableError> {
+        Self::from_response(response)
+    }
     pub fn new(input: UpdateGlobalTableInput) -> Self {
         Self { input }
     }
@@ -1616,6 +4090,80 @@ impl UpdateGlobalTableSettings {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateGlobalTableSettingsOutput, crate::error::UpdateGlobalTableSettingsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::UpdateGlobalTableSettingsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::UpdateGlobalTableSettingsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "GlobalTableNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateGlobalTableSettingsError::GlobalTableNotFoundError(body)
+                    }
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
+                },
+                "IndexNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateGlobalTableSettingsError::IndexNotFoundError(body)
+                    }
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateGlobalTableSettingsError::InternalServerError(body)
+                    }
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateGlobalTableSettingsError::InvalidEndpointError(body)
+                    }
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateGlobalTableSettingsError::LimitExceededError(body)
+                    }
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
+                },
+                "ReplicaNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateGlobalTableSettingsError::ReplicaNotFoundError(body)
+                    }
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
+                },
+                "ResourceInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateGlobalTableSettingsError::ResourceInUseError(body)
+                    }
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
+                },
+                unknown => crate::error::UpdateGlobalTableSettingsError::unhandled(unknown),
+            });
+        }
+        let body: UpdateGlobalTableSettingsOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::UpdateGlobalTableSettingsError::unhandled)?;
+        Ok(UpdateGlobalTableSettingsOutput {
+            global_table_name: body.global_table_name,
+            replica_settings: body.replica_settings,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateGlobalTableSettingsOutput, crate::error::UpdateGlobalTableSettingsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: UpdateGlobalTableSettingsInput) -> Self {
         Self { input }
     }
@@ -1634,6 +4182,78 @@ impl UpdateItem {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         UpdateItemInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateItemOutput, crate::error::UpdateItemError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::UpdateItemError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::UpdateItemError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "ConditionalCheckFailedException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateItemError::ConditionalCheckFailedError(body),
+                    Err(e) => crate::error::UpdateItemError::unhandled(e),
+                },
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateItemError::InternalServerError(body),
+                    Err(e) => crate::error::UpdateItemError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateItemError::InvalidEndpointError(body),
+                    Err(e) => crate::error::UpdateItemError::unhandled(e),
+                },
+                "ItemCollectionSizeLimitExceededException" => {
+                    match ::serde_json::from_value(body) {
+                        Ok(body) => {
+                            crate::error::UpdateItemError::ItemCollectionSizeLimitExceededError(
+                                body,
+                            )
+                        }
+                        Err(e) => crate::error::UpdateItemError::unhandled(e),
+                    }
+                }
+                "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateItemError::ProvisionedThroughputExceededError(body)
+                    }
+                    Err(e) => crate::error::UpdateItemError::unhandled(e),
+                },
+                "RequestLimitExceeded" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateItemError::RequestLimitExceeded(body),
+                    Err(e) => crate::error::UpdateItemError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateItemError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::UpdateItemError::unhandled(e),
+                },
+                "TransactionConflictException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateItemError::TransactionConflictError(body),
+                    Err(e) => crate::error::UpdateItemError::unhandled(e),
+                },
+                unknown => crate::error::UpdateItemError::unhandled(unknown),
+            });
+        }
+        let body: UpdateItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::UpdateItemError::unhandled)?;
+        Ok(UpdateItemOutput {
+            attributes: body.attributes,
+            consumed_capacity: body.consumed_capacity,
+            item_collection_metrics: body.item_collection_metrics,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateItemOutput, crate::error::UpdateItemError> {
+        Self::from_response(response)
     }
     pub fn new(input: UpdateItemInput) -> Self {
         Self { input }
@@ -1674,6 +4294,56 @@ impl UpdateTable {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         UpdateTableInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateTableOutput, crate::error::UpdateTableError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::UpdateTableError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::UpdateTableError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateTableError::InternalServerError(body),
+                    Err(e) => crate::error::UpdateTableError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateTableError::InvalidEndpointError(body),
+                    Err(e) => crate::error::UpdateTableError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateTableError::LimitExceededError(body),
+                    Err(e) => crate::error::UpdateTableError::unhandled(e),
+                },
+                "ResourceInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateTableError::ResourceInUseError(body),
+                    Err(e) => crate::error::UpdateTableError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateTableError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::UpdateTableError::unhandled(e),
+                },
+                unknown => crate::error::UpdateTableError::unhandled(unknown),
+            });
+        }
+        let body: UpdateTableOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::UpdateTableError::unhandled)?;
+        Ok(UpdateTableOutput {
+            table_description: body.table_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateTableOutput, crate::error::UpdateTableError> {
+        Self::from_response(response)
+    }
     pub fn new(input: UpdateTableInput) -> Self {
         Self { input }
     }
@@ -1696,6 +4366,67 @@ impl UpdateTableReplicaAutoScaling {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateTableReplicaAutoScalingOutput, crate::error::UpdateTableReplicaAutoScalingError>
+    {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::UpdateTableReplicaAutoScalingError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::UpdateTableReplicaAutoScalingError::unhandled(
+                    "no error code".to_string(),
+                )
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateTableReplicaAutoScalingError::InternalServerError(body)
+                    }
+                    Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateTableReplicaAutoScalingError::LimitExceededError(body)
+                    }
+                    Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e),
+                },
+                "ResourceInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateTableReplicaAutoScalingError::ResourceInUseError(body)
+                    }
+                    Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => {
+                        crate::error::UpdateTableReplicaAutoScalingError::ResourceNotFoundError(
+                            body,
+                        )
+                    }
+                    Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e),
+                },
+                unknown => crate::error::UpdateTableReplicaAutoScalingError::unhandled(unknown),
+            });
+        }
+        let body: UpdateTableReplicaAutoScalingOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::UpdateTableReplicaAutoScalingError::unhandled)?;
+        Ok(UpdateTableReplicaAutoScalingOutput {
+            table_auto_scaling_description: body.table_auto_scaling_description,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateTableReplicaAutoScalingOutput, crate::error::UpdateTableReplicaAutoScalingError>
+    {
+        Self::from_response(response)
     }
     pub fn new(input: UpdateTableReplicaAutoScalingInput) -> Self {
         Self { input }
@@ -1737,6 +4468,57 @@ impl UpdateTimeToLive {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         UpdateTimeToLiveInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateTimeToLiveOutput, crate::error::UpdateTimeToLiveError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::UpdateTimeToLiveError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::UpdateTimeToLiveError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InternalServerError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateTimeToLiveError::InternalServerError(body),
+                    Err(e) => crate::error::UpdateTimeToLiveError::unhandled(e),
+                },
+                "InvalidEndpointException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateTimeToLiveError::InvalidEndpointError(body),
+                    Err(e) => crate::error::UpdateTimeToLiveError::unhandled(e),
+                },
+                "LimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateTimeToLiveError::LimitExceededError(body),
+                    Err(e) => crate::error::UpdateTimeToLiveError::unhandled(e),
+                },
+                "ResourceInUseException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateTimeToLiveError::ResourceInUseError(body),
+                    Err(e) => crate::error::UpdateTimeToLiveError::unhandled(e),
+                },
+                "ResourceNotFoundException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateTimeToLiveError::ResourceNotFoundError(body),
+                    Err(e) => crate::error::UpdateTimeToLiveError::unhandled(e),
+                },
+                unknown => crate::error::UpdateTimeToLiveError::unhandled(unknown),
+            });
+        }
+        let body: UpdateTimeToLiveOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::UpdateTimeToLiveError::unhandled)?;
+        Ok(UpdateTimeToLiveOutput {
+            time_to_live_specification: body.time_to_live_specification,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<UpdateTimeToLiveOutput, crate::error::UpdateTimeToLiveError> {
+        Self::from_response(response)
     }
     pub fn new(input: UpdateTimeToLiveInput) -> Self {
         Self { input }

@@ -45,6 +45,7 @@ pub enum MyUnion {
 pub struct GreetingStruct {
     #[serde(rename = "hi")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub hi: ::std::option::Option<::std::string::String>,
 }
 /// See [`GreetingStruct`](crate::model::GreetingStruct)
@@ -134,6 +135,7 @@ impl FooEnum {
 pub struct ComplexNestedErrorData {
     #[serde(rename = "Fooooo")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub foo: ::std::option::Option<::std::string::String>,
 }
 /// See [`ComplexNestedErrorData`](crate::model::ComplexNestedErrorData)

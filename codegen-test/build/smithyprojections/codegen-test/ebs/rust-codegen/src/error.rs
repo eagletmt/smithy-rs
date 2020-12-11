@@ -30,6 +30,11 @@ impl ::std::fmt::Display for CompleteSnapshotError {
         }
     }
 }
+impl CompleteSnapshotError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        CompleteSnapshotError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for CompleteSnapshotError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -68,6 +73,11 @@ impl ::std::fmt::Display for GetSnapshotBlockError {
             GetSnapshotBlockError::ValidationError(inner) => inner.fmt(f),
             GetSnapshotBlockError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl GetSnapshotBlockError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        GetSnapshotBlockError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for GetSnapshotBlockError {
@@ -110,6 +120,11 @@ impl ::std::fmt::Display for ListChangedBlocksError {
         }
     }
 }
+impl ListChangedBlocksError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ListChangedBlocksError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for ListChangedBlocksError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -150,6 +165,11 @@ impl ::std::fmt::Display for ListSnapshotBlocksError {
         }
     }
 }
+impl ListSnapshotBlocksError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ListSnapshotBlocksError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for ListSnapshotBlocksError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -188,6 +208,11 @@ impl ::std::fmt::Display for PutSnapshotBlockError {
             PutSnapshotBlockError::ValidationError(inner) => inner.fmt(f),
             PutSnapshotBlockError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl PutSnapshotBlockError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        PutSnapshotBlockError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for PutSnapshotBlockError {
@@ -232,6 +257,11 @@ impl ::std::fmt::Display for StartSnapshotError {
             StartSnapshotError::ValidationError(inner) => inner.fmt(f),
             StartSnapshotError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl StartSnapshotError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        StartSnapshotError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for StartSnapshotError {

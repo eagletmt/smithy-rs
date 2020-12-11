@@ -11,6 +11,7 @@
 pub struct Vec {
     #[serde(rename = "pv_member")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub pv_member: ::std::option::Option<bool>,
 }
 /// See [`Vec`](crate::model::Vec)
@@ -54,6 +55,7 @@ impl Vec {
 pub struct String {
     #[serde(rename = "ps_member")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub ps_member: ::std::option::Option<bool>,
 }
 /// See [`String`](crate::model::String)

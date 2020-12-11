@@ -4,6 +4,13 @@ use crate::input::GreetingWithErrorsInput;
 use crate::input::JsonUnionsInput;
 use crate::input::NoInputAndNoOutputInput;
 use crate::input::NoInputAndOutputInput;
+use crate::output::EmptyInputAndEmptyOutputOutput;
+use crate::output::GreetingWithErrorsOutput;
+use crate::output::JsonUnionsOutput;
+use crate::output::NoInputAndNoOutputOutput;
+use crate::output::NoInputAndOutputOutput;
+use crate::serializer::GreetingWithErrorsOutputBody;
+use crate::serializer::JsonUnionsOutputBody;
 /// The example tests how requests and responses are serialized when there's
 /// no request or response payload because the operation has an empty input
 /// and empty output structure that reuses the same shape. While this should
@@ -22,6 +29,32 @@ impl EmptyInputAndEmptyOutput {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<EmptyInputAndEmptyOutputOutput, crate::error::EmptyInputAndEmptyOutputError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::EmptyInputAndEmptyOutputError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::EmptyInputAndEmptyOutputError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::EmptyInputAndEmptyOutputError::unhandled(
+                error_code,
+            ));
+        }
+        Ok(EmptyInputAndEmptyOutputOutput {})
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<EmptyInputAndEmptyOutputOutput, crate::error::EmptyInputAndEmptyOutputError> {
+        Self::from_response(response)
+    }
     pub fn new(input: EmptyInputAndEmptyOutputInput) -> Self {
         Self { input }
     }
@@ -31,6 +64,8 @@ impl EmptyInputAndEmptyOutput {
 mod empty_input_and_empty_output_request_test {
 
     use crate::input::EmptyInputAndEmptyOutputInput;
+    use crate::operation::EmptyInputAndEmptyOutput;
+    use crate::output::EmptyInputAndEmptyOutputOutput;
     /// Empty input serializes no payload
     /// Test ID: AwsJson10EmptyInputAndEmptyOutput
     #[test]
@@ -56,13 +91,29 @@ mod empty_input_and_empty_output_request_test {
     /// Test ID: AwsJson10EmptyInputAndEmptyOutput
     #[test]
     fn test_aws_json10_empty_input_and_empty_output_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = EmptyInputAndEmptyOutputOutput::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body("")
+            .unwrap();
+
+        let parsed = EmptyInputAndEmptyOutput::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Empty output serializes no payload
     /// Test ID: AwsJson10EmptyInputAndEmptyJsonObjectOutput
     #[test]
     fn test_aws_json10_empty_input_and_empty_json_object_output_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = EmptyInputAndEmptyOutputOutput::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body("{}")
+            .unwrap();
+
+        let parsed = EmptyInputAndEmptyOutput::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
 }
 
@@ -86,6 +137,48 @@ impl GreetingWithErrors {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::GreetingWithErrorsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::GreetingWithErrorsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InvalidGreeting" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::GreetingWithErrorsError::InvalidGreeting(body),
+                    Err(e) => crate::error::GreetingWithErrorsError::unhandled(e),
+                },
+                "ComplexError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::GreetingWithErrorsError::ComplexError(body),
+                    Err(e) => crate::error::GreetingWithErrorsError::unhandled(e),
+                },
+                "FooError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::GreetingWithErrorsError::FooError(body),
+                    Err(e) => crate::error::GreetingWithErrorsError::unhandled(e),
+                },
+                unknown => crate::error::GreetingWithErrorsError::unhandled(unknown),
+            });
+        }
+        let body: GreetingWithErrorsOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::GreetingWithErrorsError::unhandled)?;
+        Ok(GreetingWithErrorsOutput {
+            greeting: body.greeting,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: GreetingWithErrorsInput) -> Self {
         Self { input }
     }
@@ -94,29 +187,106 @@ impl GreetingWithErrors {
 #[allow(unreachable_code, unused_variables)]
 mod greeting_with_errors_request_test {
 
+    use crate::error::ComplexError;
+    use crate::error::FooError;
+    use crate::error::InvalidGreeting;
+    use crate::model::ComplexNestedErrorData;
+    use crate::operation::GreetingWithErrors;
     /// Parses simple JSON errors
     /// Test ID: AwsJson10InvalidGreetingError
     #[test]
     fn test_aws_json10_invalid_greeting_error_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = InvalidGreeting::builder().message("Hi".to_string()).build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(400)
+            .body(
+                "{
+            \"__type\": \"aws.protocoltests.json10#InvalidGreeting\",
+            \"Message\": \"Hi\"
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::InvalidGreeting(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Parses a complex error with no message member
     /// Test ID: AwsJson10ComplexError
     #[test]
     fn test_aws_json10_complex_error_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = ComplexError::builder()
+            .top_level("Top level".to_string())
+            .nested(
+                ComplexNestedErrorData::builder()
+                    .foo("bar".to_string())
+                    .build(),
+            )
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(400)
+            .body(
+                "{
+            \"__type\": \"aws.protocoltests.json10#ComplexError\",
+            \"TopLevel\": \"Top level\",
+            \"Nested\": {
+                \"Fooooo\": \"bar\"
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::ComplexError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Parses a complex error with an empty body
     /// Test ID: AwsJson10EmptyComplexError
     #[test]
     fn test_aws_json10_empty_complex_error_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = ComplexError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(400)
+            .body(
+                "{
+            \"__type\": \"aws.protocoltests.json10#ComplexError\"
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::ComplexError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Serializes the X-Amzn-ErrorType header. For an example service, see Amazon EKS.
     /// Test ID: AwsJson10FooErrorUsingXAmznErrorType
     #[test]
     fn test_aws_json10_foo_error_using_x_amzn_error_type_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("X-Amzn-Errortype", "FooError")
+            .status(500)
+            .body(vec![])
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Some X-Amzn-Errortype headers contain URLs. Clients need to split the URL on ':' and take only the first half of the string. For example, 'ValidationException:http://internal.amazon.com/coral/com.amazon.coral.validate/'
     /// is to be interpreted as 'ValidationException'.
@@ -125,13 +295,41 @@ mod greeting_with_errors_request_test {
     /// Test ID: AwsJson10FooErrorUsingXAmznErrorTypeWithUri
     #[test]
     fn test_aws_json10_foo_error_using_x_amzn_error_type_with_uri_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header(
+                "X-Amzn-Errortype",
+                "FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/",
+            )
+            .status(500)
+            .body(vec![])
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// X-Amzn-Errortype might contain a URL and a namespace. Client should extract only the shape name. This is a pathalogical case that might not actually happen in any deployed AWS service.
     /// Test ID: AwsJson10FooErrorUsingXAmznErrorTypeWithUriAndNamespace
     #[test]
     fn test_aws_json10_foo_error_using_x_amzn_error_type_with_uri_and_namespace_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+        .header("X-Amzn-Errortype", "aws.protocoltests.json10#FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/")
+        
+                        .status(500)
+                        .body(vec![])
+                        .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// This example uses the 'code' property in the output rather than X-Amzn-Errortype. Some services do this though it's preferable to send the X-Amzn-Errortype. Client implementations must first check for the X-Amzn-Errortype and then check for a top-level 'code' property.
     ///
@@ -139,37 +337,131 @@ mod greeting_with_errors_request_test {
     /// Test ID: AwsJson10FooErrorUsingCode
     #[test]
     fn test_aws_json10_foo_error_using_code_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(500)
+            .body(
+                "{
+            \"code\": \"FooError\"
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Some services serialize errors using code, and it might contain a namespace. Clients should just take the last part of the string after '#'.
     /// Test ID: AwsJson10FooErrorUsingCodeAndNamespace
     #[test]
     fn test_aws_json10_foo_error_using_code_and_namespace_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(500)
+            .body(
+                "{
+            \"code\": \"aws.protocoltests.json10#FooError\"
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Some services serialize errors using code, and it might contain a namespace. It also might contain a URI. Clients should just take the last part of the string after '#' and before ":". This is a pathalogical case that might not occur in any deployed AWS service.
     /// Test ID: AwsJson10FooErrorUsingCodeUriAndNamespace
     #[test]
     fn test_aws_json10_foo_error_using_code_uri_and_namespace_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+        .header("Content-Type", "application/x-amz-json-1.0")
+        
+                        .status(500)
+                        .body("{
+            \"code\": \"aws.protocoltests.json10#FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/\"
+        }")
+                        .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Some services serialize errors using __type.
     /// Test ID: AwsJson10FooErrorWithDunderType
     #[test]
     fn test_aws_json10_foo_error_with_dunder_type_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(500)
+            .body(
+                "{
+            \"__type\": \"FooError\"
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Some services serialize errors using __type, and it might contain a namespace. Clients should just take the last part of the string after '#'.
     /// Test ID: AwsJson10FooErrorWithDunderTypeAndNamespace
     #[test]
     fn test_aws_json10_foo_error_with_dunder_type_and_namespace_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(500)
+            .body(
+                "{
+            \"__type\": \"aws.protocoltests.json10#FooError\"
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Some services serialize errors using __type, and it might contain a namespace. It also might contain a URI. Clients should just take the last part of the string after '#' and before ":". This is a pathalogical case that might not occur in any deployed AWS service.
     /// Test ID: AwsJson10FooErrorWithDunderTypeUriAndNamespace
     #[test]
     fn test_aws_json10_foo_error_with_dunder_type_uri_and_namespace_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+        .header("Content-Type", "application/x-amz-json-1.0")
+        
+                        .status(500)
+                        .body("{
+            \"__type\": \"aws.protocoltests.json10#FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/\"
+        }")
+                        .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
 }
 
@@ -185,6 +477,34 @@ impl JsonUnions {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         JsonUnionsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::JsonUnionsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::JsonUnionsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::JsonUnionsError::unhandled(error_code));
+        }
+        let body: JsonUnionsOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::JsonUnionsError::unhandled)?;
+        Ok(JsonUnionsOutput {
+            contents: body.contents,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: JsonUnionsInput) -> Self {
         Self { input }
     }
@@ -197,6 +517,8 @@ mod json_unions_request_test {
     use crate::model::FooEnum;
     use crate::model::GreetingStruct;
     use crate::model::MyUnion;
+    use crate::operation::JsonUnions;
+    use crate::output::JsonUnionsOutput;
     /// Serializes a string union value
     /// Test ID: AwsJson10SerializeStringUnionValue
     #[test]
@@ -488,55 +810,216 @@ mod json_unions_request_test {
     /// Test ID: AwsJson10DeserializeStringUnionValue
     #[test]
     fn test_aws_json10_deserialize_string_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::StringValue("foo".to_string()))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"stringValue\": \"foo\"
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a boolean union value
     /// Test ID: AwsJson10DeserializeBooleanUnionValue
     #[test]
     fn test_aws_json10_deserialize_boolean_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::BooleanValue(true))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"booleanValue\": true
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a number union value
     /// Test ID: AwsJson10DeserializeNumberUnionValue
     #[test]
     fn test_aws_json10_deserialize_number_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::NumberValue(1))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"numberValue\": 1
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a blob union value
     /// Test ID: AwsJson10DeserializeBlobUnionValue
     #[test]
     fn test_aws_json10_deserialize_blob_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::BlobValue(::smithy_types::Blob::new("foo")))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"blobValue\": \"Zm9v\"
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a timestamp union value
     /// Test ID: AwsJson10DeserializeTimestampUnionValue
     #[test]
     fn test_aws_json10_deserialize_timestamp_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::TimestampValue(
+                ::smithy_types::Instant::from_epoch_seconds(1398796238),
+            ))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"timestampValue\": 1398796238
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes an enum union value
     /// Test ID: AwsJson10DeserializeEnumUnionValue
     #[test]
     fn test_aws_json10_deserialize_enum_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::EnumValue(FooEnum::from("Foo")))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"enumValue\": \"Foo\"
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a list union value
     /// Test ID: AwsJson10DeserializeListUnionValue
     #[test]
     fn test_aws_json10_deserialize_list_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::ListValue(vec![
+                "foo".to_string(),
+                "bar".to_string(),
+            ]))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"listValue\": [\"foo\", \"bar\"]
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a map union value
     /// Test ID: AwsJson10DeserializeMapUnionValue
     #[test]
     fn test_aws_json10_deserialize_map_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::MapValue({
+                let mut ret = ::std::collections::HashMap::new();
+                ret.insert("foo".to_string(), "bar".to_string());
+                ret.insert("spam".to_string(), "eggs".to_string());
+                ret
+            }))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"mapValue\": {
+                    \"foo\": \"bar\",
+                    \"spam\": \"eggs\"
+                }
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a structure union value
     /// Test ID: AwsJson10DeserializeStructureUnionValue
     #[test]
     fn test_aws_json10_deserialize_structure_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::StructureValue(
+                GreetingStruct::builder().hi("hello".to_string()).build(),
+            ))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"structureValue\": {
+                    \"hi\": \"hello\"
+                }
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
 }
 
@@ -557,6 +1040,30 @@ impl NoInputAndNoOutput {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NoInputAndNoOutputOutput, crate::error::NoInputAndNoOutputError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::NoInputAndNoOutputError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::NoInputAndNoOutputError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::NoInputAndNoOutputError::unhandled(error_code));
+        }
+        Ok(NoInputAndNoOutputOutput {})
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NoInputAndNoOutputOutput, crate::error::NoInputAndNoOutputError> {
+        Self::from_response(response)
+    }
     pub fn new(input: NoInputAndNoOutputInput) -> Self {
         Self { input }
     }
@@ -566,6 +1073,8 @@ impl NoInputAndNoOutput {
 mod no_input_and_no_output_request_test {
 
     use crate::input::NoInputAndNoOutputInput;
+    use crate::operation::NoInputAndNoOutput;
+    use crate::output::NoInputAndNoOutputOutput;
     /// No input serializes no payload
     /// Test ID: AwsJson10NoInputAndNoOutput
     #[test]
@@ -591,7 +1100,15 @@ mod no_input_and_no_output_request_test {
     /// Test ID: AwsJson10NoInputAndNoOutput
     #[test]
     fn test_aws_json10_no_input_and_no_output_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = NoInputAndNoOutputOutput::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body(vec![])
+            .unwrap();
+
+        let parsed = NoInputAndNoOutput::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
 }
 
@@ -610,6 +1127,30 @@ impl NoInputAndOutput {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         NoInputAndOutputInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NoInputAndOutputOutput, crate::error::NoInputAndOutputError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::NoInputAndOutputError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::NoInputAndOutputError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::NoInputAndOutputError::unhandled(error_code));
+        }
+        Ok(NoInputAndOutputOutput {})
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NoInputAndOutputOutput, crate::error::NoInputAndOutputError> {
+        Self::from_response(response)
+    }
     pub fn new(input: NoInputAndOutputInput) -> Self {
         Self { input }
     }
@@ -619,6 +1160,8 @@ impl NoInputAndOutput {
 mod no_input_and_output_request_test {
 
     use crate::input::NoInputAndOutputInput;
+    use crate::operation::NoInputAndOutput;
+    use crate::output::NoInputAndOutputOutput;
     /// No input serializes no payload
     /// Test ID: AwsJson10NoInputAndOutput
     #[test]
@@ -644,6 +1187,14 @@ mod no_input_and_output_request_test {
     /// Test ID: AwsJson10NoInputAndOutput
     #[test]
     fn test_aws_json10_no_input_and_output_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = NoInputAndOutputOutput::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.0")
+            .status(200)
+            .body(vec![])
+            .unwrap();
+
+        let parsed = NoInputAndOutput::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
 }

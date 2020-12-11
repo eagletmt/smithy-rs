@@ -7,6 +7,21 @@ use crate::input::KitchenSinkOperationInput;
 use crate::input::NullOperationInput;
 use crate::input::OperationWithOptionalInputOutputInput;
 use crate::input::PutAndGetInlineDocumentsInput;
+use crate::output::EmptyOperationOutput;
+use crate::output::GreetingWithErrorsOutput;
+use crate::output::JsonEnumsOutput;
+use crate::output::JsonUnionsOutput;
+use crate::output::KitchenSinkOperationOutput;
+use crate::output::NullOperationOutput;
+use crate::output::OperationWithOptionalInputOutputOutput;
+use crate::output::PutAndGetInlineDocumentsOutput;
+use crate::serializer::GreetingWithErrorsOutputBody;
+use crate::serializer::JsonEnumsOutputBody;
+use crate::serializer::JsonUnionsOutputBody;
+use crate::serializer::KitchenSinkOperationOutputBody;
+use crate::serializer::NullOperationOutputBody;
+use crate::serializer::OperationWithOptionalInputOutputOutputBody;
+use crate::serializer::PutAndGetInlineDocumentsOutputBody;
 pub struct EmptyOperation {
     input: EmptyOperationInput,
 }
@@ -18,6 +33,30 @@ impl EmptyOperation {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         EmptyOperationInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<EmptyOperationOutput, crate::error::EmptyOperationError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::EmptyOperationError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::EmptyOperationError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::EmptyOperationError::unhandled(error_code));
+        }
+        Ok(EmptyOperationOutput {})
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<EmptyOperationOutput, crate::error::EmptyOperationError> {
+        Self::from_response(response)
+    }
     pub fn new(input: EmptyOperationInput) -> Self {
         Self { input }
     }
@@ -27,6 +66,8 @@ impl EmptyOperation {
 mod empty_operation_request_test {
 
     use crate::input::EmptyOperationInput;
+    use crate::operation::EmptyOperation;
+    use crate::output::EmptyOperationOutput;
     /// Sends requests to /
     /// Test ID: sends_requests_to_slash
     #[test]
@@ -65,7 +106,15 @@ mod empty_operation_request_test {
     /// Test ID: handles_empty_output_shape
     #[test]
     fn test_handles_empty_output_shape_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = EmptyOperationOutput::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{}")
+            .unwrap();
+
+        let parsed = EmptyOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
 }
 
@@ -89,6 +138,48 @@ impl GreetingWithErrors {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::GreetingWithErrorsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::GreetingWithErrorsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "InvalidGreeting" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::GreetingWithErrorsError::InvalidGreeting(body),
+                    Err(e) => crate::error::GreetingWithErrorsError::unhandled(e),
+                },
+                "ComplexError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::GreetingWithErrorsError::ComplexError(body),
+                    Err(e) => crate::error::GreetingWithErrorsError::unhandled(e),
+                },
+                "FooError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::GreetingWithErrorsError::FooError(body),
+                    Err(e) => crate::error::GreetingWithErrorsError::unhandled(e),
+                },
+                unknown => crate::error::GreetingWithErrorsError::unhandled(unknown),
+            });
+        }
+        let body: GreetingWithErrorsOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::GreetingWithErrorsError::unhandled)?;
+        Ok(GreetingWithErrorsOutput {
+            greeting: body.greeting,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: GreetingWithErrorsInput) -> Self {
         Self { input }
     }
@@ -97,28 +188,105 @@ impl GreetingWithErrors {
 #[allow(unreachable_code, unused_variables)]
 mod greeting_with_errors_request_test {
 
+    use crate::error::ComplexError;
+    use crate::error::FooError;
+    use crate::error::InvalidGreeting;
+    use crate::model::ComplexNestedErrorData;
+    use crate::operation::GreetingWithErrors;
     /// Parses simple JSON errors
     /// Test ID: AwsJson11InvalidGreetingError
     #[test]
     fn test_aws_json11_invalid_greeting_error_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = InvalidGreeting::builder().message("Hi".to_string()).build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(400)
+            .body(
+                "{
+            \"__type\": \"InvalidGreeting\",
+            \"Message\": \"Hi\"
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::InvalidGreeting(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Parses a complex error with no message member
     /// Test ID: AwsJson11ComplexError
     #[test]
     fn test_aws_json11_complex_error_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = ComplexError::builder()
+            .top_level("Top level".to_string())
+            .nested(
+                ComplexNestedErrorData::builder()
+                    .foo("bar".to_string())
+                    .build(),
+            )
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(400)
+            .body(
+                "{
+            \"__type\": \"ComplexError\",
+            \"TopLevel\": \"Top level\",
+            \"Nested\": {
+                \"Fooooo\": \"bar\"
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::ComplexError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Test ID: AwsJson11EmptyComplexError
     #[test]
     fn test_aws_json11_empty_complex_error_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = ComplexError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(400)
+            .body(
+                "{
+            \"__type\": \"ComplexError\"
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::ComplexError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Serializes the X-Amzn-ErrorType header. For an example service, see Amazon EKS.
     /// Test ID: AwsJson11FooErrorUsingXAmznErrorType
     #[test]
     fn test_aws_json11_foo_error_using_x_amzn_error_type_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("X-Amzn-Errortype", "FooError")
+            .status(500)
+            .body(vec![])
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Some X-Amzn-Errortype headers contain URLs. Clients need to split the URL on ':' and take only the first half of the string. For example, 'ValidationException:http://internal.amazon.com/coral/com.amazon.coral.validate/'
     /// is to be interpreted as 'ValidationException'.
@@ -127,13 +295,41 @@ mod greeting_with_errors_request_test {
     /// Test ID: AwsJson11FooErrorUsingXAmznErrorTypeWithUri
     #[test]
     fn test_aws_json11_foo_error_using_x_amzn_error_type_with_uri_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header(
+                "X-Amzn-Errortype",
+                "FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/",
+            )
+            .status(500)
+            .body(vec![])
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// X-Amzn-Errortype might contain a URL and a namespace. Client should extract only the shape name. This is a pathalogical case that might not actually happen in any deployed AWS service.
     /// Test ID: AwsJson11FooErrorUsingXAmznErrorTypeWithUriAndNamespace
     #[test]
     fn test_aws_json11_foo_error_using_x_amzn_error_type_with_uri_and_namespace_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+        .header("X-Amzn-Errortype", "aws.protocoltests.restjson#FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/")
+        
+                        .status(500)
+                        .body(vec![])
+                        .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// This example uses the 'code' property in the output rather than X-Amzn-Errortype. Some services do this though it's preferable to send the X-Amzn-Errortype. Client implementations must first check for the X-Amzn-Errortype and then check for a top-level 'code' property.
     ///
@@ -141,37 +337,131 @@ mod greeting_with_errors_request_test {
     /// Test ID: AwsJson11FooErrorUsingCode
     #[test]
     fn test_aws_json11_foo_error_using_code_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(500)
+            .body(
+                "{
+            \"code\": \"FooError\"
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Some services serialize errors using code, and it might contain a namespace. Clients should just take the last part of the string after '#'.
     /// Test ID: AwsJson11FooErrorUsingCodeAndNamespace
     #[test]
     fn test_aws_json11_foo_error_using_code_and_namespace_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(500)
+            .body(
+                "{
+            \"code\": \"aws.protocoltests.restjson#FooError\"
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Some services serialize errors using code, and it might contain a namespace. It also might contain a URI. Clients should just take the last part of the string after '#' and before ":". This is a pathalogical case that might not occur in any deployed AWS service.
     /// Test ID: AwsJson11FooErrorUsingCodeUriAndNamespace
     #[test]
     fn test_aws_json11_foo_error_using_code_uri_and_namespace_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+        .header("Content-Type", "application/x-amz-json-1.1")
+        
+                        .status(500)
+                        .body("{
+            \"code\": \"aws.protocoltests.restjson#FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/\"
+        }")
+                        .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Some services serialize errors using __type.
     /// Test ID: AwsJson11FooErrorWithDunderType
     #[test]
     fn test_aws_json11_foo_error_with_dunder_type_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(500)
+            .body(
+                "{
+            \"__type\": \"FooError\"
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Some services serialize errors using __type, and it might contain a namespace. Clients should just take the last part of the string after '#'.
     /// Test ID: AwsJson11FooErrorWithDunderTypeAndNamespace
     #[test]
     fn test_aws_json11_foo_error_with_dunder_type_and_namespace_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(500)
+            .body(
+                "{
+            \"__type\": \"aws.protocoltests.restjson#FooError\"
+        }",
+            )
+            .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
     /// Some services serialize errors using __type, and it might contain a namespace. It also might contain a URI. Clients should just take the last part of the string after '#' and before ":". This is a pathalogical case that might not occur in any deployed AWS service.
     /// Test ID: AwsJson11FooErrorWithDunderTypeUriAndNamespace
     #[test]
     fn test_aws_json11_foo_error_with_dunder_type_uri_and_namespace_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = FooError::builder().build();
+        let http_response = ::http::response::Builder::new()
+        .header("Content-Type", "application/x-amz-json-1.1")
+        
+                        .status(500)
+                        .body("{
+            \"__type\": \"aws.protocoltests.restjson#FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/\"
+        }")
+                        .unwrap();
+
+        let parsed = GreetingWithErrors::from_response(http_response);
+        if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
+            assert_eq!(expected_output, actual_error);
+        } else {
+            panic!("wrong variant: {:?}", parsed);
+        }
     }
 }
 
@@ -186,6 +476,39 @@ impl JsonEnums {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         JsonEnumsInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonEnumsOutput, crate::error::JsonEnumsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::JsonEnumsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::JsonEnumsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::JsonEnumsError::unhandled(error_code));
+        }
+        let body: JsonEnumsOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::JsonEnumsError::unhandled)?;
+        Ok(JsonEnumsOutput {
+            foo_enum1: body.foo_enum1,
+            foo_enum2: body.foo_enum2,
+            foo_enum3: body.foo_enum3,
+            foo_enum_list: body.foo_enum_list,
+            foo_enum_set: body.foo_enum_set,
+            foo_enum_map: body.foo_enum_map,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonEnumsOutput, crate::error::JsonEnumsError> {
+        Self::from_response(response)
     }
     pub fn new(input: JsonEnumsInput) -> Self {
         Self { input }
@@ -204,6 +527,34 @@ impl JsonUnions {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         JsonUnionsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::JsonUnionsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::JsonUnionsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::JsonUnionsError::unhandled(error_code));
+        }
+        let body: JsonUnionsOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::JsonUnionsError::unhandled)?;
+        Ok(JsonUnionsOutput {
+            contents: body.contents,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: JsonUnionsInput) -> Self {
         Self { input }
     }
@@ -216,6 +567,8 @@ mod json_unions_request_test {
     use crate::model::FooEnum;
     use crate::model::GreetingStruct;
     use crate::model::MyUnion;
+    use crate::operation::JsonUnions;
+    use crate::output::JsonUnionsOutput;
     /// Serializes a string union value
     /// Test ID: AwsJson11SerializeStringUnionValue
     #[test]
@@ -507,55 +860,216 @@ mod json_unions_request_test {
     /// Test ID: AwsJson11DeserializeStringUnionValue
     #[test]
     fn test_aws_json11_deserialize_string_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::StringValue("foo".to_string()))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"stringValue\": \"foo\"
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a boolean union value
     /// Test ID: AwsJson11DeserializeBooleanUnionValue
     #[test]
     fn test_aws_json11_deserialize_boolean_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::BooleanValue(true))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"booleanValue\": true
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a number union value
     /// Test ID: AwsJson11DeserializeNumberUnionValue
     #[test]
     fn test_aws_json11_deserialize_number_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::NumberValue(1))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"numberValue\": 1
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a blob union value
     /// Test ID: AwsJson11DeserializeBlobUnionValue
     #[test]
     fn test_aws_json11_deserialize_blob_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::BlobValue(::smithy_types::Blob::new("foo")))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"blobValue\": \"Zm9v\"
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a timestamp union value
     /// Test ID: AwsJson11DeserializeTimestampUnionValue
     #[test]
     fn test_aws_json11_deserialize_timestamp_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::TimestampValue(
+                ::smithy_types::Instant::from_epoch_seconds(1398796238),
+            ))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"timestampValue\": 1398796238
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes an enum union value
     /// Test ID: AwsJson11DeserializeEnumUnionValue
     #[test]
     fn test_aws_json11_deserialize_enum_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::EnumValue(FooEnum::from("Foo")))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"enumValue\": \"Foo\"
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a list union value
     /// Test ID: AwsJson11DeserializeListUnionValue
     #[test]
     fn test_aws_json11_deserialize_list_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::ListValue(vec![
+                "foo".to_string(),
+                "bar".to_string(),
+            ]))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"listValue\": [\"foo\", \"bar\"]
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a map union value
     /// Test ID: AwsJson11DeserializeMapUnionValue
     #[test]
     fn test_aws_json11_deserialize_map_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::MapValue({
+                let mut ret = ::std::collections::HashMap::new();
+                ret.insert("foo".to_string(), "bar".to_string());
+                ret.insert("spam".to_string(), "eggs".to_string());
+                ret
+            }))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"mapValue\": {
+                    \"foo\": \"bar\",
+                    \"spam\": \"eggs\"
+                }
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a structure union value
     /// Test ID: AwsJson11DeserializeStructureUnionValue
     #[test]
     fn test_aws_json11_deserialize_structure_union_value_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = JsonUnionsOutput::builder()
+            .contents(MyUnion::StructureValue(
+                GreetingStruct::builder().hi("hello".to_string()).build(),
+            ))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"contents\": {
+                \"structureValue\": {
+                    \"hi\": \"hello\"
+                }
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = JsonUnions::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
 }
 
@@ -573,6 +1087,70 @@ impl KitchenSinkOperation {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<KitchenSinkOperationOutput, crate::error::KitchenSinkOperationError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::KitchenSinkOperationError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::KitchenSinkOperationError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "ErrorWithMembers" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::KitchenSinkOperationError::ErrorWithMembers(body),
+                    Err(e) => crate::error::KitchenSinkOperationError::unhandled(e),
+                },
+                "ErrorWithoutMembers" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::KitchenSinkOperationError::ErrorWithoutMembers(body),
+                    Err(e) => crate::error::KitchenSinkOperationError::unhandled(e),
+                },
+                unknown => crate::error::KitchenSinkOperationError::unhandled(unknown),
+            });
+        }
+        let body: KitchenSinkOperationOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::KitchenSinkOperationError::unhandled)?;
+        Ok(KitchenSinkOperationOutput {
+            blob: body.blob,
+            boolean: body.boolean,
+            double: body.double,
+            empty_struct: body.empty_struct,
+            float: body.float,
+            httpdate_timestamp: body.httpdate_timestamp,
+            integer: body.integer,
+            iso8601_timestamp: body.iso8601_timestamp,
+            json_value: body.json_value,
+            list_of_lists: body.list_of_lists,
+            list_of_maps_of_strings: body.list_of_maps_of_strings,
+            list_of_strings: body.list_of_strings,
+            list_of_structs: body.list_of_structs,
+            long: body.long,
+            map_of_lists_of_strings: body.map_of_lists_of_strings,
+            map_of_maps: body.map_of_maps,
+            map_of_strings: body.map_of_strings,
+            map_of_structs: body.map_of_structs,
+            recursive_list: body.recursive_list,
+            recursive_map: body.recursive_map,
+            recursive_struct: body.recursive_struct,
+            simple_struct: body.simple_struct,
+            string: body.string,
+            struct_with_location_name: body.struct_with_location_name,
+            timestamp: body.timestamp,
+            unix_timestamp: body.unix_timestamp,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<KitchenSinkOperationOutput, crate::error::KitchenSinkOperationError> {
+        Self::from_response(response)
+    }
     pub fn new(input: KitchenSinkOperationInput) -> Self {
         Self { input }
     }
@@ -586,6 +1164,8 @@ mod kitchen_sink_operation_request_test {
     use crate::model::KitchenSink;
     use crate::model::SimpleStruct;
     use crate::model::StructWithLocationName;
+    use crate::operation::KitchenSinkOperation;
+    use crate::output::KitchenSinkOperationOutput;
     /// Serializes string shapes
     /// Test ID: serializes_string_shapes
     #[test]
@@ -1467,139 +2047,462 @@ mod kitchen_sink_operation_request_test {
     /// Test ID: parses_operations_with_empty_json_bodies
     #[test]
     fn test_parses_operations_with_empty_json_bodies_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses string shapes
     /// Test ID: parses_string_shapes
     #[test]
     fn test_parses_string_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .string("string-value".to_string())
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"String\":\"string-value\"}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses integer shapes
     /// Test ID: parses_integer_shapes
     #[test]
     fn test_parses_integer_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder().integer(1234).build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"Integer\":1234}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses long shapes
     /// Test ID: parses_long_shapes
     #[test]
     fn test_parses_long_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .long(1234567890123456789)
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"Long\":1234567890123456789}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses float shapes
     /// Test ID: parses_float_shapes
     #[test]
     fn test_parses_float_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder().float(1234.5).build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"Float\":1234.5}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses double shapes
     /// Test ID: parses_double_shapes
     #[test]
     fn test_parses_double_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .double(1.2345678912345679E8)
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"Double\":123456789.12345679}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses boolean shapes (true)
     /// Test ID: parses_boolean_shapes_true
     #[test]
     fn test_parses_boolean_shapes_true_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder().boolean(true).build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"Boolean\":true}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses boolean (false)
     /// Test ID: parses_boolean_false
     #[test]
     fn test_parses_boolean_false_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder().boolean(false).build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"Boolean\":false}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses blob shapes
     /// Test ID: parses_blob_shapes
     #[test]
     fn test_parses_blob_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .blob(::smithy_types::Blob::new("binary-value"))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"Blob\":\"YmluYXJ5LXZhbHVl\"}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses timestamp shapes
     /// Test ID: parses_timestamp_shapes
     #[test]
     fn test_parses_timestamp_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"Timestamp\":946845296}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses iso8601 timestamps
     /// Test ID: parses_iso8601_timestamps
     #[test]
+    #[should_panic]
     fn test_parses_iso8601_timestamps_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .iso8601_timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"Iso8601Timestamp\":\"2000-01-02T20:34:56.000Z\"}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses httpdate timestamps
     /// Test ID: parses_httpdate_timestamps
     #[test]
+    #[should_panic]
     fn test_parses_httpdate_timestamps_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .httpdate_timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"HttpdateTimestamp\":\"Sun, 02 Jan 2000 20:34:56.000 GMT\"}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses list shapes
     /// Test ID: parses_list_shapes
     #[test]
     fn test_parses_list_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .list_of_strings(vec![
+                "abc".to_string(),
+                "mno".to_string(),
+                "xyz".to_string(),
+            ])
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"ListOfStrings\":[\"abc\",\"mno\",\"xyz\"]}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses list of map shapes
     /// Test ID: parses_list_of_map_shapes
     #[test]
     fn test_parses_list_of_map_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .list_of_maps_of_strings(vec![
+                {
+                    let mut ret = ::std::collections::HashMap::new();
+                    ret.insert("size".to_string(), "large".to_string());
+                    ret
+                },
+                {
+                    let mut ret = ::std::collections::HashMap::new();
+                    ret.insert("color".to_string(), "red".to_string());
+                    ret
+                },
+            ])
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"ListOfMapsOfStrings\":[{\"size\":\"large\"},{\"color\":\"red\"}]}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses list of list shapes
     /// Test ID: parses_list_of_list_shapes
     #[test]
     fn test_parses_list_of_list_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .list_of_lists(vec![
+                vec!["abc".to_string(), "mno".to_string(), "xyz".to_string()],
+                vec!["hjk".to_string(), "qrs".to_string(), "tuv".to_string()],
+            ])
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"ListOfLists\":[[\"abc\",\"mno\",\"xyz\"],[\"hjk\",\"qrs\",\"tuv\"]]}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses list of structure shapes
     /// Test ID: parses_list_of_structure_shapes
     #[test]
     fn test_parses_list_of_structure_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .list_of_structs(vec![
+                SimpleStruct::builder().value("value-1".to_string()).build(),
+                SimpleStruct::builder().value("value-2".to_string()).build(),
+            ])
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"ListOfStructs\":[{\"Value\":\"value-1\"},{\"Value\":\"value-2\"}]}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses list of recursive structure shapes
     /// Test ID: parses_list_of_recursive_structure_shapes
     #[test]
     fn test_parses_list_of_recursive_structure_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .recursive_list(vec![KitchenSink::builder()
+                .recursive_list(vec![KitchenSink::builder()
+                    .recursive_list(vec![KitchenSink::builder()
+                        .string("value".to_string())
+                        .build()])
+                    .build()])
+                .build()])
+            .build();
+        let http_response = ::http::response::Builder::new()
+        .header("Content-Type", "application/x-amz-json-1.1")
+        
+                        .status(200)
+                        .body("{\"RecursiveList\":[{\"RecursiveList\":[{\"RecursiveList\":[{\"String\":\"value\"}]}]}]}")
+                        .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses map shapes
     /// Test ID: parses_map_shapes
     #[test]
     fn test_parses_map_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .map_of_strings({
+                let mut ret = ::std::collections::HashMap::new();
+                ret.insert("size".to_string(), "large".to_string());
+                ret.insert("color".to_string(), "red".to_string());
+                ret
+            })
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body("{\"MapOfStrings\":{\"size\":\"large\",\"color\":\"red\"}}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses map of list shapes
     /// Test ID: parses_map_of_list_shapes
     #[test]
     fn test_parses_map_of_list_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .map_of_lists_of_strings({
+                let mut ret = ::std::collections::HashMap::new();
+                ret.insert(
+                    "sizes".to_string(),
+                    vec!["large".to_string(), "small".to_string()],
+                );
+                ret.insert(
+                    "colors".to_string(),
+                    vec!["red".to_string(), "green".to_string()],
+                );
+                ret
+            })
+            .build();
+        let http_response = ::http::response::Builder::new()
+        .header("Content-Type", "application/x-amz-json-1.1")
+        
+                        .status(200)
+                        .body("{\"MapOfListsOfStrings\":{\"sizes\":[\"large\",\"small\"],\"colors\":[\"red\",\"green\"]}}")
+                        .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses map of map shapes
     /// Test ID: parses_map_of_map_shapes
     #[test]
     fn test_parses_map_of_map_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .map_of_maps({
+                let mut ret = ::std::collections::HashMap::new();
+                ret.insert("sizes".to_string(), {
+                    let mut ret = ::std::collections::HashMap::new();
+                    ret.insert("large".to_string(), "L".to_string());
+                    ret.insert("medium".to_string(), "M".to_string());
+                    ret
+                });
+                ret.insert("colors".to_string(), {
+                    let mut ret = ::std::collections::HashMap::new();
+                    ret.insert("red".to_string(), "R".to_string());
+                    ret.insert("blue".to_string(), "B".to_string());
+                    ret
+                });
+                ret
+            })
+            .build();
+        let http_response = ::http::response::Builder::new()
+        .header("Content-Type", "application/x-amz-json-1.1")
+        
+                        .status(200)
+                        .body("{\"MapOfMaps\":{\"sizes\":{\"large\":\"L\",\"medium\":\"M\"},\"colors\":{\"red\":\"R\",\"blue\":\"B\"}}}")
+                        .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses map of structure shapes
     /// Test ID: parses_map_of_structure_shapes
     #[test]
     fn test_parses_map_of_structure_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .map_of_structs({
+                let mut ret = ::std::collections::HashMap::new();
+                ret.insert(
+                    "size".to_string(),
+                    SimpleStruct::builder().value("small".to_string()).build(),
+                );
+                ret.insert(
+                    "color".to_string(),
+                    SimpleStruct::builder().value("red".to_string()).build(),
+                );
+                ret
+            })
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{\"MapOfStructs\":{\"size\":{\"Value\":\"small\"},\"color\":{\"Value\":\"red\"}}}",
+            )
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses map of recursive structure shapes
     /// Test ID: parses_map_of_recursive_structure_shapes
     #[test]
     fn test_parses_map_of_recursive_structure_shapes_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder()
+            .recursive_map({
+                let mut ret = ::std::collections::HashMap::new();
+                ret.insert(
+                    "key-1".to_string(),
+                    KitchenSink::builder()
+                        .recursive_map({
+                            let mut ret = ::std::collections::HashMap::new();
+                            ret.insert(
+                                "key-2".to_string(),
+                                KitchenSink::builder()
+                                    .recursive_map({
+                                        let mut ret = ::std::collections::HashMap::new();
+                                        ret.insert(
+                                            "key-3".to_string(),
+                                            KitchenSink::builder()
+                                                .string("value".to_string())
+                                                .build(),
+                                        );
+                                        ret
+                                    })
+                                    .build(),
+                            );
+                            ret
+                        })
+                        .build(),
+                );
+                ret
+            })
+            .build();
+        let http_response = ::http::response::Builder::new()
+        .header("Content-Type", "application/x-amz-json-1.1")
+        
+                        .status(200)
+                        .body("{\"RecursiveMap\":{\"key-1\":{\"RecursiveMap\":{\"key-2\":{\"RecursiveMap\":{\"key-3\":{\"String\":\"value\"}}}}}}}")
+                        .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses the request id from the response
     /// Test ID: parses_the_request_id_from_the_response
     #[test]
     fn test_parses_the_request_id_from_the_response_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = KitchenSinkOperationOutput::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .header("X-Amzn-Requestid", "amazon-uniq-request-id")
+            .status(200)
+            .body("{}")
+            .unwrap();
+
+        let parsed = KitchenSinkOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
 }
 
@@ -1614,6 +2517,36 @@ impl NullOperation {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         NullOperationInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NullOperationOutput, crate::error::NullOperationError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::NullOperationError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::NullOperationError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::NullOperationError::unhandled(error_code));
+        }
+        let body: NullOperationOutputBody = ::serde_json::from_slice(response.body().as_ref())
+            .map_err(crate::error::NullOperationError::unhandled)?;
+        Ok(NullOperationOutput {
+            string: body.string,
+            sparse_string_list: body.sparse_string_list,
+            sparse_string_map: body.sparse_string_map,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NullOperationOutput, crate::error::NullOperationError> {
+        Self::from_response(response)
+    }
     pub fn new(input: NullOperationInput) -> Self {
         Self { input }
     }
@@ -1623,6 +2556,8 @@ impl NullOperation {
 mod null_operation_request_test {
 
     use crate::input::NullOperationInput;
+    use crate::operation::NullOperation;
+    use crate::output::NullOperationOutput;
     /// Null structure values are dropped
     /// Test ID: AwsJson11StructuresDontSerializeNullValues
     #[test]
@@ -1706,19 +2641,67 @@ mod null_operation_request_test {
     /// Test ID: AwsJson11StructuresDontDeserializeNullValues
     #[test]
     fn test_aws_json11_structures_dont_deserialize_null_values_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = NullOperationOutput::builder().build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"string\": null
+        }",
+            )
+            .unwrap();
+
+        let parsed = NullOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes null values in maps
     /// Test ID: AwsJson11MapsDeserializeNullValues
     #[test]
     fn test_aws_json11_maps_deserialize_null_values_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = NullOperationOutput::builder()
+            .sparse_string_map({
+                let mut ret = ::std::collections::HashMap::new();
+                ret.insert("foo".to_string(), None);
+                ret
+            })
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"sparseStringMap\": {
+                \"foo\": null
+            }
+        }",
+            )
+            .unwrap();
+
+        let parsed = NullOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes null values in lists
     /// Test ID: AwsJson11ListsDeserializeNull
     #[test]
     fn test_aws_json11_lists_deserialize_null_response() {
-        /* test case disabled for this protocol (not yet supported) */
+        let expected_output = NullOperationOutput::builder()
+            .sparse_string_list(vec![None])
+            .build();
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"sparseStringList\": [
+                null
+            ]
+        }",
+            )
+            .unwrap();
+
+        let parsed = NullOperation::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
 }
 
@@ -1735,6 +2718,41 @@ impl OperationWithOptionalInputOutput {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        OperationWithOptionalInputOutputOutput,
+        crate::error::OperationWithOptionalInputOutputError,
+    > {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::OperationWithOptionalInputOutputError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::OperationWithOptionalInputOutputError::unhandled(
+                    "no error code".to_string(),
+                )
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::OperationWithOptionalInputOutputError::unhandled(error_code));
+        }
+        let body: OperationWithOptionalInputOutputOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::OperationWithOptionalInputOutputError::unhandled)?;
+        Ok(OperationWithOptionalInputOutputOutput { value: body.value })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        OperationWithOptionalInputOutputOutput,
+        crate::error::OperationWithOptionalInputOutputError,
+    > {
+        Self::from_response(response)
     }
     pub fn new(input: OperationWithOptionalInputOutputInput) -> Self {
         Self { input }
@@ -1818,6 +2836,37 @@ impl PutAndGetInlineDocuments {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<PutAndGetInlineDocumentsOutput, crate::error::PutAndGetInlineDocumentsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::PutAndGetInlineDocumentsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::PutAndGetInlineDocumentsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::PutAndGetInlineDocumentsError::unhandled(
+                error_code,
+            ));
+        }
+        let body: PutAndGetInlineDocumentsOutputBody =
+            ::serde_json::from_slice(response.body().as_ref())
+                .map_err(crate::error::PutAndGetInlineDocumentsError::unhandled)?;
+        Ok(PutAndGetInlineDocumentsOutput {
+            inline_document: body.inline_document,
+        })
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<PutAndGetInlineDocumentsOutput, crate::error::PutAndGetInlineDocumentsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: PutAndGetInlineDocumentsInput) -> Self {
         Self { input }
     }
@@ -1827,6 +2876,8 @@ impl PutAndGetInlineDocuments {
 mod put_and_get_inline_documents_request_test {
 
     use crate::input::PutAndGetInlineDocumentsInput;
+    use crate::operation::PutAndGetInlineDocuments;
+    use crate::output::PutAndGetInlineDocumentsOutput;
     /// Serializes inline documents in a JSON request.
     /// Test ID: PutAndGetInlineDocumentsInput
     #[test]
@@ -1834,7 +2885,7 @@ mod put_and_get_inline_documents_request_test {
     fn test_put_and_get_inline_documents_input_request() {
         let input =PutAndGetInlineDocumentsInput::builder()
         .inline_document(
-            todo!() /* (document: `aws.protocoltests.json#Document`) software.amazon.smithy.model.node.ObjectNode@fecf2c7 */
+            todo!() /* (document: `aws.protocoltests.json#Document`) software.amazon.smithy.model.node.ObjectNode@c80b9fe7 */
         )
         .build()
         .unwrap()
@@ -1867,7 +2918,24 @@ mod put_and_get_inline_documents_request_test {
     #[test]
     #[should_panic]
     fn test_put_and_get_inline_documents_input_response() {
-        /* test case disabled for this protocol (not yet supported) */
-        todo!()
+        let expected_output =PutAndGetInlineDocumentsOutput::builder()
+        .inline_document(
+            todo!() /* (document: `aws.protocoltests.json#Document`) software.amazon.smithy.model.node.ObjectNode@c80b9fe7 */
+        )
+        .build()
+        .unwrap()
+        ;
+        let http_response = ::http::response::Builder::new()
+            .header("Content-Type", "application/x-amz-json-1.1")
+            .status(200)
+            .body(
+                "{
+            \"inlineDocument\": {\"foo\": \"bar\"}
+        }",
+            )
+            .unwrap();
+
+        let parsed = PutAndGetInlineDocuments::from_response(http_response);
+        assert_eq!(parsed.unwrap(), expected_output);
     }
 }

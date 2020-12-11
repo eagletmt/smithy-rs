@@ -14,6 +14,7 @@ pub struct JsonUnionsInputBody<'a> {
 #[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct GreetingWithErrorsOutputBody {
     #[serde(rename = "greeting")]
+    #[serde(default)]
     pub greeting: ::std::option::Option<::std::string::String>,
 }
 
@@ -23,5 +24,6 @@ pub struct GreetingWithErrorsOutputBody {
 pub struct JsonUnionsOutputBody {
     /// A union with a representative set of types for members.
     #[serde(rename = "contents")]
+    #[serde(default)]
     pub contents: ::std::option::Option<MyUnion>,
 }

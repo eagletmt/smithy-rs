@@ -13,6 +13,11 @@ impl ::std::fmt::Display for EmptyInputAndEmptyOutputError {
         }
     }
 }
+impl EmptyInputAndEmptyOutputError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        EmptyInputAndEmptyOutputError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for EmptyInputAndEmptyOutputError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -41,6 +46,11 @@ impl ::std::fmt::Display for GreetingWithErrorsError {
         }
     }
 }
+impl GreetingWithErrorsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        GreetingWithErrorsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for GreetingWithErrorsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -65,6 +75,11 @@ impl ::std::fmt::Display for JsonUnionsError {
         }
     }
 }
+impl JsonUnionsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        JsonUnionsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for JsonUnionsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -86,6 +101,11 @@ impl ::std::fmt::Display for NoInputAndNoOutputError {
         }
     }
 }
+impl NoInputAndNoOutputError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        NoInputAndNoOutputError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for NoInputAndNoOutputError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -105,6 +125,11 @@ impl ::std::fmt::Display for NoInputAndOutputError {
         match self {
             NoInputAndOutputError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl NoInputAndOutputError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        NoInputAndOutputError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for NoInputAndOutputError {
@@ -181,9 +206,11 @@ impl FooError {
 pub struct ComplexError {
     #[serde(rename = "TopLevel")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub top_level: ::std::option::Option<::std::string::String>,
     #[serde(rename = "Nested")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub nested: ::std::option::Option<ComplexNestedErrorData>,
 }
 impl ComplexError {
@@ -256,6 +283,7 @@ impl ComplexError {
 pub struct InvalidGreeting {
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidGreeting {

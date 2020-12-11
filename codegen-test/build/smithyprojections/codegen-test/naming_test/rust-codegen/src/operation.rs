@@ -2,6 +2,9 @@
 use crate::input::ErrCollisionsInput;
 use crate::input::ReservedWordsAsMembersInput;
 use crate::input::StructureNamePunningInput;
+use crate::output::ErrCollisionsOutput;
+use crate::output::ReservedWordsAsMembersOutput;
+use crate::output::StructureNamePunningOutput;
 pub struct ErrCollisions {
     input: ErrCollisionsInput,
 }
@@ -12,6 +15,40 @@ impl ErrCollisions {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         ErrCollisionsInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ErrCollisionsOutput, crate::error::ErrCollisionsError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::ErrCollisionsError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::ErrCollisionsError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(match error_code {
+                "CollidingError" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ErrCollisionsError::CollidingError(body),
+                    Err(e) => crate::error::ErrCollisionsError::unhandled(e),
+                },
+                "CollidingException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::ErrCollisionsError::CollidingException(body),
+                    Err(e) => crate::error::ErrCollisionsError::unhandled(e),
+                },
+                unknown => crate::error::ErrCollisionsError::unhandled(unknown),
+            });
+        }
+        Ok(ErrCollisionsOutput {})
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ErrCollisionsOutput, crate::error::ErrCollisionsError> {
+        Self::from_response(response)
     }
     pub fn new(input: ErrCollisionsInput) -> Self {
         Self { input }
@@ -31,6 +68,32 @@ impl ReservedWordsAsMembers {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ReservedWordsAsMembersOutput, crate::error::ReservedWordsAsMembersError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::ReservedWordsAsMembersError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::ReservedWordsAsMembersError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::ReservedWordsAsMembersError::unhandled(
+                error_code,
+            ));
+        }
+        Ok(ReservedWordsAsMembersOutput {})
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ReservedWordsAsMembersOutput, crate::error::ReservedWordsAsMembersError> {
+        Self::from_response(response)
     }
     pub fn new(input: ReservedWordsAsMembersInput) -> Self {
         Self { input }
@@ -74,6 +137,32 @@ impl StructureNamePunning {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<StructureNamePunningOutput, crate::error::StructureNamePunningError> {
+        if crate::error_code::is_error(&response) {
+            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+                .unwrap_or_else(|_| ::serde_json::json!({}));
+            let error_code = crate::error_code::error_type_from_header(&response)
+                .map_err(crate::error::StructureNamePunningError::unhandled)?;
+            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
+            let error_code = error_code.ok_or_else(|| {
+                crate::error::StructureNamePunningError::unhandled("no error code".to_string())
+            })?;
+            let error_code = crate::error_code::sanitize_error_code(error_code);
+
+            return Err(crate::error::StructureNamePunningError::unhandled(
+                error_code,
+            ));
+        }
+        Ok(StructureNamePunningOutput {})
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<StructureNamePunningOutput, crate::error::StructureNamePunningError> {
+        Self::from_response(response)
     }
     pub fn new(input: StructureNamePunningInput) -> Self {
         Self { input }

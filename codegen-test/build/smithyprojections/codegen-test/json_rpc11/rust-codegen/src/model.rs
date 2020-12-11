@@ -45,6 +45,7 @@ pub enum MyUnion {
 pub struct GreetingStruct {
     #[serde(rename = "hi")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub hi: ::std::option::Option<::std::string::String>,
 }
 /// See [`GreetingStruct`](crate::model::GreetingStruct)
@@ -134,6 +135,7 @@ impl FooEnum {
 pub struct ComplexNestedErrorData {
     #[serde(rename = "Fooooo")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub foo: ::std::option::Option<::std::string::String>,
 }
 /// See [`ComplexNestedErrorData`](crate::model::ComplexNestedErrorData)
@@ -177,60 +179,76 @@ pub struct KitchenSink {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptionblob_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptionblob_deser")]
+    #[serde(default)]
     pub blob: ::std::option::Option<Blob>,
     #[serde(rename = "Boolean")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub boolean: ::std::option::Option<bool>,
     #[serde(rename = "Double")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub double: ::std::option::Option<f64>,
     #[serde(rename = "EmptyStruct")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub empty_struct: ::std::option::Option<EmptyStruct>,
     #[serde(rename = "Float")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub float: ::std::option::Option<f32>,
     #[serde(rename = "HttpdateTimestamp")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_http_date_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_http_date_deser")]
+    #[serde(default)]
     pub httpdate_timestamp: ::std::option::Option<Instant>,
     #[serde(rename = "Integer")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub integer: ::std::option::Option<i32>,
     #[serde(rename = "Iso8601Timestamp")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_date_time_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_date_time_deser")]
+    #[serde(default)]
     pub iso8601_timestamp: ::std::option::Option<Instant>,
     #[serde(rename = "JsonValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub json_value: ::std::option::Option<::std::string::String>,
     #[serde(rename = "ListOfLists")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub list_of_lists:
         ::std::option::Option<::std::vec::Vec<::std::vec::Vec<::std::string::String>>>,
     #[serde(rename = "ListOfMapsOfStrings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub list_of_maps_of_strings: ::std::option::Option<
         ::std::vec::Vec<::std::collections::HashMap<::std::string::String, ::std::string::String>>,
     >,
     #[serde(rename = "ListOfStrings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub list_of_strings: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     #[serde(rename = "ListOfStructs")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub list_of_structs: ::std::option::Option<::std::vec::Vec<SimpleStruct>>,
     #[serde(rename = "Long")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub long: ::std::option::Option<i64>,
     #[serde(rename = "MapOfListsOfStrings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub map_of_lists_of_strings: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<::std::string::String>>,
     >,
     #[serde(rename = "MapOfMaps")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub map_of_maps: ::std::option::Option<
         ::std::collections::HashMap<
             ::std::string::String,
@@ -239,41 +257,51 @@ pub struct KitchenSink {
     >,
     #[serde(rename = "MapOfStrings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub map_of_strings: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::string::String>,
     >,
     #[serde(rename = "MapOfStructs")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub map_of_structs:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, SimpleStruct>>,
     #[serde(rename = "RecursiveList")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub recursive_list: ::std::option::Option<::std::vec::Vec<KitchenSink>>,
     #[serde(rename = "RecursiveMap")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub recursive_map:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, KitchenSink>>,
     #[serde(rename = "RecursiveStruct")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub recursive_struct: ::std::option::Option<::std::boxed::Box<KitchenSink>>,
     #[serde(rename = "SimpleStruct")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub simple_struct: ::std::option::Option<SimpleStruct>,
     #[serde(rename = "String")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub string: ::std::option::Option<::std::string::String>,
     #[serde(rename = "StructWithLocationName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub struct_with_location_name: ::std::option::Option<StructWithLocationName>,
     #[serde(rename = "Timestamp")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub timestamp: ::std::option::Option<Instant>,
     #[serde(rename = "UnixTimestamp")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub unix_timestamp: ::std::option::Option<Instant>,
 }
 /// See [`KitchenSink`](crate::model::KitchenSink)
@@ -520,6 +548,7 @@ impl KitchenSink {
 pub struct StructWithLocationName {
     #[serde(rename = "RenamedMember")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub value: ::std::option::Option<::std::string::String>,
 }
 /// See [`StructWithLocationName`](crate::model::StructWithLocationName)
@@ -561,6 +590,7 @@ impl StructWithLocationName {
 pub struct SimpleStruct {
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub value: ::std::option::Option<::std::string::String>,
 }
 /// See [`SimpleStruct`](crate::model::SimpleStruct)

@@ -13,6 +13,11 @@ impl ::std::fmt::Display for AllQueryStringTypesError {
         }
     }
 }
+impl AllQueryStringTypesError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        AllQueryStringTypesError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for AllQueryStringTypesError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -32,6 +37,11 @@ impl ::std::fmt::Display for ConstantAndVariableQueryStringError {
         match self {
             ConstantAndVariableQueryStringError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl ConstantAndVariableQueryStringError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ConstantAndVariableQueryStringError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for ConstantAndVariableQueryStringError {
@@ -55,6 +65,11 @@ impl ::std::fmt::Display for ConstantQueryStringError {
         }
     }
 }
+impl ConstantQueryStringError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ConstantQueryStringError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for ConstantQueryStringError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -74,6 +89,11 @@ impl ::std::fmt::Display for EmptyInputAndEmptyOutputError {
         match self {
             EmptyInputAndEmptyOutputError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl EmptyInputAndEmptyOutputError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        EmptyInputAndEmptyOutputError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for EmptyInputAndEmptyOutputError {
@@ -104,6 +124,11 @@ impl ::std::fmt::Display for GreetingWithErrorsError {
         }
     }
 }
+impl GreetingWithErrorsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        GreetingWithErrorsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for GreetingWithErrorsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -128,6 +153,11 @@ impl ::std::fmt::Display for HttpPayloadTraitsError {
         }
     }
 }
+impl HttpPayloadTraitsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        HttpPayloadTraitsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for HttpPayloadTraitsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -147,6 +177,11 @@ impl ::std::fmt::Display for HttpPayloadTraitsWithMediaTypeError {
         match self {
             HttpPayloadTraitsWithMediaTypeError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl HttpPayloadTraitsWithMediaTypeError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        HttpPayloadTraitsWithMediaTypeError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for HttpPayloadTraitsWithMediaTypeError {
@@ -170,6 +205,11 @@ impl ::std::fmt::Display for HttpPayloadWithStructureError {
         }
     }
 }
+impl HttpPayloadWithStructureError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        HttpPayloadWithStructureError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for HttpPayloadWithStructureError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -189,6 +229,11 @@ impl ::std::fmt::Display for HttpPrefixHeadersError {
         match self {
             HttpPrefixHeadersError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl HttpPrefixHeadersError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        HttpPrefixHeadersError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for HttpPrefixHeadersError {
@@ -212,6 +257,11 @@ impl ::std::fmt::Display for HttpPrefixHeadersResponseError {
         }
     }
 }
+impl HttpPrefixHeadersResponseError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        HttpPrefixHeadersResponseError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for HttpPrefixHeadersResponseError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -231,6 +281,11 @@ impl ::std::fmt::Display for HttpRequestWithGreedyLabelInPathError {
         match self {
             HttpRequestWithGreedyLabelInPathError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl HttpRequestWithGreedyLabelInPathError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        HttpRequestWithGreedyLabelInPathError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for HttpRequestWithGreedyLabelInPathError {
@@ -254,6 +309,11 @@ impl ::std::fmt::Display for HttpRequestWithLabelsError {
         }
     }
 }
+impl HttpRequestWithLabelsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        HttpRequestWithLabelsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for HttpRequestWithLabelsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -273,6 +333,11 @@ impl ::std::fmt::Display for HttpRequestWithLabelsAndTimestampFormatError {
         match self {
             HttpRequestWithLabelsAndTimestampFormatError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl HttpRequestWithLabelsAndTimestampFormatError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        HttpRequestWithLabelsAndTimestampFormatError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for HttpRequestWithLabelsAndTimestampFormatError {
@@ -296,6 +361,11 @@ impl ::std::fmt::Display for HttpResponseCodeError {
         }
     }
 }
+impl HttpResponseCodeError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        HttpResponseCodeError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for HttpResponseCodeError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -315,6 +385,11 @@ impl ::std::fmt::Display for IgnoreQueryParamsInResponseError {
         match self {
             IgnoreQueryParamsInResponseError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl IgnoreQueryParamsInResponseError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        IgnoreQueryParamsInResponseError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for IgnoreQueryParamsInResponseError {
@@ -338,6 +413,11 @@ impl ::std::fmt::Display for InlineDocumentError {
         }
     }
 }
+impl InlineDocumentError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        InlineDocumentError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for InlineDocumentError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -357,6 +437,11 @@ impl ::std::fmt::Display for InlineDocumentAsPayloadError {
         match self {
             InlineDocumentAsPayloadError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl InlineDocumentAsPayloadError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        InlineDocumentAsPayloadError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for InlineDocumentAsPayloadError {
@@ -380,6 +465,11 @@ impl ::std::fmt::Display for InputAndOutputWithHeadersError {
         }
     }
 }
+impl InputAndOutputWithHeadersError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        InputAndOutputWithHeadersError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for InputAndOutputWithHeadersError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -399,6 +489,11 @@ impl ::std::fmt::Display for JsonBlobsError {
         match self {
             JsonBlobsError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl JsonBlobsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        JsonBlobsError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for JsonBlobsError {
@@ -422,6 +517,11 @@ impl ::std::fmt::Display for JsonEnumsError {
         }
     }
 }
+impl JsonEnumsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        JsonEnumsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for JsonEnumsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -441,6 +541,11 @@ impl ::std::fmt::Display for JsonListsError {
         match self {
             JsonListsError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl JsonListsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        JsonListsError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for JsonListsError {
@@ -464,6 +569,11 @@ impl ::std::fmt::Display for JsonMapsError {
         }
     }
 }
+impl JsonMapsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        JsonMapsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for JsonMapsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -483,6 +593,11 @@ impl ::std::fmt::Display for JsonTimestampsError {
         match self {
             JsonTimestampsError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl JsonTimestampsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        JsonTimestampsError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for JsonTimestampsError {
@@ -506,6 +621,11 @@ impl ::std::fmt::Display for JsonUnionsError {
         }
     }
 }
+impl JsonUnionsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        JsonUnionsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for JsonUnionsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -525,6 +645,11 @@ impl ::std::fmt::Display for MediaTypeHeaderError {
         match self {
             MediaTypeHeaderError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl MediaTypeHeaderError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        MediaTypeHeaderError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for MediaTypeHeaderError {
@@ -548,6 +673,11 @@ impl ::std::fmt::Display for NoInputAndNoOutputError {
         }
     }
 }
+impl NoInputAndNoOutputError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        NoInputAndNoOutputError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for NoInputAndNoOutputError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -567,6 +697,11 @@ impl ::std::fmt::Display for NoInputAndOutputError {
         match self {
             NoInputAndOutputError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl NoInputAndOutputError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        NoInputAndOutputError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for NoInputAndOutputError {
@@ -590,6 +725,11 @@ impl ::std::fmt::Display for NullAndEmptyHeadersClientError {
         }
     }
 }
+impl NullAndEmptyHeadersClientError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        NullAndEmptyHeadersClientError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for NullAndEmptyHeadersClientError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -609,6 +749,11 @@ impl ::std::fmt::Display for NullAndEmptyHeadersServerError {
         match self {
             NullAndEmptyHeadersServerError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl NullAndEmptyHeadersServerError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        NullAndEmptyHeadersServerError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for NullAndEmptyHeadersServerError {
@@ -632,6 +777,11 @@ impl ::std::fmt::Display for OmitsNullSerializesEmptyStringError {
         }
     }
 }
+impl OmitsNullSerializesEmptyStringError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        OmitsNullSerializesEmptyStringError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for OmitsNullSerializesEmptyStringError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -651,6 +801,11 @@ impl ::std::fmt::Display for QueryIdempotencyTokenAutoFillError {
         match self {
             QueryIdempotencyTokenAutoFillError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl QueryIdempotencyTokenAutoFillError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        QueryIdempotencyTokenAutoFillError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for QueryIdempotencyTokenAutoFillError {
@@ -674,6 +829,11 @@ impl ::std::fmt::Display for RecursiveShapesError {
         }
     }
 }
+impl RecursiveShapesError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        RecursiveShapesError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for RecursiveShapesError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -693,6 +853,11 @@ impl ::std::fmt::Display for SimpleScalarPropertiesError {
         match self {
             SimpleScalarPropertiesError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl SimpleScalarPropertiesError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        SimpleScalarPropertiesError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for SimpleScalarPropertiesError {
@@ -716,6 +881,11 @@ impl ::std::fmt::Display for StreamingTraitsError {
         }
     }
 }
+impl StreamingTraitsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        StreamingTraitsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for StreamingTraitsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -735,6 +905,11 @@ impl ::std::fmt::Display for StreamingTraitsRequireLengthError {
         match self {
             StreamingTraitsRequireLengthError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl StreamingTraitsRequireLengthError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        StreamingTraitsRequireLengthError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for StreamingTraitsRequireLengthError {
@@ -758,6 +933,11 @@ impl ::std::fmt::Display for StreamingTraitsWithMediaTypeError {
         }
     }
 }
+impl StreamingTraitsWithMediaTypeError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        StreamingTraitsWithMediaTypeError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for StreamingTraitsWithMediaTypeError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -777,6 +957,11 @@ impl ::std::fmt::Display for TimestampFormatHeadersError {
         match self {
             TimestampFormatHeadersError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl TimestampFormatHeadersError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        TimestampFormatHeadersError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for TimestampFormatHeadersError {

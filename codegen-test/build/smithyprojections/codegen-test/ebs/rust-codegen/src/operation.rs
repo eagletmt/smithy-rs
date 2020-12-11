@@ -5,6 +5,12 @@ use crate::input::ListChangedBlocksInput;
 use crate::input::ListSnapshotBlocksInput;
 use crate::input::PutSnapshotBlockInput;
 use crate::input::StartSnapshotInput;
+use crate::output::CompleteSnapshotOutput;
+use crate::output::GetSnapshotBlockOutput;
+use crate::output::ListChangedBlocksOutput;
+use crate::output::ListSnapshotBlocksOutput;
+use crate::output::PutSnapshotBlockOutput;
+use crate::output::StartSnapshotOutput;
 /// <p>Seals and completes the snapshot after all of the required blocks of data have been
 /// written to it. Completing the snapshot changes the status to <code>completed</code>. You
 /// cannot write new blocks to a snapshot after it has been completed.</p>
@@ -18,6 +24,18 @@ impl CompleteSnapshot {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         CompleteSnapshotInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<CompleteSnapshotOutput, crate::error::CompleteSnapshotError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<CompleteSnapshotOutput, crate::error::CompleteSnapshotError> {
+        Self::from_response(response)
     }
     pub fn new(input: CompleteSnapshotInput) -> Self {
         Self { input }
@@ -36,6 +54,18 @@ impl GetSnapshotBlock {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         GetSnapshotBlockInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<GetSnapshotBlockOutput, crate::error::GetSnapshotBlockError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<GetSnapshotBlockOutput, crate::error::GetSnapshotBlockError> {
+        Self::from_response(response)
+    }
     pub fn new(input: GetSnapshotBlockInput) -> Self {
         Self { input }
     }
@@ -53,6 +83,18 @@ impl ListChangedBlocks {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         ListChangedBlocksInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListChangedBlocksOutput, crate::error::ListChangedBlocksError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListChangedBlocksOutput, crate::error::ListChangedBlocksError> {
+        Self::from_response(response)
     }
     pub fn new(input: ListChangedBlocksInput) -> Self {
         Self { input }
@@ -74,6 +116,18 @@ impl ListSnapshotBlocks {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListSnapshotBlocksOutput, crate::error::ListSnapshotBlocksError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ListSnapshotBlocksOutput, crate::error::ListSnapshotBlocksError> {
+        Self::from_response(response)
+    }
     pub fn new(input: ListSnapshotBlocksInput) -> Self {
         Self { input }
     }
@@ -94,6 +148,18 @@ impl PutSnapshotBlock {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         PutSnapshotBlockInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<PutSnapshotBlockOutput, crate::error::PutSnapshotBlockError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<PutSnapshotBlockOutput, crate::error::PutSnapshotBlockError> {
+        Self::from_response(response)
+    }
     pub fn new(input: PutSnapshotBlockInput) -> Self {
         Self { input }
     }
@@ -113,6 +179,18 @@ impl StartSnapshot {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         StartSnapshotInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<StartSnapshotOutput, crate::error::StartSnapshotError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<StartSnapshotOutput, crate::error::StartSnapshotError> {
+        Self::from_response(response)
     }
     pub fn new(input: StartSnapshotInput) -> Self {
         Self { input }

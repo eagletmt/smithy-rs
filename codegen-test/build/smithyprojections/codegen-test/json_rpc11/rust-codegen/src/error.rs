@@ -14,6 +14,11 @@ impl ::std::fmt::Display for EmptyOperationError {
         }
     }
 }
+impl EmptyOperationError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        EmptyOperationError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for EmptyOperationError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -42,6 +47,11 @@ impl ::std::fmt::Display for GreetingWithErrorsError {
         }
     }
 }
+impl GreetingWithErrorsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        GreetingWithErrorsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for GreetingWithErrorsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -66,6 +76,11 @@ impl ::std::fmt::Display for JsonEnumsError {
         }
     }
 }
+impl JsonEnumsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        JsonEnumsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for JsonEnumsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -85,6 +100,11 @@ impl ::std::fmt::Display for JsonUnionsError {
         match self {
             JsonUnionsError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl JsonUnionsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        JsonUnionsError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for JsonUnionsError {
@@ -113,6 +133,11 @@ impl ::std::fmt::Display for KitchenSinkOperationError {
         }
     }
 }
+impl KitchenSinkOperationError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        KitchenSinkOperationError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for KitchenSinkOperationError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -136,6 +161,11 @@ impl ::std::fmt::Display for NullOperationError {
         }
     }
 }
+impl NullOperationError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        NullOperationError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for NullOperationError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -157,6 +187,11 @@ impl ::std::fmt::Display for OperationWithOptionalInputOutputError {
         }
     }
 }
+impl OperationWithOptionalInputOutputError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        OperationWithOptionalInputOutputError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for OperationWithOptionalInputOutputError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -176,6 +211,11 @@ impl ::std::fmt::Display for PutAndGetInlineDocumentsError {
         match self {
             PutAndGetInlineDocumentsError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl PutAndGetInlineDocumentsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        PutAndGetInlineDocumentsError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for PutAndGetInlineDocumentsError {
@@ -252,9 +292,11 @@ impl FooError {
 pub struct ComplexError {
     #[serde(rename = "TopLevel")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub top_level: ::std::option::Option<::std::string::String>,
     #[serde(rename = "Nested")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub nested: ::std::option::Option<ComplexNestedErrorData>,
 }
 impl ComplexError {
@@ -327,6 +369,7 @@ impl ComplexError {
 pub struct InvalidGreeting {
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidGreeting {
@@ -443,27 +486,34 @@ impl ErrorWithoutMembers {
 pub struct ErrorWithMembers {
     #[serde(rename = "Code")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub code: ::std::option::Option<::std::string::String>,
     #[serde(rename = "ComplexData")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub complex_data: ::std::option::Option<KitchenSink>,
     #[serde(rename = "IntegerField")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub integer_field: ::std::option::Option<i32>,
     #[serde(rename = "ListField")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub list_field: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     #[serde(rename = "MapField")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub map_field: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::string::String>,
     >,
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
     /// abc
     #[serde(rename = "StringField")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub string_field: ::std::option::Option<::std::string::String>,
 }
 impl ErrorWithMembers {

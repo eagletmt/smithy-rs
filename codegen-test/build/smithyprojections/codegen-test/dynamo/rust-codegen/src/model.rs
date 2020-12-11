@@ -15,11 +15,13 @@ pub struct TimeToLiveSpecification {
     /// <p>Indicates whether TTL is to be enabled (true) or disabled (false) on the table.</p>
     #[serde(rename = "Enabled")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub enabled: ::std::option::Option<bool>,
     /// <p>The name of the TTL attribute used to store the expiration time for items in the
     /// table.</p>
     #[serde(rename = "AttributeName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub attribute_name: ::std::option::Option<::std::string::String>,
 }
 /// See [`TimeToLiveSpecification`](crate::model::TimeToLiveSpecification)
@@ -74,6 +76,7 @@ pub struct TableAutoScalingDescription {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The current state of the table:</p>
     /// <ul>
@@ -96,10 +99,12 @@ pub struct TableAutoScalingDescription {
     /// </ul>
     #[serde(rename = "TableStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_status: ::std::option::Option<TableStatus>,
     /// <p>Represents replicas of the global table.</p>
     #[serde(rename = "Replicas")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replicas: ::std::option::Option<::std::vec::Vec<ReplicaAutoScalingDescription>>,
 }
 /// See [`TableAutoScalingDescription`](crate::model::TableAutoScalingDescription)
@@ -180,22 +185,26 @@ pub struct ReplicaAutoScalingDescription {
     /// <p>The Region where the replica exists.</p>
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub region_name: ::std::option::Option<::std::string::String>,
     /// <p>Replica-specific global secondary index auto scaling settings.</p>
     #[serde(rename = "GlobalSecondaryIndexes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub global_secondary_indexes:
         ::std::option::Option<::std::vec::Vec<ReplicaGlobalSecondaryIndexAutoScalingDescription>>,
     /// <p>Represents the auto scaling settings for a global table or global secondary
     /// index.</p>
     #[serde(rename = "ReplicaProvisionedReadCapacityAutoScalingSettings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_provisioned_read_capacity_auto_scaling_settings:
         ::std::option::Option<AutoScalingSettingsDescription>,
     /// <p>Represents the auto scaling settings for a global table or global secondary
     /// index.</p>
     #[serde(rename = "ReplicaProvisionedWriteCapacityAutoScalingSettings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_provisioned_write_capacity_auto_scaling_settings:
         ::std::option::Option<AutoScalingSettingsDescription>,
     /// <p>The current state of the replica:</p>
@@ -219,6 +228,7 @@ pub struct ReplicaAutoScalingDescription {
     /// </ul>
     #[serde(rename = "ReplicaStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_status: ::std::option::Option<ReplicaStatus>,
 }
 /// See [`ReplicaAutoScalingDescription`](crate::model::ReplicaAutoScalingDescription)
@@ -370,22 +380,27 @@ pub struct AutoScalingSettingsDescription {
     /// <p>The minimum capacity units that a global table or global secondary index should be scaled down to.</p>
     #[serde(rename = "MinimumUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub minimum_units: ::std::option::Option<i64>,
     /// <p>The maximum capacity units that a global table or global secondary index should be scaled up to.</p>
     #[serde(rename = "MaximumUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub maximum_units: ::std::option::Option<i64>,
     /// <p>Disabled auto scaling for this global table or global secondary index.</p>
     #[serde(rename = "AutoScalingDisabled")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub auto_scaling_disabled: ::std::option::Option<bool>,
     /// <p>Role ARN used for configuring the auto scaling policy.</p>
     #[serde(rename = "AutoScalingRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub auto_scaling_role_arn: ::std::option::Option<::std::string::String>,
     /// <p>Information about the scaling policies.</p>
     #[serde(rename = "ScalingPolicies")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub scaling_policies: ::std::option::Option<::std::vec::Vec<AutoScalingPolicyDescription>>,
 }
 /// See [`AutoScalingSettingsDescription`](crate::model::AutoScalingSettingsDescription)
@@ -464,10 +479,12 @@ pub struct AutoScalingPolicyDescription {
     /// <p>The name of the scaling policy.</p>
     #[serde(rename = "PolicyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub policy_name: ::std::option::Option<::std::string::String>,
     /// <p>Represents a target tracking scaling policy configuration.</p>
     #[serde(rename = "TargetTrackingScalingPolicyConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub target_tracking_scaling_policy_configuration:
         ::std::option::Option<AutoScalingTargetTrackingScalingPolicyConfigurationDescription>,
 }
@@ -531,6 +548,7 @@ pub struct AutoScalingTargetTrackingScalingPolicyConfigurationDescription {
     /// The default value is false.</p>
     #[serde(rename = "DisableScaleIn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub disable_scale_in: ::std::option::Option<bool>,
     /// <p>The amount of time, in seconds, after a scale in activity completes before another scale
     /// in activity can start. The cooldown period is used to block subsequent scale in requests
@@ -540,6 +558,7 @@ pub struct AutoScalingTargetTrackingScalingPolicyConfigurationDescription {
     /// immediately. </p>
     #[serde(rename = "ScaleInCooldown")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub scale_in_cooldown: ::std::option::Option<i32>,
     /// <p>The amount of time, in seconds, after a scale out activity completes before another scale out
     /// activity can start. While the cooldown period is in effect, the capacity that has been added
@@ -548,10 +567,12 @@ pub struct AutoScalingTargetTrackingScalingPolicyConfigurationDescription {
     /// scale out.</p>
     #[serde(rename = "ScaleOutCooldown")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub scale_out_cooldown: ::std::option::Option<i32>,
     /// <p>The target value for the metric. The range is 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2).</p>
     #[serde(rename = "TargetValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub target_value: ::std::option::Option<f64>,
 }
 /// See [`AutoScalingTargetTrackingScalingPolicyConfigurationDescription`](crate::model::AutoScalingTargetTrackingScalingPolicyConfigurationDescription)
@@ -633,6 +654,7 @@ pub struct ReplicaGlobalSecondaryIndexAutoScalingDescription {
     /// <p>The name of the global secondary index.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The current state of the replica global secondary index:</p>
     /// <ul>
@@ -655,17 +677,20 @@ pub struct ReplicaGlobalSecondaryIndexAutoScalingDescription {
     /// </ul>
     #[serde(rename = "IndexStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_status: ::std::option::Option<IndexStatus>,
     /// <p>Represents the auto scaling settings for a global table or global secondary
     /// index.</p>
     #[serde(rename = "ProvisionedReadCapacityAutoScalingSettings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_read_capacity_auto_scaling_settings:
         ::std::option::Option<AutoScalingSettingsDescription>,
     /// <p>Represents the auto scaling settings for a global table or global secondary
     /// index.</p>
     #[serde(rename = "ProvisionedWriteCapacityAutoScalingSettings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_write_capacity_auto_scaling_settings:
         ::std::option::Option<AutoScalingSettingsDescription>,
 }
@@ -835,17 +860,20 @@ pub struct ReplicaAutoScalingUpdate {
     /// <p>The Region where the replica exists.</p>
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub region_name: ::std::option::Option<::std::string::String>,
     /// <p>Represents the auto scaling settings of global secondary indexes that will
     /// be modified.</p>
     #[serde(rename = "ReplicaGlobalSecondaryIndexUpdates")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_global_secondary_index_updates:
         ::std::option::Option<::std::vec::Vec<ReplicaGlobalSecondaryIndexAutoScalingUpdate>>,
     /// <p>Represents the auto scaling settings to be modified for a global table or global
     /// secondary index.</p>
     #[serde(rename = "ReplicaProvisionedReadCapacityAutoScalingUpdate")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_provisioned_read_capacity_auto_scaling_update:
         ::std::option::Option<AutoScalingSettingsUpdate>,
 }
@@ -921,22 +949,27 @@ pub struct AutoScalingSettingsUpdate {
     /// <p>The minimum capacity units that a global table or global secondary index should be scaled down to.</p>
     #[serde(rename = "MinimumUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub minimum_units: ::std::option::Option<i64>,
     /// <p>The maximum capacity units that a global table or global secondary index should be scaled up to.</p>
     #[serde(rename = "MaximumUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub maximum_units: ::std::option::Option<i64>,
     /// <p>Disabled auto scaling for this global table or global secondary index.</p>
     #[serde(rename = "AutoScalingDisabled")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub auto_scaling_disabled: ::std::option::Option<bool>,
     /// <p>Role ARN used for configuring auto scaling policy.</p>
     #[serde(rename = "AutoScalingRoleArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub auto_scaling_role_arn: ::std::option::Option<::std::string::String>,
     /// <p>The scaling policy to apply for scaling target global table or global secondary index capacity units.</p>
     #[serde(rename = "ScalingPolicyUpdate")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub scaling_policy_update: ::std::option::Option<AutoScalingPolicyUpdate>,
 }
 /// See [`AutoScalingSettingsUpdate`](crate::model::AutoScalingSettingsUpdate)
@@ -1012,10 +1045,12 @@ pub struct AutoScalingPolicyUpdate {
     /// <p>The name of the scaling policy.</p>
     #[serde(rename = "PolicyName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub policy_name: ::std::option::Option<::std::string::String>,
     /// <p>Represents a target tracking scaling policy configuration.</p>
     #[serde(rename = "TargetTrackingScalingPolicyConfiguration")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub target_tracking_scaling_policy_configuration:
         ::std::option::Option<AutoScalingTargetTrackingScalingPolicyConfigurationUpdate>,
 }
@@ -1079,6 +1114,7 @@ pub struct AutoScalingTargetTrackingScalingPolicyConfigurationUpdate {
     /// The default value is false.</p>
     #[serde(rename = "DisableScaleIn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub disable_scale_in: ::std::option::Option<bool>,
     /// <p>The amount of time, in seconds, after a scale in activity completes before another scale
     /// in activity can start. The cooldown period is used to block subsequent scale in requests
@@ -1088,6 +1124,7 @@ pub struct AutoScalingTargetTrackingScalingPolicyConfigurationUpdate {
     /// immediately. </p>
     #[serde(rename = "ScaleInCooldown")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub scale_in_cooldown: ::std::option::Option<i32>,
     /// <p>The amount of time, in seconds, after a scale out activity completes before another scale out
     /// activity can start. While the cooldown period is in effect, the capacity that has been added
@@ -1096,10 +1133,12 @@ pub struct AutoScalingTargetTrackingScalingPolicyConfigurationUpdate {
     /// scale out.</p>
     #[serde(rename = "ScaleOutCooldown")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub scale_out_cooldown: ::std::option::Option<i32>,
     /// <p>The target value for the metric. The range is 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2).</p>
     #[serde(rename = "TargetValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub target_value: ::std::option::Option<f64>,
 }
 /// See [`AutoScalingTargetTrackingScalingPolicyConfigurationUpdate`](crate::model::AutoScalingTargetTrackingScalingPolicyConfigurationUpdate)
@@ -1182,11 +1221,13 @@ pub struct ReplicaGlobalSecondaryIndexAutoScalingUpdate {
     /// <p>The name of the global secondary index.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>Represents the auto scaling settings to be modified for a global table or global
     /// secondary index.</p>
     #[serde(rename = "ProvisionedReadCapacityAutoScalingUpdate")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_read_capacity_auto_scaling_update:
         ::std::option::Option<AutoScalingSettingsUpdate>,
 }
@@ -1249,11 +1290,13 @@ pub struct GlobalSecondaryIndexAutoScalingUpdate {
     /// <p>The name of the global secondary index.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>Represents the auto scaling settings to be modified for a global table or global
     /// secondary index.</p>
     #[serde(rename = "ProvisionedWriteCapacityAutoScalingUpdate")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_write_capacity_auto_scaling_update:
         ::std::option::Option<AutoScalingSettingsUpdate>,
 }
@@ -1327,10 +1370,12 @@ pub struct TableDescription {
     /// </ul>
     #[serde(rename = "AttributeDefinitions")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub attribute_definitions: ::std::option::Option<::std::vec::Vec<AttributeDefinition>>,
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The primary key structure for the table. Each <code>KeySchemaElement</code> consists of:</p>
     /// <ul>
@@ -1365,6 +1410,7 @@ pub struct TableDescription {
     /// <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "KeySchema")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key_schema: ::std::option::Option<::std::vec::Vec<KeySchemaElement>>,
     /// <p>The current state of the table:</p>
     /// <ul>
@@ -1408,16 +1454,19 @@ pub struct TableDescription {
     /// </ul>
     #[serde(rename = "TableStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_status: ::std::option::Option<TableStatus>,
     /// <p>The date and time when the table was created, in <a href="http://www.epochconverter.com/">UNIX epoch time</a> format.</p>
     #[serde(rename = "CreationDateTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub creation_date_time: ::std::option::Option<Instant>,
     /// <p>The provisioned throughput settings for the table, consisting of read and write capacity units, along with data about increases and decreases.</p>
     #[serde(rename = "ProvisionedThroughput")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_throughput: ::std::option::Option<ProvisionedThroughputDescription>,
     /// <p>The total size of the specified table, in bytes. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p>
     #[serde(rename = "TableSizeBytes")]
@@ -1428,14 +1477,17 @@ pub struct TableDescription {
     /// <p>The Amazon Resource Name (ARN) that uniquely identifies the table.</p>
     #[serde(rename = "TableArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_arn: ::std::option::Option<::std::string::String>,
     /// <p>Unique identifier for the table for which the backup was created. </p>
     #[serde(rename = "TableId")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_id: ::std::option::Option<::std::string::String>,
     /// <p>Contains the details for the read/write capacity mode.</p>
     #[serde(rename = "BillingModeSummary")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub billing_mode_summary: ::std::option::Option<BillingModeSummary>,
     /// <p>Represents one or more local secondary indexes on the table. Each index is scoped to a given partition key value. Tables with one or more local secondary indexes are subject to an item collection size limit, where the amount of data within a given item collection cannot exceed 10 GB. Each element is composed of:</p>
     /// <ul>
@@ -1503,6 +1555,7 @@ pub struct TableDescription {
     /// returned.</p>
     #[serde(rename = "LocalSecondaryIndexes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub local_secondary_indexes:
         ::std::option::Option<::std::vec::Vec<LocalSecondaryIndexDescription>>,
     /// <p>The global secondary indexes, if any, on the table. Each index is scoped to a given partition key value. Each element is composed of:</p>
@@ -1612,11 +1665,13 @@ pub struct TableDescription {
     /// returned.</p>
     #[serde(rename = "GlobalSecondaryIndexes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub global_secondary_indexes:
         ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndexDescription>>,
     /// <p>The current DynamoDB Streams configuration for the table.</p>
     #[serde(rename = "StreamSpecification")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub stream_specification: ::std::option::Option<StreamSpecification>,
     /// <p>A timestamp, in ISO 8601 format, for this stream.</p>
     /// <p>Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p>
@@ -1635,30 +1690,37 @@ pub struct TableDescription {
     /// </ul>
     #[serde(rename = "LatestStreamLabel")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub latest_stream_label: ::std::option::Option<::std::string::String>,
     /// <p>The Amazon Resource Name (ARN) that uniquely identifies the latest stream for this table.</p>
     #[serde(rename = "LatestStreamArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub latest_stream_arn: ::std::option::Option<::std::string::String>,
     /// <p>Represents the version of <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html">global tables</a> in use, if the table is replicated across AWS Regions.</p>
     #[serde(rename = "GlobalTableVersion")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub global_table_version: ::std::option::Option<::std::string::String>,
     /// <p>Represents replicas of the table.</p>
     #[serde(rename = "Replicas")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replicas: ::std::option::Option<::std::vec::Vec<ReplicaDescription>>,
     /// <p>Contains details for the restore.</p>
     #[serde(rename = "RestoreSummary")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub restore_summary: ::std::option::Option<RestoreSummary>,
     /// <p>The description of the server-side encryption status on the specified table.</p>
     #[serde(rename = "SSEDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub sse_description: ::std::option::Option<SSEDescription>,
     /// <p>Contains information about the table archive.</p>
     #[serde(rename = "ArchivalSummary")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub archival_summary: ::std::option::Option<ArchivalSummary>,
 }
 /// See [`TableDescription`](crate::model::TableDescription)
@@ -2131,6 +2193,7 @@ pub struct ArchivalSummary {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub archival_date_time: ::std::option::Option<Instant>,
     /// <p>The reason DynamoDB archived the table. Currently, the only
     /// possible value is:</p>
@@ -2145,6 +2208,7 @@ pub struct ArchivalSummary {
     /// </ul>
     #[serde(rename = "ArchivalReason")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub archival_reason: ::std::option::Option<::std::string::String>,
     /// <p>The Amazon Resource Name (ARN) of the backup the table was archived
     /// to, when applicable in the archival reason. If you wish to restore this
@@ -2152,6 +2216,7 @@ pub struct ArchivalSummary {
     /// table.</p>
     #[serde(rename = "ArchivalBackupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub archival_backup_arn: ::std::option::Option<::std::string::String>,
 }
 /// See [`ArchivalSummary`](crate::model::ArchivalSummary)
@@ -2237,6 +2302,7 @@ pub struct SSEDescription {
     /// </ul>
     #[serde(rename = "Status")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub status: ::std::option::Option<SSEStatus>,
     /// <p>Server-side encryption type. The only supported value is:</p>
     /// <ul>
@@ -2249,10 +2315,12 @@ pub struct SSEDescription {
     /// </ul>
     #[serde(rename = "SSEType")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub sse_type: ::std::option::Option<SSEType>,
     /// <p>The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.</p>
     #[serde(rename = "KMSMasterKeyArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub kms_master_key_arn: ::std::option::Option<::std::string::String>,
     /// <p>Indicates the time, in UNIX epoch date format, when DynamoDB detected that the table's
     /// AWS KMS key was inaccessible. This attribute will automatically be cleared when DynamoDB
@@ -2263,6 +2331,7 @@ pub struct SSEDescription {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub inaccessible_encryption_date_time: ::std::option::Option<Instant>,
 }
 /// See [`SSEDescription`](crate::model::SSEDescription)
@@ -2415,20 +2484,24 @@ pub struct RestoreSummary {
     /// <p>The Amazon Resource Name (ARN) of the backup from which the table was restored.</p>
     #[serde(rename = "SourceBackupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub source_backup_arn: ::std::option::Option<::std::string::String>,
     /// <p>The ARN of the source table of the backup that is being restored.</p>
     #[serde(rename = "SourceTableArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub source_table_arn: ::std::option::Option<::std::string::String>,
     /// <p>Point in time or source backup time.</p>
     #[serde(rename = "RestoreDateTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub restore_date_time: ::std::option::Option<Instant>,
     /// <p>Indicates if a restore is in progress or not.</p>
     #[serde(rename = "RestoreInProgress")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub restore_in_progress: ::std::option::Option<bool>,
 }
 /// See [`RestoreSummary`](crate::model::RestoreSummary)
@@ -2497,6 +2570,7 @@ pub struct ReplicaDescription {
     /// <p>The name of the Region.</p>
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub region_name: ::std::option::Option<::std::string::String>,
     /// <p>The current state of the replica:</p>
     /// <ul>
@@ -2533,29 +2607,35 @@ pub struct ReplicaDescription {
     /// </ul>
     #[serde(rename = "ReplicaStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_status: ::std::option::Option<ReplicaStatus>,
     /// <p>Detailed information about the replica status.</p>
     #[serde(rename = "ReplicaStatusDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_status_description: ::std::option::Option<::std::string::String>,
     /// <p>Specifies the progress of a Create, Update, or Delete action on the replica
     /// as a percentage.</p>
     #[serde(rename = "ReplicaStatusPercentProgress")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_status_percent_progress: ::std::option::Option<::std::string::String>,
     /// <p>The AWS KMS customer master key (CMK) of the replica that will be used for AWS KMS
     /// encryption.</p>
     #[serde(rename = "KMSMasterKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub kms_master_key_id: ::std::option::Option<::std::string::String>,
     /// <p>Replica-specific provisioned throughput. If not described, uses the source table's
     /// provisioned throughput settings.</p>
     #[serde(rename = "ProvisionedThroughputOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_throughput_override: ::std::option::Option<ProvisionedThroughputOverride>,
     /// <p>Replica-specific global secondary index settings.</p>
     #[serde(rename = "GlobalSecondaryIndexes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub global_secondary_indexes:
         ::std::option::Option<::std::vec::Vec<ReplicaGlobalSecondaryIndexDescription>>,
     /// <p>The time at which the replica was first detected as inaccessible. To determine cause of inaccessibility check the <code>ReplicaStatus</code> property.</p>
@@ -2563,6 +2643,7 @@ pub struct ReplicaDescription {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub replica_inaccessible_date_time: ::std::option::Option<Instant>,
 }
 /// See [`ReplicaDescription`](crate::model::ReplicaDescription)
@@ -2707,10 +2788,12 @@ pub struct ReplicaGlobalSecondaryIndexDescription {
     /// <p>The name of the global secondary index.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>If not described, uses the source table GSI's read capacity settings.</p>
     #[serde(rename = "ProvisionedThroughputOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_throughput_override: ::std::option::Option<ProvisionedThroughputOverride>,
 }
 /// See [`ReplicaGlobalSecondaryIndexDescription`](crate::model::ReplicaGlobalSecondaryIndexDescription)
@@ -2770,6 +2853,7 @@ pub struct ProvisionedThroughputOverride {
     /// read capacity settings.</p>
     #[serde(rename = "ReadCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub read_capacity_units: ::std::option::Option<i64>,
 }
 /// See [`ProvisionedThroughputOverride`](crate::model::ProvisionedThroughputOverride)
@@ -2817,6 +2901,7 @@ pub struct StreamSpecification {
     /// <p>Indicates whether DynamoDB Streams is enabled (true) or disabled (false) on the table.</p>
     #[serde(rename = "StreamEnabled")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub stream_enabled: ::std::option::Option<bool>,
     /// <p>
     /// When an item in the table is modified, <code>StreamViewType</code>
@@ -2845,6 +2930,7 @@ pub struct StreamSpecification {
     /// </ul>
     #[serde(rename = "StreamViewType")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub stream_view_type: ::std::option::Option<StreamViewType>,
 }
 /// See [`StreamSpecification`](crate::model::StreamSpecification)
@@ -2953,6 +3039,7 @@ pub struct GlobalSecondaryIndexDescription {
     /// <p>The name of the global secondary index.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The complete key schema for a global secondary index, which consists of one or more pairs of attribute names and key types:</p>
     /// <ul>
@@ -2975,12 +3062,14 @@ pub struct GlobalSecondaryIndexDescription {
     /// </note>
     #[serde(rename = "KeySchema")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key_schema: ::std::option::Option<::std::vec::Vec<KeySchemaElement>>,
     /// <p>Represents attributes that are copied (projected) from the table into the global
     /// secondary index. These are in addition to the primary key attributes and index key
     /// attributes, which are automatically projected. </p>
     #[serde(rename = "Projection")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub projection: ::std::option::Option<Projection>,
     /// <p>The current state of the global secondary index:</p>
     /// <ul>
@@ -3003,6 +3092,7 @@ pub struct GlobalSecondaryIndexDescription {
     /// </ul>
     #[serde(rename = "IndexStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_status: ::std::option::Option<IndexStatus>,
     /// <p>Indicates whether the index is currently backfilling. <i>Backfilling</i> is the process of reading items from
     /// the table and determining whether they can be added to the index. (Not all items will qualify:  For example, a partition key
@@ -3017,11 +3107,13 @@ pub struct GlobalSecondaryIndexDescription {
     /// </note>
     #[serde(rename = "Backfilling")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub backfilling: ::std::option::Option<bool>,
     /// <p>Represents the provisioned throughput settings for the specified global secondary index.</p>
     /// <p>For current minimum and maximum provisioned throughput values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Service, Account, and Table Quotas</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ProvisionedThroughput")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_throughput: ::std::option::Option<ProvisionedThroughputDescription>,
     /// <p>The total size of the specified index, in bytes. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p>
     #[serde(rename = "IndexSizeBytes")]
@@ -3032,6 +3124,7 @@ pub struct GlobalSecondaryIndexDescription {
     /// <p>The Amazon Resource Name (ARN) that uniquely identifies the index.</p>
     #[serde(rename = "IndexArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_arn: ::std::option::Option<::std::string::String>,
 }
 /// See [`GlobalSecondaryIndexDescription`](crate::model::GlobalSecondaryIndexDescription)
@@ -3189,17 +3282,20 @@ pub struct ProvisionedThroughputDescription {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub last_increase_date_time: ::std::option::Option<Instant>,
     /// <p>The date and time of the last provisioned throughput decrease for this table.</p>
     #[serde(rename = "LastDecreaseDateTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub last_decrease_date_time: ::std::option::Option<Instant>,
     /// <p>The number of provisioned throughput decreases for this table during this UTC calendar day.
     /// For current maximums on provisioned throughput decreases, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Service, Account, and Table Quotas</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "NumberOfDecreasesToday")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub number_of_decreases_today: ::std::option::Option<i64>,
     /// <p>The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
     /// <code>ThrottlingException</code>. Eventually consistent reads require less effort than strongly
@@ -3207,11 +3303,13 @@ pub struct ProvisionedThroughputDescription {
     /// eventually consistent <code>ReadCapacityUnits</code> per second.</p>
     #[serde(rename = "ReadCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub read_capacity_units: ::std::option::Option<i64>,
     /// <p>The maximum number of writes consumed per second before DynamoDB returns a
     /// <code>ThrottlingException</code>.</p>
     #[serde(rename = "WriteCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub write_capacity_units: ::std::option::Option<i64>,
 }
 /// See [`ProvisionedThroughputDescription`](crate::model::ProvisionedThroughputDescription)
@@ -3307,6 +3405,7 @@ pub struct Projection {
     /// </ul>
     #[serde(rename = "ProjectionType")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub projection_type: ::std::option::Option<ProjectionType>,
     /// <p>Represents the non-key attribute names which will be projected into the index.</p>
     /// <p>For local secondary indexes, the total count of <code>NonKeyAttributes</code> summed across all of the local secondary indexes,
@@ -3314,6 +3413,7 @@ pub struct Projection {
     /// different indexes, this counts as two distinct attributes when determining the total.</p>
     #[serde(rename = "NonKeyAttributes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub non_key_attributes: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
 }
 /// See [`Projection`](crate::model::Projection)
@@ -3422,6 +3522,7 @@ pub struct KeySchemaElement {
     /// <p>The name of a key attribute.</p>
     #[serde(rename = "AttributeName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub attribute_name: ::std::option::Option<::std::string::String>,
     /// <p>The role that this key attribute will assume:</p>
     /// <ul>
@@ -3444,6 +3545,7 @@ pub struct KeySchemaElement {
     /// </note>
     #[serde(rename = "KeyType")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key_type: ::std::option::Option<KeyType>,
 }
 /// See [`KeySchemaElement`](crate::model::KeySchemaElement)
@@ -3546,6 +3648,7 @@ pub struct LocalSecondaryIndexDescription {
     /// <p>Represents the name of the local secondary index.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:</p>
     /// <ul>
@@ -3568,12 +3671,14 @@ pub struct LocalSecondaryIndexDescription {
     /// </note>
     #[serde(rename = "KeySchema")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key_schema: ::std::option::Option<::std::vec::Vec<KeySchemaElement>>,
     /// <p>Represents attributes that are copied (projected) from the table into the global
     /// secondary index. These are in addition to the primary key attributes and index key
     /// attributes, which are automatically projected. </p>
     #[serde(rename = "Projection")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub projection: ::std::option::Option<Projection>,
     /// <p>The total size of the specified index, in bytes. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p>
     #[serde(rename = "IndexSizeBytes")]
@@ -3584,6 +3689,7 @@ pub struct LocalSecondaryIndexDescription {
     /// <p>The Amazon Resource Name (ARN) that uniquely identifies the index.</p>
     #[serde(rename = "IndexArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_arn: ::std::option::Option<::std::string::String>,
 }
 /// See [`LocalSecondaryIndexDescription`](crate::model::LocalSecondaryIndexDescription)
@@ -3698,12 +3804,14 @@ pub struct BillingModeSummary {
     /// </ul>
     #[serde(rename = "BillingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub billing_mode: ::std::option::Option<BillingMode>,
     /// <p>Represents the time when <code>PAY_PER_REQUEST</code> was last set as the read/write capacity mode.</p>
     #[serde(rename = "LastUpdateToPayPerRequestDateTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub last_update_to_pay_per_request_date_time: ::std::option::Option<Instant>,
 }
 /// See [`BillingModeSummary`](crate::model::BillingModeSummary)
@@ -3801,6 +3909,7 @@ pub struct AttributeDefinition {
     /// <p>A name for the attribute.</p>
     #[serde(rename = "AttributeName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub attribute_name: ::std::option::Option<::std::string::String>,
     /// <p>The data type for the attribute, where:</p>
     /// <ul>
@@ -3819,6 +3928,7 @@ pub struct AttributeDefinition {
     /// </ul>
     #[serde(rename = "AttributeType")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub attribute_type: ::std::option::Option<ScalarAttributeType>,
 }
 /// See [`AttributeDefinition`](crate::model::AttributeDefinition)
@@ -3933,14 +4043,17 @@ pub struct ReplicationGroupUpdate {
     /// <p>The parameters required for creating a replica for the table.</p>
     #[serde(rename = "Create")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub create: ::std::option::Option<CreateReplicationGroupMemberAction>,
     /// <p>The parameters required for updating a replica for the table.</p>
     #[serde(rename = "Update")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub update: ::std::option::Option<UpdateReplicationGroupMemberAction>,
     /// <p>The parameters required for deleting a replica for the table.</p>
     #[serde(rename = "Delete")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub delete: ::std::option::Option<DeleteReplicationGroupMemberAction>,
 }
 /// See [`ReplicationGroupUpdate`](crate::model::ReplicationGroupUpdate)
@@ -4004,6 +4117,7 @@ pub struct DeleteReplicationGroupMemberAction {
     /// <p>The Region where the replica exists.</p>
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub region_name: ::std::option::Option<::std::string::String>,
 }
 /// See [`DeleteReplicationGroupMemberAction`](crate::model::DeleteReplicationGroupMemberAction)
@@ -4050,6 +4164,7 @@ pub struct UpdateReplicationGroupMemberAction {
     /// <p>The Region where the replica exists.</p>
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub region_name: ::std::option::Option<::std::string::String>,
     /// <p>The AWS KMS customer master key (CMK) of the replica that should be used for AWS KMS encryption.
     /// To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias
@@ -4057,15 +4172,18 @@ pub struct UpdateReplicationGroupMemberAction {
     /// the default DynamoDB KMS master key alias/aws/dynamodb.</p>
     #[serde(rename = "KMSMasterKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub kms_master_key_id: ::std::option::Option<::std::string::String>,
     /// <p>Replica-specific provisioned throughput. If not specified, uses the source table's
     /// provisioned throughput settings.</p>
     #[serde(rename = "ProvisionedThroughputOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_throughput_override: ::std::option::Option<ProvisionedThroughputOverride>,
     /// <p>Replica-specific global secondary index settings.</p>
     #[serde(rename = "GlobalSecondaryIndexes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub global_secondary_indexes:
         ::std::option::Option<::std::vec::Vec<ReplicaGlobalSecondaryIndex>>,
 }
@@ -4147,11 +4265,13 @@ pub struct ReplicaGlobalSecondaryIndex {
     /// <p>The name of the global secondary index.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>Replica table GSI-specific provisioned throughput. If not specified, uses the
     /// source table GSI's read capacity settings.</p>
     #[serde(rename = "ProvisionedThroughputOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_throughput_override: ::std::option::Option<ProvisionedThroughputOverride>,
 }
 /// See [`ReplicaGlobalSecondaryIndex`](crate::model::ReplicaGlobalSecondaryIndex)
@@ -4210,6 +4330,7 @@ pub struct CreateReplicationGroupMemberAction {
     /// <p>The Region where the new replica will be created.</p>
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub region_name: ::std::option::Option<::std::string::String>,
     /// <p>The AWS KMS customer master key (CMK) that should be used for AWS KMS encryption
     /// in the new replica. To specify a CMK, use its key ID, Amazon Resource Name (ARN),
@@ -4217,15 +4338,18 @@ pub struct CreateReplicationGroupMemberAction {
     /// key is different from the default DynamoDB KMS master key alias/aws/dynamodb.</p>
     #[serde(rename = "KMSMasterKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub kms_master_key_id: ::std::option::Option<::std::string::String>,
     /// <p>Replica-specific provisioned throughput. If not specified, uses the source table's
     /// provisioned throughput settings.</p>
     #[serde(rename = "ProvisionedThroughputOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_throughput_override: ::std::option::Option<ProvisionedThroughputOverride>,
     /// <p>Replica-specific global secondary index settings.</p>
     #[serde(rename = "GlobalSecondaryIndexes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub global_secondary_indexes:
         ::std::option::Option<::std::vec::Vec<ReplicaGlobalSecondaryIndex>>,
 }
@@ -4309,6 +4433,7 @@ pub struct SSESpecification {
     /// encryption is set to AWS owned CMK.</p>
     #[serde(rename = "Enabled")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub enabled: ::std::option::Option<bool>,
     /// <p>Server-side encryption type. The only supported value is:</p>
     /// <ul>
@@ -4321,6 +4446,7 @@ pub struct SSESpecification {
     /// </ul>
     #[serde(rename = "SSEType")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub sse_type: ::std::option::Option<SSEType>,
     /// <p>The AWS KMS customer master key (CMK) that should be used for the AWS KMS encryption. To
     /// specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. Note
@@ -4328,6 +4454,7 @@ pub struct SSESpecification {
     /// DynamoDB customer master key alias/aws/dynamodb.</p>
     #[serde(rename = "KMSMasterKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub kms_master_key_id: ::std::option::Option<::std::string::String>,
 }
 /// See [`SSESpecification`](crate::model::SSESpecification)
@@ -4413,6 +4540,7 @@ pub struct GlobalSecondaryIndexUpdate {
     /// <p>The name of an existing global secondary index, along with new provisioned throughput settings to be applied to that index.</p>
     #[serde(rename = "Update")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub update: ::std::option::Option<UpdateGlobalSecondaryIndexAction>,
     /// <p>The parameters required for creating a global secondary index on an existing table:</p>
     /// <ul>
@@ -4444,10 +4572,12 @@ pub struct GlobalSecondaryIndexUpdate {
     /// </ul>
     #[serde(rename = "Create")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub create: ::std::option::Option<CreateGlobalSecondaryIndexAction>,
     /// <p>The name of an existing global secondary index to be removed.</p>
     #[serde(rename = "Delete")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub delete: ::std::option::Option<DeleteGlobalSecondaryIndexAction>,
 }
 /// See [`GlobalSecondaryIndexUpdate`](crate::model::GlobalSecondaryIndexUpdate)
@@ -4538,6 +4668,7 @@ pub struct DeleteGlobalSecondaryIndexAction {
     /// <p>The name of the global secondary index to be deleted.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
 }
 /// See [`DeleteGlobalSecondaryIndexAction`](crate::model::DeleteGlobalSecondaryIndexAction)
@@ -4584,21 +4715,25 @@ pub struct CreateGlobalSecondaryIndexAction {
     /// <p>The name of the global secondary index to be created.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The key schema for the global secondary index.</p>
     #[serde(rename = "KeySchema")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key_schema: ::std::option::Option<::std::vec::Vec<KeySchemaElement>>,
     /// <p>Represents attributes that are copied (projected) from the table into an index. These
     /// are in addition to the primary key attributes and index key attributes, which are
     /// automatically projected.</p>
     #[serde(rename = "Projection")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub projection: ::std::option::Option<Projection>,
     /// <p>Represents the provisioned throughput settings for the specified global secondary index.</p>
     /// <p>For current minimum and maximum provisioned throughput values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Service, Account, and Table Quotas</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ProvisionedThroughput")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_throughput: ::std::option::Option<ProvisionedThroughput>,
 }
 /// See [`CreateGlobalSecondaryIndexAction`](crate::model::CreateGlobalSecondaryIndexAction)
@@ -4677,6 +4812,7 @@ pub struct ProvisionedThroughput {
     /// <p>If read/write capacity mode is <code>PAY_PER_REQUEST</code> the value is set to 0.</p>
     #[serde(rename = "ReadCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub read_capacity_units: ::std::option::Option<i64>,
     /// <p>The maximum number of writes consumed per second before DynamoDB returns a
     /// <code>ThrottlingException</code>. For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput">Specifying Read and Write
@@ -4684,6 +4820,7 @@ pub struct ProvisionedThroughput {
     /// <p>If read/write capacity mode is <code>PAY_PER_REQUEST</code> the value is set to 0.</p>
     #[serde(rename = "WriteCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub write_capacity_units: ::std::option::Option<i64>,
 }
 /// See [`ProvisionedThroughput`](crate::model::ProvisionedThroughput)
@@ -4743,11 +4880,13 @@ pub struct UpdateGlobalSecondaryIndexAction {
     /// <p>The name of the global secondary index to be updated.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>Represents the provisioned throughput settings for the specified global secondary index.</p>
     /// <p>For current minimum and maximum provisioned throughput values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Service, Account, and Table Quotas</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ProvisionedThroughput")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_throughput: ::std::option::Option<ProvisionedThroughput>,
 }
 /// See [`UpdateGlobalSecondaryIndexAction`](crate::model::UpdateGlobalSecondaryIndexAction)
@@ -4805,12 +4944,14 @@ pub struct ItemCollectionMetrics {
     /// <p>The partition key value of the item collection. This value is the same as the partition key value of the item.</p>
     #[serde(rename = "ItemCollectionKey")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub item_collection_key:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>An estimate of item collection size, in gigabytes. This value is a two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in the table, plus the size of all attributes projected into all of the local secondary indexes on that table. Use this estimate to measure whether a local secondary index is approaching its size limit.</p>
     /// <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p>
     #[serde(rename = "SizeEstimateRangeGB")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub size_estimate_range_gb: ::std::option::Option<::std::vec::Vec<f64>>,
 }
 /// See [`ItemCollectionMetrics`](crate::model::ItemCollectionMetrics)
@@ -4910,31 +5051,38 @@ pub struct ConsumedCapacity {
     /// <p>The name of the table that was affected by the operation.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The total number of capacity units consumed by the operation.</p>
     #[serde(rename = "CapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub capacity_units: ::std::option::Option<f64>,
     /// <p>The total number of read capacity units consumed by the operation.</p>
     #[serde(rename = "ReadCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub read_capacity_units: ::std::option::Option<f64>,
     /// <p>The total number of write capacity units consumed by the operation.</p>
     #[serde(rename = "WriteCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub write_capacity_units: ::std::option::Option<f64>,
     /// <p>The amount of throughput consumed on the table affected by the operation.</p>
     #[serde(rename = "Table")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table: ::std::option::Option<Capacity>,
     /// <p>The amount of throughput consumed on each local index affected by the operation.</p>
     #[serde(rename = "LocalSecondaryIndexes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub local_secondary_indexes:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, Capacity>>,
     /// <p>The amount of throughput consumed on each global index affected by the operation.</p>
     #[serde(rename = "GlobalSecondaryIndexes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub global_secondary_indexes:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, Capacity>>,
 }
@@ -5033,14 +5181,17 @@ pub struct Capacity {
     /// <p>The total number of read capacity units consumed on a table or an index.</p>
     #[serde(rename = "ReadCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub read_capacity_units: ::std::option::Option<f64>,
     /// <p>The total number of write capacity units consumed on a table or an index.</p>
     #[serde(rename = "WriteCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub write_capacity_units: ::std::option::Option<f64>,
     /// <p>The total number of capacity units consumed on a table or an index.</p>
     #[serde(rename = "CapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub capacity_units: ::std::option::Option<f64>,
 }
 /// See [`Capacity`](crate::model::Capacity)
@@ -5247,6 +5398,7 @@ pub struct ExpectedAttributeValue {
     /// <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub value: ::std::option::Option<AttributeValue>,
     /// <p>Causes DynamoDB to evaluate the value before attempting a conditional operation:</p>
     /// <ul>
@@ -5280,6 +5432,7 @@ pub struct ExpectedAttributeValue {
     /// </ul>
     #[serde(rename = "Exists")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub exists: ::std::option::Option<bool>,
     /// <p>A comparator for evaluating attributes in the <code>AttributeValueList</code>. For example, equals,
     /// greater than, less than, etc.</p>
@@ -5429,6 +5582,7 @@ pub struct ExpectedAttributeValue {
     /// </ul>
     #[serde(rename = "ComparisonOperator")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub comparison_operator: ::std::option::Option<ComparisonOperator>,
     /// <p>One or more values to evaluate against the supplied attribute. The number of values in the
     /// list depends on the <code>ComparisonOperator</code> being used.</p>
@@ -5440,6 +5594,7 @@ pub struct ExpectedAttributeValue {
     /// <p>For information on specifying data types in JSON, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "AttributeValueList")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub attribute_value_list: ::std::option::Option<::std::vec::Vec<AttributeValue>>,
 }
 /// See [`ExpectedAttributeValue`](crate::model::ExpectedAttributeValue)
@@ -5749,6 +5904,7 @@ pub struct AttributeValueUpdate {
     /// </p>
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub value: ::std::option::Option<AttributeValue>,
     /// <p>Specifies how to perform the update. Valid values are <code>PUT</code> (default), <code>DELETE</code>,
     /// and <code>ADD</code>. The behavior depends on whether the specified primary key already exists
@@ -5835,6 +5991,7 @@ pub struct AttributeValueUpdate {
     /// </ul>
     #[serde(rename = "Action")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub action: ::std::option::Option<AttributeAction>,
 }
 /// See [`AttributeValueUpdate`](crate::model::AttributeValueUpdate)
@@ -6005,6 +6162,7 @@ pub struct ReplicaSettingsDescription {
     /// <p>The Region name of the replica.</p>
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub region_name: ::std::option::Option<::std::string::String>,
     /// <p>The current state of the Region:</p>
     /// <ul>
@@ -6027,10 +6185,12 @@ pub struct ReplicaSettingsDescription {
     /// </ul>
     #[serde(rename = "ReplicaStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_status: ::std::option::Option<ReplicaStatus>,
     /// <p>The read/write capacity mode of the replica.</p>
     #[serde(rename = "ReplicaBillingModeSummary")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_billing_mode_summary: ::std::option::Option<BillingModeSummary>,
     /// <p>The maximum number of strongly consistent reads consumed per second before DynamoDB returns a <code>ThrottlingException</code>.
     /// For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput">Specifying Read and Write
@@ -6038,10 +6198,12 @@ pub struct ReplicaSettingsDescription {
     /// </p>
     #[serde(rename = "ReplicaProvisionedReadCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_provisioned_read_capacity_units: ::std::option::Option<i64>,
     /// <p>Auto scaling settings for a global table replica's read capacity units.</p>
     #[serde(rename = "ReplicaProvisionedReadCapacityAutoScalingSettings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_provisioned_read_capacity_auto_scaling_settings:
         ::std::option::Option<AutoScalingSettingsDescription>,
     /// <p>The maximum number of writes consumed per second before DynamoDB returns a <code>ThrottlingException</code>.
@@ -6049,15 +6211,18 @@ pub struct ReplicaSettingsDescription {
     /// Requirements</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ReplicaProvisionedWriteCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_provisioned_write_capacity_units: ::std::option::Option<i64>,
     /// <p>Auto scaling settings for a global table replica's write capacity units.</p>
     #[serde(rename = "ReplicaProvisionedWriteCapacityAutoScalingSettings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_provisioned_write_capacity_auto_scaling_settings:
         ::std::option::Option<AutoScalingSettingsDescription>,
     /// <p>Replica global secondary index settings for the global table.</p>
     #[serde(rename = "ReplicaGlobalSecondaryIndexSettings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_global_secondary_index_settings:
         ::std::option::Option<::std::vec::Vec<ReplicaGlobalSecondaryIndexSettingsDescription>>,
 }
@@ -6198,6 +6363,7 @@ pub struct ReplicaGlobalSecondaryIndexSettingsDescription {
     /// <p>The name of the global secondary index. The name must be unique among all other indexes on this table.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>
     /// The current status of the global secondary index:</p>
@@ -6221,24 +6387,29 @@ pub struct ReplicaGlobalSecondaryIndexSettingsDescription {
     /// </ul>
     #[serde(rename = "IndexStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_status: ::std::option::Option<IndexStatus>,
     /// <p>The maximum number of strongly consistent reads consumed per second before DynamoDB returns a <code>ThrottlingException</code>.</p>
     #[serde(rename = "ProvisionedReadCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_read_capacity_units: ::std::option::Option<i64>,
     /// <p>Auto scaling settings for a global secondary index replica's read capacity units.</p>
     #[serde(rename = "ProvisionedReadCapacityAutoScalingSettings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_read_capacity_auto_scaling_settings:
         ::std::option::Option<AutoScalingSettingsDescription>,
     /// <p>The maximum number of writes consumed per second before DynamoDB returns a <code>ThrottlingException</code>.</p>
     #[serde(rename = "ProvisionedWriteCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_write_capacity_units: ::std::option::Option<i64>,
     /// <p>Auto scaling settings for a global secondary index replica's write capacity
     /// units.</p>
     #[serde(rename = "ProvisionedWriteCapacityAutoScalingSettings")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_write_capacity_auto_scaling_settings:
         ::std::option::Option<AutoScalingSettingsDescription>,
 }
@@ -6353,6 +6524,7 @@ pub struct ReplicaSettingsUpdate {
     /// <p>The Region of the replica to be added.</p>
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub region_name: ::std::option::Option<::std::string::String>,
     /// <p>The maximum number of strongly consistent reads consumed per second before DynamoDB returns a <code>ThrottlingException</code>.
     /// For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput">Specifying Read and Write
@@ -6360,15 +6532,18 @@ pub struct ReplicaSettingsUpdate {
     /// </p>
     #[serde(rename = "ReplicaProvisionedReadCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_provisioned_read_capacity_units: ::std::option::Option<i64>,
     /// <p>Auto scaling settings for managing a global table replica's read capacity units.</p>
     #[serde(rename = "ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_provisioned_read_capacity_auto_scaling_settings_update:
         ::std::option::Option<AutoScalingSettingsUpdate>,
     /// <p>Represents the settings of a global secondary index for a global table that will be modified.</p>
     #[serde(rename = "ReplicaGlobalSecondaryIndexSettingsUpdate")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replica_global_secondary_index_settings_update:
         ::std::option::Option<::std::vec::Vec<ReplicaGlobalSecondaryIndexSettingsUpdate>>,
 }
@@ -6453,15 +6628,18 @@ pub struct ReplicaGlobalSecondaryIndexSettingsUpdate {
     /// <p>The name of the global secondary index. The name must be unique among all other indexes on this table.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The maximum number of strongly consistent reads consumed per second before DynamoDB returns a <code>ThrottlingException</code>.</p>
     #[serde(rename = "ProvisionedReadCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_read_capacity_units: ::std::option::Option<i64>,
     /// <p>Auto scaling settings for managing a global secondary index replica's read capacity
     /// units.</p>
     #[serde(rename = "ProvisionedReadCapacityAutoScalingSettingsUpdate")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_read_capacity_auto_scaling_settings_update:
         ::std::option::Option<AutoScalingSettingsUpdate>,
 }
@@ -6530,16 +6708,19 @@ pub struct GlobalTableGlobalSecondaryIndexSettingsUpdate {
     /// <p>The name of the global secondary index. The name must be unique among all other indexes on this table.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The maximum number of writes consumed per second before DynamoDB returns a <code>ThrottlingException.</code>
     /// </p>
     #[serde(rename = "ProvisionedWriteCapacityUnits")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_write_capacity_units: ::std::option::Option<i64>,
     /// <p>Auto scaling settings for managing a global secondary index's write capacity
     /// units.</p>
     #[serde(rename = "ProvisionedWriteCapacityAutoScalingSettingsUpdate")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_write_capacity_auto_scaling_settings_update:
         ::std::option::Option<AutoScalingSettingsUpdate>,
 }
@@ -6609,16 +6790,19 @@ pub struct GlobalTableDescription {
     /// <p>The Regions where the global table has replicas.</p>
     #[serde(rename = "ReplicationGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replication_group: ::std::option::Option<::std::vec::Vec<ReplicaDescription>>,
     /// <p>The unique identifier of the global table.</p>
     #[serde(rename = "GlobalTableArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub global_table_arn: ::std::option::Option<::std::string::String>,
     /// <p>The creation time of the global table.</p>
     #[serde(rename = "CreationDateTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub creation_date_time: ::std::option::Option<Instant>,
     /// <p>The current state of the global table:</p>
     /// <ul>
@@ -6641,10 +6825,12 @@ pub struct GlobalTableDescription {
     /// </ul>
     #[serde(rename = "GlobalTableStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub global_table_status: ::std::option::Option<GlobalTableStatus>,
     /// <p>The global table name.</p>
     #[serde(rename = "GlobalTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub global_table_name: ::std::option::Option<::std::string::String>,
 }
 /// See [`GlobalTableDescription`](crate::model::GlobalTableDescription)
@@ -6781,10 +6967,12 @@ pub struct ReplicaUpdate {
     /// <p>The parameters required for creating a replica on an existing global table.</p>
     #[serde(rename = "Create")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub create: ::std::option::Option<CreateReplicaAction>,
     /// <p>The name of the existing replica to be removed.</p>
     #[serde(rename = "Delete")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub delete: ::std::option::Option<DeleteReplicaAction>,
 }
 /// See [`ReplicaUpdate`](crate::model::ReplicaUpdate)
@@ -6840,6 +7028,7 @@ pub struct DeleteReplicaAction {
     /// <p>The Region of the replica to be removed.</p>
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub region_name: ::std::option::Option<::std::string::String>,
 }
 /// See [`DeleteReplicaAction`](crate::model::DeleteReplicaAction)
@@ -6886,6 +7075,7 @@ pub struct CreateReplicaAction {
     /// <p>The Region of the replica to be added.</p>
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub region_name: ::std::option::Option<::std::string::String>,
 }
 /// See [`CreateReplicaAction`](crate::model::CreateReplicaAction)
@@ -6994,10 +7184,12 @@ pub struct ContinuousBackupsDescription {
     /// DISABLED</p>
     #[serde(rename = "ContinuousBackupsStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub continuous_backups_status: ::std::option::Option<ContinuousBackupsStatus>,
     /// <p>The description of the point in time recovery settings applied to the table.</p>
     #[serde(rename = "PointInTimeRecoveryDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub point_in_time_recovery_description: ::std::option::Option<PointInTimeRecoveryDescription>,
 }
 /// See [`ContinuousBackupsDescription`](crate::model::ContinuousBackupsDescription)
@@ -7072,6 +7264,7 @@ pub struct PointInTimeRecoveryDescription {
     /// </ul>
     #[serde(rename = "PointInTimeRecoveryStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub point_in_time_recovery_status: ::std::option::Option<PointInTimeRecoveryStatus>,
     /// <p>Specifies the earliest point in time you can restore your table to. You can restore your
     /// table to any point in time during the last 35 days. </p>
@@ -7079,6 +7272,7 @@ pub struct PointInTimeRecoveryDescription {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub earliest_restorable_date_time: ::std::option::Option<Instant>,
     /// <p>
     /// <code>LatestRestorableDateTime</code> is typically 5 minutes before the current time.
@@ -7087,6 +7281,7 @@ pub struct PointInTimeRecoveryDescription {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub latest_restorable_date_time: ::std::option::Option<Instant>,
 }
 /// See [`PointInTimeRecoveryDescription`](crate::model::PointInTimeRecoveryDescription)
@@ -7226,6 +7421,7 @@ pub struct PointInTimeRecoverySpecification {
     /// <p>Indicates whether point in time recovery is enabled (true) or disabled (false) on the table.</p>
     #[serde(rename = "PointInTimeRecoveryEnabled")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub point_in_time_recovery_enabled: ::std::option::Option<bool>,
 }
 /// See [`PointInTimeRecoverySpecification`](crate::model::PointInTimeRecoverySpecification)
@@ -7276,15 +7472,18 @@ pub struct CancellationReason {
     /// <p>Item in the request which caused the transaction to get cancelled.</p>
     #[serde(rename = "Item")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub item:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>Status code for the result of the cancelled transaction.</p>
     #[serde(rename = "Code")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub code: ::std::option::Option<::std::string::String>,
     /// <p>Cancellation reason message description.</p>
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 /// See [`CancellationReason`](crate::model::CancellationReason)
@@ -7351,18 +7550,22 @@ pub struct TransactWriteItem {
     /// <p>A request to perform a check item operation.</p>
     #[serde(rename = "ConditionCheck")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub condition_check: ::std::option::Option<ConditionCheck>,
     /// <p>A request to perform a <code>PutItem</code> operation.</p>
     #[serde(rename = "Put")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub put: ::std::option::Option<Put>,
     /// <p>A request to perform a <code>DeleteItem</code> operation.</p>
     #[serde(rename = "Delete")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub delete: ::std::option::Option<Delete>,
     /// <p>A request to perform an <code>UpdateItem</code> operation.</p>
     #[serde(rename = "Update")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub update: ::std::option::Option<Update>,
 }
 /// See [`TransactWriteItem`](crate::model::TransactWriteItem)
@@ -7435,31 +7638,37 @@ pub struct Update {
     /// an attribute name and a value for that attribute.</p>
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>An expression that defines one or more attributes to be updated,
     /// the action to be performed on them, and new value(s) for them.</p>
     #[serde(rename = "UpdateExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub update_expression: ::std::option::Option<::std::string::String>,
     /// <p>Name of the table for the <code>UpdateItem</code> request.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>A condition that must be satisfied in order for a conditional update to
     /// succeed.</p>
     #[serde(rename = "ConditionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub condition_expression: ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression.</p>
     #[serde(rename = "ExpressionAttributeNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub expression_attribute_names: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::string::String>,
     >,
     /// <p>One or more values that can be substituted in an expression.</p>
     #[serde(rename = "ExpressionAttributeValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub expression_attribute_values:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>Use <code>ReturnValuesOnConditionCheckFailure</code> to
@@ -7468,6 +7677,7 @@ pub struct Update {
     /// values are: NONE, ALL_OLD, UPDATED_OLD, ALL_NEW, UPDATED_NEW.</p>
     #[serde(rename = "ReturnValuesOnConditionCheckFailure")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub return_values_on_condition_check_failure:
         ::std::option::Option<ReturnValuesOnConditionCheckFailure>,
 }
@@ -7616,25 +7826,30 @@ pub struct Delete {
     /// attribute name and a value for that attribute.</p>
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>Name of the table in which the item to be deleted resides.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>A condition that must be satisfied in order for a conditional delete to succeed.</p>
     #[serde(rename = "ConditionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub condition_expression: ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression.</p>
     #[serde(rename = "ExpressionAttributeNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub expression_attribute_names: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::string::String>,
     >,
     /// <p>One or more values that can be substituted in an expression.</p>
     #[serde(rename = "ExpressionAttributeValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub expression_attribute_values:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>Use <code>ReturnValuesOnConditionCheckFailure</code> to
@@ -7643,6 +7858,7 @@ pub struct Delete {
     /// values are: NONE and ALL_OLD.</p>
     #[serde(rename = "ReturnValuesOnConditionCheckFailure")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub return_values_on_condition_check_failure:
         ::std::option::Option<ReturnValuesOnConditionCheckFailure>,
 }
@@ -7755,25 +7971,30 @@ pub struct Put {
     /// key schema for the table, their types must match the index key schema. </p>
     #[serde(rename = "Item")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub item:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>Name of the table in which to write the item.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>A condition that must be satisfied in order for a conditional update to succeed.</p>
     #[serde(rename = "ConditionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub condition_expression: ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression.</p>
     #[serde(rename = "ExpressionAttributeNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub expression_attribute_names: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::string::String>,
     >,
     /// <p>One or more values that can be substituted in an expression.</p>
     #[serde(rename = "ExpressionAttributeValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub expression_attribute_values:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>Use <code>ReturnValuesOnConditionCheckFailure</code> to
@@ -7782,6 +8003,7 @@ pub struct Put {
     /// values are: NONE and ALL_OLD.</p>
     #[serde(rename = "ReturnValuesOnConditionCheckFailure")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub return_values_on_condition_check_failure:
         ::std::option::Option<ReturnValuesOnConditionCheckFailure>,
 }
@@ -7895,25 +8117,30 @@ pub struct ConditionCheck {
     /// attribute name and a value for that attribute.</p>
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>Name of the table for the check item request.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>A condition that must be satisfied in order for a conditional update to succeed.</p>
     #[serde(rename = "ConditionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub condition_expression: ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression.</p>
     #[serde(rename = "ExpressionAttributeNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub expression_attribute_names: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::string::String>,
     >,
     /// <p>One or more values that can be substituted in an expression.</p>
     #[serde(rename = "ExpressionAttributeValues")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub expression_attribute_values:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>Use <code>ReturnValuesOnConditionCheckFailure</code> to
@@ -7922,6 +8149,7 @@ pub struct ConditionCheck {
     /// values are: NONE and ALL_OLD.</p>
     #[serde(rename = "ReturnValuesOnConditionCheckFailure")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub return_values_on_condition_check_failure:
         ::std::option::Option<ReturnValuesOnConditionCheckFailure>,
 }
@@ -8030,6 +8258,7 @@ pub struct ItemResponse {
     /// <p>Map of attribute data consisting of the data type and attribute value.</p>
     #[serde(rename = "Item")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub item:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
 }
@@ -8083,6 +8312,7 @@ pub struct TransactGetItem {
     /// the specific attributes of the item to retrieve.</p>
     #[serde(rename = "Get")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub get: ::std::option::Option<Get>,
 }
 /// See [`TransactGetItem`](crate::model::TransactGetItem)
@@ -8132,11 +8362,13 @@ pub struct Get {
     /// specifies the primary key of the item to retrieve.</p>
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The name of the table from which to retrieve the specified item.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>A string that identifies one or more attributes of the specified item
     /// to retrieve from the table.  The attributes in the expression must be
@@ -8145,11 +8377,13 @@ pub struct Get {
     /// attributes are not found, they do not appear in the result.</p>
     #[serde(rename = "ProjectionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub projection_expression: ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in the
     /// ProjectionExpression parameter.</p>
     #[serde(rename = "ExpressionAttributeNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub expression_attribute_names: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::string::String>,
     >,
@@ -8246,10 +8480,12 @@ pub struct Tag {
     /// tag value will be updated to the new value. </p>
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key: ::std::option::Option<::std::string::String>,
     /// <p>The value of the tag. Tag values are case-sensitive and can be null.</p>
     #[serde(rename = "Value")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub value: ::std::option::Option<::std::string::String>,
 }
 /// See [`Tag`](crate::model::Tag)
@@ -8328,6 +8564,7 @@ pub struct Condition {
     /// <p>For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares binary values.</p>
     #[serde(rename = "AttributeValueList")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub attribute_value_list: ::std::option::Option<::std::vec::Vec<AttributeValue>>,
     /// <p>A comparator for evaluating attributes. For example, equals, greater than, less than, etc.</p>
     /// <p>The following comparison operators are available:</p>
@@ -8479,6 +8716,7 @@ pub struct Condition {
     /// in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ComparisonOperator")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub comparison_operator: ::std::option::Option<ComparisonOperator>,
 }
 /// See [`Condition`](crate::model::Condition)
@@ -8722,6 +8960,7 @@ pub struct LocalSecondaryIndex {
     /// <p>The name of the local secondary index. The name must be unique among all other indexes on this table.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:</p>
     /// <ul>
@@ -8744,12 +8983,14 @@ pub struct LocalSecondaryIndex {
     /// </note>
     #[serde(rename = "KeySchema")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key_schema: ::std::option::Option<::std::vec::Vec<KeySchemaElement>>,
     /// <p>Represents attributes that are copied (projected) from the table into the local
     /// secondary index. These are in addition to the primary key attributes and index key
     /// attributes, which are automatically projected. </p>
     #[serde(rename = "Projection")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub projection: ::std::option::Option<Projection>,
 }
 /// See [`LocalSecondaryIndex`](crate::model::LocalSecondaryIndex)
@@ -8832,6 +9073,7 @@ pub struct GlobalSecondaryIndex {
     /// <p>The name of the global secondary index. The name must be unique among all other indexes on this table.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The complete key schema for a global secondary index, which consists of one or more pairs of attribute names and key types:</p>
     /// <ul>
@@ -8854,17 +9096,20 @@ pub struct GlobalSecondaryIndex {
     /// </note>
     #[serde(rename = "KeySchema")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key_schema: ::std::option::Option<::std::vec::Vec<KeySchemaElement>>,
     /// <p>Represents attributes that are copied (projected) from the table into the global
     /// secondary index. These are in addition to the primary key attributes and index key
     /// attributes, which are automatically projected. </p>
     #[serde(rename = "Projection")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub projection: ::std::option::Option<Projection>,
     /// <p>Represents the provisioned throughput settings for the specified global secondary index.</p>
     /// <p>For current minimum and maximum provisioned throughput values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Service, Account, and Table Quotas</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ProvisionedThroughput")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_throughput: ::std::option::Option<ProvisionedThroughput>,
 }
 /// See [`GlobalSecondaryIndex`](crate::model::GlobalSecondaryIndex)
@@ -8956,10 +9201,12 @@ pub struct GlobalTable {
     /// <p>The global table name.</p>
     #[serde(rename = "GlobalTableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub global_table_name: ::std::option::Option<::std::string::String>,
     /// <p>The Regions where the global table has replicas.</p>
     #[serde(rename = "ReplicationGroup")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub replication_group: ::std::option::Option<::std::vec::Vec<Replica>>,
 }
 /// See [`GlobalTable`](crate::model::GlobalTable)
@@ -9014,6 +9261,7 @@ pub struct Replica {
     /// <p>The Region where the replica needs to be created.</p>
     #[serde(rename = "RegionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub region_name: ::std::option::Option<::std::string::String>,
 }
 /// See [`Replica`](crate::model::Replica)
@@ -9060,10 +9308,12 @@ pub struct ExportSummary {
     /// <p>The Amazon Resource Name (ARN) of the export.</p>
     #[serde(rename = "ExportArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub export_arn: ::std::option::Option<::std::string::String>,
     /// <p>Export can be in one of the following states: IN_PROGRESS, COMPLETED, or FAILED.</p>
     #[serde(rename = "ExportStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub export_status: ::std::option::Option<ExportStatus>,
 }
 /// See [`ExportSummary`](crate::model::ExportSummary)
@@ -9160,14 +9410,17 @@ pub struct ContributorInsightsSummary {
     /// <p>Name of the table associated with the summary.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>Name of the index associated with the summary, if any.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>Describes the current status for contributor insights for the given table and index, if applicable.</p>
     #[serde(rename = "ContributorInsightsStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub contributor_insights_status: ::std::option::Option<ContributorInsightsStatus>,
 }
 /// See [`ContributorInsightsSummary`](crate::model::ContributorInsightsSummary)
@@ -9229,28 +9482,34 @@ pub struct BackupSummary {
     /// <p>Name of the table.</p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>Unique identifier for the table.</p>
     #[serde(rename = "TableId")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_id: ::std::option::Option<::std::string::String>,
     /// <p>ARN associated with the table.</p>
     #[serde(rename = "TableArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_arn: ::std::option::Option<::std::string::String>,
     /// <p>ARN associated with the backup.</p>
     #[serde(rename = "BackupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub backup_arn: ::std::option::Option<::std::string::String>,
     /// <p>Name of the specified backup.</p>
     #[serde(rename = "BackupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub backup_name: ::std::option::Option<::std::string::String>,
     /// <p>Time at which the backup was created.</p>
     #[serde(rename = "BackupCreationDateTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub backup_creation_date_time: ::std::option::Option<Instant>,
     /// <p>Time at which the automatic on-demand backup created by DynamoDB will expire. This
     /// <code>SYSTEM</code> on-demand backup expires automatically 35 days after its
@@ -9259,10 +9518,12 @@ pub struct BackupSummary {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub backup_expiry_date_time: ::std::option::Option<Instant>,
     /// <p>Backup can be in one of the following states: CREATING, ACTIVE, DELETED.</p>
     #[serde(rename = "BackupStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub backup_status: ::std::option::Option<BackupStatus>,
     /// <p>BackupType:</p>
     /// <ul>
@@ -9284,10 +9545,12 @@ pub struct BackupSummary {
     /// </ul>
     #[serde(rename = "BackupType")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub backup_type: ::std::option::Option<BackupType>,
     /// <p>Size of the backup in bytes.</p>
     #[serde(rename = "BackupSizeBytes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub backup_size_bytes: ::std::option::Option<i64>,
 }
 /// See [`BackupSummary`](crate::model::BackupSummary)
@@ -9536,59 +9799,71 @@ pub struct ExportDescription {
     /// <p>The Amazon Resource Name (ARN) of the table export.</p>
     #[serde(rename = "ExportArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub export_arn: ::std::option::Option<::std::string::String>,
     /// <p>Export can be in one of the following states: IN_PROGRESS, COMPLETED, or FAILED.</p>
     #[serde(rename = "ExportStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub export_status: ::std::option::Option<ExportStatus>,
     /// <p>The time at which the export task began.</p>
     #[serde(rename = "StartTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub start_time: ::std::option::Option<Instant>,
     /// <p>The time at which the export task completed.</p>
     #[serde(rename = "EndTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub end_time: ::std::option::Option<Instant>,
     /// <p>The name of the manifest file for the export task.</p>
     #[serde(rename = "ExportManifest")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub export_manifest: ::std::option::Option<::std::string::String>,
     /// <p>The Amazon Resource Name (ARN) of the table that was exported.</p>
     #[serde(rename = "TableArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_arn: ::std::option::Option<::std::string::String>,
     /// <p>Unique ID of the table that was exported.</p>
     #[serde(rename = "TableId")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_id: ::std::option::Option<::std::string::String>,
     /// <p>Point in time from which table data was exported.</p>
     #[serde(rename = "ExportTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub export_time: ::std::option::Option<Instant>,
     /// <p>The client token that was provided for the export task. A client token makes calls to
     /// <code>ExportTableToPointInTimeInput</code> idempotent, meaning that multiple
     /// identical calls have the same effect as one single call.</p>
     #[serde(rename = "ClientToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub client_token: ::std::option::Option<::std::string::String>,
     /// <p>The name of the Amazon S3 bucket containing the export.</p>
     #[serde(rename = "S3Bucket")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub s3_bucket: ::std::option::Option<::std::string::String>,
     /// <p>The ID of the AWS account that owns the bucket containing the export.</p>
     #[serde(rename = "S3BucketOwner")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub s3_bucket_owner: ::std::option::Option<::std::string::String>,
     /// <p>The Amazon S3 bucket prefix used as the file name and path of the exported
     /// snapshot.</p>
     #[serde(rename = "S3Prefix")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub s3_prefix: ::std::option::Option<::std::string::String>,
     /// <p>Type of encryption used on the bucket where export data is stored. Valid values
     /// for <code>S3SseAlgorithm</code> are:</p>
@@ -9604,32 +9879,39 @@ pub struct ExportDescription {
     /// </ul>
     #[serde(rename = "S3SseAlgorithm")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub s3_sse_algorithm: ::std::option::Option<S3SseAlgorithm>,
     /// <p>The ID of the AWS KMS managed key used to encrypt the S3 bucket where export data is
     /// stored (if applicable).</p>
     #[serde(rename = "S3SseKmsKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub s3_sse_kms_key_id: ::std::option::Option<::std::string::String>,
     /// <p>Status code for the result of the failed export.</p>
     #[serde(rename = "FailureCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub failure_code: ::std::option::Option<::std::string::String>,
     /// <p>Export failure reason description.</p>
     #[serde(rename = "FailureMessage")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub failure_message: ::std::option::Option<::std::string::String>,
     /// <p>The format of the exported data. Valid values for <code>ExportFormat</code> are
     /// <code>DYNAMODB_JSON</code> or <code>ION</code>.</p>
     #[serde(rename = "ExportFormat")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub export_format: ::std::option::Option<ExportFormat>,
     /// <p>The billable size of the table export.</p>
     #[serde(rename = "BilledSizeBytes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub billed_size_bytes: ::std::option::Option<i64>,
     /// <p>The number of items exported.</p>
     #[serde(rename = "ItemCount")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub item_count: ::std::option::Option<i64>,
 }
 /// See [`ExportDescription`](crate::model::ExportDescription)
@@ -9895,12 +10177,14 @@ pub struct ParameterizedStatement {
     /// </p>
     #[serde(rename = "Statement")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub statement: ::std::option::Option<::std::string::String>,
     /// <p>
     /// The parameter values.
     /// </p>
     #[serde(rename = "Parameters")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub parameters: ::std::option::Option<::std::vec::Vec<AttributeValue>>,
 }
 /// See [`ParameterizedStatement`](crate::model::ParameterizedStatement)
@@ -9995,10 +10279,12 @@ pub struct TimeToLiveDescription {
     /// <p> The TTL status for the table.</p>
     #[serde(rename = "TimeToLiveStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub time_to_live_status: ::std::option::Option<TimeToLiveStatus>,
     /// <p> The name of the TTL attribute for items in the table.</p>
     #[serde(rename = "AttributeName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub attribute_name: ::std::option::Option<::std::string::String>,
 }
 /// See [`TimeToLiveDescription`](crate::model::TimeToLiveDescription)
@@ -10083,14 +10369,17 @@ pub struct KinesisDataStreamDestination {
     /// <p>The ARN for a specific Kinesis data stream.</p>
     #[serde(rename = "StreamArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub stream_arn: ::std::option::Option<::std::string::String>,
     /// <p>The current status of replication.</p>
     #[serde(rename = "DestinationStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub destination_status: ::std::option::Option<DestinationStatus>,
     /// <p>The human-readable string that corresponds to the replica status.</p>
     #[serde(rename = "DestinationStatusDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub destination_status_description: ::std::option::Option<::std::string::String>,
 }
 /// See [`KinesisDataStreamDestination`](crate::model::KinesisDataStreamDestination)
@@ -10155,6 +10444,7 @@ pub struct Endpoint {
     /// <p>IP address of the endpoint.</p>
     #[serde(rename = "Address")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub address: ::std::option::Option<::std::string::String>,
     /// <p>Endpoint cache time to live (TTL) value.</p>
     #[serde(rename = "CachePeriodInMinutes")]
@@ -10211,10 +10501,12 @@ pub struct FailureException {
     /// <p>Exception name.</p>
     #[serde(rename = "ExceptionName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub exception_name: ::std::option::Option<::std::string::String>,
     /// <p>Description of the failure.</p>
     #[serde(rename = "ExceptionDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub exception_description: ::std::option::Option<::std::string::String>,
 }
 /// See [`FailureException`](crate::model::FailureException)
@@ -10268,14 +10560,17 @@ pub struct BackupDescription {
     /// <p>Contains the details of the backup created for the table. </p>
     #[serde(rename = "BackupDetails")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub backup_details: ::std::option::Option<BackupDetails>,
     /// <p>Contains the details of the table when the backup was created. </p>
     #[serde(rename = "SourceTableDetails")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub source_table_details: ::std::option::Option<SourceTableDetails>,
     /// <p>Contains the details of the features enabled on the table when the backup was created. For example, LSIs, GSIs, streams, TTL.</p>
     #[serde(rename = "SourceTableFeatureDetails")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub source_table_feature_details: ::std::option::Option<SourceTableFeatureDetails>,
 }
 /// See [`BackupDescription`](crate::model::BackupDescription)
@@ -10339,24 +10634,29 @@ pub struct SourceTableFeatureDetails {
     /// <p>Represents the LSI properties for the table when the backup was created. It includes the IndexName, KeySchema and Projection for the LSIs on the table at the time of backup. </p>
     #[serde(rename = "LocalSecondaryIndexes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub local_secondary_indexes: ::std::option::Option<::std::vec::Vec<LocalSecondaryIndexInfo>>,
     /// <p>Represents the GSI properties for the table when the backup was created. It includes the
     /// IndexName, KeySchema, Projection, and ProvisionedThroughput for the GSIs on the table at
     /// the time of backup. </p>
     #[serde(rename = "GlobalSecondaryIndexes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub global_secondary_indexes: ::std::option::Option<::std::vec::Vec<GlobalSecondaryIndexInfo>>,
     /// <p>Stream settings on the table when the backup was created.</p>
     #[serde(rename = "StreamDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub stream_description: ::std::option::Option<StreamSpecification>,
     /// <p>Time to Live settings on the table when the backup was created.</p>
     #[serde(rename = "TimeToLiveDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub time_to_live_description: ::std::option::Option<TimeToLiveDescription>,
     /// <p>The description of the server-side encryption status on the table when the backup was created.</p>
     #[serde(rename = "SSEDescription")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub sse_description: ::std::option::Option<SSEDescription>,
 }
 /// See [`SourceTableFeatureDetails`](crate::model::SourceTableFeatureDetails)
@@ -10445,6 +10745,7 @@ pub struct GlobalSecondaryIndexInfo {
     /// <p>The name of the global secondary index.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The complete key schema for a global secondary index, which consists of one or more pairs of attribute names and key types:</p>
     /// <ul>
@@ -10467,6 +10768,7 @@ pub struct GlobalSecondaryIndexInfo {
     /// </note>
     #[serde(rename = "KeySchema")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key_schema: ::std::option::Option<::std::vec::Vec<KeySchemaElement>>,
     /// <p>Represents attributes that are copied (projected) from the table into
     /// the global secondary index. These are in addition to the primary
@@ -10474,10 +10776,12 @@ pub struct GlobalSecondaryIndexInfo {
     /// projected. </p>
     #[serde(rename = "Projection")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub projection: ::std::option::Option<Projection>,
     /// <p>Represents the provisioned throughput settings for the specified global secondary index. </p>
     #[serde(rename = "ProvisionedThroughput")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_throughput: ::std::option::Option<ProvisionedThroughput>,
 }
 /// See [`GlobalSecondaryIndexInfo`](crate::model::GlobalSecondaryIndexInfo)
@@ -10570,6 +10874,7 @@ pub struct LocalSecondaryIndexInfo {
     /// <p>Represents the name of the local secondary index.</p>
     #[serde(rename = "IndexName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The complete key schema for a local secondary index, which consists of one or more pairs of attribute names and key types:</p>
     /// <ul>
@@ -10592,10 +10897,12 @@ pub struct LocalSecondaryIndexInfo {
     /// </note>
     #[serde(rename = "KeySchema")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key_schema: ::std::option::Option<::std::vec::Vec<KeySchemaElement>>,
     /// <p>Represents attributes that are copied (projected) from the table into the global secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. </p>
     #[serde(rename = "Projection")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub projection: ::std::option::Option<Projection>,
 }
 /// See [`LocalSecondaryIndexInfo`](crate::model::LocalSecondaryIndexInfo)
@@ -10676,14 +10983,17 @@ pub struct SourceTableDetails {
     /// <p>The name of the table for which the backup was created. </p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>Unique identifier for the table for which the backup was created. </p>
     #[serde(rename = "TableId")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_id: ::std::option::Option<::std::string::String>,
     /// <p>ARN of the table for which backup was created. </p>
     #[serde(rename = "TableArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_arn: ::std::option::Option<::std::string::String>,
     /// <p>Size of the table in bytes. Note that this is an approximate value.</p>
     #[serde(rename = "TableSizeBytes")]
@@ -10691,20 +11001,24 @@ pub struct SourceTableDetails {
     /// <p>Schema of the table. </p>
     #[serde(rename = "KeySchema")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key_schema: ::std::option::Option<::std::vec::Vec<KeySchemaElement>>,
     /// <p>Time when the source table was created. </p>
     #[serde(rename = "TableCreationDateTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub table_creation_date_time: ::std::option::Option<Instant>,
     /// <p>Read IOPs and Write IOPS on the table when the backup was created.</p>
     #[serde(rename = "ProvisionedThroughput")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub provisioned_throughput: ::std::option::Option<ProvisionedThroughput>,
     /// <p>Number of items in the table. Note that this is an approximate value. </p>
     #[serde(rename = "ItemCount")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub item_count: ::std::option::Option<i64>,
     /// <p>Controls how you are charged for read and write throughput and how you manage capacity. This setting can be changed later.</p>
     /// <ul>
@@ -10720,6 +11034,7 @@ pub struct SourceTableDetails {
     /// </ul>
     #[serde(rename = "BillingMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub billing_mode: ::std::option::Option<BillingMode>,
 }
 /// See [`SourceTableDetails`](crate::model::SourceTableDetails)
@@ -10837,18 +11152,22 @@ pub struct BackupDetails {
     /// <p>ARN associated with the backup.</p>
     #[serde(rename = "BackupArn")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub backup_arn: ::std::option::Option<::std::string::String>,
     /// <p>Name of the requested backup.</p>
     #[serde(rename = "BackupName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub backup_name: ::std::option::Option<::std::string::String>,
     /// <p>Size of the backup in bytes.</p>
     #[serde(rename = "BackupSizeBytes")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub backup_size_bytes: ::std::option::Option<i64>,
     /// <p>Backup can be in one of the following states: CREATING, ACTIVE, DELETED. </p>
     #[serde(rename = "BackupStatus")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub backup_status: ::std::option::Option<BackupStatus>,
     /// <p>BackupType:</p>
     /// <ul>
@@ -10870,12 +11189,14 @@ pub struct BackupDetails {
     /// </ul>
     #[serde(rename = "BackupType")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub backup_type: ::std::option::Option<BackupType>,
     /// <p>Time at which the backup was created. This is the request time of the backup. </p>
     #[serde(rename = "BackupCreationDateTime")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub backup_creation_date_time: ::std::option::Option<Instant>,
     /// <p>Time at which the automatic on-demand backup created by DynamoDB will expire. This <code>SYSTEM</code>
     /// on-demand backup expires automatically 35 days after its creation.</p>
@@ -10883,6 +11204,7 @@ pub struct BackupDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(serialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_ser")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub backup_expiry_date_time: ::std::option::Option<Instant>,
 }
 /// See [`BackupDetails`](crate::model::BackupDetails)
@@ -10995,10 +11317,12 @@ pub struct WriteRequest {
     /// <p>A request to perform a <code>PutItem</code> operation.</p>
     #[serde(rename = "PutRequest")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub put_request: ::std::option::Option<PutRequest>,
     /// <p>A request to perform a <code>DeleteItem</code> operation.</p>
     #[serde(rename = "DeleteRequest")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub delete_request: ::std::option::Option<DeleteRequest>,
 }
 /// See [`WriteRequest`](crate::model::WriteRequest)
@@ -11054,6 +11378,7 @@ pub struct DeleteRequest {
     /// <p>A map of attribute name to attribute values, representing the primary key of the item to delete. All of the table's primary key attributes must be specified, and their data types must match those of the table's key schema.</p>
     #[serde(rename = "Key")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub key:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
 }
@@ -11109,6 +11434,7 @@ pub struct PutRequest {
     /// their types must match the index key schema.</p>
     #[serde(rename = "Item")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub item:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
 }
@@ -11167,6 +11493,7 @@ pub struct KeysAndAttributes {
     /// <p>The primary key attribute values that define the items and the attributes associated with the items.</p>
     #[serde(rename = "Keys")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub keys: ::std::option::Option<
         ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     >,
@@ -11174,11 +11501,13 @@ pub struct KeysAndAttributes {
     /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.html">Legacy Conditional Parameters</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "AttributesToGet")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub attributes_to_get: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>The consistency of a read operation. If set to <code>true</code>, then a strongly consistent
     /// read is used; otherwise, an eventually consistent read is used.</p>
     #[serde(rename = "ConsistentRead")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub consistent_read: ::std::option::Option<bool>,
     /// <p>A string that identifies one or more attributes to retrieve from the table. These attributes can include scalars,
     /// sets, or elements of a JSON document. The attributes in the <code>ProjectionExpression</code> must be separated by
@@ -11187,6 +11516,7 @@ pub struct KeysAndAttributes {
     /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ProjectionExpression")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub projection_expression: ::std::option::Option<::std::string::String>,
     /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
     /// <ul>
@@ -11230,6 +11560,7 @@ pub struct KeysAndAttributes {
     /// <p>For more information on expression attribute names, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ExpressionAttributeNames")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub expression_attribute_names: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::string::String>,
     >,
@@ -11368,18 +11699,21 @@ pub struct BatchStatementResponse {
     /// </p>
     #[serde(rename = "Error")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub error: ::std::option::Option<BatchStatementError>,
     /// <p>
     /// The table name associated with a failed PartiQL batch statement.
     /// </p>
     #[serde(rename = "TableName")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>
     /// A DynamoDB item associated with a BatchStatementResponse
     /// </p>
     #[serde(rename = "Item")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub item:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
 }
@@ -11458,12 +11792,14 @@ pub struct BatchStatementError {
     /// </p>
     #[serde(rename = "Code")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub code: ::std::option::Option<BatchStatementErrorCodeEnum>,
     /// <p>
     /// The error message associated with the PartiQL batch resposne.
     /// </p>
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 /// See [`BatchStatementError`](crate::model::BatchStatementError)
@@ -11600,18 +11936,21 @@ pub struct BatchStatementRequest {
     /// </p>
     #[serde(rename = "Statement")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub statement: ::std::option::Option<::std::string::String>,
     /// <p>
     /// The parameters associated with a PartiQL statement in the batch request.
     /// </p>
     #[serde(rename = "Parameters")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub parameters: ::std::option::Option<::std::vec::Vec<AttributeValue>>,
     /// <p>
     /// The read consistency of the PartiQL batch request.
     /// </p>
     #[serde(rename = "ConsistentRead")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub consistent_read: ::std::option::Option<bool>,
 }
 /// See [`BatchStatementRequest`](crate::model::BatchStatementRequest)

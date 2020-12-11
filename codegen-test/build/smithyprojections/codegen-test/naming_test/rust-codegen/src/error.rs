@@ -18,6 +18,11 @@ impl ::std::fmt::Display for ErrCollisionsError {
         }
     }
 }
+impl ErrCollisionsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ErrCollisionsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for ErrCollisionsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -41,6 +46,11 @@ impl ::std::fmt::Display for ReservedWordsAsMembersError {
         }
     }
 }
+impl ReservedWordsAsMembersError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ReservedWordsAsMembersError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for ReservedWordsAsMembersError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -60,6 +70,11 @@ impl ::std::fmt::Display for StructureNamePunningError {
         match self {
             StructureNamePunningError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl StructureNamePunningError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        StructureNamePunningError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for StructureNamePunningError {

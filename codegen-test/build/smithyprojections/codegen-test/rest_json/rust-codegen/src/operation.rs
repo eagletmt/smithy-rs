@@ -36,6 +36,43 @@ use crate::input::StreamingTraitsInput;
 use crate::input::StreamingTraitsRequireLengthInput;
 use crate::input::StreamingTraitsWithMediaTypeInput;
 use crate::input::TimestampFormatHeadersInput;
+use crate::output::AllQueryStringTypesOutput;
+use crate::output::ConstantAndVariableQueryStringOutput;
+use crate::output::ConstantQueryStringOutput;
+use crate::output::EmptyInputAndEmptyOutputOutput;
+use crate::output::GreetingWithErrorsOutput;
+use crate::output::HttpPayloadTraitsOutput;
+use crate::output::HttpPayloadTraitsWithMediaTypeOutput;
+use crate::output::HttpPayloadWithStructureOutput;
+use crate::output::HttpPrefixHeadersOutput;
+use crate::output::HttpPrefixHeadersResponseOutput;
+use crate::output::HttpRequestWithGreedyLabelInPathOutput;
+use crate::output::HttpRequestWithLabelsAndTimestampFormatOutput;
+use crate::output::HttpRequestWithLabelsOutput;
+use crate::output::HttpResponseCodeOutput;
+use crate::output::IgnoreQueryParamsInResponseOutput;
+use crate::output::InlineDocumentAsPayloadOutput;
+use crate::output::InlineDocumentOutput;
+use crate::output::InputAndOutputWithHeadersOutput;
+use crate::output::JsonBlobsOutput;
+use crate::output::JsonEnumsOutput;
+use crate::output::JsonListsOutput;
+use crate::output::JsonMapsOutput;
+use crate::output::JsonTimestampsOutput;
+use crate::output::JsonUnionsOutput;
+use crate::output::MediaTypeHeaderOutput;
+use crate::output::NoInputAndNoOutputOutput;
+use crate::output::NoInputAndOutputOutput;
+use crate::output::NullAndEmptyHeadersClientOutput;
+use crate::output::NullAndEmptyHeadersServerOutput;
+use crate::output::OmitsNullSerializesEmptyStringOutput;
+use crate::output::QueryIdempotencyTokenAutoFillOutput;
+use crate::output::RecursiveShapesOutput;
+use crate::output::SimpleScalarPropertiesOutput;
+use crate::output::StreamingTraitsOutput;
+use crate::output::StreamingTraitsRequireLengthOutput;
+use crate::output::StreamingTraitsWithMediaTypeOutput;
+use crate::output::TimestampFormatHeadersOutput;
 /// This example uses all query string types.
 pub struct AllQueryStringTypes {
     input: AllQueryStringTypesInput,
@@ -50,6 +87,18 @@ impl AllQueryStringTypes {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<AllQueryStringTypesOutput, crate::error::AllQueryStringTypesError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<AllQueryStringTypesOutput, crate::error::AllQueryStringTypesError> {
+        Self::from_response(response)
     }
     pub fn new(input: AllQueryStringTypesInput) -> Self {
         Self { input }
@@ -165,6 +214,24 @@ impl ConstantAndVariableQueryString {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        ConstantAndVariableQueryStringOutput,
+        crate::error::ConstantAndVariableQueryStringError,
+    > {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        ConstantAndVariableQueryStringOutput,
+        crate::error::ConstantAndVariableQueryStringError,
+    > {
+        Self::from_response(response)
+    }
     pub fn new(input: ConstantAndVariableQueryStringInput) -> Self {
         Self { input }
     }
@@ -244,6 +311,18 @@ impl ConstantQueryString {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ConstantQueryStringOutput, crate::error::ConstantQueryStringError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<ConstantQueryStringOutput, crate::error::ConstantQueryStringError> {
+        Self::from_response(response)
+    }
     pub fn new(input: ConstantQueryStringInput) -> Self {
         Self { input }
     }
@@ -292,6 +371,18 @@ impl EmptyInputAndEmptyOutput {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<EmptyInputAndEmptyOutputOutput, crate::error::EmptyInputAndEmptyOutputError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<EmptyInputAndEmptyOutputOutput, crate::error::EmptyInputAndEmptyOutputError> {
+        Self::from_response(response)
     }
     pub fn new(input: EmptyInputAndEmptyOutputInput) -> Self {
         Self { input }
@@ -348,6 +439,18 @@ impl GreetingWithErrors {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
+        Self::from_response(response)
     }
     pub fn new(input: GreetingWithErrorsInput) -> Self {
         Self { input }
@@ -455,6 +558,18 @@ impl HttpPayloadTraits {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         HttpPayloadTraitsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<HttpPayloadTraitsOutput, crate::error::HttpPayloadTraitsError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<HttpPayloadTraitsOutput, crate::error::HttpPayloadTraitsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: HttpPayloadTraitsInput) -> Self {
         Self { input }
     }
@@ -538,6 +653,24 @@ impl HttpPayloadTraitsWithMediaType {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        HttpPayloadTraitsWithMediaTypeOutput,
+        crate::error::HttpPayloadTraitsWithMediaTypeError,
+    > {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        HttpPayloadTraitsWithMediaTypeOutput,
+        crate::error::HttpPayloadTraitsWithMediaTypeError,
+    > {
+        Self::from_response(response)
+    }
     pub fn new(input: HttpPayloadTraitsWithMediaTypeInput) -> Self {
         Self { input }
     }
@@ -599,6 +732,18 @@ impl HttpPayloadWithStructure {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<HttpPayloadWithStructureOutput, crate::error::HttpPayloadWithStructureError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<HttpPayloadWithStructureOutput, crate::error::HttpPayloadWithStructureError> {
+        Self::from_response(response)
+    }
     pub fn new(input: HttpPayloadWithStructureInput) -> Self {
         Self { input }
     }
@@ -657,6 +802,18 @@ impl HttpPrefixHeaders {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         HttpPrefixHeadersInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<HttpPrefixHeadersOutput, crate::error::HttpPrefixHeadersError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<HttpPrefixHeadersOutput, crate::error::HttpPrefixHeadersError> {
+        Self::from_response(response)
     }
     pub fn new(input: HttpPrefixHeadersInput) -> Self {
         Self { input }
@@ -742,6 +899,18 @@ impl HttpPrefixHeadersResponse {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<HttpPrefixHeadersResponseOutput, crate::error::HttpPrefixHeadersResponseError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<HttpPrefixHeadersResponseOutput, crate::error::HttpPrefixHeadersResponseError> {
+        Self::from_response(response)
+    }
     pub fn new(input: HttpPrefixHeadersResponseInput) -> Self {
         Self { input }
     }
@@ -771,6 +940,24 @@ impl HttpRequestWithGreedyLabelInPath {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        HttpRequestWithGreedyLabelInPathOutput,
+        crate::error::HttpRequestWithGreedyLabelInPathError,
+    > {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        HttpRequestWithGreedyLabelInPathOutput,
+        crate::error::HttpRequestWithGreedyLabelInPathError,
+    > {
+        Self::from_response(response)
     }
     pub fn new(input: HttpRequestWithGreedyLabelInPathInput) -> Self {
         Self { input }
@@ -817,6 +1004,18 @@ impl HttpRequestWithLabels {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<HttpRequestWithLabelsOutput, crate::error::HttpRequestWithLabelsError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<HttpRequestWithLabelsOutput, crate::error::HttpRequestWithLabelsError> {
+        Self::from_response(response)
     }
     pub fn new(input: HttpRequestWithLabelsInput) -> Self {
         Self { input }
@@ -869,6 +1068,24 @@ impl HttpRequestWithLabelsAndTimestampFormat {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        HttpRequestWithLabelsAndTimestampFormatOutput,
+        crate::error::HttpRequestWithLabelsAndTimestampFormatError,
+    > {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        HttpRequestWithLabelsAndTimestampFormatOutput,
+        crate::error::HttpRequestWithLabelsAndTimestampFormatError,
+    > {
+        Self::from_response(response)
+    }
     pub fn new(input: HttpRequestWithLabelsAndTimestampFormatInput) -> Self {
         Self { input }
     }
@@ -913,6 +1130,18 @@ impl HttpResponseCode {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         HttpResponseCodeInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<HttpResponseCodeOutput, crate::error::HttpResponseCodeError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<HttpResponseCodeOutput, crate::error::HttpResponseCodeError> {
+        Self::from_response(response)
+    }
     pub fn new(input: HttpResponseCodeInput) -> Self {
         Self { input }
     }
@@ -946,6 +1175,20 @@ impl IgnoreQueryParamsInResponse {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<IgnoreQueryParamsInResponseOutput, crate::error::IgnoreQueryParamsInResponseError>
+    {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<IgnoreQueryParamsInResponseOutput, crate::error::IgnoreQueryParamsInResponseError>
+    {
+        Self::from_response(response)
+    }
     pub fn new(input: IgnoreQueryParamsInResponseInput) -> Self {
         Self { input }
     }
@@ -974,6 +1217,18 @@ impl InlineDocument {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         InlineDocumentInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<InlineDocumentOutput, crate::error::InlineDocumentError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<InlineDocumentOutput, crate::error::InlineDocumentError> {
+        Self::from_response(response)
+    }
     pub fn new(input: InlineDocumentInput) -> Self {
         Self { input }
     }
@@ -993,7 +1248,7 @@ mod inline_document_request_test {
             "string".to_string()
         )
         .document_value(
-            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@fecf2c7 */
+            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@c80b9fe7 */
         )
         .build()
         .unwrap()
@@ -1033,6 +1288,18 @@ impl InlineDocumentAsPayload {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<InlineDocumentAsPayloadOutput, crate::error::InlineDocumentAsPayloadError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<InlineDocumentAsPayloadOutput, crate::error::InlineDocumentAsPayloadError> {
+        Self::from_response(response)
+    }
     pub fn new(input: InlineDocumentAsPayloadInput) -> Self {
         Self { input }
     }
@@ -1049,7 +1316,7 @@ mod inline_document_as_payload_request_test {
     fn test_inline_document_as_payload_input_request() {
         let input =InlineDocumentAsPayloadInput::builder()
         .document_value(
-            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@fecf2c7 */
+            todo!() /* (document: `aws.protocoltests.restjson#Document`) software.amazon.smithy.model.node.ObjectNode@c80b9fe7 */
         )
         .build()
         .unwrap()
@@ -1089,6 +1356,18 @@ impl InputAndOutputWithHeaders {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<InputAndOutputWithHeadersOutput, crate::error::InputAndOutputWithHeadersError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<InputAndOutputWithHeadersOutput, crate::error::InputAndOutputWithHeadersError> {
+        Self::from_response(response)
     }
     pub fn new(input: InputAndOutputWithHeadersInput) -> Self {
         Self { input }
@@ -1282,6 +1561,18 @@ impl JsonBlobs {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         JsonBlobsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonBlobsOutput, crate::error::JsonBlobsError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonBlobsOutput, crate::error::JsonBlobsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: JsonBlobsInput) -> Self {
         Self { input }
     }
@@ -1328,6 +1619,18 @@ impl JsonEnums {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         JsonEnumsInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonEnumsOutput, crate::error::JsonEnumsError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonEnumsOutput, crate::error::JsonEnumsError> {
+        Self::from_response(response)
     }
     pub fn new(input: JsonEnumsInput) -> Self {
         Self { input }
@@ -1396,6 +1699,18 @@ impl JsonLists {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         JsonListsInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonListsOutput, crate::error::JsonListsError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonListsOutput, crate::error::JsonListsError> {
+        Self::from_response(response)
     }
     pub fn new(input: JsonListsInput) -> Self {
         Self { input }
@@ -1518,6 +1833,18 @@ impl JsonMaps {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         JsonMapsInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonMapsOutput, crate::error::JsonMapsError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonMapsOutput, crate::error::JsonMapsError> {
+        Self::from_response(response)
     }
     pub fn new(input: JsonMapsInput) -> Self {
         Self { input }
@@ -1678,6 +2005,18 @@ impl JsonTimestamps {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         JsonTimestampsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonTimestampsOutput, crate::error::JsonTimestampsError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonTimestampsOutput, crate::error::JsonTimestampsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: JsonTimestampsInput) -> Self {
         Self { input }
     }
@@ -1800,6 +2139,18 @@ impl JsonUnions {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         JsonUnionsInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
+        Self::from_response(response)
     }
     pub fn new(input: JsonUnionsInput) -> Self {
         Self { input }
@@ -2055,6 +2406,18 @@ impl MediaTypeHeader {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         MediaTypeHeaderInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<MediaTypeHeaderOutput, crate::error::MediaTypeHeaderError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<MediaTypeHeaderOutput, crate::error::MediaTypeHeaderError> {
+        Self::from_response(response)
+    }
     pub fn new(input: MediaTypeHeaderInput) -> Self {
         Self { input }
     }
@@ -2108,6 +2471,18 @@ impl NoInputAndNoOutput {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NoInputAndNoOutputOutput, crate::error::NoInputAndNoOutputError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NoInputAndNoOutputOutput, crate::error::NoInputAndNoOutputError> {
+        Self::from_response(response)
+    }
     pub fn new(input: NoInputAndNoOutputInput) -> Self {
         Self { input }
     }
@@ -2151,6 +2526,18 @@ impl NoInputAndOutput {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         NoInputAndOutputInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NoInputAndOutputOutput, crate::error::NoInputAndOutputError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NoInputAndOutputOutput, crate::error::NoInputAndOutputError> {
+        Self::from_response(response)
+    }
     pub fn new(input: NoInputAndOutputInput) -> Self {
         Self { input }
     }
@@ -2193,6 +2580,18 @@ impl NullAndEmptyHeadersClient {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NullAndEmptyHeadersClientOutput, crate::error::NullAndEmptyHeadersClientError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NullAndEmptyHeadersClientOutput, crate::error::NullAndEmptyHeadersClientError> {
+        Self::from_response(response)
     }
     pub fn new(input: NullAndEmptyHeadersClientInput) -> Self {
         Self { input }
@@ -2240,6 +2639,18 @@ impl NullAndEmptyHeadersServer {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NullAndEmptyHeadersServerOutput, crate::error::NullAndEmptyHeadersServerError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<NullAndEmptyHeadersServerOutput, crate::error::NullAndEmptyHeadersServerError> {
+        Self::from_response(response)
+    }
     pub fn new(input: NullAndEmptyHeadersServerInput) -> Self {
         Self { input }
     }
@@ -2270,6 +2681,24 @@ impl OmitsNullSerializesEmptyString {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        OmitsNullSerializesEmptyStringOutput,
+        crate::error::OmitsNullSerializesEmptyStringError,
+    > {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<
+        OmitsNullSerializesEmptyStringOutput,
+        crate::error::OmitsNullSerializesEmptyStringError,
+    > {
+        Self::from_response(response)
     }
     pub fn new(input: OmitsNullSerializesEmptyStringInput) -> Self {
         Self { input }
@@ -2317,6 +2746,20 @@ impl QueryIdempotencyTokenAutoFill {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<QueryIdempotencyTokenAutoFillOutput, crate::error::QueryIdempotencyTokenAutoFillError>
+    {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<QueryIdempotencyTokenAutoFillOutput, crate::error::QueryIdempotencyTokenAutoFillError>
+    {
+        Self::from_response(response)
     }
     pub fn new(input: QueryIdempotencyTokenAutoFillInput) -> Self {
         Self { input }
@@ -2381,6 +2824,18 @@ impl RecursiveShapes {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         RecursiveShapesInput::assemble(self.input.request_builder_base(), self.input.build_body())
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<RecursiveShapesOutput, crate::error::RecursiveShapesError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<RecursiveShapesOutput, crate::error::RecursiveShapesError> {
+        Self::from_response(response)
     }
     pub fn new(input: RecursiveShapesInput) -> Self {
         Self { input }
@@ -2452,6 +2907,18 @@ impl SimpleScalarProperties {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<SimpleScalarPropertiesOutput, crate::error::SimpleScalarPropertiesError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<SimpleScalarPropertiesOutput, crate::error::SimpleScalarPropertiesError> {
+        Self::from_response(response)
     }
     pub fn new(input: SimpleScalarPropertiesInput) -> Self {
         Self { input }
@@ -2535,6 +3002,18 @@ impl StreamingTraits {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         StreamingTraitsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<StreamingTraitsOutput, crate::error::StreamingTraitsError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<StreamingTraitsOutput, crate::error::StreamingTraitsError> {
+        Self::from_response(response)
+    }
     pub fn new(input: StreamingTraitsInput) -> Self {
         Self { input }
     }
@@ -2617,6 +3096,20 @@ impl StreamingTraitsRequireLength {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<StreamingTraitsRequireLengthOutput, crate::error::StreamingTraitsRequireLengthError>
+    {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<StreamingTraitsRequireLengthOutput, crate::error::StreamingTraitsRequireLengthError>
+    {
+        Self::from_response(response)
     }
     pub fn new(input: StreamingTraitsRequireLengthInput) -> Self {
         Self { input }
@@ -2705,6 +3198,20 @@ impl StreamingTraitsWithMediaType {
             self.input.build_body(),
         )
     }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<StreamingTraitsWithMediaTypeOutput, crate::error::StreamingTraitsWithMediaTypeError>
+    {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<StreamingTraitsWithMediaTypeOutput, crate::error::StreamingTraitsWithMediaTypeError>
+    {
+        Self::from_response(response)
+    }
     pub fn new(input: StreamingTraitsWithMediaTypeInput) -> Self {
         Self { input }
     }
@@ -2756,6 +3263,18 @@ impl TimestampFormatHeaders {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
+    }
+    fn from_response(
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<TimestampFormatHeadersOutput, crate::error::TimestampFormatHeadersError> {
+        let _ = response;
+        todo!()
+    }
+    pub fn parse_response(
+        &self,
+        response: ::http::response::Response<impl AsRef<[u8]>>,
+    ) -> Result<TimestampFormatHeadersOutput, crate::error::TimestampFormatHeadersError> {
+        Self::from_response(response)
     }
     pub fn new(input: TimestampFormatHeadersInput) -> Self {
         Self { input }

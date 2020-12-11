@@ -16,7 +16,12 @@ pub fn blob_deser<'de, D>(_deser: D) -> Result<Blob, D::Error>
 where
     D: ::serde::Deserializer<'de>,
 {
-    todo!()
+    use ::serde::de::Error;
+    use ::serde::Deserialize;
+    let data = <&str>::deserialize(_deser)?;
+    ::smithy_http::base64::decode(data)
+        .map(Blob::new)
+        .map_err(|_| D::Error::invalid_value(::serde::de::Unexpected::Str(data), &"valid base64"))
 }
 
 pub fn instant_epoch_seconds_ser<S>(
@@ -33,7 +38,13 @@ pub fn instant_epoch_seconds_deser<'de, D>(_deser: D) -> Result<Instant, D::Erro
 where
     D: ::serde::Deserializer<'de>,
 {
-    todo!()
+    use ::serde::Deserialize;
+
+    let ts = f64::deserialize(_deser)?;
+    Ok(Instant::from_fractional_seconds(
+        ts.floor() as i64,
+        ts - ts.floor(),
+    ))
 }
 
 pub fn stdoptionoptionblob_ser<S>(
@@ -53,7 +64,17 @@ pub fn stdoptionoptionblob_deser<'de, D>(_deser: D) -> Result<::std::option::Opt
 where
     D: ::serde::Deserializer<'de>,
 {
-    todo!()
+    use ::serde::de::Error;
+    use ::serde::Deserialize;
+    Option::<&str>::deserialize(_deser)?
+        .map(|data| {
+            ::smithy_http::base64::decode(data)
+                .map(Blob::new)
+                .map_err(|_| {
+                    D::Error::invalid_value(::serde::de::Unexpected::Str(data), &"valid base64")
+                })
+        })
+        .transpose()
 }
 
 pub fn stdoptionoptioninstant_http_date_ser<S>(
@@ -119,7 +140,10 @@ pub fn stdoptionoptioninstant_epoch_seconds_deser<'de, D>(
 where
     D: ::serde::Deserializer<'de>,
 {
-    todo!()
+    use ::serde::Deserialize;
+
+    let ts_opt = Option::<f64>::deserialize(_deser)?;
+    Ok(ts_opt.map(|ts| Instant::from_fractional_seconds(ts.floor() as i64, ts - ts.floor())))
 }
 
 pub fn document_ser<S>(

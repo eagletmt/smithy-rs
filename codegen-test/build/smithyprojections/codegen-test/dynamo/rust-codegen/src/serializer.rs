@@ -2645,6 +2645,7 @@ pub struct BatchExecuteStatementOutputBody {
     /// The response to each PartiQL statement in the batch.
     /// </p>
     #[serde(rename = "Responses")]
+    #[serde(default)]
     pub responses: ::std::option::Option<::std::vec::Vec<BatchStatementResponse>>,
 }
 
@@ -2655,6 +2656,7 @@ pub struct BatchGetItemOutputBody {
     /// <p>A map of table name to a list of items. Each object in <code>Responses</code> consists of a table
     /// name, along with a map of attribute data consisting of the data type and attribute value.</p>
     #[serde(rename = "Responses")]
+    #[serde(default)]
     pub responses: ::std::option::Option<
         ::std::collections::HashMap<
             ::std::string::String,
@@ -2688,6 +2690,7 @@ pub struct BatchGetItemOutputBody {
     /// <p>If there are no unprocessed keys remaining, the response contains an empty
     /// <code>UnprocessedKeys</code> map.</p>
     #[serde(rename = "UnprocessedKeys")]
+    #[serde(default)]
     pub unprocessed_keys: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, KeysAndAttributes>,
     >,
@@ -2704,6 +2707,7 @@ pub struct BatchGetItemOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "ConsumedCapacity")]
+    #[serde(default)]
     pub consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
 }
 
@@ -2750,6 +2754,7 @@ pub struct BatchWriteItemOutputBody {
     /// <p>If there are no unprocessed items remaining, the response contains an empty
     /// <code>UnprocessedItems</code> map.</p>
     #[serde(rename = "UnprocessedItems")]
+    #[serde(default)]
     pub unprocessed_items: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<WriteRequest>>,
     >,
@@ -2774,6 +2779,7 @@ pub struct BatchWriteItemOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "ItemCollectionMetrics")]
+    #[serde(default)]
     pub item_collection_metrics: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<ItemCollectionMetrics>>,
     >,
@@ -2790,6 +2796,7 @@ pub struct BatchWriteItemOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "ConsumedCapacity")]
+    #[serde(default)]
     pub consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
 }
 
@@ -2798,6 +2805,7 @@ pub struct BatchWriteItemOutputBody {
 pub struct CreateBackupOutputBody {
     /// <p>Contains the details of the backup created for the table.</p>
     #[serde(rename = "BackupDetails")]
+    #[serde(default)]
     pub backup_details: ::std::option::Option<BackupDetails>,
 }
 
@@ -2806,6 +2814,7 @@ pub struct CreateBackupOutputBody {
 pub struct CreateGlobalTableOutputBody {
     /// <p>Contains the details of the global table.</p>
     #[serde(rename = "GlobalTableDescription")]
+    #[serde(default)]
     pub global_table_description: ::std::option::Option<GlobalTableDescription>,
 }
 
@@ -2815,6 +2824,7 @@ pub struct CreateGlobalTableOutputBody {
 pub struct CreateTableOutputBody {
     /// <p>Represents the properties of the table.</p>
     #[serde(rename = "TableDescription")]
+    #[serde(default)]
     pub table_description: ::std::option::Option<TableDescription>,
 }
 
@@ -2823,6 +2833,7 @@ pub struct CreateTableOutputBody {
 pub struct DeleteBackupOutputBody {
     /// <p>Contains the description of the backup created for the table.</p>
     #[serde(rename = "BackupDescription")]
+    #[serde(default)]
     pub backup_description: ::std::option::Option<BackupDescription>,
 }
 
@@ -2834,6 +2845,7 @@ pub struct DeleteItemOutputBody {
     /// appeared before the <code>DeleteItem</code> operation. This map appears in the response only if
     /// <code>ReturnValues</code> was specified as <code>ALL_OLD</code> in the request.</p>
     #[serde(rename = "Attributes")]
+    #[serde(default)]
     pub attributes:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>DeleteItem</code> operation. The data
@@ -2843,6 +2855,7 @@ pub struct DeleteItemOutputBody {
     /// more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Mode</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
     #[serde(rename = "ConsumedCapacity")]
+    #[serde(default)]
     pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
     /// <p>Information about item collections, if any, that were affected by the
     /// <code>DeleteItem</code> operation.
@@ -2871,6 +2884,7 @@ pub struct DeleteItemOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "ItemCollectionMetrics")]
+    #[serde(default)]
     pub item_collection_metrics: ::std::option::Option<ItemCollectionMetrics>,
 }
 
@@ -2880,6 +2894,7 @@ pub struct DeleteItemOutputBody {
 pub struct DeleteTableOutputBody {
     /// <p>Represents the properties of a table.</p>
     #[serde(rename = "TableDescription")]
+    #[serde(default)]
     pub table_description: ::std::option::Option<TableDescription>,
 }
 
@@ -2888,6 +2903,7 @@ pub struct DeleteTableOutputBody {
 pub struct DescribeBackupOutputBody {
     /// <p>Contains the description of the backup created for the table.</p>
     #[serde(rename = "BackupDescription")]
+    #[serde(default)]
     pub backup_description: ::std::option::Option<BackupDescription>,
 }
 
@@ -2896,6 +2912,7 @@ pub struct DescribeBackupOutputBody {
 pub struct DescribeContinuousBackupsOutputBody {
     /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
     #[serde(rename = "ContinuousBackupsDescription")]
+    #[serde(default)]
     pub continuous_backups_description: ::std::option::Option<ContinuousBackupsDescription>,
 }
 
@@ -2904,20 +2921,25 @@ pub struct DescribeContinuousBackupsOutputBody {
 pub struct DescribeContributorInsightsOutputBody {
     /// <p>The name of the table being described.</p>
     #[serde(rename = "TableName")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The name of the global secondary index being described.</p>
     #[serde(rename = "IndexName")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>List of names of the associated Alpine rules.</p>
     #[serde(rename = "ContributorInsightsRuleList")]
+    #[serde(default)]
     pub contributor_insights_rule_list:
         ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>Current Status contributor insights.</p>
     #[serde(rename = "ContributorInsightsStatus")]
+    #[serde(default)]
     pub contributor_insights_status: ::std::option::Option<ContributorInsightsStatus>,
     /// <p>Timestamp of the last time the status was changed.</p>
     #[serde(rename = "LastUpdateDateTime")]
     #[serde(deserialize_with = "crate::serde_util::stdoptionoptioninstant_epoch_seconds_deser")]
+    #[serde(default)]
     pub last_update_date_time: ::std::option::Option<Instant>,
     /// <p>Returns information about the last failure that encountered.</p>
     /// <p>The most common exceptions for a FAILED status are:</p>
@@ -2937,6 +2959,7 @@ pub struct DescribeContributorInsightsOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "FailureException")]
+    #[serde(default)]
     pub failure_exception: ::std::option::Option<FailureException>,
 }
 
@@ -2945,6 +2968,7 @@ pub struct DescribeContributorInsightsOutputBody {
 pub struct DescribeEndpointsOutputBody {
     /// <p>List of endpoints.</p>
     #[serde(rename = "Endpoints")]
+    #[serde(default)]
     pub endpoints: ::std::option::Option<::std::vec::Vec<Endpoint>>,
 }
 
@@ -2953,6 +2977,7 @@ pub struct DescribeEndpointsOutputBody {
 pub struct DescribeExportOutputBody {
     /// <p>Represents the properties of the export.</p>
     #[serde(rename = "ExportDescription")]
+    #[serde(default)]
     pub export_description: ::std::option::Option<ExportDescription>,
 }
 
@@ -2961,6 +2986,7 @@ pub struct DescribeExportOutputBody {
 pub struct DescribeGlobalTableOutputBody {
     /// <p>Contains the details of the global table.</p>
     #[serde(rename = "GlobalTableDescription")]
+    #[serde(default)]
     pub global_table_description: ::std::option::Option<GlobalTableDescription>,
 }
 
@@ -2969,9 +2995,11 @@ pub struct DescribeGlobalTableOutputBody {
 pub struct DescribeGlobalTableSettingsOutputBody {
     /// <p>The name of the global table.</p>
     #[serde(rename = "GlobalTableName")]
+    #[serde(default)]
     pub global_table_name: ::std::option::Option<::std::string::String>,
     /// <p>The Region-specific settings for the global table.</p>
     #[serde(rename = "ReplicaSettings")]
+    #[serde(default)]
     pub replica_settings: ::std::option::Option<::std::vec::Vec<ReplicaSettingsDescription>>,
 }
 
@@ -2980,9 +3008,11 @@ pub struct DescribeGlobalTableSettingsOutputBody {
 pub struct DescribeKinesisStreamingDestinationOutputBody {
     /// <p>The name of the table being described.</p>
     #[serde(rename = "TableName")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The list of replica structures for the table being described.</p>
     #[serde(rename = "KinesisDataStreamDestinations")]
+    #[serde(default)]
     pub kinesis_data_stream_destinations:
         ::std::option::Option<::std::vec::Vec<KinesisDataStreamDestination>>,
 }
@@ -2994,20 +3024,24 @@ pub struct DescribeLimitsOutputBody {
     /// <p>The maximum total read capacity units that your account allows you to provision across
     /// all of your tables in this Region.</p>
     #[serde(rename = "AccountMaxReadCapacityUnits")]
+    #[serde(default)]
     pub account_max_read_capacity_units: ::std::option::Option<i64>,
     /// <p>The maximum total write capacity units that your account allows you to provision across
     /// all of your tables in this Region.</p>
     #[serde(rename = "AccountMaxWriteCapacityUnits")]
+    #[serde(default)]
     pub account_max_write_capacity_units: ::std::option::Option<i64>,
     /// <p>The maximum read capacity units that your account allows you to provision for a new
     /// table that you are creating in this Region, including the read capacity units
     /// provisioned for its global secondary indexes (GSIs).</p>
     #[serde(rename = "TableMaxReadCapacityUnits")]
+    #[serde(default)]
     pub table_max_read_capacity_units: ::std::option::Option<i64>,
     /// <p>The maximum write capacity units that your account allows you to provision for a new
     /// table that you are creating in this Region, including the write capacity units
     /// provisioned for its global secondary indexes (GSIs).</p>
     #[serde(rename = "TableMaxWriteCapacityUnits")]
+    #[serde(default)]
     pub table_max_write_capacity_units: ::std::option::Option<i64>,
 }
 
@@ -3017,6 +3051,7 @@ pub struct DescribeLimitsOutputBody {
 pub struct DescribeTableOutputBody {
     /// <p>The properties of the table.</p>
     #[serde(rename = "Table")]
+    #[serde(default)]
     pub table: ::std::option::Option<TableDescription>,
 }
 
@@ -3025,6 +3060,7 @@ pub struct DescribeTableOutputBody {
 pub struct DescribeTableReplicaAutoScalingOutputBody {
     /// <p>Represents the auto scaling properties of the table.</p>
     #[serde(rename = "TableAutoScalingDescription")]
+    #[serde(default)]
     pub table_auto_scaling_description: ::std::option::Option<TableAutoScalingDescription>,
 }
 
@@ -3033,6 +3069,7 @@ pub struct DescribeTableReplicaAutoScalingOutputBody {
 pub struct DescribeTimeToLiveOutputBody {
     /// <p></p>
     #[serde(rename = "TimeToLiveDescription")]
+    #[serde(default)]
     pub time_to_live_description: ::std::option::Option<TimeToLiveDescription>,
 }
 
@@ -3041,12 +3078,15 @@ pub struct DescribeTimeToLiveOutputBody {
 pub struct DisableKinesisStreamingDestinationOutputBody {
     /// <p>The name of the table being modified.</p>
     #[serde(rename = "TableName")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The ARN for the specific Kinesis data stream.</p>
     #[serde(rename = "StreamArn")]
+    #[serde(default)]
     pub stream_arn: ::std::option::Option<::std::string::String>,
     /// <p>The current status of the replication.</p>
     #[serde(rename = "DestinationStatus")]
+    #[serde(default)]
     pub destination_status: ::std::option::Option<DestinationStatus>,
 }
 
@@ -3055,12 +3095,15 @@ pub struct DisableKinesisStreamingDestinationOutputBody {
 pub struct EnableKinesisStreamingDestinationOutputBody {
     /// <p>The name of the table being modified.</p>
     #[serde(rename = "TableName")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The ARN for the specific Kinesis data stream.</p>
     #[serde(rename = "StreamArn")]
+    #[serde(default)]
     pub stream_arn: ::std::option::Option<::std::string::String>,
     /// <p>The current status of the replication.</p>
     #[serde(rename = "DestinationStatus")]
+    #[serde(default)]
     pub destination_status: ::std::option::Option<DestinationStatus>,
 }
 
@@ -3071,6 +3114,7 @@ pub struct ExecuteStatementOutputBody {
     /// If a read operation was used, this property will contain the result of the reade operation; a map of attribute names and their values. For the write operations this value will be empty.
     /// </p>
     #[serde(rename = "Items")]
+    #[serde(default)]
     pub items: ::std::option::Option<
         ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     >,
@@ -3078,6 +3122,7 @@ pub struct ExecuteStatementOutputBody {
     /// If the response of a read request exceeds the response payload limit DynamoDB will set this value in the response. If set, you can use that this value in the subsequent request to get the remaining results.
     /// </p>
     #[serde(rename = "NextToken")]
+    #[serde(default)]
     pub next_token: ::std::option::Option<::std::string::String>,
 }
 
@@ -3088,6 +3133,7 @@ pub struct ExecuteTransactionOutputBody {
     /// The response to a PartiQL transaction.
     /// </p>
     #[serde(rename = "Responses")]
+    #[serde(default)]
     pub responses: ::std::option::Option<::std::vec::Vec<ItemResponse>>,
 }
 
@@ -3096,6 +3142,7 @@ pub struct ExecuteTransactionOutputBody {
 pub struct ExportTableToPointInTimeOutputBody {
     /// <p>Contains a description of the table export.</p>
     #[serde(rename = "ExportDescription")]
+    #[serde(default)]
     pub export_description: ::std::option::Option<ExportDescription>,
 }
 
@@ -3106,6 +3153,7 @@ pub struct GetItemOutputBody {
     /// <p>A map of attribute names to <code>AttributeValue</code> objects, as specified
     /// by <code>ProjectionExpression</code>.</p>
     #[serde(rename = "Item")]
+    #[serde(default)]
     pub item:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>GetItem</code> operation. The data returned
@@ -3115,6 +3163,7 @@ pub struct GetItemOutputBody {
     /// information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Read/Write Capacity Mode</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
     #[serde(rename = "ConsumedCapacity")]
+    #[serde(default)]
     pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
 }
 
@@ -3123,6 +3172,7 @@ pub struct GetItemOutputBody {
 pub struct ListBackupsOutputBody {
     /// <p>List of <code>BackupSummary</code> objects.</p>
     #[serde(rename = "BackupSummaries")]
+    #[serde(default)]
     pub backup_summaries: ::std::option::Option<::std::vec::Vec<BackupSummary>>,
     /// <p>
     /// The ARN of the backup last evaluated when the current page of results was returned,
@@ -3137,6 +3187,7 @@ pub struct ListBackupsOutputBody {
     /// there is more data to be returned. All results are guaranteed to have been returned if
     /// and only if no value for <code>LastEvaluatedBackupArn</code> is returned. </p>
     #[serde(rename = "LastEvaluatedBackupArn")]
+    #[serde(default)]
     pub last_evaluated_backup_arn: ::std::option::Option<::std::string::String>,
 }
 
@@ -3145,10 +3196,12 @@ pub struct ListBackupsOutputBody {
 pub struct ListContributorInsightsOutputBody {
     /// <p>A list of ContributorInsightsSummary.</p>
     #[serde(rename = "ContributorInsightsSummaries")]
+    #[serde(default)]
     pub contributor_insights_summaries:
         ::std::option::Option<::std::vec::Vec<ContributorInsightsSummary>>,
     /// <p>A token to go to the next page if there is one.</p>
     #[serde(rename = "NextToken")]
+    #[serde(default)]
     pub next_token: ::std::option::Option<::std::string::String>,
 }
 
@@ -3157,11 +3210,13 @@ pub struct ListContributorInsightsOutputBody {
 pub struct ListExportsOutputBody {
     /// <p>A list of <code>ExportSummary</code> objects.</p>
     #[serde(rename = "ExportSummaries")]
+    #[serde(default)]
     pub export_summaries: ::std::option::Option<::std::vec::Vec<ExportSummary>>,
     /// <p>If this value is returned, there are additional results to be displayed. To retrieve
     /// them, call <code>ListExports</code> again, with <code>NextToken</code> set to this
     /// value.</p>
     #[serde(rename = "NextToken")]
+    #[serde(default)]
     pub next_token: ::std::option::Option<::std::string::String>,
 }
 
@@ -3170,9 +3225,11 @@ pub struct ListExportsOutputBody {
 pub struct ListGlobalTablesOutputBody {
     /// <p>List of global table names.</p>
     #[serde(rename = "GlobalTables")]
+    #[serde(default)]
     pub global_tables: ::std::option::Option<::std::vec::Vec<GlobalTable>>,
     /// <p>Last evaluated global table name.</p>
     #[serde(rename = "LastEvaluatedGlobalTableName")]
+    #[serde(default)]
     pub last_evaluated_global_table_name: ::std::option::Option<::std::string::String>,
 }
 
@@ -3185,6 +3242,7 @@ pub struct ListTablesOutputBody {
     /// <code>ExclusiveStartTableName</code> parameter in a subsequent <code>ListTables</code> request and
     /// obtain the next page of results.</p>
     #[serde(rename = "TableNames")]
+    #[serde(default)]
     pub table_names: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
     /// <p>The name of the last table in the current page of results. Use this value as the
     /// <code>ExclusiveStartTableName</code> in a new request to obtain the next page of results, until
@@ -3192,6 +3250,7 @@ pub struct ListTablesOutputBody {
     /// <p>If you do not receive a <code>LastEvaluatedTableName</code> value in the response, this means that
     /// there are no more table names to be retrieved.</p>
     #[serde(rename = "LastEvaluatedTableName")]
+    #[serde(default)]
     pub last_evaluated_table_name: ::std::option::Option<::std::string::String>,
 }
 
@@ -3200,10 +3259,12 @@ pub struct ListTablesOutputBody {
 pub struct ListTagsOfResourceOutputBody {
     /// <p>The tags currently associated with the Amazon DynamoDB resource.</p>
     #[serde(rename = "Tags")]
+    #[serde(default)]
     pub tags: ::std::option::Option<::std::vec::Vec<Tag>>,
     /// <p>If this value is returned, there are additional results to be displayed. To retrieve them,
     /// call ListTagsOfResource again, with NextToken set to this value.</p>
     #[serde(rename = "NextToken")]
+    #[serde(default)]
     pub next_token: ::std::option::Option<::std::string::String>,
 }
 
@@ -3215,6 +3276,7 @@ pub struct PutItemOutputBody {
     /// <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element
     /// consists of an attribute name and an attribute value.</p>
     #[serde(rename = "Attributes")]
+    #[serde(default)]
     pub attributes:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>PutItem</code> operation. The data returned
@@ -3224,6 +3286,7 @@ pub struct PutItemOutputBody {
     /// information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Read/Write Capacity Mode</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
     #[serde(rename = "ConsumedCapacity")]
+    #[serde(default)]
     pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
     /// <p>Information about item collections, if any, that were affected by the
     /// <code>PutItem</code> operation. <code>ItemCollectionMetrics</code>
@@ -3250,6 +3313,7 @@ pub struct PutItemOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "ItemCollectionMetrics")]
+    #[serde(default)]
     pub item_collection_metrics: ::std::option::Option<ItemCollectionMetrics>,
 }
 
@@ -3259,6 +3323,7 @@ pub struct PutItemOutputBody {
 pub struct QueryOutputBody {
     /// <p>An array of item attributes that match the query criteria. Each element in this array consists of an attribute name and the value for that attribute.</p>
     #[serde(rename = "Items")]
+    #[serde(default)]
     pub items: ::std::option::Option<
         ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     >,
@@ -3282,6 +3347,7 @@ pub struct QueryOutputBody {
     /// <p>If <code>LastEvaluatedKey</code> is empty, then the "last page" of results has been processed and there is no more data to be retrieved.</p>
     /// <p>If <code>LastEvaluatedKey</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedKey</code> is empty.</p>
     #[serde(rename = "LastEvaluatedKey")]
+    #[serde(default)]
     pub last_evaluated_key:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>Query</code> operation. The data returned
@@ -3291,6 +3357,7 @@ pub struct QueryOutputBody {
     /// information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer
     /// Guide</i>.</p>
     #[serde(rename = "ConsumedCapacity")]
+    #[serde(default)]
     pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
 }
 
@@ -3299,6 +3366,7 @@ pub struct QueryOutputBody {
 pub struct RestoreTableFromBackupOutputBody {
     /// <p>The description of the table created from an existing backup.</p>
     #[serde(rename = "TableDescription")]
+    #[serde(default)]
     pub table_description: ::std::option::Option<TableDescription>,
 }
 
@@ -3307,6 +3375,7 @@ pub struct RestoreTableFromBackupOutputBody {
 pub struct RestoreTableToPointInTimeOutputBody {
     /// <p>Represents the properties of a table.</p>
     #[serde(rename = "TableDescription")]
+    #[serde(default)]
     pub table_description: ::std::option::Option<TableDescription>,
 }
 
@@ -3316,6 +3385,7 @@ pub struct RestoreTableToPointInTimeOutputBody {
 pub struct ScanOutputBody {
     /// <p>An array of item attributes that match the scan criteria. Each element in this array consists of an attribute name and the value for that attribute.</p>
     #[serde(rename = "Items")]
+    #[serde(default)]
     pub items: ::std::option::Option<
         ::std::vec::Vec<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     >,
@@ -3345,6 +3415,7 @@ pub struct ScanOutputBody {
     /// the end of the result set is when <code>LastEvaluatedKey</code> is
     /// empty.</p>
     #[serde(rename = "LastEvaluatedKey")]
+    #[serde(default)]
     pub last_evaluated_key:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>Scan</code> operation. The data returned includes the total
@@ -3353,6 +3424,7 @@ pub struct ScanOutputBody {
     /// For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
     /// Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ConsumedCapacity")]
+    #[serde(default)]
     pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
 }
 
@@ -3365,6 +3437,7 @@ pub struct TransactGetItemsOutputBody {
     /// parameter. These <code>ConsumedCapacity</code> objects report the read-capacity
     /// units consumed by the <code>TransactGetItems</code> call in that table.</p>
     #[serde(rename = "ConsumedCapacity")]
+    #[serde(default)]
     pub consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
     /// <p>An ordered array of up to 25 <code>ItemResponse</code> objects, each of which corresponds
     /// to the <code>TransactGetItem</code> object in the same position in the
@@ -3375,6 +3448,7 @@ pub struct TransactGetItemsOutputBody {
     /// object is Null, or if the requested item has no projected attributes, the corresponding
     /// <code>ItemResponse</code> object is an empty Map. </p>
     #[serde(rename = "Responses")]
+    #[serde(default)]
     pub responses: ::std::option::Option<::std::vec::Vec<ItemResponse>>,
 }
 
@@ -3386,12 +3460,14 @@ pub struct TransactWriteItemsOutputBody {
     /// the ordering of the <code>TransactItems</code> request parameter.
     /// </p>
     #[serde(rename = "ConsumedCapacity")]
+    #[serde(default)]
     pub consumed_capacity: ::std::option::Option<::std::vec::Vec<ConsumedCapacity>>,
     /// <p>A list of tables that were processed by <code>TransactWriteItems</code> and, for each
     /// table, information about any item collections that were affected by individual
     /// <code>UpdateItem</code>, <code>PutItem</code>, or <code>DeleteItem</code>
     /// operations. </p>
     #[serde(rename = "ItemCollectionMetrics")]
+    #[serde(default)]
     pub item_collection_metrics: ::std::option::Option<
         ::std::collections::HashMap<::std::string::String, ::std::vec::Vec<ItemCollectionMetrics>>,
     >,
@@ -3402,6 +3478,7 @@ pub struct TransactWriteItemsOutputBody {
 pub struct UpdateContinuousBackupsOutputBody {
     /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
     #[serde(rename = "ContinuousBackupsDescription")]
+    #[serde(default)]
     pub continuous_backups_description: ::std::option::Option<ContinuousBackupsDescription>,
 }
 
@@ -3410,12 +3487,15 @@ pub struct UpdateContinuousBackupsOutputBody {
 pub struct UpdateContributorInsightsOutputBody {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
+    #[serde(default)]
     pub table_name: ::std::option::Option<::std::string::String>,
     /// <p>The name of the global secondary index, if applicable.</p>
     #[serde(rename = "IndexName")]
+    #[serde(default)]
     pub index_name: ::std::option::Option<::std::string::String>,
     /// <p>The status of contributor insights</p>
     #[serde(rename = "ContributorInsightsStatus")]
+    #[serde(default)]
     pub contributor_insights_status: ::std::option::Option<ContributorInsightsStatus>,
 }
 
@@ -3424,6 +3504,7 @@ pub struct UpdateContributorInsightsOutputBody {
 pub struct UpdateGlobalTableOutputBody {
     /// <p>Contains the details of the global table.</p>
     #[serde(rename = "GlobalTableDescription")]
+    #[serde(default)]
     pub global_table_description: ::std::option::Option<GlobalTableDescription>,
 }
 
@@ -3432,9 +3513,11 @@ pub struct UpdateGlobalTableOutputBody {
 pub struct UpdateGlobalTableSettingsOutputBody {
     /// <p>The name of the global table.</p>
     #[serde(rename = "GlobalTableName")]
+    #[serde(default)]
     pub global_table_name: ::std::option::Option<::std::string::String>,
     /// <p>The Region-specific settings for the global table.</p>
     #[serde(rename = "ReplicaSettings")]
+    #[serde(default)]
     pub replica_settings: ::std::option::Option<::std::vec::Vec<ReplicaSettingsDescription>>,
 }
 
@@ -3448,6 +3531,7 @@ pub struct UpdateItemOutputBody {
     /// specified as something other than <code>NONE</code> in the request. Each element
     /// represents one attribute.</p>
     #[serde(rename = "Attributes")]
+    #[serde(default)]
     pub attributes:
         ::std::option::Option<::std::collections::HashMap<::std::string::String, AttributeValue>>,
     /// <p>The capacity units consumed by the <code>UpdateItem</code> operation. The data returned includes the total
@@ -3456,6 +3540,7 @@ pub struct UpdateItemOutputBody {
     /// For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned
     /// Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
     #[serde(rename = "ConsumedCapacity")]
+    #[serde(default)]
     pub consumed_capacity: ::std::option::Option<ConsumedCapacity>,
     /// <p>Information about item collections, if any, that were affected by the
     /// <code>UpdateItem</code> operation.
@@ -3483,6 +3568,7 @@ pub struct UpdateItemOutputBody {
     /// </li>
     /// </ul>
     #[serde(rename = "ItemCollectionMetrics")]
+    #[serde(default)]
     pub item_collection_metrics: ::std::option::Option<ItemCollectionMetrics>,
 }
 
@@ -3492,6 +3578,7 @@ pub struct UpdateItemOutputBody {
 pub struct UpdateTableOutputBody {
     /// <p>Represents the properties of the table.</p>
     #[serde(rename = "TableDescription")]
+    #[serde(default)]
     pub table_description: ::std::option::Option<TableDescription>,
 }
 
@@ -3500,6 +3587,7 @@ pub struct UpdateTableOutputBody {
 pub struct UpdateTableReplicaAutoScalingOutputBody {
     /// <p>Returns information about the auto scaling settings of a table with replicas.</p>
     #[serde(rename = "TableAutoScalingDescription")]
+    #[serde(default)]
     pub table_auto_scaling_description: ::std::option::Option<TableAutoScalingDescription>,
 }
 
@@ -3508,5 +3596,6 @@ pub struct UpdateTableReplicaAutoScalingOutputBody {
 pub struct UpdateTimeToLiveOutputBody {
     /// <p>Represents the output of an <code>UpdateTimeToLive</code> operation.</p>
     #[serde(rename = "TimeToLiveSpecification")]
+    #[serde(default)]
     pub time_to_live_specification: ::std::option::Option<TimeToLiveSpecification>,
 }

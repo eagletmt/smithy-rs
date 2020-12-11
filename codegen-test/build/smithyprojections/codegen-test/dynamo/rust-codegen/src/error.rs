@@ -18,6 +18,11 @@ impl ::std::fmt::Display for BatchExecuteStatementError {
         }
     }
 }
+impl BatchExecuteStatementError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        BatchExecuteStatementError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for BatchExecuteStatementError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -50,6 +55,11 @@ impl ::std::fmt::Display for BatchGetItemError {
             BatchGetItemError::ResourceNotFoundError(inner) => inner.fmt(f),
             BatchGetItemError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl BatchGetItemError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        BatchGetItemError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for BatchGetItemError {
@@ -89,6 +99,11 @@ impl ::std::fmt::Display for BatchWriteItemError {
             BatchWriteItemError::ResourceNotFoundError(inner) => inner.fmt(f),
             BatchWriteItemError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl BatchWriteItemError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        BatchWriteItemError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for BatchWriteItemError {
@@ -133,6 +148,11 @@ impl ::std::fmt::Display for CreateBackupError {
         }
     }
 }
+impl CreateBackupError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        CreateBackupError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for CreateBackupError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -172,6 +192,11 @@ impl ::std::fmt::Display for CreateGlobalTableError {
         }
     }
 }
+impl CreateGlobalTableError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        CreateGlobalTableError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for CreateGlobalTableError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -205,6 +230,11 @@ impl ::std::fmt::Display for CreateTableError {
             CreateTableError::ResourceInUseError(inner) => inner.fmt(f),
             CreateTableError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl CreateTableError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        CreateTableError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for CreateTableError {
@@ -241,6 +271,11 @@ impl ::std::fmt::Display for DeleteBackupError {
             DeleteBackupError::LimitExceededError(inner) => inner.fmt(f),
             DeleteBackupError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl DeleteBackupError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DeleteBackupError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for DeleteBackupError {
@@ -286,6 +321,11 @@ impl ::std::fmt::Display for DeleteItemError {
         }
     }
 }
+impl DeleteItemError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DeleteItemError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for DeleteItemError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -326,6 +366,11 @@ impl ::std::fmt::Display for DeleteTableError {
         }
     }
 }
+impl DeleteTableError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DeleteTableError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for DeleteTableError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -359,6 +404,11 @@ impl ::std::fmt::Display for DescribeBackupError {
         }
     }
 }
+impl DescribeBackupError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DescribeBackupError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for DescribeBackupError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -390,6 +440,11 @@ impl ::std::fmt::Display for DescribeContinuousBackupsError {
         }
     }
 }
+impl DescribeContinuousBackupsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DescribeContinuousBackupsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for DescribeContinuousBackupsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -419,6 +474,11 @@ impl ::std::fmt::Display for DescribeContributorInsightsError {
         }
     }
 }
+impl DescribeContributorInsightsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DescribeContributorInsightsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for DescribeContributorInsightsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -440,6 +500,11 @@ impl ::std::fmt::Display for DescribeEndpointsError {
         match self {
             DescribeEndpointsError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl DescribeEndpointsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DescribeEndpointsError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for DescribeEndpointsError {
@@ -468,6 +533,11 @@ impl ::std::fmt::Display for DescribeExportError {
             DescribeExportError::LimitExceededError(inner) => inner.fmt(f),
             DescribeExportError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl DescribeExportError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DescribeExportError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for DescribeExportError {
@@ -501,6 +571,11 @@ impl ::std::fmt::Display for DescribeGlobalTableError {
         }
     }
 }
+impl DescribeGlobalTableError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DescribeGlobalTableError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for DescribeGlobalTableError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -530,6 +605,11 @@ impl ::std::fmt::Display for DescribeGlobalTableSettingsError {
             DescribeGlobalTableSettingsError::InvalidEndpointError(inner) => inner.fmt(f),
             DescribeGlobalTableSettingsError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl DescribeGlobalTableSettingsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DescribeGlobalTableSettingsError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for DescribeGlobalTableSettingsError {
@@ -563,6 +643,11 @@ impl ::std::fmt::Display for DescribeKinesisStreamingDestinationError {
         }
     }
 }
+impl DescribeKinesisStreamingDestinationError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DescribeKinesisStreamingDestinationError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for DescribeKinesisStreamingDestinationError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -590,6 +675,11 @@ impl ::std::fmt::Display for DescribeLimitsError {
             DescribeLimitsError::InvalidEndpointError(inner) => inner.fmt(f),
             DescribeLimitsError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl DescribeLimitsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DescribeLimitsError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for DescribeLimitsError {
@@ -622,6 +712,11 @@ impl ::std::fmt::Display for DescribeTableError {
         }
     }
 }
+impl DescribeTableError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DescribeTableError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for DescribeTableError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -649,6 +744,11 @@ impl ::std::fmt::Display for DescribeTableReplicaAutoScalingError {
             DescribeTableReplicaAutoScalingError::ResourceNotFoundError(inner) => inner.fmt(f),
             DescribeTableReplicaAutoScalingError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl DescribeTableReplicaAutoScalingError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DescribeTableReplicaAutoScalingError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for DescribeTableReplicaAutoScalingError {
@@ -679,6 +779,11 @@ impl ::std::fmt::Display for DescribeTimeToLiveError {
             DescribeTimeToLiveError::ResourceNotFoundError(inner) => inner.fmt(f),
             DescribeTimeToLiveError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl DescribeTimeToLiveError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DescribeTimeToLiveError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for DescribeTimeToLiveError {
@@ -716,6 +821,11 @@ impl ::std::fmt::Display for DisableKinesisStreamingDestinationError {
         }
     }
 }
+impl DisableKinesisStreamingDestinationError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        DisableKinesisStreamingDestinationError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for DisableKinesisStreamingDestinationError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -751,6 +861,11 @@ impl ::std::fmt::Display for EnableKinesisStreamingDestinationError {
             EnableKinesisStreamingDestinationError::ResourceNotFoundError(inner) => inner.fmt(f),
             EnableKinesisStreamingDestinationError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl EnableKinesisStreamingDestinationError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        EnableKinesisStreamingDestinationError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for EnableKinesisStreamingDestinationError {
@@ -794,6 +909,11 @@ impl ::std::fmt::Display for ExecuteStatementError {
             ExecuteStatementError::TransactionConflictError(inner) => inner.fmt(f),
             ExecuteStatementError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl ExecuteStatementError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ExecuteStatementError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for ExecuteStatementError {
@@ -840,6 +960,11 @@ impl ::std::fmt::Display for ExecuteTransactionError {
         }
     }
 }
+impl ExecuteTransactionError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ExecuteTransactionError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for ExecuteTransactionError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -883,6 +1008,11 @@ impl ::std::fmt::Display for ExportTableToPointInTimeError {
         }
     }
 }
+impl ExportTableToPointInTimeError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ExportTableToPointInTimeError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for ExportTableToPointInTimeError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -923,6 +1053,11 @@ impl ::std::fmt::Display for GetItemError {
         }
     }
 }
+impl GetItemError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        GetItemError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for GetItemError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -954,6 +1089,11 @@ impl ::std::fmt::Display for ListBackupsError {
         }
     }
 }
+impl ListBackupsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ListBackupsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for ListBackupsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -980,6 +1120,11 @@ impl ::std::fmt::Display for ListContributorInsightsError {
             ListContributorInsightsError::ResourceNotFoundError(inner) => inner.fmt(f),
             ListContributorInsightsError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl ListContributorInsightsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ListContributorInsightsError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for ListContributorInsightsError {
@@ -1010,6 +1155,11 @@ impl ::std::fmt::Display for ListExportsError {
         }
     }
 }
+impl ListExportsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ListExportsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for ListExportsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -1036,6 +1186,11 @@ impl ::std::fmt::Display for ListGlobalTablesError {
             ListGlobalTablesError::InvalidEndpointError(inner) => inner.fmt(f),
             ListGlobalTablesError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl ListGlobalTablesError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ListGlobalTablesError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for ListGlobalTablesError {
@@ -1066,6 +1221,11 @@ impl ::std::fmt::Display for ListTablesError {
         }
     }
 }
+impl ListTablesError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ListTablesError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for ListTablesError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -1094,6 +1254,11 @@ impl ::std::fmt::Display for ListTagsOfResourceError {
             ListTagsOfResourceError::ResourceNotFoundError(inner) => inner.fmt(f),
             ListTagsOfResourceError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl ListTagsOfResourceError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ListTagsOfResourceError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for ListTagsOfResourceError {
@@ -1137,6 +1302,11 @@ impl ::std::fmt::Display for PutItemError {
         }
     }
 }
+impl PutItemError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        PutItemError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for PutItemError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -1175,6 +1345,11 @@ impl ::std::fmt::Display for QueryError {
             QueryError::ResourceNotFoundError(inner) => inner.fmt(f),
             QueryError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl QueryError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        QueryError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for QueryError {
@@ -1216,6 +1391,11 @@ impl ::std::fmt::Display for RestoreTableFromBackupError {
             RestoreTableFromBackupError::TableInUseError(inner) => inner.fmt(f),
             RestoreTableFromBackupError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl RestoreTableFromBackupError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        RestoreTableFromBackupError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for RestoreTableFromBackupError {
@@ -1265,6 +1445,11 @@ impl ::std::fmt::Display for RestoreTableToPointInTimeError {
         }
     }
 }
+impl RestoreTableToPointInTimeError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        RestoreTableToPointInTimeError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for RestoreTableToPointInTimeError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -1307,6 +1492,11 @@ impl ::std::fmt::Display for ScanError {
         }
     }
 }
+impl ScanError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        ScanError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for ScanError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -1342,6 +1532,11 @@ impl ::std::fmt::Display for TagResourceError {
             TagResourceError::ResourceNotFoundError(inner) => inner.fmt(f),
             TagResourceError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl TagResourceError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        TagResourceError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for TagResourceError {
@@ -1381,6 +1576,11 @@ impl ::std::fmt::Display for TransactGetItemsError {
             TransactGetItemsError::TransactionCanceledError(inner) => inner.fmt(f),
             TransactGetItemsError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl TransactGetItemsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        TransactGetItemsError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for TransactGetItemsError {
@@ -1427,6 +1627,11 @@ impl ::std::fmt::Display for TransactWriteItemsError {
         }
     }
 }
+impl TransactWriteItemsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        TransactWriteItemsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for TransactWriteItemsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -1467,6 +1672,11 @@ impl ::std::fmt::Display for UntagResourceError {
         }
     }
 }
+impl UntagResourceError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        UntagResourceError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for UntagResourceError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -1502,6 +1712,11 @@ impl ::std::fmt::Display for UpdateContinuousBackupsError {
         }
     }
 }
+impl UpdateContinuousBackupsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        UpdateContinuousBackupsError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for UpdateContinuousBackupsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -1530,6 +1745,11 @@ impl ::std::fmt::Display for UpdateContributorInsightsError {
             UpdateContributorInsightsError::ResourceNotFoundError(inner) => inner.fmt(f),
             UpdateContributorInsightsError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl UpdateContributorInsightsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        UpdateContributorInsightsError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for UpdateContributorInsightsError {
@@ -1566,6 +1786,11 @@ impl ::std::fmt::Display for UpdateGlobalTableError {
             UpdateGlobalTableError::TableNotFoundError(inner) => inner.fmt(f),
             UpdateGlobalTableError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl UpdateGlobalTableError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        UpdateGlobalTableError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for UpdateGlobalTableError {
@@ -1608,6 +1833,11 @@ impl ::std::fmt::Display for UpdateGlobalTableSettingsError {
             UpdateGlobalTableSettingsError::ResourceInUseError(inner) => inner.fmt(f),
             UpdateGlobalTableSettingsError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl UpdateGlobalTableSettingsError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        UpdateGlobalTableSettingsError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for UpdateGlobalTableSettingsError {
@@ -1655,6 +1885,11 @@ impl ::std::fmt::Display for UpdateItemError {
         }
     }
 }
+impl UpdateItemError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        UpdateItemError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for UpdateItemError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -1695,6 +1930,11 @@ impl ::std::fmt::Display for UpdateTableError {
         }
     }
 }
+impl UpdateTableError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        UpdateTableError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for UpdateTableError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -1728,6 +1968,11 @@ impl ::std::fmt::Display for UpdateTableReplicaAutoScalingError {
             UpdateTableReplicaAutoScalingError::ResourceNotFoundError(inner) => inner.fmt(f),
             UpdateTableReplicaAutoScalingError::Unhandled(inner) => inner.fmt(f),
         }
+    }
+}
+impl UpdateTableReplicaAutoScalingError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        UpdateTableReplicaAutoScalingError::Unhandled(err.into())
     }
 }
 impl ::std::error::Error for UpdateTableReplicaAutoScalingError {
@@ -1766,6 +2011,11 @@ impl ::std::fmt::Display for UpdateTimeToLiveError {
         }
     }
 }
+impl UpdateTimeToLiveError {
+    pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
+        UpdateTimeToLiveError::Unhandled(err.into())
+    }
+}
 impl ::std::error::Error for UpdateTimeToLiveError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
         match self {
@@ -1793,6 +2043,7 @@ pub struct ResourceNotFoundError {
     /// <p>The resource which is being requested does not exist.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ResourceNotFoundError {
@@ -1865,6 +2116,7 @@ pub struct ResourceInUseError {
     /// <p>The resource which is being attempted to be changed is in use.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ResourceInUseError {
@@ -1943,6 +2195,7 @@ pub struct LimitExceededError {
     /// <p>Too many operations for a given subscriber.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl LimitExceededError {
@@ -2011,6 +2264,7 @@ impl LimitExceededError {
 pub struct InvalidEndpointError {
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidEndpointError {
@@ -2077,6 +2331,7 @@ pub struct InternalServerError {
     /// <p>The server encountered an internal error trying to fulfill the request.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InternalServerError {
@@ -2146,6 +2401,7 @@ impl InternalServerError {
 pub struct TransactionConflictError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl TransactionConflictError {
@@ -2214,6 +2470,7 @@ impl TransactionConflictError {
 pub struct RequestLimitExceeded {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl RequestLimitExceeded {
@@ -2287,6 +2544,7 @@ pub struct ProvisionedThroughputExceededError {
     /// <p>You exceeded your maximum allowed provisioned throughput.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ProvisionedThroughputExceededError {
@@ -2357,6 +2615,7 @@ pub struct ItemCollectionSizeLimitExceededError {
     /// <p>The total size of an item collection has exceeded the maximum limit of 10 gigabytes.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ItemCollectionSizeLimitExceededError {
@@ -2427,6 +2686,7 @@ pub struct ConditionalCheckFailedError {
     /// <p>The conditional request failed.</p>
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ConditionalCheckFailedError {
@@ -2496,6 +2756,7 @@ impl ConditionalCheckFailedError {
 pub struct ReplicaNotFoundError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ReplicaNotFoundError {
@@ -2564,6 +2825,7 @@ impl ReplicaNotFoundError {
 pub struct IndexNotFoundError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl IndexNotFoundError {
@@ -2632,6 +2894,7 @@ impl IndexNotFoundError {
 pub struct GlobalTableNotFoundError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl GlobalTableNotFoundError {
@@ -2700,6 +2963,7 @@ impl GlobalTableNotFoundError {
 pub struct TableNotFoundError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl TableNotFoundError {
@@ -2768,6 +3032,7 @@ impl TableNotFoundError {
 pub struct ReplicaAlreadyExistsError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ReplicaAlreadyExistsError {
@@ -2836,6 +3101,7 @@ impl ReplicaAlreadyExistsError {
 pub struct ContinuousBackupsUnavailableError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ContinuousBackupsUnavailableError {
@@ -2904,6 +3170,7 @@ impl ContinuousBackupsUnavailableError {
 pub struct TransactionInProgressError {
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl TransactionInProgressError {
@@ -3166,10 +3433,12 @@ impl TransactionInProgressError {
 pub struct TransactionCanceledError {
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
     /// <p>A list of cancellation reasons.</p>
     #[serde(rename = "CancellationReasons")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub cancellation_reasons: ::std::option::Option<::std::vec::Vec<CancellationReason>>,
 }
 impl TransactionCanceledError {
@@ -3244,6 +3513,7 @@ impl TransactionCanceledError {
 pub struct IdempotentParameterMismatchError {
     #[serde(rename = "Message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl IdempotentParameterMismatchError {
@@ -3309,6 +3579,7 @@ impl IdempotentParameterMismatchError {
 pub struct TableInUseError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl TableInUseError {
@@ -3377,6 +3648,7 @@ impl TableInUseError {
 pub struct TableAlreadyExistsError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl TableAlreadyExistsError {
@@ -3445,6 +3717,7 @@ impl TableAlreadyExistsError {
 pub struct PointInTimeRecoveryUnavailableError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl PointInTimeRecoveryUnavailableError {
@@ -3513,6 +3786,7 @@ impl PointInTimeRecoveryUnavailableError {
 pub struct InvalidRestoreTimeError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidRestoreTimeError {
@@ -3581,6 +3855,7 @@ impl InvalidRestoreTimeError {
 pub struct BackupNotFoundError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl BackupNotFoundError {
@@ -3649,6 +3924,7 @@ impl BackupNotFoundError {
 pub struct BackupInUseError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl BackupInUseError {
@@ -3718,6 +3994,7 @@ impl BackupInUseError {
 pub struct InvalidExportTimeError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidExportTimeError {
@@ -3786,6 +4063,7 @@ impl InvalidExportTimeError {
 pub struct ExportConflictError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ExportConflictError {
@@ -3856,6 +4134,7 @@ impl ExportConflictError {
 pub struct DuplicateItemError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl DuplicateItemError {
@@ -3924,6 +4203,7 @@ impl DuplicateItemError {
 pub struct ExportNotFoundError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ExportNotFoundError {
@@ -3992,6 +4272,7 @@ impl ExportNotFoundError {
 pub struct GlobalTableAlreadyExistsError {
     #[serde(rename = "message")]
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl GlobalTableAlreadyExistsError {
