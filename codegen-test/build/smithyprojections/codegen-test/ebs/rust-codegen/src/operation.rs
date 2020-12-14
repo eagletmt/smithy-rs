@@ -35,7 +35,7 @@ impl CompleteSnapshot {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CompleteSnapshotOutput, crate::error::CompleteSnapshotError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: CompleteSnapshotInput) -> Self {
         Self { input }
@@ -64,7 +64,7 @@ impl GetSnapshotBlock {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GetSnapshotBlockOutput, crate::error::GetSnapshotBlockError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: GetSnapshotBlockInput) -> Self {
         Self { input }
@@ -94,7 +94,7 @@ impl ListChangedBlocks {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListChangedBlocksOutput, crate::error::ListChangedBlocksError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ListChangedBlocksInput) -> Self {
         Self { input }
@@ -126,7 +126,7 @@ impl ListSnapshotBlocks {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListSnapshotBlocksOutput, crate::error::ListSnapshotBlocksError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ListSnapshotBlocksInput) -> Self {
         Self { input }
@@ -135,7 +135,7 @@ impl ListSnapshotBlocks {
 
 /// <p>Writes a block of data to a snapshot. If the specified block contains
 /// data, the existing data is overwritten. The target snapshot must be in the
-/// <code>pending</code> state.</p>    
+/// <code>pending</code> state.</p>
 /// <p>Data written to a snapshot must be aligned with 512-byte sectors.</p>
 pub struct PutSnapshotBlock {
     input: PutSnapshotBlockInput,
@@ -158,7 +158,7 @@ impl PutSnapshotBlock {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<PutSnapshotBlockOutput, crate::error::PutSnapshotBlockError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: PutSnapshotBlockInput) -> Self {
         Self { input }
@@ -190,7 +190,7 @@ impl StartSnapshot {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StartSnapshotOutput, crate::error::StartSnapshotError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: StartSnapshotInput) -> Self {
         Self { input }

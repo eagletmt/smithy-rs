@@ -53,7 +53,7 @@ impl EmptyInputAndEmptyOutput {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<EmptyInputAndEmptyOutputOutput, crate::error::EmptyInputAndEmptyOutputError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: EmptyInputAndEmptyOutputInput) -> Self {
         Self { input }
@@ -98,7 +98,7 @@ mod empty_input_and_empty_output_request_test {
             .body("")
             .unwrap();
 
-        let parsed = EmptyInputAndEmptyOutput::from_response(http_response);
+        let parsed = EmptyInputAndEmptyOutput::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Empty output serializes no payload
@@ -112,7 +112,7 @@ mod empty_input_and_empty_output_request_test {
             .body("{}")
             .unwrap();
 
-        let parsed = EmptyInputAndEmptyOutput::from_response(http_response);
+        let parsed = EmptyInputAndEmptyOutput::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
 }
@@ -177,7 +177,7 @@ impl GreetingWithErrors {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: GreetingWithErrorsInput) -> Self {
         Self { input }
@@ -208,7 +208,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::InvalidGreeting(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -241,7 +241,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::ComplexError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -263,7 +263,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::ComplexError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -281,7 +281,7 @@ mod greeting_with_errors_request_test {
             .body(vec![])
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -305,7 +305,7 @@ mod greeting_with_errors_request_test {
             .body(vec![])
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -319,12 +319,12 @@ mod greeting_with_errors_request_test {
         let expected_output = FooError::builder().build();
         let http_response = ::http::response::Builder::new()
         .header("X-Amzn-Errortype", "aws.protocoltests.json10#FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/")
-        
+
                         .status(500)
                         .body(vec![])
                         .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -348,7 +348,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -370,7 +370,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -384,14 +384,14 @@ mod greeting_with_errors_request_test {
         let expected_output = FooError::builder().build();
         let http_response = ::http::response::Builder::new()
         .header("Content-Type", "application/x-amz-json-1.0")
-        
+
                         .status(500)
                         .body("{
             \"code\": \"aws.protocoltests.json10#FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/\"
         }")
                         .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -413,7 +413,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -435,7 +435,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -449,14 +449,14 @@ mod greeting_with_errors_request_test {
         let expected_output = FooError::builder().build();
         let http_response = ::http::response::Builder::new()
         .header("Content-Type", "application/x-amz-json-1.0")
-        
+
                         .status(500)
                         .body("{
             \"__type\": \"aws.protocoltests.json10#FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/\"
         }")
                         .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -503,7 +503,7 @@ impl JsonUnions {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: JsonUnionsInput) -> Self {
         Self { input }
@@ -825,7 +825,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a boolean union value
@@ -847,7 +847,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a number union value
@@ -869,7 +869,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a blob union value
@@ -891,7 +891,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a timestamp union value
@@ -915,7 +915,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes an enum union value
@@ -937,7 +937,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a list union value
@@ -962,7 +962,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a map union value
@@ -992,7 +992,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a structure union value
@@ -1018,7 +1018,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
 }
@@ -1062,7 +1062,7 @@ impl NoInputAndNoOutput {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NoInputAndNoOutputOutput, crate::error::NoInputAndNoOutputError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: NoInputAndNoOutputInput) -> Self {
         Self { input }
@@ -1107,7 +1107,7 @@ mod no_input_and_no_output_request_test {
             .body(vec![])
             .unwrap();
 
-        let parsed = NoInputAndNoOutput::from_response(http_response);
+        let parsed = NoInputAndNoOutput::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
 }
@@ -1149,7 +1149,7 @@ impl NoInputAndOutput {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NoInputAndOutputOutput, crate::error::NoInputAndOutputError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: NoInputAndOutputInput) -> Self {
         Self { input }
@@ -1194,7 +1194,7 @@ mod no_input_and_output_request_test {
             .body(vec![])
             .unwrap();
 
-        let parsed = NoInputAndOutput::from_response(http_response);
+        let parsed = NoInputAndOutput::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
 }

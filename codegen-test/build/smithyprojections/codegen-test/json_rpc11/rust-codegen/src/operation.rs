@@ -55,7 +55,7 @@ impl EmptyOperation {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<EmptyOperationOutput, crate::error::EmptyOperationError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: EmptyOperationInput) -> Self {
         Self { input }
@@ -113,7 +113,7 @@ mod empty_operation_request_test {
             .body("{}")
             .unwrap();
 
-        let parsed = EmptyOperation::from_response(http_response);
+        let parsed = EmptyOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
 }
@@ -178,7 +178,7 @@ impl GreetingWithErrors {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: GreetingWithErrorsInput) -> Self {
         Self { input }
@@ -209,7 +209,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::InvalidGreeting(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -242,7 +242,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::ComplexError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -263,7 +263,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::ComplexError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -281,7 +281,7 @@ mod greeting_with_errors_request_test {
             .body(vec![])
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -305,7 +305,7 @@ mod greeting_with_errors_request_test {
             .body(vec![])
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -319,12 +319,12 @@ mod greeting_with_errors_request_test {
         let expected_output = FooError::builder().build();
         let http_response = ::http::response::Builder::new()
         .header("X-Amzn-Errortype", "aws.protocoltests.restjson#FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/")
-        
+
                         .status(500)
                         .body(vec![])
                         .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -348,7 +348,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -370,7 +370,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -384,14 +384,14 @@ mod greeting_with_errors_request_test {
         let expected_output = FooError::builder().build();
         let http_response = ::http::response::Builder::new()
         .header("Content-Type", "application/x-amz-json-1.1")
-        
+
                         .status(500)
                         .body("{
             \"code\": \"aws.protocoltests.restjson#FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/\"
         }")
                         .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -413,7 +413,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -435,7 +435,7 @@ mod greeting_with_errors_request_test {
             )
             .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -449,14 +449,14 @@ mod greeting_with_errors_request_test {
         let expected_output = FooError::builder().build();
         let http_response = ::http::response::Builder::new()
         .header("Content-Type", "application/x-amz-json-1.1")
-        
+
                         .status(500)
                         .body("{
             \"__type\": \"aws.protocoltests.restjson#FooError:http://internal.amazon.com/coral/com.amazon.coral.validate/\"
         }")
                         .unwrap();
 
-        let parsed = GreetingWithErrors::from_response(http_response);
+        let parsed = GreetingWithErrors::from_response(&http_response);
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
@@ -508,7 +508,7 @@ impl JsonEnums {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonEnumsOutput, crate::error::JsonEnumsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: JsonEnumsInput) -> Self {
         Self { input }
@@ -553,7 +553,7 @@ impl JsonUnions {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: JsonUnionsInput) -> Self {
         Self { input }
@@ -875,7 +875,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a boolean union value
@@ -897,7 +897,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a number union value
@@ -919,7 +919,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a blob union value
@@ -941,7 +941,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a timestamp union value
@@ -965,7 +965,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes an enum union value
@@ -987,7 +987,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a list union value
@@ -1012,7 +1012,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a map union value
@@ -1042,7 +1042,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes a structure union value
@@ -1068,7 +1068,7 @@ mod json_unions_request_test {
             )
             .unwrap();
 
-        let parsed = JsonUnions::from_response(http_response);
+        let parsed = JsonUnions::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
 }
@@ -1149,7 +1149,7 @@ impl KitchenSinkOperation {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<KitchenSinkOperationOutput, crate::error::KitchenSinkOperationError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: KitchenSinkOperationInput) -> Self {
         Self { input }
@@ -2054,7 +2054,7 @@ mod kitchen_sink_operation_request_test {
             .body("{}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses string shapes
@@ -2070,7 +2070,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"String\":\"string-value\"}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses integer shapes
@@ -2084,7 +2084,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"Integer\":1234}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses long shapes
@@ -2100,7 +2100,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"Long\":1234567890123456789}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses float shapes
@@ -2114,7 +2114,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"Float\":1234.5}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses double shapes
@@ -2130,7 +2130,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"Double\":123456789.12345679}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses boolean shapes (true)
@@ -2144,7 +2144,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"Boolean\":true}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses boolean (false)
@@ -2158,7 +2158,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"Boolean\":false}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses blob shapes
@@ -2174,7 +2174,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"Blob\":\"YmluYXJ5LXZhbHVl\"}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses timestamp shapes
@@ -2190,7 +2190,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"Timestamp\":946845296}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses iso8601 timestamps
@@ -2207,7 +2207,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"Iso8601Timestamp\":\"2000-01-02T20:34:56.000Z\"}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses httpdate timestamps
@@ -2224,7 +2224,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"HttpdateTimestamp\":\"Sun, 02 Jan 2000 20:34:56.000 GMT\"}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses list shapes
@@ -2244,7 +2244,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"ListOfStrings\":[\"abc\",\"mno\",\"xyz\"]}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses list of map shapes
@@ -2271,7 +2271,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"ListOfMapsOfStrings\":[{\"size\":\"large\"},{\"color\":\"red\"}]}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses list of list shapes
@@ -2290,7 +2290,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"ListOfLists\":[[\"abc\",\"mno\",\"xyz\"],[\"hjk\",\"qrs\",\"tuv\"]]}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses list of structure shapes
@@ -2309,7 +2309,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"ListOfStructs\":[{\"Value\":\"value-1\"},{\"Value\":\"value-2\"}]}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses list of recursive structure shapes
@@ -2327,12 +2327,12 @@ mod kitchen_sink_operation_request_test {
             .build();
         let http_response = ::http::response::Builder::new()
         .header("Content-Type", "application/x-amz-json-1.1")
-        
+
                         .status(200)
                         .body("{\"RecursiveList\":[{\"RecursiveList\":[{\"RecursiveList\":[{\"String\":\"value\"}]}]}]}")
                         .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses map shapes
@@ -2353,7 +2353,7 @@ mod kitchen_sink_operation_request_test {
             .body("{\"MapOfStrings\":{\"size\":\"large\",\"color\":\"red\"}}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses map of list shapes
@@ -2376,12 +2376,12 @@ mod kitchen_sink_operation_request_test {
             .build();
         let http_response = ::http::response::Builder::new()
         .header("Content-Type", "application/x-amz-json-1.1")
-        
+
                         .status(200)
                         .body("{\"MapOfListsOfStrings\":{\"sizes\":[\"large\",\"small\"],\"colors\":[\"red\",\"green\"]}}")
                         .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses map of map shapes
@@ -2408,12 +2408,12 @@ mod kitchen_sink_operation_request_test {
             .build();
         let http_response = ::http::response::Builder::new()
         .header("Content-Type", "application/x-amz-json-1.1")
-        
+
                         .status(200)
                         .body("{\"MapOfMaps\":{\"sizes\":{\"large\":\"L\",\"medium\":\"M\"},\"colors\":{\"red\":\"R\",\"blue\":\"B\"}}}")
                         .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses map of structure shapes
@@ -2442,7 +2442,7 @@ mod kitchen_sink_operation_request_test {
             )
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses map of recursive structure shapes
@@ -2481,12 +2481,12 @@ mod kitchen_sink_operation_request_test {
             .build();
         let http_response = ::http::response::Builder::new()
         .header("Content-Type", "application/x-amz-json-1.1")
-        
+
                         .status(200)
                         .body("{\"RecursiveMap\":{\"key-1\":{\"RecursiveMap\":{\"key-2\":{\"RecursiveMap\":{\"key-3\":{\"String\":\"value\"}}}}}}}")
                         .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Parses the request id from the response
@@ -2501,7 +2501,7 @@ mod kitchen_sink_operation_request_test {
             .body("{}")
             .unwrap();
 
-        let parsed = KitchenSinkOperation::from_response(http_response);
+        let parsed = KitchenSinkOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
 }
@@ -2545,7 +2545,7 @@ impl NullOperation {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NullOperationOutput, crate::error::NullOperationError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: NullOperationInput) -> Self {
         Self { input }
@@ -2652,7 +2652,7 @@ mod null_operation_request_test {
             )
             .unwrap();
 
-        let parsed = NullOperation::from_response(http_response);
+        let parsed = NullOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes null values in maps
@@ -2678,7 +2678,7 @@ mod null_operation_request_test {
             )
             .unwrap();
 
-        let parsed = NullOperation::from_response(http_response);
+        let parsed = NullOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
     /// Deserializes null values in lists
@@ -2700,7 +2700,7 @@ mod null_operation_request_test {
             )
             .unwrap();
 
-        let parsed = NullOperation::from_response(http_response);
+        let parsed = NullOperation::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
 }
@@ -2752,7 +2752,7 @@ impl OperationWithOptionalInputOutput {
         OperationWithOptionalInputOutputOutput,
         crate::error::OperationWithOptionalInputOutputError,
     > {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: OperationWithOptionalInputOutputInput) -> Self {
         Self { input }
@@ -2865,7 +2865,7 @@ impl PutAndGetInlineDocuments {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<PutAndGetInlineDocumentsOutput, crate::error::PutAndGetInlineDocumentsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: PutAndGetInlineDocumentsInput) -> Self {
         Self { input }
@@ -2938,7 +2938,7 @@ mod put_and_get_inline_documents_request_test {
             )
             .unwrap();
 
-        let parsed = PutAndGetInlineDocuments::from_response(http_response);
+        let parsed = PutAndGetInlineDocuments::from_response(&http_response);
         assert_eq!(parsed.unwrap(), expected_output);
     }
 }

@@ -203,7 +203,7 @@ impl BatchExecuteStatement {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<BatchExecuteStatementOutput, crate::error::BatchExecuteStatementError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: BatchExecuteStatementInput) -> Self {
         Self { input }
@@ -319,7 +319,7 @@ impl BatchGetItem {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<BatchGetItemOutput, crate::error::BatchGetItemError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: BatchGetItemInput) -> Self {
         Self { input }
@@ -473,7 +473,7 @@ impl BatchWriteItem {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<BatchWriteItemOutput, crate::error::BatchWriteItemError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: BatchWriteItemInput) -> Self {
         Self { input }
@@ -579,7 +579,7 @@ impl CreateBackup {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CreateBackupOutput, crate::error::CreateBackupError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: CreateBackupInput) -> Self {
         Self { input }
@@ -713,7 +713,7 @@ impl CreateGlobalTable {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CreateGlobalTableOutput, crate::error::CreateGlobalTableError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: CreateGlobalTableInput) -> Self {
         Self { input }
@@ -788,7 +788,7 @@ impl CreateTable {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CreateTableOutput, crate::error::CreateTableError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: CreateTableInput) -> Self {
         Self { input }
@@ -856,7 +856,7 @@ impl DeleteBackup {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DeleteBackupOutput, crate::error::DeleteBackupError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DeleteBackupInput) -> Self {
         Self { input }
@@ -950,7 +950,7 @@ impl DeleteItem {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DeleteItemOutput, crate::error::DeleteItemError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DeleteItemInput) -> Self {
         Self { input }
@@ -1032,7 +1032,7 @@ impl DeleteTable {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DeleteTableOutput, crate::error::DeleteTableError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DeleteTableInput) -> Self {
         Self { input }
@@ -1092,7 +1092,7 @@ impl DescribeBackup {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeBackupOutput, crate::error::DescribeBackupError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DescribeBackupInput) -> Self {
         Self { input }
@@ -1171,7 +1171,7 @@ impl DescribeContinuousBackups {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeContinuousBackupsOutput, crate::error::DescribeContinuousBackupsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DescribeContinuousBackupsInput) -> Self {
         Self { input }
@@ -1243,7 +1243,7 @@ impl DescribeContributorInsights {
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeContributorInsightsOutput, crate::error::DescribeContributorInsightsError>
     {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DescribeContributorInsightsInput) -> Self {
         Self { input }
@@ -1288,7 +1288,7 @@ impl DescribeEndpoints {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeEndpointsOutput, crate::error::DescribeEndpointsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DescribeEndpointsInput) -> Self {
         Self { input }
@@ -1347,7 +1347,7 @@ impl DescribeExport {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeExportOutput, crate::error::DescribeExportError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DescribeExportInput) -> Self {
         Self { input }
@@ -1416,7 +1416,7 @@ impl DescribeGlobalTable {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeGlobalTableOutput, crate::error::DescribeGlobalTableError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DescribeGlobalTableInput) -> Self {
         Self { input }
@@ -1495,7 +1495,7 @@ impl DescribeGlobalTableSettings {
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeGlobalTableSettingsOutput, crate::error::DescribeGlobalTableSettingsError>
     {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DescribeGlobalTableSettingsInput) -> Self {
         Self { input }
@@ -1567,7 +1567,7 @@ impl DescribeKinesisStreamingDestination {
         DescribeKinesisStreamingDestinationOutput,
         crate::error::DescribeKinesisStreamingDestinationError,
     > {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DescribeKinesisStreamingDestinationInput) -> Self {
         Self { input }
@@ -1684,7 +1684,7 @@ impl DescribeLimits {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeLimitsOutput, crate::error::DescribeLimitsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DescribeLimitsInput) -> Self {
         Self { input }
@@ -1747,7 +1747,7 @@ impl DescribeTable {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeTableOutput, crate::error::DescribeTableError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DescribeTableInput) -> Self {
         Self { input }
@@ -1825,7 +1825,7 @@ impl DescribeTableReplicaAutoScaling {
         DescribeTableReplicaAutoScalingOutput,
         crate::error::DescribeTableReplicaAutoScalingError,
     > {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DescribeTableReplicaAutoScalingInput) -> Self {
         Self { input }
@@ -1887,7 +1887,7 @@ impl DescribeTimeToLive {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeTimeToLiveOutput, crate::error::DescribeTimeToLiveError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DescribeTimeToLiveInput) -> Self {
         Self { input }
@@ -1991,7 +1991,7 @@ impl DisableKinesisStreamingDestination {
         DisableKinesisStreamingDestinationOutput,
         crate::error::DisableKinesisStreamingDestinationError,
     > {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: DisableKinesisStreamingDestinationInput) -> Self {
         Self { input }
@@ -2095,7 +2095,7 @@ impl EnableKinesisStreamingDestination {
         EnableKinesisStreamingDestinationOutput,
         crate::error::EnableKinesisStreamingDestinationError,
     > {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: EnableKinesisStreamingDestinationInput) -> Self {
         Self { input }
@@ -2188,7 +2188,7 @@ impl ExecuteStatement {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ExecuteStatementOutput, crate::error::ExecuteStatementError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ExecuteStatementInput) -> Self {
         Self { input }
@@ -2280,7 +2280,7 @@ impl ExecuteTransaction {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ExecuteTransactionOutput, crate::error::ExecuteTransactionError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ExecuteTransactionInput) -> Self {
         Self { input }
@@ -2357,7 +2357,7 @@ impl ExportTableToPointInTime {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ExportTableToPointInTimeOutput, crate::error::ExportTableToPointInTimeError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ExportTableToPointInTimeInput) -> Self {
         Self { input }
@@ -2433,7 +2433,7 @@ impl GetItem {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GetItemOutput, crate::error::GetItemError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: GetItemInput) -> Self {
         Self { input }
@@ -2495,7 +2495,7 @@ impl ListBackups {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListBackupsOutput, crate::error::ListBackupsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ListBackupsInput) -> Self {
         Self { input }
@@ -2559,7 +2559,7 @@ impl ListContributorInsights {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListContributorInsightsOutput, crate::error::ListContributorInsightsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ListContributorInsightsInput) -> Self {
         Self { input }
@@ -2615,7 +2615,7 @@ impl ListExports {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListExportsOutput, crate::error::ListExportsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ListExportsInput) -> Self {
         Self { input }
@@ -2675,7 +2675,7 @@ impl ListGlobalTables {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListGlobalTablesOutput, crate::error::ListGlobalTablesError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ListGlobalTablesInput) -> Self {
         Self { input }
@@ -2733,7 +2733,7 @@ impl ListTables {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListTablesOutput, crate::error::ListTablesError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ListTablesInput) -> Self {
         Self { input }
@@ -2799,7 +2799,7 @@ impl ListTagsOfResource {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListTagsOfResourceOutput, crate::error::ListTagsOfResourceError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ListTagsOfResourceInput) -> Self {
         Self { input }
@@ -2952,7 +2952,7 @@ impl PutItem {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<PutItemOutput, crate::error::PutItemError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: PutItemInput) -> Self {
         Self { input }
@@ -3077,7 +3077,7 @@ impl Query {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<QueryOutput, crate::error::QueryError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: QueryInput) -> Self {
         Self { input }
@@ -3188,7 +3188,7 @@ impl RestoreTableFromBackup {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<RestoreTableFromBackupOutput, crate::error::RestoreTableFromBackupError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: RestoreTableFromBackupInput) -> Self {
         Self { input }
@@ -3325,7 +3325,7 @@ impl RestoreTableToPointInTime {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<RestoreTableToPointInTimeOutput, crate::error::RestoreTableToPointInTimeError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: RestoreTableToPointInTimeInput) -> Self {
         Self { input }
@@ -3419,7 +3419,7 @@ impl Scan {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ScanOutput, crate::error::ScanError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ScanInput) -> Self {
         Self { input }
@@ -3488,7 +3488,7 @@ impl TagResource {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TagResourceOutput, crate::error::TagResourceError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: TagResourceInput) -> Self {
         Self { input }
@@ -3590,7 +3590,7 @@ impl TransactGetItems {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TransactGetItemsOutput, crate::error::TransactGetItemsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: TransactGetItemsInput) -> Self {
         Self { input }
@@ -3755,7 +3755,7 @@ impl TransactWriteItems {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TransactWriteItemsOutput, crate::error::TransactWriteItemsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: TransactWriteItemsInput) -> Self {
         Self { input }
@@ -3822,7 +3822,7 @@ impl UntagResource {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UntagResourceOutput, crate::error::UntagResourceError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: UntagResourceInput) -> Self {
         Self { input }
@@ -3900,7 +3900,7 @@ impl UpdateContinuousBackups {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateContinuousBackupsOutput, crate::error::UpdateContinuousBackupsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: UpdateContinuousBackupsInput) -> Self {
         Self { input }
@@ -3965,7 +3965,7 @@ impl UpdateContributorInsights {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateContributorInsightsOutput, crate::error::UpdateContributorInsightsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: UpdateContributorInsightsInput) -> Self {
         Self { input }
@@ -4068,7 +4068,7 @@ impl UpdateGlobalTable {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateGlobalTableOutput, crate::error::UpdateGlobalTableError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: UpdateGlobalTableInput) -> Self {
         Self { input }
@@ -4162,7 +4162,7 @@ impl UpdateGlobalTableSettings {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateGlobalTableSettingsOutput, crate::error::UpdateGlobalTableSettingsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: UpdateGlobalTableSettingsInput) -> Self {
         Self { input }
@@ -4253,7 +4253,7 @@ impl UpdateItem {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateItemOutput, crate::error::UpdateItemError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: UpdateItemInput) -> Self {
         Self { input }
@@ -4342,7 +4342,7 @@ impl UpdateTable {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateTableOutput, crate::error::UpdateTableError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: UpdateTableInput) -> Self {
         Self { input }
@@ -4426,7 +4426,7 @@ impl UpdateTableReplicaAutoScaling {
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateTableReplicaAutoScalingOutput, crate::error::UpdateTableReplicaAutoScalingError>
     {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: UpdateTableReplicaAutoScalingInput) -> Self {
         Self { input }
@@ -4518,7 +4518,7 @@ impl UpdateTimeToLive {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateTimeToLiveOutput, crate::error::UpdateTimeToLiveError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: UpdateTimeToLiveInput) -> Self {
         Self { input }

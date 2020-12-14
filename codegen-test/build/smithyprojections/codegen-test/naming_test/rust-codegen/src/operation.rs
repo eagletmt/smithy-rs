@@ -48,7 +48,7 @@ impl ErrCollisions {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ErrCollisionsOutput, crate::error::ErrCollisionsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ErrCollisionsInput) -> Self {
         Self { input }
@@ -93,7 +93,7 @@ impl ReservedWordsAsMembers {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ReservedWordsAsMembersOutput, crate::error::ReservedWordsAsMembersError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ReservedWordsAsMembersInput) -> Self {
         Self { input }
@@ -162,7 +162,7 @@ impl StructureNamePunning {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StructureNamePunningOutput, crate::error::StructureNamePunningError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: StructureNamePunningInput) -> Self {
         Self { input }

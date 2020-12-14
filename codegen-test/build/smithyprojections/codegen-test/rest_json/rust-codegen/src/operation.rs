@@ -98,7 +98,7 @@ impl AllQueryStringTypes {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<AllQueryStringTypesOutput, crate::error::AllQueryStringTypesError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: AllQueryStringTypesInput) -> Self {
         Self { input }
@@ -230,7 +230,7 @@ impl ConstantAndVariableQueryString {
         ConstantAndVariableQueryStringOutput,
         crate::error::ConstantAndVariableQueryStringError,
     > {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ConstantAndVariableQueryStringInput) -> Self {
         Self { input }
@@ -321,7 +321,7 @@ impl ConstantQueryString {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ConstantQueryStringOutput, crate::error::ConstantQueryStringError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: ConstantQueryStringInput) -> Self {
         Self { input }
@@ -382,7 +382,7 @@ impl EmptyInputAndEmptyOutput {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<EmptyInputAndEmptyOutputOutput, crate::error::EmptyInputAndEmptyOutputError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: EmptyInputAndEmptyOutputInput) -> Self {
         Self { input }
@@ -450,7 +450,7 @@ impl GreetingWithErrors {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: GreetingWithErrorsInput) -> Self {
         Self { input }
@@ -568,7 +568,7 @@ impl HttpPayloadTraits {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpPayloadTraitsOutput, crate::error::HttpPayloadTraitsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: HttpPayloadTraitsInput) -> Self {
         Self { input }
@@ -669,7 +669,7 @@ impl HttpPayloadTraitsWithMediaType {
         HttpPayloadTraitsWithMediaTypeOutput,
         crate::error::HttpPayloadTraitsWithMediaTypeError,
     > {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: HttpPayloadTraitsWithMediaTypeInput) -> Self {
         Self { input }
@@ -742,7 +742,7 @@ impl HttpPayloadWithStructure {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpPayloadWithStructureOutput, crate::error::HttpPayloadWithStructureError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: HttpPayloadWithStructureInput) -> Self {
         Self { input }
@@ -813,7 +813,7 @@ impl HttpPrefixHeaders {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpPrefixHeadersOutput, crate::error::HttpPrefixHeadersError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: HttpPrefixHeadersInput) -> Self {
         Self { input }
@@ -907,7 +907,7 @@ impl HttpPrefixHeadersResponse {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpPrefixHeadersResponseOutput, crate::error::HttpPrefixHeadersResponseError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: HttpPrefixHeadersResponseInput) -> Self {
         Self { input }
@@ -955,7 +955,7 @@ impl HttpRequestWithGreedyLabelInPath {
         HttpRequestWithGreedyLabelInPathOutput,
         crate::error::HttpRequestWithGreedyLabelInPathError,
     > {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: HttpRequestWithGreedyLabelInPathInput) -> Self {
         Self { input }
@@ -1013,7 +1013,7 @@ impl HttpRequestWithLabels {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpRequestWithLabelsOutput, crate::error::HttpRequestWithLabelsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: HttpRequestWithLabelsInput) -> Self {
         Self { input }
@@ -1082,7 +1082,7 @@ impl HttpRequestWithLabelsAndTimestampFormat {
         HttpRequestWithLabelsAndTimestampFormatOutput,
         crate::error::HttpRequestWithLabelsAndTimestampFormatError,
     > {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: HttpRequestWithLabelsAndTimestampFormatInput) -> Self {
         Self { input }
@@ -1138,7 +1138,7 @@ impl HttpResponseCode {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpResponseCodeOutput, crate::error::HttpResponseCodeError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: HttpResponseCodeInput) -> Self {
         Self { input }
@@ -1185,7 +1185,7 @@ impl IgnoreQueryParamsInResponse {
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<IgnoreQueryParamsInResponseOutput, crate::error::IgnoreQueryParamsInResponseError>
     {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: IgnoreQueryParamsInResponseInput) -> Self {
         Self { input }
@@ -1225,7 +1225,7 @@ impl InlineDocument {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<InlineDocumentOutput, crate::error::InlineDocumentError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: InlineDocumentInput) -> Self {
         Self { input }
@@ -1295,7 +1295,7 @@ impl InlineDocumentAsPayload {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<InlineDocumentAsPayloadOutput, crate::error::InlineDocumentAsPayloadError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: InlineDocumentAsPayloadInput) -> Self {
         Self { input }
@@ -1365,7 +1365,7 @@ impl InputAndOutputWithHeaders {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<InputAndOutputWithHeadersOutput, crate::error::InputAndOutputWithHeadersError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: InputAndOutputWithHeadersInput) -> Self {
         Self { input }
@@ -1569,7 +1569,7 @@ impl JsonBlobs {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonBlobsOutput, crate::error::JsonBlobsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: JsonBlobsInput) -> Self {
         Self { input }
@@ -1628,7 +1628,7 @@ impl JsonEnums {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonEnumsOutput, crate::error::JsonEnumsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: JsonEnumsInput) -> Self {
         Self { input }
@@ -1708,7 +1708,7 @@ impl JsonLists {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonListsOutput, crate::error::JsonListsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: JsonListsInput) -> Self {
         Self { input }
@@ -1842,7 +1842,7 @@ impl JsonMaps {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonMapsOutput, crate::error::JsonMapsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: JsonMapsInput) -> Self {
         Self { input }
@@ -2013,7 +2013,7 @@ impl JsonTimestamps {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonTimestampsOutput, crate::error::JsonTimestampsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: JsonTimestampsInput) -> Self {
         Self { input }
@@ -2148,7 +2148,7 @@ impl JsonUnions {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: JsonUnionsInput) -> Self {
         Self { input }
@@ -2414,7 +2414,7 @@ impl MediaTypeHeader {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<MediaTypeHeaderOutput, crate::error::MediaTypeHeaderError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: MediaTypeHeaderInput) -> Self {
         Self { input }
@@ -2479,7 +2479,7 @@ impl NoInputAndNoOutput {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NoInputAndNoOutputOutput, crate::error::NoInputAndNoOutputError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: NoInputAndNoOutputInput) -> Self {
         Self { input }
@@ -2534,7 +2534,7 @@ impl NoInputAndOutput {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NoInputAndOutputOutput, crate::error::NoInputAndOutputError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: NoInputAndOutputInput) -> Self {
         Self { input }
@@ -2589,7 +2589,7 @@ impl NullAndEmptyHeadersClient {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NullAndEmptyHeadersClientOutput, crate::error::NullAndEmptyHeadersClientError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: NullAndEmptyHeadersClientInput) -> Self {
         Self { input }
@@ -2647,7 +2647,7 @@ impl NullAndEmptyHeadersServer {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NullAndEmptyHeadersServerOutput, crate::error::NullAndEmptyHeadersServerError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: NullAndEmptyHeadersServerInput) -> Self {
         Self { input }
@@ -2696,7 +2696,7 @@ impl OmitsNullSerializesEmptyString {
         OmitsNullSerializesEmptyStringOutput,
         crate::error::OmitsNullSerializesEmptyStringError,
     > {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: OmitsNullSerializesEmptyStringInput) -> Self {
         Self { input }
@@ -2757,7 +2757,7 @@ impl QueryIdempotencyTokenAutoFill {
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<QueryIdempotencyTokenAutoFillOutput, crate::error::QueryIdempotencyTokenAutoFillError>
     {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: QueryIdempotencyTokenAutoFillInput) -> Self {
         Self { input }
@@ -2833,7 +2833,7 @@ impl RecursiveShapes {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<RecursiveShapesOutput, crate::error::RecursiveShapesError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: RecursiveShapesInput) -> Self {
         Self { input }
@@ -2916,7 +2916,7 @@ impl SimpleScalarProperties {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<SimpleScalarPropertiesOutput, crate::error::SimpleScalarPropertiesError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: SimpleScalarPropertiesInput) -> Self {
         Self { input }
@@ -3010,7 +3010,7 @@ impl StreamingTraits {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StreamingTraitsOutput, crate::error::StreamingTraitsError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: StreamingTraitsInput) -> Self {
         Self { input }
@@ -3107,7 +3107,7 @@ impl StreamingTraitsRequireLength {
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StreamingTraitsRequireLengthOutput, crate::error::StreamingTraitsRequireLengthError>
     {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: StreamingTraitsRequireLengthInput) -> Self {
         Self { input }
@@ -3208,7 +3208,7 @@ impl StreamingTraitsWithMediaType {
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StreamingTraitsWithMediaTypeOutput, crate::error::StreamingTraitsWithMediaTypeError>
     {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: StreamingTraitsWithMediaTypeInput) -> Self {
         Self { input }
@@ -3272,7 +3272,7 @@ impl TimestampFormatHeaders {
         &self,
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TimestampFormatHeadersOutput, crate::error::TimestampFormatHeadersError> {
-        Self::from_response(response)
+        Self::from_response(&response)
     }
     pub fn new(input: TimestampFormatHeadersInput) -> Self {
         Self { input }
