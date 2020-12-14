@@ -1,19 +1,20 @@
 use aws_sigv4::{sign, Credentials, Region, RequestExt, SignedService};
+pub use http;
 use http_body::Body;
 use hyper::body::Buf;
 use hyper::client::HttpConnector;
 use hyper::http::request;
 use hyper::{Client as HyperClient, Request, Response, Uri};
-pub use http;
 
 /// macro to execute an AWS request, currently required because no traits exist
 /// to specify the required methods.
 ///
 /// # Example
-/// ```rust
+/// ```rust,compile_fail
+/// use io_v0::Client;
 /// let client = Client::local("dynamodb");
 /// let clear_tables = operation::DeleteTable::builder().table_name("my_table").build();
-/// let cleared = make_request!(hyper_client, clear_tables);
+/// let cleared = io_v0::dispatch!(client, clear_tables);
 /// ```
 #[macro_export]
 macro_rules! dispatch {
@@ -50,7 +51,7 @@ pub enum Raw {
     DispatchFailure(hyper::Error),
     ReadFailure(hyper::Response<()>, hyper::Error),
     Response(hyper::Response<Vec<u8>>),
-    PrettyResponse(hyper::Response<String>)
+    PrettyResponse(hyper::Response<String>),
 }
 
 impl Raw {
@@ -61,10 +62,10 @@ impl Raw {
                 let (parts, body) = resp.into_parts();
                 match String::from_utf8(body) {
                     Ok(s) => Raw::PrettyResponse(Response::from_parts(parts, s)),
-                    Err(e) => Raw::Response(Response::from_parts(parts, e.into_bytes()))
+                    Err(e) => Raw::Response(Response::from_parts(parts, e.into_bytes())),
                 }
-            },
-            other => other
+            }
+            other => other,
         }
     }
 }
@@ -79,7 +80,7 @@ impl<P: std::fmt::Debug> ApiResponse<P> {
     pub fn parsed(&self) -> Result<&P, &Raw> {
         match &self.parsed {
             Some(p) => Ok(&p),
-            None => Err(&self.raw)
+            None => Err(&self.raw),
         }
     }
 }
@@ -175,7 +176,7 @@ mod tests {
             http::Request::new(vec![])
         }
 
-        pub fn parse_response(&self, reponse: &http::Response<Vec<u8>>) -> u32 {
+        pub fn parse_response(&self, _response: &http::Response<Vec<u8>>) -> u32 {
             5
         }
     }
@@ -183,7 +184,7 @@ mod tests {
     #[tokio::test]
     async fn make_test_request() -> Result<(), Box<dyn Error>> {
         let client = Client::local("dynamodb");
-        let response = dispatch!(client, TestOperation);
+        let _response = dispatch!(client, TestOperation);
         Ok(())
     }
 }
