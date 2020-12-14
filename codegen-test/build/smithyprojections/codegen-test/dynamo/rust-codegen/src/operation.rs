@@ -165,7 +165,7 @@ impl BatchExecuteStatement {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<BatchExecuteStatementOutput, crate::error::BatchExecuteStatementError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -201,7 +201,7 @@ impl BatchExecuteStatement {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<BatchExecuteStatementOutput, crate::error::BatchExecuteStatementError> {
         Self::from_response(response)
     }
@@ -268,7 +268,7 @@ impl BatchGetItem {
         BatchGetItemInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<BatchGetItemOutput, crate::error::BatchGetItemError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -317,7 +317,7 @@ impl BatchGetItem {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<BatchGetItemOutput, crate::error::BatchGetItemError> {
         Self::from_response(response)
     }
@@ -412,7 +412,7 @@ impl BatchWriteItem {
         BatchWriteItemInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<BatchWriteItemOutput, crate::error::BatchWriteItemError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -471,7 +471,7 @@ impl BatchWriteItem {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<BatchWriteItemOutput, crate::error::BatchWriteItemError> {
         Self::from_response(response)
     }
@@ -522,7 +522,7 @@ impl CreateBackup {
         CreateBackupInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CreateBackupOutput, crate::error::CreateBackupError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -577,7 +577,7 @@ impl CreateBackup {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CreateBackupOutput, crate::error::CreateBackupError> {
         Self::from_response(response)
     }
@@ -664,7 +664,7 @@ impl CreateGlobalTable {
         CreateGlobalTableInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CreateGlobalTableOutput, crate::error::CreateGlobalTableError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -711,7 +711,7 @@ impl CreateGlobalTable {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CreateGlobalTableOutput, crate::error::CreateGlobalTableError> {
         Self::from_response(response)
     }
@@ -745,7 +745,7 @@ impl CreateTable {
         CreateTableInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CreateTableOutput, crate::error::CreateTableError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -786,7 +786,7 @@ impl CreateTable {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CreateTableOutput, crate::error::CreateTableError> {
         Self::from_response(response)
     }
@@ -809,7 +809,7 @@ impl DeleteBackup {
         DeleteBackupInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DeleteBackupOutput, crate::error::DeleteBackupError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -854,7 +854,7 @@ impl DeleteBackup {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DeleteBackupOutput, crate::error::DeleteBackupError> {
         Self::from_response(response)
     }
@@ -881,7 +881,7 @@ impl DeleteItem {
         DeleteItemInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DeleteItemOutput, crate::error::DeleteItemError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -948,7 +948,7 @@ impl DeleteItem {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DeleteItemOutput, crate::error::DeleteItemError> {
         Self::from_response(response)
     }
@@ -985,7 +985,7 @@ impl DeleteTable {
         DeleteTableInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DeleteTableOutput, crate::error::DeleteTableError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -1030,7 +1030,7 @@ impl DeleteTable {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DeleteTableOutput, crate::error::DeleteTableError> {
         Self::from_response(response)
     }
@@ -1053,7 +1053,7 @@ impl DescribeBackup {
         DescribeBackupInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeBackupOutput, crate::error::DescribeBackupError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -1090,7 +1090,7 @@ impl DescribeBackup {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeBackupOutput, crate::error::DescribeBackupError> {
         Self::from_response(response)
     }
@@ -1125,7 +1125,7 @@ impl DescribeContinuousBackups {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeContinuousBackupsOutput, crate::error::DescribeContinuousBackupsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -1169,7 +1169,7 @@ impl DescribeContinuousBackups {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeContinuousBackupsOutput, crate::error::DescribeContinuousBackupsError> {
         Self::from_response(response)
     }
@@ -1194,7 +1194,7 @@ impl DescribeContributorInsights {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeContributorInsightsOutput, crate::error::DescribeContributorInsightsError>
     {
         if crate::error_code::is_error(&response) {
@@ -1240,7 +1240,7 @@ impl DescribeContributorInsights {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeContributorInsightsOutput, crate::error::DescribeContributorInsightsError>
     {
         Self::from_response(response)
@@ -1263,7 +1263,7 @@ impl DescribeEndpoints {
         DescribeEndpointsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeEndpointsOutput, crate::error::DescribeEndpointsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -1286,7 +1286,7 @@ impl DescribeEndpoints {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeEndpointsOutput, crate::error::DescribeEndpointsError> {
         Self::from_response(response)
     }
@@ -1308,7 +1308,7 @@ impl DescribeExport {
         DescribeExportInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeExportOutput, crate::error::DescribeExportError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -1345,7 +1345,7 @@ impl DescribeExport {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeExportOutput, crate::error::DescribeExportError> {
         Self::from_response(response)
     }
@@ -1374,7 +1374,7 @@ impl DescribeGlobalTable {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeGlobalTableOutput, crate::error::DescribeGlobalTableError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -1414,7 +1414,7 @@ impl DescribeGlobalTable {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeGlobalTableOutput, crate::error::DescribeGlobalTableError> {
         Self::from_response(response)
     }
@@ -1442,7 +1442,7 @@ impl DescribeGlobalTableSettings {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeGlobalTableSettingsOutput, crate::error::DescribeGlobalTableSettingsError>
     {
         if crate::error_code::is_error(&response) {
@@ -1492,7 +1492,7 @@ impl DescribeGlobalTableSettings {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeGlobalTableSettingsOutput, crate::error::DescribeGlobalTableSettingsError>
     {
         Self::from_response(response)
@@ -1518,7 +1518,7 @@ impl DescribeKinesisStreamingDestination {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         DescribeKinesisStreamingDestinationOutput,
         crate::error::DescribeKinesisStreamingDestinationError,
@@ -1562,7 +1562,7 @@ impl DescribeKinesisStreamingDestination {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         DescribeKinesisStreamingDestinationOutput,
         crate::error::DescribeKinesisStreamingDestinationError,
@@ -1646,7 +1646,7 @@ impl DescribeLimits {
         DescribeLimitsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeLimitsOutput, crate::error::DescribeLimitsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -1682,7 +1682,7 @@ impl DescribeLimits {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeLimitsOutput, crate::error::DescribeLimitsError> {
         Self::from_response(response)
     }
@@ -1710,7 +1710,7 @@ impl DescribeTable {
         DescribeTableInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeTableOutput, crate::error::DescribeTableError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -1745,7 +1745,7 @@ impl DescribeTable {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeTableOutput, crate::error::DescribeTableError> {
         Self::from_response(response)
     }
@@ -1773,7 +1773,7 @@ impl DescribeTableReplicaAutoScaling {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         DescribeTableReplicaAutoScalingOutput,
         crate::error::DescribeTableReplicaAutoScalingError,
@@ -1820,7 +1820,7 @@ impl DescribeTableReplicaAutoScaling {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         DescribeTableReplicaAutoScalingOutput,
         crate::error::DescribeTableReplicaAutoScalingError,
@@ -1848,7 +1848,7 @@ impl DescribeTimeToLive {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeTimeToLiveOutput, crate::error::DescribeTimeToLiveError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -1885,7 +1885,7 @@ impl DescribeTimeToLive {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeTimeToLiveOutput, crate::error::DescribeTimeToLiveError> {
         Self::from_response(response)
     }
@@ -1911,7 +1911,7 @@ impl DisableKinesisStreamingDestination {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         DisableKinesisStreamingDestinationOutput,
         crate::error::DisableKinesisStreamingDestinationError,
@@ -1986,7 +1986,7 @@ impl DisableKinesisStreamingDestination {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         DisableKinesisStreamingDestinationOutput,
         crate::error::DisableKinesisStreamingDestinationError,
@@ -2017,7 +2017,7 @@ impl EnableKinesisStreamingDestination {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         EnableKinesisStreamingDestinationOutput,
         crate::error::EnableKinesisStreamingDestinationError,
@@ -2090,7 +2090,7 @@ impl EnableKinesisStreamingDestination {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         EnableKinesisStreamingDestinationOutput,
         crate::error::EnableKinesisStreamingDestinationError,
@@ -2117,7 +2117,7 @@ impl ExecuteStatement {
         ExecuteStatementInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ExecuteStatementOutput, crate::error::ExecuteStatementError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2186,7 +2186,7 @@ impl ExecuteStatement {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ExecuteStatementOutput, crate::error::ExecuteStatementError> {
         Self::from_response(response)
     }
@@ -2213,7 +2213,7 @@ impl ExecuteTransaction {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ExecuteTransactionOutput, crate::error::ExecuteTransactionError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2278,7 +2278,7 @@ impl ExecuteTransaction {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ExecuteTransactionOutput, crate::error::ExecuteTransactionError> {
         Self::from_response(response)
     }
@@ -2305,7 +2305,7 @@ impl ExportTableToPointInTime {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ExportTableToPointInTimeOutput, crate::error::ExportTableToPointInTimeError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2355,7 +2355,7 @@ impl ExportTableToPointInTime {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ExportTableToPointInTimeOutput, crate::error::ExportTableToPointInTimeError> {
         Self::from_response(response)
     }
@@ -2383,7 +2383,7 @@ impl GetItem {
         GetItemInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GetItemOutput, crate::error::GetItemError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2431,7 +2431,7 @@ impl GetItem {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GetItemOutput, crate::error::GetItemError> {
         Self::from_response(response)
     }
@@ -2459,7 +2459,7 @@ impl ListBackups {
         ListBackupsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListBackupsOutput, crate::error::ListBackupsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2493,7 +2493,7 @@ impl ListBackups {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListBackupsOutput, crate::error::ListBackupsError> {
         Self::from_response(response)
     }
@@ -2518,7 +2518,7 @@ impl ListContributorInsights {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListContributorInsightsOutput, crate::error::ListContributorInsightsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2557,7 +2557,7 @@ impl ListContributorInsights {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListContributorInsightsOutput, crate::error::ListContributorInsightsError> {
         Self::from_response(response)
     }
@@ -2579,7 +2579,7 @@ impl ListExports {
         ListExportsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListExportsOutput, crate::error::ListExportsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2613,7 +2613,7 @@ impl ListExports {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListExportsOutput, crate::error::ListExportsError> {
         Self::from_response(response)
     }
@@ -2638,7 +2638,7 @@ impl ListGlobalTables {
         ListGlobalTablesInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListGlobalTablesOutput, crate::error::ListGlobalTablesError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2673,7 +2673,7 @@ impl ListGlobalTables {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListGlobalTablesOutput, crate::error::ListGlobalTablesError> {
         Self::from_response(response)
     }
@@ -2697,7 +2697,7 @@ impl ListTables {
         ListTablesInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListTablesOutput, crate::error::ListTablesError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2731,7 +2731,7 @@ impl ListTables {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListTablesOutput, crate::error::ListTablesError> {
         Self::from_response(response)
     }
@@ -2759,7 +2759,7 @@ impl ListTagsOfResource {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListTagsOfResourceOutput, crate::error::ListTagsOfResourceError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2797,7 +2797,7 @@ impl ListTagsOfResource {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListTagsOfResourceOutput, crate::error::ListTagsOfResourceError> {
         Self::from_response(response)
     }
@@ -2885,7 +2885,7 @@ impl PutItem {
         PutItemInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<PutItemOutput, crate::error::PutItemError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2950,7 +2950,7 @@ impl PutItem {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<PutItemOutput, crate::error::PutItemError> {
         Self::from_response(response)
     }
@@ -3027,7 +3027,7 @@ impl Query {
         QueryInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<QueryOutput, crate::error::QueryError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -3075,7 +3075,7 @@ impl Query {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<QueryOutput, crate::error::QueryError> {
         Self::from_response(response)
     }
@@ -3124,7 +3124,7 @@ impl RestoreTableFromBackup {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<RestoreTableFromBackupOutput, crate::error::RestoreTableFromBackupError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -3186,7 +3186,7 @@ impl RestoreTableFromBackup {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<RestoreTableFromBackupOutput, crate::error::RestoreTableFromBackupError> {
         Self::from_response(response)
     }
@@ -3265,7 +3265,7 @@ impl RestoreTableToPointInTime {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<RestoreTableToPointInTimeOutput, crate::error::RestoreTableToPointInTimeError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -3323,7 +3323,7 @@ impl RestoreTableToPointInTime {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<RestoreTableToPointInTimeOutput, crate::error::RestoreTableToPointInTimeError> {
         Self::from_response(response)
     }
@@ -3369,7 +3369,7 @@ impl Scan {
         ScanInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ScanOutput, crate::error::ScanError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -3417,7 +3417,7 @@ impl Scan {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ScanOutput, crate::error::ScanError> {
         Self::from_response(response)
     }
@@ -3445,7 +3445,7 @@ impl TagResource {
         TagResourceInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TagResourceOutput, crate::error::TagResourceError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -3486,7 +3486,7 @@ impl TagResource {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TagResourceOutput, crate::error::TagResourceError> {
         Self::from_response(response)
     }
@@ -3533,7 +3533,7 @@ impl TransactGetItems {
         TransactGetItemsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TransactGetItemsOutput, crate::error::TransactGetItemsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -3588,7 +3588,7 @@ impl TransactGetItems {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TransactGetItemsOutput, crate::error::TransactGetItemsError> {
         Self::from_response(response)
     }
@@ -3683,7 +3683,7 @@ impl TransactWriteItems {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TransactWriteItemsOutput, crate::error::TransactWriteItemsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -3753,7 +3753,7 @@ impl TransactWriteItems {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TransactWriteItemsOutput, crate::error::TransactWriteItemsError> {
         Self::from_response(response)
     }
@@ -3779,7 +3779,7 @@ impl UntagResource {
         UntagResourceInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UntagResourceOutput, crate::error::UntagResourceError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -3820,7 +3820,7 @@ impl UntagResource {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UntagResourceOutput, crate::error::UntagResourceError> {
         Self::from_response(response)
     }
@@ -3856,7 +3856,7 @@ impl UpdateContinuousBackups {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateContinuousBackupsOutput, crate::error::UpdateContinuousBackupsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -3898,7 +3898,7 @@ impl UpdateContinuousBackups {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateContinuousBackupsOutput, crate::error::UpdateContinuousBackupsError> {
         Self::from_response(response)
     }
@@ -3923,7 +3923,7 @@ impl UpdateContributorInsights {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateContributorInsightsOutput, crate::error::UpdateContributorInsightsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -3963,7 +3963,7 @@ impl UpdateContributorInsights {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateContributorInsightsOutput, crate::error::UpdateContributorInsightsError> {
         Self::from_response(response)
     }
@@ -4013,7 +4013,7 @@ impl UpdateGlobalTable {
         UpdateGlobalTableInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateGlobalTableOutput, crate::error::UpdateGlobalTableError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -4066,7 +4066,7 @@ impl UpdateGlobalTable {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateGlobalTableOutput, crate::error::UpdateGlobalTableError> {
         Self::from_response(response)
     }
@@ -4091,7 +4091,7 @@ impl UpdateGlobalTableSettings {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateGlobalTableSettingsOutput, crate::error::UpdateGlobalTableSettingsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -4160,7 +4160,7 @@ impl UpdateGlobalTableSettings {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateGlobalTableSettingsOutput, crate::error::UpdateGlobalTableSettingsError> {
         Self::from_response(response)
     }
@@ -4184,7 +4184,7 @@ impl UpdateItem {
         UpdateItemInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateItemOutput, crate::error::UpdateItemError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -4251,7 +4251,7 @@ impl UpdateItem {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateItemOutput, crate::error::UpdateItemError> {
         Self::from_response(response)
     }
@@ -4295,7 +4295,7 @@ impl UpdateTable {
         UpdateTableInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateTableOutput, crate::error::UpdateTableError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -4340,7 +4340,7 @@ impl UpdateTable {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateTableOutput, crate::error::UpdateTableError> {
         Self::from_response(response)
     }
@@ -4368,7 +4368,7 @@ impl UpdateTableReplicaAutoScaling {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateTableReplicaAutoScalingOutput, crate::error::UpdateTableReplicaAutoScalingError>
     {
         if crate::error_code::is_error(&response) {
@@ -4423,7 +4423,7 @@ impl UpdateTableReplicaAutoScaling {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateTableReplicaAutoScalingOutput, crate::error::UpdateTableReplicaAutoScalingError>
     {
         Self::from_response(response)
@@ -4470,7 +4470,7 @@ impl UpdateTimeToLive {
         UpdateTimeToLiveInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateTimeToLiveOutput, crate::error::UpdateTimeToLiveError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -4516,7 +4516,7 @@ impl UpdateTimeToLive {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateTimeToLiveOutput, crate::error::UpdateTimeToLiveError> {
         Self::from_response(response)
     }

@@ -17,7 +17,7 @@ impl ErrCollisions {
         ErrCollisionsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ErrCollisionsOutput, crate::error::ErrCollisionsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -46,7 +46,7 @@ impl ErrCollisions {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ErrCollisionsOutput, crate::error::ErrCollisionsError> {
         Self::from_response(response)
     }
@@ -70,7 +70,7 @@ impl ReservedWordsAsMembers {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ReservedWordsAsMembersOutput, crate::error::ReservedWordsAsMembersError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -91,7 +91,7 @@ impl ReservedWordsAsMembers {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ReservedWordsAsMembersOutput, crate::error::ReservedWordsAsMembersError> {
         Self::from_response(response)
     }
@@ -139,7 +139,7 @@ impl StructureNamePunning {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StructureNamePunningOutput, crate::error::StructureNamePunningError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -160,7 +160,7 @@ impl StructureNamePunning {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StructureNamePunningOutput, crate::error::StructureNamePunningError> {
         Self::from_response(response)
     }

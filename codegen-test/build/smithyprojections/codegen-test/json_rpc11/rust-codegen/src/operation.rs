@@ -34,7 +34,7 @@ impl EmptyOperation {
         EmptyOperationInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<EmptyOperationOutput, crate::error::EmptyOperationError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -53,7 +53,7 @@ impl EmptyOperation {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<EmptyOperationOutput, crate::error::EmptyOperationError> {
         Self::from_response(response)
     }
@@ -139,7 +139,7 @@ impl GreetingWithErrors {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -176,7 +176,7 @@ impl GreetingWithErrors {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
         Self::from_response(response)
     }
@@ -478,7 +478,7 @@ impl JsonEnums {
         JsonEnumsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonEnumsOutput, crate::error::JsonEnumsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -506,7 +506,7 @@ impl JsonEnums {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonEnumsOutput, crate::error::JsonEnumsError> {
         Self::from_response(response)
     }
@@ -528,7 +528,7 @@ impl JsonUnions {
         JsonUnionsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -551,7 +551,7 @@ impl JsonUnions {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
         Self::from_response(response)
     }
@@ -1088,7 +1088,7 @@ impl KitchenSinkOperation {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<KitchenSinkOperationOutput, crate::error::KitchenSinkOperationError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -1147,7 +1147,7 @@ impl KitchenSinkOperation {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<KitchenSinkOperationOutput, crate::error::KitchenSinkOperationError> {
         Self::from_response(response)
     }
@@ -2518,7 +2518,7 @@ impl NullOperation {
         NullOperationInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NullOperationOutput, crate::error::NullOperationError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2543,7 +2543,7 @@ impl NullOperation {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NullOperationOutput, crate::error::NullOperationError> {
         Self::from_response(response)
     }
@@ -2720,7 +2720,7 @@ impl OperationWithOptionalInputOutput {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         OperationWithOptionalInputOutputOutput,
         crate::error::OperationWithOptionalInputOutputError,
@@ -2747,7 +2747,7 @@ impl OperationWithOptionalInputOutput {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         OperationWithOptionalInputOutputOutput,
         crate::error::OperationWithOptionalInputOutputError,
@@ -2837,7 +2837,7 @@ impl PutAndGetInlineDocuments {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<PutAndGetInlineDocumentsOutput, crate::error::PutAndGetInlineDocumentsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -2863,7 +2863,7 @@ impl PutAndGetInlineDocuments {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<PutAndGetInlineDocumentsOutput, crate::error::PutAndGetInlineDocumentsError> {
         Self::from_response(response)
     }

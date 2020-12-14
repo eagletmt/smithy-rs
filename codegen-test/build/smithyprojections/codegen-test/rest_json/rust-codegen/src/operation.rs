@@ -89,14 +89,14 @@ impl AllQueryStringTypes {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<AllQueryStringTypesOutput, crate::error::AllQueryStringTypesError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<AllQueryStringTypesOutput, crate::error::AllQueryStringTypesError> {
         Self::from_response(response)
     }
@@ -215,7 +215,7 @@ impl ConstantAndVariableQueryString {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         ConstantAndVariableQueryStringOutput,
         crate::error::ConstantAndVariableQueryStringError,
@@ -225,7 +225,7 @@ impl ConstantAndVariableQueryString {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         ConstantAndVariableQueryStringOutput,
         crate::error::ConstantAndVariableQueryStringError,
@@ -312,14 +312,14 @@ impl ConstantQueryString {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ConstantQueryStringOutput, crate::error::ConstantQueryStringError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ConstantQueryStringOutput, crate::error::ConstantQueryStringError> {
         Self::from_response(response)
     }
@@ -373,14 +373,14 @@ impl EmptyInputAndEmptyOutput {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<EmptyInputAndEmptyOutputOutput, crate::error::EmptyInputAndEmptyOutputError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<EmptyInputAndEmptyOutputOutput, crate::error::EmptyInputAndEmptyOutputError> {
         Self::from_response(response)
     }
@@ -441,14 +441,14 @@ impl GreetingWithErrors {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
         Self::from_response(response)
     }
@@ -559,14 +559,14 @@ impl HttpPayloadTraits {
         HttpPayloadTraitsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpPayloadTraitsOutput, crate::error::HttpPayloadTraitsError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpPayloadTraitsOutput, crate::error::HttpPayloadTraitsError> {
         Self::from_response(response)
     }
@@ -654,7 +654,7 @@ impl HttpPayloadTraitsWithMediaType {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         HttpPayloadTraitsWithMediaTypeOutput,
         crate::error::HttpPayloadTraitsWithMediaTypeError,
@@ -664,7 +664,7 @@ impl HttpPayloadTraitsWithMediaType {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         HttpPayloadTraitsWithMediaTypeOutput,
         crate::error::HttpPayloadTraitsWithMediaTypeError,
@@ -733,14 +733,14 @@ impl HttpPayloadWithStructure {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpPayloadWithStructureOutput, crate::error::HttpPayloadWithStructureError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpPayloadWithStructureOutput, crate::error::HttpPayloadWithStructureError> {
         Self::from_response(response)
     }
@@ -804,14 +804,14 @@ impl HttpPrefixHeaders {
         HttpPrefixHeadersInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpPrefixHeadersOutput, crate::error::HttpPrefixHeadersError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpPrefixHeadersOutput, crate::error::HttpPrefixHeadersError> {
         Self::from_response(response)
     }
@@ -898,14 +898,14 @@ impl HttpPrefixHeadersResponse {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpPrefixHeadersResponseOutput, crate::error::HttpPrefixHeadersResponseError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpPrefixHeadersResponseOutput, crate::error::HttpPrefixHeadersResponseError> {
         Self::from_response(response)
     }
@@ -940,7 +940,7 @@ impl HttpRequestWithGreedyLabelInPath {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         HttpRequestWithGreedyLabelInPathOutput,
         crate::error::HttpRequestWithGreedyLabelInPathError,
@@ -950,7 +950,7 @@ impl HttpRequestWithGreedyLabelInPath {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         HttpRequestWithGreedyLabelInPathOutput,
         crate::error::HttpRequestWithGreedyLabelInPathError,
@@ -1004,14 +1004,14 @@ impl HttpRequestWithLabels {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpRequestWithLabelsOutput, crate::error::HttpRequestWithLabelsError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpRequestWithLabelsOutput, crate::error::HttpRequestWithLabelsError> {
         Self::from_response(response)
     }
@@ -1067,7 +1067,7 @@ impl HttpRequestWithLabelsAndTimestampFormat {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         HttpRequestWithLabelsAndTimestampFormatOutput,
         crate::error::HttpRequestWithLabelsAndTimestampFormatError,
@@ -1077,7 +1077,7 @@ impl HttpRequestWithLabelsAndTimestampFormat {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         HttpRequestWithLabelsAndTimestampFormatOutput,
         crate::error::HttpRequestWithLabelsAndTimestampFormatError,
@@ -1129,14 +1129,14 @@ impl HttpResponseCode {
         HttpResponseCodeInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpResponseCodeOutput, crate::error::HttpResponseCodeError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<HttpResponseCodeOutput, crate::error::HttpResponseCodeError> {
         Self::from_response(response)
     }
@@ -1174,7 +1174,7 @@ impl IgnoreQueryParamsInResponse {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<IgnoreQueryParamsInResponseOutput, crate::error::IgnoreQueryParamsInResponseError>
     {
         let _ = response;
@@ -1182,7 +1182,7 @@ impl IgnoreQueryParamsInResponse {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<IgnoreQueryParamsInResponseOutput, crate::error::IgnoreQueryParamsInResponseError>
     {
         Self::from_response(response)
@@ -1216,14 +1216,14 @@ impl InlineDocument {
         InlineDocumentInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<InlineDocumentOutput, crate::error::InlineDocumentError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<InlineDocumentOutput, crate::error::InlineDocumentError> {
         Self::from_response(response)
     }
@@ -1286,14 +1286,14 @@ impl InlineDocumentAsPayload {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<InlineDocumentAsPayloadOutput, crate::error::InlineDocumentAsPayloadError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<InlineDocumentAsPayloadOutput, crate::error::InlineDocumentAsPayloadError> {
         Self::from_response(response)
     }
@@ -1356,14 +1356,14 @@ impl InputAndOutputWithHeaders {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<InputAndOutputWithHeadersOutput, crate::error::InputAndOutputWithHeadersError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<InputAndOutputWithHeadersOutput, crate::error::InputAndOutputWithHeadersError> {
         Self::from_response(response)
     }
@@ -1560,14 +1560,14 @@ impl JsonBlobs {
         JsonBlobsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonBlobsOutput, crate::error::JsonBlobsError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonBlobsOutput, crate::error::JsonBlobsError> {
         Self::from_response(response)
     }
@@ -1619,14 +1619,14 @@ impl JsonEnums {
         JsonEnumsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonEnumsOutput, crate::error::JsonEnumsError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonEnumsOutput, crate::error::JsonEnumsError> {
         Self::from_response(response)
     }
@@ -1699,14 +1699,14 @@ impl JsonLists {
         JsonListsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonListsOutput, crate::error::JsonListsError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonListsOutput, crate::error::JsonListsError> {
         Self::from_response(response)
     }
@@ -1833,14 +1833,14 @@ impl JsonMaps {
         JsonMapsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonMapsOutput, crate::error::JsonMapsError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonMapsOutput, crate::error::JsonMapsError> {
         Self::from_response(response)
     }
@@ -2004,14 +2004,14 @@ impl JsonTimestamps {
         JsonTimestampsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonTimestampsOutput, crate::error::JsonTimestampsError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonTimestampsOutput, crate::error::JsonTimestampsError> {
         Self::from_response(response)
     }
@@ -2139,14 +2139,14 @@ impl JsonUnions {
         JsonUnionsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
         Self::from_response(response)
     }
@@ -2405,14 +2405,14 @@ impl MediaTypeHeader {
         MediaTypeHeaderInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<MediaTypeHeaderOutput, crate::error::MediaTypeHeaderError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<MediaTypeHeaderOutput, crate::error::MediaTypeHeaderError> {
         Self::from_response(response)
     }
@@ -2470,14 +2470,14 @@ impl NoInputAndNoOutput {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NoInputAndNoOutputOutput, crate::error::NoInputAndNoOutputError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NoInputAndNoOutputOutput, crate::error::NoInputAndNoOutputError> {
         Self::from_response(response)
     }
@@ -2525,14 +2525,14 @@ impl NoInputAndOutput {
         NoInputAndOutputInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NoInputAndOutputOutput, crate::error::NoInputAndOutputError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NoInputAndOutputOutput, crate::error::NoInputAndOutputError> {
         Self::from_response(response)
     }
@@ -2580,14 +2580,14 @@ impl NullAndEmptyHeadersClient {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NullAndEmptyHeadersClientOutput, crate::error::NullAndEmptyHeadersClientError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NullAndEmptyHeadersClientOutput, crate::error::NullAndEmptyHeadersClientError> {
         Self::from_response(response)
     }
@@ -2638,14 +2638,14 @@ impl NullAndEmptyHeadersServer {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NullAndEmptyHeadersServerOutput, crate::error::NullAndEmptyHeadersServerError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NullAndEmptyHeadersServerOutput, crate::error::NullAndEmptyHeadersServerError> {
         Self::from_response(response)
     }
@@ -2681,7 +2681,7 @@ impl OmitsNullSerializesEmptyString {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         OmitsNullSerializesEmptyStringOutput,
         crate::error::OmitsNullSerializesEmptyStringError,
@@ -2691,7 +2691,7 @@ impl OmitsNullSerializesEmptyString {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<
         OmitsNullSerializesEmptyStringOutput,
         crate::error::OmitsNullSerializesEmptyStringError,
@@ -2746,7 +2746,7 @@ impl QueryIdempotencyTokenAutoFill {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<QueryIdempotencyTokenAutoFillOutput, crate::error::QueryIdempotencyTokenAutoFillError>
     {
         let _ = response;
@@ -2754,7 +2754,7 @@ impl QueryIdempotencyTokenAutoFill {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<QueryIdempotencyTokenAutoFillOutput, crate::error::QueryIdempotencyTokenAutoFillError>
     {
         Self::from_response(response)
@@ -2824,14 +2824,14 @@ impl RecursiveShapes {
         RecursiveShapesInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<RecursiveShapesOutput, crate::error::RecursiveShapesError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<RecursiveShapesOutput, crate::error::RecursiveShapesError> {
         Self::from_response(response)
     }
@@ -2907,14 +2907,14 @@ impl SimpleScalarProperties {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<SimpleScalarPropertiesOutput, crate::error::SimpleScalarPropertiesError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<SimpleScalarPropertiesOutput, crate::error::SimpleScalarPropertiesError> {
         Self::from_response(response)
     }
@@ -3001,14 +3001,14 @@ impl StreamingTraits {
         StreamingTraitsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StreamingTraitsOutput, crate::error::StreamingTraitsError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StreamingTraitsOutput, crate::error::StreamingTraitsError> {
         Self::from_response(response)
     }
@@ -3096,7 +3096,7 @@ impl StreamingTraitsRequireLength {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StreamingTraitsRequireLengthOutput, crate::error::StreamingTraitsRequireLengthError>
     {
         let _ = response;
@@ -3104,7 +3104,7 @@ impl StreamingTraitsRequireLength {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StreamingTraitsRequireLengthOutput, crate::error::StreamingTraitsRequireLengthError>
     {
         Self::from_response(response)
@@ -3197,7 +3197,7 @@ impl StreamingTraitsWithMediaType {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StreamingTraitsWithMediaTypeOutput, crate::error::StreamingTraitsWithMediaTypeError>
     {
         let _ = response;
@@ -3205,7 +3205,7 @@ impl StreamingTraitsWithMediaType {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StreamingTraitsWithMediaTypeOutput, crate::error::StreamingTraitsWithMediaTypeError>
     {
         Self::from_response(response)
@@ -3263,14 +3263,14 @@ impl TimestampFormatHeaders {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TimestampFormatHeadersOutput, crate::error::TimestampFormatHeadersError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TimestampFormatHeadersOutput, crate::error::TimestampFormatHeadersError> {
         Self::from_response(response)
     }

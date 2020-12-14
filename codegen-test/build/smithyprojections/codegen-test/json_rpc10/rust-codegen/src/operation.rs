@@ -30,7 +30,7 @@ impl EmptyInputAndEmptyOutput {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<EmptyInputAndEmptyOutputOutput, crate::error::EmptyInputAndEmptyOutputError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -51,7 +51,7 @@ impl EmptyInputAndEmptyOutput {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<EmptyInputAndEmptyOutputOutput, crate::error::EmptyInputAndEmptyOutputError> {
         Self::from_response(response)
     }
@@ -138,7 +138,7 @@ impl GreetingWithErrors {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -175,7 +175,7 @@ impl GreetingWithErrors {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
         Self::from_response(response)
     }
@@ -478,7 +478,7 @@ impl JsonUnions {
         JsonUnionsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -501,7 +501,7 @@ impl JsonUnions {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
         Self::from_response(response)
     }
@@ -1041,7 +1041,7 @@ impl NoInputAndNoOutput {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NoInputAndNoOutputOutput, crate::error::NoInputAndNoOutputError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -1060,7 +1060,7 @@ impl NoInputAndNoOutput {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NoInputAndNoOutputOutput, crate::error::NoInputAndNoOutputError> {
         Self::from_response(response)
     }
@@ -1128,7 +1128,7 @@ impl NoInputAndOutput {
         NoInputAndOutputInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NoInputAndOutputOutput, crate::error::NoInputAndOutputError> {
         if crate::error_code::is_error(&response) {
             let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
@@ -1147,7 +1147,7 @@ impl NoInputAndOutput {
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NoInputAndOutputOutput, crate::error::NoInputAndOutputError> {
         Self::from_response(response)
     }

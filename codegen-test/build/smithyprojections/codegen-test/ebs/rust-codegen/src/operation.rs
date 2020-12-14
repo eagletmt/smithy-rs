@@ -26,14 +26,14 @@ impl CompleteSnapshot {
         CompleteSnapshotInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CompleteSnapshotOutput, crate::error::CompleteSnapshotError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CompleteSnapshotOutput, crate::error::CompleteSnapshotError> {
         Self::from_response(response)
     }
@@ -55,14 +55,14 @@ impl GetSnapshotBlock {
         GetSnapshotBlockInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GetSnapshotBlockOutput, crate::error::GetSnapshotBlockError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GetSnapshotBlockOutput, crate::error::GetSnapshotBlockError> {
         Self::from_response(response)
     }
@@ -85,14 +85,14 @@ impl ListChangedBlocks {
         ListChangedBlocksInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListChangedBlocksOutput, crate::error::ListChangedBlocksError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListChangedBlocksOutput, crate::error::ListChangedBlocksError> {
         Self::from_response(response)
     }
@@ -117,14 +117,14 @@ impl ListSnapshotBlocks {
         )
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListSnapshotBlocksOutput, crate::error::ListSnapshotBlocksError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListSnapshotBlocksOutput, crate::error::ListSnapshotBlocksError> {
         Self::from_response(response)
     }
@@ -149,14 +149,14 @@ impl PutSnapshotBlock {
         PutSnapshotBlockInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<PutSnapshotBlockOutput, crate::error::PutSnapshotBlockError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<PutSnapshotBlockOutput, crate::error::PutSnapshotBlockError> {
         Self::from_response(response)
     }
@@ -181,14 +181,14 @@ impl StartSnapshot {
         StartSnapshotInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
     fn from_response(
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StartSnapshotOutput, crate::error::StartSnapshotError> {
         let _ = response;
         todo!()
     }
     pub fn parse_response(
         &self,
-        response: ::http::response::Response<impl AsRef<[u8]>>,
+        response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StartSnapshotOutput, crate::error::StartSnapshotError> {
         Self::from_response(response)
     }
