@@ -16,12 +16,8 @@ pub fn blob_deser<'de, D>(_deser: D) -> Result<Blob, D::Error>
 where
     D: ::serde::Deserializer<'de>,
 {
-    use ::serde::de::Error;
     use ::serde::Deserialize;
-    let data = <&str>::deserialize(_deser)?;
-    ::smithy_http::base64::decode(data)
-        .map(Blob::new)
-        .map_err(|_| D::Error::invalid_value(::serde::de::Unexpected::Str(data), &"valid base64"))
+    Ok(crate::blob_serde::BlobDeser::deserialize(_deser)?.0)
 }
 
 pub fn instant_epoch_seconds_ser<S>(
@@ -40,12 +36,7 @@ where
     D: ::serde::Deserializer<'de>,
 {
     use ::serde::Deserialize;
-
-    let ts = f64::deserialize(_deser)?;
-    Ok(Instant::from_fractional_seconds(
-        ts.floor() as i64,
-        ts - ts.floor(),
-    ))
+    Ok(crate::instant_epoch::InstantEpoch::deserialize(_deser)?.0)
 }
 
 pub fn stdoptionoptionblob_ser<S>(
@@ -65,17 +56,8 @@ pub fn stdoptionoptionblob_deser<'de, D>(_deser: D) -> Result<::std::option::Opt
 where
     D: ::serde::Deserializer<'de>,
 {
-    use ::serde::de::Error;
     use ::serde::Deserialize;
-    Option::<&str>::deserialize(_deser)?
-        .map(|data| {
-            ::smithy_http::base64::decode(data)
-                .map(Blob::new)
-                .map_err(|_| {
-                    D::Error::invalid_value(::serde::de::Unexpected::Str(data), &"valid base64")
-                })
-        })
-        .transpose()
+    Ok(Option::<crate::blob_serde::BlobDeser>::deserialize(_deser)?.map(|el| el.0))
 }
 
 pub fn stdoptionoptioninstant_http_date_ser<S>(
@@ -98,8 +80,7 @@ where
     D: ::serde::Deserializer<'de>,
 {
     use ::serde::Deserialize;
-
-    Ok(Option::<crate::instant_httpdate::InstantHttpDate>::deserialize(_deser)?.map(|i| i.0))
+    Ok(Option::<crate::instant_httpdate::InstantHttpDate>::deserialize(_deser)?.map(|el| el.0))
 }
 
 pub fn stdoptionoptioninstant_date_time_ser<S>(
@@ -122,8 +103,7 @@ where
     D: ::serde::Deserializer<'de>,
 {
     use ::serde::Deserialize;
-
-    Ok(Option::<crate::instant_8601::InstantIso8601>::deserialize(_deser)?.map(|i| i.0))
+    Ok(Option::<crate::instant_8601::InstantIso8601>::deserialize(_deser)?.map(|el| el.0))
 }
 
 pub fn stdoptionoptioninstant_epoch_seconds_ser<S>(
@@ -145,8 +125,7 @@ where
     D: ::serde::Deserializer<'de>,
 {
     use ::serde::Deserialize;
-
-    Ok(Option::<crate::instant_epoch::InstantEpoch>::deserialize(_deser)?.map(|i| i.0))
+    Ok(Option::<crate::instant_epoch::InstantEpoch>::deserialize(_deser)?.map(|el| el.0))
 }
 
 pub fn document_ser<S>(

@@ -2,6 +2,7 @@
 
 pub use crate::config::Config;
 
+mod blob_serde;
 mod config;
 mod doc_json;
 pub mod error;
