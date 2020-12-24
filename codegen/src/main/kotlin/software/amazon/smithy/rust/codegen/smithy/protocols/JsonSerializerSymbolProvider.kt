@@ -15,7 +15,6 @@ import software.amazon.smithy.model.shapes.MemberShape
 import software.amazon.smithy.model.shapes.Shape
 import software.amazon.smithy.model.shapes.StringShape
 import software.amazon.smithy.model.shapes.StructureShape
-import software.amazon.smithy.model.shapes.TimestampShape
 import software.amazon.smithy.model.shapes.UnionShape
 import software.amazon.smithy.model.traits.JsonNameTrait
 import software.amazon.smithy.model.traits.TimestampFormatTrait
@@ -123,7 +122,7 @@ class SerializerBuilder(
     private val runtimeConfig = symbolProvider.config().runtimeConfig
 
     // Small hack to get the Rust type for these problematic shapes
-    private val instant = symbolProvider.toSymbol(TimestampShape.builder().id("dummy#ts").build()).rustType()
+    private val instant = RuntimeType.Instant(runtimeConfig).toSymbol().rustType()
     private val blob = symbolProvider.toSymbol(BlobShape.builder().id("dummy#blob").build()).rustType()
     private val document = symbolProvider.toSymbol(DocumentShape.builder().id("dummy#doc").build()).rustType()
     private val customShapes = setOf(instant, blob, document)
@@ -214,7 +213,15 @@ class SerializerBuilder(
             is RustType.Option -> withBlock(".map(|el|el", ")") {
                 unrollDeser(realType.value)
             }
-            else -> write(".0")
+            is RustType.Box -> {
+                unrollDeser(realType.value)
+                write(".into()")
+            }
+            is RustType.HashMap -> TODO()
+            is RustType.HashSet -> TODO()
+            else -> if (customShapes.contains(realType)) {
+                write(".0")
+            } else { TODO() }
         }
     }
 
@@ -229,6 +236,11 @@ class SerializerBuilder(
                 withBlock("Vec::<", ">") {
                     writeSerdeType(realType.member, memberShape)
                 }
+            }
+            is RustType.Box -> {
+                // withBlock("Box::<", ">") {
+                writeSerdeType(realType.value, memberShape)
+                // }
             }
             instant -> {
                 val format = tsFormat(memberShape)

@@ -8,6 +8,12 @@ use smithy_types::Instant;
 
 pub struct InstantEpoch(pub Instant);
 
+impl From<InstantEpoch> for Instant {
+    fn from(inp: InstantEpoch) -> Self {
+        inp.0
+    }
+}
+
 impl Serialize for InstantEpoch {
     fn serialize<S>(&self, serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
     where

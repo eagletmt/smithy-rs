@@ -94,6 +94,17 @@ fun Symbol.makeOptional(): Symbol {
     }
 }
 
+fun Symbol.makeRustBoxed(): Symbol {
+    val symbol = this
+    val rustType = RustType.Box(symbol.rustType())
+    return with(Symbol.builder()) {
+        rustType(rustType)
+        addReference(symbol)
+        name(rustType.name)
+        build()
+    }
+}
+
 fun Symbol.Builder.locatedIn(symbolLocation: SymbolLocation): Symbol.Builder =
     this.definitionFile("src/${symbolLocation.filename}")
         .namespace("crate::${symbolLocation.namespace}", "::")
@@ -132,13 +143,7 @@ class SymbolVisitor(
 
     private fun handleRustBoxing(symbol: Symbol, shape: Shape): Symbol {
         return if (shape.hasTrait(RustBoxTrait::class.java)) {
-            val rustType = RustType.Box(symbol.rustType())
-            with(Symbol.builder()) {
-                rustType(rustType)
-                addReference(symbol)
-                name(rustType.name)
-                build()
-            }
+            symbol.makeRustBoxed()
         } else symbol
     }
 
