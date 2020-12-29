@@ -115,10 +115,7 @@ mod all_query_string_types_request_test {
     #[test]
     fn rest_json_all_query_string_types_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             AllQueryStringTypesInput::builder()
                 .query_string("Hello there".to_string())
                 .query_string_list(vec!["a".to_string(), "b".to_string(), "c".to_string()])
@@ -253,10 +250,7 @@ mod constant_and_variable_query_string_request_test {
     #[should_panic]
     fn rest_json_constant_and_variable_query_string_missing_one_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             ConstantAndVariableQueryStringInput::builder()
                 .baz("bam".to_string())
                 .build(&config)
@@ -286,10 +280,7 @@ mod constant_and_variable_query_string_request_test {
     #[should_panic]
     fn rest_json_constant_and_variable_query_string_all_values_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             ConstantAndVariableQueryStringInput::builder()
                 .baz("bam".to_string())
                 .maybe_set("yes".to_string())
@@ -356,10 +347,7 @@ mod constant_query_string_request_test {
     #[should_panic]
     fn rest_json_constant_query_string_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             ConstantQueryStringInput::builder()
                 .hello("hi".to_string())
                 .build(&config)
@@ -422,10 +410,7 @@ mod empty_input_and_empty_output_request_test {
     #[test]
     fn rest_json_empty_input_and_empty_output_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             EmptyInputAndEmptyOutputInput::builder().build(&config)
         };
         let http_request =
@@ -614,10 +599,7 @@ mod http_payload_traits_request_test {
     #[test]
     fn rest_json_http_payload_traits_with_blob_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             HttpPayloadTraitsInput::builder()
                 .foo("Foo".to_string())
                 .blob(::smithy_types::Blob::new("blobby blob blob"))
@@ -645,10 +627,7 @@ mod http_payload_traits_request_test {
     #[test]
     fn rest_json_http_payload_traits_with_no_blob_body_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             HttpPayloadTraitsInput::builder()
                 .foo("Foo".to_string())
                 .build(&config)
@@ -727,10 +706,7 @@ mod http_payload_traits_with_media_type_request_test {
     #[test]
     fn rest_json_http_payload_traits_with_media_type_with_blob_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             HttpPayloadTraitsWithMediaTypeInput::builder()
                 .foo("Foo".to_string())
                 .blob(::smithy_types::Blob::new("blobby blob blob"))
@@ -807,10 +783,7 @@ mod http_payload_with_structure_request_test {
     #[test]
     fn rest_json_http_payload_with_structure_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             HttpPayloadWithStructureInput::builder()
                 .nested({
                     let _ = 5;
@@ -885,10 +858,7 @@ mod http_prefix_headers_request_test {
     #[should_panic]
     fn rest_json_http_prefix_headers_are_present_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             HttpPrefixHeadersInput::builder()
                 .foo("Foo".to_string())
                 .foo_map({
@@ -920,10 +890,7 @@ mod http_prefix_headers_request_test {
     #[test]
     fn rest_json_http_prefix_headers_are_not_present_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             HttpPrefixHeadersInput::builder()
                 .foo("Foo".to_string())
                 .foo_map(::std::collections::HashMap::new())
@@ -1038,10 +1005,7 @@ mod http_request_with_greedy_label_in_path_request_test {
     #[test]
     fn rest_json_http_request_with_greedy_label_in_path_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             HttpRequestWithGreedyLabelInPathInput::builder()
                 .foo("hello".to_string())
                 .baz("there/guy".to_string())
@@ -1102,10 +1066,7 @@ mod http_request_with_labels_request_test {
     #[test]
     fn rest_json_input_with_headers_and_all_params_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             HttpRequestWithLabelsInput::builder()
                 .string("string".to_string())
                 .short(1)
@@ -1177,10 +1138,7 @@ mod http_request_with_labels_and_timestamp_format_request_test {
     #[test]
     fn rest_json_http_request_with_labels_and_timestamp_format_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             HttpRequestWithLabelsAndTimestampFormatInput::builder()
                 .member_epoch_seconds(::smithy_types::Instant::from_epoch_seconds(1576540098))
                 .member_http_date(::smithy_types::Instant::from_epoch_seconds(1576540098))
@@ -1326,10 +1284,7 @@ mod inline_document_request_test {
     #[test]
     fn inline_document_input_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             InlineDocumentInput::builder()
                 .string_value("string".to_string())
                 .document_value({
@@ -1402,10 +1357,7 @@ mod inline_document_as_payload_request_test {
     #[test]
     fn inline_document_as_payload_input_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             InlineDocumentAsPayloadInput::builder()
                 .document_value({
                     let as_json = ::serde_json::json! { {
@@ -1479,10 +1431,7 @@ mod input_and_output_with_headers_request_test {
     #[test]
     fn rest_json_input_and_output_with_string_headers_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             InputAndOutputWithHeadersInput::builder()
                 .header_string("Hello".to_string())
                 .header_string_list(vec!["a".to_string(), "b".to_string(), "c".to_string()])
@@ -1516,10 +1465,7 @@ mod input_and_output_with_headers_request_test {
     #[test]
     fn rest_json_input_and_output_with_numeric_headers_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             InputAndOutputWithHeadersInput::builder()
                 .header_byte(1)
                 .header_short(123)
@@ -1555,10 +1501,7 @@ mod input_and_output_with_headers_request_test {
     #[test]
     fn rest_json_input_and_output_with_boolean_headers_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             InputAndOutputWithHeadersInput::builder()
                 .header_true_bool(true)
                 .header_false_bool(false)
@@ -1586,10 +1529,7 @@ mod input_and_output_with_headers_request_test {
     #[test]
     fn rest_json_input_and_output_with_timestamp_headers_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             InputAndOutputWithHeadersInput::builder()
                 .header_timestamp_list(vec![
                     ::smithy_types::Instant::from_epoch_seconds(1576540098),
@@ -1617,10 +1557,7 @@ mod input_and_output_with_headers_request_test {
     #[test]
     fn rest_json_input_and_output_with_enum_headers_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             InputAndOutputWithHeadersInput::builder()
                 .header_enum(FooEnum::from("Foo"))
                 .header_enum_list(vec![
@@ -1712,10 +1649,7 @@ mod json_blobs_request_test {
     #[test]
     fn rest_json_json_blobs_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonBlobsInput::builder()
                 .data(::smithy_types::Blob::new("value"))
                 .build(&config)
@@ -1778,10 +1712,7 @@ mod json_enums_request_test {
     #[test]
     fn rest_json_json_enums_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonEnumsInput::builder()
                 .foo_enum1(FooEnum::from("Foo"))
                 .foo_enum2(FooEnum::from("0"))
@@ -1865,10 +1796,7 @@ mod json_lists_request_test {
     #[test]
     fn rest_json_lists_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonListsInput::builder()
                 .string_list(vec!["foo".to_string(), "bar".to_string()])
                 .string_set({
@@ -1922,10 +1850,7 @@ mod json_lists_request_test {
     #[test]
     fn rest_json_lists_empty_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonListsInput::builder().string_list(vec![]).build(&config)
         };
         let http_request = JsonListsInput::assemble(input.input.request_builder_base(), vec![]);
@@ -1944,10 +1869,7 @@ mod json_lists_request_test {
     #[test]
     fn rest_json_lists_serialize_null_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonListsInput::builder()
                 .sparse_string_list(vec![None, Some("hi".to_string())])
                 .build(&config)
@@ -2022,10 +1944,7 @@ mod json_maps_request_test {
     #[test]
     fn rest_json_json_maps_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonMapsInput::builder()
                 .dense_struct_map({
                     let mut ret = ::std::collections::HashMap::new();
@@ -2075,10 +1994,7 @@ mod json_maps_request_test {
     #[test]
     fn rest_json_serializes_null_map_values_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonMapsInput::builder()
                 .sparse_boolean_map({
                     let mut ret = ::std::collections::HashMap::new();
@@ -2118,10 +2034,7 @@ mod json_maps_request_test {
     #[test]
     fn rest_json_serializes_zero_values_in_maps_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonMapsInput::builder()
                 .dense_number_map({
                     let mut ret = ::std::collections::HashMap::new();
@@ -2216,10 +2129,7 @@ mod json_timestamps_request_test {
     #[test]
     fn rest_json_json_timestamps_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonTimestampsInput::builder()
                 .normal(::smithy_types::Instant::from_epoch_seconds(1398796238))
                 .build(&config)
@@ -2241,10 +2151,7 @@ mod json_timestamps_request_test {
     #[test]
     fn rest_json_json_timestamps_with_date_time_format_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonTimestampsInput::builder()
                 .date_time(::smithy_types::Instant::from_epoch_seconds(1398796238))
                 .build(&config)
@@ -2266,10 +2173,7 @@ mod json_timestamps_request_test {
     #[test]
     fn rest_json_json_timestamps_with_epoch_seconds_format_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonTimestampsInput::builder()
                 .epoch_seconds(::smithy_types::Instant::from_epoch_seconds(1398796238))
                 .build(&config)
@@ -2291,10 +2195,7 @@ mod json_timestamps_request_test {
     #[test]
     fn rest_json_json_timestamps_with_http_date_format_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonTimestampsInput::builder()
                 .http_date(::smithy_types::Instant::from_epoch_seconds(1398796238))
                 .build(&config)
@@ -2378,10 +2279,7 @@ mod json_unions_request_test {
     #[test]
     fn rest_json_serialize_string_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::StringValue("foo".to_string()))
                 .build(&config)
@@ -2402,10 +2300,7 @@ mod json_unions_request_test {
     #[test]
     fn rest_json_serialize_boolean_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::BooleanValue(true))
                 .build(&config)
@@ -2426,10 +2321,7 @@ mod json_unions_request_test {
     #[test]
     fn rest_json_serialize_number_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::NumberValue(1))
                 .build(&config)
@@ -2450,10 +2342,7 @@ mod json_unions_request_test {
     #[test]
     fn rest_json_serialize_blob_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::BlobValue(::smithy_types::Blob::new("foo")))
                 .build(&config)
@@ -2474,10 +2363,7 @@ mod json_unions_request_test {
     #[test]
     fn rest_json_serialize_timestamp_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::TimestampValue(
                     ::smithy_types::Instant::from_epoch_seconds(1398796238),
@@ -2500,10 +2386,7 @@ mod json_unions_request_test {
     #[test]
     fn rest_json_serialize_enum_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::EnumValue(FooEnum::from("Foo")))
                 .build(&config)
@@ -2524,10 +2407,7 @@ mod json_unions_request_test {
     #[test]
     fn rest_json_serialize_list_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::ListValue(vec![
                     "foo".to_string(),
@@ -2551,10 +2431,7 @@ mod json_unions_request_test {
     #[test]
     fn rest_json_serialize_map_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::MapValue({
                     let mut ret = ::std::collections::HashMap::new();
@@ -2580,10 +2457,7 @@ mod json_unions_request_test {
     #[test]
     fn rest_json_serialize_structure_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::StructureValue({
                     let _ = 5;
@@ -2696,10 +2570,7 @@ mod media_type_header_request_test {
     #[test]
     fn media_type_header_input_base64_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             MediaTypeHeaderInput::builder()
                 .json("true".to_string())
                 .build(&config)
@@ -2767,10 +2638,7 @@ mod no_input_and_no_output_request_test {
     #[test]
     fn rest_json_no_input_and_no_output_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             NoInputAndNoOutputInput::builder().build(&config)
         };
         let http_request =
@@ -2828,10 +2696,7 @@ mod no_input_and_output_request_test {
     #[test]
     fn rest_json_no_input_and_output_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             NoInputAndOutputInput::builder().build(&config)
         };
         let http_request =
@@ -2889,10 +2754,7 @@ mod null_and_empty_headers_client_request_test {
     #[test]
     fn rest_json_null_and_empty_headers_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             NullAndEmptyHeadersClientInput::builder()
                 .b("".to_string())
                 .c(vec![])
@@ -3002,10 +2864,7 @@ mod omits_null_serializes_empty_string_request_test {
     #[test]
     fn rest_json_omits_null_serializes_empty_string_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             OmitsNullSerializesEmptyStringInput::builder()
                 .empty_string("".to_string())
                 .build(&config)
@@ -3072,7 +2931,6 @@ mod query_idempotency_token_auto_fill_request_test {
             let config = crate::config::Config::builder()
                 .token_provider("00000000-0000-4000-8000-000000000000")
                 .build();
-
             QueryIdempotencyTokenAutoFillInput::builder().build(&config)
         };
         let http_request = QueryIdempotencyTokenAutoFillInput::assemble(
@@ -3097,7 +2955,6 @@ mod query_idempotency_token_auto_fill_request_test {
             let config = crate::config::Config::builder()
                 .token_provider("00000000-0000-4000-8000-000000000000")
                 .build();
-
             QueryIdempotencyTokenAutoFillInput::builder()
                 .token("00000000-0000-4000-8000-000000000000".to_string())
                 .build(&config)
@@ -3158,10 +3015,7 @@ mod recursive_shapes_request_test {
     #[test]
     fn rest_json_recursive_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             RecursiveShapesInput::builder()
                 .nested({
                     let _ = 5;
@@ -3249,10 +3103,7 @@ mod simple_scalar_properties_request_test {
     #[test]
     fn rest_json_simple_scalar_properties_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             SimpleScalarPropertiesInput::builder()
                 .foo("Foo".to_string())
                 .string_value("string".to_string())
@@ -3283,10 +3134,7 @@ mod simple_scalar_properties_request_test {
     #[test]
     fn rest_json_doesnt_serialize_null_structure_values_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             SimpleScalarPropertiesInput::builder().build(&config)
         };
         let http_request =
@@ -3355,10 +3203,7 @@ mod streaming_traits_request_test {
     #[test]
     fn rest_json_streaming_traits_with_blob_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             StreamingTraitsInput::builder()
                 .foo("Foo".to_string())
                 .blob(::smithy_types::Blob::new("blobby blob blob"))
@@ -3384,10 +3229,7 @@ mod streaming_traits_request_test {
     #[test]
     fn rest_json_streaming_traits_with_no_blob_body_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             StreamingTraitsInput::builder()
                 .foo("Foo".to_string())
                 .build(&config)
@@ -3464,10 +3306,7 @@ mod streaming_traits_require_length_request_test {
     #[test]
     fn rest_json_streaming_traits_require_length_with_blob_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             StreamingTraitsRequireLengthInput::builder()
                 .foo("Foo".to_string())
                 .blob(::smithy_types::Blob::new("blobby blob blob"))
@@ -3498,10 +3337,7 @@ mod streaming_traits_require_length_request_test {
     #[test]
     fn rest_json_streaming_traits_require_length_with_no_blob_body_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             StreamingTraitsRequireLengthInput::builder()
                 .foo("Foo".to_string())
                 .build(&config)
@@ -3577,10 +3413,7 @@ mod streaming_traits_with_media_type_request_test {
     #[test]
     fn rest_json_streaming_traits_with_media_type_with_blob_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             StreamingTraitsWithMediaTypeInput::builder()
                 .foo("Foo".to_string())
                 .blob(::smithy_types::Blob::new("blobby blob blob"))
@@ -3647,10 +3480,7 @@ mod timestamp_format_headers_request_test {
     #[test]
     fn rest_json_timestamp_format_headers_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             TimestampFormatHeadersInput::builder()
                 .member_epoch_seconds(::smithy_types::Instant::from_epoch_seconds(1576540098))
                 .member_http_date(::smithy_types::Instant::from_epoch_seconds(1576540098))

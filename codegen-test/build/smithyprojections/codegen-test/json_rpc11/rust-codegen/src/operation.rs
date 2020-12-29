@@ -73,10 +73,7 @@ mod empty_operation_request_test {
     #[test]
     fn sends_requests_to_slash_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             EmptyOperationInput::builder().build(&config)
         };
         let http_request = input.build_http_request();
@@ -92,10 +89,7 @@ mod empty_operation_request_test {
     #[test]
     fn includes_x_amz_target_and_content_type_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             EmptyOperationInput::builder().build(&config)
         };
         let http_request = input.build_http_request();
@@ -626,10 +620,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json11_serialize_string_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::StringValue("foo".to_string()))
                 .build(&config)
@@ -662,10 +653,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json11_serialize_boolean_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::BooleanValue(true))
                 .build(&config)
@@ -698,10 +686,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json11_serialize_number_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::NumberValue(1))
                 .build(&config)
@@ -734,10 +719,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json11_serialize_blob_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::BlobValue(::smithy_types::Blob::new("foo")))
                 .build(&config)
@@ -770,10 +752,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json11_serialize_timestamp_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::TimestampValue(
                     ::smithy_types::Instant::from_epoch_seconds(1398796238),
@@ -808,10 +787,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json11_serialize_enum_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::EnumValue(FooEnum::from("Foo")))
                 .build(&config)
@@ -844,10 +820,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json11_serialize_list_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::ListValue(vec![
                     "foo".to_string(),
@@ -883,10 +856,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json11_serialize_map_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::MapValue({
                     let mut ret = ::std::collections::HashMap::new();
@@ -927,10 +897,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json11_serialize_structure_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::StructureValue({
                     let _ = 5;
@@ -1306,10 +1273,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_string_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .string("abc xyz".to_string())
                 .build(&config)
@@ -1340,10 +1304,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_string_shapes_with_jsonvalue_trait_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
             .json_value(
                 "{\"string\":\"value\",\"number\":1234.5,\"boolTrue\":true,\"boolFalse\":false,\"array\":[1,2,3,4],\"object\":{\"key\":\"value\"},\"null\":null}".to_string()
@@ -1374,10 +1335,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_integer_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .integer(1234)
                 .build(&config)
@@ -1408,10 +1366,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_long_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .long(999999999999)
                 .build(&config)
@@ -1442,10 +1397,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_float_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .float(1234.5)
                 .build(&config)
@@ -1476,10 +1428,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_double_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .double(1234.5)
                 .build(&config)
@@ -1510,10 +1459,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_blob_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .blob(::smithy_types::Blob::new("binary-value"))
                 .build(&config)
@@ -1544,10 +1490,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_boolean_shapes_true_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .boolean(true)
                 .build(&config)
@@ -1578,10 +1521,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_boolean_shapes_false_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .boolean(false)
                 .build(&config)
@@ -1612,10 +1552,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_timestamp_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
                 .build(&config)
@@ -1646,10 +1583,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_timestamp_shapes_with_iso8601_timestampformat_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .iso8601_timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
                 .build(&config)
@@ -1680,10 +1614,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_timestamp_shapes_with_httpdate_timestampformat_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .httpdate_timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
                 .build(&config)
@@ -1714,10 +1645,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_timestamp_shapes_with_unixtimestamp_timestampformat_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .unix_timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
                 .build(&config)
@@ -1748,10 +1676,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_list_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .list_of_strings(vec![
                     "abc".to_string(),
@@ -1786,10 +1711,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_empty_list_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .list_of_strings(vec![])
                 .build(&config)
@@ -1820,10 +1742,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_list_of_map_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .list_of_maps_of_strings(vec![
                     {
@@ -1870,10 +1789,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_list_of_structure_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .list_of_structs(vec![
                     {
@@ -1917,10 +1833,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_list_of_recursive_structure_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .recursive_list(vec![{
                     let _ = 5;
@@ -1964,10 +1877,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_map_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .map_of_strings({
                     let mut ret = ::std::collections::HashMap::new();
@@ -2003,10 +1913,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_empty_map_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .map_of_strings(::std::collections::HashMap::new())
                 .build(&config)
@@ -2037,10 +1944,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_map_of_list_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .map_of_lists_of_strings({
                     let mut ret = ::std::collections::HashMap::new();
@@ -2082,10 +1986,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_map_of_structure_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .map_of_structs({
                     let mut ret = ::std::collections::HashMap::new();
@@ -2125,10 +2026,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_map_of_recursive_structure_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .recursive_map({
                     let mut ret = ::std::collections::HashMap::new();
@@ -2182,10 +2080,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_structure_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .simple_struct({
                     let _ = 5;
@@ -2219,10 +2114,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_structure_members_with_locationname_traits_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .struct_with_location_name({
                     let _ = 5;
@@ -2258,10 +2150,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_empty_structure_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .simple_struct({
                     let _ = 5;
@@ -2295,10 +2184,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_structure_which_have_no_members_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .empty_struct({
                     let _ = 5;
@@ -2332,10 +2218,7 @@ mod kitchen_sink_operation_request_test {
     #[test]
     fn serializes_recursive_structure_shapes_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             KitchenSinkOperationInput::builder()
                 .string("top-value".to_string())
                 .boolean(false)
@@ -2991,10 +2874,7 @@ mod null_operation_request_test {
     #[test]
     fn aws_json11_structures_dont_serialize_null_values_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             NullOperationInput::builder().build(&config)
         };
         let http_request = input.build_http_request();
@@ -3018,10 +2898,7 @@ mod null_operation_request_test {
     #[test]
     fn aws_json11_maps_serialize_null_values_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             NullOperationInput::builder()
                 .sparse_string_map({
                     let mut ret = ::std::collections::HashMap::new();
@@ -3055,10 +2932,7 @@ mod null_operation_request_test {
     #[test]
     fn aws_json11_lists_serialize_null_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             NullOperationInput::builder()
                 .sparse_string_list(vec![None])
                 .build(&config)
@@ -3223,10 +3097,7 @@ mod operation_with_optional_input_output_request_test {
     #[test]
     fn can_call_operation_with_no_input_or_output_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             OperationWithOptionalInputOutputInput::builder().build(&config)
         };
         let http_request = input.build_http_request();
@@ -3256,10 +3127,7 @@ mod operation_with_optional_input_output_request_test {
     #[test]
     fn can_call_operation_with_optional_input_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             OperationWithOptionalInputOutputInput::builder()
                 .value("Hi".to_string())
                 .build(&config)
@@ -3350,10 +3218,7 @@ mod put_and_get_inline_documents_request_test {
     #[test]
     fn put_and_get_inline_documents_input_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             PutAndGetInlineDocumentsInput::builder()
                 .inline_document({
                     let as_json = ::serde_json::json! { {

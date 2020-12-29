@@ -6,10 +6,10 @@ version = "0.0.1"
 description = "rest_json client"
 authors = ["TODO@todo.com"]
 edition = "2018"
-[dependencies.smithy-types]
-path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-types"
 [dependencies.rand]
 version = "0.7"
+[dependencies.smithy-types]
+path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-types"
 [dependencies.smithy-http]
 path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-http"
 [dependencies.http]

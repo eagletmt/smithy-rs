@@ -108,10 +108,7 @@ mod reserved_words_as_members_request_test {
     #[test]
     fn reserved_words_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             ReservedWordsAsMembersInput::builder()
                 .r#as(5)
                 .r#async(true)
@@ -184,10 +181,7 @@ mod structure_name_punning_request_test {
     #[test]
     fn structure_punning_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             StructureNamePunningInput::builder()
                 .regular_string("hello!".to_string())
                 .punned_string({

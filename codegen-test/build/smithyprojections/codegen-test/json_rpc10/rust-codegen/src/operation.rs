@@ -71,10 +71,7 @@ mod empty_input_and_empty_output_request_test {
     #[test]
     fn aws_json10_empty_input_and_empty_output_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             EmptyInputAndEmptyOutputInput::builder().build(&config)
         };
         let http_request = input.build_http_request();
@@ -573,10 +570,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json10_serialize_string_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::StringValue("foo".to_string()))
                 .build(&config)
@@ -609,10 +603,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json10_serialize_boolean_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::BooleanValue(true))
                 .build(&config)
@@ -645,10 +636,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json10_serialize_number_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::NumberValue(1))
                 .build(&config)
@@ -681,10 +669,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json10_serialize_blob_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::BlobValue(::smithy_types::Blob::new("foo")))
                 .build(&config)
@@ -717,10 +702,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json10_serialize_timestamp_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::TimestampValue(
                     ::smithy_types::Instant::from_epoch_seconds(1398796238),
@@ -755,10 +737,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json10_serialize_enum_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::EnumValue(FooEnum::from("Foo")))
                 .build(&config)
@@ -791,10 +770,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json10_serialize_list_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::ListValue(vec![
                     "foo".to_string(),
@@ -830,10 +806,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json10_serialize_map_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::MapValue({
                     let mut ret = ::std::collections::HashMap::new();
@@ -874,10 +847,7 @@ mod json_unions_request_test {
     #[test]
     fn aws_json10_serialize_structure_union_value_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             JsonUnionsInput::builder()
                 .contents(MyUnion::StructureValue({
                     let _ = 5;
@@ -1212,10 +1182,7 @@ mod no_input_and_no_output_request_test {
     #[test]
     fn aws_json10_no_input_and_no_output_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             NoInputAndNoOutputInput::builder().build(&config)
         };
         let http_request = input.build_http_request();
@@ -1308,10 +1275,7 @@ mod no_input_and_output_request_test {
     #[test]
     fn aws_json10_no_input_and_output_request() {
         let input = {
-            let config = crate::config::Config::builder()
-                .token_provider("00000000-0000-4000-8000-000000000000")
-                .build();
-
+            let config = crate::config::Config::builder().build();
             NoInputAndOutputInput::builder().build(&config)
         };
         let http_request = input.build_http_request();
