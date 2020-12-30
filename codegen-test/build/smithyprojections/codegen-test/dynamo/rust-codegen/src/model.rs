@@ -340,29 +340,49 @@ impl ReplicaAutoScalingDescription {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct ReplicaStatus(String);
-impl ReplicaStatus {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &[
-            "ACTIVE",
-            "CREATING",
-            "CREATION_FAILED",
-            "DELETING",
-            "INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-            "REGION_DISABLED",
-            "UPDATING",
-        ]
-    }
+pub enum ReplicaStatus {
+    Active,
+    Creating,
+    CreationFailed,
+    Deleting,
+    InaccessibleEncryptionCredentials,
+    RegionDisabled,
+    Updating,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for ReplicaStatus
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        ReplicaStatus(s.as_ref().to_owned())
+        match s.as_ref() {
+            "ACTIVE" => ReplicaStatus::Active,
+            "CREATING" => ReplicaStatus::Creating,
+            "CREATION_FAILED" => ReplicaStatus::CreationFailed,
+            "DELETING" => ReplicaStatus::Deleting,
+            "INACCESSIBLE_ENCRYPTION_CREDENTIALS" => {
+                ReplicaStatus::InaccessibleEncryptionCredentials
+            }
+            "REGION_DISABLED" => ReplicaStatus::RegionDisabled,
+            "UPDATING" => ReplicaStatus::Updating,
+            other => ReplicaStatus::Unknown(other.to_owned()),
+        }
+    }
+}
+impl ReplicaStatus {
+    pub fn as_str(&self) -> &str {
+        match self {
+            ReplicaStatus::Active => "ACTIVE",
+            ReplicaStatus::Creating => "CREATING",
+            ReplicaStatus::CreationFailed => "CREATION_FAILED",
+            ReplicaStatus::Deleting => "DELETING",
+            ReplicaStatus::InaccessibleEncryptionCredentials => {
+                "INACCESSIBLE_ENCRYPTION_CREDENTIALS"
+            }
+            ReplicaStatus::RegionDisabled => "REGION_DISABLED",
+            ReplicaStatus::Updating => "UPDATING",
+            ReplicaStatus::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -791,21 +811,36 @@ impl ReplicaGlobalSecondaryIndexAutoScalingDescription {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct IndexStatus(String);
-impl IndexStatus {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["ACTIVE", "CREATING", "DELETING", "UPDATING"]
-    }
+pub enum IndexStatus {
+    Active,
+    Creating,
+    Deleting,
+    Updating,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for IndexStatus
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        IndexStatus(s.as_ref().to_owned())
+        match s.as_ref() {
+            "ACTIVE" => IndexStatus::Active,
+            "CREATING" => IndexStatus::Creating,
+            "DELETING" => IndexStatus::Deleting,
+            "UPDATING" => IndexStatus::Updating,
+            other => IndexStatus::Unknown(other.to_owned()),
+        }
+    }
+}
+impl IndexStatus {
+    pub fn as_str(&self) -> &str {
+        match self {
+            IndexStatus::Active => "ACTIVE",
+            IndexStatus::Creating => "CREATING",
+            IndexStatus::Deleting => "DELETING",
+            IndexStatus::Updating => "UPDATING",
+            IndexStatus::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -821,29 +856,45 @@ where
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct TableStatus(String);
-impl TableStatus {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &[
-            "ACTIVE",
-            "ARCHIVED",
-            "ARCHIVING",
-            "CREATING",
-            "DELETING",
-            "INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-            "UPDATING",
-        ]
-    }
+pub enum TableStatus {
+    Active,
+    Archived,
+    Archiving,
+    Creating,
+    Deleting,
+    InaccessibleEncryptionCredentials,
+    Updating,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for TableStatus
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        TableStatus(s.as_ref().to_owned())
+        match s.as_ref() {
+            "ACTIVE" => TableStatus::Active,
+            "ARCHIVED" => TableStatus::Archived,
+            "ARCHIVING" => TableStatus::Archiving,
+            "CREATING" => TableStatus::Creating,
+            "DELETING" => TableStatus::Deleting,
+            "INACCESSIBLE_ENCRYPTION_CREDENTIALS" => TableStatus::InaccessibleEncryptionCredentials,
+            "UPDATING" => TableStatus::Updating,
+            other => TableStatus::Unknown(other.to_owned()),
+        }
+    }
+}
+impl TableStatus {
+    pub fn as_str(&self) -> &str {
+        match self {
+            TableStatus::Active => "ACTIVE",
+            TableStatus::Archived => "ARCHIVED",
+            TableStatus::Archiving => "ARCHIVING",
+            TableStatus::Creating => "CREATING",
+            TableStatus::Deleting => "DELETING",
+            TableStatus::InaccessibleEncryptionCredentials => "INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+            TableStatus::Updating => "UPDATING",
+            TableStatus::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -2423,21 +2474,30 @@ impl SSEDescription {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct SSEType(String);
-impl SSEType {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["AES256", "KMS"]
-    }
+pub enum SSEType {
+    Aes256,
+    Kms,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for SSEType
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        SSEType(s.as_ref().to_owned())
+        match s.as_ref() {
+            "AES256" => SSEType::Aes256,
+            "KMS" => SSEType::Kms,
+            other => SSEType::Unknown(other.to_owned()),
+        }
+    }
+}
+impl SSEType {
+    pub fn as_str(&self) -> &str {
+        match self {
+            SSEType::Aes256 => "AES256",
+            SSEType::Kms => "KMS",
+            SSEType::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -2453,21 +2513,39 @@ where
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct SSEStatus(String);
-impl SSEStatus {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["DISABLED", "DISABLING", "ENABLED", "ENABLING", "UPDATING"]
-    }
+pub enum SSEStatus {
+    Disabled,
+    Disabling,
+    Enabled,
+    Enabling,
+    Updating,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for SSEStatus
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        SSEStatus(s.as_ref().to_owned())
+        match s.as_ref() {
+            "DISABLED" => SSEStatus::Disabled,
+            "DISABLING" => SSEStatus::Disabling,
+            "ENABLED" => SSEStatus::Enabled,
+            "ENABLING" => SSEStatus::Enabling,
+            "UPDATING" => SSEStatus::Updating,
+            other => SSEStatus::Unknown(other.to_owned()),
+        }
+    }
+}
+impl SSEStatus {
+    pub fn as_str(&self) -> &str {
+        match self {
+            SSEStatus::Disabled => "DISABLED",
+            SSEStatus::Disabling => "DISABLING",
+            SSEStatus::Enabled => "ENABLED",
+            SSEStatus::Enabling => "ENABLING",
+            SSEStatus::Updating => "UPDATING",
+            SSEStatus::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -3008,21 +3086,36 @@ impl StreamSpecification {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct StreamViewType(String);
-impl StreamViewType {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["KEYS_ONLY", "NEW_AND_OLD_IMAGES", "NEW_IMAGE", "OLD_IMAGE"]
-    }
+pub enum StreamViewType {
+    KeysOnly,
+    NewAndOldImages,
+    NewImage,
+    OldImage,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for StreamViewType
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        StreamViewType(s.as_ref().to_owned())
+        match s.as_ref() {
+            "KEYS_ONLY" => StreamViewType::KeysOnly,
+            "NEW_AND_OLD_IMAGES" => StreamViewType::NewAndOldImages,
+            "NEW_IMAGE" => StreamViewType::NewImage,
+            "OLD_IMAGE" => StreamViewType::OldImage,
+            other => StreamViewType::Unknown(other.to_owned()),
+        }
+    }
+}
+impl StreamViewType {
+    pub fn as_str(&self) -> &str {
+        match self {
+            StreamViewType::KeysOnly => "KEYS_ONLY",
+            StreamViewType::NewAndOldImages => "NEW_AND_OLD_IMAGES",
+            StreamViewType::NewImage => "NEW_IMAGE",
+            StreamViewType::OldImage => "OLD_IMAGE",
+            StreamViewType::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -3485,21 +3578,33 @@ impl Projection {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct ProjectionType(String);
-impl ProjectionType {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["ALL", "INCLUDE", "KEYS_ONLY"]
-    }
+pub enum ProjectionType {
+    All,
+    Include,
+    KeysOnly,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for ProjectionType
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        ProjectionType(s.as_ref().to_owned())
+        match s.as_ref() {
+            "ALL" => ProjectionType::All,
+            "INCLUDE" => ProjectionType::Include,
+            "KEYS_ONLY" => ProjectionType::KeysOnly,
+            other => ProjectionType::Unknown(other.to_owned()),
+        }
+    }
+}
+impl ProjectionType {
+    pub fn as_str(&self) -> &str {
+        match self {
+            ProjectionType::All => "ALL",
+            ProjectionType::Include => "INCLUDE",
+            ProjectionType::KeysOnly => "KEYS_ONLY",
+            ProjectionType::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -3617,21 +3722,30 @@ impl KeySchemaElement {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct KeyType(String);
-impl KeyType {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["HASH", "RANGE"]
-    }
+pub enum KeyType {
+    Hash,
+    Range,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for KeyType
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        KeyType(s.as_ref().to_owned())
+        match s.as_ref() {
+            "HASH" => KeyType::Hash,
+            "RANGE" => KeyType::Range,
+            other => KeyType::Unknown(other.to_owned()),
+        }
+    }
+}
+impl KeyType {
+    pub fn as_str(&self) -> &str {
+        match self {
+            KeyType::Hash => "HASH",
+            KeyType::Range => "RANGE",
+            KeyType::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -3878,21 +3992,30 @@ impl BillingModeSummary {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct BillingMode(String);
-impl BillingMode {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["PAY_PER_REQUEST", "PROVISIONED"]
-    }
+pub enum BillingMode {
+    PayPerRequest,
+    Provisioned,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for BillingMode
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        BillingMode(s.as_ref().to_owned())
+        match s.as_ref() {
+            "PAY_PER_REQUEST" => BillingMode::PayPerRequest,
+            "PROVISIONED" => BillingMode::Provisioned,
+            other => BillingMode::Unknown(other.to_owned()),
+        }
+    }
+}
+impl BillingMode {
+    pub fn as_str(&self) -> &str {
+        match self {
+            BillingMode::PayPerRequest => "PAY_PER_REQUEST",
+            BillingMode::Provisioned => "PROVISIONED",
+            BillingMode::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -3996,21 +4119,33 @@ impl AttributeDefinition {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct ScalarAttributeType(String);
-impl ScalarAttributeType {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["B", "N", "S"]
-    }
+pub enum ScalarAttributeType {
+    B,
+    N,
+    S,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for ScalarAttributeType
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        ScalarAttributeType(s.as_ref().to_owned())
+        match s.as_ref() {
+            "B" => ScalarAttributeType::B,
+            "N" => ScalarAttributeType::N,
+            "S" => ScalarAttributeType::S,
+            other => ScalarAttributeType::Unknown(other.to_owned()),
+        }
+    }
+}
+impl ScalarAttributeType {
+    pub fn as_str(&self) -> &str {
+        match self {
+            ScalarAttributeType::B => "B",
+            ScalarAttributeType::N => "N",
+            ScalarAttributeType::S => "S",
+            ScalarAttributeType::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -5251,21 +5386,30 @@ impl Capacity {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct ReturnItemCollectionMetrics(String);
-impl ReturnItemCollectionMetrics {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["NONE", "SIZE"]
-    }
+pub enum ReturnItemCollectionMetrics {
+    None,
+    Size,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for ReturnItemCollectionMetrics
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        ReturnItemCollectionMetrics(s.as_ref().to_owned())
+        match s.as_ref() {
+            "NONE" => ReturnItemCollectionMetrics::None,
+            "SIZE" => ReturnItemCollectionMetrics::Size,
+            other => ReturnItemCollectionMetrics::Unknown(other.to_owned()),
+        }
+    }
+}
+impl ReturnItemCollectionMetrics {
+    pub fn as_str(&self) -> &str {
+        match self {
+            ReturnItemCollectionMetrics::None => "NONE",
+            ReturnItemCollectionMetrics::Size => "SIZE",
+            ReturnItemCollectionMetrics::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -5281,21 +5425,33 @@ where
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct ReturnConsumedCapacity(String);
-impl ReturnConsumedCapacity {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["INDEXES", "NONE", "TOTAL"]
-    }
+pub enum ReturnConsumedCapacity {
+    Indexes,
+    None,
+    Total,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for ReturnConsumedCapacity
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        ReturnConsumedCapacity(s.as_ref().to_owned())
+        match s.as_ref() {
+            "INDEXES" => ReturnConsumedCapacity::Indexes,
+            "NONE" => ReturnConsumedCapacity::None,
+            "TOTAL" => ReturnConsumedCapacity::Total,
+            other => ReturnConsumedCapacity::Unknown(other.to_owned()),
+        }
+    }
+}
+impl ReturnConsumedCapacity {
+    pub fn as_str(&self) -> &str {
+        match self {
+            ReturnConsumedCapacity::Indexes => "INDEXES",
+            ReturnConsumedCapacity::None => "NONE",
+            ReturnConsumedCapacity::Total => "TOTAL",
+            ReturnConsumedCapacity::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -5311,21 +5467,39 @@ where
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct ReturnValue(String);
-impl ReturnValue {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["ALL_NEW", "ALL_OLD", "NONE", "UPDATED_NEW", "UPDATED_OLD"]
-    }
+pub enum ReturnValue {
+    AllNew,
+    AllOld,
+    None,
+    UpdatedNew,
+    UpdatedOld,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for ReturnValue
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        ReturnValue(s.as_ref().to_owned())
+        match s.as_ref() {
+            "ALL_NEW" => ReturnValue::AllNew,
+            "ALL_OLD" => ReturnValue::AllOld,
+            "NONE" => ReturnValue::None,
+            "UPDATED_NEW" => ReturnValue::UpdatedNew,
+            "UPDATED_OLD" => ReturnValue::UpdatedOld,
+            other => ReturnValue::Unknown(other.to_owned()),
+        }
+    }
+}
+impl ReturnValue {
+    pub fn as_str(&self) -> &str {
+        match self {
+            ReturnValue::AllNew => "ALL_NEW",
+            ReturnValue::AllOld => "ALL_OLD",
+            ReturnValue::None => "NONE",
+            ReturnValue::UpdatedNew => "UPDATED_NEW",
+            ReturnValue::UpdatedOld => "UPDATED_OLD",
+            ReturnValue::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -5341,21 +5515,30 @@ where
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct ConditionalOperator(String);
-impl ConditionalOperator {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["AND", "OR"]
-    }
+pub enum ConditionalOperator {
+    And,
+    Or,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for ConditionalOperator
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        ConditionalOperator(s.as_ref().to_owned())
+        match s.as_ref() {
+            "AND" => ConditionalOperator::And,
+            "OR" => ConditionalOperator::Or,
+            other => ConditionalOperator::Unknown(other.to_owned()),
+        }
+    }
+}
+impl ConditionalOperator {
+    pub fn as_str(&self) -> &str {
+        match self {
+            ConditionalOperator::And => "AND",
+            ConditionalOperator::Or => "OR",
+            ConditionalOperator::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -5847,35 +6030,63 @@ impl ExpectedAttributeValue {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct ComparisonOperator(String);
-impl ComparisonOperator {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &[
-            "BEGINS_WITH",
-            "BETWEEN",
-            "CONTAINS",
-            "EQ",
-            "GE",
-            "GT",
-            "IN",
-            "LE",
-            "LT",
-            "NE",
-            "NOT_CONTAINS",
-            "NOT_NULL",
-            "NULL",
-        ]
-    }
+pub enum ComparisonOperator {
+    BeginsWith,
+    Between,
+    Contains,
+    Eq,
+    Ge,
+    Gt,
+    In,
+    Le,
+    Lt,
+    Ne,
+    NotContains,
+    NotNull,
+    Null,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for ComparisonOperator
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        ComparisonOperator(s.as_ref().to_owned())
+        match s.as_ref() {
+            "BEGINS_WITH" => ComparisonOperator::BeginsWith,
+            "BETWEEN" => ComparisonOperator::Between,
+            "CONTAINS" => ComparisonOperator::Contains,
+            "EQ" => ComparisonOperator::Eq,
+            "GE" => ComparisonOperator::Ge,
+            "GT" => ComparisonOperator::Gt,
+            "IN" => ComparisonOperator::In,
+            "LE" => ComparisonOperator::Le,
+            "LT" => ComparisonOperator::Lt,
+            "NE" => ComparisonOperator::Ne,
+            "NOT_CONTAINS" => ComparisonOperator::NotContains,
+            "NOT_NULL" => ComparisonOperator::NotNull,
+            "NULL" => ComparisonOperator::Null,
+            other => ComparisonOperator::Unknown(other.to_owned()),
+        }
+    }
+}
+impl ComparisonOperator {
+    pub fn as_str(&self) -> &str {
+        match self {
+            ComparisonOperator::BeginsWith => "BEGINS_WITH",
+            ComparisonOperator::Between => "BETWEEN",
+            ComparisonOperator::Contains => "CONTAINS",
+            ComparisonOperator::Eq => "EQ",
+            ComparisonOperator::Ge => "GE",
+            ComparisonOperator::Gt => "GT",
+            ComparisonOperator::In => "IN",
+            ComparisonOperator::Le => "LE",
+            ComparisonOperator::Lt => "LT",
+            ComparisonOperator::Ne => "NE",
+            ComparisonOperator::NotContains => "NOT_CONTAINS",
+            ComparisonOperator::NotNull => "NOT_NULL",
+            ComparisonOperator::Null => "NULL",
+            ComparisonOperator::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -6131,21 +6342,33 @@ impl AttributeValueUpdate {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct AttributeAction(String);
-impl AttributeAction {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["ADD", "DELETE", "PUT"]
-    }
+pub enum AttributeAction {
+    Add,
+    Delete,
+    Put,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for AttributeAction
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        AttributeAction(s.as_ref().to_owned())
+        match s.as_ref() {
+            "ADD" => AttributeAction::Add,
+            "DELETE" => AttributeAction::Delete,
+            "PUT" => AttributeAction::Put,
+            other => AttributeAction::Unknown(other.to_owned()),
+        }
+    }
+}
+impl AttributeAction {
+    pub fn as_str(&self) -> &str {
+        match self {
+            AttributeAction::Add => "ADD",
+            AttributeAction::Delete => "DELETE",
+            AttributeAction::Put => "PUT",
+            AttributeAction::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -6925,21 +7148,36 @@ impl GlobalTableDescription {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct GlobalTableStatus(String);
-impl GlobalTableStatus {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["ACTIVE", "CREATING", "DELETING", "UPDATING"]
-    }
+pub enum GlobalTableStatus {
+    Active,
+    Creating,
+    Deleting,
+    Updating,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for GlobalTableStatus
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        GlobalTableStatus(s.as_ref().to_owned())
+        match s.as_ref() {
+            "ACTIVE" => GlobalTableStatus::Active,
+            "CREATING" => GlobalTableStatus::Creating,
+            "DELETING" => GlobalTableStatus::Deleting,
+            "UPDATING" => GlobalTableStatus::Updating,
+            other => GlobalTableStatus::Unknown(other.to_owned()),
+        }
+    }
+}
+impl GlobalTableStatus {
+    pub fn as_str(&self) -> &str {
+        match self {
+            GlobalTableStatus::Active => "ACTIVE",
+            GlobalTableStatus::Creating => "CREATING",
+            GlobalTableStatus::Deleting => "DELETING",
+            GlobalTableStatus::Updating => "UPDATING",
+            GlobalTableStatus::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -7121,21 +7359,39 @@ impl CreateReplicaAction {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct ContributorInsightsStatus(String);
-impl ContributorInsightsStatus {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["DISABLED", "DISABLING", "ENABLED", "ENABLING", "FAILED"]
-    }
+pub enum ContributorInsightsStatus {
+    Disabled,
+    Disabling,
+    Enabled,
+    Enabling,
+    Failed,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for ContributorInsightsStatus
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        ContributorInsightsStatus(s.as_ref().to_owned())
+        match s.as_ref() {
+            "DISABLED" => ContributorInsightsStatus::Disabled,
+            "DISABLING" => ContributorInsightsStatus::Disabling,
+            "ENABLED" => ContributorInsightsStatus::Enabled,
+            "ENABLING" => ContributorInsightsStatus::Enabling,
+            "FAILED" => ContributorInsightsStatus::Failed,
+            other => ContributorInsightsStatus::Unknown(other.to_owned()),
+        }
+    }
+}
+impl ContributorInsightsStatus {
+    pub fn as_str(&self) -> &str {
+        match self {
+            ContributorInsightsStatus::Disabled => "DISABLED",
+            ContributorInsightsStatus::Disabling => "DISABLING",
+            ContributorInsightsStatus::Enabled => "ENABLED",
+            ContributorInsightsStatus::Enabling => "ENABLING",
+            ContributorInsightsStatus::Failed => "FAILED",
+            ContributorInsightsStatus::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -7151,21 +7407,30 @@ where
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct ContributorInsightsAction(String);
-impl ContributorInsightsAction {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["DISABLE", "ENABLE"]
-    }
+pub enum ContributorInsightsAction {
+    Disable,
+    Enable,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for ContributorInsightsAction
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        ContributorInsightsAction(s.as_ref().to_owned())
+        match s.as_ref() {
+            "DISABLE" => ContributorInsightsAction::Disable,
+            "ENABLE" => ContributorInsightsAction::Enable,
+            other => ContributorInsightsAction::Unknown(other.to_owned()),
+        }
+    }
+}
+impl ContributorInsightsAction {
+    pub fn as_str(&self) -> &str {
+        match self {
+            ContributorInsightsAction::Disable => "DISABLE",
+            ContributorInsightsAction::Enable => "ENABLE",
+            ContributorInsightsAction::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -7360,21 +7625,30 @@ impl PointInTimeRecoveryDescription {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct PointInTimeRecoveryStatus(String);
-impl PointInTimeRecoveryStatus {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["DISABLED", "ENABLED"]
-    }
+pub enum PointInTimeRecoveryStatus {
+    Disabled,
+    Enabled,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for PointInTimeRecoveryStatus
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        PointInTimeRecoveryStatus(s.as_ref().to_owned())
+        match s.as_ref() {
+            "DISABLED" => PointInTimeRecoveryStatus::Disabled,
+            "ENABLED" => PointInTimeRecoveryStatus::Enabled,
+            other => PointInTimeRecoveryStatus::Unknown(other.to_owned()),
+        }
+    }
+}
+impl PointInTimeRecoveryStatus {
+    pub fn as_str(&self) -> &str {
+        match self {
+            PointInTimeRecoveryStatus::Disabled => "DISABLED",
+            PointInTimeRecoveryStatus::Enabled => "ENABLED",
+            PointInTimeRecoveryStatus::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -7390,21 +7664,30 @@ where
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct ContinuousBackupsStatus(String);
-impl ContinuousBackupsStatus {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["DISABLED", "ENABLED"]
-    }
+pub enum ContinuousBackupsStatus {
+    Disabled,
+    Enabled,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for ContinuousBackupsStatus
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        ContinuousBackupsStatus(s.as_ref().to_owned())
+        match s.as_ref() {
+            "DISABLED" => ContinuousBackupsStatus::Disabled,
+            "ENABLED" => ContinuousBackupsStatus::Enabled,
+            other => ContinuousBackupsStatus::Unknown(other.to_owned()),
+        }
+    }
+}
+impl ContinuousBackupsStatus {
+    pub fn as_str(&self) -> &str {
+        match self {
+            ContinuousBackupsStatus::Disabled => "DISABLED",
+            ContinuousBackupsStatus::Enabled => "ENABLED",
+            ContinuousBackupsStatus::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -7794,21 +8077,30 @@ impl Update {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct ReturnValuesOnConditionCheckFailure(String);
-impl ReturnValuesOnConditionCheckFailure {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["ALL_OLD", "NONE"]
-    }
+pub enum ReturnValuesOnConditionCheckFailure {
+    AllOld,
+    None,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for ReturnValuesOnConditionCheckFailure
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        ReturnValuesOnConditionCheckFailure(s.as_ref().to_owned())
+        match s.as_ref() {
+            "ALL_OLD" => ReturnValuesOnConditionCheckFailure::AllOld,
+            "NONE" => ReturnValuesOnConditionCheckFailure::None,
+            other => ReturnValuesOnConditionCheckFailure::Unknown(other.to_owned()),
+        }
+    }
+}
+impl ReturnValuesOnConditionCheckFailure {
+    pub fn as_str(&self) -> &str {
+        match self {
+            ReturnValuesOnConditionCheckFailure::AllOld => "ALL_OLD",
+            ReturnValuesOnConditionCheckFailure::None => "NONE",
+            ReturnValuesOnConditionCheckFailure::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -8924,26 +9216,36 @@ impl Condition {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct Select(String);
-impl Select {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &[
-            "ALL_ATTRIBUTES",
-            "ALL_PROJECTED_ATTRIBUTES",
-            "COUNT",
-            "SPECIFIC_ATTRIBUTES",
-        ]
-    }
+pub enum Select {
+    AllAttributes,
+    AllProjectedAttributes,
+    Count,
+    SpecificAttributes,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for Select
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        Select(s.as_ref().to_owned())
+        match s.as_ref() {
+            "ALL_ATTRIBUTES" => Select::AllAttributes,
+            "ALL_PROJECTED_ATTRIBUTES" => Select::AllProjectedAttributes,
+            "COUNT" => Select::Count,
+            "SPECIFIC_ATTRIBUTES" => Select::SpecificAttributes,
+            other => Select::Unknown(other.to_owned()),
+        }
+    }
+}
+impl Select {
+    pub fn as_str(&self) -> &str {
+        match self {
+            Select::AllAttributes => "ALL_ATTRIBUTES",
+            Select::AllProjectedAttributes => "ALL_PROJECTED_ATTRIBUTES",
+            Select::Count => "COUNT",
+            Select::SpecificAttributes => "SPECIFIC_ATTRIBUTES",
+            Select::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -9723,21 +10025,33 @@ impl BackupType {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct BackupStatus(String);
-impl BackupStatus {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["AVAILABLE", "CREATING", "DELETED"]
-    }
+pub enum BackupStatus {
+    Available,
+    Creating,
+    Deleted,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for BackupStatus
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        BackupStatus(s.as_ref().to_owned())
+        match s.as_ref() {
+            "AVAILABLE" => BackupStatus::Available,
+            "CREATING" => BackupStatus::Creating,
+            "DELETED" => BackupStatus::Deleted,
+            other => BackupStatus::Unknown(other.to_owned()),
+        }
+    }
+}
+impl BackupStatus {
+    pub fn as_str(&self) -> &str {
+        match self {
+            BackupStatus::Available => "AVAILABLE",
+            BackupStatus::Creating => "CREATING",
+            BackupStatus::Deleted => "DELETED",
+            BackupStatus::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -10142,21 +10456,30 @@ impl ExportFormat {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct S3SseAlgorithm(String);
-impl S3SseAlgorithm {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["AES256", "KMS"]
-    }
+pub enum S3SseAlgorithm {
+    Aes256,
+    Kms,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for S3SseAlgorithm
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        S3SseAlgorithm(s.as_ref().to_owned())
+        match s.as_ref() {
+            "AES256" => S3SseAlgorithm::Aes256,
+            "KMS" => S3SseAlgorithm::Kms,
+            other => S3SseAlgorithm::Unknown(other.to_owned()),
+        }
+    }
+}
+impl S3SseAlgorithm {
+    pub fn as_str(&self) -> &str {
+        match self {
+            S3SseAlgorithm::Aes256 => "AES256",
+            S3SseAlgorithm::Kms => "KMS",
+            S3SseAlgorithm::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -10242,27 +10565,39 @@ impl ParameterizedStatement {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct DestinationStatus(String);
-impl DestinationStatus {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &[
-            "ACTIVE",
-            "DISABLED",
-            "DISABLING",
-            "ENABLE_FAILED",
-            "ENABLING",
-        ]
-    }
+pub enum DestinationStatus {
+    Active,
+    Disabled,
+    Disabling,
+    EnableFailed,
+    Enabling,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for DestinationStatus
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        DestinationStatus(s.as_ref().to_owned())
+        match s.as_ref() {
+            "ACTIVE" => DestinationStatus::Active,
+            "DISABLED" => DestinationStatus::Disabled,
+            "DISABLING" => DestinationStatus::Disabling,
+            "ENABLE_FAILED" => DestinationStatus::EnableFailed,
+            "ENABLING" => DestinationStatus::Enabling,
+            other => DestinationStatus::Unknown(other.to_owned()),
+        }
+    }
+}
+impl DestinationStatus {
+    pub fn as_str(&self) -> &str {
+        match self {
+            DestinationStatus::Active => "ACTIVE",
+            DestinationStatus::Disabled => "DISABLED",
+            DestinationStatus::Disabling => "DISABLING",
+            DestinationStatus::EnableFailed => "ENABLE_FAILED",
+            DestinationStatus::Enabling => "ENABLING",
+            DestinationStatus::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
@@ -10338,21 +10673,36 @@ impl TimeToLiveDescription {
     ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
-pub struct TimeToLiveStatus(String);
-impl TimeToLiveStatus {
-    pub fn as_str(&self) -> &str {
-        &self.0
-    }
-    pub fn values() -> &'static [&'static str] {
-        &["DISABLED", "DISABLING", "ENABLED", "ENABLING"]
-    }
+pub enum TimeToLiveStatus {
+    Disabled,
+    Disabling,
+    Enabled,
+    Enabling,
+    Unknown(String),
 }
 impl<T> ::std::convert::From<T> for TimeToLiveStatus
 where
     T: ::std::convert::AsRef<str>,
 {
     fn from(s: T) -> Self {
-        TimeToLiveStatus(s.as_ref().to_owned())
+        match s.as_ref() {
+            "DISABLED" => TimeToLiveStatus::Disabled,
+            "DISABLING" => TimeToLiveStatus::Disabling,
+            "ENABLED" => TimeToLiveStatus::Enabled,
+            "ENABLING" => TimeToLiveStatus::Enabling,
+            other => TimeToLiveStatus::Unknown(other.to_owned()),
+        }
+    }
+}
+impl TimeToLiveStatus {
+    pub fn as_str(&self) -> &str {
+        match self {
+            TimeToLiveStatus::Disabled => "DISABLED",
+            TimeToLiveStatus::Disabling => "DISABLING",
+            TimeToLiveStatus::Enabled => "ENABLED",
+            TimeToLiveStatus::Enabling => "ENABLING",
+            TimeToLiveStatus::Unknown(s) => s.as_ref(),
+        }
     }
 }
 
