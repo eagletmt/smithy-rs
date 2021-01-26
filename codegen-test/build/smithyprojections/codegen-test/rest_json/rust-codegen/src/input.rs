@@ -116,9 +116,12 @@ pub mod all_query_string_types_input {
             self.query_enum_list = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`AllQueryStringTypes`](crate::operation::AllQueryStringTypes)
-        pub fn build(self, _config: &crate::config::Config) -> AllQueryStringTypes {
-            AllQueryStringTypes::new(AllQueryStringTypesInput {
+        /// Consumes the builder and constructs an Operation<[`AllQueryStringTypes`](crate::operation::AllQueryStringTypes)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<AllQueryStringTypes, ()> {
+            let op = AllQueryStringTypes::new(AllQueryStringTypesInput {
                 query_string: self.query_string,
                 query_string_list: self.query_string_list,
                 query_string_set: self.query_string_set,
@@ -137,7 +140,15 @@ pub mod all_query_string_types_input {
                 query_timestamp_list: self.query_timestamp_list,
                 query_enum: self.query_enum,
                 query_enum_list: self.query_enum_list,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -246,7 +257,7 @@ impl AllQueryStringTypesInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -284,12 +295,23 @@ pub mod constant_and_variable_query_string_input {
             self.maybe_set = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`ConstantAndVariableQueryString`](crate::operation::ConstantAndVariableQueryString)
-        pub fn build(self, _config: &crate::config::Config) -> ConstantAndVariableQueryString {
-            ConstantAndVariableQueryString::new(ConstantAndVariableQueryStringInput {
+        /// Consumes the builder and constructs an Operation<[`ConstantAndVariableQueryString`](crate::operation::ConstantAndVariableQueryString)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ConstantAndVariableQueryString, ()> {
+            let op = ConstantAndVariableQueryString::new(ConstantAndVariableQueryStringInput {
                 baz: self.baz,
                 maybe_set: self.maybe_set,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -319,7 +341,7 @@ impl ConstantAndVariableQueryStringInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -352,11 +374,22 @@ pub mod constant_query_string_input {
             self.hello = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`ConstantQueryString`](crate::operation::ConstantQueryString)
-        pub fn build(self, _config: &crate::config::Config) -> ConstantQueryString {
-            ConstantQueryString::new(ConstantQueryStringInput {
+        /// Consumes the builder and constructs an Operation<[`ConstantQueryString`](crate::operation::ConstantQueryString)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ConstantQueryString, ()> {
+            let op = ConstantQueryString::new(ConstantQueryStringInput {
                 hello: self.hello.unwrap_or_default(),
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -380,7 +413,7 @@ impl ConstantQueryStringInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -407,9 +440,20 @@ pub mod empty_input_and_empty_output_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`EmptyInputAndEmptyOutput`](crate::operation::EmptyInputAndEmptyOutput)
-        pub fn build(self, _config: &crate::config::Config) -> EmptyInputAndEmptyOutput {
-            EmptyInputAndEmptyOutput::new(EmptyInputAndEmptyOutputInput {})
+        /// Consumes the builder and constructs an Operation<[`EmptyInputAndEmptyOutput`](crate::operation::EmptyInputAndEmptyOutput)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<EmptyInputAndEmptyOutput, ()> {
+            let op = EmptyInputAndEmptyOutput::new(EmptyInputAndEmptyOutputInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -428,7 +472,7 @@ impl EmptyInputAndEmptyOutputInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -455,9 +499,20 @@ pub mod greeting_with_errors_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`GreetingWithErrors`](crate::operation::GreetingWithErrors)
-        pub fn build(self, _config: &crate::config::Config) -> GreetingWithErrors {
-            GreetingWithErrors::new(GreetingWithErrorsInput {})
+        /// Consumes the builder and constructs an Operation<[`GreetingWithErrors`](crate::operation::GreetingWithErrors)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<GreetingWithErrors, ()> {
+            let op = GreetingWithErrors::new(GreetingWithErrorsInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -476,7 +531,7 @@ impl GreetingWithErrorsInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -515,12 +570,23 @@ pub mod http_payload_traits_input {
             self.blob = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`HttpPayloadTraits`](crate::operation::HttpPayloadTraits)
-        pub fn build(self, _config: &crate::config::Config) -> HttpPayloadTraits {
-            HttpPayloadTraits::new(HttpPayloadTraitsInput {
+        /// Consumes the builder and constructs an Operation<[`HttpPayloadTraits`](crate::operation::HttpPayloadTraits)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<HttpPayloadTraits, ()> {
+            let op = HttpPayloadTraits::new(HttpPayloadTraitsInput {
                 foo: self.foo,
                 blob: self.blob,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -549,7 +615,7 @@ impl HttpPayloadTraitsInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -588,12 +654,23 @@ pub mod http_payload_traits_with_media_type_input {
             self.blob = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`HttpPayloadTraitsWithMediaType`](crate::operation::HttpPayloadTraitsWithMediaType)
-        pub fn build(self, _config: &crate::config::Config) -> HttpPayloadTraitsWithMediaType {
-            HttpPayloadTraitsWithMediaType::new(HttpPayloadTraitsWithMediaTypeInput {
+        /// Consumes the builder and constructs an Operation<[`HttpPayloadTraitsWithMediaType`](crate::operation::HttpPayloadTraitsWithMediaType)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<HttpPayloadTraitsWithMediaType, ()> {
+            let op = HttpPayloadTraitsWithMediaType::new(HttpPayloadTraitsWithMediaTypeInput {
                 foo: self.foo,
                 blob: self.blob,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -622,7 +699,7 @@ impl HttpPayloadTraitsWithMediaTypeInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -656,11 +733,22 @@ pub mod http_payload_with_structure_input {
             self.nested = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`HttpPayloadWithStructure`](crate::operation::HttpPayloadWithStructure)
-        pub fn build(self, _config: &crate::config::Config) -> HttpPayloadWithStructure {
-            HttpPayloadWithStructure::new(HttpPayloadWithStructureInput {
+        /// Consumes the builder and constructs an Operation<[`HttpPayloadWithStructure`](crate::operation::HttpPayloadWithStructure)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<HttpPayloadWithStructure, ()> {
+            let op = HttpPayloadWithStructure::new(HttpPayloadWithStructureInput {
                 nested: self.nested,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -679,7 +767,7 @@ impl HttpPayloadWithStructureInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -722,12 +810,23 @@ pub mod http_prefix_headers_input {
             self.foo_map = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`HttpPrefixHeaders`](crate::operation::HttpPrefixHeaders)
-        pub fn build(self, _config: &crate::config::Config) -> HttpPrefixHeaders {
-            HttpPrefixHeaders::new(HttpPrefixHeadersInput {
+        /// Consumes the builder and constructs an Operation<[`HttpPrefixHeaders`](crate::operation::HttpPrefixHeaders)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<HttpPrefixHeaders, ()> {
+            let op = HttpPrefixHeaders::new(HttpPrefixHeadersInput {
                 foo: self.foo,
                 foo_map: self.foo_map,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -756,7 +855,7 @@ impl HttpPrefixHeadersInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -783,9 +882,20 @@ pub mod http_prefix_headers_response_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`HttpPrefixHeadersResponse`](crate::operation::HttpPrefixHeadersResponse)
-        pub fn build(self, _config: &crate::config::Config) -> HttpPrefixHeadersResponse {
-            HttpPrefixHeadersResponse::new(HttpPrefixHeadersResponseInput {})
+        /// Consumes the builder and constructs an Operation<[`HttpPrefixHeadersResponse`](crate::operation::HttpPrefixHeadersResponse)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<HttpPrefixHeadersResponse, ()> {
+            let op = HttpPrefixHeadersResponse::new(HttpPrefixHeadersResponseInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -804,7 +914,7 @@ impl HttpPrefixHeadersResponseInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -842,12 +952,23 @@ pub mod http_request_with_greedy_label_in_path_input {
             self.baz = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`HttpRequestWithGreedyLabelInPath`](crate::operation::HttpRequestWithGreedyLabelInPath)
-        pub fn build(self, _config: &crate::config::Config) -> HttpRequestWithGreedyLabelInPath {
-            HttpRequestWithGreedyLabelInPath::new(HttpRequestWithGreedyLabelInPathInput {
+        /// Consumes the builder and constructs an Operation<[`HttpRequestWithGreedyLabelInPath`](crate::operation::HttpRequestWithGreedyLabelInPath)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<HttpRequestWithGreedyLabelInPath, ()> {
+            let op = HttpRequestWithGreedyLabelInPath::new(HttpRequestWithGreedyLabelInPathInput {
                 foo: self.foo.unwrap_or_default(),
                 baz: self.baz.unwrap_or_default(),
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -872,7 +993,7 @@ impl HttpRequestWithGreedyLabelInPathInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -943,23 +1064,34 @@ pub mod http_request_with_labels_input {
             self.timestamp = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`HttpRequestWithLabels`](crate::operation::HttpRequestWithLabels)
+        /// Consumes the builder and constructs an Operation<[`HttpRequestWithLabels`](crate::operation::HttpRequestWithLabels)>
         pub fn build(
             self,
             _config: &crate::config::Config,
-        ) -> Result<HttpRequestWithLabels, String> {
-            Ok(HttpRequestWithLabels::new(HttpRequestWithLabelsInput {
-                string: self.string.unwrap_or_default(),
-                short: self.short.unwrap_or_default(),
-                integer: self.integer.unwrap_or_default(),
-                long: self.long.unwrap_or_default(),
-                float: self.float.unwrap_or_default(),
-                double: self.double.unwrap_or_default(),
-                boolean: self.boolean.unwrap_or_default(),
-                timestamp: self
-                    .timestamp
-                    .ok_or("timestamp is required when building HttpRequestWithLabelsInput")?,
-            }))
+        ) -> Result<::smithy_http::operation::Operation<HttpRequestWithLabels, ()>, String>
+        {
+            Ok({
+                let op = HttpRequestWithLabels::new(HttpRequestWithLabelsInput {
+                    string: self.string.unwrap_or_default(),
+                    short: self.short.unwrap_or_default(),
+                    integer: self.integer.unwrap_or_default(),
+                    long: self.long.unwrap_or_default(),
+                    float: self.float.unwrap_or_default(),
+                    double: self.double.unwrap_or_default(),
+                    boolean: self.boolean.unwrap_or_default(),
+                    timestamp: self
+                        .timestamp
+                        .ok_or("timestamp is required when building HttpRequestWithLabelsInput")?,
+                });
+
+                #[allow(unused_mut)]
+                let mut request = ::smithy_http::operation::Request::new(
+                    op.build_http_request()
+                        .map(::smithy_http::body::SdkBody::from),
+                );
+
+                ::smithy_http::operation::Operation::new(request, op)
+            })
         }
     }
 }
@@ -978,7 +1110,7 @@ impl HttpRequestWithLabelsInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -1042,13 +1174,16 @@ pub mod http_request_with_labels_and_timestamp_format_input {
             self.target_date_time = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`HttpRequestWithLabelsAndTimestampFormat`](crate::operation::HttpRequestWithLabelsAndTimestampFormat)
+        /// Consumes the builder and constructs an Operation<[`HttpRequestWithLabelsAndTimestampFormat`](crate::operation::HttpRequestWithLabelsAndTimestampFormat)>
         pub fn build(
             self,
             _config: &crate::config::Config,
-        ) -> Result<HttpRequestWithLabelsAndTimestampFormat, String> {
-            Ok(
-                HttpRequestWithLabelsAndTimestampFormat::new(
+        ) -> Result<
+            ::smithy_http::operation::Operation<HttpRequestWithLabelsAndTimestampFormat, ()>,
+            String,
+        > {
+            Ok({
+                let op = HttpRequestWithLabelsAndTimestampFormat::new(
                     HttpRequestWithLabelsAndTimestampFormatInput {
                         member_epoch_seconds: self.member_epoch_seconds
                             .ok_or("member_epoch_seconds is required when building HttpRequestWithLabelsAndTimestampFormatInput")?
@@ -1072,8 +1207,16 @@ pub mod http_request_with_labels_and_timestamp_format_input {
                             .ok_or("target_date_time is required when building HttpRequestWithLabelsAndTimestampFormatInput")?
                         ,
                     }
-                )
-            )
+                );
+
+                #[allow(unused_mut)]
+                let mut request = ::smithy_http::operation::Request::new(
+                    op.build_http_request()
+                        .map(::smithy_http::body::SdkBody::from),
+                );
+
+                ::smithy_http::operation::Operation::new(request, op)
+            })
         }
     }
 }
@@ -1092,7 +1235,7 @@ impl HttpRequestWithLabelsAndTimestampFormatInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -1119,9 +1262,20 @@ pub mod http_response_code_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`HttpResponseCode`](crate::operation::HttpResponseCode)
-        pub fn build(self, _config: &crate::config::Config) -> HttpResponseCode {
-            HttpResponseCode::new(HttpResponseCodeInput {})
+        /// Consumes the builder and constructs an Operation<[`HttpResponseCode`](crate::operation::HttpResponseCode)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<HttpResponseCode, ()> {
+            let op = HttpResponseCode::new(HttpResponseCodeInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1140,7 +1294,7 @@ impl HttpResponseCodeInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -1167,9 +1321,20 @@ pub mod ignore_query_params_in_response_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`IgnoreQueryParamsInResponse`](crate::operation::IgnoreQueryParamsInResponse)
-        pub fn build(self, _config: &crate::config::Config) -> IgnoreQueryParamsInResponse {
-            IgnoreQueryParamsInResponse::new(IgnoreQueryParamsInResponseInput {})
+        /// Consumes the builder and constructs an Operation<[`IgnoreQueryParamsInResponse`](crate::operation::IgnoreQueryParamsInResponse)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<IgnoreQueryParamsInResponse, ()> {
+            let op = IgnoreQueryParamsInResponse::new(IgnoreQueryParamsInResponseInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1188,7 +1353,7 @@ impl IgnoreQueryParamsInResponseInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -1227,14 +1392,27 @@ pub mod inline_document_input {
             self.document_value = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`InlineDocument`](crate::operation::InlineDocument)
-        pub fn build(self, _config: &crate::config::Config) -> Result<InlineDocument, String> {
-            Ok(InlineDocument::new(InlineDocumentInput {
-                string_value: self.string_value,
-                document_value: self
-                    .document_value
-                    .ok_or("document_value is required when building InlineDocumentInput")?,
-            }))
+        /// Consumes the builder and constructs an Operation<[`InlineDocument`](crate::operation::InlineDocument)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> Result<::smithy_http::operation::Operation<InlineDocument, ()>, String> {
+            Ok({
+                let op = InlineDocument::new(InlineDocumentInput {
+                    string_value: self.string_value,
+                    document_value: self
+                        .document_value
+                        .ok_or("document_value is required when building InlineDocumentInput")?,
+                });
+
+                #[allow(unused_mut)]
+                let mut request = ::smithy_http::operation::Request::new(
+                    op.build_http_request()
+                        .map(::smithy_http::body::SdkBody::from),
+                );
+
+                ::smithy_http::operation::Operation::new(request, op)
+            })
         }
     }
 }
@@ -1253,7 +1431,7 @@ impl InlineDocumentInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -1287,16 +1465,27 @@ pub mod inline_document_as_payload_input {
             self.document_value = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`InlineDocumentAsPayload`](crate::operation::InlineDocumentAsPayload)
+        /// Consumes the builder and constructs an Operation<[`InlineDocumentAsPayload`](crate::operation::InlineDocumentAsPayload)>
         pub fn build(
             self,
             _config: &crate::config::Config,
-        ) -> Result<InlineDocumentAsPayload, String> {
-            Ok(InlineDocumentAsPayload::new(InlineDocumentAsPayloadInput {
-                document_value: self.document_value.ok_or(
-                    "document_value is required when building InlineDocumentAsPayloadInput",
-                )?,
-            }))
+        ) -> Result<::smithy_http::operation::Operation<InlineDocumentAsPayload, ()>, String>
+        {
+            Ok({
+                let op = InlineDocumentAsPayload::new(InlineDocumentAsPayloadInput {
+                    document_value: self.document_value.ok_or(
+                        "document_value is required when building InlineDocumentAsPayloadInput",
+                    )?,
+                });
+
+                #[allow(unused_mut)]
+                let mut request = ::smithy_http::operation::Request::new(
+                    op.build_http_request()
+                        .map(::smithy_http::body::SdkBody::from),
+                );
+
+                ::smithy_http::operation::Operation::new(request, op)
+            })
         }
     }
 }
@@ -1315,7 +1504,7 @@ impl InlineDocumentAsPayloadInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -1429,9 +1618,12 @@ pub mod input_and_output_with_headers_input {
             self.header_enum_list = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`InputAndOutputWithHeaders`](crate::operation::InputAndOutputWithHeaders)
-        pub fn build(self, _config: &crate::config::Config) -> InputAndOutputWithHeaders {
-            InputAndOutputWithHeaders::new(InputAndOutputWithHeadersInput {
+        /// Consumes the builder and constructs an Operation<[`InputAndOutputWithHeaders`](crate::operation::InputAndOutputWithHeaders)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<InputAndOutputWithHeaders, ()> {
+            let op = InputAndOutputWithHeaders::new(InputAndOutputWithHeadersInput {
                 header_string: self.header_string,
                 header_byte: self.header_byte,
                 header_short: self.header_short,
@@ -1448,7 +1640,15 @@ pub mod input_and_output_with_headers_input {
                 header_timestamp_list: self.header_timestamp_list,
                 header_enum: self.header_enum,
                 header_enum_list: self.header_enum_list,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1598,7 +1798,7 @@ impl InputAndOutputWithHeadersInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -1632,9 +1832,20 @@ pub mod json_blobs_input {
             self.data = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`JsonBlobs`](crate::operation::JsonBlobs)
-        pub fn build(self, _config: &crate::config::Config) -> JsonBlobs {
-            JsonBlobs::new(JsonBlobsInput { data: self.data })
+        /// Consumes the builder and constructs an Operation<[`JsonBlobs`](crate::operation::JsonBlobs)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<JsonBlobs, ()> {
+            let op = JsonBlobs::new(JsonBlobsInput { data: self.data });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1653,7 +1864,7 @@ impl JsonBlobsInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -1716,16 +1927,27 @@ pub mod json_enums_input {
             self.foo_enum_map = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`JsonEnums`](crate::operation::JsonEnums)
-        pub fn build(self, _config: &crate::config::Config) -> JsonEnums {
-            JsonEnums::new(JsonEnumsInput {
+        /// Consumes the builder and constructs an Operation<[`JsonEnums`](crate::operation::JsonEnums)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<JsonEnums, ()> {
+            let op = JsonEnums::new(JsonEnumsInput {
                 foo_enum1: self.foo_enum1,
                 foo_enum2: self.foo_enum2,
                 foo_enum3: self.foo_enum3,
                 foo_enum_list: self.foo_enum_list,
                 foo_enum_set: self.foo_enum_set,
                 foo_enum_map: self.foo_enum_map,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1744,7 +1966,7 @@ impl JsonEnumsInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -1832,9 +2054,12 @@ pub mod json_lists_input {
             self.structure_list = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`JsonLists`](crate::operation::JsonLists)
-        pub fn build(self, _config: &crate::config::Config) -> JsonLists {
-            JsonLists::new(JsonListsInput {
+        /// Consumes the builder and constructs an Operation<[`JsonLists`](crate::operation::JsonLists)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<JsonLists, ()> {
+            let op = JsonLists::new(JsonListsInput {
                 string_list: self.string_list,
                 sparse_string_list: self.sparse_string_list,
                 string_set: self.string_set,
@@ -1844,7 +2069,15 @@ pub mod json_lists_input {
                 enum_list: self.enum_list,
                 nested_string_list: self.nested_string_list,
                 structure_list: self.structure_list,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1863,7 +2096,7 @@ impl JsonListsInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -1982,9 +2215,12 @@ pub mod json_maps_input {
             self.sparse_string_map = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`JsonMaps`](crate::operation::JsonMaps)
-        pub fn build(self, _config: &crate::config::Config) -> JsonMaps {
-            JsonMaps::new(JsonMapsInput {
+        /// Consumes the builder and constructs an Operation<[`JsonMaps`](crate::operation::JsonMaps)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<JsonMaps, ()> {
+            let op = JsonMaps::new(JsonMapsInput {
                 dense_struct_map: self.dense_struct_map,
                 sparse_struct_map: self.sparse_struct_map,
                 dense_number_map: self.dense_number_map,
@@ -1993,7 +2229,15 @@ pub mod json_maps_input {
                 sparse_number_map: self.sparse_number_map,
                 sparse_boolean_map: self.sparse_boolean_map,
                 sparse_string_map: self.sparse_string_map,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2012,7 +2256,7 @@ impl JsonMapsInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2061,14 +2305,25 @@ pub mod json_timestamps_input {
             self.http_date = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`JsonTimestamps`](crate::operation::JsonTimestamps)
-        pub fn build(self, _config: &crate::config::Config) -> JsonTimestamps {
-            JsonTimestamps::new(JsonTimestampsInput {
+        /// Consumes the builder and constructs an Operation<[`JsonTimestamps`](crate::operation::JsonTimestamps)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<JsonTimestamps, ()> {
+            let op = JsonTimestamps::new(JsonTimestampsInput {
                 normal: self.normal,
                 date_time: self.date_time,
                 epoch_seconds: self.epoch_seconds,
                 http_date: self.http_date,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2087,7 +2342,7 @@ impl JsonTimestampsInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2122,11 +2377,22 @@ pub mod json_unions_input {
             self.contents = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`JsonUnions`](crate::operation::JsonUnions)
-        pub fn build(self, _config: &crate::config::Config) -> JsonUnions {
-            JsonUnions::new(JsonUnionsInput {
+        /// Consumes the builder and constructs an Operation<[`JsonUnions`](crate::operation::JsonUnions)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<JsonUnions, ()> {
+            let op = JsonUnions::new(JsonUnionsInput {
                 contents: self.contents,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2145,7 +2411,7 @@ impl JsonUnionsInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2178,9 +2444,20 @@ pub mod media_type_header_input {
             self.json = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`MediaTypeHeader`](crate::operation::MediaTypeHeader)
-        pub fn build(self, _config: &crate::config::Config) -> MediaTypeHeader {
-            MediaTypeHeader::new(MediaTypeHeaderInput { json: self.json })
+        /// Consumes the builder and constructs an Operation<[`MediaTypeHeader`](crate::operation::MediaTypeHeader)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<MediaTypeHeader, ()> {
+            let op = MediaTypeHeader::new(MediaTypeHeaderInput { json: self.json });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2209,7 +2486,7 @@ impl MediaTypeHeaderInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2236,9 +2513,20 @@ pub mod no_input_and_no_output_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`NoInputAndNoOutput`](crate::operation::NoInputAndNoOutput)
-        pub fn build(self, _config: &crate::config::Config) -> NoInputAndNoOutput {
-            NoInputAndNoOutput::new(NoInputAndNoOutputInput {})
+        /// Consumes the builder and constructs an Operation<[`NoInputAndNoOutput`](crate::operation::NoInputAndNoOutput)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<NoInputAndNoOutput, ()> {
+            let op = NoInputAndNoOutput::new(NoInputAndNoOutputInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2257,7 +2545,7 @@ impl NoInputAndNoOutputInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2284,9 +2572,20 @@ pub mod no_input_and_output_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`NoInputAndOutput`](crate::operation::NoInputAndOutput)
-        pub fn build(self, _config: &crate::config::Config) -> NoInputAndOutput {
-            NoInputAndOutput::new(NoInputAndOutputInput {})
+        /// Consumes the builder and constructs an Operation<[`NoInputAndOutput`](crate::operation::NoInputAndOutput)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<NoInputAndOutput, ()> {
+            let op = NoInputAndOutput::new(NoInputAndOutputInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2305,7 +2604,7 @@ impl NoInputAndOutputInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2348,13 +2647,24 @@ pub mod null_and_empty_headers_client_input {
             self.c = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`NullAndEmptyHeadersClient`](crate::operation::NullAndEmptyHeadersClient)
-        pub fn build(self, _config: &crate::config::Config) -> NullAndEmptyHeadersClient {
-            NullAndEmptyHeadersClient::new(NullAndEmptyHeadersClientInput {
+        /// Consumes the builder and constructs an Operation<[`NullAndEmptyHeadersClient`](crate::operation::NullAndEmptyHeadersClient)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<NullAndEmptyHeadersClient, ()> {
+            let op = NullAndEmptyHeadersClient::new(NullAndEmptyHeadersClientInput {
                 a: self.a,
                 b: self.b,
                 c: self.c,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2397,7 +2707,7 @@ impl NullAndEmptyHeadersClientInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2440,13 +2750,24 @@ pub mod null_and_empty_headers_server_input {
             self.c = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`NullAndEmptyHeadersServer`](crate::operation::NullAndEmptyHeadersServer)
-        pub fn build(self, _config: &crate::config::Config) -> NullAndEmptyHeadersServer {
-            NullAndEmptyHeadersServer::new(NullAndEmptyHeadersServerInput {
+        /// Consumes the builder and constructs an Operation<[`NullAndEmptyHeadersServer`](crate::operation::NullAndEmptyHeadersServer)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<NullAndEmptyHeadersServer, ()> {
+            let op = NullAndEmptyHeadersServer::new(NullAndEmptyHeadersServerInput {
                 a: self.a,
                 b: self.b,
                 c: self.c,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2489,7 +2810,7 @@ impl NullAndEmptyHeadersServerInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2527,12 +2848,23 @@ pub mod omits_null_serializes_empty_string_input {
             self.empty_string = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`OmitsNullSerializesEmptyString`](crate::operation::OmitsNullSerializesEmptyString)
-        pub fn build(self, _config: &crate::config::Config) -> OmitsNullSerializesEmptyString {
-            OmitsNullSerializesEmptyString::new(OmitsNullSerializesEmptyStringInput {
+        /// Consumes the builder and constructs an Operation<[`OmitsNullSerializesEmptyString`](crate::operation::OmitsNullSerializesEmptyString)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<OmitsNullSerializesEmptyString, ()> {
+            let op = OmitsNullSerializesEmptyString::new(OmitsNullSerializesEmptyStringInput {
                 null_value: self.null_value,
                 empty_string: self.empty_string,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2562,7 +2894,7 @@ impl OmitsNullSerializesEmptyStringInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2595,11 +2927,22 @@ pub mod query_idempotency_token_auto_fill_input {
             self.token = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`QueryIdempotencyTokenAutoFill`](crate::operation::QueryIdempotencyTokenAutoFill)
-        pub fn build(self, _config: &crate::config::Config) -> QueryIdempotencyTokenAutoFill {
-            QueryIdempotencyTokenAutoFill::new(QueryIdempotencyTokenAutoFillInput {
+        /// Consumes the builder and constructs an Operation<[`QueryIdempotencyTokenAutoFill`](crate::operation::QueryIdempotencyTokenAutoFill)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<QueryIdempotencyTokenAutoFill, ()> {
+            let op = QueryIdempotencyTokenAutoFill::new(QueryIdempotencyTokenAutoFillInput {
                 token: self.token.or_else(|| Some(_config.token_provider.token())),
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2626,7 +2969,7 @@ impl QueryIdempotencyTokenAutoFillInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2660,11 +3003,22 @@ pub mod recursive_shapes_input {
             self.nested = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`RecursiveShapes`](crate::operation::RecursiveShapes)
-        pub fn build(self, _config: &crate::config::Config) -> RecursiveShapes {
-            RecursiveShapes::new(RecursiveShapesInput {
+        /// Consumes the builder and constructs an Operation<[`RecursiveShapes`](crate::operation::RecursiveShapes)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<RecursiveShapes, ()> {
+            let op = RecursiveShapes::new(RecursiveShapesInput {
                 nested: self.nested,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2683,7 +3037,7 @@ impl RecursiveShapesInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2761,9 +3115,12 @@ pub mod simple_scalar_properties_input {
             self.double_value = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`SimpleScalarProperties`](crate::operation::SimpleScalarProperties)
-        pub fn build(self, _config: &crate::config::Config) -> SimpleScalarProperties {
-            SimpleScalarProperties::new(SimpleScalarPropertiesInput {
+        /// Consumes the builder and constructs an Operation<[`SimpleScalarProperties`](crate::operation::SimpleScalarProperties)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<SimpleScalarProperties, ()> {
+            let op = SimpleScalarProperties::new(SimpleScalarPropertiesInput {
                 foo: self.foo,
                 string_value: self.string_value,
                 true_boolean_value: self.true_boolean_value,
@@ -2774,7 +3131,15 @@ pub mod simple_scalar_properties_input {
                 long_value: self.long_value,
                 float_value: self.float_value,
                 double_value: self.double_value,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2803,7 +3168,7 @@ impl SimpleScalarPropertiesInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2842,12 +3207,23 @@ pub mod streaming_traits_input {
             self.blob = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`StreamingTraits`](crate::operation::StreamingTraits)
-        pub fn build(self, _config: &crate::config::Config) -> StreamingTraits {
-            StreamingTraits::new(StreamingTraitsInput {
+        /// Consumes the builder and constructs an Operation<[`StreamingTraits`](crate::operation::StreamingTraits)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<StreamingTraits, ()> {
+            let op = StreamingTraits::new(StreamingTraitsInput {
                 foo: self.foo,
                 blob: self.blob,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2876,7 +3252,7 @@ impl StreamingTraitsInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2915,12 +3291,23 @@ pub mod streaming_traits_require_length_input {
             self.blob = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`StreamingTraitsRequireLength`](crate::operation::StreamingTraitsRequireLength)
-        pub fn build(self, _config: &crate::config::Config) -> StreamingTraitsRequireLength {
-            StreamingTraitsRequireLength::new(StreamingTraitsRequireLengthInput {
+        /// Consumes the builder and constructs an Operation<[`StreamingTraitsRequireLength`](crate::operation::StreamingTraitsRequireLength)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<StreamingTraitsRequireLength, ()> {
+            let op = StreamingTraitsRequireLength::new(StreamingTraitsRequireLengthInput {
                 foo: self.foo,
                 blob: self.blob,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2949,7 +3336,7 @@ impl StreamingTraitsRequireLengthInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -2988,12 +3375,23 @@ pub mod streaming_traits_with_media_type_input {
             self.blob = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`StreamingTraitsWithMediaType`](crate::operation::StreamingTraitsWithMediaType)
-        pub fn build(self, _config: &crate::config::Config) -> StreamingTraitsWithMediaType {
-            StreamingTraitsWithMediaType::new(StreamingTraitsWithMediaTypeInput {
+        /// Consumes the builder and constructs an Operation<[`StreamingTraitsWithMediaType`](crate::operation::StreamingTraitsWithMediaType)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<StreamingTraitsWithMediaType, ()> {
+            let op = StreamingTraitsWithMediaType::new(StreamingTraitsWithMediaTypeInput {
                 foo: self.foo,
                 blob: self.blob,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -3022,7 +3420,7 @@ impl StreamingTraitsWithMediaTypeInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -3086,9 +3484,12 @@ pub mod timestamp_format_headers_input {
             self.target_date_time = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`TimestampFormatHeaders`](crate::operation::TimestampFormatHeaders)
-        pub fn build(self, _config: &crate::config::Config) -> TimestampFormatHeaders {
-            TimestampFormatHeaders::new(TimestampFormatHeadersInput {
+        /// Consumes the builder and constructs an Operation<[`TimestampFormatHeaders`](crate::operation::TimestampFormatHeaders)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<TimestampFormatHeaders, ()> {
+            let op = TimestampFormatHeaders::new(TimestampFormatHeadersInput {
                 member_epoch_seconds: self.member_epoch_seconds,
                 member_http_date: self.member_http_date,
                 member_date_time: self.member_date_time,
@@ -3096,7 +3497,15 @@ pub mod timestamp_format_headers_input {
                 target_epoch_seconds: self.target_epoch_seconds,
                 target_http_date: self.target_http_date,
                 target_date_time: self.target_date_time,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -3182,7 +3591,7 @@ impl TimestampFormatHeadersInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,

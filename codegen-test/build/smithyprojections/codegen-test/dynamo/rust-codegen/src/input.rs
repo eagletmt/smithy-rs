@@ -107,11 +107,22 @@ pub mod batch_execute_statement_input {
             self.statements = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`BatchExecuteStatement`](crate::operation::BatchExecuteStatement)
-        pub fn build(self, _config: &crate::config::Config) -> BatchExecuteStatement {
-            BatchExecuteStatement::new(BatchExecuteStatementInput {
+        /// Consumes the builder and constructs an Operation<[`BatchExecuteStatement`](crate::operation::BatchExecuteStatement)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<BatchExecuteStatement, ()> {
+            let op = BatchExecuteStatement::new(BatchExecuteStatementInput {
                 statements: self.statements,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -269,12 +280,23 @@ pub mod batch_get_item_input {
             self.return_consumed_capacity = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`BatchGetItem`](crate::operation::BatchGetItem)
-        pub fn build(self, _config: &crate::config::Config) -> BatchGetItem {
-            BatchGetItem::new(BatchGetItemInput {
+        /// Consumes the builder and constructs an Operation<[`BatchGetItem`](crate::operation::BatchGetItem)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<BatchGetItem, ()> {
+            let op = BatchGetItem::new(BatchGetItemInput {
                 request_items: self.request_items,
                 return_consumed_capacity: self.return_consumed_capacity,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -400,13 +422,24 @@ pub mod batch_write_item_input {
             self.return_item_collection_metrics = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`BatchWriteItem`](crate::operation::BatchWriteItem)
-        pub fn build(self, _config: &crate::config::Config) -> BatchWriteItem {
-            BatchWriteItem::new(BatchWriteItemInput {
+        /// Consumes the builder and constructs an Operation<[`BatchWriteItem`](crate::operation::BatchWriteItem)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<BatchWriteItem, ()> {
+            let op = BatchWriteItem::new(BatchWriteItemInput {
                 request_items: self.request_items,
                 return_consumed_capacity: self.return_consumed_capacity,
                 return_item_collection_metrics: self.return_item_collection_metrics,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -467,12 +500,23 @@ pub mod create_backup_input {
             self.backup_name = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`CreateBackup`](crate::operation::CreateBackup)
-        pub fn build(self, _config: &crate::config::Config) -> CreateBackup {
-            CreateBackup::new(CreateBackupInput {
+        /// Consumes the builder and constructs an Operation<[`CreateBackup`](crate::operation::CreateBackup)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<CreateBackup, ()> {
+            let op = CreateBackup::new(CreateBackupInput {
                 table_name: self.table_name,
                 backup_name: self.backup_name,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -533,12 +577,23 @@ pub mod create_global_table_input {
             self.replication_group = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`CreateGlobalTable`](crate::operation::CreateGlobalTable)
-        pub fn build(self, _config: &crate::config::Config) -> CreateGlobalTable {
-            CreateGlobalTable::new(CreateGlobalTableInput {
+        /// Consumes the builder and constructs an Operation<[`CreateGlobalTable`](crate::operation::CreateGlobalTable)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<CreateGlobalTable, ()> {
+            let op = CreateGlobalTable::new(CreateGlobalTableInput {
                 global_table_name: self.global_table_name,
                 replication_group: self.replication_group,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -863,9 +918,12 @@ pub mod create_table_input {
             self.tags = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`CreateTable`](crate::operation::CreateTable)
-        pub fn build(self, _config: &crate::config::Config) -> CreateTable {
-            CreateTable::new(CreateTableInput {
+        /// Consumes the builder and constructs an Operation<[`CreateTable`](crate::operation::CreateTable)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<CreateTable, ()> {
+            let op = CreateTable::new(CreateTableInput {
                 attribute_definitions: self.attribute_definitions,
                 table_name: self.table_name,
                 key_schema: self.key_schema,
@@ -876,7 +934,15 @@ pub mod create_table_input {
                 stream_specification: self.stream_specification,
                 sse_specification: self.sse_specification,
                 tags: self.tags,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -938,11 +1004,22 @@ pub mod delete_backup_input {
             self.backup_arn = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DeleteBackup`](crate::operation::DeleteBackup)
-        pub fn build(self, _config: &crate::config::Config) -> DeleteBackup {
-            DeleteBackup::new(DeleteBackupInput {
+        /// Consumes the builder and constructs an Operation<[`DeleteBackup`](crate::operation::DeleteBackup)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DeleteBackup, ()> {
+            let op = DeleteBackup::new(DeleteBackupInput {
                 backup_arn: self.backup_arn,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1188,9 +1265,12 @@ pub mod delete_item_input {
             self.expression_attribute_values = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`DeleteItem`](crate::operation::DeleteItem)
-        pub fn build(self, _config: &crate::config::Config) -> DeleteItem {
-            DeleteItem::new(DeleteItemInput {
+        /// Consumes the builder and constructs an Operation<[`DeleteItem`](crate::operation::DeleteItem)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DeleteItem, ()> {
+            let op = DeleteItem::new(DeleteItemInput {
                 table_name: self.table_name,
                 key: self.key,
                 expected: self.expected,
@@ -1201,7 +1281,15 @@ pub mod delete_item_input {
                 condition_expression: self.condition_expression,
                 expression_attribute_names: self.expression_attribute_names,
                 expression_attribute_values: self.expression_attribute_values,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1263,11 +1351,22 @@ pub mod delete_table_input {
             self.table_name = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DeleteTable`](crate::operation::DeleteTable)
-        pub fn build(self, _config: &crate::config::Config) -> DeleteTable {
-            DeleteTable::new(DeleteTableInput {
+        /// Consumes the builder and constructs an Operation<[`DeleteTable`](crate::operation::DeleteTable)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DeleteTable, ()> {
+            let op = DeleteTable::new(DeleteTableInput {
                 table_name: self.table_name,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1320,11 +1419,22 @@ pub mod describe_backup_input {
             self.backup_arn = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DescribeBackup`](crate::operation::DescribeBackup)
-        pub fn build(self, _config: &crate::config::Config) -> DescribeBackup {
-            DescribeBackup::new(DescribeBackupInput {
+        /// Consumes the builder and constructs an Operation<[`DescribeBackup`](crate::operation::DescribeBackup)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DescribeBackup, ()> {
+            let op = DescribeBackup::new(DescribeBackupInput {
                 backup_arn: self.backup_arn,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1377,11 +1487,22 @@ pub mod describe_continuous_backups_input {
             self.table_name = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DescribeContinuousBackups`](crate::operation::DescribeContinuousBackups)
-        pub fn build(self, _config: &crate::config::Config) -> DescribeContinuousBackups {
-            DescribeContinuousBackups::new(DescribeContinuousBackupsInput {
+        /// Consumes the builder and constructs an Operation<[`DescribeContinuousBackups`](crate::operation::DescribeContinuousBackups)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DescribeContinuousBackups, ()> {
+            let op = DescribeContinuousBackups::new(DescribeContinuousBackupsInput {
                 table_name: self.table_name,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1443,12 +1564,23 @@ pub mod describe_contributor_insights_input {
             self.index_name = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DescribeContributorInsights`](crate::operation::DescribeContributorInsights)
-        pub fn build(self, _config: &crate::config::Config) -> DescribeContributorInsights {
-            DescribeContributorInsights::new(DescribeContributorInsightsInput {
+        /// Consumes the builder and constructs an Operation<[`DescribeContributorInsights`](crate::operation::DescribeContributorInsights)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DescribeContributorInsights, ()> {
+            let op = DescribeContributorInsights::new(DescribeContributorInsightsInput {
                 table_name: self.table_name,
                 index_name: self.index_name,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1498,9 +1630,20 @@ pub mod describe_endpoints_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`DescribeEndpoints`](crate::operation::DescribeEndpoints)
-        pub fn build(self, _config: &crate::config::Config) -> DescribeEndpoints {
-            DescribeEndpoints::new(DescribeEndpointsInput {})
+        /// Consumes the builder and constructs an Operation<[`DescribeEndpoints`](crate::operation::DescribeEndpoints)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DescribeEndpoints, ()> {
+            let op = DescribeEndpoints::new(DescribeEndpointsInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1548,11 +1691,22 @@ pub mod describe_export_input {
             self.export_arn = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DescribeExport`](crate::operation::DescribeExport)
-        pub fn build(self, _config: &crate::config::Config) -> DescribeExport {
-            DescribeExport::new(DescribeExportInput {
+        /// Consumes the builder and constructs an Operation<[`DescribeExport`](crate::operation::DescribeExport)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DescribeExport, ()> {
+            let op = DescribeExport::new(DescribeExportInput {
                 export_arn: self.export_arn,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1605,11 +1759,22 @@ pub mod describe_global_table_input {
             self.global_table_name = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DescribeGlobalTable`](crate::operation::DescribeGlobalTable)
-        pub fn build(self, _config: &crate::config::Config) -> DescribeGlobalTable {
-            DescribeGlobalTable::new(DescribeGlobalTableInput {
+        /// Consumes the builder and constructs an Operation<[`DescribeGlobalTable`](crate::operation::DescribeGlobalTable)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DescribeGlobalTable, ()> {
+            let op = DescribeGlobalTable::new(DescribeGlobalTableInput {
                 global_table_name: self.global_table_name,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1662,11 +1827,22 @@ pub mod describe_global_table_settings_input {
             self.global_table_name = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DescribeGlobalTableSettings`](crate::operation::DescribeGlobalTableSettings)
-        pub fn build(self, _config: &crate::config::Config) -> DescribeGlobalTableSettings {
-            DescribeGlobalTableSettings::new(DescribeGlobalTableSettingsInput {
+        /// Consumes the builder and constructs an Operation<[`DescribeGlobalTableSettings`](crate::operation::DescribeGlobalTableSettings)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DescribeGlobalTableSettings, ()> {
+            let op = DescribeGlobalTableSettings::new(DescribeGlobalTableSettingsInput {
                 global_table_name: self.global_table_name,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1722,11 +1898,24 @@ pub mod describe_kinesis_streaming_destination_input {
             self.table_name = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DescribeKinesisStreamingDestination`](crate::operation::DescribeKinesisStreamingDestination)
-        pub fn build(self, _config: &crate::config::Config) -> DescribeKinesisStreamingDestination {
-            DescribeKinesisStreamingDestination::new(DescribeKinesisStreamingDestinationInput {
-                table_name: self.table_name,
-            })
+        /// Consumes the builder and constructs an Operation<[`DescribeKinesisStreamingDestination`](crate::operation::DescribeKinesisStreamingDestination)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DescribeKinesisStreamingDestination, ()> {
+            let op = DescribeKinesisStreamingDestination::new(
+                DescribeKinesisStreamingDestinationInput {
+                    table_name: self.table_name,
+                },
+            );
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1775,9 +1964,20 @@ pub mod describe_limits_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`DescribeLimits`](crate::operation::DescribeLimits)
-        pub fn build(self, _config: &crate::config::Config) -> DescribeLimits {
-            DescribeLimits::new(DescribeLimitsInput {})
+        /// Consumes the builder and constructs an Operation<[`DescribeLimits`](crate::operation::DescribeLimits)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DescribeLimits, ()> {
+            let op = DescribeLimits::new(DescribeLimitsInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1825,11 +2025,22 @@ pub mod describe_table_input {
             self.table_name = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DescribeTable`](crate::operation::DescribeTable)
-        pub fn build(self, _config: &crate::config::Config) -> DescribeTable {
-            DescribeTable::new(DescribeTableInput {
+        /// Consumes the builder and constructs an Operation<[`DescribeTable`](crate::operation::DescribeTable)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DescribeTable, ()> {
+            let op = DescribeTable::new(DescribeTableInput {
                 table_name: self.table_name,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1882,11 +2093,22 @@ pub mod describe_table_replica_auto_scaling_input {
             self.table_name = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DescribeTableReplicaAutoScaling`](crate::operation::DescribeTableReplicaAutoScaling)
-        pub fn build(self, _config: &crate::config::Config) -> DescribeTableReplicaAutoScaling {
-            DescribeTableReplicaAutoScaling::new(DescribeTableReplicaAutoScalingInput {
+        /// Consumes the builder and constructs an Operation<[`DescribeTableReplicaAutoScaling`](crate::operation::DescribeTableReplicaAutoScaling)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DescribeTableReplicaAutoScaling, ()> {
+            let op = DescribeTableReplicaAutoScaling::new(DescribeTableReplicaAutoScalingInput {
                 table_name: self.table_name,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -1942,11 +2164,22 @@ pub mod describe_time_to_live_input {
             self.table_name = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DescribeTimeToLive`](crate::operation::DescribeTimeToLive)
-        pub fn build(self, _config: &crate::config::Config) -> DescribeTimeToLive {
-            DescribeTimeToLive::new(DescribeTimeToLiveInput {
+        /// Consumes the builder and constructs an Operation<[`DescribeTimeToLive`](crate::operation::DescribeTimeToLive)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DescribeTimeToLive, ()> {
+            let op = DescribeTimeToLive::new(DescribeTimeToLiveInput {
                 table_name: self.table_name,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2005,12 +2238,24 @@ pub mod disable_kinesis_streaming_destination_input {
             self.stream_arn = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`DisableKinesisStreamingDestination`](crate::operation::DisableKinesisStreamingDestination)
-        pub fn build(self, _config: &crate::config::Config) -> DisableKinesisStreamingDestination {
-            DisableKinesisStreamingDestination::new(DisableKinesisStreamingDestinationInput {
-                table_name: self.table_name,
-                stream_arn: self.stream_arn,
-            })
+        /// Consumes the builder and constructs an Operation<[`DisableKinesisStreamingDestination`](crate::operation::DisableKinesisStreamingDestination)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<DisableKinesisStreamingDestination, ()> {
+            let op =
+                DisableKinesisStreamingDestination::new(DisableKinesisStreamingDestinationInput {
+                    table_name: self.table_name,
+                    stream_arn: self.stream_arn,
+                });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2073,12 +2318,24 @@ pub mod enable_kinesis_streaming_destination_input {
             self.stream_arn = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`EnableKinesisStreamingDestination`](crate::operation::EnableKinesisStreamingDestination)
-        pub fn build(self, _config: &crate::config::Config) -> EnableKinesisStreamingDestination {
-            EnableKinesisStreamingDestination::new(EnableKinesisStreamingDestinationInput {
-                table_name: self.table_name,
-                stream_arn: self.stream_arn,
-            })
+        /// Consumes the builder and constructs an Operation<[`EnableKinesisStreamingDestination`](crate::operation::EnableKinesisStreamingDestination)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<EnableKinesisStreamingDestination, ()> {
+            let op =
+                EnableKinesisStreamingDestination::new(EnableKinesisStreamingDestinationInput {
+                    table_name: self.table_name,
+                    stream_arn: self.stream_arn,
+                });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2162,14 +2419,25 @@ pub mod execute_statement_input {
             self.next_token = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`ExecuteStatement`](crate::operation::ExecuteStatement)
-        pub fn build(self, _config: &crate::config::Config) -> ExecuteStatement {
-            ExecuteStatement::new(ExecuteStatementInput {
+        /// Consumes the builder and constructs an Operation<[`ExecuteStatement`](crate::operation::ExecuteStatement)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ExecuteStatement, ()> {
+            let op = ExecuteStatement::new(ExecuteStatementInput {
                 statement: self.statement,
                 parameters: self.parameters,
                 consistent_read: self.consistent_read,
                 next_token: self.next_token,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2236,14 +2504,25 @@ pub mod execute_transaction_input {
             self.client_request_token = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`ExecuteTransaction`](crate::operation::ExecuteTransaction)
-        pub fn build(self, _config: &crate::config::Config) -> ExecuteTransaction {
-            ExecuteTransaction::new(ExecuteTransactionInput {
+        /// Consumes the builder and constructs an Operation<[`ExecuteTransaction`](crate::operation::ExecuteTransaction)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ExecuteTransaction, ()> {
+            let op = ExecuteTransaction::new(ExecuteTransactionInput {
                 transact_statements: self.transact_statements,
                 client_request_token: self
                     .client_request_token
                     .or_else(|| Some(_config.token_provider.token())),
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2372,9 +2651,12 @@ pub mod export_table_to_point_in_time_input {
             self.export_format = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`ExportTableToPointInTime`](crate::operation::ExportTableToPointInTime)
-        pub fn build(self, _config: &crate::config::Config) -> ExportTableToPointInTime {
-            ExportTableToPointInTime::new(ExportTableToPointInTimeInput {
+        /// Consumes the builder and constructs an Operation<[`ExportTableToPointInTime`](crate::operation::ExportTableToPointInTime)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ExportTableToPointInTime, ()> {
+            let op = ExportTableToPointInTime::new(ExportTableToPointInTimeInput {
                 table_arn: self.table_arn,
                 export_time: self.export_time,
                 client_token: self
@@ -2386,7 +2668,15 @@ pub mod export_table_to_point_in_time_input {
                 s3_sse_algorithm: self.s3_sse_algorithm,
                 s3_sse_kms_key_id: self.s3_sse_kms_key_id,
                 export_format: self.export_format,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2557,9 +2847,12 @@ pub mod get_item_input {
             self.expression_attribute_names = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`GetItem`](crate::operation::GetItem)
-        pub fn build(self, _config: &crate::config::Config) -> GetItem {
-            GetItem::new(GetItemInput {
+        /// Consumes the builder and constructs an Operation<[`GetItem`](crate::operation::GetItem)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<GetItem, ()> {
+            let op = GetItem::new(GetItemInput {
                 table_name: self.table_name,
                 key: self.key,
                 attributes_to_get: self.attributes_to_get,
@@ -2567,7 +2860,15 @@ pub mod get_item_input {
                 return_consumed_capacity: self.return_consumed_capacity,
                 projection_expression: self.projection_expression,
                 expression_attribute_names: self.expression_attribute_names,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2678,16 +2979,27 @@ pub mod list_backups_input {
             self.backup_type = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`ListBackups`](crate::operation::ListBackups)
-        pub fn build(self, _config: &crate::config::Config) -> ListBackups {
-            ListBackups::new(ListBackupsInput {
+        /// Consumes the builder and constructs an Operation<[`ListBackups`](crate::operation::ListBackups)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ListBackups, ()> {
+            let op = ListBackups::new(ListBackupsInput {
                 table_name: self.table_name,
                 limit: self.limit,
                 time_range_lower_bound: self.time_range_lower_bound,
                 time_range_upper_bound: self.time_range_upper_bound,
                 exclusive_start_backup_arn: self.exclusive_start_backup_arn,
                 backup_type: self.backup_type,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2757,13 +3069,24 @@ pub mod list_contributor_insights_input {
             self.max_results = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`ListContributorInsights`](crate::operation::ListContributorInsights)
-        pub fn build(self, _config: &crate::config::Config) -> ListContributorInsights {
-            ListContributorInsights::new(ListContributorInsightsInput {
+        /// Consumes the builder and constructs an Operation<[`ListContributorInsights`](crate::operation::ListContributorInsights)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ListContributorInsights, ()> {
+            let op = ListContributorInsights::new(ListContributorInsightsInput {
                 table_name: self.table_name,
                 next_token: self.next_token,
                 max_results: self.max_results.unwrap_or_default(),
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2832,13 +3155,24 @@ pub mod list_exports_input {
             self.next_token = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`ListExports`](crate::operation::ListExports)
-        pub fn build(self, _config: &crate::config::Config) -> ListExports {
-            ListExports::new(ListExportsInput {
+        /// Consumes the builder and constructs an Operation<[`ListExports`](crate::operation::ListExports)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ListExports, ()> {
+            let op = ListExports::new(ListExportsInput {
                 table_arn: self.table_arn,
                 max_results: self.max_results,
                 next_token: self.next_token,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2910,13 +3244,24 @@ pub mod list_global_tables_input {
             self.region_name = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`ListGlobalTables`](crate::operation::ListGlobalTables)
-        pub fn build(self, _config: &crate::config::Config) -> ListGlobalTables {
-            ListGlobalTables::new(ListGlobalTablesInput {
+        /// Consumes the builder and constructs an Operation<[`ListGlobalTables`](crate::operation::ListGlobalTables)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ListGlobalTables, ()> {
+            let op = ListGlobalTables::new(ListGlobalTablesInput {
                 exclusive_start_global_table_name: self.exclusive_start_global_table_name,
                 limit: self.limit,
                 region_name: self.region_name,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -2979,12 +3324,23 @@ pub mod list_tables_input {
             self.limit = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`ListTables`](crate::operation::ListTables)
-        pub fn build(self, _config: &crate::config::Config) -> ListTables {
-            ListTables::new(ListTablesInput {
+        /// Consumes the builder and constructs an Operation<[`ListTables`](crate::operation::ListTables)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ListTables, ()> {
+            let op = ListTables::new(ListTablesInput {
                 exclusive_start_table_name: self.exclusive_start_table_name,
                 limit: self.limit,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -3045,12 +3401,23 @@ pub mod list_tags_of_resource_input {
             self.next_token = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`ListTagsOfResource`](crate::operation::ListTagsOfResource)
-        pub fn build(self, _config: &crate::config::Config) -> ListTagsOfResource {
-            ListTagsOfResource::new(ListTagsOfResourceInput {
+        /// Consumes the builder and constructs an Operation<[`ListTagsOfResource`](crate::operation::ListTagsOfResource)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ListTagsOfResource, ()> {
+            let op = ListTagsOfResource::new(ListTagsOfResourceInput {
                 resource_arn: self.resource_arn,
                 next_token: self.next_token,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -3302,9 +3669,12 @@ pub mod put_item_input {
             self.expression_attribute_values = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`PutItem`](crate::operation::PutItem)
-        pub fn build(self, _config: &crate::config::Config) -> PutItem {
-            PutItem::new(PutItemInput {
+        /// Consumes the builder and constructs an Operation<[`PutItem`](crate::operation::PutItem)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<PutItem, ()> {
+            let op = PutItem::new(PutItemInput {
                 table_name: self.table_name,
                 item: self.item,
                 expected: self.expected,
@@ -3315,7 +3685,15 @@ pub mod put_item_input {
                 condition_expression: self.condition_expression,
                 expression_attribute_names: self.expression_attribute_names,
                 expression_attribute_values: self.expression_attribute_values,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -3762,9 +4140,12 @@ pub mod query_input {
             self.expression_attribute_values = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`Query`](crate::operation::Query)
-        pub fn build(self, _config: &crate::config::Config) -> Query {
-            Query::new(QueryInput {
+        /// Consumes the builder and constructs an Operation<[`Query`](crate::operation::Query)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<Query, ()> {
+            let op = Query::new(QueryInput {
                 table_name: self.table_name,
                 index_name: self.index_name,
                 select: self.select,
@@ -3782,7 +4163,15 @@ pub mod query_input {
                 key_condition_expression: self.key_condition_expression,
                 expression_attribute_names: self.expression_attribute_names,
                 expression_attribute_values: self.expression_attribute_values,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -3903,9 +4292,12 @@ pub mod restore_table_from_backup_input {
             self.sse_specification_override = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`RestoreTableFromBackup`](crate::operation::RestoreTableFromBackup)
-        pub fn build(self, _config: &crate::config::Config) -> RestoreTableFromBackup {
-            RestoreTableFromBackup::new(RestoreTableFromBackupInput {
+        /// Consumes the builder and constructs an Operation<[`RestoreTableFromBackup`](crate::operation::RestoreTableFromBackup)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<RestoreTableFromBackup, ()> {
+            let op = RestoreTableFromBackup::new(RestoreTableFromBackupInput {
                 target_table_name: self.target_table_name,
                 backup_arn: self.backup_arn,
                 billing_mode_override: self.billing_mode_override,
@@ -3913,7 +4305,15 @@ pub mod restore_table_from_backup_input {
                 local_secondary_index_override: self.local_secondary_index_override,
                 provisioned_throughput_override: self.provisioned_throughput_override,
                 sse_specification_override: self.sse_specification_override,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -4045,9 +4445,12 @@ pub mod restore_table_to_point_in_time_input {
             self.sse_specification_override = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`RestoreTableToPointInTime`](crate::operation::RestoreTableToPointInTime)
-        pub fn build(self, _config: &crate::config::Config) -> RestoreTableToPointInTime {
-            RestoreTableToPointInTime::new(RestoreTableToPointInTimeInput {
+        /// Consumes the builder and constructs an Operation<[`RestoreTableToPointInTime`](crate::operation::RestoreTableToPointInTime)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<RestoreTableToPointInTime, ()> {
+            let op = RestoreTableToPointInTime::new(RestoreTableToPointInTimeInput {
                 source_table_arn: self.source_table_arn,
                 source_table_name: self.source_table_name,
                 target_table_name: self.target_table_name,
@@ -4058,7 +4461,15 @@ pub mod restore_table_to_point_in_time_input {
                 local_secondary_index_override: self.local_secondary_index_override,
                 provisioned_throughput_override: self.provisioned_throughput_override,
                 sse_specification_override: self.sse_specification_override,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -4421,9 +4832,12 @@ pub mod scan_input {
             self.consistent_read = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`Scan`](crate::operation::Scan)
-        pub fn build(self, _config: &crate::config::Config) -> Scan {
-            Scan::new(ScanInput {
+        /// Consumes the builder and constructs an Operation<[`Scan`](crate::operation::Scan)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<Scan, ()> {
+            let op = Scan::new(ScanInput {
                 table_name: self.table_name,
                 index_name: self.index_name,
                 attributes_to_get: self.attributes_to_get,
@@ -4440,7 +4854,15 @@ pub mod scan_input {
                 expression_attribute_names: self.expression_attribute_names,
                 expression_attribute_values: self.expression_attribute_values,
                 consistent_read: self.consistent_read,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -4515,12 +4937,23 @@ pub mod tag_resource_input {
             self.tags = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`TagResource`](crate::operation::TagResource)
-        pub fn build(self, _config: &crate::config::Config) -> TagResource {
-            TagResource::new(TagResourceInput {
+        /// Consumes the builder and constructs an Operation<[`TagResource`](crate::operation::TagResource)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<TagResource, ()> {
+            let op = TagResource::new(TagResourceInput {
                 resource_arn: self.resource_arn,
                 tags: self.tags,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -4585,12 +5018,23 @@ pub mod transact_get_items_input {
             self.return_consumed_capacity = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`TransactGetItems`](crate::operation::TransactGetItems)
-        pub fn build(self, _config: &crate::config::Config) -> TransactGetItems {
-            TransactGetItems::new(TransactGetItemsInput {
+        /// Consumes the builder and constructs an Operation<[`TransactGetItems`](crate::operation::TransactGetItems)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<TransactGetItems, ()> {
+            let op = TransactGetItems::new(TransactGetItemsInput {
                 transact_items: self.transact_items,
                 return_consumed_capacity: self.return_consumed_capacity,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -4703,16 +5147,27 @@ pub mod transact_write_items_input {
             self.client_request_token = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`TransactWriteItems`](crate::operation::TransactWriteItems)
-        pub fn build(self, _config: &crate::config::Config) -> TransactWriteItems {
-            TransactWriteItems::new(TransactWriteItemsInput {
+        /// Consumes the builder and constructs an Operation<[`TransactWriteItems`](crate::operation::TransactWriteItems)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<TransactWriteItems, ()> {
+            let op = TransactWriteItems::new(TransactWriteItemsInput {
                 transact_items: self.transact_items,
                 return_consumed_capacity: self.return_consumed_capacity,
                 return_item_collection_metrics: self.return_item_collection_metrics,
                 client_request_token: self
                     .client_request_token
                     .or_else(|| Some(_config.token_provider.token())),
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -4776,12 +5231,23 @@ pub mod untag_resource_input {
             self.tag_keys = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`UntagResource`](crate::operation::UntagResource)
-        pub fn build(self, _config: &crate::config::Config) -> UntagResource {
-            UntagResource::new(UntagResourceInput {
+        /// Consumes the builder and constructs an Operation<[`UntagResource`](crate::operation::UntagResource)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<UntagResource, ()> {
+            let op = UntagResource::new(UntagResourceInput {
                 resource_arn: self.resource_arn,
                 tag_keys: self.tag_keys,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -4846,12 +5312,23 @@ pub mod update_continuous_backups_input {
             self.point_in_time_recovery_specification = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`UpdateContinuousBackups`](crate::operation::UpdateContinuousBackups)
-        pub fn build(self, _config: &crate::config::Config) -> UpdateContinuousBackups {
-            UpdateContinuousBackups::new(UpdateContinuousBackupsInput {
+        /// Consumes the builder and constructs an Operation<[`UpdateContinuousBackups`](crate::operation::UpdateContinuousBackups)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<UpdateContinuousBackups, ()> {
+            let op = UpdateContinuousBackups::new(UpdateContinuousBackupsInput {
                 table_name: self.table_name,
                 point_in_time_recovery_specification: self.point_in_time_recovery_specification,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -4918,13 +5395,24 @@ pub mod update_contributor_insights_input {
             self.contributor_insights_action = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`UpdateContributorInsights`](crate::operation::UpdateContributorInsights)
-        pub fn build(self, _config: &crate::config::Config) -> UpdateContributorInsights {
-            UpdateContributorInsights::new(UpdateContributorInsightsInput {
+        /// Consumes the builder and constructs an Operation<[`UpdateContributorInsights`](crate::operation::UpdateContributorInsights)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<UpdateContributorInsights, ()> {
+            let op = UpdateContributorInsights::new(UpdateContributorInsightsInput {
                 table_name: self.table_name,
                 index_name: self.index_name,
                 contributor_insights_action: self.contributor_insights_action,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -4989,12 +5477,23 @@ pub mod update_global_table_input {
             self.replica_updates = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`UpdateGlobalTable`](crate::operation::UpdateGlobalTable)
-        pub fn build(self, _config: &crate::config::Config) -> UpdateGlobalTable {
-            UpdateGlobalTable::new(UpdateGlobalTableInput {
+        /// Consumes the builder and constructs an Operation<[`UpdateGlobalTable`](crate::operation::UpdateGlobalTable)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<UpdateGlobalTable, ()> {
+            let op = UpdateGlobalTable::new(UpdateGlobalTableInput {
                 global_table_name: self.global_table_name,
                 replica_updates: self.replica_updates,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -5106,9 +5605,12 @@ pub mod update_global_table_settings_input {
             self.replica_settings_update = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`UpdateGlobalTableSettings`](crate::operation::UpdateGlobalTableSettings)
-        pub fn build(self, _config: &crate::config::Config) -> UpdateGlobalTableSettings {
-            UpdateGlobalTableSettings::new(UpdateGlobalTableSettingsInput {
+        /// Consumes the builder and constructs an Operation<[`UpdateGlobalTableSettings`](crate::operation::UpdateGlobalTableSettings)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<UpdateGlobalTableSettings, ()> {
+            let op = UpdateGlobalTableSettings::new(UpdateGlobalTableSettingsInput {
                 global_table_name: self.global_table_name,
                 global_table_billing_mode: self.global_table_billing_mode,
                 global_table_provisioned_write_capacity_units: self
@@ -5118,7 +5620,15 @@ pub mod update_global_table_settings_input {
                 global_table_global_secondary_index_settings_update: self
                     .global_table_global_secondary_index_settings_update,
                 replica_settings_update: self.replica_settings_update,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -5496,9 +6006,12 @@ pub mod update_item_input {
             self.expression_attribute_values = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`UpdateItem`](crate::operation::UpdateItem)
-        pub fn build(self, _config: &crate::config::Config) -> UpdateItem {
-            UpdateItem::new(UpdateItemInput {
+        /// Consumes the builder and constructs an Operation<[`UpdateItem`](crate::operation::UpdateItem)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<UpdateItem, ()> {
+            let op = UpdateItem::new(UpdateItemInput {
                 table_name: self.table_name,
                 key: self.key,
                 attribute_updates: self.attribute_updates,
@@ -5511,7 +6024,15 @@ pub mod update_item_input {
                 condition_expression: self.condition_expression,
                 expression_attribute_names: self.expression_attribute_names,
                 expression_attribute_values: self.expression_attribute_values,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -5667,9 +6188,12 @@ pub mod update_table_input {
             self.replica_updates = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`UpdateTable`](crate::operation::UpdateTable)
-        pub fn build(self, _config: &crate::config::Config) -> UpdateTable {
-            UpdateTable::new(UpdateTableInput {
+        /// Consumes the builder and constructs an Operation<[`UpdateTable`](crate::operation::UpdateTable)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<UpdateTable, ()> {
+            let op = UpdateTable::new(UpdateTableInput {
                 attribute_definitions: self.attribute_definitions,
                 table_name: self.table_name,
                 billing_mode: self.billing_mode,
@@ -5678,7 +6202,15 @@ pub mod update_table_input {
                 stream_specification: self.stream_specification,
                 sse_specification: self.sse_specification,
                 replica_updates: self.replica_updates,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -5770,15 +6302,26 @@ pub mod update_table_replica_auto_scaling_input {
             self.replica_updates = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`UpdateTableReplicaAutoScaling`](crate::operation::UpdateTableReplicaAutoScaling)
-        pub fn build(self, _config: &crate::config::Config) -> UpdateTableReplicaAutoScaling {
-            UpdateTableReplicaAutoScaling::new(UpdateTableReplicaAutoScalingInput {
+        /// Consumes the builder and constructs an Operation<[`UpdateTableReplicaAutoScaling`](crate::operation::UpdateTableReplicaAutoScaling)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<UpdateTableReplicaAutoScaling, ()> {
+            let op = UpdateTableReplicaAutoScaling::new(UpdateTableReplicaAutoScalingInput {
                 global_secondary_index_updates: self.global_secondary_index_updates,
                 table_name: self.table_name,
                 provisioned_write_capacity_auto_scaling_update: self
                     .provisioned_write_capacity_auto_scaling_update,
                 replica_updates: self.replica_updates,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -5845,12 +6388,23 @@ pub mod update_time_to_live_input {
             self.time_to_live_specification = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`UpdateTimeToLive`](crate::operation::UpdateTimeToLive)
-        pub fn build(self, _config: &crate::config::Config) -> UpdateTimeToLive {
-            UpdateTimeToLive::new(UpdateTimeToLiveInput {
+        /// Consumes the builder and constructs an Operation<[`UpdateTimeToLive`](crate::operation::UpdateTimeToLive)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<UpdateTimeToLive, ()> {
+            let op = UpdateTimeToLive::new(UpdateTimeToLiveInput {
                 table_name: self.table_name,
                 time_to_live_specification: self.time_to_live_specification,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }

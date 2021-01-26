@@ -61,6 +61,14 @@ impl EmptyOperation {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for EmptyOperation {
+    type Output = Result<EmptyOperationOutput, crate::error::EmptyOperationError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod empty_operation_request_test {
@@ -76,13 +84,14 @@ mod empty_operation_request_test {
             let config = crate::config::Config::builder().build();
             EmptyOperationInput::builder().build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
 
+        let body = http_request.body().bytes().expect("body should be strict");
         // No body
-        assert!(&http_request.body().is_empty());
+        assert!(&body.is_empty());
     }
     /// Includes X-Amz-Target header and Content-Type
     /// Test ID: includes_x_amz_target_and_content_type
@@ -92,7 +101,7 @@ mod empty_operation_request_test {
             let config = crate::config::Config::builder().build();
             EmptyOperationInput::builder().build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -105,8 +114,9 @@ mod empty_operation_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         // No body
-        assert!(&http_request.body().is_empty());
+        assert!(&body.is_empty());
     }
     /// Handles empty output shapes
     /// Test ID: handles_empty_output_shape
@@ -193,6 +203,14 @@ impl GreetingWithErrors {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for GreetingWithErrors {
+    type Output = Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod greeting_with_errors_request_test {
@@ -560,6 +578,14 @@ impl JsonEnums {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for JsonEnums {
+    type Output = Result<JsonEnumsOutput, crate::error::JsonEnumsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod json_enums_request_test {
@@ -585,7 +611,7 @@ mod json_enums_request_test {
                 })
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -595,8 +621,9 @@ mod json_enums_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"fooEnum1\": \"Foo\",
             \"fooEnum2\": \"0\",
@@ -659,6 +686,14 @@ impl JsonUnions {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for JsonUnions {
+    type Output = Result<JsonUnionsOutput, crate::error::JsonUnionsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod json_unions_request_test {
@@ -679,7 +714,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::StringValue("foo".to_string()))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -692,8 +727,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"stringValue\": \"foo\"
@@ -712,7 +748,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::BooleanValue(true))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -725,8 +761,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"booleanValue\": true
@@ -745,7 +782,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::NumberValue(1))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -758,8 +795,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"numberValue\": 1
@@ -778,7 +816,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::BlobValue(::smithy_types::Blob::new("foo")))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -791,8 +829,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"blobValue\": \"Zm9v\"
@@ -813,7 +852,7 @@ mod json_unions_request_test {
                 ))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -826,8 +865,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"timestampValue\": 1398796238
@@ -846,7 +886,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::EnumValue(FooEnum::from("Foo")))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -859,8 +899,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"enumValue\": \"Foo\"
@@ -882,7 +923,7 @@ mod json_unions_request_test {
                 ]))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -895,8 +936,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"listValue\": [\"foo\", \"bar\"]
@@ -920,7 +962,7 @@ mod json_unions_request_test {
                 }))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -933,8 +975,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"mapValue\": {
@@ -959,7 +1002,7 @@ mod json_unions_request_test {
                 }))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -972,8 +1015,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"structureValue\": {
@@ -1311,6 +1355,14 @@ impl KitchenSinkOperation {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for KitchenSinkOperation {
+    type Output = Result<KitchenSinkOperationOutput, crate::error::KitchenSinkOperationError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod kitchen_sink_operation_request_test {
@@ -1332,7 +1384,7 @@ mod kitchen_sink_operation_request_test {
                 .string("abc xyz".to_string())
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1347,8 +1399,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"String\":\"abc xyz\"}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1365,7 +1418,7 @@ mod kitchen_sink_operation_request_test {
             )
             .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1380,8 +1433,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(
-        ::protocol_test_helpers::validate_body(&http_request.body(), "{\"JsonValue\":\"{\\\"string\\\":\\\"value\\\",\\\"number\\\":1234.5,\\\"boolTrue\\\":true,\\\"boolFalse\\\":false,\\\"array\\\":[1,2,3,4],\\\"object\\\":{\\\"key\\\":\\\"value\\\"},\\\"null\\\":null}\"}", ::protocol_test_helpers::MediaType::from("application/json"))
+        ::protocol_test_helpers::validate_body(&body, "{\"JsonValue\":\"{\\\"string\\\":\\\"value\\\",\\\"number\\\":1234.5,\\\"boolTrue\\\":true,\\\"boolFalse\\\":false,\\\"array\\\":[1,2,3,4],\\\"object\\\":{\\\"key\\\":\\\"value\\\"},\\\"null\\\":null}\"}", ::protocol_test_helpers::MediaType::from("application/json"))
         );
     }
     /// Serializes integer shapes
@@ -1394,7 +1448,7 @@ mod kitchen_sink_operation_request_test {
                 .integer(1234)
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1409,8 +1463,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"Integer\":1234}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1425,7 +1480,7 @@ mod kitchen_sink_operation_request_test {
                 .long(999999999999)
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1440,8 +1495,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"Long\":999999999999}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1456,7 +1512,7 @@ mod kitchen_sink_operation_request_test {
                 .float(1234.5)
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1471,8 +1527,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"Float\":1234.5}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1487,7 +1544,7 @@ mod kitchen_sink_operation_request_test {
                 .double(1234.5)
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1502,8 +1559,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"Double\":1234.5}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1518,7 +1576,7 @@ mod kitchen_sink_operation_request_test {
                 .blob(::smithy_types::Blob::new("binary-value"))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1533,8 +1591,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"Blob\":\"YmluYXJ5LXZhbHVl\"}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1549,7 +1608,7 @@ mod kitchen_sink_operation_request_test {
                 .boolean(true)
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1564,8 +1623,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"Boolean\":true}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1580,7 +1640,7 @@ mod kitchen_sink_operation_request_test {
                 .boolean(false)
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1595,8 +1655,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"Boolean\":false}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1611,7 +1672,7 @@ mod kitchen_sink_operation_request_test {
                 .timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1626,8 +1687,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"Timestamp\":946845296}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1642,7 +1704,7 @@ mod kitchen_sink_operation_request_test {
                 .iso8601_timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1657,8 +1719,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"Iso8601Timestamp\":\"2000-01-02T20:34:56Z\"}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1673,7 +1736,7 @@ mod kitchen_sink_operation_request_test {
                 .httpdate_timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1688,8 +1751,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"HttpdateTimestamp\":\"Sun, 02 Jan 2000 20:34:56 GMT\"}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1704,7 +1768,7 @@ mod kitchen_sink_operation_request_test {
                 .unix_timestamp(::smithy_types::Instant::from_epoch_seconds(946845296))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1719,8 +1783,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"UnixTimestamp\":946845296}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1739,7 +1804,7 @@ mod kitchen_sink_operation_request_test {
                 ])
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1754,8 +1819,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"ListOfStrings\":[\"abc\",\"mno\",\"xyz\"]}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1770,7 +1836,7 @@ mod kitchen_sink_operation_request_test {
                 .list_of_strings(vec![])
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1785,8 +1851,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"ListOfStrings\":[]}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1817,7 +1884,7 @@ mod kitchen_sink_operation_request_test {
                 ])
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1832,8 +1899,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"ListOfMapsOfStrings\":[{\"foo\":\"bar\"},{\"abc\":\"xyz\"},{\"red\":\"blue\"}]}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1861,7 +1929,7 @@ mod kitchen_sink_operation_request_test {
                 ])
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1876,8 +1944,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"ListOfStructs\":[{\"Value\":\"abc\"},{\"Value\":\"mno\"},{\"Value\":\"xyz\"}]}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1905,7 +1974,7 @@ mod kitchen_sink_operation_request_test {
                 }])
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1920,8 +1989,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"RecursiveList\":[{\"RecursiveList\":[{\"RecursiveList\":[{\"Integer\":123}]}]}]}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1941,7 +2011,7 @@ mod kitchen_sink_operation_request_test {
                 })
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1956,8 +2026,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"MapOfStrings\":{\"abc\":\"xyz\",\"mno\":\"hjk\"}}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -1972,7 +2043,7 @@ mod kitchen_sink_operation_request_test {
                 .map_of_strings(::std::collections::HashMap::new())
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1987,8 +2058,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"MapOfStrings\":{}}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -2014,7 +2086,7 @@ mod kitchen_sink_operation_request_test {
                 })
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -2029,8 +2101,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"MapOfListsOfStrings\":{\"abc\":[\"abc\",\"xyz\"],\"mno\":[\"xyz\",\"abc\"]}}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -2056,7 +2129,7 @@ mod kitchen_sink_operation_request_test {
                 })
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -2071,8 +2144,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(
-        ::protocol_test_helpers::validate_body(&http_request.body(), "{\"MapOfStructs\":{\"key1\":{\"Value\":\"value-1\"},\"key2\":{\"Value\":\"value-2\"}}}", ::protocol_test_helpers::MediaType::from("application/json"))
+        ::protocol_test_helpers::validate_body(&body, "{\"MapOfStructs\":{\"key1\":{\"Value\":\"value-1\"},\"key2\":{\"Value\":\"value-2\"}}}", ::protocol_test_helpers::MediaType::from("application/json"))
         );
     }
     /// Serializes map of recursive structure shapes
@@ -2110,7 +2184,7 @@ mod kitchen_sink_operation_request_test {
                 })
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -2125,8 +2199,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(
-        ::protocol_test_helpers::validate_body(&http_request.body(), "{\"RecursiveMap\":{\"key1\":{\"RecursiveMap\":{\"key2\":{\"RecursiveMap\":{\"key3\":{\"Boolean\":false}}}}}}}", ::protocol_test_helpers::MediaType::from("application/json"))
+        ::protocol_test_helpers::validate_body(&body, "{\"RecursiveMap\":{\"key1\":{\"RecursiveMap\":{\"key2\":{\"RecursiveMap\":{\"key3\":{\"Boolean\":false}}}}}}}", ::protocol_test_helpers::MediaType::from("application/json"))
         );
     }
     /// Serializes structure shapes
@@ -2142,7 +2217,7 @@ mod kitchen_sink_operation_request_test {
                 })
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -2157,8 +2232,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"SimpleStruct\":{\"Value\":\"abc\"}}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -2178,7 +2254,7 @@ mod kitchen_sink_operation_request_test {
                 })
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -2193,8 +2269,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"StructWithLocationName\":{\"RenamedMember\":\"some-value\"}}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -2212,7 +2289,7 @@ mod kitchen_sink_operation_request_test {
                 })
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -2227,8 +2304,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"SimpleStruct\":{}}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -2246,7 +2324,7 @@ mod kitchen_sink_operation_request_test {
                 })
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -2261,8 +2339,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"EmptyStruct\":{}}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -2309,7 +2388,7 @@ mod kitchen_sink_operation_request_test {
                 })
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -2324,8 +2403,9 @@ mod kitchen_sink_operation_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(
-        ::protocol_test_helpers::validate_body(&http_request.body(), "{\"String\":\"top-value\",\"Boolean\":false,\"RecursiveStruct\":{\"String\":\"nested-value\",\"Boolean\":true,\"RecursiveList\":[{\"String\":\"string-only\"},{\"RecursiveStruct\":{\"MapOfStrings\":{\"color\":\"red\",\"size\":\"large\"}}}]}}", ::protocol_test_helpers::MediaType::from("application/json"))
+        ::protocol_test_helpers::validate_body(&body, "{\"String\":\"top-value\",\"Boolean\":false,\"RecursiveStruct\":{\"String\":\"nested-value\",\"Boolean\":true,\"RecursiveList\":[{\"String\":\"string-only\"},{\"RecursiveStruct\":{\"MapOfStrings\":{\"color\":\"red\",\"size\":\"large\"}}}]}}", ::protocol_test_helpers::MediaType::from("application/json"))
         );
     }
     /// Parses operations with empty JSON bodies
@@ -2916,6 +2996,14 @@ impl NullOperation {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for NullOperation {
+    type Output = Result<NullOperationOutput, crate::error::NullOperationError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod null_operation_request_test {
@@ -2931,7 +3019,7 @@ mod null_operation_request_test {
             let config = crate::config::Config::builder().build();
             NullOperationInput::builder().build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -2941,8 +3029,9 @@ mod null_operation_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -2961,7 +3050,7 @@ mod null_operation_request_test {
                 })
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -2971,8 +3060,9 @@ mod null_operation_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"sparseStringMap\": {
                 \"foo\": null
@@ -2991,7 +3081,7 @@ mod null_operation_request_test {
                 .sparse_string_list(vec![None])
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -3001,8 +3091,9 @@ mod null_operation_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"sparseStringList\": [
                 null
@@ -3141,6 +3232,17 @@ impl OperationWithOptionalInputOutput {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for OperationWithOptionalInputOutput {
+    type Output = Result<
+        OperationWithOptionalInputOutputOutput,
+        crate::error::OperationWithOptionalInputOutputError,
+    >;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod operation_with_optional_input_output_request_test {
@@ -3154,7 +3256,7 @@ mod operation_with_optional_input_output_request_test {
             let config = crate::config::Config::builder().build();
             OperationWithOptionalInputOutputInput::builder().build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -3170,8 +3272,9 @@ mod operation_with_optional_input_output_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -3186,7 +3289,7 @@ mod operation_with_optional_input_output_request_test {
                 .value("Hi".to_string())
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -3202,8 +3305,9 @@ mod operation_with_optional_input_output_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"Value\":\"Hi\"}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -3260,6 +3364,15 @@ impl PutAndGetInlineDocuments {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for PutAndGetInlineDocuments {
+    type Output =
+        Result<PutAndGetInlineDocumentsOutput, crate::error::PutAndGetInlineDocumentsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod put_and_get_inline_documents_request_test {
@@ -3283,7 +3396,7 @@ mod put_and_get_inline_documents_request_test {
                 .build(&config)
                 .unwrap()
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -3298,8 +3411,9 @@ mod put_and_get_inline_documents_request_test {
             &http_request,
             required_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"inlineDocument\": {\"foo\": \"bar\"}
         }",

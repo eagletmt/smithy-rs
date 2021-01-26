@@ -11,9 +11,20 @@ pub mod empty_input_and_empty_output_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`EmptyInputAndEmptyOutput`](crate::operation::EmptyInputAndEmptyOutput)
-        pub fn build(self, _config: &crate::config::Config) -> EmptyInputAndEmptyOutput {
-            EmptyInputAndEmptyOutput::new(EmptyInputAndEmptyOutputInput {})
+        /// Consumes the builder and constructs an Operation<[`EmptyInputAndEmptyOutput`](crate::operation::EmptyInputAndEmptyOutput)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<EmptyInputAndEmptyOutput, ()> {
+            let op = EmptyInputAndEmptyOutput::new(EmptyInputAndEmptyOutputInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -54,9 +65,20 @@ pub mod greeting_with_errors_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`GreetingWithErrors`](crate::operation::GreetingWithErrors)
-        pub fn build(self, _config: &crate::config::Config) -> GreetingWithErrors {
-            GreetingWithErrors::new(GreetingWithErrorsInput {})
+        /// Consumes the builder and constructs an Operation<[`GreetingWithErrors`](crate::operation::GreetingWithErrors)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<GreetingWithErrors, ()> {
+            let op = GreetingWithErrors::new(GreetingWithErrorsInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -105,11 +127,22 @@ pub mod json_unions_input {
             self.contents = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`JsonUnions`](crate::operation::JsonUnions)
-        pub fn build(self, _config: &crate::config::Config) -> JsonUnions {
-            JsonUnions::new(JsonUnionsInput {
+        /// Consumes the builder and constructs an Operation<[`JsonUnions`](crate::operation::JsonUnions)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<JsonUnions, ()> {
+            let op = JsonUnions::new(JsonUnionsInput {
                 contents: self.contents,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -155,9 +188,20 @@ pub mod no_input_and_no_output_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`NoInputAndNoOutput`](crate::operation::NoInputAndNoOutput)
-        pub fn build(self, _config: &crate::config::Config) -> NoInputAndNoOutput {
-            NoInputAndNoOutput::new(NoInputAndNoOutputInput {})
+        /// Consumes the builder and constructs an Operation<[`NoInputAndNoOutput`](crate::operation::NoInputAndNoOutput)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<NoInputAndNoOutput, ()> {
+            let op = NoInputAndNoOutput::new(NoInputAndNoOutputInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -198,9 +242,20 @@ pub mod no_input_and_output_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`NoInputAndOutput`](crate::operation::NoInputAndOutput)
-        pub fn build(self, _config: &crate::config::Config) -> NoInputAndOutput {
-            NoInputAndOutput::new(NoInputAndOutputInput {})
+        /// Consumes the builder and constructs an Operation<[`NoInputAndOutput`](crate::operation::NoInputAndOutput)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<NoInputAndOutput, ()> {
+            let op = NoInputAndOutput::new(NoInputAndOutputInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }

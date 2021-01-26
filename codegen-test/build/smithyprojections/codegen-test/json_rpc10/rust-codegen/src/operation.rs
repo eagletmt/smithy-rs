@@ -59,6 +59,15 @@ impl EmptyInputAndEmptyOutput {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for EmptyInputAndEmptyOutput {
+    type Output =
+        Result<EmptyInputAndEmptyOutputOutput, crate::error::EmptyInputAndEmptyOutputError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod empty_input_and_empty_output_request_test {
@@ -74,7 +83,7 @@ mod empty_input_and_empty_output_request_test {
             let config = crate::config::Config::builder().build();
             EmptyInputAndEmptyOutputInput::builder().build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -87,8 +96,9 @@ mod empty_input_and_empty_output_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         // No body
-        assert!(&http_request.body().is_empty());
+        assert!(&body.is_empty());
     }
     /// Empty output serializes no payload
     /// Test ID: AwsJson10EmptyInputAndEmptyOutput
@@ -192,6 +202,14 @@ impl GreetingWithErrors {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for GreetingWithErrors {
+    type Output = Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod greeting_with_errors_request_test {
@@ -555,6 +573,14 @@ impl JsonUnions {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for JsonUnions {
+    type Output = Result<JsonUnionsOutput, crate::error::JsonUnionsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod json_unions_request_test {
@@ -575,7 +601,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::StringValue("foo".to_string()))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -588,8 +614,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"stringValue\": \"foo\"
@@ -608,7 +635,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::BooleanValue(true))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -621,8 +648,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"booleanValue\": true
@@ -641,7 +669,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::NumberValue(1))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -654,8 +682,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"numberValue\": 1
@@ -674,7 +703,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::BlobValue(::smithy_types::Blob::new("foo")))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -687,8 +716,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"blobValue\": \"Zm9v\"
@@ -709,7 +739,7 @@ mod json_unions_request_test {
                 ))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -722,8 +752,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"timestampValue\": 1398796238
@@ -742,7 +773,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::EnumValue(FooEnum::from("Foo")))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -755,8 +786,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"enumValue\": \"Foo\"
@@ -778,7 +810,7 @@ mod json_unions_request_test {
                 ]))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -791,8 +823,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"listValue\": [\"foo\", \"bar\"]
@@ -816,7 +849,7 @@ mod json_unions_request_test {
                 }))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -829,8 +862,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"mapValue\": {
@@ -855,7 +889,7 @@ mod json_unions_request_test {
                 }))
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -868,8 +902,9 @@ mod json_unions_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{
             \"contents\": {
                 \"structureValue\": {
@@ -1170,6 +1205,14 @@ impl NoInputAndNoOutput {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for NoInputAndNoOutput {
+    type Output = Result<NoInputAndNoOutputOutput, crate::error::NoInputAndNoOutputError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod no_input_and_no_output_request_test {
@@ -1185,7 +1228,7 @@ mod no_input_and_no_output_request_test {
             let config = crate::config::Config::builder().build();
             NoInputAndNoOutputInput::builder().build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1198,8 +1241,9 @@ mod no_input_and_no_output_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         // No body
-        assert!(&http_request.body().is_empty());
+        assert!(&body.is_empty());
     }
     /// No output serializes no payload
     /// Test ID: AwsJson10NoInputAndNoOutput
@@ -1263,6 +1307,14 @@ impl NoInputAndOutput {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for NoInputAndOutput {
+    type Output = Result<NoInputAndOutputOutput, crate::error::NoInputAndOutputError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod no_input_and_output_request_test {
@@ -1278,7 +1330,7 @@ mod no_input_and_output_request_test {
             let config = crate::config::Config::builder().build();
             NoInputAndOutputInput::builder().build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
@@ -1291,8 +1343,9 @@ mod no_input_and_output_request_test {
             &http_request,
             expected_headers,
         ));
+        let body = http_request.body().bytes().expect("body should be strict");
         // No body
-        assert!(&http_request.body().is_empty());
+        assert!(&body.is_empty());
     }
     /// Empty output serializes no payload
     /// Test ID: AwsJson10NoInputAndOutput

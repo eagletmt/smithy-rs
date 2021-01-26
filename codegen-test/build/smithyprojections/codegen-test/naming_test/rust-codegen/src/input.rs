@@ -13,9 +13,20 @@ pub mod err_collisions_input {
     #[derive(Debug, Clone, Default)]
     pub struct Builder {}
     impl Builder {
-        /// Consumes the builder and constructs a [`ErrCollisions`](crate::operation::ErrCollisions)
-        pub fn build(self, _config: &crate::config::Config) -> ErrCollisions {
-            ErrCollisions::new(ErrCollisionsInput {})
+        /// Consumes the builder and constructs an Operation<[`ErrCollisions`](crate::operation::ErrCollisions)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ErrCollisions, ()> {
+            let op = ErrCollisions::new(ErrCollisionsInput {});
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -67,12 +78,23 @@ pub mod reserved_words_as_members_input {
             self.r#async = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`ReservedWordsAsMembers`](crate::operation::ReservedWordsAsMembers)
-        pub fn build(self, _config: &crate::config::Config) -> ReservedWordsAsMembers {
-            ReservedWordsAsMembers::new(ReservedWordsAsMembersInput {
+        /// Consumes the builder and constructs an Operation<[`ReservedWordsAsMembers`](crate::operation::ReservedWordsAsMembers)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ReservedWordsAsMembers, ()> {
+            let op = ReservedWordsAsMembers::new(ReservedWordsAsMembersInput {
                 r#as: self.r#as,
                 r#async: self.r#async,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -137,13 +159,24 @@ pub mod structure_name_punning_input {
             self.punned_vec = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`StructureNamePunning`](crate::operation::StructureNamePunning)
-        pub fn build(self, _config: &crate::config::Config) -> StructureNamePunning {
-            StructureNamePunning::new(StructureNamePunningInput {
+        /// Consumes the builder and constructs an Operation<[`StructureNamePunning`](crate::operation::StructureNamePunning)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<StructureNamePunning, ()> {
+            let op = StructureNamePunning::new(StructureNamePunningInput {
                 regular_string: self.regular_string,
                 punned_string: self.punned_string,
                 punned_vec: self.punned_vec,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }

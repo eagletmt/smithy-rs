@@ -151,8 +151,7 @@ mod all_query_string_types_request_test {
                 ])
                 .build(&config)
         };
-        let http_request =
-            AllQueryStringTypesInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "GET");
         assert_eq!(http_request.uri().path(), "/AllQueryStringTypesInput");
@@ -255,10 +254,7 @@ mod constant_and_variable_query_string_request_test {
                 .baz("bam".to_string())
                 .build(&config)
         };
-        let http_request = ConstantAndVariableQueryStringInput::assemble(
-            input.input.request_builder_base(),
-            vec![],
-        );
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "GET");
         assert_eq!(http_request.uri().path(), "/ConstantAndVariableQueryString");
@@ -286,10 +282,7 @@ mod constant_and_variable_query_string_request_test {
                 .maybe_set("yes".to_string())
                 .build(&config)
         };
-        let http_request = ConstantAndVariableQueryStringInput::assemble(
-            input.input.request_builder_base(),
-            vec![],
-        );
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "GET");
         assert_eq!(http_request.uri().path(), "/ConstantAndVariableQueryString");
@@ -352,8 +345,7 @@ mod constant_query_string_request_test {
                 .hello("hi".to_string())
                 .build(&config)
         };
-        let http_request =
-            ConstantQueryStringInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "GET");
         assert_eq!(http_request.uri().path(), "/ConstantQueryString/hi");
@@ -413,8 +405,7 @@ mod empty_input_and_empty_output_request_test {
             let config = crate::config::Config::builder().build();
             EmptyInputAndEmptyOutputInput::builder().build(&config)
         };
-        let http_request =
-            EmptyInputAndEmptyOutputInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/EmptyInputAndEmptyOutput");
@@ -605,8 +596,7 @@ mod http_payload_traits_request_test {
                 .blob(::smithy_types::Blob::new("blobby blob blob"))
                 .build(&config)
         };
-        let http_request =
-            HttpPayloadTraitsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/HttpPayloadTraits");
@@ -632,8 +622,7 @@ mod http_payload_traits_request_test {
                 .foo("Foo".to_string())
                 .build(&config)
         };
-        let http_request =
-            HttpPayloadTraitsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/HttpPayloadTraits");
@@ -712,10 +701,7 @@ mod http_payload_traits_with_media_type_request_test {
                 .blob(::smithy_types::Blob::new("blobby blob blob"))
                 .build(&config)
         };
-        let http_request = HttpPayloadTraitsWithMediaTypeInput::assemble(
-            input.input.request_builder_base(),
-            vec![],
-        );
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/HttpPayloadTraitsWithMediaType");
@@ -794,8 +780,7 @@ mod http_payload_with_structure_request_test {
                 })
                 .build(&config)
         };
-        let http_request =
-            HttpPayloadWithStructureInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/HttpPayloadWithStructure");
@@ -869,8 +854,7 @@ mod http_prefix_headers_request_test {
                 })
                 .build(&config)
         };
-        let http_request =
-            HttpPrefixHeadersInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "GET");
         assert_eq!(http_request.uri().path(), "/HttpPrefixHeaders");
@@ -896,8 +880,7 @@ mod http_prefix_headers_request_test {
                 .foo_map(::std::collections::HashMap::new())
                 .build(&config)
         };
-        let http_request =
-            HttpPrefixHeadersInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "GET");
         assert_eq!(http_request.uri().path(), "/HttpPrefixHeaders");
@@ -1011,10 +994,7 @@ mod http_request_with_greedy_label_in_path_request_test {
                 .baz("there/guy".to_string())
                 .build(&config)
         };
-        let http_request = HttpRequestWithGreedyLabelInPathInput::assemble(
-            input.input.request_builder_base(),
-            vec![],
-        );
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "GET");
         assert_eq!(
@@ -1079,8 +1059,7 @@ mod http_request_with_labels_request_test {
                 .build(&config)
                 .unwrap()
         };
-        let http_request =
-            HttpRequestWithLabelsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "GET");
         assert_eq!(
@@ -1150,10 +1129,7 @@ mod http_request_with_labels_and_timestamp_format_request_test {
                 .build(&config)
                 .unwrap()
         };
-        let http_request = HttpRequestWithLabelsAndTimestampFormatInput::assemble(
-            input.input.request_builder_base(),
-            vec![],
-        );
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "GET");
         assert_eq!(http_request.uri().path(), "/HttpRequestWithLabelsAndTimestampFormat/1576540098/Mon%2C%2016%20Dec%202019%2023%3A48%3A18%20GMT/2019-12-16T23%3A48%3A18Z/2019-12-16T23%3A48%3A18Z/1576540098/Mon%2C%2016%20Dec%202019%2023%3A48%3A18%20GMT/2019-12-16T23%3A48%3A18Z");
@@ -1296,8 +1272,7 @@ mod inline_document_request_test {
                 .build(&config)
                 .unwrap()
         };
-        let http_request =
-            InlineDocumentInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/InlineDocument");
@@ -1368,8 +1343,7 @@ mod inline_document_as_payload_request_test {
                 .build(&config)
                 .unwrap()
         };
-        let http_request =
-            InlineDocumentAsPayloadInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/InlineDocumentAsPayload");
@@ -1444,8 +1418,7 @@ mod input_and_output_with_headers_request_test {
                 })
                 .build(&config)
         };
-        let http_request =
-            InputAndOutputWithHeadersInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/InputAndOutputWithHeaders");
@@ -1476,8 +1449,7 @@ mod input_and_output_with_headers_request_test {
                 .header_integer_list(vec![1, 2, 3])
                 .build(&config)
         };
-        let http_request =
-            InputAndOutputWithHeadersInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/InputAndOutputWithHeaders");
@@ -1508,8 +1480,7 @@ mod input_and_output_with_headers_request_test {
                 .header_boolean_list(vec![true, false, true])
                 .build(&config)
         };
-        let http_request =
-            InputAndOutputWithHeadersInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/InputAndOutputWithHeaders");
@@ -1537,8 +1508,7 @@ mod input_and_output_with_headers_request_test {
                 ])
                 .build(&config)
         };
-        let http_request =
-            InputAndOutputWithHeadersInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/InputAndOutputWithHeaders");
@@ -1567,8 +1537,7 @@ mod input_and_output_with_headers_request_test {
                 ])
                 .build(&config)
         };
-        let http_request =
-            InputAndOutputWithHeadersInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/InputAndOutputWithHeaders");
@@ -1654,7 +1623,7 @@ mod json_blobs_request_test {
                 .data(::smithy_types::Blob::new("value"))
                 .build(&config)
         };
-        let http_request = JsonBlobsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/JsonBlobs");
@@ -1732,7 +1701,7 @@ mod json_enums_request_test {
                 })
                 .build(&config)
         };
-        let http_request = JsonEnumsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonEnums");
@@ -1834,7 +1803,7 @@ mod json_lists_request_test {
                 ])
                 .build(&config)
         };
-        let http_request = JsonListsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonLists");
@@ -1853,7 +1822,7 @@ mod json_lists_request_test {
             let config = crate::config::Config::builder().build();
             JsonListsInput::builder().string_list(vec![]).build(&config)
         };
-        let http_request = JsonListsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonLists");
@@ -1874,7 +1843,7 @@ mod json_lists_request_test {
                 .sparse_string_list(vec![None, Some("hi".to_string())])
                 .build(&config)
         };
-        let http_request = JsonListsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonLists");
@@ -1978,7 +1947,7 @@ mod json_maps_request_test {
                 })
                 .build(&config)
         };
-        let http_request = JsonMapsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/JsonMaps");
@@ -2018,7 +1987,7 @@ mod json_maps_request_test {
                 })
                 .build(&config)
         };
-        let http_request = JsonMapsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/JsonMaps");
@@ -2058,7 +2027,7 @@ mod json_maps_request_test {
                 })
                 .build(&config)
         };
-        let http_request = JsonMapsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/JsonMaps");
@@ -2134,8 +2103,7 @@ mod json_timestamps_request_test {
                 .normal(::smithy_types::Instant::from_epoch_seconds(1398796238))
                 .build(&config)
         };
-        let http_request =
-            JsonTimestampsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/JsonTimestamps");
@@ -2156,8 +2124,7 @@ mod json_timestamps_request_test {
                 .date_time(::smithy_types::Instant::from_epoch_seconds(1398796238))
                 .build(&config)
         };
-        let http_request =
-            JsonTimestampsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/JsonTimestamps");
@@ -2178,8 +2145,7 @@ mod json_timestamps_request_test {
                 .epoch_seconds(::smithy_types::Instant::from_epoch_seconds(1398796238))
                 .build(&config)
         };
-        let http_request =
-            JsonTimestampsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/JsonTimestamps");
@@ -2200,8 +2166,7 @@ mod json_timestamps_request_test {
                 .http_date(::smithy_types::Instant::from_epoch_seconds(1398796238))
                 .build(&config)
         };
-        let http_request =
-            JsonTimestampsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/JsonTimestamps");
@@ -2284,7 +2249,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::StringValue("foo".to_string()))
                 .build(&config)
         };
-        let http_request = JsonUnionsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonUnions");
@@ -2305,7 +2270,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::BooleanValue(true))
                 .build(&config)
         };
-        let http_request = JsonUnionsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonUnions");
@@ -2326,7 +2291,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::NumberValue(1))
                 .build(&config)
         };
-        let http_request = JsonUnionsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonUnions");
@@ -2347,7 +2312,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::BlobValue(::smithy_types::Blob::new("foo")))
                 .build(&config)
         };
-        let http_request = JsonUnionsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonUnions");
@@ -2370,7 +2335,7 @@ mod json_unions_request_test {
                 ))
                 .build(&config)
         };
-        let http_request = JsonUnionsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonUnions");
@@ -2391,7 +2356,7 @@ mod json_unions_request_test {
                 .contents(MyUnion::EnumValue(FooEnum::from("Foo")))
                 .build(&config)
         };
-        let http_request = JsonUnionsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonUnions");
@@ -2415,7 +2380,7 @@ mod json_unions_request_test {
                 ]))
                 .build(&config)
         };
-        let http_request = JsonUnionsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonUnions");
@@ -2441,7 +2406,7 @@ mod json_unions_request_test {
                 }))
                 .build(&config)
         };
-        let http_request = JsonUnionsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonUnions");
@@ -2465,7 +2430,7 @@ mod json_unions_request_test {
                 }))
                 .build(&config)
         };
-        let http_request = JsonUnionsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/JsonUnions");
@@ -2575,8 +2540,7 @@ mod media_type_header_request_test {
                 .json("true".to_string())
                 .build(&config)
         };
-        let http_request =
-            MediaTypeHeaderInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "GET");
         assert_eq!(http_request.uri().path(), "/MediaTypeHeader");
@@ -2641,8 +2605,7 @@ mod no_input_and_no_output_request_test {
             let config = crate::config::Config::builder().build();
             NoInputAndNoOutputInput::builder().build(&config)
         };
-        let http_request =
-            NoInputAndNoOutputInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/NoInputAndNoOutput");
@@ -2699,8 +2662,7 @@ mod no_input_and_output_request_test {
             let config = crate::config::Config::builder().build();
             NoInputAndOutputInput::builder().build(&config)
         };
-        let http_request =
-            NoInputAndOutputInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/NoInputAndOutputOutput");
@@ -2760,8 +2722,7 @@ mod null_and_empty_headers_client_request_test {
                 .c(vec![])
                 .build(&config)
         };
-        let http_request =
-            NullAndEmptyHeadersClientInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "GET");
         assert_eq!(http_request.uri().path(), "/NullAndEmptyHeadersClient");
@@ -2869,10 +2830,7 @@ mod omits_null_serializes_empty_string_request_test {
                 .empty_string("".to_string())
                 .build(&config)
         };
-        let http_request = OmitsNullSerializesEmptyStringInput::assemble(
-            input.input.request_builder_base(),
-            vec![],
-        );
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "GET");
         assert_eq!(http_request.uri().path(), "/OmitsNullSerializesEmptyString");
@@ -2933,10 +2891,7 @@ mod query_idempotency_token_auto_fill_request_test {
                 .build();
             QueryIdempotencyTokenAutoFillInput::builder().build(&config)
         };
-        let http_request = QueryIdempotencyTokenAutoFillInput::assemble(
-            input.input.request_builder_base(),
-            vec![],
-        );
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/QueryIdempotencyTokenAutoFill");
@@ -2959,10 +2914,7 @@ mod query_idempotency_token_auto_fill_request_test {
                 .token("00000000-0000-4000-8000-000000000000".to_string())
                 .build(&config)
         };
-        let http_request = QueryIdempotencyTokenAutoFillInput::assemble(
-            input.input.request_builder_base(),
-            vec![],
-        );
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/QueryIdempotencyTokenAutoFill");
@@ -3043,8 +2995,7 @@ mod recursive_shapes_request_test {
                 })
                 .build(&config)
         };
-        let http_request =
-            RecursiveShapesInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/RecursiveShapes");
@@ -3117,8 +3068,7 @@ mod simple_scalar_properties_request_test {
                 .double_value(6.5)
                 .build(&config)
         };
-        let http_request =
-            SimpleScalarPropertiesInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/SimpleScalarProperties");
@@ -3137,8 +3087,7 @@ mod simple_scalar_properties_request_test {
             let config = crate::config::Config::builder().build();
             SimpleScalarPropertiesInput::builder().build(&config)
         };
-        let http_request =
-            SimpleScalarPropertiesInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "PUT");
         assert_eq!(http_request.uri().path(), "/SimpleScalarProperties");
@@ -3209,8 +3158,7 @@ mod streaming_traits_request_test {
                 .blob(::smithy_types::Blob::new("blobby blob blob"))
                 .build(&config)
         };
-        let http_request =
-            StreamingTraitsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/StreamingTraits");
@@ -3234,8 +3182,7 @@ mod streaming_traits_request_test {
                 .foo("Foo".to_string())
                 .build(&config)
         };
-        let http_request =
-            StreamingTraitsInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/StreamingTraits");
@@ -3312,8 +3259,7 @@ mod streaming_traits_require_length_request_test {
                 .blob(::smithy_types::Blob::new("blobby blob blob"))
                 .build(&config)
         };
-        let http_request =
-            StreamingTraitsRequireLengthInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/StreamingTraitsRequireLength");
@@ -3342,8 +3288,7 @@ mod streaming_traits_require_length_request_test {
                 .foo("Foo".to_string())
                 .build(&config)
         };
-        let http_request =
-            StreamingTraitsRequireLengthInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/StreamingTraitsRequireLength");
@@ -3419,8 +3364,7 @@ mod streaming_traits_with_media_type_request_test {
                 .blob(::smithy_types::Blob::new("blobby blob blob"))
                 .build(&config)
         };
-        let http_request =
-            StreamingTraitsWithMediaTypeInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/StreamingTraitsWithMediaType");
@@ -3491,8 +3435,7 @@ mod timestamp_format_headers_request_test {
                 .target_date_time(::smithy_types::Instant::from_epoch_seconds(1576540098))
                 .build(&config)
         };
-        let http_request =
-            TimestampFormatHeadersInput::assemble(input.input.request_builder_base(), vec![]);
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/TimestampFormatHeaders");

@@ -54,15 +54,26 @@ pub mod complete_snapshot_input {
             self.checksum = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`CompleteSnapshot`](crate::operation::CompleteSnapshot)
-        pub fn build(self, _config: &crate::config::Config) -> CompleteSnapshot {
-            CompleteSnapshot::new(CompleteSnapshotInput {
+        /// Consumes the builder and constructs an Operation<[`CompleteSnapshot`](crate::operation::CompleteSnapshot)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<CompleteSnapshot, ()> {
+            let op = CompleteSnapshot::new(CompleteSnapshotInput {
                 changed_blocks_count: self.changed_blocks_count,
                 checksum_aggregation_method: self.checksum_aggregation_method,
                 checksum_algorithm: self.checksum_algorithm,
                 snapshot_id: self.snapshot_id.unwrap_or_default(),
                 checksum: self.checksum,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -124,7 +135,7 @@ impl CompleteSnapshotInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -174,13 +185,24 @@ pub mod get_snapshot_block_input {
             self.block_index = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`GetSnapshotBlock`](crate::operation::GetSnapshotBlock)
-        pub fn build(self, _config: &crate::config::Config) -> GetSnapshotBlock {
-            GetSnapshotBlock::new(GetSnapshotBlockInput {
+        /// Consumes the builder and constructs an Operation<[`GetSnapshotBlock`](crate::operation::GetSnapshotBlock)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<GetSnapshotBlock, ()> {
+            let op = GetSnapshotBlock::new(GetSnapshotBlockInput {
                 snapshot_id: self.snapshot_id.unwrap_or_default(),
                 block_token: self.block_token,
                 block_index: self.block_index.unwrap_or_default(),
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -213,7 +235,7 @@ impl GetSnapshotBlockInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -281,15 +303,26 @@ pub mod list_changed_blocks_input {
             self.starting_block_index = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`ListChangedBlocks`](crate::operation::ListChangedBlocks)
-        pub fn build(self, _config: &crate::config::Config) -> ListChangedBlocks {
-            ListChangedBlocks::new(ListChangedBlocksInput {
+        /// Consumes the builder and constructs an Operation<[`ListChangedBlocks`](crate::operation::ListChangedBlocks)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ListChangedBlocks, ()> {
+            let op = ListChangedBlocks::new(ListChangedBlocksInput {
                 second_snapshot_id: self.second_snapshot_id.unwrap_or_default(),
                 first_snapshot_id: self.first_snapshot_id,
                 next_token: self.next_token,
                 max_results: self.max_results,
                 starting_block_index: self.starting_block_index,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -336,7 +369,7 @@ impl ListChangedBlocksInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -389,14 +422,25 @@ pub mod list_snapshot_blocks_input {
             self.snapshot_id = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`ListSnapshotBlocks`](crate::operation::ListSnapshotBlocks)
-        pub fn build(self, _config: &crate::config::Config) -> ListSnapshotBlocks {
-            ListSnapshotBlocks::new(ListSnapshotBlocksInput {
+        /// Consumes the builder and constructs an Operation<[`ListSnapshotBlocks`](crate::operation::ListSnapshotBlocks)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<ListSnapshotBlocks, ()> {
+            let op = ListSnapshotBlocks::new(ListSnapshotBlocksInput {
                 max_results: self.max_results,
                 starting_block_index: self.starting_block_index,
                 next_token: self.next_token,
                 snapshot_id: self.snapshot_id.unwrap_or_default(),
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -437,7 +481,7 @@ impl ListSnapshotBlocksInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -528,9 +572,12 @@ pub mod put_snapshot_block_input {
             self.checksum_algorithm = Some(inp);
             self
         }
-        /// Consumes the builder and constructs a [`PutSnapshotBlock`](crate::operation::PutSnapshotBlock)
-        pub fn build(self, _config: &crate::config::Config) -> PutSnapshotBlock {
-            PutSnapshotBlock::new(PutSnapshotBlockInput {
+        /// Consumes the builder and constructs an Operation<[`PutSnapshotBlock`](crate::operation::PutSnapshotBlock)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<PutSnapshotBlock, ()> {
+            let op = PutSnapshotBlock::new(PutSnapshotBlockInput {
                 snapshot_id: self.snapshot_id.unwrap_or_default(),
                 block_index: self.block_index.unwrap_or_default(),
                 checksum: self.checksum,
@@ -538,7 +585,15 @@ pub mod put_snapshot_block_input {
                 block_data: self.block_data,
                 data_length: self.data_length,
                 checksum_algorithm: self.checksum_algorithm,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -603,7 +658,7 @@ impl PutSnapshotBlockInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,
@@ -722,9 +777,12 @@ pub mod start_snapshot_input {
             self.description = Some(inp.into());
             self
         }
-        /// Consumes the builder and constructs a [`StartSnapshot`](crate::operation::StartSnapshot)
-        pub fn build(self, _config: &crate::config::Config) -> StartSnapshot {
-            StartSnapshot::new(StartSnapshotInput {
+        /// Consumes the builder and constructs an Operation<[`StartSnapshot`](crate::operation::StartSnapshot)>
+        pub fn build(
+            self,
+            _config: &crate::config::Config,
+        ) -> ::smithy_http::operation::Operation<StartSnapshot, ()> {
+            let op = StartSnapshot::new(StartSnapshotInput {
                 timeout: self.timeout,
                 client_token: self
                     .client_token
@@ -735,7 +793,15 @@ pub mod start_snapshot_input {
                 kms_key_arn: self.kms_key_arn,
                 parent_snapshot_id: self.parent_snapshot_id,
                 description: self.description,
-            })
+            });
+
+            #[allow(unused_mut)]
+            let mut request = ::smithy_http::operation::Request::new(
+                op.build_http_request()
+                    .map(::smithy_http::body::SdkBody::from),
+            );
+
+            ::smithy_http::operation::Operation::new(request, op)
         }
     }
 }
@@ -754,7 +820,7 @@ impl StartSnapshotInput {
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> ::std::vec::Vec<u8> {
-        todo!()
+        "body not generated yet".into()
     }
     pub fn assemble(
         builder: ::http::request::Builder,

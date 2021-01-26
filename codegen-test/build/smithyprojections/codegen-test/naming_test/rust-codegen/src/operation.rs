@@ -55,6 +55,13 @@ impl ErrCollisions {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for ErrCollisions {
+    type Output = Result<ErrCollisionsOutput, crate::error::ErrCollisionsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 pub struct ReservedWordsAsMembers {
     input: ReservedWordsAsMembersInput,
 }
@@ -99,6 +106,14 @@ impl ReservedWordsAsMembers {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for ReservedWordsAsMembers {
+    type Output = Result<ReservedWordsAsMembersOutput, crate::error::ReservedWordsAsMembersError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod reserved_words_as_members_request_test {
@@ -114,13 +129,14 @@ mod reserved_words_as_members_request_test {
                 .r#async(true)
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
 
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"as\": 5, \"async\": true}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));
@@ -171,6 +187,14 @@ impl StructureNamePunning {
         Self { input }
     }
 }
+
+impl ::smithy_http::response::ParseStrictResponse for StructureNamePunning {
+    type Output = Result<StructureNamePunningOutput, crate::error::StructureNamePunningError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 #[cfg(test)]
 #[allow(unreachable_code, unused_variables)]
 mod structure_name_punning_request_test {
@@ -190,13 +214,14 @@ mod structure_name_punning_request_test {
                 })
                 .build(&config)
         };
-        let http_request = input.build_http_request();
+        let (http_request, _) = input.into_request_response().0.into_parts();
 
         assert_eq!(http_request.method(), "POST");
         assert_eq!(http_request.uri().path(), "/");
 
+        let body = http_request.body().bytes().expect("body should be strict");
         ::protocol_test_helpers::assert_ok(::protocol_test_helpers::validate_body(
-            &http_request.body(),
+            &body,
             "{\"regular_string\": \"hello!\", \"punned_string\": { \"ps_member\": true }}",
             ::protocol_test_helpers::MediaType::from("application/json"),
         ));

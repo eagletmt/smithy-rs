@@ -210,6 +210,13 @@ impl BatchExecuteStatement {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for BatchExecuteStatement {
+    type Output = Result<BatchExecuteStatementOutput, crate::error::BatchExecuteStatementError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>The <code>BatchGetItem</code> operation returns the attributes of one or more items from one or
 /// more tables. You identify requested items by primary key.</p>
 /// <p>A single operation can retrieve up to 16 MB of data, which can contain as many as 100
@@ -323,6 +330,13 @@ impl BatchGetItem {
     }
     pub fn new(input: BatchGetItemInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for BatchGetItem {
+    type Output = Result<BatchGetItemOutput, crate::error::BatchGetItemError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -480,6 +494,13 @@ impl BatchWriteItem {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for BatchWriteItem {
+    type Output = Result<BatchWriteItemOutput, crate::error::BatchWriteItemError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Creates a backup for an existing table.</p>
 /// <p> Each time you create an on-demand backup, the entire table data is backed up. There
 /// is no limit to the number of on-demand backups that can be taken. </p>
@@ -583,6 +604,13 @@ impl CreateBackup {
     }
     pub fn new(input: CreateBackupInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for CreateBackup {
+    type Output = Result<CreateBackupOutput, crate::error::CreateBackupError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -720,6 +748,13 @@ impl CreateGlobalTable {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for CreateGlobalTable {
+    type Output = Result<CreateGlobalTableOutput, crate::error::CreateGlobalTableError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>The <code>CreateTable</code> operation adds a new table to your account. In an AWS
 /// account, table names must be unique within each Region. That is, you can have two tables
 /// with same name if you create the tables in different Regions.</p>
@@ -795,6 +830,13 @@ impl CreateTable {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for CreateTable {
+    type Output = Result<CreateTableOutput, crate::error::CreateTableError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Deletes an existing backup of a table.</p>
 /// <p>You can call <code>DeleteBackup</code> at a maximum rate of 10 times per second.</p>
 pub struct DeleteBackup {
@@ -860,6 +902,13 @@ impl DeleteBackup {
     }
     pub fn new(input: DeleteBackupInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for DeleteBackup {
+    type Output = Result<DeleteBackupOutput, crate::error::DeleteBackupError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -957,6 +1006,13 @@ impl DeleteItem {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for DeleteItem {
+    type Output = Result<DeleteItemOutput, crate::error::DeleteItemError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>The <code>DeleteTable</code> operation deletes a table and all of its items. After a
 /// <code>DeleteTable</code> request, the specified table is in the <code>DELETING</code> state until
 /// DynamoDB completes the deletion. If the table is in the <code>ACTIVE</code> state, you can delete
@@ -1039,6 +1095,13 @@ impl DeleteTable {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for DeleteTable {
+    type Output = Result<DeleteTableOutput, crate::error::DeleteTableError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Describes an existing backup of a table.</p>
 /// <p>You can call <code>DescribeBackup</code> at a maximum rate of 10 times per second.</p>
 pub struct DescribeBackup {
@@ -1096,6 +1159,13 @@ impl DescribeBackup {
     }
     pub fn new(input: DescribeBackupInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for DescribeBackup {
+    type Output = Result<DescribeBackupOutput, crate::error::DescribeBackupError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -1178,6 +1248,14 @@ impl DescribeContinuousBackups {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for DescribeContinuousBackups {
+    type Output =
+        Result<DescribeContinuousBackupsOutput, crate::error::DescribeContinuousBackupsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Returns information about contributor insights, for a given table or global secondary index.</p>
 pub struct DescribeContributorInsights {
     input: DescribeContributorInsightsInput,
@@ -1250,6 +1328,14 @@ impl DescribeContributorInsights {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for DescribeContributorInsights {
+    type Output =
+        Result<DescribeContributorInsightsOutput, crate::error::DescribeContributorInsightsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Returns the regional endpoint information.</p>
 pub struct DescribeEndpoints {
     input: DescribeEndpointsInput,
@@ -1292,6 +1378,13 @@ impl DescribeEndpoints {
     }
     pub fn new(input: DescribeEndpointsInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for DescribeEndpoints {
+    type Output = Result<DescribeEndpointsOutput, crate::error::DescribeEndpointsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -1351,6 +1444,13 @@ impl DescribeExport {
     }
     pub fn new(input: DescribeExportInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for DescribeExport {
+    type Output = Result<DescribeExportOutput, crate::error::DescribeExportError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -1420,6 +1520,13 @@ impl DescribeGlobalTable {
     }
     pub fn new(input: DescribeGlobalTableInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for DescribeGlobalTable {
+    type Output = Result<DescribeGlobalTableOutput, crate::error::DescribeGlobalTableError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -1502,6 +1609,14 @@ impl DescribeGlobalTableSettings {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for DescribeGlobalTableSettings {
+    type Output =
+        Result<DescribeGlobalTableSettingsOutput, crate::error::DescribeGlobalTableSettingsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Returns information about the status of Kinesis streaming.</p>
 pub struct DescribeKinesisStreamingDestination {
     input: DescribeKinesisStreamingDestinationInput,
@@ -1571,6 +1686,16 @@ impl DescribeKinesisStreamingDestination {
     }
     pub fn new(input: DescribeKinesisStreamingDestinationInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for DescribeKinesisStreamingDestination {
+    type Output = Result<
+        DescribeKinesisStreamingDestinationOutput,
+        crate::error::DescribeKinesisStreamingDestinationError,
+    >;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -1691,6 +1816,13 @@ impl DescribeLimits {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for DescribeLimits {
+    type Output = Result<DescribeLimitsOutput, crate::error::DescribeLimitsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table.</p>
 /// <note>
 /// <p>If you issue a <code>DescribeTable</code> request immediately after a <code>CreateTable</code> request, DynamoDB might
@@ -1751,6 +1883,13 @@ impl DescribeTable {
     }
     pub fn new(input: DescribeTableInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for DescribeTable {
+    type Output = Result<DescribeTableOutput, crate::error::DescribeTableError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -1832,6 +1971,16 @@ impl DescribeTableReplicaAutoScaling {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for DescribeTableReplicaAutoScaling {
+    type Output = Result<
+        DescribeTableReplicaAutoScalingOutput,
+        crate::error::DescribeTableReplicaAutoScalingError,
+    >;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Gives a description of the Time to Live (TTL) status on the specified table. </p>
 pub struct DescribeTimeToLive {
     input: DescribeTimeToLiveInput,
@@ -1891,6 +2040,13 @@ impl DescribeTimeToLive {
     }
     pub fn new(input: DescribeTimeToLiveInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for DescribeTimeToLive {
+    type Output = Result<DescribeTimeToLiveOutput, crate::error::DescribeTimeToLiveError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -1998,6 +2154,16 @@ impl DisableKinesisStreamingDestination {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for DisableKinesisStreamingDestination {
+    type Output = Result<
+        DisableKinesisStreamingDestinationOutput,
+        crate::error::DisableKinesisStreamingDestinationError,
+    >;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Starts table data replication to the specified Kinesis data stream at a timestamp chosen
 /// during the enable workflow. If this operation doesn't return results immediately, use
 /// DescribeKinesisStreamingDestination to check if streaming to the Kinesis data stream is
@@ -2102,6 +2268,16 @@ impl EnableKinesisStreamingDestination {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for EnableKinesisStreamingDestination {
+    type Output = Result<
+        EnableKinesisStreamingDestinationOutput,
+        crate::error::EnableKinesisStreamingDestinationError,
+    >;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>
 /// This operation allows you to perform reads and singleton writes on data stored in DynamoDB, using PartiQL.
 /// </p>
@@ -2192,6 +2368,13 @@ impl ExecuteStatement {
     }
     pub fn new(input: ExecuteStatementInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for ExecuteStatement {
+    type Output = Result<ExecuteStatementOutput, crate::error::ExecuteStatementError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -2287,6 +2470,13 @@ impl ExecuteTransaction {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for ExecuteTransaction {
+    type Output = Result<ExecuteTransactionOutput, crate::error::ExecuteTransactionError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Exports table data to an S3 bucket. The table must have point in time recovery
 /// enabled, and you can export data from any time within the point in time recovery
 /// window.</p>
@@ -2361,6 +2551,14 @@ impl ExportTableToPointInTime {
     }
     pub fn new(input: ExportTableToPointInTimeInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for ExportTableToPointInTime {
+    type Output =
+        Result<ExportTableToPointInTimeOutput, crate::error::ExportTableToPointInTimeError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -2440,6 +2638,13 @@ impl GetItem {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for GetItem {
+    type Output = Result<GetItemOutput, crate::error::GetItemError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>List backups associated with an AWS account. To list backups for a given table, specify
 /// <code>TableName</code>. <code>ListBackups</code> returns a paginated list of results
 /// with at most 1 MB worth of items in a page. You can also specify a maximum number of
@@ -2499,6 +2704,13 @@ impl ListBackups {
     }
     pub fn new(input: ListBackupsInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for ListBackups {
+    type Output = Result<ListBackupsOutput, crate::error::ListBackupsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -2566,6 +2778,13 @@ impl ListContributorInsights {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for ListContributorInsights {
+    type Output = Result<ListContributorInsightsOutput, crate::error::ListContributorInsightsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Lists completed exports within the past 90 days.</p>
 pub struct ListExports {
     input: ListExportsInput,
@@ -2619,6 +2838,13 @@ impl ListExports {
     }
     pub fn new(input: ListExportsInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for ListExports {
+    type Output = Result<ListExportsOutput, crate::error::ListExportsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -2682,6 +2908,13 @@ impl ListGlobalTables {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for ListGlobalTables {
+    type Output = Result<ListGlobalTablesOutput, crate::error::ListGlobalTablesError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Returns an array of table names associated with the current account and endpoint. The output
 /// from <code>ListTables</code> is paginated, with each page returning a maximum of 100 table
 /// names.</p>
@@ -2737,6 +2970,13 @@ impl ListTables {
     }
     pub fn new(input: ListTablesInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for ListTables {
+    type Output = Result<ListTablesOutput, crate::error::ListTablesError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -2803,6 +3043,13 @@ impl ListTagsOfResource {
     }
     pub fn new(input: ListTagsOfResourceInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for ListTagsOfResource {
+    type Output = Result<ListTagsOfResourceOutput, crate::error::ListTagsOfResourceError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -2959,6 +3206,13 @@ impl PutItem {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for PutItem {
+    type Output = Result<PutItemOutput, crate::error::PutItemError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>The <code>Query</code> operation finds items based on primary key values.
 /// You can query any table or secondary index that has a composite primary key (a partition
 /// key and a sort key).
@@ -3084,6 +3338,13 @@ impl Query {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for Query {
+    type Output = Result<QueryOutput, crate::error::QueryError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores
 /// (any type of restore) in a given account.
 /// </p>
@@ -3192,6 +3453,13 @@ impl RestoreTableFromBackup {
     }
     pub fn new(input: RestoreTableFromBackupInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for RestoreTableFromBackup {
+    type Output = Result<RestoreTableFromBackupOutput, crate::error::RestoreTableFromBackupError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -3332,6 +3600,14 @@ impl RestoreTableToPointInTime {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for RestoreTableToPointInTime {
+    type Output =
+        Result<RestoreTableToPointInTimeOutput, crate::error::RestoreTableToPointInTimeError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>The <code>Scan</code> operation returns one or more items and item attributes by accessing every
 /// item in a table or a secondary index. To have DynamoDB return fewer items, you can provide a <code>FilterExpression</code> operation.</p>
 /// <p>If the total number of scanned items exceeds the maximum dataset size limit of 1 MB, the
@@ -3426,6 +3702,13 @@ impl Scan {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for Scan {
+    type Output = Result<ScanOutput, crate::error::ScanError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Associate a set of tags with an Amazon DynamoDB resource. You can then activate these
 /// user-defined tags so that they appear on the Billing and Cost Management console for
 /// cost allocation tracking. You can call TagResource up to five times per second, per
@@ -3492,6 +3775,13 @@ impl TagResource {
     }
     pub fn new(input: TagResourceInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for TagResource {
+    type Output = Result<TagResourceOutput, crate::error::TagResourceError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -3594,6 +3884,13 @@ impl TransactGetItems {
     }
     pub fn new(input: TransactGetItemsInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for TransactGetItems {
+    type Output = Result<TransactGetItemsOutput, crate::error::TransactGetItemsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -3762,6 +4059,13 @@ impl TransactWriteItems {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for TransactWriteItems {
+    type Output = Result<TransactWriteItemsOutput, crate::error::TransactWriteItemsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Removes the association of tags from an Amazon DynamoDB resource. You can call
 /// <code>UntagResource</code> up to five times per second, per account. </p>
 /// <p>For an overview on tagging DynamoDB resources, see
@@ -3826,6 +4130,13 @@ impl UntagResource {
     }
     pub fn new(input: UntagResourceInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for UntagResource {
+    type Output = Result<UntagResourceOutput, crate::error::UntagResourceError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -3907,6 +4218,13 @@ impl UpdateContinuousBackups {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for UpdateContinuousBackups {
+    type Output = Result<UpdateContinuousBackupsOutput, crate::error::UpdateContinuousBackupsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Updates the status for contributor insights for a specific table or index.</p>
 pub struct UpdateContributorInsights {
     input: UpdateContributorInsightsInput,
@@ -3969,6 +4287,14 @@ impl UpdateContributorInsights {
     }
     pub fn new(input: UpdateContributorInsightsInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for UpdateContributorInsights {
+    type Output =
+        Result<UpdateContributorInsightsOutput, crate::error::UpdateContributorInsightsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -4075,6 +4401,13 @@ impl UpdateGlobalTable {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for UpdateGlobalTable {
+    type Output = Result<UpdateGlobalTableOutput, crate::error::UpdateGlobalTableError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Updates settings for a global table.</p>
 pub struct UpdateGlobalTableSettings {
     input: UpdateGlobalTableSettingsInput,
@@ -4169,6 +4502,14 @@ impl UpdateGlobalTableSettings {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for UpdateGlobalTableSettings {
+    type Output =
+        Result<UpdateGlobalTableSettingsOutput, crate::error::UpdateGlobalTableSettingsError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put, delete, or add attribute values. You can also perform a conditional update on an existing item (insert a new attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected attribute values).</p>
 /// <p>You can also return the item's attribute values in the same <code>UpdateItem</code>
 /// operation using the <code>ReturnValues</code> parameter.</p>
@@ -4257,6 +4598,13 @@ impl UpdateItem {
     }
     pub fn new(input: UpdateItemInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for UpdateItem {
+    type Output = Result<UpdateItemOutput, crate::error::UpdateItemError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -4349,6 +4697,13 @@ impl UpdateTable {
     }
 }
 
+impl ::smithy_http::response::ParseStrictResponse for UpdateTable {
+    type Output = Result<UpdateTableOutput, crate::error::UpdateTableError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
+    }
+}
+
 /// <p>Updates auto scaling settings on your global tables at once.</p>
 /// <note>
 /// <p>This operation only applies to <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version 2019.11.21</a> of global tables.</p>
@@ -4430,6 +4785,16 @@ impl UpdateTableReplicaAutoScaling {
     }
     pub fn new(input: UpdateTableReplicaAutoScalingInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for UpdateTableReplicaAutoScaling {
+    type Output = Result<
+        UpdateTableReplicaAutoScalingOutput,
+        crate::error::UpdateTableReplicaAutoScalingError,
+    >;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }
 
@@ -4522,5 +4887,12 @@ impl UpdateTimeToLive {
     }
     pub fn new(input: UpdateTimeToLiveInput) -> Self {
         Self { input }
+    }
+}
+
+impl ::smithy_http::response::ParseStrictResponse for UpdateTimeToLive {
+    type Output = Result<UpdateTimeToLiveOutput, crate::error::UpdateTimeToLiveError>;
+    fn parse(&self, response: &::http::Response<::bytes::Bytes>) -> Self::Output {
+        self.parse_response(response)
     }
 }

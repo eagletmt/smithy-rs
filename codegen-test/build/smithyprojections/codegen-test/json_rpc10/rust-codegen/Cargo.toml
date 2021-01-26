@@ -10,6 +10,8 @@ edition = "2018"
 [dependencies.serde]
 version = "1"
 features = ["derive"]
+[dependencies.smithy-http]
+path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-http"
 [dependencies.http]
 version = "0.2"
 [dependencies.serde_json]
@@ -17,8 +19,8 @@ version = "1"
 features = ["float_roundtrip"]
 [dependencies.smithy-types]
 path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-types"
-[dependencies.smithy-http]
-path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-http"
+[dependencies.bytes]
+version = "1"
 [dev-dependencies.protocol-test-helpers]
 path = "/Users/rcoh/code/smithy-rs/rust-runtime/protocol-test-helpers"
 
