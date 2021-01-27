@@ -167,17 +167,15 @@ impl BatchExecuteStatement {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<BatchExecuteStatementOutput, crate::error::BatchExecuteStatementError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::BatchExecuteStatementError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::BatchExecuteStatementError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::BatchExecuteStatementError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::BatchExecuteStatementError::InternalServerError(body),
@@ -189,7 +187,7 @@ impl BatchExecuteStatement {
                     }
                     Err(e) => crate::error::BatchExecuteStatementError::unhandled(e),
                 },
-                unknown => crate::error::BatchExecuteStatementError::unhandled(unknown),
+                _ => crate::error::BatchExecuteStatementError::unhandled(generic),
             });
         }
         let body: BatchExecuteStatementOutputBody =
@@ -270,17 +268,15 @@ impl BatchGetItem {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<BatchGetItemOutput, crate::error::BatchGetItemError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::BatchGetItemError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::BatchGetItemError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::BatchGetItemError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::BatchGetItemError::InternalServerError(body),
@@ -304,7 +300,7 @@ impl BatchGetItem {
                     Ok(body) => crate::error::BatchGetItemError::ResourceNotFoundError(body),
                     Err(e) => crate::error::BatchGetItemError::unhandled(e),
                 },
-                unknown => crate::error::BatchGetItemError::unhandled(unknown),
+                _ => crate::error::BatchGetItemError::unhandled(generic),
             });
         }
         let body: BatchGetItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -414,17 +410,15 @@ impl BatchWriteItem {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<BatchWriteItemOutput, crate::error::BatchWriteItemError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::BatchWriteItemError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::BatchWriteItemError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::BatchWriteItemError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::BatchWriteItemError::InternalServerError(body),
@@ -458,7 +452,7 @@ impl BatchWriteItem {
                     Ok(body) => crate::error::BatchWriteItemError::ResourceNotFoundError(body),
                     Err(e) => crate::error::BatchWriteItemError::unhandled(e),
                 },
-                unknown => crate::error::BatchWriteItemError::unhandled(unknown),
+                _ => crate::error::BatchWriteItemError::unhandled(generic),
             });
         }
         let body: BatchWriteItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -524,17 +518,15 @@ impl CreateBackup {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CreateBackupOutput, crate::error::CreateBackupError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::CreateBackupError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::CreateBackupError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::CreateBackupError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "BackupInUseException" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::CreateBackupError::BackupInUseError(body),
@@ -566,7 +558,7 @@ impl CreateBackup {
                     Ok(body) => crate::error::CreateBackupError::TableNotFoundError(body),
                     Err(e) => crate::error::CreateBackupError::unhandled(e),
                 },
-                unknown => crate::error::CreateBackupError::unhandled(unknown),
+                _ => crate::error::CreateBackupError::unhandled(generic),
             });
         }
         let body: CreateBackupOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -666,17 +658,15 @@ impl CreateGlobalTable {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CreateGlobalTableOutput, crate::error::CreateGlobalTableError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::CreateGlobalTableError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::CreateGlobalTableError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::CreateGlobalTableError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "GlobalTableAlreadyExistsException" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -700,7 +690,7 @@ impl CreateGlobalTable {
                     Ok(body) => crate::error::CreateGlobalTableError::TableNotFoundError(body),
                     Err(e) => crate::error::CreateGlobalTableError::unhandled(e),
                 },
-                unknown => crate::error::CreateGlobalTableError::unhandled(unknown),
+                _ => crate::error::CreateGlobalTableError::unhandled(generic),
             });
         }
         let body: CreateGlobalTableOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -747,17 +737,15 @@ impl CreateTable {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<CreateTableOutput, crate::error::CreateTableError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::CreateTableError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::CreateTableError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::CreateTableError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::CreateTableError::InternalServerError(body),
@@ -775,7 +763,7 @@ impl CreateTable {
                     Ok(body) => crate::error::CreateTableError::ResourceInUseError(body),
                     Err(e) => crate::error::CreateTableError::unhandled(e),
                 },
-                unknown => crate::error::CreateTableError::unhandled(unknown),
+                _ => crate::error::CreateTableError::unhandled(generic),
             });
         }
         let body: CreateTableOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -811,17 +799,15 @@ impl DeleteBackup {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DeleteBackupOutput, crate::error::DeleteBackupError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DeleteBackupError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DeleteBackupError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::DeleteBackupError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "BackupInUseException" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::DeleteBackupError::BackupInUseError(body),
@@ -843,7 +829,7 @@ impl DeleteBackup {
                     Ok(body) => crate::error::DeleteBackupError::LimitExceededError(body),
                     Err(e) => crate::error::DeleteBackupError::unhandled(e),
                 },
-                unknown => crate::error::DeleteBackupError::unhandled(unknown),
+                _ => crate::error::DeleteBackupError::unhandled(generic),
             });
         }
         let body: DeleteBackupOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -883,17 +869,15 @@ impl DeleteItem {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DeleteItemOutput, crate::error::DeleteItemError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DeleteItemError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DeleteItemError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::DeleteItemError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "ConditionalCheckFailedException" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::DeleteItemError::ConditionalCheckFailedError(body),
@@ -935,7 +919,7 @@ impl DeleteItem {
                     Ok(body) => crate::error::DeleteItemError::TransactionConflictError(body),
                     Err(e) => crate::error::DeleteItemError::unhandled(e),
                 },
-                unknown => crate::error::DeleteItemError::unhandled(unknown),
+                _ => crate::error::DeleteItemError::unhandled(generic),
             });
         }
         let body: DeleteItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -987,17 +971,15 @@ impl DeleteTable {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DeleteTableOutput, crate::error::DeleteTableError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DeleteTableError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DeleteTableError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::DeleteTableError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::DeleteTableError::InternalServerError(body),
@@ -1019,7 +1001,7 @@ impl DeleteTable {
                     Ok(body) => crate::error::DeleteTableError::ResourceNotFoundError(body),
                     Err(e) => crate::error::DeleteTableError::unhandled(e),
                 },
-                unknown => crate::error::DeleteTableError::unhandled(unknown),
+                _ => crate::error::DeleteTableError::unhandled(generic),
             });
         }
         let body: DeleteTableOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -1055,17 +1037,15 @@ impl DescribeBackup {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeBackupOutput, crate::error::DescribeBackupError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DescribeBackupError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DescribeBackupError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::DescribeBackupError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "BackupNotFoundException" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::DescribeBackupError::BackupNotFoundError(body),
@@ -1079,7 +1059,7 @@ impl DescribeBackup {
                     Ok(body) => crate::error::DescribeBackupError::InvalidEndpointError(body),
                     Err(e) => crate::error::DescribeBackupError::unhandled(e),
                 },
-                unknown => crate::error::DescribeBackupError::unhandled(unknown),
+                _ => crate::error::DescribeBackupError::unhandled(generic),
             });
         }
         let body: DescribeBackupOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -1127,17 +1107,19 @@ impl DescribeContinuousBackups {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeContinuousBackupsOutput, crate::error::DescribeContinuousBackupsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DescribeContinuousBackupsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DescribeContinuousBackupsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(crate::error::DescribeContinuousBackupsError::unhandled(
+                        generic,
+                    ))
+                }
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -1157,7 +1139,7 @@ impl DescribeContinuousBackups {
                     }
                     Err(e) => crate::error::DescribeContinuousBackupsError::unhandled(e),
                 },
-                unknown => crate::error::DescribeContinuousBackupsError::unhandled(unknown),
+                _ => crate::error::DescribeContinuousBackupsError::unhandled(generic),
             });
         }
         let body: DescribeContinuousBackupsOutputBody =
@@ -1197,19 +1179,19 @@ impl DescribeContributorInsights {
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeContributorInsightsOutput, crate::error::DescribeContributorInsightsError>
     {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DescribeContributorInsightsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DescribeContributorInsightsError::unhandled(
-                    "no error code".to_string(),
-                )
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(crate::error::DescribeContributorInsightsError::unhandled(
+                        generic,
+                    ))
+                }
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -1223,7 +1205,7 @@ impl DescribeContributorInsights {
                     }
                     Err(e) => crate::error::DescribeContributorInsightsError::unhandled(e),
                 },
-                unknown => crate::error::DescribeContributorInsightsError::unhandled(unknown),
+                _ => crate::error::DescribeContributorInsightsError::unhandled(generic),
             });
         }
         let body: DescribeContributorInsightsOutputBody =
@@ -1265,18 +1247,12 @@ impl DescribeEndpoints {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeEndpointsOutput, crate::error::DescribeEndpointsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DescribeEndpointsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DescribeEndpointsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
-            return Err(crate::error::DescribeEndpointsError::unhandled(error_code));
+            return Err(crate::error::DescribeEndpointsError::unhandled(generic));
         }
         let body: DescribeEndpointsOutputBody = ::serde_json::from_slice(response.body().as_ref())
             .map_err(crate::error::DescribeEndpointsError::unhandled)?;
@@ -1310,17 +1286,15 @@ impl DescribeExport {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeExportOutput, crate::error::DescribeExportError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DescribeExportError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DescribeExportError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::DescribeExportError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "ExportNotFoundException" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::DescribeExportError::ExportNotFoundError(body),
@@ -1334,7 +1308,7 @@ impl DescribeExport {
                     Ok(body) => crate::error::DescribeExportError::LimitExceededError(body),
                     Err(e) => crate::error::DescribeExportError::unhandled(e),
                 },
-                unknown => crate::error::DescribeExportError::unhandled(unknown),
+                _ => crate::error::DescribeExportError::unhandled(generic),
             });
         }
         let body: DescribeExportOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -1376,17 +1350,15 @@ impl DescribeGlobalTable {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeGlobalTableOutput, crate::error::DescribeGlobalTableError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DescribeGlobalTableError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DescribeGlobalTableError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::DescribeGlobalTableError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "GlobalTableNotFoundException" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -1402,7 +1374,7 @@ impl DescribeGlobalTable {
                     Ok(body) => crate::error::DescribeGlobalTableError::InvalidEndpointError(body),
                     Err(e) => crate::error::DescribeGlobalTableError::unhandled(e),
                 },
-                unknown => crate::error::DescribeGlobalTableError::unhandled(unknown),
+                _ => crate::error::DescribeGlobalTableError::unhandled(generic),
             });
         }
         let body: DescribeGlobalTableOutputBody =
@@ -1445,19 +1417,19 @@ impl DescribeGlobalTableSettings {
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeGlobalTableSettingsOutput, crate::error::DescribeGlobalTableSettingsError>
     {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DescribeGlobalTableSettingsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DescribeGlobalTableSettingsError::unhandled(
-                    "no error code".to_string(),
-                )
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(crate::error::DescribeGlobalTableSettingsError::unhandled(
+                        generic,
+                    ))
+                }
+            };
             return Err(match error_code {
                 "GlobalTableNotFoundException" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -1479,7 +1451,7 @@ impl DescribeGlobalTableSettings {
                     }
                     Err(e) => crate::error::DescribeGlobalTableSettingsError::unhandled(e),
                 },
-                unknown => crate::error::DescribeGlobalTableSettingsError::unhandled(unknown),
+                _ => crate::error::DescribeGlobalTableSettingsError::unhandled(generic),
             });
         }
         let body: DescribeGlobalTableSettingsOutputBody =
@@ -1523,19 +1495,19 @@ impl DescribeKinesisStreamingDestination {
         DescribeKinesisStreamingDestinationOutput,
         crate::error::DescribeKinesisStreamingDestinationError,
     > {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DescribeKinesisStreamingDestinationError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DescribeKinesisStreamingDestinationError::unhandled(
-                    "no error code".to_string(),
-                )
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(
+                        crate::error::DescribeKinesisStreamingDestinationError::unhandled(generic),
+                    )
+                }
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::DescribeKinesisStreamingDestinationError::InternalServerError(body),
@@ -1549,7 +1521,7 @@ impl DescribeKinesisStreamingDestination {
                     Ok(body) => crate::error::DescribeKinesisStreamingDestinationError::ResourceNotFoundError(body),
                     Err(e) => crate::error::DescribeKinesisStreamingDestinationError::unhandled(e)
                 }
-                unknown => crate::error::DescribeKinesisStreamingDestinationError::unhandled(unknown)
+                _ => crate::error::DescribeKinesisStreamingDestinationError::unhandled(generic)
             });
         }
         let body: DescribeKinesisStreamingDestinationOutputBody =
@@ -1648,17 +1620,15 @@ impl DescribeLimits {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeLimitsOutput, crate::error::DescribeLimitsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DescribeLimitsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DescribeLimitsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::DescribeLimitsError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::DescribeLimitsError::InternalServerError(body),
@@ -1668,7 +1638,7 @@ impl DescribeLimits {
                     Ok(body) => crate::error::DescribeLimitsError::InvalidEndpointError(body),
                     Err(e) => crate::error::DescribeLimitsError::unhandled(e),
                 },
-                unknown => crate::error::DescribeLimitsError::unhandled(unknown),
+                _ => crate::error::DescribeLimitsError::unhandled(generic),
             });
         }
         let body: DescribeLimitsOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -1712,17 +1682,15 @@ impl DescribeTable {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeTableOutput, crate::error::DescribeTableError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DescribeTableError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DescribeTableError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::DescribeTableError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::DescribeTableError::InternalServerError(body),
@@ -1736,7 +1704,7 @@ impl DescribeTable {
                     Ok(body) => crate::error::DescribeTableError::ResourceNotFoundError(body),
                     Err(e) => crate::error::DescribeTableError::unhandled(e),
                 },
-                unknown => crate::error::DescribeTableError::unhandled(unknown),
+                _ => crate::error::DescribeTableError::unhandled(generic),
             });
         }
         let body: DescribeTableOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -1778,19 +1746,19 @@ impl DescribeTableReplicaAutoScaling {
         DescribeTableReplicaAutoScalingOutput,
         crate::error::DescribeTableReplicaAutoScalingError,
     > {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DescribeTableReplicaAutoScalingError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DescribeTableReplicaAutoScalingError::unhandled(
-                    "no error code".to_string(),
-                )
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(
+                        crate::error::DescribeTableReplicaAutoScalingError::unhandled(generic),
+                    )
+                }
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -1808,7 +1776,7 @@ impl DescribeTableReplicaAutoScaling {
                     }
                     Err(e) => crate::error::DescribeTableReplicaAutoScalingError::unhandled(e),
                 },
-                unknown => crate::error::DescribeTableReplicaAutoScalingError::unhandled(unknown),
+                _ => crate::error::DescribeTableReplicaAutoScalingError::unhandled(generic),
             });
         }
         let body: DescribeTableReplicaAutoScalingOutputBody =
@@ -1850,17 +1818,15 @@ impl DescribeTimeToLive {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<DescribeTimeToLiveOutput, crate::error::DescribeTimeToLiveError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DescribeTimeToLiveError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DescribeTimeToLiveError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::DescribeTimeToLiveError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::DescribeTimeToLiveError::InternalServerError(body),
@@ -1874,7 +1840,7 @@ impl DescribeTimeToLive {
                     Ok(body) => crate::error::DescribeTimeToLiveError::ResourceNotFoundError(body),
                     Err(e) => crate::error::DescribeTimeToLiveError::unhandled(e),
                 },
-                unknown => crate::error::DescribeTimeToLiveError::unhandled(unknown),
+                _ => crate::error::DescribeTimeToLiveError::unhandled(generic),
             });
         }
         let body: DescribeTimeToLiveOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -1916,19 +1882,19 @@ impl DisableKinesisStreamingDestination {
         DisableKinesisStreamingDestinationOutput,
         crate::error::DisableKinesisStreamingDestinationError,
     > {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::DisableKinesisStreamingDestinationError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::DisableKinesisStreamingDestinationError::unhandled(
-                    "no error code".to_string(),
-                )
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(
+                        crate::error::DisableKinesisStreamingDestinationError::unhandled(generic),
+                    )
+                }
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -1970,9 +1936,7 @@ impl DisableKinesisStreamingDestination {
                     }
                     Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e),
                 },
-                unknown => {
-                    crate::error::DisableKinesisStreamingDestinationError::unhandled(unknown)
-                }
+                _ => crate::error::DisableKinesisStreamingDestinationError::unhandled(generic),
             });
         }
         let body: DisableKinesisStreamingDestinationOutputBody =
@@ -2022,19 +1986,19 @@ impl EnableKinesisStreamingDestination {
         EnableKinesisStreamingDestinationOutput,
         crate::error::EnableKinesisStreamingDestinationError,
     > {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::EnableKinesisStreamingDestinationError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::EnableKinesisStreamingDestinationError::unhandled(
-                    "no error code".to_string(),
-                )
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(
+                        crate::error::EnableKinesisStreamingDestinationError::unhandled(generic),
+                    )
+                }
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -2076,7 +2040,7 @@ impl EnableKinesisStreamingDestination {
                     }
                     Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e),
                 },
-                unknown => crate::error::EnableKinesisStreamingDestinationError::unhandled(unknown),
+                _ => crate::error::EnableKinesisStreamingDestinationError::unhandled(generic),
             });
         }
         let body: EnableKinesisStreamingDestinationOutputBody =
@@ -2119,17 +2083,15 @@ impl ExecuteStatement {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ExecuteStatementOutput, crate::error::ExecuteStatementError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::ExecuteStatementError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::ExecuteStatementError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::ExecuteStatementError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "ConditionalCheckFailedException" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -2173,7 +2135,7 @@ impl ExecuteStatement {
                     Ok(body) => crate::error::ExecuteStatementError::TransactionConflictError(body),
                     Err(e) => crate::error::ExecuteStatementError::unhandled(e),
                 },
-                unknown => crate::error::ExecuteStatementError::unhandled(unknown),
+                _ => crate::error::ExecuteStatementError::unhandled(generic),
             });
         }
         let body: ExecuteStatementOutputBody =
@@ -2215,17 +2177,15 @@ impl ExecuteTransaction {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ExecuteTransactionOutput, crate::error::ExecuteTransactionError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::ExecuteTransactionError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::ExecuteTransactionError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::ExecuteTransactionError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "IdempotentParameterMismatchException" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -2267,7 +2227,7 @@ impl ExecuteTransaction {
                     }
                     Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
                 },
-                unknown => crate::error::ExecuteTransactionError::unhandled(unknown),
+                _ => crate::error::ExecuteTransactionError::unhandled(generic),
             });
         }
         let body: ExecuteTransactionOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -2307,17 +2267,19 @@ impl ExportTableToPointInTime {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ExportTableToPointInTimeOutput, crate::error::ExportTableToPointInTimeError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::ExportTableToPointInTimeError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::ExportTableToPointInTimeError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(crate::error::ExportTableToPointInTimeError::unhandled(
+                        generic,
+                    ))
+                }
+            };
             return Err(match error_code {
                 "ExportConflictException" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::ExportTableToPointInTimeError::ExportConflictError(body),
@@ -2343,7 +2305,7 @@ impl ExportTableToPointInTime {
                     Ok(body) => crate::error::ExportTableToPointInTimeError::TableNotFoundError(body),
                     Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
                 }
-                unknown => crate::error::ExportTableToPointInTimeError::unhandled(unknown)
+                _ => crate::error::ExportTableToPointInTimeError::unhandled(generic)
             });
         }
         let body: ExportTableToPointInTimeOutputBody =
@@ -2385,17 +2347,15 @@ impl GetItem {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GetItemOutput, crate::error::GetItemError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::GetItemError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::GetItemError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::GetItemError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::GetItemError::InternalServerError(body),
@@ -2419,7 +2379,7 @@ impl GetItem {
                     Ok(body) => crate::error::GetItemError::ResourceNotFoundError(body),
                     Err(e) => crate::error::GetItemError::unhandled(e),
                 },
-                unknown => crate::error::GetItemError::unhandled(unknown),
+                _ => crate::error::GetItemError::unhandled(generic),
             });
         }
         let body: GetItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -2461,17 +2421,15 @@ impl ListBackups {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListBackupsOutput, crate::error::ListBackupsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::ListBackupsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::ListBackupsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::ListBackupsError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::ListBackupsError::InternalServerError(body),
@@ -2481,7 +2439,7 @@ impl ListBackups {
                     Ok(body) => crate::error::ListBackupsError::InvalidEndpointError(body),
                     Err(e) => crate::error::ListBackupsError::unhandled(e),
                 },
-                unknown => crate::error::ListBackupsError::unhandled(unknown),
+                _ => crate::error::ListBackupsError::unhandled(generic),
             });
         }
         let body: ListBackupsOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -2520,17 +2478,19 @@ impl ListContributorInsights {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListContributorInsightsOutput, crate::error::ListContributorInsightsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::ListContributorInsightsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::ListContributorInsightsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(crate::error::ListContributorInsightsError::unhandled(
+                        generic,
+                    ))
+                }
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -2544,7 +2504,7 @@ impl ListContributorInsights {
                     }
                     Err(e) => crate::error::ListContributorInsightsError::unhandled(e),
                 },
-                unknown => crate::error::ListContributorInsightsError::unhandled(unknown),
+                _ => crate::error::ListContributorInsightsError::unhandled(generic),
             });
         }
         let body: ListContributorInsightsOutputBody =
@@ -2581,17 +2541,15 @@ impl ListExports {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListExportsOutput, crate::error::ListExportsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::ListExportsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::ListExportsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::ListExportsError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::ListExportsError::InternalServerError(body),
@@ -2601,7 +2559,7 @@ impl ListExports {
                     Ok(body) => crate::error::ListExportsError::LimitExceededError(body),
                     Err(e) => crate::error::ListExportsError::unhandled(e),
                 },
-                unknown => crate::error::ListExportsError::unhandled(unknown),
+                _ => crate::error::ListExportsError::unhandled(generic),
             });
         }
         let body: ListExportsOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -2640,17 +2598,15 @@ impl ListGlobalTables {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListGlobalTablesOutput, crate::error::ListGlobalTablesError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::ListGlobalTablesError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::ListGlobalTablesError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::ListGlobalTablesError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::ListGlobalTablesError::InternalServerError(body),
@@ -2660,7 +2616,7 @@ impl ListGlobalTables {
                     Ok(body) => crate::error::ListGlobalTablesError::InvalidEndpointError(body),
                     Err(e) => crate::error::ListGlobalTablesError::unhandled(e),
                 },
-                unknown => crate::error::ListGlobalTablesError::unhandled(unknown),
+                _ => crate::error::ListGlobalTablesError::unhandled(generic),
             });
         }
         let body: ListGlobalTablesOutputBody =
@@ -2699,17 +2655,15 @@ impl ListTables {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListTablesOutput, crate::error::ListTablesError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::ListTablesError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::ListTablesError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::ListTablesError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::ListTablesError::InternalServerError(body),
@@ -2719,7 +2673,7 @@ impl ListTables {
                     Ok(body) => crate::error::ListTablesError::InvalidEndpointError(body),
                     Err(e) => crate::error::ListTablesError::unhandled(e),
                 },
-                unknown => crate::error::ListTablesError::unhandled(unknown),
+                _ => crate::error::ListTablesError::unhandled(generic),
             });
         }
         let body: ListTablesOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -2761,17 +2715,15 @@ impl ListTagsOfResource {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ListTagsOfResourceOutput, crate::error::ListTagsOfResourceError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::ListTagsOfResourceError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::ListTagsOfResourceError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::ListTagsOfResourceError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::ListTagsOfResourceError::InternalServerError(body),
@@ -2785,7 +2737,7 @@ impl ListTagsOfResource {
                     Ok(body) => crate::error::ListTagsOfResourceError::ResourceNotFoundError(body),
                     Err(e) => crate::error::ListTagsOfResourceError::unhandled(e),
                 },
-                unknown => crate::error::ListTagsOfResourceError::unhandled(unknown),
+                _ => crate::error::ListTagsOfResourceError::unhandled(generic),
             });
         }
         let body: ListTagsOfResourceOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -2887,17 +2839,15 @@ impl PutItem {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<PutItemOutput, crate::error::PutItemError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::PutItemError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::PutItemError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::PutItemError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "ConditionalCheckFailedException" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::PutItemError::ConditionalCheckFailedError(body),
@@ -2937,7 +2887,7 @@ impl PutItem {
                     Ok(body) => crate::error::PutItemError::TransactionConflictError(body),
                     Err(e) => crate::error::PutItemError::unhandled(e),
                 },
-                unknown => crate::error::PutItemError::unhandled(unknown),
+                _ => crate::error::PutItemError::unhandled(generic),
             });
         }
         let body: PutItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -3029,16 +2979,15 @@ impl Query {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<QueryOutput, crate::error::QueryError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::QueryError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code
-                .ok_or_else(|| crate::error::QueryError::unhandled("no error code".to_string()))?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::QueryError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::QueryError::InternalServerError(body),
@@ -3060,7 +3009,7 @@ impl Query {
                     Ok(body) => crate::error::QueryError::ResourceNotFoundError(body),
                     Err(e) => crate::error::QueryError::unhandled(e),
                 },
-                unknown => crate::error::QueryError::unhandled(unknown),
+                _ => crate::error::QueryError::unhandled(generic),
             });
         }
         let body: QueryOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -3126,17 +3075,19 @@ impl RestoreTableFromBackup {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<RestoreTableFromBackupOutput, crate::error::RestoreTableFromBackupError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::RestoreTableFromBackupError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::RestoreTableFromBackupError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(crate::error::RestoreTableFromBackupError::unhandled(
+                        generic,
+                    ))
+                }
+            };
             return Err(match error_code {
                 "BackupInUseException" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::RestoreTableFromBackupError::BackupInUseError(body),
@@ -3174,7 +3125,7 @@ impl RestoreTableFromBackup {
                     Ok(body) => crate::error::RestoreTableFromBackupError::TableInUseError(body),
                     Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
                 },
-                unknown => crate::error::RestoreTableFromBackupError::unhandled(unknown),
+                _ => crate::error::RestoreTableFromBackupError::unhandled(generic),
             });
         }
         let body: RestoreTableFromBackupOutputBody =
@@ -3267,17 +3218,19 @@ impl RestoreTableToPointInTime {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<RestoreTableToPointInTimeOutput, crate::error::RestoreTableToPointInTimeError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::RestoreTableToPointInTimeError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::RestoreTableToPointInTimeError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(crate::error::RestoreTableToPointInTimeError::unhandled(
+                        generic,
+                    ))
+                }
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::RestoreTableToPointInTimeError::InternalServerError(body),
@@ -3311,7 +3264,7 @@ impl RestoreTableToPointInTime {
                     Ok(body) => crate::error::RestoreTableToPointInTimeError::TableNotFoundError(body),
                     Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
                 }
-                unknown => crate::error::RestoreTableToPointInTimeError::unhandled(unknown)
+                _ => crate::error::RestoreTableToPointInTimeError::unhandled(generic)
             });
         }
         let body: RestoreTableToPointInTimeOutputBody =
@@ -3371,16 +3324,15 @@ impl Scan {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ScanOutput, crate::error::ScanError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::ScanError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code
-                .ok_or_else(|| crate::error::ScanError::unhandled("no error code".to_string()))?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::ScanError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::ScanError::InternalServerError(body),
@@ -3402,7 +3354,7 @@ impl Scan {
                     Ok(body) => crate::error::ScanError::ResourceNotFoundError(body),
                     Err(e) => crate::error::ScanError::unhandled(e),
                 },
-                unknown => crate::error::ScanError::unhandled(unknown),
+                _ => crate::error::ScanError::unhandled(generic),
             });
         }
         let body: ScanOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -3447,17 +3399,15 @@ impl TagResource {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TagResourceOutput, crate::error::TagResourceError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::TagResourceError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::TagResourceError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::TagResourceError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::TagResourceError::InternalServerError(body),
@@ -3479,7 +3429,7 @@ impl TagResource {
                     Ok(body) => crate::error::TagResourceError::ResourceNotFoundError(body),
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
-                unknown => crate::error::TagResourceError::unhandled(unknown),
+                _ => crate::error::TagResourceError::unhandled(generic),
             });
         }
         Ok(TagResourceOutput {})
@@ -3535,17 +3485,15 @@ impl TransactGetItems {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TransactGetItemsOutput, crate::error::TransactGetItemsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::TransactGetItemsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::TransactGetItemsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::TransactGetItemsError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::TransactGetItemsError::InternalServerError(body),
@@ -3575,7 +3523,7 @@ impl TransactGetItems {
                     Ok(body) => crate::error::TransactGetItemsError::TransactionCanceledError(body),
                     Err(e) => crate::error::TransactGetItemsError::unhandled(e),
                 },
-                unknown => crate::error::TransactGetItemsError::unhandled(unknown),
+                _ => crate::error::TransactGetItemsError::unhandled(generic),
             });
         }
         let body: TransactGetItemsOutputBody =
@@ -3685,17 +3633,15 @@ impl TransactWriteItems {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<TransactWriteItemsOutput, crate::error::TransactWriteItemsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::TransactWriteItemsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::TransactWriteItemsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::TransactWriteItemsError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "IdempotentParameterMismatchException" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -3741,7 +3687,7 @@ impl TransactWriteItems {
                     }
                     Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
                 },
-                unknown => crate::error::TransactWriteItemsError::unhandled(unknown),
+                _ => crate::error::TransactWriteItemsError::unhandled(generic),
             });
         }
         let body: TransactWriteItemsOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -3781,17 +3727,15 @@ impl UntagResource {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UntagResourceOutput, crate::error::UntagResourceError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::UntagResourceError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::UntagResourceError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::UntagResourceError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::UntagResourceError::InternalServerError(body),
@@ -3813,7 +3757,7 @@ impl UntagResource {
                     Ok(body) => crate::error::UntagResourceError::ResourceNotFoundError(body),
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
-                unknown => crate::error::UntagResourceError::unhandled(unknown),
+                _ => crate::error::UntagResourceError::unhandled(generic),
             });
         }
         Ok(UntagResourceOutput {})
@@ -3858,17 +3802,19 @@ impl UpdateContinuousBackups {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateContinuousBackupsOutput, crate::error::UpdateContinuousBackupsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::UpdateContinuousBackupsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::UpdateContinuousBackupsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(crate::error::UpdateContinuousBackupsError::unhandled(
+                        generic,
+                    ))
+                }
+            };
             return Err(match error_code {
                 "ContinuousBackupsUnavailableException" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::UpdateContinuousBackupsError::ContinuousBackupsUnavailableError(body),
@@ -3886,7 +3832,7 @@ impl UpdateContinuousBackups {
                     Ok(body) => crate::error::UpdateContinuousBackupsError::TableNotFoundError(body),
                     Err(e) => crate::error::UpdateContinuousBackupsError::unhandled(e)
                 }
-                unknown => crate::error::UpdateContinuousBackupsError::unhandled(unknown)
+                _ => crate::error::UpdateContinuousBackupsError::unhandled(generic)
             });
         }
         let body: UpdateContinuousBackupsOutputBody =
@@ -3925,17 +3871,19 @@ impl UpdateContributorInsights {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateContributorInsightsOutput, crate::error::UpdateContributorInsightsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::UpdateContributorInsightsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::UpdateContributorInsightsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(crate::error::UpdateContributorInsightsError::unhandled(
+                        generic,
+                    ))
+                }
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -3949,7 +3897,7 @@ impl UpdateContributorInsights {
                     }
                     Err(e) => crate::error::UpdateContributorInsightsError::unhandled(e),
                 },
-                unknown => crate::error::UpdateContributorInsightsError::unhandled(unknown),
+                _ => crate::error::UpdateContributorInsightsError::unhandled(generic),
             });
         }
         let body: UpdateContributorInsightsOutputBody =
@@ -4015,17 +3963,15 @@ impl UpdateGlobalTable {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateGlobalTableOutput, crate::error::UpdateGlobalTableError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::UpdateGlobalTableError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::UpdateGlobalTableError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::UpdateGlobalTableError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "GlobalTableNotFoundException" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -4055,7 +4001,7 @@ impl UpdateGlobalTable {
                     Ok(body) => crate::error::UpdateGlobalTableError::TableNotFoundError(body),
                     Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
                 },
-                unknown => crate::error::UpdateGlobalTableError::unhandled(unknown),
+                _ => crate::error::UpdateGlobalTableError::unhandled(generic),
             });
         }
         let body: UpdateGlobalTableOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -4093,17 +4039,19 @@ impl UpdateGlobalTableSettings {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateGlobalTableSettingsOutput, crate::error::UpdateGlobalTableSettingsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::UpdateGlobalTableSettingsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::UpdateGlobalTableSettingsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(crate::error::UpdateGlobalTableSettingsError::unhandled(
+                        generic,
+                    ))
+                }
+            };
             return Err(match error_code {
                 "GlobalTableNotFoundException" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -4147,7 +4095,7 @@ impl UpdateGlobalTableSettings {
                     }
                     Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
                 },
-                unknown => crate::error::UpdateGlobalTableSettingsError::unhandled(unknown),
+                _ => crate::error::UpdateGlobalTableSettingsError::unhandled(generic),
             });
         }
         let body: UpdateGlobalTableSettingsOutputBody =
@@ -4186,17 +4134,15 @@ impl UpdateItem {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateItemOutput, crate::error::UpdateItemError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::UpdateItemError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::UpdateItemError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::UpdateItemError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "ConditionalCheckFailedException" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::UpdateItemError::ConditionalCheckFailedError(body),
@@ -4238,7 +4184,7 @@ impl UpdateItem {
                     Ok(body) => crate::error::UpdateItemError::TransactionConflictError(body),
                     Err(e) => crate::error::UpdateItemError::unhandled(e),
                 },
-                unknown => crate::error::UpdateItemError::unhandled(unknown),
+                _ => crate::error::UpdateItemError::unhandled(generic),
             });
         }
         let body: UpdateItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -4297,17 +4243,15 @@ impl UpdateTable {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateTableOutput, crate::error::UpdateTableError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::UpdateTableError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::UpdateTableError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::UpdateTableError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::UpdateTableError::InternalServerError(body),
@@ -4329,7 +4273,7 @@ impl UpdateTable {
                     Ok(body) => crate::error::UpdateTableError::ResourceNotFoundError(body),
                     Err(e) => crate::error::UpdateTableError::unhandled(e),
                 },
-                unknown => crate::error::UpdateTableError::unhandled(unknown),
+                _ => crate::error::UpdateTableError::unhandled(generic),
             });
         }
         let body: UpdateTableOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -4371,19 +4315,19 @@ impl UpdateTableReplicaAutoScaling {
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateTableReplicaAutoScalingOutput, crate::error::UpdateTableReplicaAutoScalingError>
     {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::UpdateTableReplicaAutoScalingError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::UpdateTableReplicaAutoScalingError::unhandled(
-                    "no error code".to_string(),
-                )
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => {
+                    return Err(crate::error::UpdateTableReplicaAutoScalingError::unhandled(
+                        generic,
+                    ))
+                }
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => {
@@ -4411,7 +4355,7 @@ impl UpdateTableReplicaAutoScaling {
                     }
                     Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e),
                 },
-                unknown => crate::error::UpdateTableReplicaAutoScalingError::unhandled(unknown),
+                _ => crate::error::UpdateTableReplicaAutoScalingError::unhandled(generic),
             });
         }
         let body: UpdateTableReplicaAutoScalingOutputBody =
@@ -4472,17 +4416,15 @@ impl UpdateTimeToLive {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<UpdateTimeToLiveOutput, crate::error::UpdateTimeToLiveError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::UpdateTimeToLiveError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::UpdateTimeToLiveError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::UpdateTimeToLiveError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::UpdateTimeToLiveError::InternalServerError(body),
@@ -4504,7 +4446,7 @@ impl UpdateTimeToLive {
                     Ok(body) => crate::error::UpdateTimeToLiveError::ResourceNotFoundError(body),
                     Err(e) => crate::error::UpdateTimeToLiveError::unhandled(e),
                 },
-                unknown => crate::error::UpdateTimeToLiveError::unhandled(unknown),
+                _ => crate::error::UpdateTimeToLiveError::unhandled(generic),
             });
         }
         let body: UpdateTimeToLiveOutputBody =

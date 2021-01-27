@@ -36,18 +36,12 @@ impl EmptyOperation {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<EmptyOperationOutput, crate::error::EmptyOperationError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::EmptyOperationError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::EmptyOperationError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
-            return Err(crate::error::EmptyOperationError::unhandled(error_code));
+            return Err(crate::error::EmptyOperationError::unhandled(generic));
         }
         Ok(EmptyOperationOutput {})
     }
@@ -150,17 +144,15 @@ impl GreetingWithErrors {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<GreetingWithErrorsOutput, crate::error::GreetingWithErrorsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::GreetingWithErrorsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::GreetingWithErrorsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::GreetingWithErrorsError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "InvalidGreeting" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::GreetingWithErrorsError::InvalidGreeting(body),
@@ -174,7 +166,7 @@ impl GreetingWithErrors {
                     Ok(body) => crate::error::GreetingWithErrorsError::FooError(body),
                     Err(e) => crate::error::GreetingWithErrorsError::unhandled(e),
                 },
-                unknown => crate::error::GreetingWithErrorsError::unhandled(unknown),
+                _ => crate::error::GreetingWithErrorsError::unhandled(generic),
             });
         }
         let body: GreetingWithErrorsOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -225,7 +217,10 @@ mod greeting_with_errors_request_test {
         if let Err(crate::error::GreetingWithErrorsError::InvalidGreeting(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
-            panic!("wrong variant: {:?}", parsed);
+            panic!(
+                "wrong variant: Got: {:?}. Expected: {:?}",
+                parsed, expected_output
+            );
         }
     }
     /// Parses a complex error with no message member
@@ -262,7 +257,10 @@ mod greeting_with_errors_request_test {
         if let Err(crate::error::GreetingWithErrorsError::ComplexError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
-            panic!("wrong variant: {:?}", parsed);
+            panic!(
+                "wrong variant: Got: {:?}. Expected: {:?}",
+                parsed, expected_output
+            );
         }
     }
     /// Test ID: AwsJson11EmptyComplexError
@@ -286,7 +284,10 @@ mod greeting_with_errors_request_test {
         if let Err(crate::error::GreetingWithErrorsError::ComplexError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
-            panic!("wrong variant: {:?}", parsed);
+            panic!(
+                "wrong variant: Got: {:?}. Expected: {:?}",
+                parsed, expected_output
+            );
         }
     }
     /// Serializes the X-Amzn-ErrorType header. For an example service, see Amazon EKS.
@@ -307,7 +308,10 @@ mod greeting_with_errors_request_test {
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
-            panic!("wrong variant: {:?}", parsed);
+            panic!(
+                "wrong variant: Got: {:?}. Expected: {:?}",
+                parsed, expected_output
+            );
         }
     }
     /// Some X-Amzn-Errortype headers contain URLs. Clients need to split the URL on ':' and take only the first half of the string. For example, 'ValidationException:http://internal.amazon.com/coral/com.amazon.coral.validate/'
@@ -334,7 +338,10 @@ mod greeting_with_errors_request_test {
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
-            panic!("wrong variant: {:?}", parsed);
+            panic!(
+                "wrong variant: Got: {:?}. Expected: {:?}",
+                parsed, expected_output
+            );
         }
     }
     /// X-Amzn-Errortype might contain a URL and a namespace. Client should extract only the shape name. This is a pathalogical case that might not actually happen in any deployed AWS service.
@@ -356,7 +363,10 @@ mod greeting_with_errors_request_test {
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
-            panic!("wrong variant: {:?}", parsed);
+            panic!(
+                "wrong variant: Got: {:?}. Expected: {:?}",
+                parsed, expected_output
+            );
         }
     }
     /// This example uses the 'code' property in the output rather than X-Amzn-Errortype. Some services do this though it's preferable to send the X-Amzn-Errortype. Client implementations must first check for the X-Amzn-Errortype and then check for a top-level 'code' property.
@@ -383,7 +393,10 @@ mod greeting_with_errors_request_test {
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
-            panic!("wrong variant: {:?}", parsed);
+            panic!(
+                "wrong variant: Got: {:?}. Expected: {:?}",
+                parsed, expected_output
+            );
         }
     }
     /// Some services serialize errors using code, and it might contain a namespace. Clients should just take the last part of the string after '#'.
@@ -408,7 +421,10 @@ mod greeting_with_errors_request_test {
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
-            panic!("wrong variant: {:?}", parsed);
+            panic!(
+                "wrong variant: Got: {:?}. Expected: {:?}",
+                parsed, expected_output
+            );
         }
     }
     /// Some services serialize errors using code, and it might contain a namespace. It also might contain a URI. Clients should just take the last part of the string after '#' and before ":". This is a pathalogical case that might not occur in any deployed AWS service.
@@ -432,7 +448,10 @@ mod greeting_with_errors_request_test {
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
-            panic!("wrong variant: {:?}", parsed);
+            panic!(
+                "wrong variant: Got: {:?}. Expected: {:?}",
+                parsed, expected_output
+            );
         }
     }
     /// Some services serialize errors using __type.
@@ -457,7 +476,10 @@ mod greeting_with_errors_request_test {
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
-            panic!("wrong variant: {:?}", parsed);
+            panic!(
+                "wrong variant: Got: {:?}. Expected: {:?}",
+                parsed, expected_output
+            );
         }
     }
     /// Some services serialize errors using __type, and it might contain a namespace. Clients should just take the last part of the string after '#'.
@@ -482,7 +504,10 @@ mod greeting_with_errors_request_test {
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
-            panic!("wrong variant: {:?}", parsed);
+            panic!(
+                "wrong variant: Got: {:?}. Expected: {:?}",
+                parsed, expected_output
+            );
         }
     }
     /// Some services serialize errors using __type, and it might contain a namespace. It also might contain a URI. Clients should just take the last part of the string after '#' and before ":". This is a pathalogical case that might not occur in any deployed AWS service.
@@ -506,7 +531,10 @@ mod greeting_with_errors_request_test {
         if let Err(crate::error::GreetingWithErrorsError::FooError(actual_error)) = parsed {
             assert_eq!(expected_output, actual_error);
         } else {
-            panic!("wrong variant: {:?}", parsed);
+            panic!(
+                "wrong variant: Got: {:?}. Expected: {:?}",
+                parsed, expected_output
+            );
         }
     }
 }
@@ -526,18 +554,12 @@ impl JsonEnums {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonEnumsOutput, crate::error::JsonEnumsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::JsonEnumsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::JsonEnumsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
-            return Err(crate::error::JsonEnumsError::unhandled(error_code));
+            return Err(crate::error::JsonEnumsError::unhandled(generic));
         }
         let body: JsonEnumsOutputBody = ::serde_json::from_slice(response.body().as_ref())
             .map_err(crate::error::JsonEnumsError::unhandled)?;
@@ -630,18 +652,12 @@ impl JsonUnions {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<JsonUnionsOutput, crate::error::JsonUnionsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::JsonUnionsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::JsonUnionsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
-            return Err(crate::error::JsonUnionsError::unhandled(error_code));
+            return Err(crate::error::JsonUnionsError::unhandled(generic));
         }
         let body: JsonUnionsOutputBody = ::serde_json::from_slice(response.body().as_ref())
             .map_err(crate::error::JsonUnionsError::unhandled)?;
@@ -1246,17 +1262,15 @@ impl KitchenSinkOperation {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<KitchenSinkOperationOutput, crate::error::KitchenSinkOperationError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::KitchenSinkOperationError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::KitchenSinkOperationError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::KitchenSinkOperationError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "ErrorWithMembers" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::KitchenSinkOperationError::ErrorWithMembers(body),
@@ -1266,7 +1280,7 @@ impl KitchenSinkOperation {
                     Ok(body) => crate::error::KitchenSinkOperationError::ErrorWithoutMembers(body),
                     Err(e) => crate::error::KitchenSinkOperationError::unhandled(e),
                 },
-                unknown => crate::error::KitchenSinkOperationError::unhandled(unknown),
+                _ => crate::error::KitchenSinkOperationError::unhandled(generic),
             });
         }
         let body: KitchenSinkOperationOutputBody =
@@ -2885,18 +2899,12 @@ impl NullOperation {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<NullOperationOutput, crate::error::NullOperationError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::NullOperationError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::NullOperationError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
-            return Err(crate::error::NullOperationError::unhandled(error_code));
+            return Err(crate::error::NullOperationError::unhandled(generic));
         }
         let body: NullOperationOutputBody = ::serde_json::from_slice(response.body().as_ref())
             .map_err(crate::error::NullOperationError::unhandled)?;
@@ -3108,20 +3116,12 @@ impl OperationWithOptionalInputOutput {
         OperationWithOptionalInputOutputOutput,
         crate::error::OperationWithOptionalInputOutputError,
     > {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::OperationWithOptionalInputOutputError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::OperationWithOptionalInputOutputError::unhandled(
-                    "no error code".to_string(),
-                )
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
-            return Err(crate::error::OperationWithOptionalInputOutputError::unhandled(error_code));
+            return Err(crate::error::OperationWithOptionalInputOutputError::unhandled(generic));
         }
         let body: OperationWithOptionalInputOutputOutputBody =
             ::serde_json::from_slice(response.body().as_ref())
@@ -3228,19 +3228,13 @@ impl PutAndGetInlineDocuments {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<PutAndGetInlineDocumentsOutput, crate::error::PutAndGetInlineDocumentsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::PutAndGetInlineDocumentsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::PutAndGetInlineDocumentsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
             return Err(crate::error::PutAndGetInlineDocumentsError::unhandled(
-                error_code,
+                generic,
             ));
         }
         let body: PutAndGetInlineDocumentsOutputBody =

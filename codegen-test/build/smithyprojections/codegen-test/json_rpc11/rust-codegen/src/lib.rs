@@ -4,15 +4,15 @@
 
 pub use config::Config;
 
+mod aws_json_errors;
 mod blob_serde;
 mod config;
 mod doc_json;
 pub mod error;
-mod error_code;
 pub mod input;
-mod instant_8601;
 mod instant_epoch;
 mod instant_httpdate;
+mod instant_iso8601;
 pub mod model;
 pub mod operation;
 pub mod output;

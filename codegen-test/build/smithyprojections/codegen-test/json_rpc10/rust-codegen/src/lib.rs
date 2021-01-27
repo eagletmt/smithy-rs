@@ -4,10 +4,10 @@
 
 pub use config::Config;
 
+mod aws_json_errors;
 mod blob_serde;
 mod config;
 pub mod error;
-mod error_code;
 pub mod input;
 mod instant_epoch;
 pub mod model;

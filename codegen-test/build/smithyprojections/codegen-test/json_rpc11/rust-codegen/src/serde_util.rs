@@ -101,7 +101,7 @@ where
     use ::serde::Serialize;
     let el = _inp;
     el.as_ref()
-        .map(|el| crate::instant_8601::InstantIso8601(*el))
+        .map(|el| crate::instant_iso8601::InstantIso8601(*el))
         .serialize(_serializer)
 }
 
@@ -113,7 +113,7 @@ where
 {
     use ::serde::Deserialize;
     Ok(
-        ::std::option::Option::<crate::instant_8601::InstantIso8601>::deserialize(_deser)?
+        ::std::option::Option::<crate::instant_iso8601::InstantIso8601>::deserialize(_deser)?
             .map(|el| el.0),
     )
 }

@@ -19,17 +19,15 @@ impl ErrCollisions {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ErrCollisionsOutput, crate::error::ErrCollisionsError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::ErrCollisionsError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::ErrCollisionsError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
+            let error_code = match generic.code() {
+                Some(code) => code,
+                None => return Err(crate::error::ErrCollisionsError::unhandled(generic)),
+            };
             return Err(match error_code {
                 "CollidingError" => match ::serde_json::from_value(body) {
                     Ok(body) => crate::error::ErrCollisionsError::CollidingError(body),
@@ -39,7 +37,7 @@ impl ErrCollisions {
                     Ok(body) => crate::error::ErrCollisionsError::CollidingException(body),
                     Err(e) => crate::error::ErrCollisionsError::unhandled(e),
                 },
-                unknown => crate::error::ErrCollisionsError::unhandled(unknown),
+                _ => crate::error::ErrCollisionsError::unhandled(generic),
             });
         }
         Ok(ErrCollisionsOutput {})
@@ -72,19 +70,13 @@ impl ReservedWordsAsMembers {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<ReservedWordsAsMembersOutput, crate::error::ReservedWordsAsMembersError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::ReservedWordsAsMembersError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::ReservedWordsAsMembersError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
             return Err(crate::error::ReservedWordsAsMembersError::unhandled(
-                error_code,
+                generic,
             ));
         }
         Ok(ReservedWordsAsMembersOutput {})
@@ -144,20 +136,12 @@ impl StructureNamePunning {
     fn from_response(
         response: &::http::response::Response<impl AsRef<[u8]>>,
     ) -> Result<StructureNamePunningOutput, crate::error::StructureNamePunningError> {
-        if crate::error_code::is_error(&response) {
-            let body: ::serde_json::Value = ::serde_json::from_slice(response.body().as_ref())
+        if crate::aws_json_errors::is_error(&response) {
+            let body = ::serde_json::from_slice(response.body().as_ref())
                 .unwrap_or_else(|_| ::serde_json::json!({}));
-            let error_code = crate::error_code::error_type_from_header(&response)
-                .map_err(crate::error::StructureNamePunningError::unhandled)?;
-            let error_code = error_code.or_else(|| crate::error_code::error_type_from_body(&body));
-            let error_code = error_code.ok_or_else(|| {
-                crate::error::StructureNamePunningError::unhandled("no error code".to_string())
-            })?;
-            let error_code = crate::error_code::sanitize_error_code(error_code);
+            let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
-            return Err(crate::error::StructureNamePunningError::unhandled(
-                error_code,
-            ));
+            return Err(crate::error::StructureNamePunningError::unhandled(generic));
         }
         Ok(StructureNamePunningOutput {})
     }

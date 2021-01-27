@@ -4,9 +4,9 @@
 
 pub use config::Config;
 
+mod aws_json_errors;
 mod config;
 pub mod error;
-mod error_code;
 pub mod input;
 pub mod model;
 pub mod operation;
