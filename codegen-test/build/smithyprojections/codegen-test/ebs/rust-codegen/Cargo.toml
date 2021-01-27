@@ -18,5 +18,7 @@ path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-types"
 [dependencies.serde]
 version = "1"
 features = ["derive"]
+[dependencies.smithy-stream]
+path = "/Users/rcoh/code/smithy-rs/rust-runtime/smithy-stream"
 
 

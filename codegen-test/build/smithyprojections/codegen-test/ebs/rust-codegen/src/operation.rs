@@ -6,7 +6,6 @@ use crate::input::ListSnapshotBlocksInput;
 use crate::input::PutSnapshotBlockInput;
 use crate::input::StartSnapshotInput;
 use crate::output::CompleteSnapshotOutput;
-use crate::output::GetSnapshotBlockOutput;
 use crate::output::ListChangedBlocksOutput;
 use crate::output::ListSnapshotBlocksOutput;
 use crate::output::PutSnapshotBlockOutput;
@@ -53,18 +52,6 @@ impl GetSnapshotBlock {
     }
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         GetSnapshotBlockInput::assemble(self.input.request_builder_base(), self.input.build_body())
-    }
-    fn from_response(
-        response: &::http::response::Response<impl AsRef<[u8]>>,
-    ) -> Result<GetSnapshotBlockOutput, crate::error::GetSnapshotBlockError> {
-        let _ = response;
-        todo!()
-    }
-    pub fn parse_response(
-        &self,
-        response: &::http::response::Response<impl AsRef<[u8]>>,
-    ) -> Result<GetSnapshotBlockOutput, crate::error::GetSnapshotBlockError> {
-        Self::from_response(&response)
     }
     pub fn new(input: GetSnapshotBlockInput) -> Self {
         Self { input }

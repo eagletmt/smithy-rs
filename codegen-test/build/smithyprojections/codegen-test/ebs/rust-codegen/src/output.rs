@@ -4,7 +4,7 @@ use crate::model::ChangedBlock;
 use crate::model::ChecksumAlgorithm;
 use crate::model::Status;
 use crate::model::Tag;
-use smithy_types::Blob;
+use smithy_stream::ByteStream;
 use smithy_types::Instant;
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
@@ -336,7 +336,7 @@ impl ListChangedBlocksOutput {
 
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
-pub struct GetSnapshotBlockOutput {
+pub struct GetSnapshotBlockOutput<B> {
     /// <p>The size of the data in the block.</p>
     pub data_length: ::std::option::Option<i32>,
     /// <p>The algorithm used to generate the checksum for the block, such as SHA256.</p>
@@ -344,60 +344,7 @@ pub struct GetSnapshotBlockOutput {
     /// <p>The checksum generated for the block, which is Base64 encoded.</p>
     pub checksum: ::std::option::Option<::std::string::String>,
     /// <p>The data content of the block.</p>
-    pub block_data: ::std::option::Option<Blob>,
-}
-/// See [`GetSnapshotBlockOutput`](crate::output::GetSnapshotBlockOutput)
-pub mod get_snapshot_block_output {
-
-    use crate::model::ChecksumAlgorithm;
-    use crate::output::GetSnapshotBlockOutput;
-    use smithy_types::Blob;
-    /// A builder for [`GetSnapshotBlockOutput`](crate::output::GetSnapshotBlockOutput)
-    #[non_exhaustive]
-    #[derive(Debug, Clone, Default)]
-    pub struct Builder {
-        data_length: ::std::option::Option<i32>,
-        checksum_algorithm: ::std::option::Option<ChecksumAlgorithm>,
-        checksum: ::std::option::Option<::std::string::String>,
-        block_data: ::std::option::Option<Blob>,
-    }
-    impl Builder {
-        /// <p>The size of the data in the block.</p>
-        pub fn data_length(mut self, inp: i32) -> Self {
-            self.data_length = Some(inp);
-            self
-        }
-        /// <p>The algorithm used to generate the checksum for the block, such as SHA256.</p>
-        pub fn checksum_algorithm(mut self, inp: ChecksumAlgorithm) -> Self {
-            self.checksum_algorithm = Some(inp);
-            self
-        }
-        /// <p>The checksum generated for the block, which is Base64 encoded.</p>
-        pub fn checksum(mut self, inp: impl Into<::std::string::String>) -> Self {
-            self.checksum = Some(inp.into());
-            self
-        }
-        /// <p>The data content of the block.</p>
-        pub fn block_data(mut self, inp: Blob) -> Self {
-            self.block_data = Some(inp);
-            self
-        }
-        /// Consumes the builder and constructs a [`GetSnapshotBlockOutput`](crate::output::GetSnapshotBlockOutput)
-        pub fn build(self) -> GetSnapshotBlockOutput {
-            GetSnapshotBlockOutput {
-                data_length: self.data_length,
-                checksum_algorithm: self.checksum_algorithm,
-                checksum: self.checksum,
-                block_data: self.block_data,
-            }
-        }
-    }
-}
-impl GetSnapshotBlockOutput {
-    /// Creates a new builder-style object to manufacture [`GetSnapshotBlockOutput`](crate::output::GetSnapshotBlockOutput)
-    pub fn builder() -> crate::output::get_snapshot_block_output::Builder {
-        crate::output::get_snapshot_block_output::Builder::default()
-    }
+    pub block_data: ByteStream<B>,
 }
 
 #[non_exhaustive]

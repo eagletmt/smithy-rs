@@ -5,6 +5,7 @@ use crate::model::MyUnion;
 use crate::model::NestedPayload;
 use crate::model::RecursiveShapesInputOutputNested1;
 use crate::model::StructureListMember;
+use smithy_stream::ByteStream;
 use smithy_types::Blob;
 use smithy_types::Document;
 use smithy_types::Instant;
@@ -728,131 +729,23 @@ impl GreetingWithErrorsOutput {
 
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
-pub struct StreamingTraitsWithMediaTypeOutput {
+pub struct StreamingTraitsWithMediaTypeOutput<B> {
     pub foo: ::std::option::Option<::std::string::String>,
-    pub blob: ::std::option::Option<Blob>,
-}
-/// See [`StreamingTraitsWithMediaTypeOutput`](crate::output::StreamingTraitsWithMediaTypeOutput)
-pub mod streaming_traits_with_media_type_output {
-
-    use crate::output::StreamingTraitsWithMediaTypeOutput;
-    use smithy_types::Blob;
-    /// A builder for [`StreamingTraitsWithMediaTypeOutput`](crate::output::StreamingTraitsWithMediaTypeOutput)
-    #[non_exhaustive]
-    #[derive(Debug, Clone, Default)]
-    pub struct Builder {
-        foo: ::std::option::Option<::std::string::String>,
-        blob: ::std::option::Option<Blob>,
-    }
-    impl Builder {
-        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
-            self.foo = Some(inp.into());
-            self
-        }
-        pub fn blob(mut self, inp: Blob) -> Self {
-            self.blob = Some(inp);
-            self
-        }
-        /// Consumes the builder and constructs a [`StreamingTraitsWithMediaTypeOutput`](crate::output::StreamingTraitsWithMediaTypeOutput)
-        pub fn build(self) -> StreamingTraitsWithMediaTypeOutput {
-            StreamingTraitsWithMediaTypeOutput {
-                foo: self.foo,
-                blob: self.blob,
-            }
-        }
-    }
-}
-impl StreamingTraitsWithMediaTypeOutput {
-    /// Creates a new builder-style object to manufacture [`StreamingTraitsWithMediaTypeOutput`](crate::output::StreamingTraitsWithMediaTypeOutput)
-    pub fn builder() -> crate::output::streaming_traits_with_media_type_output::Builder {
-        crate::output::streaming_traits_with_media_type_output::Builder::default()
-    }
+    pub blob: ByteStream<B>,
 }
 
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
-pub struct StreamingTraitsRequireLengthOutput {
+pub struct StreamingTraitsRequireLengthOutput<B> {
     pub foo: ::std::option::Option<::std::string::String>,
-    pub blob: ::std::option::Option<Blob>,
-}
-/// See [`StreamingTraitsRequireLengthOutput`](crate::output::StreamingTraitsRequireLengthOutput)
-pub mod streaming_traits_require_length_output {
-
-    use crate::output::StreamingTraitsRequireLengthOutput;
-    use smithy_types::Blob;
-    /// A builder for [`StreamingTraitsRequireLengthOutput`](crate::output::StreamingTraitsRequireLengthOutput)
-    #[non_exhaustive]
-    #[derive(Debug, Clone, Default)]
-    pub struct Builder {
-        foo: ::std::option::Option<::std::string::String>,
-        blob: ::std::option::Option<Blob>,
-    }
-    impl Builder {
-        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
-            self.foo = Some(inp.into());
-            self
-        }
-        pub fn blob(mut self, inp: Blob) -> Self {
-            self.blob = Some(inp);
-            self
-        }
-        /// Consumes the builder and constructs a [`StreamingTraitsRequireLengthOutput`](crate::output::StreamingTraitsRequireLengthOutput)
-        pub fn build(self) -> StreamingTraitsRequireLengthOutput {
-            StreamingTraitsRequireLengthOutput {
-                foo: self.foo,
-                blob: self.blob,
-            }
-        }
-    }
-}
-impl StreamingTraitsRequireLengthOutput {
-    /// Creates a new builder-style object to manufacture [`StreamingTraitsRequireLengthOutput`](crate::output::StreamingTraitsRequireLengthOutput)
-    pub fn builder() -> crate::output::streaming_traits_require_length_output::Builder {
-        crate::output::streaming_traits_require_length_output::Builder::default()
-    }
+    pub blob: ByteStream<B>,
 }
 
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
-pub struct StreamingTraitsOutput {
+pub struct StreamingTraitsOutput<B> {
     pub foo: ::std::option::Option<::std::string::String>,
-    pub blob: ::std::option::Option<Blob>,
-}
-/// See [`StreamingTraitsOutput`](crate::output::StreamingTraitsOutput)
-pub mod streaming_traits_output {
-
-    use crate::output::StreamingTraitsOutput;
-    use smithy_types::Blob;
-    /// A builder for [`StreamingTraitsOutput`](crate::output::StreamingTraitsOutput)
-    #[non_exhaustive]
-    #[derive(Debug, Clone, Default)]
-    pub struct Builder {
-        foo: ::std::option::Option<::std::string::String>,
-        blob: ::std::option::Option<Blob>,
-    }
-    impl Builder {
-        pub fn foo(mut self, inp: impl Into<::std::string::String>) -> Self {
-            self.foo = Some(inp.into());
-            self
-        }
-        pub fn blob(mut self, inp: Blob) -> Self {
-            self.blob = Some(inp);
-            self
-        }
-        /// Consumes the builder and constructs a [`StreamingTraitsOutput`](crate::output::StreamingTraitsOutput)
-        pub fn build(self) -> StreamingTraitsOutput {
-            StreamingTraitsOutput {
-                foo: self.foo,
-                blob: self.blob,
-            }
-        }
-    }
-}
-impl StreamingTraitsOutput {
-    /// Creates a new builder-style object to manufacture [`StreamingTraitsOutput`](crate::output::StreamingTraitsOutput)
-    pub fn builder() -> crate::output::streaming_traits_output::Builder {
-        crate::output::streaming_traits_output::Builder::default()
-    }
+    pub blob: ByteStream<B>,
 }
 
 #[non_exhaustive]

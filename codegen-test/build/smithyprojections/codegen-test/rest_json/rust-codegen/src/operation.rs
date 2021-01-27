@@ -69,9 +69,6 @@ use crate::output::OmitsNullSerializesEmptyStringOutput;
 use crate::output::QueryIdempotencyTokenAutoFillOutput;
 use crate::output::RecursiveShapesOutput;
 use crate::output::SimpleScalarPropertiesOutput;
-use crate::output::StreamingTraitsOutput;
-use crate::output::StreamingTraitsRequireLengthOutput;
-use crate::output::StreamingTraitsWithMediaTypeOutput;
 use crate::output::TimestampFormatHeadersOutput;
 /// This example uses all query string types.
 pub struct AllQueryStringTypes {
@@ -3177,18 +3174,6 @@ impl StreamingTraits {
     pub fn build_http_request(&self) -> ::http::request::Request<Vec<u8>> {
         StreamingTraitsInput::assemble(self.input.request_builder_base(), self.input.build_body())
     }
-    fn from_response(
-        response: &::http::response::Response<impl AsRef<[u8]>>,
-    ) -> Result<StreamingTraitsOutput, crate::error::StreamingTraitsError> {
-        let _ = response;
-        todo!()
-    }
-    pub fn parse_response(
-        &self,
-        response: &::http::response::Response<impl AsRef<[u8]>>,
-    ) -> Result<StreamingTraitsOutput, crate::error::StreamingTraitsError> {
-        Self::from_response(&response)
-    }
     pub fn new(input: StreamingTraitsInput) -> Self {
         Self { input }
     }
@@ -3277,20 +3262,6 @@ impl StreamingTraitsRequireLength {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
-    }
-    fn from_response(
-        response: &::http::response::Response<impl AsRef<[u8]>>,
-    ) -> Result<StreamingTraitsRequireLengthOutput, crate::error::StreamingTraitsRequireLengthError>
-    {
-        let _ = response;
-        todo!()
-    }
-    pub fn parse_response(
-        &self,
-        response: &::http::response::Response<impl AsRef<[u8]>>,
-    ) -> Result<StreamingTraitsRequireLengthOutput, crate::error::StreamingTraitsRequireLengthError>
-    {
-        Self::from_response(&response)
     }
     pub fn new(input: StreamingTraitsRequireLengthInput) -> Self {
         Self { input }
@@ -3384,20 +3355,6 @@ impl StreamingTraitsWithMediaType {
             self.input.request_builder_base(),
             self.input.build_body(),
         )
-    }
-    fn from_response(
-        response: &::http::response::Response<impl AsRef<[u8]>>,
-    ) -> Result<StreamingTraitsWithMediaTypeOutput, crate::error::StreamingTraitsWithMediaTypeError>
-    {
-        let _ = response;
-        todo!()
-    }
-    pub fn parse_response(
-        &self,
-        response: &::http::response::Response<impl AsRef<[u8]>>,
-    ) -> Result<StreamingTraitsWithMediaTypeOutput, crate::error::StreamingTraitsWithMediaTypeError>
-    {
-        Self::from_response(&response)
     }
     pub fn new(input: StreamingTraitsWithMediaTypeInput) -> Self {
         Self { input }
