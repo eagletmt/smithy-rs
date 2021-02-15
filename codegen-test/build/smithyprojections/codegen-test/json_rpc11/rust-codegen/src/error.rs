@@ -14,6 +14,21 @@ impl ::std::fmt::Display for EmptyOperationError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for EmptyOperationError {
+    fn code(&self) -> Option<&str> {
+        EmptyOperationError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            EmptyOperationError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl EmptyOperationError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         EmptyOperationError::Unhandled(err.into())
@@ -69,6 +84,24 @@ impl ::std::fmt::Display for GreetingWithErrorsError {
             GreetingWithErrorsError::ComplexError(_inner) => _inner.fmt(f),
             GreetingWithErrorsError::FooError(_inner) => _inner.fmt(f),
             GreetingWithErrorsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for GreetingWithErrorsError {
+    fn code(&self) -> Option<&str> {
+        GreetingWithErrorsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            GreetingWithErrorsError::InvalidGreeting(_inner) => None,
+            GreetingWithErrorsError::ComplexError(_inner) => None,
+            GreetingWithErrorsError::FooError(_inner) => None,
+            GreetingWithErrorsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -132,6 +165,21 @@ impl ::std::fmt::Display for JsonEnumsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for JsonEnumsError {
+    fn code(&self) -> Option<&str> {
+        JsonEnumsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            JsonEnumsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl JsonEnumsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         JsonEnumsError::Unhandled(err.into())
@@ -180,6 +228,21 @@ impl ::std::fmt::Display for JsonUnionsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             JsonUnionsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for JsonUnionsError {
+    fn code(&self) -> Option<&str> {
+        JsonUnionsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            JsonUnionsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -236,6 +299,23 @@ impl ::std::fmt::Display for KitchenSinkOperationError {
             KitchenSinkOperationError::ErrorWithMembers(_inner) => _inner.fmt(f),
             KitchenSinkOperationError::ErrorWithoutMembers(_inner) => _inner.fmt(f),
             KitchenSinkOperationError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for KitchenSinkOperationError {
+    fn code(&self) -> Option<&str> {
+        KitchenSinkOperationError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            KitchenSinkOperationError::ErrorWithMembers(_inner) => None,
+            KitchenSinkOperationError::ErrorWithoutMembers(_inner) => None,
+            KitchenSinkOperationError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -296,6 +376,21 @@ impl ::std::fmt::Display for NullOperationError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for NullOperationError {
+    fn code(&self) -> Option<&str> {
+        NullOperationError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            NullOperationError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl NullOperationError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         NullOperationError::Unhandled(err.into())
@@ -344,6 +439,21 @@ impl ::std::fmt::Display for OperationWithOptionalInputOutputError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             OperationWithOptionalInputOutputError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for OperationWithOptionalInputOutputError {
+    fn code(&self) -> Option<&str> {
+        OperationWithOptionalInputOutputError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            OperationWithOptionalInputOutputError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -398,6 +508,21 @@ impl ::std::fmt::Display for PutAndGetInlineDocumentsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for PutAndGetInlineDocumentsError {
+    fn code(&self) -> Option<&str> {
+        PutAndGetInlineDocumentsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            PutAndGetInlineDocumentsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl PutAndGetInlineDocumentsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         PutAndGetInlineDocumentsError::Unhandled(err.into())
@@ -448,12 +573,6 @@ impl ::std::error::Error for PutAndGetInlineDocumentsError {
 )]
 pub struct FooError {}
 impl FooError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "FooError"
     }
@@ -510,12 +629,6 @@ pub struct ComplexError {
     pub nested: ::std::option::Option<ComplexNestedErrorData>,
 }
 impl ComplexError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ComplexError"
     }
@@ -583,12 +696,6 @@ pub struct InvalidGreeting {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidGreeting {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "InvalidGreeting"
     }
@@ -643,12 +750,6 @@ impl InvalidGreeting {
 )]
 pub struct ErrorWithoutMembers {}
 impl ErrorWithoutMembers {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ErrorWithoutMembers"
     }
@@ -727,12 +828,6 @@ pub struct ErrorWithMembers {
     pub string_field: ::std::option::Option<::std::string::String>,
 }
 impl ErrorWithMembers {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ErrorWithMembers"
     }

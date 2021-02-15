@@ -18,6 +18,23 @@ impl ::std::fmt::Display for BatchExecuteStatementError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for BatchExecuteStatementError {
+    fn code(&self) -> Option<&str> {
+        BatchExecuteStatementError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            BatchExecuteStatementError::InternalServerError(_inner) => None,
+            BatchExecuteStatementError::RequestLimitExceeded(_inner) => None,
+            BatchExecuteStatementError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl BatchExecuteStatementError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         BatchExecuteStatementError::Unhandled(err.into())
@@ -83,6 +100,26 @@ impl ::std::fmt::Display for BatchGetItemError {
             BatchGetItemError::RequestLimitExceeded(_inner) => _inner.fmt(f),
             BatchGetItemError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             BatchGetItemError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for BatchGetItemError {
+    fn code(&self) -> Option<&str> {
+        BatchGetItemError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            BatchGetItemError::InternalServerError(_inner) => None,
+            BatchGetItemError::InvalidEndpointError(_inner) => None,
+            BatchGetItemError::ProvisionedThroughputExceededError(_inner) => None,
+            BatchGetItemError::RequestLimitExceeded(_inner) => None,
+            BatchGetItemError::ResourceNotFoundError(_inner) => None,
+            BatchGetItemError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -162,6 +199,27 @@ impl ::std::fmt::Display for BatchWriteItemError {
             BatchWriteItemError::RequestLimitExceeded(_inner) => _inner.fmt(f),
             BatchWriteItemError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             BatchWriteItemError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for BatchWriteItemError {
+    fn code(&self) -> Option<&str> {
+        BatchWriteItemError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            BatchWriteItemError::InternalServerError(_inner) => None,
+            BatchWriteItemError::InvalidEndpointError(_inner) => None,
+            BatchWriteItemError::ItemCollectionSizeLimitExceededError(_inner) => None,
+            BatchWriteItemError::ProvisionedThroughputExceededError(_inner) => None,
+            BatchWriteItemError::RequestLimitExceeded(_inner) => None,
+            BatchWriteItemError::ResourceNotFoundError(_inner) => None,
+            BatchWriteItemError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -251,6 +309,28 @@ impl ::std::fmt::Display for CreateBackupError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for CreateBackupError {
+    fn code(&self) -> Option<&str> {
+        CreateBackupError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            CreateBackupError::BackupInUseError(_inner) => None,
+            CreateBackupError::ContinuousBackupsUnavailableError(_inner) => None,
+            CreateBackupError::InternalServerError(_inner) => None,
+            CreateBackupError::InvalidEndpointError(_inner) => None,
+            CreateBackupError::LimitExceededError(_inner) => None,
+            CreateBackupError::TableInUseError(_inner) => None,
+            CreateBackupError::TableNotFoundError(_inner) => None,
+            CreateBackupError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl CreateBackupError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         CreateBackupError::Unhandled(err.into())
@@ -334,6 +414,26 @@ impl ::std::fmt::Display for CreateGlobalTableError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for CreateGlobalTableError {
+    fn code(&self) -> Option<&str> {
+        CreateGlobalTableError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            CreateGlobalTableError::GlobalTableAlreadyExistsError(_inner) => None,
+            CreateGlobalTableError::InternalServerError(_inner) => None,
+            CreateGlobalTableError::InvalidEndpointError(_inner) => None,
+            CreateGlobalTableError::LimitExceededError(_inner) => None,
+            CreateGlobalTableError::TableNotFoundError(_inner) => None,
+            CreateGlobalTableError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl CreateGlobalTableError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         CreateGlobalTableError::Unhandled(err.into())
@@ -409,6 +509,25 @@ impl ::std::fmt::Display for CreateTableError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for CreateTableError {
+    fn code(&self) -> Option<&str> {
+        CreateTableError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            CreateTableError::InternalServerError(_inner) => None,
+            CreateTableError::InvalidEndpointError(_inner) => None,
+            CreateTableError::LimitExceededError(_inner) => None,
+            CreateTableError::ResourceInUseError(_inner) => None,
+            CreateTableError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl CreateTableError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         CreateTableError::Unhandled(err.into())
@@ -480,6 +599,26 @@ impl ::std::fmt::Display for DeleteBackupError {
             DeleteBackupError::InvalidEndpointError(_inner) => _inner.fmt(f),
             DeleteBackupError::LimitExceededError(_inner) => _inner.fmt(f),
             DeleteBackupError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for DeleteBackupError {
+    fn code(&self) -> Option<&str> {
+        DeleteBackupError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DeleteBackupError::BackupInUseError(_inner) => None,
+            DeleteBackupError::BackupNotFoundError(_inner) => None,
+            DeleteBackupError::InternalServerError(_inner) => None,
+            DeleteBackupError::InvalidEndpointError(_inner) => None,
+            DeleteBackupError::LimitExceededError(_inner) => None,
+            DeleteBackupError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -563,6 +702,29 @@ impl ::std::fmt::Display for DeleteItemError {
             DeleteItemError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             DeleteItemError::TransactionConflictError(_inner) => _inner.fmt(f),
             DeleteItemError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for DeleteItemError {
+    fn code(&self) -> Option<&str> {
+        DeleteItemError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DeleteItemError::ConditionalCheckFailedError(_inner) => None,
+            DeleteItemError::InternalServerError(_inner) => None,
+            DeleteItemError::InvalidEndpointError(_inner) => None,
+            DeleteItemError::ItemCollectionSizeLimitExceededError(_inner) => None,
+            DeleteItemError::ProvisionedThroughputExceededError(_inner) => None,
+            DeleteItemError::RequestLimitExceeded(_inner) => None,
+            DeleteItemError::ResourceNotFoundError(_inner) => None,
+            DeleteItemError::TransactionConflictError(_inner) => None,
+            DeleteItemError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -652,6 +814,26 @@ impl ::std::fmt::Display for DeleteTableError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for DeleteTableError {
+    fn code(&self) -> Option<&str> {
+        DeleteTableError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DeleteTableError::InternalServerError(_inner) => None,
+            DeleteTableError::InvalidEndpointError(_inner) => None,
+            DeleteTableError::LimitExceededError(_inner) => None,
+            DeleteTableError::ResourceInUseError(_inner) => None,
+            DeleteTableError::ResourceNotFoundError(_inner) => None,
+            DeleteTableError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl DeleteTableError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         DeleteTableError::Unhandled(err.into())
@@ -725,6 +907,24 @@ impl ::std::fmt::Display for DescribeBackupError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for DescribeBackupError {
+    fn code(&self) -> Option<&str> {
+        DescribeBackupError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DescribeBackupError::BackupNotFoundError(_inner) => None,
+            DescribeBackupError::InternalServerError(_inner) => None,
+            DescribeBackupError::InvalidEndpointError(_inner) => None,
+            DescribeBackupError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl DescribeBackupError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         DescribeBackupError::Unhandled(err.into())
@@ -789,6 +989,24 @@ impl ::std::fmt::Display for DescribeContinuousBackupsError {
             DescribeContinuousBackupsError::InvalidEndpointError(_inner) => _inner.fmt(f),
             DescribeContinuousBackupsError::TableNotFoundError(_inner) => _inner.fmt(f),
             DescribeContinuousBackupsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for DescribeContinuousBackupsError {
+    fn code(&self) -> Option<&str> {
+        DescribeContinuousBackupsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DescribeContinuousBackupsError::InternalServerError(_inner) => None,
+            DescribeContinuousBackupsError::InvalidEndpointError(_inner) => None,
+            DescribeContinuousBackupsError::TableNotFoundError(_inner) => None,
+            DescribeContinuousBackupsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -857,6 +1075,23 @@ impl ::std::fmt::Display for DescribeContributorInsightsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for DescribeContributorInsightsError {
+    fn code(&self) -> Option<&str> {
+        DescribeContributorInsightsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DescribeContributorInsightsError::InternalServerError(_inner) => None,
+            DescribeContributorInsightsError::ResourceNotFoundError(_inner) => None,
+            DescribeContributorInsightsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl DescribeContributorInsightsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         DescribeContributorInsightsError::Unhandled(err.into())
@@ -911,6 +1146,21 @@ impl ::std::fmt::Display for DescribeEndpointsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             DescribeEndpointsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for DescribeEndpointsError {
+    fn code(&self) -> Option<&str> {
+        DescribeEndpointsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DescribeEndpointsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -969,6 +1219,24 @@ impl ::std::fmt::Display for DescribeExportError {
             DescribeExportError::InternalServerError(_inner) => _inner.fmt(f),
             DescribeExportError::LimitExceededError(_inner) => _inner.fmt(f),
             DescribeExportError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for DescribeExportError {
+    fn code(&self) -> Option<&str> {
+        DescribeExportError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DescribeExportError::ExportNotFoundError(_inner) => None,
+            DescribeExportError::InternalServerError(_inner) => None,
+            DescribeExportError::LimitExceededError(_inner) => None,
+            DescribeExportError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1039,6 +1307,24 @@ impl ::std::fmt::Display for DescribeGlobalTableError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for DescribeGlobalTableError {
+    fn code(&self) -> Option<&str> {
+        DescribeGlobalTableError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DescribeGlobalTableError::GlobalTableNotFoundError(_inner) => None,
+            DescribeGlobalTableError::InternalServerError(_inner) => None,
+            DescribeGlobalTableError::InvalidEndpointError(_inner) => None,
+            DescribeGlobalTableError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl DescribeGlobalTableError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         DescribeGlobalTableError::Unhandled(err.into())
@@ -1103,6 +1389,24 @@ impl ::std::fmt::Display for DescribeGlobalTableSettingsError {
             DescribeGlobalTableSettingsError::InternalServerError(_inner) => _inner.fmt(f),
             DescribeGlobalTableSettingsError::InvalidEndpointError(_inner) => _inner.fmt(f),
             DescribeGlobalTableSettingsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for DescribeGlobalTableSettingsError {
+    fn code(&self) -> Option<&str> {
+        DescribeGlobalTableSettingsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DescribeGlobalTableSettingsError::GlobalTableNotFoundError(_inner) => None,
+            DescribeGlobalTableSettingsError::InternalServerError(_inner) => None,
+            DescribeGlobalTableSettingsError::InvalidEndpointError(_inner) => None,
+            DescribeGlobalTableSettingsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1174,6 +1478,24 @@ impl ::std::fmt::Display for DescribeKinesisStreamingDestinationError {
                 _inner.fmt(f)
             }
             DescribeKinesisStreamingDestinationError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for DescribeKinesisStreamingDestinationError {
+    fn code(&self) -> Option<&str> {
+        DescribeKinesisStreamingDestinationError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DescribeKinesisStreamingDestinationError::InternalServerError(_inner) => None,
+            DescribeKinesisStreamingDestinationError::InvalidEndpointError(_inner) => None,
+            DescribeKinesisStreamingDestinationError::ResourceNotFoundError(_inner) => None,
+            DescribeKinesisStreamingDestinationError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1254,6 +1576,23 @@ impl ::std::fmt::Display for DescribeLimitsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for DescribeLimitsError {
+    fn code(&self) -> Option<&str> {
+        DescribeLimitsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DescribeLimitsError::InternalServerError(_inner) => None,
+            DescribeLimitsError::InvalidEndpointError(_inner) => None,
+            DescribeLimitsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl DescribeLimitsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         DescribeLimitsError::Unhandled(err.into())
@@ -1315,6 +1654,24 @@ impl ::std::fmt::Display for DescribeTableError {
             DescribeTableError::InvalidEndpointError(_inner) => _inner.fmt(f),
             DescribeTableError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             DescribeTableError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for DescribeTableError {
+    fn code(&self) -> Option<&str> {
+        DescribeTableError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DescribeTableError::InternalServerError(_inner) => None,
+            DescribeTableError::InvalidEndpointError(_inner) => None,
+            DescribeTableError::ResourceNotFoundError(_inner) => None,
+            DescribeTableError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1380,6 +1737,23 @@ impl ::std::fmt::Display for DescribeTableReplicaAutoScalingError {
             DescribeTableReplicaAutoScalingError::InternalServerError(_inner) => _inner.fmt(f),
             DescribeTableReplicaAutoScalingError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             DescribeTableReplicaAutoScalingError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for DescribeTableReplicaAutoScalingError {
+    fn code(&self) -> Option<&str> {
+        DescribeTableReplicaAutoScalingError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DescribeTableReplicaAutoScalingError::InternalServerError(_inner) => None,
+            DescribeTableReplicaAutoScalingError::ResourceNotFoundError(_inner) => None,
+            DescribeTableReplicaAutoScalingError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1451,6 +1825,24 @@ impl ::std::fmt::Display for DescribeTimeToLiveError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for DescribeTimeToLiveError {
+    fn code(&self) -> Option<&str> {
+        DescribeTimeToLiveError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DescribeTimeToLiveError::InternalServerError(_inner) => None,
+            DescribeTimeToLiveError::InvalidEndpointError(_inner) => None,
+            DescribeTimeToLiveError::ResourceNotFoundError(_inner) => None,
+            DescribeTimeToLiveError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl DescribeTimeToLiveError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         DescribeTimeToLiveError::Unhandled(err.into())
@@ -1519,6 +1911,26 @@ impl ::std::fmt::Display for DisableKinesisStreamingDestinationError {
             DisableKinesisStreamingDestinationError::ResourceInUseError(_inner) => _inner.fmt(f),
             DisableKinesisStreamingDestinationError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             DisableKinesisStreamingDestinationError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for DisableKinesisStreamingDestinationError {
+    fn code(&self) -> Option<&str> {
+        DisableKinesisStreamingDestinationError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            DisableKinesisStreamingDestinationError::InternalServerError(_inner) => None,
+            DisableKinesisStreamingDestinationError::InvalidEndpointError(_inner) => None,
+            DisableKinesisStreamingDestinationError::LimitExceededError(_inner) => None,
+            DisableKinesisStreamingDestinationError::ResourceInUseError(_inner) => None,
+            DisableKinesisStreamingDestinationError::ResourceNotFoundError(_inner) => None,
+            DisableKinesisStreamingDestinationError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1612,6 +2024,26 @@ impl ::std::fmt::Display for EnableKinesisStreamingDestinationError {
             EnableKinesisStreamingDestinationError::ResourceInUseError(_inner) => _inner.fmt(f),
             EnableKinesisStreamingDestinationError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             EnableKinesisStreamingDestinationError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for EnableKinesisStreamingDestinationError {
+    fn code(&self) -> Option<&str> {
+        EnableKinesisStreamingDestinationError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            EnableKinesisStreamingDestinationError::InternalServerError(_inner) => None,
+            EnableKinesisStreamingDestinationError::InvalidEndpointError(_inner) => None,
+            EnableKinesisStreamingDestinationError::LimitExceededError(_inner) => None,
+            EnableKinesisStreamingDestinationError::ResourceInUseError(_inner) => None,
+            EnableKinesisStreamingDestinationError::ResourceNotFoundError(_inner) => None,
+            EnableKinesisStreamingDestinationError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1712,6 +2144,29 @@ impl ::std::fmt::Display for ExecuteStatementError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for ExecuteStatementError {
+    fn code(&self) -> Option<&str> {
+        ExecuteStatementError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ExecuteStatementError::ConditionalCheckFailedError(_inner) => None,
+            ExecuteStatementError::DuplicateItemError(_inner) => None,
+            ExecuteStatementError::InternalServerError(_inner) => None,
+            ExecuteStatementError::ItemCollectionSizeLimitExceededError(_inner) => None,
+            ExecuteStatementError::ProvisionedThroughputExceededError(_inner) => None,
+            ExecuteStatementError::RequestLimitExceeded(_inner) => None,
+            ExecuteStatementError::ResourceNotFoundError(_inner) => None,
+            ExecuteStatementError::TransactionConflictError(_inner) => None,
+            ExecuteStatementError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl ExecuteStatementError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         ExecuteStatementError::Unhandled(err.into())
@@ -1806,6 +2261,28 @@ impl ::std::fmt::Display for ExecuteTransactionError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for ExecuteTransactionError {
+    fn code(&self) -> Option<&str> {
+        ExecuteTransactionError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ExecuteTransactionError::IdempotentParameterMismatchError(_inner) => None,
+            ExecuteTransactionError::InternalServerError(_inner) => None,
+            ExecuteTransactionError::ProvisionedThroughputExceededError(_inner) => None,
+            ExecuteTransactionError::RequestLimitExceeded(_inner) => None,
+            ExecuteTransactionError::ResourceNotFoundError(_inner) => None,
+            ExecuteTransactionError::TransactionCanceledError(_inner) => None,
+            ExecuteTransactionError::TransactionInProgressError(_inner) => None,
+            ExecuteTransactionError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl ExecuteTransactionError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         ExecuteTransactionError::Unhandled(err.into())
@@ -1897,6 +2374,27 @@ impl ::std::fmt::Display for ExportTableToPointInTimeError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for ExportTableToPointInTimeError {
+    fn code(&self) -> Option<&str> {
+        ExportTableToPointInTimeError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ExportTableToPointInTimeError::ExportConflictError(_inner) => None,
+            ExportTableToPointInTimeError::InternalServerError(_inner) => None,
+            ExportTableToPointInTimeError::InvalidExportTimeError(_inner) => None,
+            ExportTableToPointInTimeError::LimitExceededError(_inner) => None,
+            ExportTableToPointInTimeError::PointInTimeRecoveryUnavailableError(_inner) => None,
+            ExportTableToPointInTimeError::TableNotFoundError(_inner) => None,
+            ExportTableToPointInTimeError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl ExportTableToPointInTimeError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         ExportTableToPointInTimeError::Unhandled(err.into())
@@ -1983,6 +2481,26 @@ impl ::std::fmt::Display for GetItemError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for GetItemError {
+    fn code(&self) -> Option<&str> {
+        GetItemError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            GetItemError::InternalServerError(_inner) => None,
+            GetItemError::InvalidEndpointError(_inner) => None,
+            GetItemError::ProvisionedThroughputExceededError(_inner) => None,
+            GetItemError::RequestLimitExceeded(_inner) => None,
+            GetItemError::ResourceNotFoundError(_inner) => None,
+            GetItemError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl GetItemError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         GetItemError::Unhandled(err.into())
@@ -2054,6 +2572,23 @@ impl ::std::fmt::Display for ListBackupsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for ListBackupsError {
+    fn code(&self) -> Option<&str> {
+        ListBackupsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ListBackupsError::InternalServerError(_inner) => None,
+            ListBackupsError::InvalidEndpointError(_inner) => None,
+            ListBackupsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl ListBackupsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         ListBackupsError::Unhandled(err.into())
@@ -2113,6 +2648,23 @@ impl ::std::fmt::Display for ListContributorInsightsError {
             ListContributorInsightsError::InternalServerError(_inner) => _inner.fmt(f),
             ListContributorInsightsError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             ListContributorInsightsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for ListContributorInsightsError {
+    fn code(&self) -> Option<&str> {
+        ListContributorInsightsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ListContributorInsightsError::InternalServerError(_inner) => None,
+            ListContributorInsightsError::ResourceNotFoundError(_inner) => None,
+            ListContributorInsightsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -2178,6 +2730,23 @@ impl ::std::fmt::Display for ListExportsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for ListExportsError {
+    fn code(&self) -> Option<&str> {
+        ListExportsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ListExportsError::InternalServerError(_inner) => None,
+            ListExportsError::LimitExceededError(_inner) => None,
+            ListExportsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl ListExportsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         ListExportsError::Unhandled(err.into())
@@ -2237,6 +2806,23 @@ impl ::std::fmt::Display for ListGlobalTablesError {
             ListGlobalTablesError::InternalServerError(_inner) => _inner.fmt(f),
             ListGlobalTablesError::InvalidEndpointError(_inner) => _inner.fmt(f),
             ListGlobalTablesError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for ListGlobalTablesError {
+    fn code(&self) -> Option<&str> {
+        ListGlobalTablesError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ListGlobalTablesError::InternalServerError(_inner) => None,
+            ListGlobalTablesError::InvalidEndpointError(_inner) => None,
+            ListGlobalTablesError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -2302,6 +2888,23 @@ impl ::std::fmt::Display for ListTablesError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for ListTablesError {
+    fn code(&self) -> Option<&str> {
+        ListTablesError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ListTablesError::InternalServerError(_inner) => None,
+            ListTablesError::InvalidEndpointError(_inner) => None,
+            ListTablesError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl ListTablesError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         ListTablesError::Unhandled(err.into())
@@ -2363,6 +2966,24 @@ impl ::std::fmt::Display for ListTagsOfResourceError {
             ListTagsOfResourceError::InvalidEndpointError(_inner) => _inner.fmt(f),
             ListTagsOfResourceError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             ListTagsOfResourceError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for ListTagsOfResourceError {
+    fn code(&self) -> Option<&str> {
+        ListTagsOfResourceError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ListTagsOfResourceError::InternalServerError(_inner) => None,
+            ListTagsOfResourceError::InvalidEndpointError(_inner) => None,
+            ListTagsOfResourceError::ResourceNotFoundError(_inner) => None,
+            ListTagsOfResourceError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -2440,6 +3061,29 @@ impl ::std::fmt::Display for PutItemError {
             PutItemError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             PutItemError::TransactionConflictError(_inner) => _inner.fmt(f),
             PutItemError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for PutItemError {
+    fn code(&self) -> Option<&str> {
+        PutItemError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            PutItemError::ConditionalCheckFailedError(_inner) => None,
+            PutItemError::InternalServerError(_inner) => None,
+            PutItemError::InvalidEndpointError(_inner) => None,
+            PutItemError::ItemCollectionSizeLimitExceededError(_inner) => None,
+            PutItemError::ProvisionedThroughputExceededError(_inner) => None,
+            PutItemError::RequestLimitExceeded(_inner) => None,
+            PutItemError::ResourceNotFoundError(_inner) => None,
+            PutItemError::TransactionConflictError(_inner) => None,
+            PutItemError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -2529,6 +3173,24 @@ impl ::std::fmt::Display for QueryError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for QueryError {
+    fn code(&self) -> Option<&str> {
+        QueryError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            QueryError::InternalServerError(_inner) => None,
+            QueryError::InvalidEndpointError(_inner) => None,
+            QueryError::ProvisionedThroughputExceededError(_inner) => None,
+            QueryError::RequestLimitExceeded(_inner) => None,
+            QueryError::ResourceNotFoundError(_inner) => None,
+            QueryError::Unhandled(_inner) => match _inner.downcast_ref::<::smithy_types::Error>() {
+                Some(_inner) => _inner.error_kind(),
+                None => None,
+            },
+        }
+    }
+}
 impl QueryError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         QueryError::Unhandled(err.into())
@@ -2601,6 +3263,28 @@ impl ::std::fmt::Display for RestoreTableFromBackupError {
             RestoreTableFromBackupError::TableAlreadyExistsError(_inner) => _inner.fmt(f),
             RestoreTableFromBackupError::TableInUseError(_inner) => _inner.fmt(f),
             RestoreTableFromBackupError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for RestoreTableFromBackupError {
+    fn code(&self) -> Option<&str> {
+        RestoreTableFromBackupError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            RestoreTableFromBackupError::BackupInUseError(_inner) => None,
+            RestoreTableFromBackupError::BackupNotFoundError(_inner) => None,
+            RestoreTableFromBackupError::InternalServerError(_inner) => None,
+            RestoreTableFromBackupError::InvalidEndpointError(_inner) => None,
+            RestoreTableFromBackupError::LimitExceededError(_inner) => None,
+            RestoreTableFromBackupError::TableAlreadyExistsError(_inner) => None,
+            RestoreTableFromBackupError::TableInUseError(_inner) => None,
+            RestoreTableFromBackupError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -2692,6 +3376,29 @@ impl ::std::fmt::Display for RestoreTableToPointInTimeError {
             RestoreTableToPointInTimeError::TableInUseError(_inner) => _inner.fmt(f),
             RestoreTableToPointInTimeError::TableNotFoundError(_inner) => _inner.fmt(f),
             RestoreTableToPointInTimeError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for RestoreTableToPointInTimeError {
+    fn code(&self) -> Option<&str> {
+        RestoreTableToPointInTimeError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            RestoreTableToPointInTimeError::InternalServerError(_inner) => None,
+            RestoreTableToPointInTimeError::InvalidEndpointError(_inner) => None,
+            RestoreTableToPointInTimeError::InvalidRestoreTimeError(_inner) => None,
+            RestoreTableToPointInTimeError::LimitExceededError(_inner) => None,
+            RestoreTableToPointInTimeError::PointInTimeRecoveryUnavailableError(_inner) => None,
+            RestoreTableToPointInTimeError::TableAlreadyExistsError(_inner) => None,
+            RestoreTableToPointInTimeError::TableInUseError(_inner) => None,
+            RestoreTableToPointInTimeError::TableNotFoundError(_inner) => None,
+            RestoreTableToPointInTimeError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -2787,6 +3494,24 @@ impl ::std::fmt::Display for ScanError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for ScanError {
+    fn code(&self) -> Option<&str> {
+        ScanError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ScanError::InternalServerError(_inner) => None,
+            ScanError::InvalidEndpointError(_inner) => None,
+            ScanError::ProvisionedThroughputExceededError(_inner) => None,
+            ScanError::RequestLimitExceeded(_inner) => None,
+            ScanError::ResourceNotFoundError(_inner) => None,
+            ScanError::Unhandled(_inner) => match _inner.downcast_ref::<::smithy_types::Error>() {
+                Some(_inner) => _inner.error_kind(),
+                None => None,
+            },
+        }
+    }
+}
 impl ScanError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         ScanError::Unhandled(err.into())
@@ -2855,6 +3580,26 @@ impl ::std::fmt::Display for TagResourceError {
             TagResourceError::ResourceInUseError(_inner) => _inner.fmt(f),
             TagResourceError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             TagResourceError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for TagResourceError {
+    fn code(&self) -> Option<&str> {
+        TagResourceError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            TagResourceError::InternalServerError(_inner) => None,
+            TagResourceError::InvalidEndpointError(_inner) => None,
+            TagResourceError::LimitExceededError(_inner) => None,
+            TagResourceError::ResourceInUseError(_inner) => None,
+            TagResourceError::ResourceNotFoundError(_inner) => None,
+            TagResourceError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -2934,6 +3679,27 @@ impl ::std::fmt::Display for TransactGetItemsError {
             TransactGetItemsError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             TransactGetItemsError::TransactionCanceledError(_inner) => _inner.fmt(f),
             TransactGetItemsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for TransactGetItemsError {
+    fn code(&self) -> Option<&str> {
+        TransactGetItemsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            TransactGetItemsError::InternalServerError(_inner) => None,
+            TransactGetItemsError::InvalidEndpointError(_inner) => None,
+            TransactGetItemsError::ProvisionedThroughputExceededError(_inner) => None,
+            TransactGetItemsError::RequestLimitExceeded(_inner) => None,
+            TransactGetItemsError::ResourceNotFoundError(_inner) => None,
+            TransactGetItemsError::TransactionCanceledError(_inner) => None,
+            TransactGetItemsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -3022,6 +3788,29 @@ impl ::std::fmt::Display for TransactWriteItemsError {
             TransactWriteItemsError::TransactionCanceledError(_inner) => _inner.fmt(f),
             TransactWriteItemsError::TransactionInProgressError(_inner) => _inner.fmt(f),
             TransactWriteItemsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for TransactWriteItemsError {
+    fn code(&self) -> Option<&str> {
+        TransactWriteItemsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            TransactWriteItemsError::IdempotentParameterMismatchError(_inner) => None,
+            TransactWriteItemsError::InternalServerError(_inner) => None,
+            TransactWriteItemsError::InvalidEndpointError(_inner) => None,
+            TransactWriteItemsError::ProvisionedThroughputExceededError(_inner) => None,
+            TransactWriteItemsError::RequestLimitExceeded(_inner) => None,
+            TransactWriteItemsError::ResourceNotFoundError(_inner) => None,
+            TransactWriteItemsError::TransactionCanceledError(_inner) => None,
+            TransactWriteItemsError::TransactionInProgressError(_inner) => None,
+            TransactWriteItemsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -3115,6 +3904,26 @@ impl ::std::fmt::Display for UntagResourceError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for UntagResourceError {
+    fn code(&self) -> Option<&str> {
+        UntagResourceError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            UntagResourceError::InternalServerError(_inner) => None,
+            UntagResourceError::InvalidEndpointError(_inner) => None,
+            UntagResourceError::LimitExceededError(_inner) => None,
+            UntagResourceError::ResourceInUseError(_inner) => None,
+            UntagResourceError::ResourceNotFoundError(_inner) => None,
+            UntagResourceError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl UntagResourceError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         UntagResourceError::Unhandled(err.into())
@@ -3192,6 +4001,25 @@ impl ::std::fmt::Display for UpdateContinuousBackupsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for UpdateContinuousBackupsError {
+    fn code(&self) -> Option<&str> {
+        UpdateContinuousBackupsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            UpdateContinuousBackupsError::ContinuousBackupsUnavailableError(_inner) => None,
+            UpdateContinuousBackupsError::InternalServerError(_inner) => None,
+            UpdateContinuousBackupsError::InvalidEndpointError(_inner) => None,
+            UpdateContinuousBackupsError::TableNotFoundError(_inner) => None,
+            UpdateContinuousBackupsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl UpdateContinuousBackupsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         UpdateContinuousBackupsError::Unhandled(err.into())
@@ -3264,6 +4092,23 @@ impl ::std::fmt::Display for UpdateContributorInsightsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for UpdateContributorInsightsError {
+    fn code(&self) -> Option<&str> {
+        UpdateContributorInsightsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            UpdateContributorInsightsError::InternalServerError(_inner) => None,
+            UpdateContributorInsightsError::ResourceNotFoundError(_inner) => None,
+            UpdateContributorInsightsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl UpdateContributorInsightsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         UpdateContributorInsightsError::Unhandled(err.into())
@@ -3331,6 +4176,27 @@ impl ::std::fmt::Display for UpdateGlobalTableError {
             UpdateGlobalTableError::ReplicaNotFoundError(_inner) => _inner.fmt(f),
             UpdateGlobalTableError::TableNotFoundError(_inner) => _inner.fmt(f),
             UpdateGlobalTableError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for UpdateGlobalTableError {
+    fn code(&self) -> Option<&str> {
+        UpdateGlobalTableError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            UpdateGlobalTableError::GlobalTableNotFoundError(_inner) => None,
+            UpdateGlobalTableError::InternalServerError(_inner) => None,
+            UpdateGlobalTableError::InvalidEndpointError(_inner) => None,
+            UpdateGlobalTableError::ReplicaAlreadyExistsError(_inner) => None,
+            UpdateGlobalTableError::ReplicaNotFoundError(_inner) => None,
+            UpdateGlobalTableError::TableNotFoundError(_inner) => None,
+            UpdateGlobalTableError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -3415,6 +4281,28 @@ impl ::std::fmt::Display for UpdateGlobalTableSettingsError {
             UpdateGlobalTableSettingsError::ReplicaNotFoundError(_inner) => _inner.fmt(f),
             UpdateGlobalTableSettingsError::ResourceInUseError(_inner) => _inner.fmt(f),
             UpdateGlobalTableSettingsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for UpdateGlobalTableSettingsError {
+    fn code(&self) -> Option<&str> {
+        UpdateGlobalTableSettingsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            UpdateGlobalTableSettingsError::GlobalTableNotFoundError(_inner) => None,
+            UpdateGlobalTableSettingsError::IndexNotFoundError(_inner) => None,
+            UpdateGlobalTableSettingsError::InternalServerError(_inner) => None,
+            UpdateGlobalTableSettingsError::InvalidEndpointError(_inner) => None,
+            UpdateGlobalTableSettingsError::LimitExceededError(_inner) => None,
+            UpdateGlobalTableSettingsError::ReplicaNotFoundError(_inner) => None,
+            UpdateGlobalTableSettingsError::ResourceInUseError(_inner) => None,
+            UpdateGlobalTableSettingsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -3507,6 +4395,29 @@ impl ::std::fmt::Display for UpdateItemError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for UpdateItemError {
+    fn code(&self) -> Option<&str> {
+        UpdateItemError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            UpdateItemError::ConditionalCheckFailedError(_inner) => None,
+            UpdateItemError::InternalServerError(_inner) => None,
+            UpdateItemError::InvalidEndpointError(_inner) => None,
+            UpdateItemError::ItemCollectionSizeLimitExceededError(_inner) => None,
+            UpdateItemError::ProvisionedThroughputExceededError(_inner) => None,
+            UpdateItemError::RequestLimitExceeded(_inner) => None,
+            UpdateItemError::ResourceNotFoundError(_inner) => None,
+            UpdateItemError::TransactionConflictError(_inner) => None,
+            UpdateItemError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl UpdateItemError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         UpdateItemError::Unhandled(err.into())
@@ -3593,6 +4504,26 @@ impl ::std::fmt::Display for UpdateTableError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for UpdateTableError {
+    fn code(&self) -> Option<&str> {
+        UpdateTableError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            UpdateTableError::InternalServerError(_inner) => None,
+            UpdateTableError::InvalidEndpointError(_inner) => None,
+            UpdateTableError::LimitExceededError(_inner) => None,
+            UpdateTableError::ResourceInUseError(_inner) => None,
+            UpdateTableError::ResourceNotFoundError(_inner) => None,
+            UpdateTableError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl UpdateTableError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         UpdateTableError::Unhandled(err.into())
@@ -3665,6 +4596,25 @@ impl ::std::fmt::Display for UpdateTableReplicaAutoScalingError {
             UpdateTableReplicaAutoScalingError::ResourceInUseError(_inner) => _inner.fmt(f),
             UpdateTableReplicaAutoScalingError::ResourceNotFoundError(_inner) => _inner.fmt(f),
             UpdateTableReplicaAutoScalingError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for UpdateTableReplicaAutoScalingError {
+    fn code(&self) -> Option<&str> {
+        UpdateTableReplicaAutoScalingError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            UpdateTableReplicaAutoScalingError::InternalServerError(_inner) => None,
+            UpdateTableReplicaAutoScalingError::LimitExceededError(_inner) => None,
+            UpdateTableReplicaAutoScalingError::ResourceInUseError(_inner) => None,
+            UpdateTableReplicaAutoScalingError::ResourceNotFoundError(_inner) => None,
+            UpdateTableReplicaAutoScalingError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -3744,6 +4694,26 @@ impl ::std::fmt::Display for UpdateTimeToLiveError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for UpdateTimeToLiveError {
+    fn code(&self) -> Option<&str> {
+        UpdateTimeToLiveError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            UpdateTimeToLiveError::InternalServerError(_inner) => None,
+            UpdateTimeToLiveError::InvalidEndpointError(_inner) => None,
+            UpdateTimeToLiveError::LimitExceededError(_inner) => None,
+            UpdateTimeToLiveError::ResourceInUseError(_inner) => None,
+            UpdateTimeToLiveError::ResourceNotFoundError(_inner) => None,
+            UpdateTimeToLiveError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl UpdateTimeToLiveError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         UpdateTimeToLiveError::Unhandled(err.into())
@@ -3815,12 +4785,6 @@ pub struct ResourceNotFoundError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ResourceNotFoundError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ResourceNotFoundException"
     }
@@ -3888,12 +4852,6 @@ pub struct ResourceInUseError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ResourceInUseError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ResourceInUseException"
     }
@@ -3967,12 +4925,6 @@ pub struct LimitExceededError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl LimitExceededError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "LimitExceededException"
     }
@@ -4036,12 +4988,6 @@ pub struct InvalidEndpointError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidEndpointError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "InvalidEndpointException"
     }
@@ -4103,12 +5049,6 @@ pub struct InternalServerError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InternalServerError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "InternalServerError"
     }
@@ -4173,12 +5113,6 @@ pub struct TransactionConflictError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl TransactionConflictError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "TransactionConflictException"
     }
@@ -4242,12 +5176,6 @@ pub struct RequestLimitExceeded {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl RequestLimitExceeded {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "RequestLimitExceeded"
     }
@@ -4316,12 +5244,6 @@ pub struct ProvisionedThroughputExceededError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ProvisionedThroughputExceededError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ProvisionedThroughputExceededException"
     }
@@ -4387,12 +5309,6 @@ pub struct ItemCollectionSizeLimitExceededError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ItemCollectionSizeLimitExceededError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ItemCollectionSizeLimitExceededException"
     }
@@ -4458,12 +5374,6 @@ pub struct ConditionalCheckFailedError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ConditionalCheckFailedError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ConditionalCheckFailedException"
     }
@@ -4528,12 +5438,6 @@ pub struct ReplicaNotFoundError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ReplicaNotFoundError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ReplicaNotFoundException"
     }
@@ -4597,12 +5501,6 @@ pub struct IndexNotFoundError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl IndexNotFoundError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "IndexNotFoundException"
     }
@@ -4666,12 +5564,6 @@ pub struct GlobalTableNotFoundError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl GlobalTableNotFoundError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "GlobalTableNotFoundException"
     }
@@ -4735,12 +5627,6 @@ pub struct TableNotFoundError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl TableNotFoundError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "TableNotFoundException"
     }
@@ -4804,12 +5690,6 @@ pub struct ReplicaAlreadyExistsError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ReplicaAlreadyExistsError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ReplicaAlreadyExistsException"
     }
@@ -4873,12 +5753,6 @@ pub struct ContinuousBackupsUnavailableError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ContinuousBackupsUnavailableError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ContinuousBackupsUnavailableException"
     }
@@ -4942,12 +5816,6 @@ pub struct TransactionInProgressError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl TransactionInProgressError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "TransactionInProgressException"
     }
@@ -5210,12 +6078,6 @@ pub struct TransactionCanceledError {
     pub cancellation_reasons: ::std::option::Option<::std::vec::Vec<CancellationReason>>,
 }
 impl TransactionCanceledError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "TransactionCanceledException"
     }
@@ -5285,12 +6147,6 @@ pub struct IdempotentParameterMismatchError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl IdempotentParameterMismatchError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "IdempotentParameterMismatchException"
     }
@@ -5351,12 +6207,6 @@ pub struct TableInUseError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl TableInUseError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "TableInUseException"
     }
@@ -5420,12 +6270,6 @@ pub struct TableAlreadyExistsError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl TableAlreadyExistsError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "TableAlreadyExistsException"
     }
@@ -5489,12 +6333,6 @@ pub struct PointInTimeRecoveryUnavailableError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl PointInTimeRecoveryUnavailableError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "PointInTimeRecoveryUnavailableException"
     }
@@ -5558,12 +6396,6 @@ pub struct InvalidRestoreTimeError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidRestoreTimeError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "InvalidRestoreTimeException"
     }
@@ -5627,12 +6459,6 @@ pub struct BackupNotFoundError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl BackupNotFoundError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "BackupNotFoundException"
     }
@@ -5696,12 +6522,6 @@ pub struct BackupInUseError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl BackupInUseError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "BackupInUseException"
     }
@@ -5766,12 +6586,6 @@ pub struct InvalidExportTimeError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidExportTimeError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "InvalidExportTimeException"
     }
@@ -5835,12 +6649,6 @@ pub struct ExportConflictError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ExportConflictError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ExportConflictException"
     }
@@ -5906,12 +6714,6 @@ pub struct DuplicateItemError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl DuplicateItemError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "DuplicateItemException"
     }
@@ -5975,12 +6777,6 @@ pub struct ExportNotFoundError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ExportNotFoundError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ExportNotFoundException"
     }
@@ -6044,12 +6840,6 @@ pub struct GlobalTableAlreadyExistsError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl GlobalTableAlreadyExistsError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "GlobalTableAlreadyExistsException"
     }

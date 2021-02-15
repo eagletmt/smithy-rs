@@ -13,6 +13,21 @@ impl ::std::fmt::Display for EmptyInputAndEmptyOutputError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for EmptyInputAndEmptyOutputError {
+    fn code(&self) -> Option<&str> {
+        EmptyInputAndEmptyOutputError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            EmptyInputAndEmptyOutputError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl EmptyInputAndEmptyOutputError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         EmptyInputAndEmptyOutputError::Unhandled(err.into())
@@ -68,6 +83,24 @@ impl ::std::fmt::Display for GreetingWithErrorsError {
             GreetingWithErrorsError::ComplexError(_inner) => _inner.fmt(f),
             GreetingWithErrorsError::FooError(_inner) => _inner.fmt(f),
             GreetingWithErrorsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for GreetingWithErrorsError {
+    fn code(&self) -> Option<&str> {
+        GreetingWithErrorsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            GreetingWithErrorsError::InvalidGreeting(_inner) => None,
+            GreetingWithErrorsError::ComplexError(_inner) => None,
+            GreetingWithErrorsError::FooError(_inner) => None,
+            GreetingWithErrorsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -131,6 +164,21 @@ impl ::std::fmt::Display for JsonUnionsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for JsonUnionsError {
+    fn code(&self) -> Option<&str> {
+        JsonUnionsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            JsonUnionsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl JsonUnionsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         JsonUnionsError::Unhandled(err.into())
@@ -179,6 +227,21 @@ impl ::std::fmt::Display for NoInputAndNoOutputError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             NoInputAndNoOutputError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for NoInputAndNoOutputError {
+    fn code(&self) -> Option<&str> {
+        NoInputAndNoOutputError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            NoInputAndNoOutputError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -233,6 +296,21 @@ impl ::std::fmt::Display for NoInputAndOutputError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for NoInputAndOutputError {
+    fn code(&self) -> Option<&str> {
+        NoInputAndOutputError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            NoInputAndOutputError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl NoInputAndOutputError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         NoInputAndOutputError::Unhandled(err.into())
@@ -283,12 +361,6 @@ impl ::std::error::Error for NoInputAndOutputError {
 )]
 pub struct FooError {}
 impl FooError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "FooError"
     }
@@ -345,12 +417,6 @@ pub struct ComplexError {
     pub nested: ::std::option::Option<ComplexNestedErrorData>,
 }
 impl ComplexError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ComplexError"
     }
@@ -418,12 +484,6 @@ pub struct InvalidGreeting {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidGreeting {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "InvalidGreeting"
     }

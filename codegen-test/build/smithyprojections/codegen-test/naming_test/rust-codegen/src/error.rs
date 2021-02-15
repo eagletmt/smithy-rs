@@ -18,6 +18,23 @@ impl ::std::fmt::Display for ErrCollisionsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for ErrCollisionsError {
+    fn code(&self) -> Option<&str> {
+        ErrCollisionsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ErrCollisionsError::CollidingError(_inner) => None,
+            ErrCollisionsError::CollidingException(_inner) => None,
+            ErrCollisionsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl ErrCollisionsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         ErrCollisionsError::Unhandled(err.into())
@@ -75,6 +92,21 @@ impl ::std::fmt::Display for ReservedWordsAsMembersError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for ReservedWordsAsMembersError {
+    fn code(&self) -> Option<&str> {
+        ReservedWordsAsMembersError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ReservedWordsAsMembersError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl ReservedWordsAsMembersError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         ReservedWordsAsMembersError::Unhandled(err.into())
@@ -123,6 +155,21 @@ impl ::std::fmt::Display for StructureNamePunningError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             StructureNamePunningError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for StructureNamePunningError {
+    fn code(&self) -> Option<&str> {
+        StructureNamePunningError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            StructureNamePunningError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -175,12 +222,6 @@ impl ::std::error::Error for StructureNamePunningError {
 )]
 pub struct CollidingException {}
 impl CollidingException {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "CollidingException"
     }
@@ -227,12 +268,6 @@ impl CollidingException {
 )]
 pub struct CollidingError {}
 impl CollidingError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "CollidingError"
     }

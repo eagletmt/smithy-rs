@@ -30,6 +30,27 @@ impl ::std::fmt::Display for CompleteSnapshotError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for CompleteSnapshotError {
+    fn code(&self) -> Option<&str> {
+        CompleteSnapshotError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            CompleteSnapshotError::AccessDeniedError(_inner) => None,
+            CompleteSnapshotError::InternalServerError(_inner) => None,
+            CompleteSnapshotError::RequestThrottledError(_inner) => None,
+            CompleteSnapshotError::ResourceNotFoundError(_inner) => None,
+            CompleteSnapshotError::ServiceQuotaExceededError(_inner) => None,
+            CompleteSnapshotError::ValidationError(_inner) => None,
+            CompleteSnapshotError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl CompleteSnapshotError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         CompleteSnapshotError::Unhandled(err.into())
@@ -109,6 +130,27 @@ impl ::std::fmt::Display for GetSnapshotBlockError {
             GetSnapshotBlockError::ServiceQuotaExceededError(_inner) => _inner.fmt(f),
             GetSnapshotBlockError::ValidationError(_inner) => _inner.fmt(f),
             GetSnapshotBlockError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for GetSnapshotBlockError {
+    fn code(&self) -> Option<&str> {
+        GetSnapshotBlockError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            GetSnapshotBlockError::AccessDeniedError(_inner) => None,
+            GetSnapshotBlockError::InternalServerError(_inner) => None,
+            GetSnapshotBlockError::RequestThrottledError(_inner) => None,
+            GetSnapshotBlockError::ResourceNotFoundError(_inner) => None,
+            GetSnapshotBlockError::ServiceQuotaExceededError(_inner) => None,
+            GetSnapshotBlockError::ValidationError(_inner) => None,
+            GetSnapshotBlockError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -194,6 +236,27 @@ impl ::std::fmt::Display for ListChangedBlocksError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for ListChangedBlocksError {
+    fn code(&self) -> Option<&str> {
+        ListChangedBlocksError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ListChangedBlocksError::AccessDeniedError(_inner) => None,
+            ListChangedBlocksError::InternalServerError(_inner) => None,
+            ListChangedBlocksError::RequestThrottledError(_inner) => None,
+            ListChangedBlocksError::ResourceNotFoundError(_inner) => None,
+            ListChangedBlocksError::ServiceQuotaExceededError(_inner) => None,
+            ListChangedBlocksError::ValidationError(_inner) => None,
+            ListChangedBlocksError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl ListChangedBlocksError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         ListChangedBlocksError::Unhandled(err.into())
@@ -276,6 +339,27 @@ impl ::std::fmt::Display for ListSnapshotBlocksError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for ListSnapshotBlocksError {
+    fn code(&self) -> Option<&str> {
+        ListSnapshotBlocksError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ListSnapshotBlocksError::AccessDeniedError(_inner) => None,
+            ListSnapshotBlocksError::InternalServerError(_inner) => None,
+            ListSnapshotBlocksError::RequestThrottledError(_inner) => None,
+            ListSnapshotBlocksError::ResourceNotFoundError(_inner) => None,
+            ListSnapshotBlocksError::ServiceQuotaExceededError(_inner) => None,
+            ListSnapshotBlocksError::ValidationError(_inner) => None,
+            ListSnapshotBlocksError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl ListSnapshotBlocksError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         ListSnapshotBlocksError::Unhandled(err.into())
@@ -355,6 +439,27 @@ impl ::std::fmt::Display for PutSnapshotBlockError {
             PutSnapshotBlockError::ServiceQuotaExceededError(_inner) => _inner.fmt(f),
             PutSnapshotBlockError::ValidationError(_inner) => _inner.fmt(f),
             PutSnapshotBlockError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for PutSnapshotBlockError {
+    fn code(&self) -> Option<&str> {
+        PutSnapshotBlockError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            PutSnapshotBlockError::AccessDeniedError(_inner) => None,
+            PutSnapshotBlockError::InternalServerError(_inner) => None,
+            PutSnapshotBlockError::RequestThrottledError(_inner) => None,
+            PutSnapshotBlockError::ResourceNotFoundError(_inner) => None,
+            PutSnapshotBlockError::ServiceQuotaExceededError(_inner) => None,
+            PutSnapshotBlockError::ValidationError(_inner) => None,
+            PutSnapshotBlockError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -444,6 +549,29 @@ impl ::std::fmt::Display for StartSnapshotError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for StartSnapshotError {
+    fn code(&self) -> Option<&str> {
+        StartSnapshotError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            StartSnapshotError::AccessDeniedError(_inner) => None,
+            StartSnapshotError::ConcurrentLimitExceededError(_inner) => None,
+            StartSnapshotError::ConflictError(_inner) => None,
+            StartSnapshotError::InternalServerError(_inner) => None,
+            StartSnapshotError::RequestThrottledError(_inner) => None,
+            StartSnapshotError::ResourceNotFoundError(_inner) => None,
+            StartSnapshotError::ServiceQuotaExceededError(_inner) => None,
+            StartSnapshotError::ValidationError(_inner) => None,
+            StartSnapshotError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl StartSnapshotError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         StartSnapshotError::Unhandled(err.into())
@@ -515,12 +643,6 @@ pub struct ValidationError {
     pub reason: ::std::option::Option<ValidationExceptionReason>,
 }
 impl ValidationError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ValidationException"
     }
@@ -582,12 +704,6 @@ pub struct ServiceQuotaExceededError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ServiceQuotaExceededError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ServiceQuotaExceededException"
     }
@@ -649,12 +765,6 @@ pub struct ResourceNotFoundError {
     pub reason: ::std::option::Option<ResourceNotFoundExceptionReason>,
 }
 impl ResourceNotFoundError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ResourceNotFoundException"
     }
@@ -717,12 +827,6 @@ pub struct RequestThrottledError {
     pub reason: ::std::option::Option<RequestThrottledExceptionReason>,
 }
 impl RequestThrottledError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "RequestThrottledException"
     }
@@ -782,12 +886,6 @@ pub struct InternalServerError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InternalServerError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "InternalServerException"
     }
@@ -840,12 +938,6 @@ pub struct ConflictError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ConflictError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ConflictException"
     }
@@ -899,12 +991,6 @@ pub struct ConcurrentLimitExceededError {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl ConcurrentLimitExceededError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ConcurrentLimitExceededException"
     }
@@ -958,12 +1044,6 @@ pub struct AccessDeniedError {
     pub reason: ::std::option::Option<AccessDeniedExceptionReason>,
 }
 impl AccessDeniedError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "AccessDeniedException"
     }

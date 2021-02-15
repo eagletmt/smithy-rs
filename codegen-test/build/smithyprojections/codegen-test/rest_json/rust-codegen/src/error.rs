@@ -13,6 +13,21 @@ impl ::std::fmt::Display for AllQueryStringTypesError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for AllQueryStringTypesError {
+    fn code(&self) -> Option<&str> {
+        AllQueryStringTypesError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            AllQueryStringTypesError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl AllQueryStringTypesError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         AllQueryStringTypesError::Unhandled(err.into())
@@ -61,6 +76,21 @@ impl ::std::fmt::Display for ConstantAndVariableQueryStringError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             ConstantAndVariableQueryStringError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for ConstantAndVariableQueryStringError {
+    fn code(&self) -> Option<&str> {
+        ConstantAndVariableQueryStringError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ConstantAndVariableQueryStringError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -115,6 +145,21 @@ impl ::std::fmt::Display for ConstantQueryStringError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for ConstantQueryStringError {
+    fn code(&self) -> Option<&str> {
+        ConstantQueryStringError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            ConstantQueryStringError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl ConstantQueryStringError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         ConstantQueryStringError::Unhandled(err.into())
@@ -163,6 +208,21 @@ impl ::std::fmt::Display for EmptyInputAndEmptyOutputError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             EmptyInputAndEmptyOutputError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for EmptyInputAndEmptyOutputError {
+    fn code(&self) -> Option<&str> {
+        EmptyInputAndEmptyOutputError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            EmptyInputAndEmptyOutputError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -221,6 +281,24 @@ impl ::std::fmt::Display for GreetingWithErrorsError {
             GreetingWithErrorsError::ComplexError(_inner) => _inner.fmt(f),
             GreetingWithErrorsError::FooError(_inner) => _inner.fmt(f),
             GreetingWithErrorsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for GreetingWithErrorsError {
+    fn code(&self) -> Option<&str> {
+        GreetingWithErrorsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            GreetingWithErrorsError::InvalidGreeting(_inner) => None,
+            GreetingWithErrorsError::ComplexError(_inner) => None,
+            GreetingWithErrorsError::FooError(_inner) => None,
+            GreetingWithErrorsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -284,6 +362,21 @@ impl ::std::fmt::Display for HttpPayloadTraitsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for HttpPayloadTraitsError {
+    fn code(&self) -> Option<&str> {
+        HttpPayloadTraitsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            HttpPayloadTraitsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl HttpPayloadTraitsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         HttpPayloadTraitsError::Unhandled(err.into())
@@ -332,6 +425,21 @@ impl ::std::fmt::Display for HttpPayloadTraitsWithMediaTypeError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             HttpPayloadTraitsWithMediaTypeError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for HttpPayloadTraitsWithMediaTypeError {
+    fn code(&self) -> Option<&str> {
+        HttpPayloadTraitsWithMediaTypeError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            HttpPayloadTraitsWithMediaTypeError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -386,6 +494,21 @@ impl ::std::fmt::Display for HttpPayloadWithStructureError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for HttpPayloadWithStructureError {
+    fn code(&self) -> Option<&str> {
+        HttpPayloadWithStructureError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            HttpPayloadWithStructureError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl HttpPayloadWithStructureError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         HttpPayloadWithStructureError::Unhandled(err.into())
@@ -434,6 +557,21 @@ impl ::std::fmt::Display for HttpPrefixHeadersError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             HttpPrefixHeadersError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for HttpPrefixHeadersError {
+    fn code(&self) -> Option<&str> {
+        HttpPrefixHeadersError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            HttpPrefixHeadersError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -488,6 +626,21 @@ impl ::std::fmt::Display for HttpPrefixHeadersResponseError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for HttpPrefixHeadersResponseError {
+    fn code(&self) -> Option<&str> {
+        HttpPrefixHeadersResponseError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            HttpPrefixHeadersResponseError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl HttpPrefixHeadersResponseError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         HttpPrefixHeadersResponseError::Unhandled(err.into())
@@ -536,6 +689,21 @@ impl ::std::fmt::Display for HttpRequestWithGreedyLabelInPathError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             HttpRequestWithGreedyLabelInPathError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for HttpRequestWithGreedyLabelInPathError {
+    fn code(&self) -> Option<&str> {
+        HttpRequestWithGreedyLabelInPathError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            HttpRequestWithGreedyLabelInPathError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -590,6 +758,21 @@ impl ::std::fmt::Display for HttpRequestWithLabelsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for HttpRequestWithLabelsError {
+    fn code(&self) -> Option<&str> {
+        HttpRequestWithLabelsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            HttpRequestWithLabelsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl HttpRequestWithLabelsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         HttpRequestWithLabelsError::Unhandled(err.into())
@@ -638,6 +821,21 @@ impl ::std::fmt::Display for HttpRequestWithLabelsAndTimestampFormatError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             HttpRequestWithLabelsAndTimestampFormatError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for HttpRequestWithLabelsAndTimestampFormatError {
+    fn code(&self) -> Option<&str> {
+        HttpRequestWithLabelsAndTimestampFormatError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            HttpRequestWithLabelsAndTimestampFormatError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -692,6 +890,21 @@ impl ::std::fmt::Display for HttpResponseCodeError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for HttpResponseCodeError {
+    fn code(&self) -> Option<&str> {
+        HttpResponseCodeError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            HttpResponseCodeError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl HttpResponseCodeError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         HttpResponseCodeError::Unhandled(err.into())
@@ -740,6 +953,21 @@ impl ::std::fmt::Display for IgnoreQueryParamsInResponseError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             IgnoreQueryParamsInResponseError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for IgnoreQueryParamsInResponseError {
+    fn code(&self) -> Option<&str> {
+        IgnoreQueryParamsInResponseError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            IgnoreQueryParamsInResponseError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -794,6 +1022,21 @@ impl ::std::fmt::Display for InlineDocumentError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for InlineDocumentError {
+    fn code(&self) -> Option<&str> {
+        InlineDocumentError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            InlineDocumentError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl InlineDocumentError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         InlineDocumentError::Unhandled(err.into())
@@ -842,6 +1085,21 @@ impl ::std::fmt::Display for InlineDocumentAsPayloadError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             InlineDocumentAsPayloadError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for InlineDocumentAsPayloadError {
+    fn code(&self) -> Option<&str> {
+        InlineDocumentAsPayloadError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            InlineDocumentAsPayloadError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -896,6 +1154,21 @@ impl ::std::fmt::Display for InputAndOutputWithHeadersError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for InputAndOutputWithHeadersError {
+    fn code(&self) -> Option<&str> {
+        InputAndOutputWithHeadersError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            InputAndOutputWithHeadersError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl InputAndOutputWithHeadersError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         InputAndOutputWithHeadersError::Unhandled(err.into())
@@ -944,6 +1217,21 @@ impl ::std::fmt::Display for JsonBlobsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             JsonBlobsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for JsonBlobsError {
+    fn code(&self) -> Option<&str> {
+        JsonBlobsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            JsonBlobsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -998,6 +1286,21 @@ impl ::std::fmt::Display for JsonEnumsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for JsonEnumsError {
+    fn code(&self) -> Option<&str> {
+        JsonEnumsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            JsonEnumsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl JsonEnumsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         JsonEnumsError::Unhandled(err.into())
@@ -1046,6 +1349,21 @@ impl ::std::fmt::Display for JsonListsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             JsonListsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for JsonListsError {
+    fn code(&self) -> Option<&str> {
+        JsonListsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            JsonListsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1100,6 +1418,21 @@ impl ::std::fmt::Display for JsonMapsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for JsonMapsError {
+    fn code(&self) -> Option<&str> {
+        JsonMapsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            JsonMapsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl JsonMapsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         JsonMapsError::Unhandled(err.into())
@@ -1148,6 +1481,21 @@ impl ::std::fmt::Display for JsonTimestampsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             JsonTimestampsError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for JsonTimestampsError {
+    fn code(&self) -> Option<&str> {
+        JsonTimestampsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            JsonTimestampsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1202,6 +1550,21 @@ impl ::std::fmt::Display for JsonUnionsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for JsonUnionsError {
+    fn code(&self) -> Option<&str> {
+        JsonUnionsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            JsonUnionsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl JsonUnionsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         JsonUnionsError::Unhandled(err.into())
@@ -1250,6 +1613,21 @@ impl ::std::fmt::Display for MediaTypeHeaderError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             MediaTypeHeaderError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for MediaTypeHeaderError {
+    fn code(&self) -> Option<&str> {
+        MediaTypeHeaderError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            MediaTypeHeaderError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1304,6 +1682,21 @@ impl ::std::fmt::Display for NoInputAndNoOutputError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for NoInputAndNoOutputError {
+    fn code(&self) -> Option<&str> {
+        NoInputAndNoOutputError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            NoInputAndNoOutputError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl NoInputAndNoOutputError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         NoInputAndNoOutputError::Unhandled(err.into())
@@ -1352,6 +1745,21 @@ impl ::std::fmt::Display for NoInputAndOutputError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             NoInputAndOutputError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for NoInputAndOutputError {
+    fn code(&self) -> Option<&str> {
+        NoInputAndOutputError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            NoInputAndOutputError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1406,6 +1814,21 @@ impl ::std::fmt::Display for NullAndEmptyHeadersClientError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for NullAndEmptyHeadersClientError {
+    fn code(&self) -> Option<&str> {
+        NullAndEmptyHeadersClientError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            NullAndEmptyHeadersClientError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl NullAndEmptyHeadersClientError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         NullAndEmptyHeadersClientError::Unhandled(err.into())
@@ -1454,6 +1877,21 @@ impl ::std::fmt::Display for NullAndEmptyHeadersServerError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             NullAndEmptyHeadersServerError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for NullAndEmptyHeadersServerError {
+    fn code(&self) -> Option<&str> {
+        NullAndEmptyHeadersServerError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            NullAndEmptyHeadersServerError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1508,6 +1946,21 @@ impl ::std::fmt::Display for OmitsNullSerializesEmptyStringError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for OmitsNullSerializesEmptyStringError {
+    fn code(&self) -> Option<&str> {
+        OmitsNullSerializesEmptyStringError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            OmitsNullSerializesEmptyStringError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl OmitsNullSerializesEmptyStringError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         OmitsNullSerializesEmptyStringError::Unhandled(err.into())
@@ -1556,6 +2009,21 @@ impl ::std::fmt::Display for QueryIdempotencyTokenAutoFillError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             QueryIdempotencyTokenAutoFillError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for QueryIdempotencyTokenAutoFillError {
+    fn code(&self) -> Option<&str> {
+        QueryIdempotencyTokenAutoFillError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            QueryIdempotencyTokenAutoFillError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1610,6 +2078,21 @@ impl ::std::fmt::Display for RecursiveShapesError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for RecursiveShapesError {
+    fn code(&self) -> Option<&str> {
+        RecursiveShapesError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            RecursiveShapesError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl RecursiveShapesError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         RecursiveShapesError::Unhandled(err.into())
@@ -1658,6 +2141,21 @@ impl ::std::fmt::Display for SimpleScalarPropertiesError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             SimpleScalarPropertiesError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for SimpleScalarPropertiesError {
+    fn code(&self) -> Option<&str> {
+        SimpleScalarPropertiesError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            SimpleScalarPropertiesError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1712,6 +2210,21 @@ impl ::std::fmt::Display for StreamingTraitsError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for StreamingTraitsError {
+    fn code(&self) -> Option<&str> {
+        StreamingTraitsError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            StreamingTraitsError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl StreamingTraitsError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         StreamingTraitsError::Unhandled(err.into())
@@ -1760,6 +2273,21 @@ impl ::std::fmt::Display for StreamingTraitsRequireLengthError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             StreamingTraitsRequireLengthError::Unhandled(_inner) => _inner.fmt(f),
+        }
+    }
+}
+impl ::smithy_types::retry::ProvideErrorKind for StreamingTraitsRequireLengthError {
+    fn code(&self) -> Option<&str> {
+        StreamingTraitsRequireLengthError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            StreamingTraitsRequireLengthError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
         }
     }
 }
@@ -1814,6 +2342,21 @@ impl ::std::fmt::Display for StreamingTraitsWithMediaTypeError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for StreamingTraitsWithMediaTypeError {
+    fn code(&self) -> Option<&str> {
+        StreamingTraitsWithMediaTypeError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            StreamingTraitsWithMediaTypeError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl StreamingTraitsWithMediaTypeError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         StreamingTraitsWithMediaTypeError::Unhandled(err.into())
@@ -1865,6 +2408,21 @@ impl ::std::fmt::Display for TimestampFormatHeadersError {
         }
     }
 }
+impl ::smithy_types::retry::ProvideErrorKind for TimestampFormatHeadersError {
+    fn code(&self) -> Option<&str> {
+        TimestampFormatHeadersError::code(self)
+    }
+    fn error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
+        match self {
+            TimestampFormatHeadersError::Unhandled(_inner) => {
+                match _inner.downcast_ref::<::smithy_types::Error>() {
+                    Some(_inner) => _inner.error_kind(),
+                    None => None,
+                }
+            }
+        }
+    }
+}
 impl TimestampFormatHeadersError {
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
         TimestampFormatHeadersError::Unhandled(err.into())
@@ -1909,12 +2467,6 @@ impl ::std::error::Error for TimestampFormatHeadersError {
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct FooError {}
 impl FooError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "FooError"
     }
@@ -1960,12 +2512,6 @@ pub struct ComplexError {
     pub nested: ::std::option::Option<ComplexNestedErrorData>,
 }
 impl ComplexError {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "ComplexError"
     }
@@ -2030,12 +2576,6 @@ pub struct InvalidGreeting {
     pub message: ::std::option::Option<::std::string::String>,
 }
 impl InvalidGreeting {
-    pub fn retryable(&self) -> bool {
-        false
-    }
-    pub fn throttling(&self) -> bool {
-        false
-    }
     pub fn code(&self) -> &str {
         "InvalidGreeting"
     }
