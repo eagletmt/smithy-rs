@@ -70,6 +70,12 @@ pub mod cancel_rotate_secret_input {
                     .map(::smithy_http::body::SdkBody::from),
             );
 
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
+            );
+
             request
                 .config_mut()
                 .insert(::aws_sig_auth::signer::OperationSigningConfig::default_config());
@@ -334,6 +340,12 @@ pub mod create_secret_input {
                     .map(::smithy_http::body::SdkBody::from),
             );
 
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
+            );
+
             request
                 .config_mut()
                 .insert(::aws_sig_auth::signer::OperationSigningConfig::default_config());
@@ -444,6 +456,12 @@ pub mod delete_resource_policy_input {
             let mut request = ::smithy_http::operation::Request::new(
                 op.build_http_request()
                     .map(::smithy_http::body::SdkBody::from),
+            );
+
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
             );
 
             request
@@ -582,6 +600,12 @@ pub mod delete_secret_input {
                     .map(::smithy_http::body::SdkBody::from),
             );
 
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
+            );
+
             request
                 .config_mut()
                 .insert(::aws_sig_auth::signer::OperationSigningConfig::default_config());
@@ -688,6 +712,12 @@ pub mod describe_secret_input {
             let mut request = ::smithy_http::operation::Request::new(
                 op.build_http_request()
                     .map(::smithy_http::body::SdkBody::from),
+            );
+
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
             );
 
             request
@@ -847,6 +877,12 @@ pub mod get_random_password_input {
                     .map(::smithy_http::body::SdkBody::from),
             );
 
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
+            );
+
             request
                 .config_mut()
                 .insert(::aws_sig_auth::signer::OperationSigningConfig::default_config());
@@ -958,6 +994,12 @@ pub mod get_resource_policy_input {
             let mut request = ::smithy_http::operation::Request::new(
                 op.build_http_request()
                     .map(::smithy_http::body::SdkBody::from),
+            );
+
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
             );
 
             request
@@ -1092,6 +1134,12 @@ pub mod get_secret_value_input {
                     .map(::smithy_http::body::SdkBody::from),
             );
 
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
+            );
+
             request
                 .config_mut()
                 .insert(::aws_sig_auth::signer::OperationSigningConfig::default_config());
@@ -1216,6 +1264,12 @@ pub mod list_secrets_input {
             let mut request = ::smithy_http::operation::Request::new(
                 op.build_http_request()
                     .map(::smithy_http::body::SdkBody::from),
+            );
+
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
             );
 
             request
@@ -1360,6 +1414,12 @@ pub mod list_secret_version_ids_input {
                     .map(::smithy_http::body::SdkBody::from),
             );
 
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
+            );
+
             request
                 .config_mut()
                 .insert(::aws_sig_auth::signer::OperationSigningConfig::default_config());
@@ -1485,6 +1545,12 @@ pub mod put_resource_policy_input {
             let mut request = ::smithy_http::operation::Request::new(
                 op.build_http_request()
                     .map(::smithy_http::body::SdkBody::from),
+            );
+
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
             );
 
             request
@@ -1685,6 +1751,12 @@ pub mod put_secret_value_input {
                     .map(::smithy_http::body::SdkBody::from),
             );
 
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
+            );
+
             request
                 .config_mut()
                 .insert(::aws_sig_auth::signer::OperationSigningConfig::default_config());
@@ -1793,6 +1865,12 @@ pub mod restore_secret_input {
             let mut request = ::smithy_http::operation::Request::new(
                 op.build_http_request()
                     .map(::smithy_http::body::SdkBody::from),
+            );
+
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
             );
 
             request
@@ -1938,6 +2016,12 @@ pub mod rotate_secret_input {
                     .map(::smithy_http::body::SdkBody::from),
             );
 
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
+            );
+
             request
                 .config_mut()
                 .insert(::aws_sig_auth::signer::OperationSigningConfig::default_config());
@@ -2061,6 +2145,12 @@ pub mod tag_resource_input {
                     .map(::smithy_http::body::SdkBody::from),
             );
 
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
+            );
+
             request
                 .config_mut()
                 .insert(::aws_sig_auth::signer::OperationSigningConfig::default_config());
@@ -2176,6 +2266,12 @@ pub mod untag_resource_input {
             let mut request = ::smithy_http::operation::Request::new(
                 op.build_http_request()
                     .map(::smithy_http::body::SdkBody::from),
+            );
+
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
             );
 
             request
@@ -2387,6 +2483,12 @@ pub mod update_secret_input {
                     .map(::smithy_http::body::SdkBody::from),
             );
 
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
+            );
+
             request
                 .config_mut()
                 .insert(::aws_sig_auth::signer::OperationSigningConfig::default_config());
@@ -2527,6 +2629,12 @@ pub mod update_secret_version_stage_input {
                     .map(::smithy_http::body::SdkBody::from),
             );
 
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
+            );
+
             request
                 .config_mut()
                 .insert(::aws_sig_auth::signer::OperationSigningConfig::default_config());
@@ -2641,6 +2749,12 @@ pub mod validate_resource_policy_input {
             let mut request = ::smithy_http::operation::Request::new(
                 op.build_http_request()
                     .map(::smithy_http::body::SdkBody::from),
+            );
+
+            request.config_mut().insert(
+                ::aws_http::user_agent::AwsUserAgent::new_from_environment(
+                    crate::API_METADATA.clone(),
+                ),
             );
 
             request
