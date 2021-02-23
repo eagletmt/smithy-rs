@@ -8006,7 +8006,7 @@ impl UpdateTimeToLiveInput {
 
 /// <p>Represents the input of an <code>UpdateTimeToLive</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateTimeToLiveInput {
     /// <p>The name of the table to be configured.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -8015,7 +8015,7 @@ pub struct UpdateTimeToLiveInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateTableReplicaAutoScalingInput {
     /// <p>Represents the auto scaling settings of the global secondary indexes of the replica
     /// to be updated.</p>
@@ -8034,7 +8034,7 @@ pub struct UpdateTableReplicaAutoScalingInput {
 
 /// <p>Represents the input of an <code>UpdateTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateTableInput {
     /// <p>An array of attributes that describe the key schema for the table and indexes. If you are adding a new global secondary index to the table, <code>AttributeDefinitions</code> must include the key element(s) of the new index.</p>
     pub attribute_definitions: ::std::option::Option<::std::vec::Vec<AttributeDefinition>>,
@@ -8096,7 +8096,7 @@ pub struct UpdateTableInput {
 
 /// <p>Represents the input of an <code>UpdateItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateItemInput {
     /// <p>The name of the table containing the item to update.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -8349,7 +8349,7 @@ pub struct UpdateItemInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateGlobalTableSettingsInput {
     /// <p>The name of the global table</p>
     pub global_table_name: ::std::option::Option<::std::string::String>,
@@ -8381,7 +8381,7 @@ pub struct UpdateGlobalTableSettingsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateGlobalTableInput {
     /// <p>The global table name.</p>
     pub global_table_name: ::std::option::Option<::std::string::String>,
@@ -8390,7 +8390,7 @@ pub struct UpdateGlobalTableInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateContributorInsightsInput {
     /// <p>The name of the table.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -8401,7 +8401,7 @@ pub struct UpdateContributorInsightsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateContinuousBackupsInput {
     /// <p>The name of the table.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -8411,7 +8411,7 @@ pub struct UpdateContinuousBackupsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UntagResourceInput {
     /// <p>The DynamoDB resource that the tags will be removed from. This value is an Amazon
     /// Resource Name (ARN).</p>
@@ -8422,7 +8422,7 @@ pub struct UntagResourceInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TransactWriteItemsInput {
     /// <p>An ordered array of up to 25 <code>TransactWriteItem</code> objects, each of which
     /// contains a <code>ConditionCheck</code>, <code>Put</code>, <code>Update</code>, or
@@ -8473,7 +8473,7 @@ pub struct TransactWriteItemsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TransactGetItemsInput {
     /// <p>An ordered array of up to 25 <code>TransactGetItem</code> objects,
     /// each of which contains a <code>Get</code> structure.</p>
@@ -8485,7 +8485,7 @@ pub struct TransactGetItemsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TagResourceInput {
     /// <p>Identifies the Amazon DynamoDB resource to which tags should be added. This value is an Amazon Resource Name (ARN).</p>
     pub resource_arn: ::std::option::Option<::std::string::String>,
@@ -8495,7 +8495,7 @@ pub struct TagResourceInput {
 
 /// <p>Represents the input of a <code>Scan</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ScanInput {
     /// <p>The name of the table containing the requested items; or, if you provide
     /// <code>IndexName</code>, the name of the table to which that index belongs.</p>
@@ -8721,7 +8721,7 @@ pub struct ScanInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RestoreTableToPointInTimeInput {
     /// <p>The DynamoDB table that will be restored. This value is an Amazon
     /// Resource Name (ARN).</p>
@@ -8753,7 +8753,7 @@ pub struct RestoreTableToPointInTimeInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RestoreTableFromBackupInput {
     /// <p>The name of the new table to which the backup must be restored.</p>
     pub target_table_name: ::std::option::Option<::std::string::String>,
@@ -8778,7 +8778,7 @@ pub struct RestoreTableFromBackupInput {
 
 /// <p>Represents the input of a <code>Query</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct QueryInput {
     /// <p>The name of the table containing the requested items.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -9085,7 +9085,7 @@ pub struct QueryInput {
 
 /// <p>Represents the input of a <code>PutItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutItemInput {
     /// <p>The name of the table to contain the item.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -9234,7 +9234,7 @@ pub struct PutItemInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListTagsOfResourceInput {
     /// <p>The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).</p>
     pub resource_arn: ::std::option::Option<::std::string::String>,
@@ -9245,7 +9245,7 @@ pub struct ListTagsOfResourceInput {
 
 /// <p>Represents the input of a <code>ListTables</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListTablesInput {
     /// <p>The first table name that this operation will evaluate. Use the value that was returned for
     /// <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page
@@ -9256,7 +9256,7 @@ pub struct ListTablesInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListGlobalTablesInput {
     /// <p>The first global table name that this operation will evaluate.</p>
     pub exclusive_start_global_table_name: ::std::option::Option<::std::string::String>,
@@ -9269,7 +9269,7 @@ pub struct ListGlobalTablesInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListExportsInput {
     /// <p>The Amazon Resource Name (ARN) associated with the exported table.</p>
     pub table_arn: ::std::option::Option<::std::string::String>,
@@ -9282,7 +9282,7 @@ pub struct ListExportsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListContributorInsightsInput {
     /// <p>The name of the table.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -9293,7 +9293,7 @@ pub struct ListContributorInsightsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListBackupsInput {
     /// <p>The backups from the table specified by <code>TableName</code> are listed. </p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -9331,7 +9331,7 @@ pub struct ListBackupsInput {
 
 /// <p>Represents the input of a <code>GetItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetItemInput {
     /// <p>The name of the table containing the requested item.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -9415,7 +9415,7 @@ pub struct GetItemInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ExportTableToPointInTimeInput {
     /// <p>The Amazon Resource Name (ARN) associated with the table to export.</p>
     pub table_arn: ::std::option::Option<::std::string::String>,
@@ -9462,7 +9462,7 @@ pub struct ExportTableToPointInTimeInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ExecuteTransactionInput {
     /// <p>
     /// The list of PartiQL statements representing the transaction to run.
@@ -9475,7 +9475,7 @@ pub struct ExecuteTransactionInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ExecuteStatementInput {
     /// <p>
     /// The PartiQL statement representing the operation to run.
@@ -9496,7 +9496,7 @@ pub struct ExecuteStatementInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableKinesisStreamingDestinationInput {
     /// <p>The name of the DynamoDB table.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -9505,7 +9505,7 @@ pub struct EnableKinesisStreamingDestinationInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableKinesisStreamingDestinationInput {
     /// <p>The name of the DynamoDB table.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -9514,14 +9514,14 @@ pub struct DisableKinesisStreamingDestinationInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeTimeToLiveInput {
     /// <p>The name of the table to be described.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeTableReplicaAutoScalingInput {
     /// <p>The name of the table.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -9529,7 +9529,7 @@ pub struct DescribeTableReplicaAutoScalingInput {
 
 /// <p>Represents the input of a <code>DescribeTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeTableInput {
     /// <p>The name of the table to describe.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -9537,43 +9537,43 @@ pub struct DescribeTableInput {
 
 /// <p>Represents the input of a <code>DescribeLimits</code> operation. Has no content.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeLimitsInput {}
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeKinesisStreamingDestinationInput {
     /// <p>The name of the table being described.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeGlobalTableSettingsInput {
     /// <p>The name of the global table to describe.</p>
     pub global_table_name: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeGlobalTableInput {
     /// <p>The name of the global table.</p>
     pub global_table_name: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeExportInput {
     /// <p>The Amazon Resource Name (ARN) associated with the export.</p>
     pub export_arn: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeEndpointsInput {}
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeContributorInsightsInput {
     /// <p>The name of the table to describe.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -9582,14 +9582,14 @@ pub struct DescribeContributorInsightsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeContinuousBackupsInput {
     /// <p>Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeBackupInput {
     /// <p>The Amazon Resource Name (ARN) associated with the backup.</p>
     pub backup_arn: ::std::option::Option<::std::string::String>,
@@ -9597,7 +9597,7 @@ pub struct DescribeBackupInput {
 
 /// <p>Represents the input of a <code>DeleteTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteTableInput {
     /// <p>The name of the table to delete.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -9605,7 +9605,7 @@ pub struct DeleteTableInput {
 
 /// <p>Represents the input of a <code>DeleteItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteItemInput {
     /// <p>The name of the table from which to delete the item.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -9749,7 +9749,7 @@ pub struct DeleteItemInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteBackupInput {
     /// <p>The ARN associated with the backup.</p>
     pub backup_arn: ::std::option::Option<::std::string::String>,
@@ -9757,7 +9757,7 @@ pub struct DeleteBackupInput {
 
 /// <p>Represents the input of a <code>CreateTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateTableInput {
     /// <p>An array of attributes that describe the key schema for the table and indexes.</p>
     pub attribute_definitions: ::std::option::Option<::std::vec::Vec<AttributeDefinition>>,
@@ -9984,7 +9984,7 @@ pub struct CreateTableInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateGlobalTableInput {
     /// <p>The global table name.</p>
     pub global_table_name: ::std::option::Option<::std::string::String>,
@@ -9993,7 +9993,7 @@ pub struct CreateGlobalTableInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateBackupInput {
     /// <p>The name of the table.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -10003,7 +10003,7 @@ pub struct CreateBackupInput {
 
 /// <p>Represents the input of a <code>BatchWriteItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct BatchWriteItemInput {
     /// <p>A map of one or more table names and, for each table, a list of operations to be performed
     /// (<code>DeleteRequest</code> or <code>PutRequest</code>). Each element in the map consists of the
@@ -10069,7 +10069,7 @@ pub struct BatchWriteItemInput {
 
 /// <p>Represents the input of a <code>BatchGetItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct BatchGetItemInput {
     /// <p>A map of one or more table names and, for each table, a map that describes one or more items to retrieve from that table. Each table name can be used only once per <code>BatchGetItem</code> request.</p>
     /// <p>Each element in the map of items to retrieve consists of the following:</p>
@@ -10172,7 +10172,7 @@ pub struct BatchGetItemInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct BatchExecuteStatementInput {
     /// <p>
     /// The list of PartiQL statements representing the batch to run.

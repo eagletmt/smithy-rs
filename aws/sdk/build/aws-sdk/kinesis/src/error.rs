@@ -2066,11 +2066,11 @@ impl ::std::error::Error for UpdateShardCountError {
 /// correctly.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ResourceNotFoundError {
     /// <p>A message that provides information about the error.</p>
@@ -2138,11 +2138,11 @@ impl ResourceNotFoundError {
 /// resource must be in the <code>ACTIVE</code> state.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ResourceInUseError {
     /// <p>A message that provides information about the error.</p>
@@ -2210,11 +2210,11 @@ impl ResourceInUseError {
 /// concurrent stream requests exceeds the maximum number allowed. </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct LimitExceededError {
     /// <p>A message that provides information about the error.</p>
@@ -2282,11 +2282,11 @@ impl LimitExceededError {
 /// For more information, see the returned message.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidArgumentError {
     /// <p>A message that provides information about the error.</p>
@@ -2354,11 +2354,11 @@ impl InvalidArgumentError {
 /// found.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KMSNotFoundError {
     /// <p>A message that provides information about the error.</p>
@@ -2428,11 +2428,11 @@ impl KMSNotFoundError {
 /// Guide</i>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KMSInvalidStateError {
     /// <p>A message that provides information about the error.</p>
@@ -2500,11 +2500,11 @@ impl KMSInvalidStateError {
 /// to.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KMSAccessDeniedError {
     /// <p>A message that provides information about the error.</p>
@@ -2572,11 +2572,11 @@ impl KMSAccessDeniedError {
 /// enabled.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KMSDisabledError {
     /// <p>A message that provides information about the error.</p>
@@ -2643,11 +2643,11 @@ impl KMSDisabledError {
 /// <p>The AWS access key ID needs a subscription for the service.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KMSOptInRequired {
     /// <p>A message that provides information about the error.</p>
@@ -2715,11 +2715,11 @@ impl KMSOptInRequired {
 /// failure.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InternalFailureError {
     #[serde(rename = "message")]
@@ -2786,11 +2786,11 @@ impl InternalFailureError {
 /// the <i>AWS Key Management Service Developer Guide</i>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KMSThrottlingError {
     /// <p>A message that provides information about the error.</p>
@@ -2862,11 +2862,11 @@ impl KMSThrottlingError {
 /// Reference</i>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ProvisionedThroughputExceededError {
     /// <p>A message that provides information about the error.</p>
@@ -2933,11 +2933,11 @@ impl ProvisionedThroughputExceededError {
 /// <p>The pagination token passed to the operation is expired.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ExpiredNextTokenError {
     #[serde(rename = "message")]
@@ -3002,11 +3002,11 @@ impl ExpiredNextTokenError {
 /// <p>The provided iterator exceeds the maximum age allowed.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ExpiredIteratorError {
     /// <p>A message that provides information about the error.</p>

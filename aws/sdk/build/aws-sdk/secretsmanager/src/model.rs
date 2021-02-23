@@ -3,11 +3,11 @@ use smithy_types::Instant;
 /// <p>Displays errors that occurred during validation of the resource policy.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ValidationErrorsEntry {
     /// <p>Displays error messages if validation encounters problems during validation of the resource policy.</p>
@@ -62,11 +62,11 @@ impl ValidationErrorsEntry {
 /// <p>A structure that contains information about a tag.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Tag {
     /// <p>The string value associated with the key of the tag.</p>
@@ -121,11 +121,11 @@ impl Tag {
 /// <p>A structure that defines the rotation configuration for the secret.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct RotationRulesType {
     /// <p>Specifies the number of days between automatic scheduled rotations of the secret.</p>
@@ -178,11 +178,11 @@ impl RotationRulesType {
 /// <p>A structure that contains information about one version of a secret.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct SecretVersionsListEntry {
     /// <p>An array of staging labels that are currently associated with this version of the
@@ -272,11 +272,11 @@ impl SecretVersionsListEntry {
 /// <a>GetSecretValue</a> operation.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct SecretListEntry {
     /// <p>The last date and time that the rotation process for this secret was invoked.</p>
@@ -551,11 +551,11 @@ impl SecretListEntry {
 /// <p>Allows you to filter your list of secrets.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Filter {
     /// <p>Filters your list of secrets by a specific key.</p>
@@ -610,12 +610,12 @@ impl Filter {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub struct FilterNameStringType(String);
@@ -660,12 +660,12 @@ impl<'de> ::serde::Deserialize<'de> for FilterNameStringType {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum SortOrderType {

@@ -1428,11 +1428,11 @@ impl ::std::error::Error for ValidateResourcePolicyError {
 /// <p>We can't find the resource that you asked for.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ResourceNotFoundError {
     #[serde(rename = "Message")]
@@ -1494,11 +1494,11 @@ impl ResourceNotFoundError {
 /// <p>The policy document that you provided isn't valid.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct MalformedPolicyDocumentError {
     #[serde(rename = "Message")]
@@ -1571,11 +1571,11 @@ impl MalformedPolicyDocumentError {
 /// </ul>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidRequestError {
     #[serde(rename = "Message")]
@@ -1637,11 +1637,11 @@ impl InvalidRequestError {
 /// <p>You provided an invalid value for a parameter.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidParameterError {
     #[serde(rename = "Message")]
@@ -1703,11 +1703,11 @@ impl InvalidParameterError {
 /// <p>An error occurred on the server side.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InternalServiceError {
     #[serde(rename = "Message")]
@@ -1769,11 +1769,11 @@ impl InternalServiceError {
 /// <p>The request failed because it would exceed one of the Secrets Manager internal limits.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct LimitExceededError {
     #[serde(rename = "Message")]
@@ -1835,11 +1835,11 @@ impl LimitExceededError {
 /// <p>A resource with the ID you requested already exists.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ResourceExistsError {
     #[serde(rename = "Message")]
@@ -1901,11 +1901,11 @@ impl ResourceExistsError {
 /// <p>The request failed because you did not complete all the prerequisite steps.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct PreconditionNotMetError {
     #[serde(rename = "Message")]
@@ -1970,11 +1970,11 @@ impl PreconditionNotMetError {
 /// Customer Master Key</a>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct EncryptionFailure {
     #[serde(rename = "Message")]
@@ -2036,11 +2036,11 @@ impl EncryptionFailure {
 /// <p>The resource policy did not prevent broad access to the secret.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct PublicPolicyError {
     #[serde(rename = "Message")]
@@ -2102,11 +2102,11 @@ impl PublicPolicyError {
 /// <p>You provided an invalid <code>NextToken</code> value.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidNextTokenError {
     #[serde(rename = "Message")]
@@ -2168,11 +2168,11 @@ impl InvalidNextTokenError {
 /// <p>Secrets Manager can't decrypt the protected secret text using the provided KMS key. </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct DecryptionFailure {
     #[serde(rename = "Message")]

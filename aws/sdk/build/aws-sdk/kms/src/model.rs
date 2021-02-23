@@ -2,12 +2,12 @@
 use smithy_types::Instant;
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum SigningAlgorithmSpec {
@@ -82,12 +82,12 @@ impl<'de> ::serde::Deserialize<'de> for SigningAlgorithmSpec {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum MessageType {
@@ -145,11 +145,11 @@ impl<'de> ::serde::Deserialize<'de> for MessageType {
 /// Guide</i>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Tag {
     /// <p>The key of the tag.</p>
@@ -203,12 +203,12 @@ impl Tag {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum EncryptionAlgorithmSpec {
@@ -266,11 +266,11 @@ impl<'de> ::serde::Deserialize<'de> for EncryptionAlgorithmSpec {
 /// <p>Contains information about a grant.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct GrantListEntry {
     /// <p>The unique identifier for the customer master key (CMK) to which the grant applies.</p>
@@ -444,11 +444,11 @@ impl GrantListEntry {
 /// </important>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct GrantConstraints {
     /// <p>A list of key-value pairs that must be included in the encryption context of the
@@ -524,12 +524,12 @@ impl GrantConstraints {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum GrantOperation {
@@ -624,11 +624,11 @@ impl<'de> ::serde::Deserialize<'de> for GrantOperation {
 /// <p>Contains information about each entry in the key list.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KeyListEntry {
     /// <p>Unique identifier of the key.</p>
@@ -683,11 +683,11 @@ impl KeyListEntry {
 /// <p>Contains information about an alias.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct AliasListEntry {
     /// <p>String that contains the alias. This value begins with <code>alias/</code>.</p>
@@ -782,12 +782,12 @@ impl AliasListEntry {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ExpirationModelType {
@@ -841,12 +841,12 @@ impl<'de> ::serde::Deserialize<'de> for ExpirationModelType {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum KeyUsageType {
@@ -900,12 +900,12 @@ impl<'de> ::serde::Deserialize<'de> for KeyUsageType {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum CustomerMasterKeySpec {
@@ -977,12 +977,12 @@ impl<'de> ::serde::Deserialize<'de> for CustomerMasterKeySpec {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum WrappingKeySpec {
@@ -1033,12 +1033,12 @@ impl<'de> ::serde::Deserialize<'de> for WrappingKeySpec {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum AlgorithmSpec {
@@ -1095,12 +1095,12 @@ impl<'de> ::serde::Deserialize<'de> for AlgorithmSpec {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum DataKeySpec {
@@ -1154,12 +1154,12 @@ impl<'de> ::serde::Deserialize<'de> for DataKeySpec {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum DataKeyPairSpec {
@@ -1230,11 +1230,11 @@ impl<'de> ::serde::Deserialize<'de> for DataKeyPairSpec {
 /// <p>This data type is used as a response element for the <a>CreateKey</a> and <a>DescribeKey</a> operations.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KeyMetadata {
     /// <p>The twelve-digit account ID of the AWS account that owns the CMK.</p>
@@ -1546,12 +1546,12 @@ impl KeyMetadata {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum KeyManagerType {
@@ -1605,12 +1605,12 @@ impl<'de> ::serde::Deserialize<'de> for KeyManagerType {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum OriginType {
@@ -1667,12 +1667,12 @@ impl<'de> ::serde::Deserialize<'de> for OriginType {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum KeyState {
@@ -1736,11 +1736,11 @@ impl<'de> ::serde::Deserialize<'de> for KeyState {
 /// <p>Contains information about each custom key store in the custom key store list.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CustomKeyStoresListEntry {
     /// <p>A unique identifier for the custom key store.</p>
@@ -2001,12 +2001,12 @@ impl CustomKeyStoresListEntry {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ConnectionErrorCodeType {
@@ -2081,12 +2081,12 @@ impl<'de> ::serde::Deserialize<'de> for ConnectionErrorCodeType {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ConnectionStateType {

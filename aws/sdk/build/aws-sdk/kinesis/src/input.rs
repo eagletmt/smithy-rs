@@ -3530,7 +3530,7 @@ impl UpdateShardCountInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateShardCountInput {
     /// <p>The scaling type. Uniform scaling creates shards of equal size.</p>
     pub scaling_type: ::std::option::Option<ScalingType>,
@@ -3560,7 +3560,7 @@ pub struct UpdateShardCountInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct SubscribeToShardInput {
     /// <p>The ID of the shard you want to subscribe to. To see a list of all the shards for a
     /// given stream, use <a>ListShards</a>.</p>
@@ -3572,7 +3572,7 @@ pub struct SubscribeToShardInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct StopStreamEncryptionInput {
     /// <p>The name of the stream on which to stop encrypting records.</p>
     pub stream_name: ::std::option::Option<::std::string::String>,
@@ -3613,7 +3613,7 @@ pub struct StopStreamEncryptionInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct StartStreamEncryptionInput {
     /// <p>The name of the stream for which to start encrypting records.</p>
     pub stream_name: ::std::option::Option<::std::string::String>,
@@ -3655,7 +3655,7 @@ pub struct StartStreamEncryptionInput {
 
 /// <p>Represents the input for <code>SplitShard</code>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct SplitShardInput {
     /// <p>The shard ID of the shard to split.</p>
     pub shard_to_split: ::std::option::Option<::std::string::String>,
@@ -3673,7 +3673,7 @@ pub struct SplitShardInput {
 
 /// <p>Represents the input for <code>RemoveTagsFromStream</code>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RemoveTagsFromStreamInput {
     /// <p>A list of tag keys. Each corresponding tag is removed from the stream.</p>
     pub tag_keys: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
@@ -3682,7 +3682,7 @@ pub struct RemoveTagsFromStreamInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RegisterStreamConsumerInput {
     /// <p>For a given Kinesis data stream, each consumer must have a unique name. However,
     /// consumer names don't have to be unique across data streams.</p>
@@ -3694,7 +3694,7 @@ pub struct RegisterStreamConsumerInput {
 
 /// <p>A <code>PutRecords</code> request.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutRecordsInput {
     /// <p>The records associated with the request.</p>
     pub records: ::std::option::Option<::std::vec::Vec<PutRecordsRequestEntry>>,
@@ -3704,7 +3704,7 @@ pub struct PutRecordsInput {
 
 /// <p>Represents the input for <code>PutRecord</code>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutRecordInput {
     /// <p>The name of the stream to put the data record into.</p>
     pub stream_name: ::std::option::Option<::std::string::String>,
@@ -3734,7 +3734,7 @@ pub struct PutRecordInput {
 
 /// <p>Represents the input for <code>MergeShards</code>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct MergeShardsInput {
     /// <p>The shard ID of the adjacent shard for the merge.</p>
     pub adjacent_shard_to_merge: ::std::option::Option<::std::string::String>,
@@ -3747,7 +3747,7 @@ pub struct MergeShardsInput {
 
 /// <p>Represents the input for <code>ListTagsForStream</code>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListTagsForStreamInput {
     /// <p>The number of tags to return. If this number is less than the total number of tags
     /// associated with the stream, <code>HasMoreTags</code> is set to <code>true</code>. To
@@ -3764,7 +3764,7 @@ pub struct ListTagsForStreamInput {
 
 /// <p>Represents the input for <code>ListStreams</code>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListStreamsInput {
     /// <p>The maximum number of streams to list.</p>
     pub limit: ::std::option::Option<i32>,
@@ -3773,7 +3773,7 @@ pub struct ListStreamsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListStreamConsumersInput {
     /// <p>When the number of consumers that are registered with the data stream is greater than
     /// the default value for the <code>MaxResults</code> parameter, or if you explicitly
@@ -3814,7 +3814,7 @@ pub struct ListStreamConsumersInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListShardsInput {
     /// <p>The maximum number of shards to return in a single call to <code>ListShards</code>.
     /// The minimum value you can specify for this parameter is 1, and the maximum is 10,000,
@@ -3870,7 +3870,7 @@ pub struct ListShardsInput {
 
 /// <p>Represents the input for <a>IncreaseStreamRetentionPeriod</a>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct IncreaseStreamRetentionPeriodInput {
     /// <p>The new retention period of the stream, in hours. Must be more than the current
     /// retention period.</p>
@@ -3881,7 +3881,7 @@ pub struct IncreaseStreamRetentionPeriodInput {
 
 /// <p>Represents the input for <code>GetShardIterator</code>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetShardIteratorInput {
     /// <p>Determines how the shard iterator is used to start reading data records from the
     /// shard.</p>
@@ -3930,7 +3930,7 @@ pub struct GetShardIteratorInput {
 
 /// <p>Represents the input for <a>GetRecords</a>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetRecordsInput {
     /// <p>The position in the shard from which you want to start sequentially reading data
     /// records. A shard iterator specifies this position using the sequence number of a data
@@ -3944,7 +3944,7 @@ pub struct GetRecordsInput {
 
 /// <p>Represents the input for <a>EnableEnhancedMonitoring</a>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableEnhancedMonitoringInput {
     /// <p>The name of the stream for which to enable enhanced monitoring.</p>
     pub stream_name: ::std::option::Option<::std::string::String>,
@@ -4001,7 +4001,7 @@ pub struct EnableEnhancedMonitoringInput {
 
 /// <p>Represents the input for <a>DisableEnhancedMonitoring</a>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableEnhancedMonitoringInput {
     /// <p>List of shard-level metrics to disable.</p>
     /// <p>The following are the valid shard-level metrics. The value "<code>ALL</code>"
@@ -4058,14 +4058,14 @@ pub struct DisableEnhancedMonitoringInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeStreamSummaryInput {
     /// <p>The name of the stream to describe.</p>
     pub stream_name: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeStreamConsumerInput {
     /// <p>The ARN of the Kinesis data stream that the consumer is registered with. For more
     /// information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
@@ -4078,7 +4078,7 @@ pub struct DescribeStreamConsumerInput {
 
 /// <p>Represents the input for <code>DescribeStream</code>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeStreamInput {
     /// <p>The name of the stream to describe.</p>
     pub stream_name: ::std::option::Option<::std::string::String>,
@@ -4090,11 +4090,11 @@ pub struct DescribeStreamInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeLimitsInput {}
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeregisterStreamConsumerInput {
     /// <p>The ARN of the Kinesis data stream that the consumer is registered with. For more
     /// information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
@@ -4111,7 +4111,7 @@ pub struct DeregisterStreamConsumerInput {
 
 /// <p>Represents the input for <a>DeleteStream</a>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteStreamInput {
     /// <p>The name of the stream to delete.</p>
     pub stream_name: ::std::option::Option<::std::string::String>,
@@ -4123,7 +4123,7 @@ pub struct DeleteStreamInput {
 
 /// <p>Represents the input for <a>DecreaseStreamRetentionPeriod</a>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DecreaseStreamRetentionPeriodInput {
     /// <p>The new retention period of the stream, in hours. Must be less than the current
     /// retention period.</p>
@@ -4134,7 +4134,7 @@ pub struct DecreaseStreamRetentionPeriodInput {
 
 /// <p>Represents the input for <code>CreateStream</code>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateStreamInput {
     /// <p>A name to identify the stream. The stream name is scoped to the AWS account used by
     /// the application that creates the stream. It is also scoped by AWS Region. That is, two
@@ -4149,7 +4149,7 @@ pub struct CreateStreamInput {
 
 /// <p>Represents the input for <code>AddTagsToStream</code>.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct AddTagsToStreamInput {
     /// <p>A set of up to 10 key-value pairs to use to create the tags.</p>
     pub tags: ::std::option::Option<

@@ -3801,11 +3801,11 @@ impl ::std::error::Error for UpdateTimeToLiveError {
 /// correctly, or its status might not be <code>ACTIVE</code>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ResourceNotFoundError {
     /// <p>The resource which is being requested does not exist.</p>
@@ -3874,11 +3874,11 @@ impl ResourceNotFoundError {
 /// state.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ResourceInUseError {
     /// <p>The resource which is being attempted to be changed is in use.</p>
@@ -3953,11 +3953,11 @@ impl ResourceInUseError {
 /// <p>There is a soft account quota of 256 tables.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct LimitExceededError {
     /// <p>Too many operations for a given subscriber.</p>
@@ -4023,11 +4023,11 @@ impl LimitExceededError {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidEndpointError {
     #[serde(rename = "Message")]
@@ -4089,11 +4089,11 @@ impl InvalidEndpointError {
 /// <p>An error occurred on the server side.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InternalServerError {
     /// <p>The server encountered an internal error trying to fulfill the request.</p>
@@ -4160,11 +4160,11 @@ impl InternalServerError {
 /// <p>Operation was rejected because there is an ongoing transaction for the item.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TransactionConflictError {
     #[serde(rename = "message")]
@@ -4229,11 +4229,11 @@ impl TransactionConflictError {
 /// <p>Throughput exceeds the current throughput quota for your account. Please contact AWS Support at <a href="https://aws.amazon.com/support">AWS Support</a> to request a quota increase.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct RequestLimitExceeded {
     #[serde(rename = "message")]
@@ -4302,11 +4302,11 @@ impl RequestLimitExceeded {
 /// Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ProvisionedThroughputExceededError {
     /// <p>You exceeded your maximum allowed provisioned throughput.</p>
@@ -4373,11 +4373,11 @@ impl ProvisionedThroughputExceededError {
 /// <p>An item collection is too large. This exception is only returned for tables that have one or more local secondary indexes.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ItemCollectionSizeLimitExceededError {
     /// <p>The total size of an item collection has exceeded the maximum limit of 10 gigabytes.</p>
@@ -4444,11 +4444,11 @@ impl ItemCollectionSizeLimitExceededError {
 /// <p>A condition specified in the operation could not be evaluated.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ConditionalCheckFailedError {
     /// <p>The conditional request failed.</p>
@@ -4515,11 +4515,11 @@ impl ConditionalCheckFailedError {
 /// <p>The specified replica is no longer part of the global table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaNotFoundError {
     #[serde(rename = "message")]
@@ -4584,11 +4584,11 @@ impl ReplicaNotFoundError {
 /// <p>The operation tried to access a nonexistent index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct IndexNotFoundError {
     #[serde(rename = "message")]
@@ -4653,11 +4653,11 @@ impl IndexNotFoundError {
 /// <p>The specified global table does not exist.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct GlobalTableNotFoundError {
     #[serde(rename = "message")]
@@ -4722,11 +4722,11 @@ impl GlobalTableNotFoundError {
 /// <p>A source table with the name <code>TableName</code> does not currently exist within the subscriber's account.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TableNotFoundError {
     #[serde(rename = "message")]
@@ -4791,11 +4791,11 @@ impl TableNotFoundError {
 /// <p>The specified replica is already part of the global table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaAlreadyExistsError {
     #[serde(rename = "message")]
@@ -4860,11 +4860,11 @@ impl ReplicaAlreadyExistsError {
 /// <p>Backups have not yet been enabled for this table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ContinuousBackupsUnavailableError {
     #[serde(rename = "message")]
@@ -4929,11 +4929,11 @@ impl ContinuousBackupsUnavailableError {
 /// <p>The transaction with the given request token is already in progress.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TransactionInProgressError {
     #[serde(rename = "Message")]
@@ -5192,11 +5192,11 @@ impl TransactionInProgressError {
 /// </ul>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TransactionCanceledError {
     #[serde(rename = "Message")]
@@ -5272,11 +5272,11 @@ impl TransactionCanceledError {
 /// with an idempotent token that was already used.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct IdempotentParameterMismatchError {
     #[serde(rename = "Message")]
@@ -5338,11 +5338,11 @@ impl IdempotentParameterMismatchError {
 /// <p>A target table with the specified name is either being created or deleted. </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TableInUseError {
     #[serde(rename = "message")]
@@ -5407,11 +5407,11 @@ impl TableInUseError {
 /// <p>A target table with the specified name already exists. </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TableAlreadyExistsError {
     #[serde(rename = "message")]
@@ -5476,11 +5476,11 @@ impl TableAlreadyExistsError {
 /// <p>Point in time recovery has not yet been enabled for this source table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct PointInTimeRecoveryUnavailableError {
     #[serde(rename = "message")]
@@ -5545,11 +5545,11 @@ impl PointInTimeRecoveryUnavailableError {
 /// <p>An invalid restore time was specified. RestoreDateTime must be between EarliestRestorableDateTime and LatestRestorableDateTime.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidRestoreTimeError {
     #[serde(rename = "message")]
@@ -5614,11 +5614,11 @@ impl InvalidRestoreTimeError {
 /// <p>Backup not found for the given BackupARN. </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct BackupNotFoundError {
     #[serde(rename = "message")]
@@ -5683,11 +5683,11 @@ impl BackupNotFoundError {
 /// <p>There is another ongoing conflicting backup control plane operation on the table. The backup is either being created, deleted or restored to a table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct BackupInUseError {
     #[serde(rename = "message")]
@@ -5753,11 +5753,11 @@ impl BackupInUseError {
 /// window.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidExportTimeError {
     #[serde(rename = "message")]
@@ -5822,11 +5822,11 @@ impl InvalidExportTimeError {
 /// <p>There was a conflict when writing to the specified S3 bucket.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ExportConflictError {
     #[serde(rename = "message")]
@@ -5893,11 +5893,11 @@ impl ExportConflictError {
 /// </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct DuplicateItemError {
     #[serde(rename = "message")]
@@ -5962,11 +5962,11 @@ impl DuplicateItemError {
 /// <p>The specified export was not found.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ExportNotFoundError {
     #[serde(rename = "message")]
@@ -6031,11 +6031,11 @@ impl ExportNotFoundError {
 /// <p>The specified global table already exists.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct GlobalTableAlreadyExistsError {
     #[serde(rename = "message")]

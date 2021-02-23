@@ -21,7 +21,7 @@ use crate::model::WrappingKeySpec;
 use smithy_types::Blob;
 use smithy_types::Instant;
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CancelKeyDeletionInputBody<'a> {
     /// <p>The unique identifier for the customer master key (CMK) for which to cancel
     /// deletion.</p>
@@ -44,7 +44,7 @@ pub struct CancelKeyDeletionInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ConnectCustomKeyStoreInputBody<'a> {
     /// <p>Enter the key store ID of the custom key store that you want to connect.
     /// To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.</p>
@@ -54,7 +54,7 @@ pub struct ConnectCustomKeyStoreInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateAliasInputBody<'a> {
     /// <p>Specifies the alias name. This value must begin with <code>alias/</code> followed by a
     /// name, such as <code>alias/ExampleAlias</code>. </p>
@@ -89,7 +89,7 @@ pub struct CreateAliasInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateCustomKeyStoreInputBody<'a> {
     /// <p>Specifies a friendly name for the custom key store. The name must be unique in your AWS
     /// account.</p>
@@ -118,9 +118,19 @@ pub struct CreateCustomKeyStoreInputBody<'a> {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub key_store_password: &'a ::std::option::Option<::std::string::String>,
 }
+impl<'a> ::std::fmt::Debug for CreateCustomKeyStoreInputBody<'a> {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("CreateCustomKeyStoreInputBody");
+        formatter.field("custom_key_store_name", &self.custom_key_store_name);
+        formatter.field("cloud_hsm_cluster_id", &self.cloud_hsm_cluster_id);
+        formatter.field("trust_anchor_certificate", &self.trust_anchor_certificate);
+        formatter.field("key_store_password", &"*** Sensitive Data Redacted ***");
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateGrantInputBody<'a> {
     /// <p>The unique identifier for the customer master key (CMK) that the grant applies to.</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a
@@ -197,7 +207,7 @@ pub struct CreateGrantInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateKeyInputBody<'a> {
     /// <p>The key policy to attach to the CMK.</p>
     /// <p>If you provide a key policy, it must meet the following criteria:</p>
@@ -391,7 +401,7 @@ pub struct CreateKeyInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DecryptInputBody<'a> {
     /// <p>Ciphertext to be decrypted. The blob includes metadata.</p>
     #[serde(rename = "CiphertextBlob")]
@@ -457,7 +467,7 @@ pub struct DecryptInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteAliasInputBody<'a> {
     /// <p>The alias to be deleted. The alias name must begin with <code>alias/</code> followed by
     /// the alias name, such as <code>alias/ExampleAlias</code>.</p>
@@ -467,7 +477,7 @@ pub struct DeleteAliasInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteCustomKeyStoreInputBody<'a> {
     /// <p>Enter the ID of the custom key store you want to delete. To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.</p>
     #[serde(rename = "CustomKeyStoreId")]
@@ -476,7 +486,7 @@ pub struct DeleteCustomKeyStoreInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteImportedKeyMaterialInputBody<'a> {
     /// <p>Identifies the CMK from which you are deleting imported key material. The
     /// <code>Origin</code> of the CMK must be <code>EXTERNAL</code>.</p>
@@ -499,7 +509,7 @@ pub struct DeleteImportedKeyMaterialInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeCustomKeyStoresInputBody<'a> {
     /// <p>Gets only information about the specified custom key store. Enter the key store ID.</p>
     /// <p>By default, this operation gets information about all custom key stores in the account and
@@ -533,7 +543,7 @@ pub struct DescribeCustomKeyStoresInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeKeyInputBody<'a> {
     /// <p>Describes the specified customer master key (CMK). </p>
     /// <p>If you specify a predefined AWS alias (an AWS alias with no key ID), KMS associates the
@@ -573,7 +583,7 @@ pub struct DescribeKeyInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableKeyInputBody<'a> {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -595,7 +605,7 @@ pub struct DisableKeyInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableKeyRotationInputBody<'a> {
     /// <p>Identifies a symmetric customer master key (CMK). You cannot enable or disable automatic
     /// rotation of <a href="https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks">asymmetric CMKs</a>, CMKs
@@ -620,7 +630,7 @@ pub struct DisableKeyRotationInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisconnectCustomKeyStoreInputBody<'a> {
     /// <p>Enter the ID of the custom key store you want to disconnect. To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.</p>
     #[serde(rename = "CustomKeyStoreId")]
@@ -629,7 +639,7 @@ pub struct DisconnectCustomKeyStoreInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableKeyInputBody<'a> {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -651,7 +661,7 @@ pub struct EnableKeyInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableKeyRotationInputBody<'a> {
     /// <p>Identifies a symmetric customer master key (CMK). You cannot enable automatic rotation of asymmetric CMKs, CMKs with imported key material, or CMKs in a <a href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a>.</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -673,7 +683,7 @@ pub struct EnableKeyRotationInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EncryptInputBody<'a> {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p>
@@ -731,9 +741,20 @@ pub struct EncryptInputBody<'a> {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub encryption_algorithm: &'a ::std::option::Option<EncryptionAlgorithmSpec>,
 }
+impl<'a> ::std::fmt::Debug for EncryptInputBody<'a> {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("EncryptInputBody");
+        formatter.field("key_id", &self.key_id);
+        formatter.field("plaintext", &"*** Sensitive Data Redacted ***");
+        formatter.field("encryption_context", &self.encryption_context);
+        formatter.field("grant_tokens", &self.grant_tokens);
+        formatter.field("encryption_algorithm", &self.encryption_algorithm);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyInputBody<'a> {
     /// <p>Identifies the symmetric CMK that encrypts the data key.</p>
     /// <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p>
@@ -794,7 +815,7 @@ pub struct GenerateDataKeyInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyPairInputBody<'a> {
     /// <p>Specifies the encryption context that will be used when encrypting the private key in the
     /// data key pair.</p>
@@ -848,7 +869,7 @@ pub struct GenerateDataKeyPairInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyPairWithoutPlaintextInputBody<'a> {
     /// <p>Specifies the encryption context that will be used when encrypting the private key in the
     /// data key pair.</p>
@@ -902,7 +923,7 @@ pub struct GenerateDataKeyPairWithoutPlaintextInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyWithoutPlaintextInputBody<'a> {
     /// <p>The identifier of the symmetric customer master key (CMK) that encrypts the data
     /// key.</p>
@@ -960,7 +981,7 @@ pub struct GenerateDataKeyWithoutPlaintextInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateRandomInputBody<'a> {
     /// <p>The length of the byte string.</p>
     #[serde(rename = "NumberOfBytes")]
@@ -974,7 +995,7 @@ pub struct GenerateRandomInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetKeyPolicyInputBody<'a> {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -1001,7 +1022,7 @@ pub struct GetKeyPolicyInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetKeyRotationStatusInputBody<'a> {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a
@@ -1024,7 +1045,7 @@ pub struct GetKeyRotationStatusInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetParametersForImportInputBody<'a> {
     /// <p>The identifier of the symmetric CMK into which you will import key material. The
     /// <code>Origin</code> of the CMK must be <code>EXTERNAL</code>.</p>
@@ -1057,7 +1078,7 @@ pub struct GetParametersForImportInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetPublicKeyInputBody<'a> {
     /// <p>Identifies the asymmetric CMK that includes the public key.</p>
     /// <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p>
@@ -1093,7 +1114,7 @@ pub struct GetPublicKeyInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ImportKeyMaterialInputBody<'a> {
     /// <p>The identifier of the symmetric CMK that receives the imported key material. The CMK's
     /// <code>Origin</code> must be <code>EXTERNAL</code>. This must be the same CMK specified in
@@ -1146,7 +1167,7 @@ pub struct ImportKeyMaterialInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListAliasesInputBody<'a> {
     /// <p>Lists only aliases that are associated with the specified CMK. Enter a CMK in your AWS
     /// account. </p>
@@ -1185,7 +1206,7 @@ pub struct ListAliasesInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListGrantsInputBody<'a> {
     /// <p>Use this parameter to specify the maximum number of items to return. When this
     /// value is present, AWS KMS does not return more than the specified number of items, but it might
@@ -1222,7 +1243,7 @@ pub struct ListGrantsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListKeyPoliciesInputBody<'a> {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -1259,7 +1280,7 @@ pub struct ListKeyPoliciesInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListKeysInputBody<'a> {
     /// <p>Use this parameter to specify the maximum number of items to return. When this
     /// value is present, AWS KMS does not return more than the specified number of items, but it might
@@ -1278,7 +1299,7 @@ pub struct ListKeysInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListResourceTagsInputBody<'a> {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -1316,7 +1337,7 @@ pub struct ListResourceTagsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListRetirableGrantsInputBody<'a> {
     /// <p>Use this parameter to specify the maximum number of items to return. When this
     /// value is present, AWS KMS does not return more than the specified number of items, but it might
@@ -1345,7 +1366,7 @@ pub struct ListRetirableGrantsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutKeyPolicyInputBody<'a> {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -1404,7 +1425,7 @@ pub struct PutKeyPolicyInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ReEncryptInputBody<'a> {
     /// <p>Ciphertext of the data to reencrypt.</p>
     #[serde(rename = "CiphertextBlob")]
@@ -1520,7 +1541,7 @@ pub struct ReEncryptInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RetireGrantInputBody<'a> {
     /// <p>Token that identifies the grant to be retired.</p>
     #[serde(rename = "GrantToken")]
@@ -1546,7 +1567,7 @@ pub struct RetireGrantInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RevokeGrantInputBody<'a> {
     /// <p>A unique identifier for the customer master key associated with the grant.</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a
@@ -1573,7 +1594,7 @@ pub struct RevokeGrantInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ScheduleKeyDeletionInputBody<'a> {
     /// <p>The unique identifier of the customer master key (CMK) to delete.</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -1602,7 +1623,7 @@ pub struct ScheduleKeyDeletionInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct SignInputBody<'a> {
     /// <p>Identifies an asymmetric CMK. AWS KMS uses the private key in the asymmetric CMK to sign the
     /// message. The <code>KeyUsage</code> type of the CMK must be <code>SIGN_VERIFY</code>. To find
@@ -1658,9 +1679,20 @@ pub struct SignInputBody<'a> {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub signing_algorithm: &'a ::std::option::Option<SigningAlgorithmSpec>,
 }
+impl<'a> ::std::fmt::Debug for SignInputBody<'a> {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("SignInputBody");
+        formatter.field("key_id", &self.key_id);
+        formatter.field("message", &"*** Sensitive Data Redacted ***");
+        formatter.field("message_type", &self.message_type);
+        formatter.field("grant_tokens", &self.grant_tokens);
+        formatter.field("signing_algorithm", &self.signing_algorithm);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TagResourceInputBody<'a> {
     /// <p>Identifies a customer managed CMK in the account and Region.</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -1691,7 +1723,7 @@ pub struct TagResourceInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UntagResourceInputBody<'a> {
     /// <p>Identifies the CMK from which you are removing tags.</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -1717,7 +1749,7 @@ pub struct UntagResourceInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateAliasInputBody<'a> {
     /// <p>Identifies the alias that is changing its CMK. This value must begin with
     /// <code>alias/</code> followed by the alias name, such as <code>alias/ExampleAlias</code>. You
@@ -1751,7 +1783,7 @@ pub struct UpdateAliasInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateCustomKeyStoreInputBody<'a> {
     /// <p>Identifies the custom key store that you want to update. Enter the ID of the custom key
     /// store. To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.</p>
@@ -1781,9 +1813,19 @@ pub struct UpdateCustomKeyStoreInputBody<'a> {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cloud_hsm_cluster_id: &'a ::std::option::Option<::std::string::String>,
 }
+impl<'a> ::std::fmt::Debug for UpdateCustomKeyStoreInputBody<'a> {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("UpdateCustomKeyStoreInputBody");
+        formatter.field("custom_key_store_id", &self.custom_key_store_id);
+        formatter.field("new_custom_key_store_name", &self.new_custom_key_store_name);
+        formatter.field("key_store_password", &"*** Sensitive Data Redacted ***");
+        formatter.field("cloud_hsm_cluster_id", &self.cloud_hsm_cluster_id);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateKeyDescriptionInputBody<'a> {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -1809,7 +1851,7 @@ pub struct UpdateKeyDescriptionInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct VerifyInputBody<'a> {
     /// <p>Identifies the asymmetric CMK that will be used to verify the signature. This must be the
     /// same CMK that was used to generate the signature. If you specify a different CMK, the
@@ -1876,9 +1918,21 @@ pub struct VerifyInputBody<'a> {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub grant_tokens: &'a ::std::option::Option<::std::vec::Vec<::std::string::String>>,
 }
+impl<'a> ::std::fmt::Debug for VerifyInputBody<'a> {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("VerifyInputBody");
+        formatter.field("key_id", &self.key_id);
+        formatter.field("message", &"*** Sensitive Data Redacted ***");
+        formatter.field("message_type", &self.message_type);
+        formatter.field("signature", &self.signature);
+        formatter.field("signing_algorithm", &self.signing_algorithm);
+        formatter.field("grant_tokens", &self.grant_tokens);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CancelKeyDeletionOutputBody {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK whose deletion is canceled.</p>
     #[serde(rename = "KeyId")]
@@ -1887,7 +1941,7 @@ pub struct CancelKeyDeletionOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateCustomKeyStoreOutputBody {
     /// <p>A unique identifier for the new custom key store.</p>
     #[serde(rename = "CustomKeyStoreId")]
@@ -1896,7 +1950,7 @@ pub struct CreateCustomKeyStoreOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateGrantOutputBody {
     /// <p>The grant token.</p>
     /// <p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the
@@ -1913,7 +1967,7 @@ pub struct CreateGrantOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateKeyOutputBody {
     /// <p>Metadata associated with the CMK.</p>
     #[serde(rename = "KeyMetadata")]
@@ -1922,7 +1976,7 @@ pub struct CreateKeyOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DecryptOutputBody {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK that was used to decrypt the ciphertext.</p>
     #[serde(rename = "KeyId")]
@@ -1938,9 +1992,18 @@ pub struct DecryptOutputBody {
     #[serde(default)]
     pub encryption_algorithm: ::std::option::Option<EncryptionAlgorithmSpec>,
 }
+impl ::std::fmt::Debug for DecryptOutputBody {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("DecryptOutputBody");
+        formatter.field("key_id", &self.key_id);
+        formatter.field("plaintext", &"*** Sensitive Data Redacted ***");
+        formatter.field("encryption_algorithm", &self.encryption_algorithm);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeCustomKeyStoresOutputBody {
     /// <p>Contains metadata about each custom key store.</p>
     #[serde(rename = "CustomKeyStores")]
@@ -1960,7 +2023,7 @@ pub struct DescribeCustomKeyStoresOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeKeyOutputBody {
     /// <p>Metadata associated with the key.</p>
     #[serde(rename = "KeyMetadata")]
@@ -1969,7 +2032,7 @@ pub struct DescribeKeyOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EncryptOutputBody {
     /// <p>The encrypted plaintext. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     #[serde(rename = "CiphertextBlob")]
@@ -1987,7 +2050,7 @@ pub struct EncryptOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyOutputBody {
     /// <p>The encrypted copy of the data key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     #[serde(rename = "CiphertextBlob")]
@@ -2005,9 +2068,18 @@ pub struct GenerateDataKeyOutputBody {
     #[serde(default)]
     pub key_id: ::std::option::Option<::std::string::String>,
 }
+impl ::std::fmt::Debug for GenerateDataKeyOutputBody {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("GenerateDataKeyOutputBody");
+        formatter.field("ciphertext_blob", &self.ciphertext_blob);
+        formatter.field("plaintext", &"*** Sensitive Data Redacted ***");
+        formatter.field("key_id", &self.key_id);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyPairOutputBody {
     /// <p>The encrypted copy of the private key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     #[serde(rename = "PrivateKeyCiphertextBlob")]
@@ -2033,9 +2105,23 @@ pub struct GenerateDataKeyPairOutputBody {
     #[serde(default)]
     pub key_pair_spec: ::std::option::Option<DataKeyPairSpec>,
 }
+impl ::std::fmt::Debug for GenerateDataKeyPairOutputBody {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("GenerateDataKeyPairOutputBody");
+        formatter.field(
+            "private_key_ciphertext_blob",
+            &self.private_key_ciphertext_blob,
+        );
+        formatter.field("private_key_plaintext", &"*** Sensitive Data Redacted ***");
+        formatter.field("public_key", &self.public_key);
+        formatter.field("key_id", &self.key_id);
+        formatter.field("key_pair_spec", &self.key_pair_spec);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyPairWithoutPlaintextOutputBody {
     /// <p>The encrypted copy of the private key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     #[serde(rename = "PrivateKeyCiphertextBlob")]
@@ -2058,7 +2144,7 @@ pub struct GenerateDataKeyPairWithoutPlaintextOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyWithoutPlaintextOutputBody {
     /// <p>The encrypted data key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     #[serde(rename = "CiphertextBlob")]
@@ -2072,7 +2158,7 @@ pub struct GenerateDataKeyWithoutPlaintextOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateRandomOutputBody {
     /// <p>The random byte string. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     #[serde(rename = "Plaintext")]
@@ -2080,9 +2166,16 @@ pub struct GenerateRandomOutputBody {
     #[serde(default)]
     pub plaintext: ::std::option::Option<Blob>,
 }
+impl ::std::fmt::Debug for GenerateRandomOutputBody {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("GenerateRandomOutputBody");
+        formatter.field("plaintext", &"*** Sensitive Data Redacted ***");
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetKeyPolicyOutputBody {
     /// <p>A key policy document in JSON format.</p>
     #[serde(rename = "Policy")]
@@ -2091,7 +2184,7 @@ pub struct GetKeyPolicyOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetKeyRotationStatusOutputBody {
     /// <p>A Boolean value that specifies whether key rotation is enabled.</p>
     #[serde(rename = "KeyRotationEnabled")]
@@ -2099,7 +2192,7 @@ pub struct GetKeyRotationStatusOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetParametersForImportOutputBody {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK to use in a subsequent <a>ImportKeyMaterial</a>
     /// request. This is the same CMK specified in the <code>GetParametersForImport</code>
@@ -2126,9 +2219,19 @@ pub struct GetParametersForImportOutputBody {
     #[serde(default)]
     pub parameters_valid_to: ::std::option::Option<Instant>,
 }
+impl ::std::fmt::Debug for GetParametersForImportOutputBody {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("GetParametersForImportOutputBody");
+        formatter.field("key_id", &self.key_id);
+        formatter.field("import_token", &self.import_token);
+        formatter.field("public_key", &"*** Sensitive Data Redacted ***");
+        formatter.field("parameters_valid_to", &self.parameters_valid_to);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetPublicKeyOutputBody {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the asymmetric CMK from which the public key was downloaded.</p>
     #[serde(rename = "KeyId")]
@@ -2170,7 +2273,7 @@ pub struct GetPublicKeyOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListAliasesOutputBody {
     /// <p>A list of aliases.</p>
     #[serde(rename = "Aliases")]
@@ -2190,7 +2293,7 @@ pub struct ListAliasesOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListGrantsOutputBody {
     /// <p>A list of grants.</p>
     #[serde(rename = "Grants")]
@@ -2210,7 +2313,7 @@ pub struct ListGrantsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListKeyPoliciesOutputBody {
     /// <p>A list of key policy names. The only valid value is <code>default</code>.</p>
     #[serde(rename = "PolicyNames")]
@@ -2230,7 +2333,7 @@ pub struct ListKeyPoliciesOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListKeysOutputBody {
     /// <p>A list of customer master keys (CMKs).</p>
     #[serde(rename = "Keys")]
@@ -2250,7 +2353,7 @@ pub struct ListKeysOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListResourceTagsOutputBody {
     /// <p>A list of tags. Each tag consists of a tag key and a tag value.</p>
     #[serde(rename = "Tags")]
@@ -2271,7 +2374,7 @@ pub struct ListResourceTagsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListRetirableGrantsOutputBody {
     /// <p>A list of grants.</p>
     #[serde(rename = "Grants")]
@@ -2291,7 +2394,7 @@ pub struct ListRetirableGrantsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ReEncryptOutputBody {
     /// <p>The reencrypted data. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     #[serde(rename = "CiphertextBlob")]
@@ -2318,7 +2421,7 @@ pub struct ReEncryptOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ScheduleKeyDeletionOutputBody {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK whose deletion is scheduled.</p>
     #[serde(rename = "KeyId")]
@@ -2332,7 +2435,7 @@ pub struct ScheduleKeyDeletionOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct SignOutputBody {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the asymmetric CMK that was used to sign the
     /// message.</p>
@@ -2366,7 +2469,7 @@ pub struct SignOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct VerifyOutputBody {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the asymmetric CMK that was used to verify the signature.</p>
     #[serde(rename = "KeyId")]

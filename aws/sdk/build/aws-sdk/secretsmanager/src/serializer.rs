@@ -9,7 +9,7 @@ use crate::model::ValidationErrorsEntry;
 use smithy_types::Blob;
 use smithy_types::Instant;
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CancelRotateSecretInputBody<'a> {
     /// <p>Specifies the secret to cancel a rotation request. You can specify either the Amazon
     /// Resource Name (ARN) or the friendly name of the secret.</p>
@@ -33,7 +33,7 @@ pub struct CancelRotateSecretInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateSecretInputBody<'a> {
     /// <p>Specifies the friendly name of the new secret.</p>
     /// <p>The secret name must be ASCII letters, digits, or the following characters :
@@ -192,9 +192,22 @@ pub struct CreateSecretInputBody<'a> {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub client_request_token: &'a ::std::option::Option<::std::string::String>,
 }
+impl<'a> ::std::fmt::Debug for CreateSecretInputBody<'a> {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("CreateSecretInputBody");
+        formatter.field("name", &self.name);
+        formatter.field("tags", &self.tags);
+        formatter.field("kms_key_id", &self.kms_key_id);
+        formatter.field("description", &self.description);
+        formatter.field("secret_string", &"*** Sensitive Data Redacted ***");
+        formatter.field("secret_binary", &"*** Sensitive Data Redacted ***");
+        formatter.field("client_request_token", &self.client_request_token);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteResourcePolicyInputBody<'a> {
     /// <p>Specifies the secret that you want to delete the attached resource-based policy for. You
     /// can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.</p>
@@ -218,7 +231,7 @@ pub struct DeleteResourcePolicyInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteSecretInputBody<'a> {
     /// <p>(Optional) Specifies that the secret is to be deleted without any recovery window. You
     /// can't use both this parameter and the <code>RecoveryWindowInDays</code> parameter in the same
@@ -266,7 +279,7 @@ pub struct DeleteSecretInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeSecretInputBody<'a> {
     /// <p>The identifier of the secret whose details you want to retrieve. You can specify either
     /// the Amazon Resource Name (ARN) or the friendly name of the secret.</p>
@@ -290,7 +303,7 @@ pub struct DescribeSecretInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetRandomPasswordInputBody<'a> {
     /// <p>Specifies that the generated password should not include digits. The default if you do not
     /// include this switch parameter is that digits can be included.</p>
@@ -344,7 +357,7 @@ pub struct GetRandomPasswordInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetResourcePolicyInputBody<'a> {
     /// <p>Specifies the secret that you want to retrieve the attached resource-based policy for. You
     /// can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.</p>
@@ -368,7 +381,7 @@ pub struct GetResourcePolicyInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetSecretValueInputBody<'a> {
     /// <p>Specifies the secret containing the version that you want to retrieve. You can specify
     /// either the Amazon Resource Name (ARN) or the friendly name of the secret.</p>
@@ -412,7 +425,7 @@ pub struct GetSecretValueInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListSecretsInputBody<'a> {
     /// <p>(Optional) Limits the number of results you want to include in
     /// the response. If you don't include this parameter, it defaults to a value that's
@@ -443,7 +456,7 @@ pub struct ListSecretsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListSecretVersionIdsInputBody<'a> {
     /// <p>(Optional) Limits the number of results you want to include in
     /// the response. If you don't include this parameter, it defaults to a value that's
@@ -491,7 +504,7 @@ pub struct ListSecretVersionIdsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutResourcePolicyInputBody<'a> {
     /// <p>A JSON-formatted string that's constructed according to the grammar and syntax for an
     /// AWS resource-based policy. The policy in the string identifies who can access or manage this
@@ -527,7 +540,7 @@ pub struct PutResourcePolicyInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutSecretValueInputBody<'a> {
     /// <p>(Optional) Specifies a unique identifier for the new version of the secret. </p>
     /// <note>
@@ -625,9 +638,20 @@ pub struct PutSecretValueInputBody<'a> {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub version_stages: &'a ::std::option::Option<::std::vec::Vec<::std::string::String>>,
 }
+impl<'a> ::std::fmt::Debug for PutSecretValueInputBody<'a> {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("PutSecretValueInputBody");
+        formatter.field("client_request_token", &self.client_request_token);
+        formatter.field("secret_id", &self.secret_id);
+        formatter.field("secret_string", &"*** Sensitive Data Redacted ***");
+        formatter.field("secret_binary", &"*** Sensitive Data Redacted ***");
+        formatter.field("version_stages", &self.version_stages);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RestoreSecretInputBody<'a> {
     /// <p>Specifies the secret that you want to restore from a previously scheduled deletion. You
     /// can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.</p>
@@ -651,7 +675,7 @@ pub struct RestoreSecretInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RotateSecretInputBody<'a> {
     /// <p>Specifies the secret that you want to rotate. You can specify either the Amazon Resource
     /// Name (ARN) or the friendly name of the secret.</p>
@@ -700,7 +724,7 @@ pub struct RotateSecretInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TagResourceInputBody<'a> {
     /// <p>The identifier for the secret that you want to attach tags to. You can specify either the
     /// Amazon Resource Name (ARN) or the friendly name of the secret.</p>
@@ -734,7 +758,7 @@ pub struct TagResourceInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UntagResourceInputBody<'a> {
     /// <p>A list of tag key names to remove from the secret. You don't specify the value. Both the
     /// key and its associated value are removed.</p>
@@ -765,7 +789,7 @@ pub struct UntagResourceInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateSecretInputBody<'a> {
     /// <p>(Optional) Specifies updated text data that you want to encrypt and store in this new
     /// version of the secret. Either <code>SecretBinary</code> or <code>SecretString</code> must have
@@ -872,9 +896,21 @@ pub struct UpdateSecretInputBody<'a> {
     #[serde(serialize_with = "crate::serde_util::stdoptionoptionblob_ser")]
     pub secret_binary: &'a ::std::option::Option<Blob>,
 }
+impl<'a> ::std::fmt::Debug for UpdateSecretInputBody<'a> {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("UpdateSecretInputBody");
+        formatter.field("secret_string", &"*** Sensitive Data Redacted ***");
+        formatter.field("kms_key_id", &self.kms_key_id);
+        formatter.field("secret_id", &self.secret_id);
+        formatter.field("description", &self.description);
+        formatter.field("client_request_token", &self.client_request_token);
+        formatter.field("secret_binary", &"*** Sensitive Data Redacted ***");
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateSecretVersionStageInputBody<'a> {
     /// <p>(Optional) The secret version ID that you want to add the staging label. If you want to
     /// remove a label from a version, then do not specify this parameter.</p>
@@ -918,7 +954,7 @@ pub struct UpdateSecretVersionStageInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ValidateResourcePolicyInputBody<'a> {
     /// <p>Identifies the Resource Policy attached to the secret.</p>
     #[serde(rename = "ResourcePolicy")]
@@ -946,7 +982,7 @@ pub struct ValidateResourcePolicyInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CancelRotateSecretOutputBody {
     /// <p>The ARN of the secret for which rotation was canceled.</p>
     #[serde(rename = "ARN")]
@@ -967,7 +1003,7 @@ pub struct CancelRotateSecretOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateSecretOutputBody {
     /// <p>The unique identifier associated with the version of the secret you just
     /// created.</p>
@@ -992,7 +1028,7 @@ pub struct CreateSecretOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteResourcePolicyOutputBody {
     /// <p>The ARN of the secret that the resource-based policy was deleted for.</p>
     #[serde(rename = "ARN")]
@@ -1005,7 +1041,7 @@ pub struct DeleteResourcePolicyOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteSecretOutputBody {
     /// <p>The ARN of the secret that is now scheduled for deletion.</p>
     #[serde(rename = "ARN")]
@@ -1025,7 +1061,7 @@ pub struct DeleteSecretOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeSecretOutputBody {
     /// <p>The most recent date and time that the Secrets Manager rotation process was successfully
     /// completed. This value is null if the secret has never rotated.</p>
@@ -1117,16 +1153,23 @@ pub struct DescribeSecretOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetRandomPasswordOutputBody {
     /// <p>A string with the generated password.</p>
     #[serde(rename = "RandomPassword")]
     #[serde(default)]
     pub random_password: ::std::option::Option<::std::string::String>,
 }
+impl ::std::fmt::Debug for GetRandomPasswordOutputBody {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("GetRandomPasswordOutputBody");
+        formatter.field("random_password", &"*** Sensitive Data Redacted ***");
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetResourcePolicyOutputBody {
     /// <p>A JSON-formatted string that describes the permissions that are associated with the
     /// attached secret. These permissions are combined with any permissions that are associated with
@@ -1147,7 +1190,7 @@ pub struct GetResourcePolicyOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetSecretValueOutputBody {
     /// <p>The unique identifier of this version of the secret.</p>
     #[serde(rename = "VersionId")]
@@ -1197,9 +1240,22 @@ pub struct GetSecretValueOutputBody {
     #[serde(default)]
     pub arn: ::std::option::Option<::std::string::String>,
 }
+impl ::std::fmt::Debug for GetSecretValueOutputBody {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("GetSecretValueOutputBody");
+        formatter.field("version_id", &self.version_id);
+        formatter.field("created_date", &self.created_date);
+        formatter.field("secret_string", &"*** Sensitive Data Redacted ***");
+        formatter.field("secret_binary", &"*** Sensitive Data Redacted ***");
+        formatter.field("version_stages", &self.version_stages);
+        formatter.field("name", &self.name);
+        formatter.field("arn", &self.arn);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListSecretsOutputBody {
     /// <p>A list of the secrets in the account.</p>
     #[serde(rename = "SecretList")]
@@ -1218,7 +1274,7 @@ pub struct ListSecretsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListSecretVersionIdsOutputBody {
     /// <p>If present in the response, this value indicates that
     /// there's more output available than included in the current response. This can
@@ -1252,7 +1308,7 @@ pub struct ListSecretVersionIdsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutResourcePolicyOutputBody {
     /// <p>The ARN of the secret retrieved by the resource-based policy.</p>
     #[serde(rename = "ARN")]
@@ -1265,7 +1321,7 @@ pub struct PutResourcePolicyOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutSecretValueOutputBody {
     /// <p>The Amazon Resource Name (ARN) for the secret for which you just created a version.</p>
     #[serde(rename = "ARN")]
@@ -1288,7 +1344,7 @@ pub struct PutSecretValueOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RestoreSecretOutputBody {
     /// <p>The ARN of the secret that was restored.</p>
     #[serde(rename = "ARN")]
@@ -1301,7 +1357,7 @@ pub struct RestoreSecretOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RotateSecretOutputBody {
     /// <p>The ARN of the secret.</p>
     #[serde(rename = "ARN")]
@@ -1319,7 +1375,7 @@ pub struct RotateSecretOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateSecretOutputBody {
     /// <p>The friendly name of the secret that was updated.</p>
     #[serde(rename = "Name")]
@@ -1344,7 +1400,7 @@ pub struct UpdateSecretOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateSecretVersionStageOutputBody {
     /// <p>The ARN of the secret with the modified staging label.</p>
     #[serde(rename = "ARN")]
@@ -1357,7 +1413,7 @@ pub struct UpdateSecretVersionStageOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ValidateResourcePolicyOutputBody {
     /// <p>Returns an error message if your policy doesn't pass validatation.</p>
     #[serde(rename = "ValidationErrors")]

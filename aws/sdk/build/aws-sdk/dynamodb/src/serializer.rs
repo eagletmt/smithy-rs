@@ -62,7 +62,7 @@ use crate::model::TransactWriteItem;
 use crate::model::WriteRequest;
 use smithy_types::Instant;
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct BatchExecuteStatementInputBody<'a> {
     /// <p>
     /// The list of PartiQL statements representing the batch to run.
@@ -74,7 +74,7 @@ pub struct BatchExecuteStatementInputBody<'a> {
 
 /// <p>Represents the input of a <code>BatchGetItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct BatchGetItemInputBody<'a> {
     /// <p>A map of one or more table names and, for each table, a map that describes one or more items to retrieve from that table. Each table name can be used only once per <code>BatchGetItem</code> request.</p>
     /// <p>Each element in the map of items to retrieve consists of the following:</p>
@@ -182,7 +182,7 @@ pub struct BatchGetItemInputBody<'a> {
 
 /// <p>Represents the input of a <code>BatchWriteItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct BatchWriteItemInputBody<'a> {
     /// <p>A map of one or more table names and, for each table, a list of operations to be performed
     /// (<code>DeleteRequest</code> or <code>PutRequest</code>). Each element in the map consists of the
@@ -253,7 +253,7 @@ pub struct BatchWriteItemInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateBackupInputBody<'a> {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
@@ -266,7 +266,7 @@ pub struct CreateBackupInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateGlobalTableInputBody<'a> {
     /// <p>The global table name.</p>
     #[serde(rename = "GlobalTableName")]
@@ -280,7 +280,7 @@ pub struct CreateGlobalTableInputBody<'a> {
 
 /// <p>Represents the input of a <code>CreateTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateTableInputBody<'a> {
     /// <p>An array of attributes that describe the key schema for the table and indexes.</p>
     #[serde(rename = "AttributeDefinitions")]
@@ -527,7 +527,7 @@ pub struct CreateTableInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteBackupInputBody<'a> {
     /// <p>The ARN associated with the backup.</p>
     #[serde(rename = "BackupArn")]
@@ -537,7 +537,7 @@ pub struct DeleteBackupInputBody<'a> {
 
 /// <p>Represents the input of a <code>DeleteItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteItemInputBody<'a> {
     /// <p>The name of the table from which to delete the item.</p>
     #[serde(rename = "TableName")]
@@ -704,7 +704,7 @@ pub struct DeleteItemInputBody<'a> {
 
 /// <p>Represents the input of a <code>DeleteTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteTableInputBody<'a> {
     /// <p>The name of the table to delete.</p>
     #[serde(rename = "TableName")]
@@ -713,7 +713,7 @@ pub struct DeleteTableInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeBackupInputBody<'a> {
     /// <p>The Amazon Resource Name (ARN) associated with the backup.</p>
     #[serde(rename = "BackupArn")]
@@ -722,7 +722,7 @@ pub struct DescribeBackupInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeContinuousBackupsInputBody<'a> {
     /// <p>Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.</p>
     #[serde(rename = "TableName")]
@@ -731,7 +731,7 @@ pub struct DescribeContinuousBackupsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeContributorInsightsInputBody<'a> {
     /// <p>The name of the table to describe.</p>
     #[serde(rename = "TableName")]
@@ -744,7 +744,7 @@ pub struct DescribeContributorInsightsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeExportInputBody<'a> {
     /// <p>The Amazon Resource Name (ARN) associated with the export.</p>
     #[serde(rename = "ExportArn")]
@@ -753,7 +753,7 @@ pub struct DescribeExportInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeGlobalTableInputBody<'a> {
     /// <p>The name of the global table.</p>
     #[serde(rename = "GlobalTableName")]
@@ -762,7 +762,7 @@ pub struct DescribeGlobalTableInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeGlobalTableSettingsInputBody<'a> {
     /// <p>The name of the global table to describe.</p>
     #[serde(rename = "GlobalTableName")]
@@ -771,7 +771,7 @@ pub struct DescribeGlobalTableSettingsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeKinesisStreamingDestinationInputBody<'a> {
     /// <p>The name of the table being described.</p>
     #[serde(rename = "TableName")]
@@ -781,7 +781,7 @@ pub struct DescribeKinesisStreamingDestinationInputBody<'a> {
 
 /// <p>Represents the input of a <code>DescribeTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeTableInputBody<'a> {
     /// <p>The name of the table to describe.</p>
     #[serde(rename = "TableName")]
@@ -790,7 +790,7 @@ pub struct DescribeTableInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeTableReplicaAutoScalingInputBody<'a> {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
@@ -799,7 +799,7 @@ pub struct DescribeTableReplicaAutoScalingInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeTimeToLiveInputBody<'a> {
     /// <p>The name of the table to be described.</p>
     #[serde(rename = "TableName")]
@@ -808,7 +808,7 @@ pub struct DescribeTimeToLiveInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableKinesisStreamingDestinationInputBody<'a> {
     /// <p>The name of the DynamoDB table.</p>
     #[serde(rename = "TableName")]
@@ -821,7 +821,7 @@ pub struct DisableKinesisStreamingDestinationInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableKinesisStreamingDestinationInputBody<'a> {
     /// <p>The name of the DynamoDB table.</p>
     #[serde(rename = "TableName")]
@@ -834,7 +834,7 @@ pub struct EnableKinesisStreamingDestinationInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ExecuteStatementInputBody<'a> {
     /// <p>
     /// The PartiQL statement representing the operation to run.
@@ -863,7 +863,7 @@ pub struct ExecuteStatementInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ExecuteTransactionInputBody<'a> {
     /// <p>
     /// The list of PartiQL statements representing the transaction to run.
@@ -880,7 +880,7 @@ pub struct ExecuteTransactionInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ExportTableToPointInTimeInputBody<'a> {
     /// <p>The Amazon Resource Name (ARN) associated with the table to export.</p>
     #[serde(rename = "TableArn")]
@@ -947,7 +947,7 @@ pub struct ExportTableToPointInTimeInputBody<'a> {
 
 /// <p>Represents the input of a <code>GetItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetItemInputBody<'a> {
     /// <p>The name of the table containing the requested item.</p>
     #[serde(rename = "TableName")]
@@ -1046,7 +1046,7 @@ pub struct GetItemInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListBackupsInputBody<'a> {
     /// <p>The backups from the table specified by <code>TableName</code> are listed. </p>
     #[serde(rename = "TableName")]
@@ -1097,7 +1097,7 @@ pub struct ListBackupsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListContributorInsightsInputBody<'a> {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
@@ -1113,7 +1113,7 @@ pub struct ListContributorInsightsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListExportsInputBody<'a> {
     /// <p>The Amazon Resource Name (ARN) associated with the exported table.</p>
     #[serde(rename = "TableArn")]
@@ -1132,7 +1132,7 @@ pub struct ListExportsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListGlobalTablesInputBody<'a> {
     /// <p>The first global table name that this operation will evaluate.</p>
     #[serde(rename = "ExclusiveStartGlobalTableName")]
@@ -1152,7 +1152,7 @@ pub struct ListGlobalTablesInputBody<'a> {
 
 /// <p>Represents the input of a <code>ListTables</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListTablesInputBody<'a> {
     /// <p>The first table name that this operation will evaluate. Use the value that was returned for
     /// <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page
@@ -1167,7 +1167,7 @@ pub struct ListTablesInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListTagsOfResourceInputBody<'a> {
     /// <p>The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).</p>
     #[serde(rename = "ResourceArn")]
@@ -1182,7 +1182,7 @@ pub struct ListTagsOfResourceInputBody<'a> {
 
 /// <p>Represents the input of a <code>PutItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutItemInputBody<'a> {
     /// <p>The name of the table to contain the item.</p>
     #[serde(rename = "TableName")]
@@ -1354,7 +1354,7 @@ pub struct PutItemInputBody<'a> {
 
 /// <p>Represents the input of a <code>Query</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct QueryInputBody<'a> {
     /// <p>The name of the table containing the requested items.</p>
     #[serde(rename = "TableName")]
@@ -1696,7 +1696,7 @@ pub struct QueryInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RestoreTableFromBackupInputBody<'a> {
     /// <p>The name of the new table to which the backup must be restored.</p>
     #[serde(rename = "TargetTableName")]
@@ -1735,7 +1735,7 @@ pub struct RestoreTableFromBackupInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RestoreTableToPointInTimeInputBody<'a> {
     /// <p>The DynamoDB table that will be restored. This value is an Amazon
     /// Resource Name (ARN).</p>
@@ -1790,7 +1790,7 @@ pub struct RestoreTableToPointInTimeInputBody<'a> {
 
 /// <p>Represents the input of a <code>Scan</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ScanInputBody<'a> {
     /// <p>The name of the table containing the requested items; or, if you provide
     /// <code>IndexName</code>, the name of the table to which that index belongs.</p>
@@ -2050,7 +2050,7 @@ pub struct ScanInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TagResourceInputBody<'a> {
     /// <p>Identifies the Amazon DynamoDB resource to which tags should be added. This value is an Amazon Resource Name (ARN).</p>
     #[serde(rename = "ResourceArn")]
@@ -2063,7 +2063,7 @@ pub struct TagResourceInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TransactGetItemsInputBody<'a> {
     /// <p>An ordered array of up to 25 <code>TransactGetItem</code> objects,
     /// each of which contains a <code>Get</code> structure.</p>
@@ -2079,7 +2079,7 @@ pub struct TransactGetItemsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TransactWriteItemsInputBody<'a> {
     /// <p>An ordered array of up to 25 <code>TransactWriteItem</code> objects, each of which
     /// contains a <code>ConditionCheck</code>, <code>Put</code>, <code>Update</code>, or
@@ -2138,7 +2138,7 @@ pub struct TransactWriteItemsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UntagResourceInputBody<'a> {
     /// <p>The DynamoDB resource that the tags will be removed from. This value is an Amazon
     /// Resource Name (ARN).</p>
@@ -2153,7 +2153,7 @@ pub struct UntagResourceInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateContinuousBackupsInputBody<'a> {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
@@ -2167,7 +2167,7 @@ pub struct UpdateContinuousBackupsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateContributorInsightsInputBody<'a> {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
@@ -2184,7 +2184,7 @@ pub struct UpdateContributorInsightsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateGlobalTableInputBody<'a> {
     /// <p>The global table name.</p>
     #[serde(rename = "GlobalTableName")]
@@ -2197,7 +2197,7 @@ pub struct UpdateGlobalTableInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateGlobalTableSettingsInputBody<'a> {
     /// <p>The name of the global table</p>
     #[serde(rename = "GlobalTableName")]
@@ -2242,7 +2242,7 @@ pub struct UpdateGlobalTableSettingsInputBody<'a> {
 
 /// <p>Represents the input of an <code>UpdateItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateItemInputBody<'a> {
     /// <p>The name of the table containing the item to update.</p>
     #[serde(rename = "TableName")]
@@ -2522,7 +2522,7 @@ pub struct UpdateItemInputBody<'a> {
 
 /// <p>Represents the input of an <code>UpdateTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateTableInputBody<'a> {
     /// <p>An array of attributes that describe the key schema for the table and indexes. If you are adding a new global secondary index to the table, <code>AttributeDefinitions</code> must include the key element(s) of the new index.</p>
     #[serde(rename = "AttributeDefinitions")]
@@ -2599,7 +2599,7 @@ pub struct UpdateTableInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateTableReplicaAutoScalingInputBody<'a> {
     /// <p>Represents the auto scaling settings of the global secondary indexes of the replica
     /// to be updated.</p>
@@ -2626,7 +2626,7 @@ pub struct UpdateTableReplicaAutoScalingInputBody<'a> {
 
 /// <p>Represents the input of an <code>UpdateTimeToLive</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateTimeToLiveInputBody<'a> {
     /// <p>The name of the table to be configured.</p>
     #[serde(rename = "TableName")]
@@ -2639,7 +2639,7 @@ pub struct UpdateTimeToLiveInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct BatchExecuteStatementOutputBody {
     /// <p>
     /// The response to each PartiQL statement in the batch.
@@ -2651,7 +2651,7 @@ pub struct BatchExecuteStatementOutputBody {
 
 /// <p>Represents the output of a <code>BatchGetItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct BatchGetItemOutputBody {
     /// <p>A map of table name to a list of items. Each object in <code>Responses</code> consists of a table
     /// name, along with a map of attribute data consisting of the data type and attribute value.</p>
@@ -2713,7 +2713,7 @@ pub struct BatchGetItemOutputBody {
 
 /// <p>Represents the output of a <code>BatchWriteItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct BatchWriteItemOutputBody {
     /// <p>A map of tables and requests against those tables that were not processed. The
     /// <code>UnprocessedItems</code> value is in the same form as <code>RequestItems</code>, so you can provide
@@ -2801,7 +2801,7 @@ pub struct BatchWriteItemOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateBackupOutputBody {
     /// <p>Contains the details of the backup created for the table.</p>
     #[serde(rename = "BackupDetails")]
@@ -2810,7 +2810,7 @@ pub struct CreateBackupOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateGlobalTableOutputBody {
     /// <p>Contains the details of the global table.</p>
     #[serde(rename = "GlobalTableDescription")]
@@ -2820,7 +2820,7 @@ pub struct CreateGlobalTableOutputBody {
 
 /// <p>Represents the output of a <code>CreateTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateTableOutputBody {
     /// <p>Represents the properties of the table.</p>
     #[serde(rename = "TableDescription")]
@@ -2829,7 +2829,7 @@ pub struct CreateTableOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteBackupOutputBody {
     /// <p>Contains the description of the backup created for the table.</p>
     #[serde(rename = "BackupDescription")]
@@ -2839,7 +2839,7 @@ pub struct DeleteBackupOutputBody {
 
 /// <p>Represents the output of a <code>DeleteItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteItemOutputBody {
     /// <p>A map of attribute names to <code>AttributeValue</code> objects, representing the item as it
     /// appeared before the <code>DeleteItem</code> operation. This map appears in the response only if
@@ -2890,7 +2890,7 @@ pub struct DeleteItemOutputBody {
 
 /// <p>Represents the output of a <code>DeleteTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteTableOutputBody {
     /// <p>Represents the properties of a table.</p>
     #[serde(rename = "TableDescription")]
@@ -2899,7 +2899,7 @@ pub struct DeleteTableOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeBackupOutputBody {
     /// <p>Contains the description of the backup created for the table.</p>
     #[serde(rename = "BackupDescription")]
@@ -2908,7 +2908,7 @@ pub struct DescribeBackupOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeContinuousBackupsOutputBody {
     /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
     #[serde(rename = "ContinuousBackupsDescription")]
@@ -2917,7 +2917,7 @@ pub struct DescribeContinuousBackupsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeContributorInsightsOutputBody {
     /// <p>The name of the table being described.</p>
     #[serde(rename = "TableName")]
@@ -2964,7 +2964,7 @@ pub struct DescribeContributorInsightsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeEndpointsOutputBody {
     /// <p>List of endpoints.</p>
     #[serde(rename = "Endpoints")]
@@ -2973,7 +2973,7 @@ pub struct DescribeEndpointsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeExportOutputBody {
     /// <p>Represents the properties of the export.</p>
     #[serde(rename = "ExportDescription")]
@@ -2982,7 +2982,7 @@ pub struct DescribeExportOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeGlobalTableOutputBody {
     /// <p>Contains the details of the global table.</p>
     #[serde(rename = "GlobalTableDescription")]
@@ -2991,7 +2991,7 @@ pub struct DescribeGlobalTableOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeGlobalTableSettingsOutputBody {
     /// <p>The name of the global table.</p>
     #[serde(rename = "GlobalTableName")]
@@ -3004,7 +3004,7 @@ pub struct DescribeGlobalTableSettingsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeKinesisStreamingDestinationOutputBody {
     /// <p>The name of the table being described.</p>
     #[serde(rename = "TableName")]
@@ -3019,7 +3019,7 @@ pub struct DescribeKinesisStreamingDestinationOutputBody {
 
 /// <p>Represents the output of a <code>DescribeLimits</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeLimitsOutputBody {
     /// <p>The maximum total read capacity units that your account allows you to provision across
     /// all of your tables in this Region.</p>
@@ -3047,7 +3047,7 @@ pub struct DescribeLimitsOutputBody {
 
 /// <p>Represents the output of a <code>DescribeTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeTableOutputBody {
     /// <p>The properties of the table.</p>
     #[serde(rename = "Table")]
@@ -3056,7 +3056,7 @@ pub struct DescribeTableOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeTableReplicaAutoScalingOutputBody {
     /// <p>Represents the auto scaling properties of the table.</p>
     #[serde(rename = "TableAutoScalingDescription")]
@@ -3065,7 +3065,7 @@ pub struct DescribeTableReplicaAutoScalingOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeTimeToLiveOutputBody {
     /// <p></p>
     #[serde(rename = "TimeToLiveDescription")]
@@ -3074,7 +3074,7 @@ pub struct DescribeTimeToLiveOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableKinesisStreamingDestinationOutputBody {
     /// <p>The name of the table being modified.</p>
     #[serde(rename = "TableName")]
@@ -3091,7 +3091,7 @@ pub struct DisableKinesisStreamingDestinationOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableKinesisStreamingDestinationOutputBody {
     /// <p>The name of the table being modified.</p>
     #[serde(rename = "TableName")]
@@ -3108,7 +3108,7 @@ pub struct EnableKinesisStreamingDestinationOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ExecuteStatementOutputBody {
     /// <p>
     /// If a read operation was used, this property will contain the result of the reade operation; a map of attribute names and their values. For the write operations this value will be empty.
@@ -3127,7 +3127,7 @@ pub struct ExecuteStatementOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ExecuteTransactionOutputBody {
     /// <p>
     /// The response to a PartiQL transaction.
@@ -3138,7 +3138,7 @@ pub struct ExecuteTransactionOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ExportTableToPointInTimeOutputBody {
     /// <p>Contains a description of the table export.</p>
     #[serde(rename = "ExportDescription")]
@@ -3148,7 +3148,7 @@ pub struct ExportTableToPointInTimeOutputBody {
 
 /// <p>Represents the output of a <code>GetItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetItemOutputBody {
     /// <p>A map of attribute names to <code>AttributeValue</code> objects, as specified
     /// by <code>ProjectionExpression</code>.</p>
@@ -3168,7 +3168,7 @@ pub struct GetItemOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListBackupsOutputBody {
     /// <p>List of <code>BackupSummary</code> objects.</p>
     #[serde(rename = "BackupSummaries")]
@@ -3192,7 +3192,7 @@ pub struct ListBackupsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListContributorInsightsOutputBody {
     /// <p>A list of ContributorInsightsSummary.</p>
     #[serde(rename = "ContributorInsightsSummaries")]
@@ -3206,7 +3206,7 @@ pub struct ListContributorInsightsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListExportsOutputBody {
     /// <p>A list of <code>ExportSummary</code> objects.</p>
     #[serde(rename = "ExportSummaries")]
@@ -3221,7 +3221,7 @@ pub struct ListExportsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListGlobalTablesOutputBody {
     /// <p>List of global table names.</p>
     #[serde(rename = "GlobalTables")]
@@ -3235,7 +3235,7 @@ pub struct ListGlobalTablesOutputBody {
 
 /// <p>Represents the output of a <code>ListTables</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListTablesOutputBody {
     /// <p>The names of the tables associated with the current account at the current endpoint. The maximum size of this array is 100.</p>
     /// <p>If <code>LastEvaluatedTableName</code> also appears in the output, you can use this value as the
@@ -3255,7 +3255,7 @@ pub struct ListTablesOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListTagsOfResourceOutputBody {
     /// <p>The tags currently associated with the Amazon DynamoDB resource.</p>
     #[serde(rename = "Tags")]
@@ -3270,7 +3270,7 @@ pub struct ListTagsOfResourceOutputBody {
 
 /// <p>Represents the output of a <code>PutItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutItemOutputBody {
     /// <p>The attribute values as they appeared before the <code>PutItem</code> operation, but only if
     /// <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element
@@ -3319,7 +3319,7 @@ pub struct PutItemOutputBody {
 
 /// <p>Represents the output of a <code>Query</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct QueryOutputBody {
     /// <p>An array of item attributes that match the query criteria. Each element in this array consists of an attribute name and the value for that attribute.</p>
     #[serde(rename = "Items")]
@@ -3362,7 +3362,7 @@ pub struct QueryOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RestoreTableFromBackupOutputBody {
     /// <p>The description of the table created from an existing backup.</p>
     #[serde(rename = "TableDescription")]
@@ -3371,7 +3371,7 @@ pub struct RestoreTableFromBackupOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RestoreTableToPointInTimeOutputBody {
     /// <p>Represents the properties of a table.</p>
     #[serde(rename = "TableDescription")]
@@ -3381,7 +3381,7 @@ pub struct RestoreTableToPointInTimeOutputBody {
 
 /// <p>Represents the output of a <code>Scan</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ScanOutputBody {
     /// <p>An array of item attributes that match the scan criteria. Each element in this array consists of an attribute name and the value for that attribute.</p>
     #[serde(rename = "Items")]
@@ -3429,7 +3429,7 @@ pub struct ScanOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TransactGetItemsOutputBody {
     /// <p>If the <i>ReturnConsumedCapacity</i> value was <code>TOTAL</code>,
     /// this is an array of <code>ConsumedCapacity</code> objects, one for each table
@@ -3453,7 +3453,7 @@ pub struct TransactGetItemsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TransactWriteItemsOutputBody {
     /// <p>The capacity units consumed by the entire <code>TransactWriteItems</code>
     /// operation. The values of the list are ordered according to
@@ -3474,7 +3474,7 @@ pub struct TransactWriteItemsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateContinuousBackupsOutputBody {
     /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
     #[serde(rename = "ContinuousBackupsDescription")]
@@ -3483,7 +3483,7 @@ pub struct UpdateContinuousBackupsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateContributorInsightsOutputBody {
     /// <p>The name of the table.</p>
     #[serde(rename = "TableName")]
@@ -3500,7 +3500,7 @@ pub struct UpdateContributorInsightsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateGlobalTableOutputBody {
     /// <p>Contains the details of the global table.</p>
     #[serde(rename = "GlobalTableDescription")]
@@ -3509,7 +3509,7 @@ pub struct UpdateGlobalTableOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateGlobalTableSettingsOutputBody {
     /// <p>The name of the global table.</p>
     #[serde(rename = "GlobalTableName")]
@@ -3523,7 +3523,7 @@ pub struct UpdateGlobalTableSettingsOutputBody {
 
 /// <p>Represents the output of an <code>UpdateItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateItemOutputBody {
     /// <p>A map of attribute values as they appear before or after the <code>UpdateItem</code>
     /// operation, as determined by the <code>ReturnValues</code> parameter.</p>
@@ -3574,7 +3574,7 @@ pub struct UpdateItemOutputBody {
 
 /// <p>Represents the output of an <code>UpdateTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateTableOutputBody {
     /// <p>Represents the properties of the table.</p>
     #[serde(rename = "TableDescription")]
@@ -3583,7 +3583,7 @@ pub struct UpdateTableOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateTableReplicaAutoScalingOutputBody {
     /// <p>Returns information about the auto scaling settings of a table with replicas.</p>
     #[serde(rename = "TableAutoScalingDescription")]
@@ -3592,7 +3592,7 @@ pub struct UpdateTableReplicaAutoScalingOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateTimeToLiveOutputBody {
     /// <p>Represents the output of an <code>UpdateTimeToLive</code> operation.</p>
     #[serde(rename = "TimeToLiveSpecification")]

@@ -13,7 +13,7 @@ use crate::model::Tag;
 use smithy_types::Blob;
 use smithy_types::Instant;
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct VerifyOutput {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the asymmetric CMK that was used to verify the signature.</p>
     pub key_id: ::std::option::Option<::std::string::String>,
@@ -77,7 +77,7 @@ impl VerifyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateKeyDescriptionOutput {}
 /// See [`UpdateKeyDescriptionOutput`](crate::output::UpdateKeyDescriptionOutput)
 pub mod update_key_description_output {
@@ -102,7 +102,7 @@ impl UpdateKeyDescriptionOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateCustomKeyStoreOutput {}
 /// See [`UpdateCustomKeyStoreOutput`](crate::output::UpdateCustomKeyStoreOutput)
 pub mod update_custom_key_store_output {
@@ -127,7 +127,7 @@ impl UpdateCustomKeyStoreOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateAliasOutput {}
 /// See [`UpdateAliasOutput`](crate::output::UpdateAliasOutput)
 pub mod update_alias_output {
@@ -152,7 +152,7 @@ impl UpdateAliasOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UntagResourceOutput {}
 /// See [`UntagResourceOutput`](crate::output::UntagResourceOutput)
 pub mod untag_resource_output {
@@ -177,7 +177,7 @@ impl UntagResourceOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TagResourceOutput {}
 /// See [`TagResourceOutput`](crate::output::TagResourceOutput)
 pub mod tag_resource_output {
@@ -202,7 +202,7 @@ impl TagResourceOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct SignOutput {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the asymmetric CMK that was used to sign the
     /// message.</p>
@@ -291,7 +291,7 @@ impl SignOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ScheduleKeyDeletionOutput {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK whose deletion is scheduled.</p>
     pub key_id: ::std::option::Option<::std::string::String>,
@@ -338,7 +338,7 @@ impl ScheduleKeyDeletionOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RevokeGrantOutput {}
 /// See [`RevokeGrantOutput`](crate::output::RevokeGrantOutput)
 pub mod revoke_grant_output {
@@ -363,7 +363,7 @@ impl RevokeGrantOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RetireGrantOutput {}
 /// See [`RetireGrantOutput`](crate::output::RetireGrantOutput)
 pub mod retire_grant_output {
@@ -388,7 +388,7 @@ impl RetireGrantOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ReEncryptOutput {
     /// <p>The reencrypted data. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     pub ciphertext_blob: ::std::option::Option<Blob>,
@@ -465,7 +465,7 @@ impl ReEncryptOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutKeyPolicyOutput {}
 /// See [`PutKeyPolicyOutput`](crate::output::PutKeyPolicyOutput)
 pub mod put_key_policy_output {
@@ -490,7 +490,7 @@ impl PutKeyPolicyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListRetirableGrantsOutput {
     /// <p>A list of grants.</p>
     pub grants: ::std::option::Option<::std::vec::Vec<GrantListEntry>>,
@@ -554,7 +554,7 @@ impl ListRetirableGrantsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListResourceTagsOutput {
     /// <p>A list of tags. Each tag consists of a tag key and a tag value.</p>
     pub tags: ::std::option::Option<::std::vec::Vec<Tag>>,
@@ -620,7 +620,7 @@ impl ListResourceTagsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListKeysOutput {
     /// <p>A list of customer master keys (CMKs).</p>
     pub keys: ::std::option::Option<::std::vec::Vec<KeyListEntry>>,
@@ -684,7 +684,7 @@ impl ListKeysOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListKeyPoliciesOutput {
     /// <p>A list of key policy names. The only valid value is <code>default</code>.</p>
     pub policy_names: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
@@ -747,7 +747,7 @@ impl ListKeyPoliciesOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListGrantsOutput {
     /// <p>A list of grants.</p>
     pub grants: ::std::option::Option<::std::vec::Vec<GrantListEntry>>,
@@ -811,7 +811,7 @@ impl ListGrantsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListAliasesOutput {
     /// <p>A list of aliases.</p>
     pub aliases: ::std::option::Option<::std::vec::Vec<AliasListEntry>>,
@@ -875,7 +875,7 @@ impl ListAliasesOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ImportKeyMaterialOutput {}
 /// See [`ImportKeyMaterialOutput`](crate::output::ImportKeyMaterialOutput)
 pub mod import_key_material_output {
@@ -900,7 +900,7 @@ impl ImportKeyMaterialOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetPublicKeyOutput {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the asymmetric CMK from which the public key was downloaded.</p>
     pub key_id: ::std::option::Option<::std::string::String>,
@@ -1014,7 +1014,7 @@ impl GetPublicKeyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetParametersForImportOutput {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK to use in a subsequent <a>ImportKeyMaterial</a>
     /// request. This is the same CMK specified in the <code>GetParametersForImport</code>
@@ -1029,6 +1029,16 @@ pub struct GetParametersForImportOutput {
     /// you cannot use them to make an <a>ImportKeyMaterial</a> request and you must send
     /// another <code>GetParametersForImport</code> request to get new ones.</p>
     pub parameters_valid_to: ::std::option::Option<Instant>,
+}
+impl ::std::fmt::Debug for GetParametersForImportOutput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("GetParametersForImportOutput");
+        formatter.field("key_id", &self.key_id);
+        formatter.field("import_token", &self.import_token);
+        formatter.field("public_key", &"*** Sensitive Data Redacted ***");
+        formatter.field("parameters_valid_to", &self.parameters_valid_to);
+        formatter.finish()
+    }
 }
 /// See [`GetParametersForImportOutput`](crate::output::GetParametersForImportOutput)
 pub mod get_parameters_for_import_output {
@@ -1090,7 +1100,7 @@ impl GetParametersForImportOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetKeyRotationStatusOutput {
     /// <p>A Boolean value that specifies whether key rotation is enabled.</p>
     pub key_rotation_enabled: bool,
@@ -1127,7 +1137,7 @@ impl GetKeyRotationStatusOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetKeyPolicyOutput {
     /// <p>A key policy document in JSON format.</p>
     pub policy: ::std::option::Option<::std::string::String>,
@@ -1164,10 +1174,17 @@ impl GetKeyPolicyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateRandomOutput {
     /// <p>The random byte string. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     pub plaintext: ::std::option::Option<Blob>,
+}
+impl ::std::fmt::Debug for GenerateRandomOutput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("GenerateRandomOutput");
+        formatter.field("plaintext", &"*** Sensitive Data Redacted ***");
+        formatter.finish()
+    }
 }
 /// See [`GenerateRandomOutput`](crate::output::GenerateRandomOutput)
 pub mod generate_random_output {
@@ -1202,7 +1219,7 @@ impl GenerateRandomOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyWithoutPlaintextOutput {
     /// <p>The encrypted data key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     pub ciphertext_blob: ::std::option::Option<Blob>,
@@ -1249,7 +1266,7 @@ impl GenerateDataKeyWithoutPlaintextOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyPairWithoutPlaintextOutput {
     /// <p>The encrypted copy of the private key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     pub private_key_ciphertext_blob: ::std::option::Option<Blob>,
@@ -1315,7 +1332,7 @@ impl GenerateDataKeyPairWithoutPlaintextOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyPairOutput {
     /// <p>The encrypted copy of the private key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     pub private_key_ciphertext_blob: ::std::option::Option<Blob>,
@@ -1327,6 +1344,20 @@ pub struct GenerateDataKeyPairOutput {
     pub key_id: ::std::option::Option<::std::string::String>,
     /// <p>The type of data key pair that was generated.</p>
     pub key_pair_spec: ::std::option::Option<DataKeyPairSpec>,
+}
+impl ::std::fmt::Debug for GenerateDataKeyPairOutput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("GenerateDataKeyPairOutput");
+        formatter.field(
+            "private_key_ciphertext_blob",
+            &self.private_key_ciphertext_blob,
+        );
+        formatter.field("private_key_plaintext", &"*** Sensitive Data Redacted ***");
+        formatter.field("public_key", &self.public_key);
+        formatter.field("key_id", &self.key_id);
+        formatter.field("key_pair_spec", &self.key_pair_spec);
+        formatter.finish()
+    }
 }
 /// See [`GenerateDataKeyPairOutput`](crate::output::GenerateDataKeyPairOutput)
 pub mod generate_data_key_pair_output {
@@ -1390,7 +1421,7 @@ impl GenerateDataKeyPairOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyOutput {
     /// <p>The encrypted copy of the data key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     pub ciphertext_blob: ::std::option::Option<Blob>,
@@ -1399,6 +1430,15 @@ pub struct GenerateDataKeyOutput {
     pub plaintext: ::std::option::Option<Blob>,
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK that encrypted the data key.</p>
     pub key_id: ::std::option::Option<::std::string::String>,
+}
+impl ::std::fmt::Debug for GenerateDataKeyOutput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("GenerateDataKeyOutput");
+        formatter.field("ciphertext_blob", &self.ciphertext_blob);
+        formatter.field("plaintext", &"*** Sensitive Data Redacted ***");
+        formatter.field("key_id", &self.key_id);
+        formatter.finish()
+    }
 }
 /// See [`GenerateDataKeyOutput`](crate::output::GenerateDataKeyOutput)
 pub mod generate_data_key_output {
@@ -1448,7 +1488,7 @@ impl GenerateDataKeyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EncryptOutput {
     /// <p>The encrypted plaintext. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
     pub ciphertext_blob: ::std::option::Option<Blob>,
@@ -1505,7 +1545,7 @@ impl EncryptOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableKeyRotationOutput {}
 /// See [`EnableKeyRotationOutput`](crate::output::EnableKeyRotationOutput)
 pub mod enable_key_rotation_output {
@@ -1530,7 +1570,7 @@ impl EnableKeyRotationOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableKeyOutput {}
 /// See [`EnableKeyOutput`](crate::output::EnableKeyOutput)
 pub mod enable_key_output {
@@ -1555,7 +1595,7 @@ impl EnableKeyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisconnectCustomKeyStoreOutput {}
 /// See [`DisconnectCustomKeyStoreOutput`](crate::output::DisconnectCustomKeyStoreOutput)
 pub mod disconnect_custom_key_store_output {
@@ -1580,7 +1620,7 @@ impl DisconnectCustomKeyStoreOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableKeyRotationOutput {}
 /// See [`DisableKeyRotationOutput`](crate::output::DisableKeyRotationOutput)
 pub mod disable_key_rotation_output {
@@ -1605,7 +1645,7 @@ impl DisableKeyRotationOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableKeyOutput {}
 /// See [`DisableKeyOutput`](crate::output::DisableKeyOutput)
 pub mod disable_key_output {
@@ -1630,7 +1670,7 @@ impl DisableKeyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeKeyOutput {
     /// <p>Metadata associated with the key.</p>
     pub key_metadata: ::std::option::Option<KeyMetadata>,
@@ -1668,7 +1708,7 @@ impl DescribeKeyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeCustomKeyStoresOutput {
     /// <p>Contains metadata about each custom key store.</p>
     pub custom_key_stores: ::std::option::Option<::std::vec::Vec<CustomKeyStoresListEntry>>,
@@ -1732,7 +1772,7 @@ impl DescribeCustomKeyStoresOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteImportedKeyMaterialOutput {}
 /// See [`DeleteImportedKeyMaterialOutput`](crate::output::DeleteImportedKeyMaterialOutput)
 pub mod delete_imported_key_material_output {
@@ -1757,7 +1797,7 @@ impl DeleteImportedKeyMaterialOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteCustomKeyStoreOutput {}
 /// See [`DeleteCustomKeyStoreOutput`](crate::output::DeleteCustomKeyStoreOutput)
 pub mod delete_custom_key_store_output {
@@ -1782,7 +1822,7 @@ impl DeleteCustomKeyStoreOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteAliasOutput {}
 /// See [`DeleteAliasOutput`](crate::output::DeleteAliasOutput)
 pub mod delete_alias_output {
@@ -1807,7 +1847,7 @@ impl DeleteAliasOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DecryptOutput {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK that was used to decrypt the ciphertext.</p>
     pub key_id: ::std::option::Option<::std::string::String>,
@@ -1815,6 +1855,15 @@ pub struct DecryptOutput {
     pub plaintext: ::std::option::Option<Blob>,
     /// <p>The encryption algorithm that was used to decrypt the ciphertext.</p>
     pub encryption_algorithm: ::std::option::Option<EncryptionAlgorithmSpec>,
+}
+impl ::std::fmt::Debug for DecryptOutput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("DecryptOutput");
+        formatter.field("key_id", &self.key_id);
+        formatter.field("plaintext", &"*** Sensitive Data Redacted ***");
+        formatter.field("encryption_algorithm", &self.encryption_algorithm);
+        formatter.finish()
+    }
 }
 /// See [`DecryptOutput`](crate::output::DecryptOutput)
 pub mod decrypt_output {
@@ -1864,7 +1913,7 @@ impl DecryptOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateKeyOutput {
     /// <p>Metadata associated with the CMK.</p>
     pub key_metadata: ::std::option::Option<KeyMetadata>,
@@ -1902,7 +1951,7 @@ impl CreateKeyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateGrantOutput {
     /// <p>The grant token.</p>
     /// <p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the
@@ -1956,7 +2005,7 @@ impl CreateGrantOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateCustomKeyStoreOutput {
     /// <p>A unique identifier for the new custom key store.</p>
     pub custom_key_store_id: ::std::option::Option<::std::string::String>,
@@ -1993,7 +2042,7 @@ impl CreateCustomKeyStoreOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateAliasOutput {}
 /// See [`CreateAliasOutput`](crate::output::CreateAliasOutput)
 pub mod create_alias_output {
@@ -2018,7 +2067,7 @@ impl CreateAliasOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ConnectCustomKeyStoreOutput {}
 /// See [`ConnectCustomKeyStoreOutput`](crate::output::ConnectCustomKeyStoreOutput)
 pub mod connect_custom_key_store_output {
@@ -2043,7 +2092,7 @@ impl ConnectCustomKeyStoreOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CancelKeyDeletionOutput {
     /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK whose deletion is canceled.</p>
     pub key_id: ::std::option::Option<::std::string::String>,

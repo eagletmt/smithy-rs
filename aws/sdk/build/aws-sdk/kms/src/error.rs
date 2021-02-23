@@ -3951,11 +3951,11 @@ impl ::std::error::Error for VerifyError {
 /// found.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct NotFoundError {
     #[serde(rename = "message")]
@@ -4025,11 +4025,11 @@ impl NotFoundError {
 /// </i>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KMSInvalidStateError {
     #[serde(rename = "message")]
@@ -4096,11 +4096,11 @@ impl KMSInvalidStateError {
 /// message with the specified CMK and signing algorithm.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KMSInvalidSignatureError {
     #[serde(rename = "message")]
@@ -4166,11 +4166,11 @@ impl KMSInvalidSignatureError {
 /// retried.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KMSInternalError {
     #[serde(rename = "message")]
@@ -4236,11 +4236,11 @@ impl KMSInternalError {
 /// request.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KeyUnavailableError {
     #[serde(rename = "message")]
@@ -4321,11 +4321,11 @@ impl KeyUnavailableError {
 /// <p>To find the encryption or signing algorithms supported for a particular CMK, use the <a>DescribeKey</a> operation.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidKeyUsageError {
     #[serde(rename = "message")]
@@ -4390,11 +4390,11 @@ impl InvalidKeyUsageError {
 /// <p>The request was rejected because the specified grant token is not valid.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidGrantTokenError {
     #[serde(rename = "message")]
@@ -4459,11 +4459,11 @@ impl InvalidGrantTokenError {
 /// <p>The request was rejected because the specified CMK is not enabled.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct DisabledError {
     #[serde(rename = "message")]
@@ -4529,11 +4529,11 @@ impl DisabledError {
 /// retried.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct DependencyTimeoutError {
     #[serde(rename = "message")]
@@ -4599,11 +4599,11 @@ impl DependencyTimeoutError {
 /// valid.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidArnError {
     #[serde(rename = "message")]
@@ -4669,11 +4669,11 @@ impl InvalidArnError {
 /// key store name or ID.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CustomKeyStoreNotFoundError {
     #[serde(rename = "message")]
@@ -4740,11 +4740,11 @@ impl CustomKeyStoreNotFoundError {
 /// unique in the account.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CustomKeyStoreNameInUseError {
     #[serde(rename = "message")]
@@ -4829,11 +4829,11 @@ impl CustomKeyStoreNameInUseError {
 /// </ul>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CustomKeyStoreInvalidStateError {
     #[serde(rename = "message")]
@@ -4905,11 +4905,11 @@ impl CustomKeyStoreInvalidStateError {
 /// cluster certificate of a cluster, use the <a href="https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html">DescribeClusters</a> operation.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CloudHsmClusterNotRelatedError {
     #[serde(rename = "message")]
@@ -4975,11 +4975,11 @@ impl CloudHsmClusterNotRelatedError {
 /// cluster ID. Retry the request with a different cluster ID.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CloudHsmClusterNotFoundError {
     #[serde(rename = "message")]
@@ -5046,11 +5046,11 @@ impl CloudHsmClusterNotFoundError {
 /// detailed instructions, see <a href="https://docs.aws.amazon.com/cloudhsm/latest/userguide/getting-started.html">Getting Started</a> in the <i>AWS CloudHSM User Guide</i>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CloudHsmClusterNotActiveError {
     #[serde(rename = "message")]
@@ -5146,11 +5146,11 @@ impl CloudHsmClusterNotActiveError {
 /// </i>. </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CloudHsmClusterInvalidConfigurationError {
     #[serde(rename = "message")]
@@ -5216,11 +5216,11 @@ impl CloudHsmClusterInvalidConfigurationError {
 /// <i>AWS Key Management Service Developer Guide</i>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct LimitExceededError {
     #[serde(rename = "message")]
@@ -5285,11 +5285,11 @@ impl LimitExceededError {
 /// <p>The request was rejected because one or more tags are not valid.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TagError {
     #[serde(rename = "message")]
@@ -5354,11 +5354,11 @@ impl TagError {
 /// <p>The request was rejected because the specified <code>GrantId</code> is not valid.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidGrantIdError {
     #[serde(rename = "message")]
@@ -5428,11 +5428,11 @@ impl InvalidGrantIdError {
 /// AWS KMS could not decrypt the encrypted (wrapped) key material. </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidCiphertextError {
     #[serde(rename = "message")]
@@ -5500,11 +5500,11 @@ impl InvalidCiphertextError {
 /// the ciphertext.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct IncorrectKeyError {
     #[serde(rename = "message")]
@@ -5570,11 +5570,11 @@ impl IncorrectKeyError {
 /// resource is not valid for this operation.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct UnsupportedOperationError {
     #[serde(rename = "message")]
@@ -5640,11 +5640,11 @@ impl UnsupportedOperationError {
 /// correct.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct MalformedPolicyDocumentError {
     #[serde(rename = "message")]
@@ -5710,11 +5710,11 @@ impl MalformedPolicyDocumentError {
 /// begin is not valid.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidMarkerError {
     #[serde(rename = "message")]
@@ -5780,11 +5780,11 @@ impl InvalidMarkerError {
 /// with a different customer master key (CMK).</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidImportTokenError {
     #[serde(rename = "message")]
@@ -5851,11 +5851,11 @@ impl InvalidImportTokenError {
 /// (CMK).</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct IncorrectKeyMaterialError {
     #[serde(rename = "message")]
@@ -5921,11 +5921,11 @@ impl IncorrectKeyMaterialError {
 /// public key to encrypt the key material, and then try the request again.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ExpiredImportTokenError {
     #[serde(rename = "message")]
@@ -5992,11 +5992,11 @@ impl ExpiredImportTokenError {
 /// can delete the custom key store.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CustomKeyStoreHasCMKsError {
     #[serde(rename = "message")]
@@ -6064,11 +6064,11 @@ impl CustomKeyStoreHasCMKsError {
 /// <code>customerCA.crt</code> file.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct IncorrectTrustAnchorError {
     #[serde(rename = "message")]
@@ -6137,11 +6137,11 @@ impl IncorrectTrustAnchorError {
 /// cluster certificate of a cluster, use the <a href="https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html">DescribeClusters</a> operation.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CloudHsmClusterInUseError {
     #[serde(rename = "message")]
@@ -6206,11 +6206,11 @@ impl CloudHsmClusterInUseError {
 /// <p>The request was rejected because the specified alias name is not valid.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct InvalidAliasNameError {
     #[serde(rename = "message")]
@@ -6276,11 +6276,11 @@ impl InvalidAliasNameError {
 /// exists.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct AlreadyExistsError {
     #[serde(rename = "message")]

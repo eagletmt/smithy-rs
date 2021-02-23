@@ -20,7 +20,7 @@ use smithy_types::Blob;
 use smithy_types::Instant;
 /// <p>Represents the input for <code>AddTagsToStream</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct AddTagsToStreamInputBody<'a> {
     /// <p>A set of up to 10 key-value pairs to use to create the tags.</p>
     #[serde(rename = "Tags")]
@@ -36,7 +36,7 @@ pub struct AddTagsToStreamInputBody<'a> {
 
 /// <p>Represents the input for <code>CreateStream</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateStreamInputBody<'a> {
     /// <p>A name to identify the stream. The stream name is scoped to the AWS account used by
     /// the application that creates the stream. It is also scoped by AWS Region. That is, two
@@ -55,7 +55,7 @@ pub struct CreateStreamInputBody<'a> {
 
 /// <p>Represents the input for <a>DecreaseStreamRetentionPeriod</a>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DecreaseStreamRetentionPeriodInputBody<'a> {
     /// <p>The new retention period of the stream, in hours. Must be less than the current
     /// retention period.</p>
@@ -70,7 +70,7 @@ pub struct DecreaseStreamRetentionPeriodInputBody<'a> {
 
 /// <p>Represents the input for <a>DeleteStream</a>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteStreamInputBody<'a> {
     /// <p>The name of the stream to delete.</p>
     #[serde(rename = "StreamName")]
@@ -85,7 +85,7 @@ pub struct DeleteStreamInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeregisterStreamConsumerInputBody<'a> {
     /// <p>The ARN of the Kinesis data stream that the consumer is registered with. For more
     /// information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
@@ -108,7 +108,7 @@ pub struct DeregisterStreamConsumerInputBody<'a> {
 
 /// <p>Represents the input for <code>DescribeStream</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeStreamInputBody<'a> {
     /// <p>The name of the stream to describe.</p>
     #[serde(rename = "StreamName")]
@@ -126,7 +126,7 @@ pub struct DescribeStreamInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeStreamConsumerInputBody<'a> {
     /// <p>The ARN of the Kinesis data stream that the consumer is registered with. For more
     /// information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
@@ -144,7 +144,7 @@ pub struct DescribeStreamConsumerInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeStreamSummaryInputBody<'a> {
     /// <p>The name of the stream to describe.</p>
     #[serde(rename = "StreamName")]
@@ -154,7 +154,7 @@ pub struct DescribeStreamSummaryInputBody<'a> {
 
 /// <p>Represents the input for <a>DisableEnhancedMonitoring</a>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableEnhancedMonitoringInputBody<'a> {
     /// <p>List of shard-level metrics to disable.</p>
     /// <p>The following are the valid shard-level metrics. The value "<code>ALL</code>"
@@ -216,7 +216,7 @@ pub struct DisableEnhancedMonitoringInputBody<'a> {
 
 /// <p>Represents the input for <a>EnableEnhancedMonitoring</a>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableEnhancedMonitoringInputBody<'a> {
     /// <p>The name of the stream for which to enable enhanced monitoring.</p>
     #[serde(rename = "StreamName")]
@@ -277,7 +277,7 @@ pub struct EnableEnhancedMonitoringInputBody<'a> {
 
 /// <p>Represents the input for <a>GetRecords</a>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetRecordsInputBody<'a> {
     /// <p>The position in the shard from which you want to start sequentially reading data
     /// records. A shard iterator specifies this position using the sequence number of a data
@@ -295,7 +295,7 @@ pub struct GetRecordsInputBody<'a> {
 
 /// <p>Represents the input for <code>GetShardIterator</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetShardIteratorInputBody<'a> {
     /// <p>Determines how the shard iterator is used to start reading data records from the
     /// shard.</p>
@@ -355,7 +355,7 @@ pub struct GetShardIteratorInputBody<'a> {
 
 /// <p>Represents the input for <a>IncreaseStreamRetentionPeriod</a>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct IncreaseStreamRetentionPeriodInputBody<'a> {
     /// <p>The new retention period of the stream, in hours. Must be more than the current
     /// retention period.</p>
@@ -369,7 +369,7 @@ pub struct IncreaseStreamRetentionPeriodInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListShardsInputBody<'a> {
     /// <p>The maximum number of shards to return in a single call to <code>ListShards</code>.
     /// The minimum value you can specify for this parameter is 1, and the maximum is 10,000,
@@ -437,7 +437,7 @@ pub struct ListShardsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListStreamConsumersInputBody<'a> {
     /// <p>When the number of consumers that are registered with the data stream is greater than
     /// the default value for the <code>MaxResults</code> parameter, or if you explicitly
@@ -488,7 +488,7 @@ pub struct ListStreamConsumersInputBody<'a> {
 
 /// <p>Represents the input for <code>ListStreams</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListStreamsInputBody<'a> {
     /// <p>The maximum number of streams to list.</p>
     #[serde(rename = "Limit")]
@@ -502,7 +502,7 @@ pub struct ListStreamsInputBody<'a> {
 
 /// <p>Represents the input for <code>ListTagsForStream</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListTagsForStreamInputBody<'a> {
     /// <p>The number of tags to return. If this number is less than the total number of tags
     /// associated with the stream, <code>HasMoreTags</code> is set to <code>true</code>. To
@@ -525,7 +525,7 @@ pub struct ListTagsForStreamInputBody<'a> {
 
 /// <p>Represents the input for <code>MergeShards</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct MergeShardsInputBody<'a> {
     /// <p>The shard ID of the adjacent shard for the merge.</p>
     #[serde(rename = "AdjacentShardToMerge")]
@@ -544,7 +544,7 @@ pub struct MergeShardsInputBody<'a> {
 
 /// <p>Represents the input for <code>PutRecord</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutRecordInputBody<'a> {
     /// <p>The name of the stream to put the data record into.</p>
     #[serde(rename = "StreamName")]
@@ -585,7 +585,7 @@ pub struct PutRecordInputBody<'a> {
 
 /// <p>A <code>PutRecords</code> request.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutRecordsInputBody<'a> {
     /// <p>The records associated with the request.</p>
     #[serde(rename = "Records")]
@@ -598,7 +598,7 @@ pub struct PutRecordsInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RegisterStreamConsumerInputBody<'a> {
     /// <p>For a given Kinesis data stream, each consumer must have a unique name. However,
     /// consumer names don't have to be unique across data streams.</p>
@@ -614,7 +614,7 @@ pub struct RegisterStreamConsumerInputBody<'a> {
 
 /// <p>Represents the input for <code>RemoveTagsFromStream</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RemoveTagsFromStreamInputBody<'a> {
     /// <p>A list of tag keys. Each corresponding tag is removed from the stream.</p>
     #[serde(rename = "TagKeys")]
@@ -628,7 +628,7 @@ pub struct RemoveTagsFromStreamInputBody<'a> {
 
 /// <p>Represents the input for <code>SplitShard</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct SplitShardInputBody<'a> {
     /// <p>The shard ID of the shard to split.</p>
     #[serde(rename = "ShardToSplit")]
@@ -651,7 +651,7 @@ pub struct SplitShardInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct StartStreamEncryptionInputBody<'a> {
     /// <p>The name of the stream for which to start encrypting records.</p>
     #[serde(rename = "StreamName")]
@@ -698,7 +698,7 @@ pub struct StartStreamEncryptionInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct StopStreamEncryptionInputBody<'a> {
     /// <p>The name of the stream on which to stop encrypting records.</p>
     #[serde(rename = "StreamName")]
@@ -745,7 +745,7 @@ pub struct StopStreamEncryptionInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct SubscribeToShardInputBody<'a> {
     /// <p>The ID of the shard you want to subscribe to. To see a list of all the shards for a
     /// given stream, use <a>ListShards</a>.</p>
@@ -763,7 +763,7 @@ pub struct SubscribeToShardInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Serialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateShardCountInputBody<'a> {
     /// <p>The scaling type. Uniform scaling creates shards of equal size.</p>
     #[serde(rename = "ScalingType")]
@@ -799,7 +799,7 @@ pub struct UpdateShardCountInputBody<'a> {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeLimitsOutputBody {
     /// <p>The number of open shards.</p>
     #[serde(rename = "OpenShardCount")]
@@ -813,7 +813,7 @@ pub struct DescribeLimitsOutputBody {
 
 /// <p>Represents the output for <code>DescribeStream</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeStreamOutputBody {
     /// <p>The current status of the stream, the stream Amazon Resource Name (ARN), an array
     /// of shard objects that comprise the stream, and whether there are more shards
@@ -824,7 +824,7 @@ pub struct DescribeStreamOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeStreamConsumerOutputBody {
     /// <p>An object that represents the details of the consumer.</p>
     #[serde(rename = "ConsumerDescription")]
@@ -833,7 +833,7 @@ pub struct DescribeStreamConsumerOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeStreamSummaryOutputBody {
     /// <p>A <a>StreamDescriptionSummary</a> containing information about the
     /// stream.</p>
@@ -844,7 +844,7 @@ pub struct DescribeStreamSummaryOutputBody {
 
 /// <p>Represents the output for <a>EnableEnhancedMonitoring</a> and <a>DisableEnhancedMonitoring</a>.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableEnhancedMonitoringOutputBody {
     /// <p>Represents the list of all the metrics that would be in the enhanced state after
     /// the operation.</p>
@@ -864,7 +864,7 @@ pub struct DisableEnhancedMonitoringOutputBody {
 
 /// <p>Represents the output for <a>EnableEnhancedMonitoring</a> and <a>DisableEnhancedMonitoring</a>.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableEnhancedMonitoringOutputBody {
     /// <p>Represents the list of all the metrics that would be in the enhanced state after
     /// the operation.</p>
@@ -884,7 +884,7 @@ pub struct EnableEnhancedMonitoringOutputBody {
 
 /// <p>Represents the output for <a>GetRecords</a>.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetRecordsOutputBody {
     /// <p>The next position in the shard from which to start sequentially reading data
     /// records. If set to <code>null</code>, the shard has been closed and the requested
@@ -910,7 +910,7 @@ pub struct GetRecordsOutputBody {
 
 /// <p>Represents the output for <code>GetShardIterator</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetShardIteratorOutputBody {
     /// <p>The position in the shard from which to start reading data records sequentially. A
     /// shard iterator specifies this position using the sequence number of a data record in a
@@ -921,7 +921,7 @@ pub struct GetShardIteratorOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListShardsOutputBody {
     /// <p>When the number of shards in the data stream is greater than the default value for
     /// the <code>MaxResults</code> parameter, or if you explicitly specify a value for
@@ -950,7 +950,7 @@ pub struct ListShardsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListStreamConsumersOutputBody {
     /// <p>An array of JSON objects. Each object represents one registered consumer.</p>
     #[serde(rename = "Consumers")]
@@ -978,7 +978,7 @@ pub struct ListStreamConsumersOutputBody {
 
 /// <p>Represents the output for <code>ListStreams</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListStreamsOutputBody {
     /// <p>The names of the streams that are associated with the AWS account making the
     /// <code>ListStreams</code> request.</p>
@@ -993,7 +993,7 @@ pub struct ListStreamsOutputBody {
 
 /// <p>Represents the output for <code>ListTagsForStream</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListTagsForStreamOutputBody {
     /// <p>A list of tags associated with <code>StreamName</code>, starting with the first tag
     /// after <code>ExclusiveStartTagKey</code> and up to the specified <code>Limit</code>.
@@ -1010,7 +1010,7 @@ pub struct ListTagsForStreamOutputBody {
 
 /// <p>Represents the output for <code>PutRecord</code>.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutRecordOutputBody {
     /// <p>The shard ID of the shard where the data record was placed.</p>
     #[serde(rename = "ShardId")]
@@ -1043,7 +1043,7 @@ pub struct PutRecordOutputBody {
 /// <p>
 /// <code>PutRecords</code> results.</p>
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutRecordsOutputBody {
     /// <p>An array of successfully and unsuccessfully processed record results, correlated
     /// with the request by natural ordering. A record that is successfully added to a stream
@@ -1077,7 +1077,7 @@ pub struct PutRecordsOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RegisterStreamConsumerOutputBody {
     /// <p>An object that represents the details of the consumer you registered. When you
     /// register a consumer, it gets an ARN that is generated by Kinesis Data Streams.</p>
@@ -1087,7 +1087,7 @@ pub struct RegisterStreamConsumerOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct SubscribeToShardOutputBody {
     /// <p>The event stream that your consumer can use to read records from the shard.</p>
     #[serde(rename = "EventStream")]
@@ -1096,7 +1096,7 @@ pub struct SubscribeToShardOutputBody {
 }
 
 #[non_exhaustive]
-#[derive(::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::serde::Deserialize, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateShardCountOutputBody {
     /// <p>The name of the stream.</p>
     #[serde(rename = "StreamName")]

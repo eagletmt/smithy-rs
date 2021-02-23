@@ -31,6 +31,7 @@ pub mod output;
 mod serde_util;
 mod serializer;
 pub static PKG_VERSION: &str = env!("CARGO_PKG_VERSION");
+pub use ::smithy_types::Blob;
 static API_METADATA: ::aws_http::user_agent::ApiMetadata =
     ::aws_http::user_agent::ApiMetadata::new("dynamodb", PKG_VERSION);
 pub use ::aws_auth::Credentials;

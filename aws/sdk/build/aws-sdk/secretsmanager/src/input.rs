@@ -2859,7 +2859,7 @@ impl ValidateResourcePolicyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ValidateResourcePolicyInput {
     /// <p>Identifies the Resource Policy attached to the secret.</p>
     pub resource_policy: ::std::option::Option<::std::string::String>,
@@ -2883,7 +2883,7 @@ pub struct ValidateResourcePolicyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateSecretVersionStageInput {
     /// <p>(Optional) The secret version ID that you want to add the staging label. If you want to
     /// remove a label from a version, then do not specify this parameter.</p>
@@ -2919,7 +2919,7 @@ pub struct UpdateSecretVersionStageInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateSecretInput {
     /// <p>(Optional) Specifies updated text data that you want to encrypt and store in this new
     /// version of the secret. Either <code>SecretBinary</code> or <code>SecretString</code> must have
@@ -3013,9 +3013,21 @@ pub struct UpdateSecretInput {
     /// <p>This parameter is not accessible using the Secrets Manager console.</p>
     pub secret_binary: ::std::option::Option<Blob>,
 }
+impl ::std::fmt::Debug for UpdateSecretInput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("UpdateSecretInput");
+        formatter.field("secret_string", &"*** Sensitive Data Redacted ***");
+        formatter.field("kms_key_id", &self.kms_key_id);
+        formatter.field("secret_id", &self.secret_id);
+        formatter.field("description", &self.description);
+        formatter.field("client_request_token", &self.client_request_token);
+        formatter.field("secret_binary", &"*** Sensitive Data Redacted ***");
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UntagResourceInput {
     /// <p>A list of tag key names to remove from the secret. You don't specify the value. Both the
     /// key and its associated value are removed.</p>
@@ -3042,7 +3054,7 @@ pub struct UntagResourceInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TagResourceInput {
     /// <p>The identifier for the secret that you want to attach tags to. You can specify either the
     /// Amazon Resource Name (ARN) or the friendly name of the secret.</p>
@@ -3072,7 +3084,7 @@ pub struct TagResourceInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RotateSecretInput {
     /// <p>Specifies the secret that you want to rotate. You can specify either the Amazon Resource
     /// Name (ARN) or the friendly name of the secret.</p>
@@ -3113,7 +3125,7 @@ pub struct RotateSecretInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RestoreSecretInput {
     /// <p>Specifies the secret that you want to restore from a previously scheduled deletion. You
     /// can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.</p>
@@ -3135,7 +3147,7 @@ pub struct RestoreSecretInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutSecretValueInput {
     /// <p>(Optional) Specifies a unique identifier for the new version of the secret. </p>
     /// <note>
@@ -3222,9 +3234,20 @@ pub struct PutSecretValueInput {
     /// moves the staging label <code>AWSCURRENT</code> to this new version.</p>
     pub version_stages: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
 }
+impl ::std::fmt::Debug for PutSecretValueInput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("PutSecretValueInput");
+        formatter.field("client_request_token", &self.client_request_token);
+        formatter.field("secret_id", &self.secret_id);
+        formatter.field("secret_string", &"*** Sensitive Data Redacted ***");
+        formatter.field("secret_binary", &"*** Sensitive Data Redacted ***");
+        formatter.field("version_stages", &self.version_stages);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutResourcePolicyInput {
     /// <p>A JSON-formatted string that's constructed according to the grammar and syntax for an
     /// AWS resource-based policy. The policy in the string identifies who can access or manage this
@@ -3254,7 +3277,7 @@ pub struct PutResourcePolicyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListSecretVersionIdsInput {
     /// <p>(Optional) Limits the number of results you want to include in
     /// the response. If you don't include this parameter, it defaults to a value that's
@@ -3294,7 +3317,7 @@ pub struct ListSecretVersionIdsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListSecretsInput {
     /// <p>(Optional) Limits the number of results you want to include in
     /// the response. If you don't include this parameter, it defaults to a value that's
@@ -3317,7 +3340,7 @@ pub struct ListSecretsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetSecretValueInput {
     /// <p>Specifies the secret containing the version that you want to retrieve. You can specify
     /// either the Amazon Resource Name (ARN) or the friendly name of the secret.</p>
@@ -3355,7 +3378,7 @@ pub struct GetSecretValueInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetResourcePolicyInput {
     /// <p>Specifies the secret that you want to retrieve the attached resource-based policy for. You
     /// can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.</p>
@@ -3377,7 +3400,7 @@ pub struct GetResourcePolicyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetRandomPasswordInput {
     /// <p>Specifies that the generated password should not include digits. The default if you do not
     /// include this switch parameter is that digits can be included.</p>
@@ -3415,7 +3438,7 @@ pub struct GetRandomPasswordInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeSecretInput {
     /// <p>The identifier of the secret whose details you want to retrieve. You can specify either
     /// the Amazon Resource Name (ARN) or the friendly name of the secret.</p>
@@ -3437,7 +3460,7 @@ pub struct DescribeSecretInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteSecretInput {
     /// <p>(Optional) Specifies that the secret is to be deleted without any recovery window. You
     /// can't use both this parameter and the <code>RecoveryWindowInDays</code> parameter in the same
@@ -3479,7 +3502,7 @@ pub struct DeleteSecretInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteResourcePolicyInput {
     /// <p>Specifies the secret that you want to delete the attached resource-based policy for. You
     /// can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.</p>
@@ -3501,7 +3524,7 @@ pub struct DeleteResourcePolicyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateSecretInput {
     /// <p>Specifies the friendly name of the new secret.</p>
     /// <p>The secret name must be ASCII letters, digits, or the following characters :
@@ -3645,9 +3668,22 @@ pub struct CreateSecretInput {
     /// <p>This value becomes the <code>VersionId</code> of the new version.</p>
     pub client_request_token: ::std::option::Option<::std::string::String>,
 }
+impl ::std::fmt::Debug for CreateSecretInput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("CreateSecretInput");
+        formatter.field("name", &self.name);
+        formatter.field("tags", &self.tags);
+        formatter.field("kms_key_id", &self.kms_key_id);
+        formatter.field("description", &self.description);
+        formatter.field("secret_string", &"*** Sensitive Data Redacted ***");
+        formatter.field("secret_binary", &"*** Sensitive Data Redacted ***");
+        formatter.field("client_request_token", &self.client_request_token);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CancelRotateSecretInput {
     /// <p>Specifies the secret to cancel a rotation request. You can specify either the Amazon
     /// Resource Name (ARN) or the friendly name of the secret.</p>

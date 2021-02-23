@@ -5,11 +5,11 @@ use smithy_types::Instant;
 /// table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TimeToLiveSpecification {
     /// <p>Indicates whether TTL is to be enabled (true) or disabled (false) on the table.</p>
@@ -66,11 +66,11 @@ impl TimeToLiveSpecification {
 /// <p>Represents the auto scaling configuration for a global table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TableAutoScalingDescription {
     /// <p>The name of the table.</p>
@@ -175,11 +175,11 @@ impl TableAutoScalingDescription {
 /// <p>Represents the auto scaling settings of the replica.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaAutoScalingDescription {
     /// <p>The Region where the replica exists.</p>
@@ -330,12 +330,12 @@ impl ReplicaAutoScalingDescription {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ReplicaStatus {
@@ -410,11 +410,11 @@ impl<'de> ::serde::Deserialize<'de> for ReplicaStatus {
 /// index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct AutoScalingSettingsDescription {
     /// <p>The minimum capacity units that a global table or global secondary index should be scaled down to.</p>
@@ -509,11 +509,11 @@ impl AutoScalingSettingsDescription {
 /// <p>Represents the properties of the scaling policy.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct AutoScalingPolicyDescription {
     /// <p>The name of the scaling policy.</p>
@@ -575,11 +575,11 @@ impl AutoScalingPolicyDescription {
 /// <p>Represents the properties of a target tracking scaling policy.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct AutoScalingTargetTrackingScalingPolicyConfigurationDescription {
     /// <p>Indicates whether scale in by the target tracking policy is disabled. If the value is true,
@@ -684,11 +684,11 @@ impl AutoScalingTargetTrackingScalingPolicyConfigurationDescription {
 /// <p>Represents the auto scaling configuration for a replica global secondary index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaGlobalSecondaryIndexAutoScalingDescription {
     /// <p>The name of the global secondary index.</p>
@@ -821,12 +821,12 @@ impl ReplicaGlobalSecondaryIndexAutoScalingDescription {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum IndexStatus {
@@ -886,12 +886,12 @@ impl<'de> ::serde::Deserialize<'de> for IndexStatus {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum TableStatus {
@@ -961,11 +961,11 @@ impl<'de> ::serde::Deserialize<'de> for TableStatus {
 /// <p>Represents the auto scaling settings of a replica that will be modified.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaAutoScalingUpdate {
     /// <p>The Region where the replica exists.</p>
@@ -1050,11 +1050,11 @@ impl ReplicaAutoScalingUpdate {
 /// secondary index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct AutoScalingSettingsUpdate {
     /// <p>The minimum capacity units that a global table or global secondary index should be scaled down to.</p>
@@ -1146,11 +1146,11 @@ impl AutoScalingSettingsUpdate {
 /// <p>Represents the auto scaling policy to be modified.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct AutoScalingPolicyUpdate {
     /// <p>The name of the scaling policy.</p>
@@ -1212,11 +1212,11 @@ impl AutoScalingPolicyUpdate {
 /// <p>Represents the settings of a target tracking scaling policy that will be modified.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct AutoScalingTargetTrackingScalingPolicyConfigurationUpdate {
     /// <p>Indicates whether scale in by the target tracking policy is disabled. If the value is true,
@@ -1322,11 +1322,11 @@ impl AutoScalingTargetTrackingScalingPolicyConfigurationUpdate {
 /// that will be modified.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaGlobalSecondaryIndexAutoScalingUpdate {
     /// <p>The name of the global secondary index.</p>
@@ -1391,11 +1391,11 @@ impl ReplicaGlobalSecondaryIndexAutoScalingUpdate {
 /// that will be modified.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct GlobalSecondaryIndexAutoScalingUpdate {
     /// <p>The name of the global secondary index.</p>
@@ -1459,11 +1459,11 @@ impl GlobalSecondaryIndexAutoScalingUpdate {
 /// <p>Represents the properties of a table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TableDescription {
     /// <p>An array of <code>AttributeDefinition</code> objects. Each of these objects describes one attribute
@@ -2291,11 +2291,11 @@ impl TableDescription {
 /// <p>Contains details of a table archival operation.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ArchivalSummary {
     /// <p>The date and time when table archival was initiated by DynamoDB,
@@ -2393,11 +2393,11 @@ impl ArchivalSummary {
 /// <p>The description of the server-side encryption status on the specified table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct SSEDescription {
     /// <p>Represents the current state of server-side encryption. The only supported values are:</p>
@@ -2524,12 +2524,12 @@ impl SSEDescription {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum SSEType {
@@ -2583,12 +2583,12 @@ impl<'de> ::serde::Deserialize<'de> for SSEType {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum SSEStatus {
@@ -2652,11 +2652,11 @@ impl<'de> ::serde::Deserialize<'de> for SSEStatus {
 /// <p>Contains details for the restore.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct RestoreSummary {
     /// <p>The Amazon Resource Name (ARN) of the backup from which the table was restored.</p>
@@ -2738,11 +2738,11 @@ impl RestoreSummary {
 /// <p>Contains the details of the replica.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaDescription {
     /// <p>The name of the Region.</p>
@@ -2956,11 +2956,11 @@ impl ReplicaDescription {
 /// <p>Represents the properties of a replica global secondary index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaGlobalSecondaryIndexDescription {
     /// <p>The name of the global secondary index.</p>
@@ -3020,11 +3020,11 @@ impl ReplicaGlobalSecondaryIndexDescription {
 /// source table's provisioned throughput settings.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ProvisionedThroughputOverride {
     /// <p>Replica-specific read capacity units. If not specified, uses the source table's
@@ -3069,11 +3069,11 @@ impl ProvisionedThroughputOverride {
 /// <p>Represents the DynamoDB Streams configuration for a table in DynamoDB.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct StreamSpecification {
     /// <p>Indicates whether DynamoDB Streams is enabled (true) or disabled (false) on the table.</p>
@@ -3176,12 +3176,12 @@ impl StreamSpecification {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum StreamViewType {
@@ -3242,11 +3242,11 @@ impl<'de> ::serde::Deserialize<'de> for StreamViewType {
 /// <p>Represents the properties of a global secondary index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct GlobalSecondaryIndexDescription {
     /// <p>The name of the global secondary index.</p>
@@ -3483,11 +3483,11 @@ impl GlobalSecondaryIndexDescription {
 /// <p>Represents the provisioned throughput settings for the table, consisting of read and write capacity units, along with data about increases and decreases.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ProvisionedThroughputDescription {
     /// <p>The date and time of the last provisioned throughput increase for this table.</p>
@@ -3593,11 +3593,11 @@ impl ProvisionedThroughputDescription {
 /// <p>Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Projection {
     /// <p>The set of attributes that are projected into the index:</p>
@@ -3688,12 +3688,12 @@ impl Projection {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ProjectionType {
@@ -3757,11 +3757,11 @@ impl<'de> ::serde::Deserialize<'de> for ProjectionType {
 /// <p>A <code>KeySchemaElement</code> must be a scalar, top-level attribute (not a nested attribute). The data type must be one of String, Number, or Binary.  The attribute cannot be nested within a List or a Map.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KeySchemaElement {
     /// <p>The name of a key attribute.</p>
@@ -3852,12 +3852,12 @@ impl KeySchemaElement {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum KeyType {
@@ -3912,11 +3912,11 @@ impl<'de> ::serde::Deserialize<'de> for KeyType {
 /// <p>Represents the properties of a local secondary index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct LocalSecondaryIndexDescription {
     /// <p>Represents the name of the local secondary index.</p>
@@ -4057,11 +4057,11 @@ impl LocalSecondaryIndexDescription {
 /// <p>Contains the details for the read/write capacity mode.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct BillingModeSummary {
     /// <p>Controls how you are charged for read and write throughput and how you manage capacity. This setting can be changed later.</p>
@@ -4142,12 +4142,12 @@ impl BillingModeSummary {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum BillingMode {
@@ -4202,11 +4202,11 @@ impl<'de> ::serde::Deserialize<'de> for BillingMode {
 /// <p>Represents an attribute for describing the key schema for the table and indexes.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct AttributeDefinition {
     /// <p>A name for the attribute.</p>
@@ -4289,12 +4289,12 @@ impl AttributeDefinition {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ScalarAttributeType {
@@ -4368,11 +4368,11 @@ impl<'de> ::serde::Deserialize<'de> for ScalarAttributeType {
 /// </ul>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicationGroupUpdate {
     /// <p>The parameters required for creating a replica for the table.</p>
@@ -4442,11 +4442,11 @@ impl ReplicationGroupUpdate {
 /// <p>Represents a replica to be deleted.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct DeleteReplicationGroupMemberAction {
     /// <p>The Region where the replica exists.</p>
@@ -4489,11 +4489,11 @@ impl DeleteReplicationGroupMemberAction {
 /// <p>Represents a replica to be modified.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct UpdateReplicationGroupMemberAction {
     /// <p>The Region where the replica exists.</p>
@@ -4590,11 +4590,11 @@ impl UpdateReplicationGroupMemberAction {
 /// <p>Represents the properties of a replica global secondary index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaGlobalSecondaryIndex {
     /// <p>The name of the global secondary index.</p>
@@ -4655,11 +4655,11 @@ impl ReplicaGlobalSecondaryIndex {
 /// <p>Represents a replica to be created.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CreateReplicationGroupMemberAction {
     /// <p>The Region where the new replica will be created.</p>
@@ -4756,11 +4756,11 @@ impl CreateReplicationGroupMemberAction {
 /// <p>Represents the settings used to enable server-side encryption.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct SSESpecification {
     /// <p>Indicates whether server-side encryption is done using an AWS managed CMK or an AWS owned CMK. If enabled (true),
@@ -4865,11 +4865,11 @@ impl SSESpecification {
 /// </ul>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct GlobalSecondaryIndexUpdate {
     /// <p>The name of an existing global secondary index, along with new provisioned throughput settings to be applied to that index.</p>
@@ -4993,11 +4993,11 @@ impl GlobalSecondaryIndexUpdate {
 /// <p>Represents a global secondary index to be deleted from an existing table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct DeleteGlobalSecondaryIndexAction {
     /// <p>The name of the global secondary index to be deleted.</p>
@@ -5040,11 +5040,11 @@ impl DeleteGlobalSecondaryIndexAction {
 /// <p>Represents a new global secondary index to be added to an existing table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CreateGlobalSecondaryIndexAction {
     /// <p>The name of the global secondary index to be created.</p>
@@ -5134,11 +5134,11 @@ impl CreateGlobalSecondaryIndexAction {
 /// <p>For current minimum and maximum provisioned throughput values, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Service, Account, and Table Quotas</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ProvisionedThroughput {
     /// <p>The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
@@ -5205,11 +5205,11 @@ impl ProvisionedThroughput {
 /// <p>Represents the new provisioned throughput settings to be applied to a global secondary index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct UpdateGlobalSecondaryIndexAction {
     /// <p>The name of the global secondary index to be updated.</p>
@@ -5269,11 +5269,11 @@ impl UpdateGlobalSecondaryIndexAction {
 /// table does not have any local secondary indexes, this information is not returned in the response.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ItemCollectionMetrics {
     /// <p>The partition key value of the item collection. This value is the same as the partition key value of the item.</p>
@@ -5336,11 +5336,11 @@ impl ItemCollectionMetrics {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub enum AttributeValue {
     #[serde(rename = "B")]
@@ -5376,11 +5376,11 @@ pub enum AttributeValue {
 /// Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ConsumedCapacity {
     /// <p>The name of the table that was affected by the operation.</p>
@@ -5506,11 +5506,11 @@ impl ConsumedCapacity {
 /// <p>Represents the amount of provisioned throughput capacity consumed on a table or an index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Capacity {
     /// <p>The total number of read capacity units consumed on a table or an index.</p>
@@ -5576,12 +5576,12 @@ impl Capacity {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ReturnItemCollectionMetrics {
@@ -5635,12 +5635,12 @@ impl<'de> ::serde::Deserialize<'de> for ReturnItemCollectionMetrics {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ReturnConsumedCapacity {
@@ -5697,12 +5697,12 @@ impl<'de> ::serde::Deserialize<'de> for ReturnConsumedCapacity {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ReturnValue {
@@ -5765,12 +5765,12 @@ impl<'de> ::serde::Deserialize<'de> for ReturnValue {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ConditionalOperator {
@@ -5848,11 +5848,11 @@ impl<'de> ::serde::Deserialize<'de> for ConditionalOperator {
 /// return a <code>ValidationException</code> exception.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ExpectedAttributeValue {
     /// <p>Represents the data for the expected attribute.</p>
@@ -6300,12 +6300,12 @@ impl ExpectedAttributeValue {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ComparisonOperator {
@@ -6402,11 +6402,11 @@ impl<'de> ::serde::Deserialize<'de> for ComparisonOperator {
 /// rejected with a <code>ValidationException</code> exception.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct AttributeValueUpdate {
     /// <p>Represents the data for an attribute.</p>
@@ -6632,12 +6632,12 @@ impl AttributeValueUpdate {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum AttributeAction {
@@ -6695,11 +6695,11 @@ impl<'de> ::serde::Deserialize<'de> for AttributeAction {
 /// <p>Represents the properties of a replica.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaSettingsDescription {
     /// <p>The Region name of the replica.</p>
@@ -6896,11 +6896,11 @@ impl ReplicaSettingsDescription {
 /// <p>Represents the properties of a global secondary index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaGlobalSecondaryIndexSettingsDescription {
     /// <p>The name of the global secondary index. The name must be unique among all other indexes on this table.</p>
@@ -7057,11 +7057,11 @@ impl ReplicaGlobalSecondaryIndexSettingsDescription {
 /// <p>Represents the settings for a global table in a Region that will be modified.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaSettingsUpdate {
     /// <p>The Region of the replica to be added.</p>
@@ -7161,11 +7161,11 @@ impl ReplicaSettingsUpdate {
 /// <p>Represents the settings of a global secondary index for a global table that will be modified.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaGlobalSecondaryIndexSettingsUpdate {
     /// <p>The name of the global secondary index. The name must be unique among all other indexes on this table.</p>
@@ -7241,11 +7241,11 @@ impl ReplicaGlobalSecondaryIndexSettingsUpdate {
 /// <p>Represents the settings of a global secondary index for a global table that will be modified.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct GlobalTableGlobalSecondaryIndexSettingsUpdate {
     /// <p>The name of the global secondary index. The name must be unique among all other indexes on this table.</p>
@@ -7323,11 +7323,11 @@ impl GlobalTableGlobalSecondaryIndexSettingsUpdate {
 /// <p>Contains details about the global table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct GlobalTableDescription {
     /// <p>The Regions where the global table has replicas.</p>
@@ -7458,12 +7458,12 @@ impl GlobalTableDescription {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum GlobalTableStatus {
@@ -7535,11 +7535,11 @@ impl<'de> ::serde::Deserialize<'de> for GlobalTableStatus {
 /// </ul>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ReplicaUpdate {
     /// <p>The parameters required for creating a replica on an existing global table.</p>
@@ -7596,11 +7596,11 @@ impl ReplicaUpdate {
 /// <p>Represents a replica to be removed.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct DeleteReplicaAction {
     /// <p>The Region of the replica to be removed.</p>
@@ -7643,11 +7643,11 @@ impl DeleteReplicaAction {
 /// <p>Represents a replica to be added.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CreateReplicaAction {
     /// <p>The Region of the replica to be added.</p>
@@ -7689,12 +7689,12 @@ impl CreateReplicaAction {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ContributorInsightsStatus {
@@ -7757,12 +7757,12 @@ impl<'de> ::serde::Deserialize<'de> for ContributorInsightsStatus {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ContributorInsightsAction {
@@ -7817,11 +7817,11 @@ impl<'de> ::serde::Deserialize<'de> for ContributorInsightsAction {
 /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ContinuousBackupsDescription {
     /// <p>
@@ -7885,11 +7885,11 @@ impl ContinuousBackupsDescription {
 /// <p>The description of the point in time settings applied to the table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct PointInTimeRecoveryDescription {
     /// <p>The current state of point in time recovery:</p>
@@ -7995,12 +7995,12 @@ impl PointInTimeRecoveryDescription {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum PointInTimeRecoveryStatus {
@@ -8054,12 +8054,12 @@ impl<'de> ::serde::Deserialize<'de> for PointInTimeRecoveryStatus {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ContinuousBackupsStatus {
@@ -8114,11 +8114,11 @@ impl<'de> ::serde::Deserialize<'de> for ContinuousBackupsStatus {
 /// <p>Represents the settings used to enable point in time recovery.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct PointInTimeRecoverySpecification {
     /// <p>Indicates whether point in time recovery is enabled (true) or disabled (false) on the table.</p>
@@ -8165,11 +8165,11 @@ impl PointInTimeRecoverySpecification {
 /// </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct CancellationReason {
     /// <p>Item in the request which caused the transaction to get cancelled.</p>
@@ -8243,11 +8243,11 @@ impl CancellationReason {
 /// <p>A list of requests that can perform update, put, delete, or check operations on multiple items in one or more tables atomically.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TransactWriteItem {
     /// <p>A request to perform a check item operation.</p>
@@ -8330,11 +8330,11 @@ impl TransactWriteItem {
 /// <p>Represents a request to perform an <code>UpdateItem</code> operation.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Update {
     /// <p>The primary key of the item to be updated. Each element consists of
@@ -8487,12 +8487,12 @@ impl Update {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ReturnValuesOnConditionCheckFailure {
@@ -8547,11 +8547,11 @@ impl<'de> ::serde::Deserialize<'de> for ReturnValuesOnConditionCheckFailure {
 /// <p>Represents a request to perform a <code>DeleteItem</code> operation.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Delete {
     /// <p>The primary key of the item to be deleted. Each element consists of an
@@ -8689,11 +8689,11 @@ impl Delete {
 /// <p>Represents a request to perform a <code>PutItem</code> operation.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Put {
     /// <p>A map of attribute name to attribute values, representing the primary key
@@ -8838,11 +8838,11 @@ impl Put {
 /// specific attributes of the item.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ConditionCheck {
     /// <p>The primary key of the item to be checked. Each element consists of an
@@ -8980,11 +8980,11 @@ impl ConditionCheck {
 /// <p>Details for the requested item.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ItemResponse {
     /// <p>Map of attribute data consisting of the data type and attribute value.</p>
@@ -9032,11 +9032,11 @@ impl ItemResponse {
 /// <p>Specifies an item to be retrieved as part of the transaction.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TransactGetItem {
     /// <p>Contains the primary key that identifies the item to get, together
@@ -9083,11 +9083,11 @@ impl TransactGetItem {
 /// <code>TransactGetItem</code> object.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Get {
     /// <p>A map of attribute names to <code>AttributeValue</code> objects that
@@ -9200,11 +9200,11 @@ impl Get {
 /// in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Tag {
     /// <p>The key of the tag. Tag keys are case sensitive. Each DynamoDB table can only have up to
@@ -9280,11 +9280,11 @@ impl Tag {
 /// </ul>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Condition {
     /// <p>One or more values to evaluate against the supplied attribute. The number of values in the
@@ -9646,12 +9646,12 @@ impl Condition {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum Select {
@@ -9712,11 +9712,11 @@ impl<'de> ::serde::Deserialize<'de> for Select {
 /// <p>Represents the properties of a local secondary index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct LocalSecondaryIndex {
     /// <p>The name of the local secondary index. The name must be unique among all other indexes on this table.</p>
@@ -9825,11 +9825,11 @@ impl LocalSecondaryIndex {
 /// <p>Represents the properties of a global secondary index.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct GlobalSecondaryIndex {
     /// <p>The name of the global secondary index. The name must be unique among all other indexes on this table.</p>
@@ -9953,11 +9953,11 @@ impl GlobalSecondaryIndex {
 /// <p>Represents the properties of a global table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct GlobalTable {
     /// <p>The global table name.</p>
@@ -10013,11 +10013,11 @@ impl GlobalTable {
 /// <p>Represents the properties of a replica.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Replica {
     /// <p>The Region where the replica needs to be created.</p>
@@ -10060,11 +10060,11 @@ impl Replica {
 /// <p>Summary information about an export task.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ExportSummary {
     /// <p>The Amazon Resource Name (ARN) of the export.</p>
@@ -10119,12 +10119,12 @@ impl ExportSummary {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ExportStatus {
@@ -10182,11 +10182,11 @@ impl<'de> ::serde::Deserialize<'de> for ExportStatus {
 /// <p>Represents a Contributor Insights summary entry.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ContributorInsightsSummary {
     /// <p>Name of the table associated with the summary.</p>
@@ -10254,11 +10254,11 @@ impl ContributorInsightsSummary {
 /// <p>Contains details for the backup.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct BackupSummary {
     /// <p>Name of the table.</p>
@@ -10453,12 +10453,12 @@ impl BackupSummary {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum BackupType {
@@ -10515,12 +10515,12 @@ impl<'de> ::serde::Deserialize<'de> for BackupType {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum BackupStatus {
@@ -10577,12 +10577,12 @@ impl<'de> ::serde::Deserialize<'de> for BackupStatus {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum BackupTypeFilter {
@@ -10643,11 +10643,11 @@ impl<'de> ::serde::Deserialize<'de> for BackupTypeFilter {
 /// <p>Represents the properties of the exported table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ExportDescription {
     /// <p>The Amazon Resource Name (ARN) of the table export.</p>
@@ -10947,12 +10947,12 @@ impl ExportDescription {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ExportFormat {
@@ -11006,12 +11006,12 @@ impl<'de> ::serde::Deserialize<'de> for ExportFormat {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum S3SseAlgorithm {
@@ -11068,11 +11068,11 @@ impl<'de> ::serde::Deserialize<'de> for S3SseAlgorithm {
 /// </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ParameterizedStatement {
     /// <p>
@@ -11135,12 +11135,12 @@ impl ParameterizedStatement {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum DestinationStatus {
@@ -11204,11 +11204,11 @@ impl<'de> ::serde::Deserialize<'de> for DestinationStatus {
 /// <p>The description of the Time to Live (TTL) status on the specified table. </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct TimeToLiveDescription {
     /// <p> The TTL status for the table.</p>
@@ -11263,12 +11263,12 @@ impl TimeToLiveDescription {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum TimeToLiveStatus {
@@ -11329,11 +11329,11 @@ impl<'de> ::serde::Deserialize<'de> for TimeToLiveStatus {
 /// <p>Describes a Kinesis data stream destination.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KinesisDataStreamDestination {
     /// <p>The ARN for a specific Kinesis data stream.</p>
@@ -11404,11 +11404,11 @@ impl KinesisDataStreamDestination {
 /// <p>An endpoint information details.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Endpoint {
     /// <p>IP address of the endpoint.</p>
@@ -11461,11 +11461,11 @@ impl Endpoint {
 /// <p>Represents a failure a contributor insights operation.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct FailureException {
     /// <p>Exception name.</p>
@@ -11520,11 +11520,11 @@ impl FailureException {
 /// <p>Contains the description of the backup created for the table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct BackupDescription {
     /// <p>Contains the details of the backup created for the table. </p>
@@ -11594,11 +11594,11 @@ impl BackupDescription {
 /// <p>Contains the details of the features enabled on the table when the backup was created. For example, LSIs, GSIs, streams, TTL. </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct SourceTableFeatureDetails {
     /// <p>Represents the LSI properties for the table when the backup was created. It includes the IndexName, KeySchema and Projection for the LSIs on the table at the time of backup. </p>
@@ -11705,11 +11705,11 @@ impl SourceTableFeatureDetails {
 /// when the backup was created.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct GlobalSecondaryIndexInfo {
     /// <p>The name of the global secondary index.</p>
@@ -11834,11 +11834,11 @@ impl GlobalSecondaryIndexInfo {
 /// when the backup was created.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct LocalSecondaryIndexInfo {
     /// <p>Represents the name of the local secondary index.</p>
@@ -11943,11 +11943,11 @@ impl LocalSecondaryIndexInfo {
 /// <p>Contains the details of the table when the backup was created. </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct SourceTableDetails {
     /// <p>The name of the table for which the backup was created. </p>
@@ -12112,11 +12112,11 @@ impl SourceTableDetails {
 /// <p>Contains the details of the backup created for the table.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct BackupDetails {
     /// <p>ARN associated with the backup.</p>
@@ -12277,11 +12277,11 @@ impl BackupDetails {
 /// need to provide two separate <code>WriteRequest</code> objects.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct WriteRequest {
     /// <p>A request to perform a <code>PutItem</code> operation.</p>
@@ -12338,11 +12338,11 @@ impl WriteRequest {
 /// <p>Represents a request to perform a <code>DeleteItem</code> operation on an item.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct DeleteRequest {
     /// <p>A map of attribute name to attribute values, representing the primary key of the item to delete. All of the table's primary key attributes must be specified, and their data types must match those of the table's key schema.</p>
@@ -12390,11 +12390,11 @@ impl DeleteRequest {
 /// <p>Represents a request to perform a <code>PutItem</code> operation on an item.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct PutRequest {
     /// <p>A map of attribute name to attribute values, representing the primary key of an item to
@@ -12453,11 +12453,11 @@ impl PutRequest {
 /// primary key, you must provide <i>both</i> the partition key and the sort key.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct KeysAndAttributes {
     /// <p>The primary key attribute values that define the items and the attributes associated with the items.</p>
@@ -12657,11 +12657,11 @@ impl KeysAndAttributes {
 /// </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct BatchStatementResponse {
     /// <p>
@@ -12750,11 +12750,11 @@ impl BatchStatementResponse {
 /// </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct BatchStatementError {
     /// <p>
@@ -12817,12 +12817,12 @@ impl BatchStatementError {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum BatchStatementErrorCodeEnum {
@@ -12914,11 +12914,11 @@ impl<'de> ::serde::Deserialize<'de> for BatchStatementErrorCodeEnum {
 /// </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct BatchStatementRequest {
     /// <p>

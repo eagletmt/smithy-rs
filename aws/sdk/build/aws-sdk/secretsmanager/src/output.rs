@@ -7,7 +7,7 @@ use crate::model::ValidationErrorsEntry;
 use smithy_types::Blob;
 use smithy_types::Instant;
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ValidateResourcePolicyOutput {
     /// <p>Returns an error message if your policy doesn't pass validatation.</p>
     pub validation_errors: ::std::option::Option<::std::vec::Vec<ValidationErrorsEntry>>,
@@ -54,7 +54,7 @@ impl ValidateResourcePolicyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateSecretVersionStageOutput {
     /// <p>The ARN of the secret with the modified staging label.</p>
     pub arn: ::std::option::Option<::std::string::String>,
@@ -100,7 +100,7 @@ impl UpdateSecretVersionStageOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateSecretOutput {
     /// <p>The friendly name of the secret that was updated.</p>
     pub name: ::std::option::Option<::std::string::String>,
@@ -171,7 +171,7 @@ impl UpdateSecretOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UntagResourceOutput {}
 /// See [`UntagResourceOutput`](crate::output::UntagResourceOutput)
 pub mod untag_resource_output {
@@ -196,7 +196,7 @@ impl UntagResourceOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TagResourceOutput {}
 /// See [`TagResourceOutput`](crate::output::TagResourceOutput)
 pub mod tag_resource_output {
@@ -221,7 +221,7 @@ impl TagResourceOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RotateSecretOutput {
     /// <p>The ARN of the secret.</p>
     pub arn: ::std::option::Option<::std::string::String>,
@@ -278,7 +278,7 @@ impl RotateSecretOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RestoreSecretOutput {
     /// <p>The ARN of the secret that was restored.</p>
     pub arn: ::std::option::Option<::std::string::String>,
@@ -324,7 +324,7 @@ impl RestoreSecretOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutSecretValueOutput {
     /// <p>The Amazon Resource Name (ARN) for the secret for which you just created a version.</p>
     pub arn: ::std::option::Option<::std::string::String>,
@@ -392,7 +392,7 @@ impl PutSecretValueOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutResourcePolicyOutput {
     /// <p>The ARN of the secret retrieved by the resource-based policy.</p>
     pub arn: ::std::option::Option<::std::string::String>,
@@ -438,7 +438,7 @@ impl PutResourcePolicyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListSecretVersionIdsOutput {
     /// <p>If present in the response, this value indicates that
     /// there's more output available than included in the current response. This can
@@ -529,7 +529,7 @@ impl ListSecretVersionIdsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListSecretsOutput {
     /// <p>A list of the secrets in the account.</p>
     pub secret_list: ::std::option::Option<::std::vec::Vec<SecretListEntry>>,
@@ -588,7 +588,7 @@ impl ListSecretsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetSecretValueOutput {
     /// <p>The unique identifier of this version of the secret.</p>
     pub version_id: ::std::option::Option<::std::string::String>,
@@ -621,6 +621,19 @@ pub struct GetSecretValueOutput {
     pub name: ::std::option::Option<::std::string::String>,
     /// <p>The ARN of the secret.</p>
     pub arn: ::std::option::Option<::std::string::String>,
+}
+impl ::std::fmt::Debug for GetSecretValueOutput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("GetSecretValueOutput");
+        formatter.field("version_id", &self.version_id);
+        formatter.field("created_date", &self.created_date);
+        formatter.field("secret_string", &"*** Sensitive Data Redacted ***");
+        formatter.field("secret_binary", &"*** Sensitive Data Redacted ***");
+        formatter.field("version_stages", &self.version_stages);
+        formatter.field("name", &self.name);
+        formatter.field("arn", &self.arn);
+        formatter.finish()
+    }
 }
 /// See [`GetSecretValueOutput`](crate::output::GetSecretValueOutput)
 pub mod get_secret_value_output {
@@ -715,7 +728,7 @@ impl GetSecretValueOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetResourcePolicyOutput {
     /// <p>A JSON-formatted string that describes the permissions that are associated with the
     /// attached secret. These permissions are combined with any permissions that are associated with
@@ -778,10 +791,17 @@ impl GetResourcePolicyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetRandomPasswordOutput {
     /// <p>A string with the generated password.</p>
     pub random_password: ::std::option::Option<::std::string::String>,
+}
+impl ::std::fmt::Debug for GetRandomPasswordOutput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("GetRandomPasswordOutput");
+        formatter.field("random_password", &"*** Sensitive Data Redacted ***");
+        formatter.finish()
+    }
 }
 /// See [`GetRandomPasswordOutput`](crate::output::GetRandomPasswordOutput)
 pub mod get_random_password_output {
@@ -815,7 +835,7 @@ impl GetRandomPasswordOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeSecretOutput {
     /// <p>The most recent date and time that the Secrets Manager rotation process was successfully
     /// completed. This value is null if the secret has never rotated.</p>
@@ -1034,7 +1054,7 @@ impl DescribeSecretOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteSecretOutput {
     /// <p>The ARN of the secret that is now scheduled for deletion.</p>
     pub arn: ::std::option::Option<::std::string::String>,
@@ -1094,7 +1114,7 @@ impl DeleteSecretOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteResourcePolicyOutput {
     /// <p>The ARN of the secret that the resource-based policy was deleted for.</p>
     pub arn: ::std::option::Option<::std::string::String>,
@@ -1140,7 +1160,7 @@ impl DeleteResourcePolicyOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateSecretOutput {
     /// <p>The unique identifier associated with the version of the secret you just
     /// created.</p>
@@ -1211,7 +1231,7 @@ impl CreateSecretOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CancelRotateSecretOutput {
     /// <p>The ARN of the secret for which rotation was canceled.</p>
     pub arn: ::std::option::Option<::std::string::String>,

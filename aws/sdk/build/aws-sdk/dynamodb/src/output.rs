@@ -28,7 +28,7 @@ use crate::model::TimeToLiveSpecification;
 use crate::model::WriteRequest;
 use smithy_types::Instant;
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateTimeToLiveOutput {
     /// <p>Represents the output of an <code>UpdateTimeToLive</code> operation.</p>
     pub time_to_live_specification: ::std::option::Option<TimeToLiveSpecification>,
@@ -66,7 +66,7 @@ impl UpdateTimeToLiveOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateTableReplicaAutoScalingOutput {
     /// <p>Returns information about the auto scaling settings of a table with replicas.</p>
     pub table_auto_scaling_description: ::std::option::Option<TableAutoScalingDescription>,
@@ -105,7 +105,7 @@ impl UpdateTableReplicaAutoScalingOutput {
 
 /// <p>Represents the output of an <code>UpdateTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateTableOutput {
     /// <p>Represents the properties of the table.</p>
     pub table_description: ::std::option::Option<TableDescription>,
@@ -144,7 +144,7 @@ impl UpdateTableOutput {
 
 /// <p>Represents the output of an <code>UpdateItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateItemOutput {
     /// <p>A map of attribute values as they appear before or after the <code>UpdateItem</code>
     /// operation, as determined by the <code>ReturnValues</code> parameter.</p>
@@ -272,7 +272,7 @@ impl UpdateItemOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateGlobalTableSettingsOutput {
     /// <p>The name of the global table.</p>
     pub global_table_name: ::std::option::Option<::std::string::String>,
@@ -322,7 +322,7 @@ impl UpdateGlobalTableSettingsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateGlobalTableOutput {
     /// <p>Contains the details of the global table.</p>
     pub global_table_description: ::std::option::Option<GlobalTableDescription>,
@@ -360,7 +360,7 @@ impl UpdateGlobalTableOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateContributorInsightsOutput {
     /// <p>The name of the table.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -416,7 +416,7 @@ impl UpdateContributorInsightsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateContinuousBackupsOutput {
     /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
     pub continuous_backups_description: ::std::option::Option<ContinuousBackupsDescription>,
@@ -454,7 +454,7 @@ impl UpdateContinuousBackupsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UntagResourceOutput {}
 /// See [`UntagResourceOutput`](crate::output::UntagResourceOutput)
 pub mod untag_resource_output {
@@ -479,7 +479,7 @@ impl UntagResourceOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TransactWriteItemsOutput {
     /// <p>The capacity units consumed by the entire <code>TransactWriteItems</code>
     /// operation. The values of the list are ordered according to
@@ -552,7 +552,7 @@ impl TransactWriteItemsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TransactGetItemsOutput {
     /// <p>If the <i>ReturnConsumedCapacity</i> value was <code>TOTAL</code>,
     /// this is an array of <code>ConsumedCapacity</code> objects, one for each table
@@ -622,7 +622,7 @@ impl TransactGetItemsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TagResourceOutput {}
 /// See [`TagResourceOutput`](crate::output::TagResourceOutput)
 pub mod tag_resource_output {
@@ -648,7 +648,7 @@ impl TagResourceOutput {
 
 /// <p>Represents the output of a <code>Scan</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ScanOutput {
     /// <p>An array of item attributes that match the scan criteria. Each element in this array consists of an attribute name and the value for that attribute.</p>
     pub items: ::std::option::Option<
@@ -782,7 +782,7 @@ impl ScanOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RestoreTableToPointInTimeOutput {
     /// <p>Represents the properties of a table.</p>
     pub table_description: ::std::option::Option<TableDescription>,
@@ -820,7 +820,7 @@ impl RestoreTableToPointInTimeOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RestoreTableFromBackupOutput {
     /// <p>The description of the table created from an existing backup.</p>
     pub table_description: ::std::option::Option<TableDescription>,
@@ -859,7 +859,7 @@ impl RestoreTableFromBackupOutput {
 
 /// <p>Represents the output of a <code>Query</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct QueryOutput {
     /// <p>An array of item attributes that match the query criteria. Each element in this array consists of an attribute name and the value for that attribute.</p>
     pub items: ::std::option::Option<
@@ -984,7 +984,7 @@ impl QueryOutput {
 
 /// <p>Represents the output of a <code>PutItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutItemOutput {
     /// <p>The attribute values as they appeared before the <code>PutItem</code> operation, but only if
     /// <code>ReturnValues</code> is specified as <code>ALL_OLD</code> in the request. Each element
@@ -1108,7 +1108,7 @@ impl PutItemOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListTagsOfResourceOutput {
     /// <p>The tags currently associated with the Amazon DynamoDB resource.</p>
     pub tags: ::std::option::Option<::std::vec::Vec<Tag>>,
@@ -1158,7 +1158,7 @@ impl ListTagsOfResourceOutput {
 
 /// <p>Represents the output of a <code>ListTables</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListTablesOutput {
     /// <p>The names of the tables associated with the current account at the current endpoint. The maximum size of this array is 100.</p>
     /// <p>If <code>LastEvaluatedTableName</code> also appears in the output, you can use this value as the
@@ -1218,7 +1218,7 @@ impl ListTablesOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListGlobalTablesOutput {
     /// <p>List of global table names.</p>
     pub global_tables: ::std::option::Option<::std::vec::Vec<GlobalTable>>,
@@ -1268,7 +1268,7 @@ impl ListGlobalTablesOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListExportsOutput {
     /// <p>A list of <code>ExportSummary</code> objects.</p>
     pub export_summaries: ::std::option::Option<::std::vec::Vec<ExportSummary>>,
@@ -1319,7 +1319,7 @@ impl ListExportsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListContributorInsightsOutput {
     /// <p>A list of ContributorInsightsSummary.</p>
     pub contributor_insights_summaries:
@@ -1371,7 +1371,7 @@ impl ListContributorInsightsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListBackupsOutput {
     /// <p>List of <code>BackupSummary</code> objects.</p>
     pub backup_summaries: ::std::option::Option<::std::vec::Vec<BackupSummary>>,
@@ -1441,7 +1441,7 @@ impl ListBackupsOutput {
 
 /// <p>Represents the output of a <code>GetItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetItemOutput {
     /// <p>A map of attribute names to <code>AttributeValue</code> objects, as specified
     /// by <code>ProjectionExpression</code>.</p>
@@ -1507,7 +1507,7 @@ impl GetItemOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ExportTableToPointInTimeOutput {
     /// <p>Contains a description of the table export.</p>
     pub export_description: ::std::option::Option<ExportDescription>,
@@ -1545,7 +1545,7 @@ impl ExportTableToPointInTimeOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ExecuteTransactionOutput {
     /// <p>
     /// The response to a PartiQL transaction.
@@ -1587,7 +1587,7 @@ impl ExecuteTransactionOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ExecuteStatementOutput {
     /// <p>
     /// If a read operation was used, this property will contain the result of the reade operation; a map of attribute names and their values. For the write operations this value will be empty.
@@ -1651,7 +1651,7 @@ impl ExecuteStatementOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableKinesisStreamingDestinationOutput {
     /// <p>The name of the table being modified.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -1707,7 +1707,7 @@ impl EnableKinesisStreamingDestinationOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableKinesisStreamingDestinationOutput {
     /// <p>The name of the table being modified.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -1763,7 +1763,7 @@ impl DisableKinesisStreamingDestinationOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeTimeToLiveOutput {
     /// <p></p>
     pub time_to_live_description: ::std::option::Option<TimeToLiveDescription>,
@@ -1801,7 +1801,7 @@ impl DescribeTimeToLiveOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeTableReplicaAutoScalingOutput {
     /// <p>Represents the auto scaling properties of the table.</p>
     pub table_auto_scaling_description: ::std::option::Option<TableAutoScalingDescription>,
@@ -1840,7 +1840,7 @@ impl DescribeTableReplicaAutoScalingOutput {
 
 /// <p>Represents the output of a <code>DescribeTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeTableOutput {
     /// <p>The properties of the table.</p>
     pub table: ::std::option::Option<TableDescription>,
@@ -1877,7 +1877,7 @@ impl DescribeTableOutput {
 
 /// <p>Represents the output of a <code>DescribeLimits</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeLimitsOutput {
     /// <p>The maximum total read capacity units that your account allows you to provision across
     /// all of your tables in this Region.</p>
@@ -1953,7 +1953,7 @@ impl DescribeLimitsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeKinesisStreamingDestinationOutput {
     /// <p>The name of the table being described.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -2005,7 +2005,7 @@ impl DescribeKinesisStreamingDestinationOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeGlobalTableSettingsOutput {
     /// <p>The name of the global table.</p>
     pub global_table_name: ::std::option::Option<::std::string::String>,
@@ -2055,7 +2055,7 @@ impl DescribeGlobalTableSettingsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeGlobalTableOutput {
     /// <p>Contains the details of the global table.</p>
     pub global_table_description: ::std::option::Option<GlobalTableDescription>,
@@ -2093,7 +2093,7 @@ impl DescribeGlobalTableOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeExportOutput {
     /// <p>Represents the properties of the export.</p>
     pub export_description: ::std::option::Option<ExportDescription>,
@@ -2131,7 +2131,7 @@ impl DescribeExportOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeEndpointsOutput {
     /// <p>List of endpoints.</p>
     pub endpoints: ::std::option::Option<::std::vec::Vec<Endpoint>>,
@@ -2169,7 +2169,7 @@ impl DescribeEndpointsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeContributorInsightsOutput {
     /// <p>The name of the table being described.</p>
     pub table_name: ::std::option::Option<::std::string::String>,
@@ -2291,7 +2291,7 @@ impl DescribeContributorInsightsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeContinuousBackupsOutput {
     /// <p>Represents the continuous backups and point in time recovery settings on the table.</p>
     pub continuous_backups_description: ::std::option::Option<ContinuousBackupsDescription>,
@@ -2329,7 +2329,7 @@ impl DescribeContinuousBackupsOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeBackupOutput {
     /// <p>Contains the description of the backup created for the table.</p>
     pub backup_description: ::std::option::Option<BackupDescription>,
@@ -2368,7 +2368,7 @@ impl DescribeBackupOutput {
 
 /// <p>Represents the output of a <code>DeleteTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteTableOutput {
     /// <p>Represents the properties of a table.</p>
     pub table_description: ::std::option::Option<TableDescription>,
@@ -2407,7 +2407,7 @@ impl DeleteTableOutput {
 
 /// <p>Represents the output of a <code>DeleteItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteItemOutput {
     /// <p>A map of attribute names to <code>AttributeValue</code> objects, representing the item as it
     /// appeared before the <code>DeleteItem</code> operation. This map appears in the response only if
@@ -2535,7 +2535,7 @@ impl DeleteItemOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteBackupOutput {
     /// <p>Contains the description of the backup created for the table.</p>
     pub backup_description: ::std::option::Option<BackupDescription>,
@@ -2574,7 +2574,7 @@ impl DeleteBackupOutput {
 
 /// <p>Represents the output of a <code>CreateTable</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateTableOutput {
     /// <p>Represents the properties of the table.</p>
     pub table_description: ::std::option::Option<TableDescription>,
@@ -2612,7 +2612,7 @@ impl CreateTableOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateGlobalTableOutput {
     /// <p>Contains the details of the global table.</p>
     pub global_table_description: ::std::option::Option<GlobalTableDescription>,
@@ -2650,7 +2650,7 @@ impl CreateGlobalTableOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateBackupOutput {
     /// <p>Contains the details of the backup created for the table.</p>
     pub backup_details: ::std::option::Option<BackupDetails>,
@@ -2689,7 +2689,7 @@ impl CreateBackupOutput {
 
 /// <p>Represents the output of a <code>BatchWriteItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct BatchWriteItemOutput {
     /// <p>A map of tables and requests against those tables that were not processed. The
     /// <code>UnprocessedItems</code> value is in the same form as <code>RequestItems</code>, so you can provide
@@ -2902,7 +2902,7 @@ impl BatchWriteItemOutput {
 
 /// <p>Represents the output of a <code>BatchGetItem</code> operation.</p>
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct BatchGetItemOutput {
     /// <p>A map of table name to a list of items. Each object in <code>Responses</code> consists of a table
     /// name, along with a map of attribute data consisting of the data type and attribute value.</p>
@@ -3057,7 +3057,7 @@ impl BatchGetItemOutput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct BatchExecuteStatementOutput {
     /// <p>
     /// The response to each PartiQL statement in the batch.

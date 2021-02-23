@@ -6481,7 +6481,7 @@ impl VerifyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct VerifyInput {
     /// <p>Identifies the asymmetric CMK that will be used to verify the signature. This must be the
     /// same CMK that was used to generate the signature. If you specify a different CMK, the
@@ -6534,9 +6534,21 @@ pub struct VerifyInput {
     /// <i>AWS Key Management Service Developer Guide</i>.</p>
     pub grant_tokens: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
 }
+impl ::std::fmt::Debug for VerifyInput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("VerifyInput");
+        formatter.field("key_id", &self.key_id);
+        formatter.field("message", &"*** Sensitive Data Redacted ***");
+        formatter.field("message_type", &self.message_type);
+        formatter.field("signature", &self.signature);
+        formatter.field("signing_algorithm", &self.signing_algorithm);
+        formatter.field("grant_tokens", &self.grant_tokens);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateKeyDescriptionInput {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -6558,7 +6570,7 @@ pub struct UpdateKeyDescriptionInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateCustomKeyStoreInput {
     /// <p>Identifies the custom key store that you want to update. Enter the ID of the custom key
     /// store. To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.</p>
@@ -6580,9 +6592,19 @@ pub struct UpdateCustomKeyStoreInput {
     /// use the <a href="https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html">DescribeClusters</a> operation.</p>
     pub cloud_hsm_cluster_id: ::std::option::Option<::std::string::String>,
 }
+impl ::std::fmt::Debug for UpdateCustomKeyStoreInput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("UpdateCustomKeyStoreInput");
+        formatter.field("custom_key_store_id", &self.custom_key_store_id);
+        formatter.field("new_custom_key_store_name", &self.new_custom_key_store_name);
+        formatter.field("key_store_password", &"*** Sensitive Data Redacted ***");
+        formatter.field("cloud_hsm_cluster_id", &self.cloud_hsm_cluster_id);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UpdateAliasInput {
     /// <p>Identifies the alias that is changing its CMK. This value must begin with
     /// <code>alias/</code> followed by the alias name, such as <code>alias/ExampleAlias</code>. You
@@ -6612,7 +6634,7 @@ pub struct UpdateAliasInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct UntagResourceInput {
     /// <p>Identifies the CMK from which you are removing tags.</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -6634,7 +6656,7 @@ pub struct UntagResourceInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct TagResourceInput {
     /// <p>Identifies a customer managed CMK in the account and Region.</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -6661,7 +6683,7 @@ pub struct TagResourceInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct SignInput {
     /// <p>Identifies an asymmetric CMK. AWS KMS uses the private key in the asymmetric CMK to sign the
     /// message. The <code>KeyUsage</code> type of the CMK must be <code>SIGN_VERIFY</code>. To find
@@ -6706,9 +6728,20 @@ pub struct SignInput {
     /// CMK.</p>
     pub signing_algorithm: ::std::option::Option<SigningAlgorithmSpec>,
 }
+impl ::std::fmt::Debug for SignInput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("SignInput");
+        formatter.field("key_id", &self.key_id);
+        formatter.field("message", &"*** Sensitive Data Redacted ***");
+        formatter.field("message_type", &self.message_type);
+        formatter.field("grant_tokens", &self.grant_tokens);
+        formatter.field("signing_algorithm", &self.signing_algorithm);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ScheduleKeyDeletionInput {
     /// <p>The unique identifier of the customer master key (CMK) to delete.</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -6733,7 +6766,7 @@ pub struct ScheduleKeyDeletionInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RevokeGrantInput {
     /// <p>A unique identifier for the customer master key associated with the grant.</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a
@@ -6756,7 +6789,7 @@ pub struct RevokeGrantInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct RetireGrantInput {
     /// <p>Token that identifies the grant to be retired.</p>
     pub grant_token: ::std::option::Option<::std::string::String>,
@@ -6776,7 +6809,7 @@ pub struct RetireGrantInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ReEncryptInput {
     /// <p>Ciphertext of the data to reencrypt.</p>
     pub ciphertext_blob: ::std::option::Option<Blob>,
@@ -6875,7 +6908,7 @@ pub struct ReEncryptInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct PutKeyPolicyInput {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -6927,7 +6960,7 @@ pub struct PutKeyPolicyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListRetirableGrantsInput {
     /// <p>Use this parameter to specify the maximum number of items to return. When this
     /// value is present, AWS KMS does not return more than the specified number of items, but it might
@@ -6950,7 +6983,7 @@ pub struct ListRetirableGrantsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListResourceTagsInput {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -6982,7 +7015,7 @@ pub struct ListResourceTagsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListKeysInput {
     /// <p>Use this parameter to specify the maximum number of items to return. When this
     /// value is present, AWS KMS does not return more than the specified number of items, but it might
@@ -6997,7 +7030,7 @@ pub struct ListKeysInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListKeyPoliciesInput {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -7028,7 +7061,7 @@ pub struct ListKeyPoliciesInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListGrantsInput {
     /// <p>Use this parameter to specify the maximum number of items to return. When this
     /// value is present, AWS KMS does not return more than the specified number of items, but it might
@@ -7059,7 +7092,7 @@ pub struct ListGrantsInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ListAliasesInput {
     /// <p>Lists only aliases that are associated with the specified CMK. Enter a CMK in your AWS
     /// account. </p>
@@ -7092,7 +7125,7 @@ pub struct ListAliasesInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ImportKeyMaterialInput {
     /// <p>The identifier of the symmetric CMK that receives the imported key material. The CMK's
     /// <code>Origin</code> must be <code>EXTERNAL</code>. This must be the same CMK specified in
@@ -7132,7 +7165,7 @@ pub struct ImportKeyMaterialInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetPublicKeyInput {
     /// <p>Identifies the asymmetric CMK that includes the public key.</p>
     /// <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p>
@@ -7164,7 +7197,7 @@ pub struct GetPublicKeyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetParametersForImportInput {
     /// <p>The identifier of the symmetric CMK into which you will import key material. The
     /// <code>Origin</code> of the CMK must be <code>EXTERNAL</code>.</p>
@@ -7191,7 +7224,7 @@ pub struct GetParametersForImportInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetKeyRotationStatusInput {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a
@@ -7212,7 +7245,7 @@ pub struct GetKeyRotationStatusInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GetKeyPolicyInput {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -7235,7 +7268,7 @@ pub struct GetKeyPolicyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateRandomInput {
     /// <p>The length of the byte string.</p>
     pub number_of_bytes: ::std::option::Option<i32>,
@@ -7245,7 +7278,7 @@ pub struct GenerateRandomInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyWithoutPlaintextInput {
     /// <p>The identifier of the symmetric customer master key (CMK) that encrypts the data
     /// key.</p>
@@ -7293,7 +7326,7 @@ pub struct GenerateDataKeyWithoutPlaintextInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyPairWithoutPlaintextInput {
     /// <p>Specifies the encryption context that will be used when encrypting the private key in the
     /// data key pair.</p>
@@ -7339,7 +7372,7 @@ pub struct GenerateDataKeyPairWithoutPlaintextInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyPairInput {
     /// <p>Specifies the encryption context that will be used when encrypting the private key in the
     /// data key pair.</p>
@@ -7385,7 +7418,7 @@ pub struct GenerateDataKeyPairInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct GenerateDataKeyInput {
     /// <p>Identifies the symmetric CMK that encrypts the data key.</p>
     /// <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p>
@@ -7436,7 +7469,7 @@ pub struct GenerateDataKeyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EncryptInput {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p>
@@ -7483,9 +7516,20 @@ pub struct EncryptInput {
     /// an asymmetric CMK, we recommend RSAES_OAEP_SHA_256.</p>
     pub encryption_algorithm: ::std::option::Option<EncryptionAlgorithmSpec>,
 }
+impl ::std::fmt::Debug for EncryptInput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("EncryptInput");
+        formatter.field("key_id", &self.key_id);
+        formatter.field("plaintext", &"*** Sensitive Data Redacted ***");
+        formatter.field("encryption_context", &self.encryption_context);
+        formatter.field("grant_tokens", &self.grant_tokens);
+        formatter.field("encryption_algorithm", &self.encryption_algorithm);
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableKeyRotationInput {
     /// <p>Identifies a symmetric customer master key (CMK). You cannot enable automatic rotation of asymmetric CMKs, CMKs with imported key material, or CMKs in a <a href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a>.</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -7505,7 +7549,7 @@ pub struct EnableKeyRotationInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct EnableKeyInput {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -7525,14 +7569,14 @@ pub struct EnableKeyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisconnectCustomKeyStoreInput {
     /// <p>Enter the ID of the custom key store you want to disconnect. To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.</p>
     pub custom_key_store_id: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableKeyRotationInput {
     /// <p>Identifies a symmetric customer master key (CMK). You cannot enable or disable automatic
     /// rotation of <a href="https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks">asymmetric CMKs</a>, CMKs
@@ -7555,7 +7599,7 @@ pub struct DisableKeyRotationInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DisableKeyInput {
     /// <p>A unique identifier for the customer master key (CMK).</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
@@ -7575,7 +7619,7 @@ pub struct DisableKeyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeKeyInput {
     /// <p>Describes the specified customer master key (CMK). </p>
     /// <p>If you specify a predefined AWS alias (an AWS alias with no key ID), KMS associates the
@@ -7611,7 +7655,7 @@ pub struct DescribeKeyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DescribeCustomKeyStoresInput {
     /// <p>Gets only information about the specified custom key store. Enter the key store ID.</p>
     /// <p>By default, this operation gets information about all custom key stores in the account and
@@ -7637,7 +7681,7 @@ pub struct DescribeCustomKeyStoresInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteImportedKeyMaterialInput {
     /// <p>Identifies the CMK from which you are deleting imported key material. The
     /// <code>Origin</code> of the CMK must be <code>EXTERNAL</code>.</p>
@@ -7658,14 +7702,14 @@ pub struct DeleteImportedKeyMaterialInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteCustomKeyStoreInput {
     /// <p>Enter the ID of the custom key store you want to delete. To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.</p>
     pub custom_key_store_id: ::std::option::Option<::std::string::String>,
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DeleteAliasInput {
     /// <p>The alias to be deleted. The alias name must begin with <code>alias/</code> followed by
     /// the alias name, such as <code>alias/ExampleAlias</code>.</p>
@@ -7673,7 +7717,7 @@ pub struct DeleteAliasInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct DecryptInput {
     /// <p>Ciphertext to be decrypted. The blob includes metadata.</p>
     pub ciphertext_blob: ::std::option::Option<Blob>,
@@ -7728,7 +7772,7 @@ pub struct DecryptInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateKeyInput {
     /// <p>The key policy to attach to the CMK.</p>
     /// <p>If you provide a key policy, it must meet the following criteria:</p>
@@ -7907,7 +7951,7 @@ pub struct CreateKeyInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateGrantInput {
     /// <p>The unique identifier for the customer master key (CMK) that the grant applies to.</p>
     /// <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a
@@ -7970,7 +8014,7 @@ pub struct CreateGrantInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateCustomKeyStoreInput {
     /// <p>Specifies a friendly name for the custom key store. The name must be unique in your AWS
     /// account.</p>
@@ -7991,9 +8035,19 @@ pub struct CreateCustomKeyStoreInput {
     /// the password in the AWS CloudHSM cluster.</p>
     pub key_store_password: ::std::option::Option<::std::string::String>,
 }
+impl ::std::fmt::Debug for CreateCustomKeyStoreInput {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        let mut formatter = f.debug_struct("CreateCustomKeyStoreInput");
+        formatter.field("custom_key_store_name", &self.custom_key_store_name);
+        formatter.field("cloud_hsm_cluster_id", &self.cloud_hsm_cluster_id);
+        formatter.field("trust_anchor_certificate", &self.trust_anchor_certificate);
+        formatter.field("key_store_password", &"*** Sensitive Data Redacted ***");
+        formatter.finish()
+    }
+}
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CreateAliasInput {
     /// <p>Specifies the alias name. This value must begin with <code>alias/</code> followed by a
     /// name, such as <code>alias/ExampleAlias</code>. </p>
@@ -8024,7 +8078,7 @@ pub struct CreateAliasInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct ConnectCustomKeyStoreInput {
     /// <p>Enter the key store ID of the custom key store that you want to connect.
     /// To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.</p>
@@ -8032,7 +8086,7 @@ pub struct ConnectCustomKeyStoreInput {
 }
 
 #[non_exhaustive]
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
+#[derive(::std::fmt::Debug, ::std::clone::Clone, ::std::cmp::PartialEq)]
 pub struct CancelKeyDeletionInput {
     /// <p>The unique identifier for the customer master key (CMK) for which to cancel
     /// deletion.</p>

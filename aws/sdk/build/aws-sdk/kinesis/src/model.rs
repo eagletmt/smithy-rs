@@ -12,12 +12,12 @@ use smithy_types::Blob;
 use smithy_types::Instant;
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ScalingType {
@@ -68,11 +68,11 @@ impl<'de> ::serde::Deserialize<'de> for ScalingType {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub enum SubscribeToShardEventStream {
     #[serde(rename = "InternalFailureException")]
@@ -101,11 +101,11 @@ pub enum SubscribeToShardEventStream {
 /// of this type over an HTTP/2 connection to your consumer.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct SubscribeToShardEvent {
     /// <p></p>
@@ -196,11 +196,11 @@ impl SubscribeToShardEvent {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ChildShard {
     #[serde(rename = "ParentShards")]
@@ -267,11 +267,11 @@ impl ChildShard {
 /// contiguous positive integers.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct HashKeyRange {
     /// <p>The starting hash key of the hash key range.</p>
@@ -327,11 +327,11 @@ impl HashKeyRange {
 /// number, a partition key, and a data blob.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Record {
     /// <p>The unique identifier of the record within its shard.</p>
@@ -458,12 +458,12 @@ impl Record {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum EncryptionType {
@@ -518,11 +518,11 @@ impl<'de> ::serde::Deserialize<'de> for EncryptionType {
 /// <p></p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct StartingPosition {
     /// <p>The time stamp of the data record from which to start reading. To specify a time
@@ -638,12 +638,12 @@ impl StartingPosition {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ShardIteratorType {
@@ -708,11 +708,11 @@ impl<'de> ::serde::Deserialize<'de> for ShardIteratorType {
 /// object is returned by <a>RegisterStreamConsumer</a>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Consumer {
     /// <p>The name of the consumer is something you choose when you register the
@@ -806,12 +806,12 @@ impl Consumer {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ConsumerStatus {
@@ -873,11 +873,11 @@ impl<'de> ::serde::Deserialize<'de> for ConsumerStatus {
 /// <code>ErrorMessage</code> in the result.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct PutRecordsResultEntry {
     /// <p>The error code for an individual record result. <code>ErrorCodes</code> can be
@@ -968,11 +968,11 @@ impl PutRecordsResultEntry {
 /// <p>Represents the output for <code>PutRecords</code>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct PutRecordsRequestEntry {
     /// <p>The data blob to put into the record, which is base64-encoded when the blob is
@@ -1062,11 +1062,11 @@ impl PutRecordsRequestEntry {
 /// <p>Metadata assigned to the stream, consisting of a key-value pair.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Tag {
     /// <p>An optional string, typically used to describe or define the tag. Maximum length:
@@ -1127,11 +1127,11 @@ impl Tag {
 /// <p>A uniquely identified group of data records in a Kinesis data stream.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct Shard {
     /// <p>The range of possible sequence numbers for the shard.</p>
@@ -1226,11 +1226,11 @@ impl Shard {
 /// <p>The range of possible sequence numbers for the shard.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct SequenceNumberRange {
     /// <p>The starting sequence number for the range.</p>
@@ -1286,11 +1286,11 @@ impl SequenceNumberRange {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ShardFilter {
     #[serde(rename = "ShardId")]
@@ -1354,12 +1354,12 @@ impl ShardFilter {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum ShardFilterType {
@@ -1425,12 +1425,12 @@ impl<'de> ::serde::Deserialize<'de> for ShardFilterType {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum MetricsName {
@@ -1504,11 +1504,11 @@ impl<'de> ::serde::Deserialize<'de> for MetricsName {
 /// </p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct StreamDescriptionSummary {
     /// <p>The GUID for the customer-managed AWS KMS key to use for encryption. This value can
@@ -1801,11 +1801,11 @@ impl StreamDescriptionSummary {
 /// <p>Represents enhanced metrics types.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct EnhancedMetrics {
     /// <p>List of shard-level metrics.</p>
@@ -1942,12 +1942,12 @@ impl EnhancedMetrics {
 
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::std::clone::Clone,
     ::std::cmp::Eq,
     ::std::cmp::Ord,
     ::std::cmp::PartialEq,
     ::std::cmp::PartialOrd,
-    ::std::fmt::Debug,
     ::std::hash::Hash,
 )]
 pub enum StreamStatus {
@@ -2009,11 +2009,11 @@ impl<'de> ::serde::Deserialize<'de> for StreamStatus {
 /// returned by <a>DescribeStreamConsumer</a>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct ConsumerDescription {
     /// <p>The ARN of the stream with which you registered the consumer.</p>
@@ -2120,11 +2120,11 @@ impl ConsumerDescription {
 /// <p>Represents the output for <a>DescribeStream</a>.</p>
 #[non_exhaustive]
 #[derive(
+    ::std::fmt::Debug,
     ::serde::Deserialize,
     ::serde::Serialize,
     ::std::clone::Clone,
     ::std::cmp::PartialEq,
-    ::std::fmt::Debug,
 )]
 pub struct StreamDescription {
     /// <p>The server-side encryption type used on the stream. This parameter can be one of
