@@ -3407,7 +3407,7 @@ pub mod execute_transaction_input {
                 transact_statements: self.transact_statements,
                 client_request_token: self
                     .client_request_token
-                    .or_else(|| Some(_config.token_provider.token())),
+                    .or_else(|| Some(_config.make_token.make_idempotency_token())),
             });
 
             #[allow(unused_mut)]
@@ -3593,7 +3593,7 @@ pub mod export_table_to_point_in_time_input {
                 export_time: self.export_time,
                 client_token: self
                     .client_token
-                    .or_else(|| Some(_config.token_provider.token())),
+                    .or_else(|| Some(_config.make_token.make_idempotency_token())),
                 s3_bucket: self.s3_bucket,
                 s3_bucket_owner: self.s3_bucket_owner,
                 s3_prefix: self.s3_prefix,
@@ -6630,7 +6630,7 @@ pub mod transact_write_items_input {
                 return_item_collection_metrics: self.return_item_collection_metrics,
                 client_request_token: self
                     .client_request_token
-                    .or_else(|| Some(_config.token_provider.token())),
+                    .or_else(|| Some(_config.make_token.make_idempotency_token())),
             });
 
             #[allow(unused_mut)]
