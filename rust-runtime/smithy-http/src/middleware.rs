@@ -53,7 +53,6 @@ enum Inner {
     Err,
 }
 
-
 type BoxError = Box<dyn Error + Send + Sync>;
 
 /// [`MapRequest`] defines a synchronous middleware that transforms an [`operation::Request`].
@@ -111,13 +110,13 @@ pub async fn load_response<B, T, E, O>(
     mut response: http::Response<B>,
     handler: &O,
 ) -> Result<SdkSuccess<T>, SdkError<E>>
-where
-    B: http_body::Body,
-    B::Error: Into<BoxError>,
-    O: ParseHttpResponse<B, Output = Result<T, E>>,
+    where
+        B: http_body::Body,
+        B::Error: Into<BoxError>,
+        O: ParseHttpResponse<B, Output=Result<T, E>>,
 {
     if let Some(parsed_response) = handler.parse_unloaded(&mut response) {
-        return sdk_result(parsed_response, response.map(|_|ResponseBody(Inner::Streaming)));
+        return sdk_result(parsed_response, response.map(|_| ResponseBody(Inner::Streaming)));
     }
     let (parts, body) = response.into_parts();
 
@@ -133,7 +132,7 @@ where
 
     let response = Response::from_parts(parts, Bytes::from(body));
     let parsed = handler.parse_loaded(&response);
-    sdk_result(parsed, response.map(|body|ResponseBody(Inner::Bytes(body))))
+    sdk_result(parsed, response.map(|body| ResponseBody(Inner::Bytes(body))))
 }
 
 async fn read_body<B: http_body::Body>(body: B) -> Result<Vec<u8>, B::Error> {
