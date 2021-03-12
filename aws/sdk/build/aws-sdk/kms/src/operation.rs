@@ -158,23 +158,40 @@ impl CancelKeyDeletion {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CancelKeyDeletionError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::CancelKeyDeletionError {
+                        kind: crate::error::CancelKeyDeletionErrorKind::DependencyTimeoutError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CancelKeyDeletionError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CancelKeyDeletionError::InvalidArnError(body),
+                    Ok(body) => crate::error::CancelKeyDeletionError {
+                        kind: crate::error::CancelKeyDeletionErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CancelKeyDeletionError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CancelKeyDeletionError::KMSInternalError(body),
+                    Ok(body) => crate::error::CancelKeyDeletionError {
+                        kind: crate::error::CancelKeyDeletionErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CancelKeyDeletionError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CancelKeyDeletionError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::CancelKeyDeletionError {
+                        kind: crate::error::CancelKeyDeletionErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CancelKeyDeletionError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CancelKeyDeletionError::NotFoundError(body),
+                    Ok(body) => crate::error::CancelKeyDeletionError {
+                        kind: crate::error::CancelKeyDeletionErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CancelKeyDeletionError::unhandled(e),
                 },
                 _ => crate::error::CancelKeyDeletionError::unhandled(generic),
@@ -294,23 +311,23 @@ impl ConnectCustomKeyStore {
             };
             return Err(match error_code {
                 "CloudHsmClusterInvalidConfigurationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ConnectCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(body),
+                    Ok(body) => crate::error::ConnectCustomKeyStoreError { kind: crate::error::ConnectCustomKeyStoreErrorKind::CloudHsmClusterInvalidConfigurationError(body), meta: generic },
                     Err(e) => crate::error::ConnectCustomKeyStoreError::unhandled(e)
                 }
                 "CloudHsmClusterNotActiveException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ConnectCustomKeyStoreError::CloudHsmClusterNotActiveError(body),
+                    Ok(body) => crate::error::ConnectCustomKeyStoreError { kind: crate::error::ConnectCustomKeyStoreErrorKind::CloudHsmClusterNotActiveError(body), meta: generic },
                     Err(e) => crate::error::ConnectCustomKeyStoreError::unhandled(e)
                 }
                 "CustomKeyStoreInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ConnectCustomKeyStoreError::CustomKeyStoreInvalidStateError(body),
+                    Ok(body) => crate::error::ConnectCustomKeyStoreError { kind: crate::error::ConnectCustomKeyStoreErrorKind::CustomKeyStoreInvalidStateError(body), meta: generic },
                     Err(e) => crate::error::ConnectCustomKeyStoreError::unhandled(e)
                 }
                 "CustomKeyStoreNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ConnectCustomKeyStoreError::CustomKeyStoreNotFoundError(body),
+                    Ok(body) => crate::error::ConnectCustomKeyStoreError { kind: crate::error::ConnectCustomKeyStoreErrorKind::CustomKeyStoreNotFoundError(body), meta: generic },
                     Err(e) => crate::error::ConnectCustomKeyStoreError::unhandled(e)
                 }
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ConnectCustomKeyStoreError::KMSInternalError(body),
+                    Ok(body) => crate::error::ConnectCustomKeyStoreError { kind: crate::error::ConnectCustomKeyStoreErrorKind::KMSInternalError(body), meta: generic },
                     Err(e) => crate::error::ConnectCustomKeyStoreError::unhandled(e)
                 }
                 _ => crate::error::ConnectCustomKeyStoreError::unhandled(generic)
@@ -414,31 +431,52 @@ impl CreateAlias {
             };
             return Err(match error_code {
                 "AlreadyExistsException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateAliasError::AlreadyExistsError(body),
+                    Ok(body) => crate::error::CreateAliasError {
+                        kind: crate::error::CreateAliasErrorKind::AlreadyExistsError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateAliasError::unhandled(e),
                 },
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateAliasError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::CreateAliasError {
+                        kind: crate::error::CreateAliasErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateAliasError::unhandled(e),
                 },
                 "InvalidAliasNameException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateAliasError::InvalidAliasNameError(body),
+                    Ok(body) => crate::error::CreateAliasError {
+                        kind: crate::error::CreateAliasErrorKind::InvalidAliasNameError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateAliasError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateAliasError::KMSInternalError(body),
+                    Ok(body) => crate::error::CreateAliasError {
+                        kind: crate::error::CreateAliasErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateAliasError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateAliasError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::CreateAliasError {
+                        kind: crate::error::CreateAliasErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateAliasError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateAliasError::LimitExceededError(body),
+                    Ok(body) => crate::error::CreateAliasError {
+                        kind: crate::error::CreateAliasErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateAliasError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateAliasError::NotFoundError(body),
+                    Ok(body) => crate::error::CreateAliasError {
+                        kind: crate::error::CreateAliasErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateAliasError::unhandled(e),
                 },
                 _ => crate::error::CreateAliasError::unhandled(generic),
@@ -543,31 +581,31 @@ impl CreateCustomKeyStore {
             };
             return Err(match error_code {
                 "CloudHsmClusterInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateCustomKeyStoreError::CloudHsmClusterInUseError(body),
+                    Ok(body) => crate::error::CreateCustomKeyStoreError { kind: crate::error::CreateCustomKeyStoreErrorKind::CloudHsmClusterInUseError(body), meta: generic },
                     Err(e) => crate::error::CreateCustomKeyStoreError::unhandled(e)
                 }
                 "CloudHsmClusterInvalidConfigurationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(body),
+                    Ok(body) => crate::error::CreateCustomKeyStoreError { kind: crate::error::CreateCustomKeyStoreErrorKind::CloudHsmClusterInvalidConfigurationError(body), meta: generic },
                     Err(e) => crate::error::CreateCustomKeyStoreError::unhandled(e)
                 }
                 "CloudHsmClusterNotActiveException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateCustomKeyStoreError::CloudHsmClusterNotActiveError(body),
+                    Ok(body) => crate::error::CreateCustomKeyStoreError { kind: crate::error::CreateCustomKeyStoreErrorKind::CloudHsmClusterNotActiveError(body), meta: generic },
                     Err(e) => crate::error::CreateCustomKeyStoreError::unhandled(e)
                 }
                 "CloudHsmClusterNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateCustomKeyStoreError::CloudHsmClusterNotFoundError(body),
+                    Ok(body) => crate::error::CreateCustomKeyStoreError { kind: crate::error::CreateCustomKeyStoreErrorKind::CloudHsmClusterNotFoundError(body), meta: generic },
                     Err(e) => crate::error::CreateCustomKeyStoreError::unhandled(e)
                 }
                 "CustomKeyStoreNameInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateCustomKeyStoreError::CustomKeyStoreNameInUseError(body),
+                    Ok(body) => crate::error::CreateCustomKeyStoreError { kind: crate::error::CreateCustomKeyStoreErrorKind::CustomKeyStoreNameInUseError(body), meta: generic },
                     Err(e) => crate::error::CreateCustomKeyStoreError::unhandled(e)
                 }
                 "IncorrectTrustAnchorException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateCustomKeyStoreError::IncorrectTrustAnchorError(body),
+                    Ok(body) => crate::error::CreateCustomKeyStoreError { kind: crate::error::CreateCustomKeyStoreErrorKind::IncorrectTrustAnchorError(body), meta: generic },
                     Err(e) => crate::error::CreateCustomKeyStoreError::unhandled(e)
                 }
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateCustomKeyStoreError::KMSInternalError(body),
+                    Ok(body) => crate::error::CreateCustomKeyStoreError { kind: crate::error::CreateCustomKeyStoreErrorKind::KMSInternalError(body), meta: generic },
                     Err(e) => crate::error::CreateCustomKeyStoreError::unhandled(e)
                 }
                 _ => crate::error::CreateCustomKeyStoreError::unhandled(generic)
@@ -693,35 +731,59 @@ impl CreateGrant {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateGrantError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::CreateGrantError {
+                        kind: crate::error::CreateGrantErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGrantError::unhandled(e),
                 },
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateGrantError::DisabledError(body),
+                    Ok(body) => crate::error::CreateGrantError {
+                        kind: crate::error::CreateGrantErrorKind::DisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGrantError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateGrantError::InvalidArnError(body),
+                    Ok(body) => crate::error::CreateGrantError {
+                        kind: crate::error::CreateGrantErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGrantError::unhandled(e),
                 },
                 "InvalidGrantTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateGrantError::InvalidGrantTokenError(body),
+                    Ok(body) => crate::error::CreateGrantError {
+                        kind: crate::error::CreateGrantErrorKind::InvalidGrantTokenError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGrantError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateGrantError::KMSInternalError(body),
+                    Ok(body) => crate::error::CreateGrantError {
+                        kind: crate::error::CreateGrantErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGrantError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateGrantError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::CreateGrantError {
+                        kind: crate::error::CreateGrantErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGrantError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateGrantError::LimitExceededError(body),
+                    Ok(body) => crate::error::CreateGrantError {
+                        kind: crate::error::CreateGrantErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGrantError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateGrantError::NotFoundError(body),
+                    Ok(body) => crate::error::CreateGrantError {
+                        kind: crate::error::CreateGrantErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGrantError::unhandled(e),
                 },
                 _ => crate::error::CreateGrantError::unhandled(generic),
@@ -876,53 +938,47 @@ impl CreateKey {
                 None => return Err(crate::error::CreateKeyError::unhandled(generic)),
             };
             return Err(match error_code {
-                "CloudHsmClusterInvalidConfigurationException" => {
-                    match ::serde_json::from_value(body) {
-                        Ok(body) => {
-                            crate::error::CreateKeyError::CloudHsmClusterInvalidConfigurationError(
-                                body,
-                            )
-                        }
-                        Err(e) => crate::error::CreateKeyError::unhandled(e),
-                    }
+                "CloudHsmClusterInvalidConfigurationException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::CreateKeyError { kind: crate::error::CreateKeyErrorKind::CloudHsmClusterInvalidConfigurationError(body), meta: generic },
+                    Err(e) => crate::error::CreateKeyError::unhandled(e)
                 }
                 "CustomKeyStoreInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateKeyError::CustomKeyStoreInvalidStateError(body),
-                    Err(e) => crate::error::CreateKeyError::unhandled(e),
-                },
+                    Ok(body) => crate::error::CreateKeyError { kind: crate::error::CreateKeyErrorKind::CustomKeyStoreInvalidStateError(body), meta: generic },
+                    Err(e) => crate::error::CreateKeyError::unhandled(e)
+                }
                 "CustomKeyStoreNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateKeyError::CustomKeyStoreNotFoundError(body),
-                    Err(e) => crate::error::CreateKeyError::unhandled(e),
-                },
+                    Ok(body) => crate::error::CreateKeyError { kind: crate::error::CreateKeyErrorKind::CustomKeyStoreNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::CreateKeyError::unhandled(e)
+                }
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateKeyError::DependencyTimeoutError(body),
-                    Err(e) => crate::error::CreateKeyError::unhandled(e),
-                },
+                    Ok(body) => crate::error::CreateKeyError { kind: crate::error::CreateKeyErrorKind::DependencyTimeoutError(body), meta: generic },
+                    Err(e) => crate::error::CreateKeyError::unhandled(e)
+                }
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateKeyError::InvalidArnError(body),
-                    Err(e) => crate::error::CreateKeyError::unhandled(e),
-                },
+                    Ok(body) => crate::error::CreateKeyError { kind: crate::error::CreateKeyErrorKind::InvalidArnError(body), meta: generic },
+                    Err(e) => crate::error::CreateKeyError::unhandled(e)
+                }
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateKeyError::KMSInternalError(body),
-                    Err(e) => crate::error::CreateKeyError::unhandled(e),
-                },
+                    Ok(body) => crate::error::CreateKeyError { kind: crate::error::CreateKeyErrorKind::KMSInternalError(body), meta: generic },
+                    Err(e) => crate::error::CreateKeyError::unhandled(e)
+                }
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateKeyError::LimitExceededError(body),
-                    Err(e) => crate::error::CreateKeyError::unhandled(e),
-                },
+                    Ok(body) => crate::error::CreateKeyError { kind: crate::error::CreateKeyErrorKind::LimitExceededError(body), meta: generic },
+                    Err(e) => crate::error::CreateKeyError::unhandled(e)
+                }
                 "MalformedPolicyDocumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateKeyError::MalformedPolicyDocumentError(body),
-                    Err(e) => crate::error::CreateKeyError::unhandled(e),
-                },
+                    Ok(body) => crate::error::CreateKeyError { kind: crate::error::CreateKeyErrorKind::MalformedPolicyDocumentError(body), meta: generic },
+                    Err(e) => crate::error::CreateKeyError::unhandled(e)
+                }
                 "TagException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateKeyError::TagError(body),
-                    Err(e) => crate::error::CreateKeyError::unhandled(e),
-                },
+                    Ok(body) => crate::error::CreateKeyError { kind: crate::error::CreateKeyErrorKind::TagError(body), meta: generic },
+                    Err(e) => crate::error::CreateKeyError::unhandled(e)
+                }
                 "UnsupportedOperationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateKeyError::UnsupportedOperationError(body),
-                    Err(e) => crate::error::CreateKeyError::unhandled(e),
-                },
-                _ => crate::error::CreateKeyError::unhandled(generic),
+                    Ok(body) => crate::error::CreateKeyError { kind: crate::error::CreateKeyErrorKind::UnsupportedOperationError(body), meta: generic },
+                    Err(e) => crate::error::CreateKeyError::unhandled(e)
+                }
+                _ => crate::error::CreateKeyError::unhandled(generic)
             });
         }
         let body: CreateKeyOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -1060,43 +1116,73 @@ impl Decrypt {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DecryptError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::DecryptError {
+                        kind: crate::error::DecryptErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DecryptError::unhandled(e),
                 },
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DecryptError::DisabledError(body),
+                    Ok(body) => crate::error::DecryptError {
+                        kind: crate::error::DecryptErrorKind::DisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DecryptError::unhandled(e),
                 },
                 "IncorrectKeyException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DecryptError::IncorrectKeyError(body),
+                    Ok(body) => crate::error::DecryptError {
+                        kind: crate::error::DecryptErrorKind::IncorrectKeyError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DecryptError::unhandled(e),
                 },
                 "InvalidCiphertextException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DecryptError::InvalidCiphertextError(body),
+                    Ok(body) => crate::error::DecryptError {
+                        kind: crate::error::DecryptErrorKind::InvalidCiphertextError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DecryptError::unhandled(e),
                 },
                 "InvalidGrantTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DecryptError::InvalidGrantTokenError(body),
+                    Ok(body) => crate::error::DecryptError {
+                        kind: crate::error::DecryptErrorKind::InvalidGrantTokenError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DecryptError::unhandled(e),
                 },
                 "InvalidKeyUsageException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DecryptError::InvalidKeyUsageError(body),
+                    Ok(body) => crate::error::DecryptError {
+                        kind: crate::error::DecryptErrorKind::InvalidKeyUsageError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DecryptError::unhandled(e),
                 },
                 "KeyUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DecryptError::KeyUnavailableError(body),
+                    Ok(body) => crate::error::DecryptError {
+                        kind: crate::error::DecryptErrorKind::KeyUnavailableError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DecryptError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DecryptError::KMSInternalError(body),
+                    Ok(body) => crate::error::DecryptError {
+                        kind: crate::error::DecryptErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DecryptError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DecryptError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::DecryptError {
+                        kind: crate::error::DecryptErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DecryptError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DecryptError::NotFoundError(body),
+                    Ok(body) => crate::error::DecryptError {
+                        kind: crate::error::DecryptErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DecryptError::unhandled(e),
                 },
                 _ => crate::error::DecryptError::unhandled(generic),
@@ -1196,19 +1282,31 @@ impl DeleteAlias {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteAliasError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::DeleteAliasError {
+                        kind: crate::error::DeleteAliasErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteAliasError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteAliasError::KMSInternalError(body),
+                    Ok(body) => crate::error::DeleteAliasError {
+                        kind: crate::error::DeleteAliasErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteAliasError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteAliasError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::DeleteAliasError {
+                        kind: crate::error::DeleteAliasErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteAliasError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteAliasError::NotFoundError(body),
+                    Ok(body) => crate::error::DeleteAliasError {
+                        kind: crate::error::DeleteAliasErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteAliasError::unhandled(e),
                 },
                 _ => crate::error::DeleteAliasError::unhandled(generic),
@@ -1317,30 +1415,22 @@ impl DeleteCustomKeyStore {
             };
             return Err(match error_code {
                 "CustomKeyStoreHasCMKsException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DeleteCustomKeyStoreError::CustomKeyStoreHasCMKsError(body)
-                    }
-                    Err(e) => crate::error::DeleteCustomKeyStoreError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DeleteCustomKeyStoreError { kind: crate::error::DeleteCustomKeyStoreErrorKind::CustomKeyStoreHasCMKsError(body), meta: generic },
+                    Err(e) => crate::error::DeleteCustomKeyStoreError::unhandled(e)
+                }
                 "CustomKeyStoreInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DeleteCustomKeyStoreError::CustomKeyStoreInvalidStateError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DeleteCustomKeyStoreError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DeleteCustomKeyStoreError { kind: crate::error::DeleteCustomKeyStoreErrorKind::CustomKeyStoreInvalidStateError(body), meta: generic },
+                    Err(e) => crate::error::DeleteCustomKeyStoreError::unhandled(e)
+                }
                 "CustomKeyStoreNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DeleteCustomKeyStoreError::CustomKeyStoreNotFoundError(body)
-                    }
-                    Err(e) => crate::error::DeleteCustomKeyStoreError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DeleteCustomKeyStoreError { kind: crate::error::DeleteCustomKeyStoreErrorKind::CustomKeyStoreNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::DeleteCustomKeyStoreError::unhandled(e)
+                }
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteCustomKeyStoreError::KMSInternalError(body),
-                    Err(e) => crate::error::DeleteCustomKeyStoreError::unhandled(e),
-                },
-                _ => crate::error::DeleteCustomKeyStoreError::unhandled(generic),
+                    Ok(body) => crate::error::DeleteCustomKeyStoreError { kind: crate::error::DeleteCustomKeyStoreErrorKind::KMSInternalError(body), meta: generic },
+                    Err(e) => crate::error::DeleteCustomKeyStoreError::unhandled(e)
+                }
+                _ => crate::error::DeleteCustomKeyStoreError::unhandled(generic)
             });
         }
         Ok(DeleteCustomKeyStoreOutput {})
@@ -1427,40 +1517,30 @@ impl DeleteImportedKeyMaterial {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DeleteImportedKeyMaterialError::DependencyTimeoutError(body)
-                    }
-                    Err(e) => crate::error::DeleteImportedKeyMaterialError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DeleteImportedKeyMaterialError { kind: crate::error::DeleteImportedKeyMaterialErrorKind::DependencyTimeoutError(body), meta: generic },
+                    Err(e) => crate::error::DeleteImportedKeyMaterialError::unhandled(e)
+                }
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteImportedKeyMaterialError::InvalidArnError(body),
-                    Err(e) => crate::error::DeleteImportedKeyMaterialError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DeleteImportedKeyMaterialError { kind: crate::error::DeleteImportedKeyMaterialErrorKind::InvalidArnError(body), meta: generic },
+                    Err(e) => crate::error::DeleteImportedKeyMaterialError::unhandled(e)
+                }
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DeleteImportedKeyMaterialError::KMSInternalError(body)
-                    }
-                    Err(e) => crate::error::DeleteImportedKeyMaterialError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DeleteImportedKeyMaterialError { kind: crate::error::DeleteImportedKeyMaterialErrorKind::KMSInternalError(body), meta: generic },
+                    Err(e) => crate::error::DeleteImportedKeyMaterialError::unhandled(e)
+                }
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DeleteImportedKeyMaterialError::KMSInvalidStateError(body)
-                    }
-                    Err(e) => crate::error::DeleteImportedKeyMaterialError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DeleteImportedKeyMaterialError { kind: crate::error::DeleteImportedKeyMaterialErrorKind::KMSInvalidStateError(body), meta: generic },
+                    Err(e) => crate::error::DeleteImportedKeyMaterialError::unhandled(e)
+                }
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteImportedKeyMaterialError::NotFoundError(body),
-                    Err(e) => crate::error::DeleteImportedKeyMaterialError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DeleteImportedKeyMaterialError { kind: crate::error::DeleteImportedKeyMaterialErrorKind::NotFoundError(body), meta: generic },
+                    Err(e) => crate::error::DeleteImportedKeyMaterialError::unhandled(e)
+                }
                 "UnsupportedOperationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DeleteImportedKeyMaterialError::UnsupportedOperationError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DeleteImportedKeyMaterialError::unhandled(e),
-                },
-                _ => crate::error::DeleteImportedKeyMaterialError::unhandled(generic),
+                    Ok(body) => crate::error::DeleteImportedKeyMaterialError { kind: crate::error::DeleteImportedKeyMaterialErrorKind::UnsupportedOperationError(body), meta: generic },
+                    Err(e) => crate::error::DeleteImportedKeyMaterialError::unhandled(e)
+                }
+                _ => crate::error::DeleteImportedKeyMaterialError::unhandled(generic)
             });
         }
         Ok(DeleteImportedKeyMaterialOutput {})
@@ -1571,18 +1651,14 @@ impl DescribeCustomKeyStores {
             };
             return Err(match error_code {
                 "CustomKeyStoreNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeCustomKeyStoresError::CustomKeyStoreNotFoundError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DescribeCustomKeyStoresError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DescribeCustomKeyStoresError { kind: crate::error::DescribeCustomKeyStoresErrorKind::CustomKeyStoreNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::DescribeCustomKeyStoresError::unhandled(e)
+                }
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeCustomKeyStoresError::KMSInternalError(body),
-                    Err(e) => crate::error::DescribeCustomKeyStoresError::unhandled(e),
-                },
-                _ => crate::error::DescribeCustomKeyStoresError::unhandled(generic),
+                    Ok(body) => crate::error::DescribeCustomKeyStoresError { kind: crate::error::DescribeCustomKeyStoresErrorKind::KMSInternalError(body), meta: generic },
+                    Err(e) => crate::error::DescribeCustomKeyStoresError::unhandled(e)
+                }
+                _ => crate::error::DescribeCustomKeyStoresError::unhandled(generic)
             });
         }
         let body: DescribeCustomKeyStoresOutputBody =
@@ -1716,19 +1792,31 @@ impl DescribeKey {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeKeyError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::DescribeKeyError {
+                        kind: crate::error::DescribeKeyErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeKeyError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeKeyError::InvalidArnError(body),
+                    Ok(body) => crate::error::DescribeKeyError {
+                        kind: crate::error::DescribeKeyErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeKeyError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeKeyError::KMSInternalError(body),
+                    Ok(body) => crate::error::DescribeKeyError {
+                        kind: crate::error::DescribeKeyErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeKeyError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeKeyError::NotFoundError(body),
+                    Ok(body) => crate::error::DescribeKeyError {
+                        kind: crate::error::DescribeKeyErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeKeyError::unhandled(e),
                 },
                 _ => crate::error::DescribeKeyError::unhandled(generic),
@@ -1800,23 +1888,38 @@ impl DisableKey {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DisableKeyError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::DisableKeyError {
+                        kind: crate::error::DisableKeyErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableKeyError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DisableKeyError::InvalidArnError(body),
+                    Ok(body) => crate::error::DisableKeyError {
+                        kind: crate::error::DisableKeyErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableKeyError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DisableKeyError::KMSInternalError(body),
+                    Ok(body) => crate::error::DisableKeyError {
+                        kind: crate::error::DisableKeyErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableKeyError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DisableKeyError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::DisableKeyError {
+                        kind: crate::error::DisableKeyErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableKeyError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DisableKeyError::NotFoundError(body),
+                    Ok(body) => crate::error::DisableKeyError {
+                        kind: crate::error::DisableKeyErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableKeyError::unhandled(e),
                 },
                 _ => crate::error::DisableKeyError::unhandled(generic),
@@ -1897,33 +2000,56 @@ impl DisableKeyRotation {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DisableKeyRotationError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::DisableKeyRotationError {
+                        kind: crate::error::DisableKeyRotationErrorKind::DependencyTimeoutError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableKeyRotationError::unhandled(e),
                 },
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DisableKeyRotationError::DisabledError(body),
+                    Ok(body) => crate::error::DisableKeyRotationError {
+                        kind: crate::error::DisableKeyRotationErrorKind::DisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableKeyRotationError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DisableKeyRotationError::InvalidArnError(body),
+                    Ok(body) => crate::error::DisableKeyRotationError {
+                        kind: crate::error::DisableKeyRotationErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableKeyRotationError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DisableKeyRotationError::KMSInternalError(body),
+                    Ok(body) => crate::error::DisableKeyRotationError {
+                        kind: crate::error::DisableKeyRotationErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableKeyRotationError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DisableKeyRotationError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::DisableKeyRotationError {
+                        kind: crate::error::DisableKeyRotationErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableKeyRotationError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DisableKeyRotationError::NotFoundError(body),
+                    Ok(body) => crate::error::DisableKeyRotationError {
+                        kind: crate::error::DisableKeyRotationErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableKeyRotationError::unhandled(e),
                 },
                 "UnsupportedOperationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DisableKeyRotationError::UnsupportedOperationError(body)
-                    }
+                    Ok(body) => crate::error::DisableKeyRotationError {
+                        kind: crate::error::DisableKeyRotationErrorKind::UnsupportedOperationError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableKeyRotationError::unhandled(e),
                 },
                 _ => crate::error::DisableKeyRotationError::unhandled(generic),
@@ -2033,26 +2159,18 @@ impl DisconnectCustomKeyStore {
             };
             return Err(match error_code {
                 "CustomKeyStoreInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DisconnectCustomKeyStoreError::CustomKeyStoreInvalidStateError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DisconnectCustomKeyStoreError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DisconnectCustomKeyStoreError { kind: crate::error::DisconnectCustomKeyStoreErrorKind::CustomKeyStoreInvalidStateError(body), meta: generic },
+                    Err(e) => crate::error::DisconnectCustomKeyStoreError::unhandled(e)
+                }
                 "CustomKeyStoreNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DisconnectCustomKeyStoreError::CustomKeyStoreNotFoundError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DisconnectCustomKeyStoreError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DisconnectCustomKeyStoreError { kind: crate::error::DisconnectCustomKeyStoreErrorKind::CustomKeyStoreNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::DisconnectCustomKeyStoreError::unhandled(e)
+                }
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DisconnectCustomKeyStoreError::KMSInternalError(body),
-                    Err(e) => crate::error::DisconnectCustomKeyStoreError::unhandled(e),
-                },
-                _ => crate::error::DisconnectCustomKeyStoreError::unhandled(generic),
+                    Ok(body) => crate::error::DisconnectCustomKeyStoreError { kind: crate::error::DisconnectCustomKeyStoreErrorKind::KMSInternalError(body), meta: generic },
+                    Err(e) => crate::error::DisconnectCustomKeyStoreError::unhandled(e)
+                }
+                _ => crate::error::DisconnectCustomKeyStoreError::unhandled(generic)
             });
         }
         Ok(DisconnectCustomKeyStoreOutput {})
@@ -2114,27 +2232,45 @@ impl EnableKey {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EnableKeyError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::EnableKeyError {
+                        kind: crate::error::EnableKeyErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EnableKeyError::InvalidArnError(body),
+                    Ok(body) => crate::error::EnableKeyError {
+                        kind: crate::error::EnableKeyErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EnableKeyError::KMSInternalError(body),
+                    Ok(body) => crate::error::EnableKeyError {
+                        kind: crate::error::EnableKeyErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EnableKeyError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::EnableKeyError {
+                        kind: crate::error::EnableKeyErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EnableKeyError::LimitExceededError(body),
+                    Ok(body) => crate::error::EnableKeyError {
+                        kind: crate::error::EnableKeyErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EnableKeyError::NotFoundError(body),
+                    Ok(body) => crate::error::EnableKeyError {
+                        kind: crate::error::EnableKeyErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyError::unhandled(e),
                 },
                 _ => crate::error::EnableKeyError::unhandled(generic),
@@ -2211,33 +2347,56 @@ impl EnableKeyRotation {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EnableKeyRotationError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::EnableKeyRotationError {
+                        kind: crate::error::EnableKeyRotationErrorKind::DependencyTimeoutError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyRotationError::unhandled(e),
                 },
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EnableKeyRotationError::DisabledError(body),
+                    Ok(body) => crate::error::EnableKeyRotationError {
+                        kind: crate::error::EnableKeyRotationErrorKind::DisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyRotationError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EnableKeyRotationError::InvalidArnError(body),
+                    Ok(body) => crate::error::EnableKeyRotationError {
+                        kind: crate::error::EnableKeyRotationErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyRotationError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EnableKeyRotationError::KMSInternalError(body),
+                    Ok(body) => crate::error::EnableKeyRotationError {
+                        kind: crate::error::EnableKeyRotationErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyRotationError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EnableKeyRotationError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::EnableKeyRotationError {
+                        kind: crate::error::EnableKeyRotationErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyRotationError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EnableKeyRotationError::NotFoundError(body),
+                    Ok(body) => crate::error::EnableKeyRotationError {
+                        kind: crate::error::EnableKeyRotationErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyRotationError::unhandled(e),
                 },
                 "UnsupportedOperationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::EnableKeyRotationError::UnsupportedOperationError(body)
-                    }
+                    Ok(body) => crate::error::EnableKeyRotationError {
+                        kind: crate::error::EnableKeyRotationErrorKind::UnsupportedOperationError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableKeyRotationError::unhandled(e),
                 },
                 _ => crate::error::EnableKeyRotationError::unhandled(generic),
@@ -2408,35 +2567,59 @@ impl Encrypt {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EncryptError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::EncryptError {
+                        kind: crate::error::EncryptErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EncryptError::unhandled(e),
                 },
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EncryptError::DisabledError(body),
+                    Ok(body) => crate::error::EncryptError {
+                        kind: crate::error::EncryptErrorKind::DisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EncryptError::unhandled(e),
                 },
                 "InvalidGrantTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EncryptError::InvalidGrantTokenError(body),
+                    Ok(body) => crate::error::EncryptError {
+                        kind: crate::error::EncryptErrorKind::InvalidGrantTokenError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EncryptError::unhandled(e),
                 },
                 "InvalidKeyUsageException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EncryptError::InvalidKeyUsageError(body),
+                    Ok(body) => crate::error::EncryptError {
+                        kind: crate::error::EncryptErrorKind::InvalidKeyUsageError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EncryptError::unhandled(e),
                 },
                 "KeyUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EncryptError::KeyUnavailableError(body),
+                    Ok(body) => crate::error::EncryptError {
+                        kind: crate::error::EncryptErrorKind::KeyUnavailableError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EncryptError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EncryptError::KMSInternalError(body),
+                    Ok(body) => crate::error::EncryptError {
+                        kind: crate::error::EncryptErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EncryptError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EncryptError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::EncryptError {
+                        kind: crate::error::EncryptErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EncryptError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::EncryptError::NotFoundError(body),
+                    Ok(body) => crate::error::EncryptError {
+                        kind: crate::error::EncryptErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EncryptError::unhandled(e),
                 },
                 _ => crate::error::EncryptError::unhandled(generic),
@@ -2584,35 +2767,59 @@ impl GenerateDataKey {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::GenerateDataKeyError {
+                        kind: crate::error::GenerateDataKeyErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyError::unhandled(e),
                 },
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyError::DisabledError(body),
+                    Ok(body) => crate::error::GenerateDataKeyError {
+                        kind: crate::error::GenerateDataKeyErrorKind::DisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyError::unhandled(e),
                 },
                 "InvalidGrantTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyError::InvalidGrantTokenError(body),
+                    Ok(body) => crate::error::GenerateDataKeyError {
+                        kind: crate::error::GenerateDataKeyErrorKind::InvalidGrantTokenError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyError::unhandled(e),
                 },
                 "InvalidKeyUsageException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyError::InvalidKeyUsageError(body),
+                    Ok(body) => crate::error::GenerateDataKeyError {
+                        kind: crate::error::GenerateDataKeyErrorKind::InvalidKeyUsageError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyError::unhandled(e),
                 },
                 "KeyUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyError::KeyUnavailableError(body),
+                    Ok(body) => crate::error::GenerateDataKeyError {
+                        kind: crate::error::GenerateDataKeyErrorKind::KeyUnavailableError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyError::KMSInternalError(body),
+                    Ok(body) => crate::error::GenerateDataKeyError {
+                        kind: crate::error::GenerateDataKeyErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::GenerateDataKeyError {
+                        kind: crate::error::GenerateDataKeyErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyError::NotFoundError(body),
+                    Ok(body) => crate::error::GenerateDataKeyError {
+                        kind: crate::error::GenerateDataKeyErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyError::unhandled(e),
                 },
                 _ => crate::error::GenerateDataKeyError::unhandled(generic),
@@ -2737,45 +2944,76 @@ impl GenerateDataKeyPair {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateDataKeyPairError::DependencyTimeoutError(body)
-                    }
+                    Ok(body) => crate::error::GenerateDataKeyPairError {
+                        kind: crate::error::GenerateDataKeyPairErrorKind::DependencyTimeoutError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyPairError::unhandled(e),
                 },
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairError::DisabledError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairError {
+                        kind: crate::error::GenerateDataKeyPairErrorKind::DisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyPairError::unhandled(e),
                 },
                 "InvalidGrantTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateDataKeyPairError::InvalidGrantTokenError(body)
-                    }
+                    Ok(body) => crate::error::GenerateDataKeyPairError {
+                        kind: crate::error::GenerateDataKeyPairErrorKind::InvalidGrantTokenError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyPairError::unhandled(e),
                 },
                 "InvalidKeyUsageException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairError::InvalidKeyUsageError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairError {
+                        kind: crate::error::GenerateDataKeyPairErrorKind::InvalidKeyUsageError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyPairError::unhandled(e),
                 },
                 "KeyUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairError::KeyUnavailableError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairError {
+                        kind: crate::error::GenerateDataKeyPairErrorKind::KeyUnavailableError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyPairError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairError::KMSInternalError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairError {
+                        kind: crate::error::GenerateDataKeyPairErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyPairError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairError {
+                        kind: crate::error::GenerateDataKeyPairErrorKind::KMSInvalidStateError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyPairError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairError::NotFoundError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairError {
+                        kind: crate::error::GenerateDataKeyPairErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyPairError::unhandled(e),
                 },
                 "UnsupportedOperationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateDataKeyPairError::UnsupportedOperationError(body)
-                    }
+                    Ok(body) => crate::error::GenerateDataKeyPairError {
+                        kind: crate::error::GenerateDataKeyPairErrorKind::UnsupportedOperationError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateDataKeyPairError::unhandled(e),
                 },
                 _ => crate::error::GenerateDataKeyPairError::unhandled(generic),
@@ -2905,39 +3143,39 @@ impl GenerateDataKeyPairWithoutPlaintext {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError { kind: crate::error::GenerateDataKeyPairWithoutPlaintextErrorKind::DependencyTimeoutError(body), meta: generic },
                     Err(e) => crate::error::GenerateDataKeyPairWithoutPlaintextError::unhandled(e)
                 }
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError::DisabledError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError { kind: crate::error::GenerateDataKeyPairWithoutPlaintextErrorKind::DisabledError(body), meta: generic },
                     Err(e) => crate::error::GenerateDataKeyPairWithoutPlaintextError::unhandled(e)
                 }
                 "InvalidGrantTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError::InvalidGrantTokenError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError { kind: crate::error::GenerateDataKeyPairWithoutPlaintextErrorKind::InvalidGrantTokenError(body), meta: generic },
                     Err(e) => crate::error::GenerateDataKeyPairWithoutPlaintextError::unhandled(e)
                 }
                 "InvalidKeyUsageException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError::InvalidKeyUsageError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError { kind: crate::error::GenerateDataKeyPairWithoutPlaintextErrorKind::InvalidKeyUsageError(body), meta: generic },
                     Err(e) => crate::error::GenerateDataKeyPairWithoutPlaintextError::unhandled(e)
                 }
                 "KeyUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError::KeyUnavailableError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError { kind: crate::error::GenerateDataKeyPairWithoutPlaintextErrorKind::KeyUnavailableError(body), meta: generic },
                     Err(e) => crate::error::GenerateDataKeyPairWithoutPlaintextError::unhandled(e)
                 }
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError::KMSInternalError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError { kind: crate::error::GenerateDataKeyPairWithoutPlaintextErrorKind::KMSInternalError(body), meta: generic },
                     Err(e) => crate::error::GenerateDataKeyPairWithoutPlaintextError::unhandled(e)
                 }
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError { kind: crate::error::GenerateDataKeyPairWithoutPlaintextErrorKind::KMSInvalidStateError(body), meta: generic },
                     Err(e) => crate::error::GenerateDataKeyPairWithoutPlaintextError::unhandled(e)
                 }
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError::NotFoundError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError { kind: crate::error::GenerateDataKeyPairWithoutPlaintextErrorKind::NotFoundError(body), meta: generic },
                     Err(e) => crate::error::GenerateDataKeyPairWithoutPlaintextError::unhandled(e)
                 }
                 "UnsupportedOperationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError::UnsupportedOperationError(body),
+                    Ok(body) => crate::error::GenerateDataKeyPairWithoutPlaintextError { kind: crate::error::GenerateDataKeyPairWithoutPlaintextErrorKind::UnsupportedOperationError(body), meta: generic },
                     Err(e) => crate::error::GenerateDataKeyPairWithoutPlaintextError::unhandled(e)
                 }
                 _ => crate::error::GenerateDataKeyPairWithoutPlaintextError::unhandled(generic)
@@ -3080,64 +3318,38 @@ impl GenerateDataKeyWithoutPlaintext {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateDataKeyWithoutPlaintextError::DependencyTimeoutError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e),
-                },
+                    Ok(body) => crate::error::GenerateDataKeyWithoutPlaintextError { kind: crate::error::GenerateDataKeyWithoutPlaintextErrorKind::DependencyTimeoutError(body), meta: generic },
+                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e)
+                }
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateDataKeyWithoutPlaintextError::DisabledError(body)
-                    }
-                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e),
-                },
+                    Ok(body) => crate::error::GenerateDataKeyWithoutPlaintextError { kind: crate::error::GenerateDataKeyWithoutPlaintextErrorKind::DisabledError(body), meta: generic },
+                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e)
+                }
                 "InvalidGrantTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateDataKeyWithoutPlaintextError::InvalidGrantTokenError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e),
-                },
+                    Ok(body) => crate::error::GenerateDataKeyWithoutPlaintextError { kind: crate::error::GenerateDataKeyWithoutPlaintextErrorKind::InvalidGrantTokenError(body), meta: generic },
+                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e)
+                }
                 "InvalidKeyUsageException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateDataKeyWithoutPlaintextError::InvalidKeyUsageError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e),
-                },
+                    Ok(body) => crate::error::GenerateDataKeyWithoutPlaintextError { kind: crate::error::GenerateDataKeyWithoutPlaintextErrorKind::InvalidKeyUsageError(body), meta: generic },
+                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e)
+                }
                 "KeyUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateDataKeyWithoutPlaintextError::KeyUnavailableError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e),
-                },
+                    Ok(body) => crate::error::GenerateDataKeyWithoutPlaintextError { kind: crate::error::GenerateDataKeyWithoutPlaintextErrorKind::KeyUnavailableError(body), meta: generic },
+                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e)
+                }
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateDataKeyWithoutPlaintextError::KMSInternalError(body)
-                    }
-                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e),
-                },
+                    Ok(body) => crate::error::GenerateDataKeyWithoutPlaintextError { kind: crate::error::GenerateDataKeyWithoutPlaintextErrorKind::KMSInternalError(body), meta: generic },
+                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e)
+                }
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateDataKeyWithoutPlaintextError::KMSInvalidStateError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e),
-                },
+                    Ok(body) => crate::error::GenerateDataKeyWithoutPlaintextError { kind: crate::error::GenerateDataKeyWithoutPlaintextErrorKind::KMSInvalidStateError(body), meta: generic },
+                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e)
+                }
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateDataKeyWithoutPlaintextError::NotFoundError(body)
-                    }
-                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e),
-                },
-                _ => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(generic),
+                    Ok(body) => crate::error::GenerateDataKeyWithoutPlaintextError { kind: crate::error::GenerateDataKeyWithoutPlaintextErrorKind::NotFoundError(body), meta: generic },
+                    Err(e) => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(e)
+                }
+                _ => crate::error::GenerateDataKeyWithoutPlaintextError::unhandled(generic)
             });
         }
         let body: GenerateDataKeyWithoutPlaintextOutputBody =
@@ -3206,23 +3418,36 @@ impl GenerateRandom {
             };
             return Err(match error_code {
                 "CustomKeyStoreInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateRandomError::CustomKeyStoreInvalidStateError(body)
-                    }
+                    Ok(body) => crate::error::GenerateRandomError {
+                        kind:
+                            crate::error::GenerateRandomErrorKind::CustomKeyStoreInvalidStateError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateRandomError::unhandled(e),
                 },
                 "CustomKeyStoreNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GenerateRandomError::CustomKeyStoreNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::GenerateRandomError {
+                        kind: crate::error::GenerateRandomErrorKind::CustomKeyStoreNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateRandomError::unhandled(e),
                 },
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateRandomError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::GenerateRandomError {
+                        kind: crate::error::GenerateRandomErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateRandomError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GenerateRandomError::KMSInternalError(body),
+                    Ok(body) => crate::error::GenerateRandomError {
+                        kind: crate::error::GenerateRandomErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GenerateRandomError::unhandled(e),
                 },
                 _ => crate::error::GenerateRandomError::unhandled(generic),
@@ -3286,23 +3511,38 @@ impl GetKeyPolicy {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetKeyPolicyError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::GetKeyPolicyError {
+                        kind: crate::error::GetKeyPolicyErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetKeyPolicyError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetKeyPolicyError::InvalidArnError(body),
+                    Ok(body) => crate::error::GetKeyPolicyError {
+                        kind: crate::error::GetKeyPolicyErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetKeyPolicyError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetKeyPolicyError::KMSInternalError(body),
+                    Ok(body) => crate::error::GetKeyPolicyError {
+                        kind: crate::error::GetKeyPolicyErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetKeyPolicyError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetKeyPolicyError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::GetKeyPolicyError {
+                        kind: crate::error::GetKeyPolicyErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetKeyPolicyError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetKeyPolicyError::NotFoundError(body),
+                    Ok(body) => crate::error::GetKeyPolicyError {
+                        kind: crate::error::GetKeyPolicyErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetKeyPolicyError::unhandled(e),
                 },
                 _ => crate::error::GetKeyPolicyError::unhandled(generic),
@@ -3398,31 +3638,52 @@ impl GetKeyRotationStatus {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GetKeyRotationStatusError::DependencyTimeoutError(body)
-                    }
+                    Ok(body) => crate::error::GetKeyRotationStatusError {
+                        kind: crate::error::GetKeyRotationStatusErrorKind::DependencyTimeoutError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetKeyRotationStatusError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetKeyRotationStatusError::InvalidArnError(body),
+                    Ok(body) => crate::error::GetKeyRotationStatusError {
+                        kind: crate::error::GetKeyRotationStatusErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetKeyRotationStatusError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetKeyRotationStatusError::KMSInternalError(body),
+                    Ok(body) => crate::error::GetKeyRotationStatusError {
+                        kind: crate::error::GetKeyRotationStatusErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetKeyRotationStatusError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetKeyRotationStatusError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::GetKeyRotationStatusError {
+                        kind: crate::error::GetKeyRotationStatusErrorKind::KMSInvalidStateError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetKeyRotationStatusError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetKeyRotationStatusError::NotFoundError(body),
+                    Ok(body) => crate::error::GetKeyRotationStatusError {
+                        kind: crate::error::GetKeyRotationStatusErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetKeyRotationStatusError::unhandled(e),
                 },
                 "UnsupportedOperationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GetKeyRotationStatusError::UnsupportedOperationError(body)
-                    }
+                    Ok(body) => crate::error::GetKeyRotationStatusError {
+                        kind:
+                            crate::error::GetKeyRotationStatusErrorKind::UnsupportedOperationError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetKeyRotationStatusError::unhandled(e),
                 },
                 _ => crate::error::GetKeyRotationStatusError::unhandled(generic),
@@ -3522,33 +3783,52 @@ impl GetParametersForImport {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GetParametersForImportError::DependencyTimeoutError(body)
-                    }
+                    Ok(body) => crate::error::GetParametersForImportError {
+                        kind: crate::error::GetParametersForImportErrorKind::DependencyTimeoutError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetParametersForImportError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetParametersForImportError::InvalidArnError(body),
+                    Ok(body) => crate::error::GetParametersForImportError {
+                        kind: crate::error::GetParametersForImportErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetParametersForImportError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetParametersForImportError::KMSInternalError(body),
+                    Ok(body) => crate::error::GetParametersForImportError {
+                        kind: crate::error::GetParametersForImportErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetParametersForImportError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GetParametersForImportError::KMSInvalidStateError(body)
-                    }
+                    Ok(body) => crate::error::GetParametersForImportError {
+                        kind: crate::error::GetParametersForImportErrorKind::KMSInvalidStateError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetParametersForImportError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetParametersForImportError::NotFoundError(body),
+                    Ok(body) => crate::error::GetParametersForImportError {
+                        kind: crate::error::GetParametersForImportErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetParametersForImportError::unhandled(e),
                 },
                 "UnsupportedOperationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GetParametersForImportError::UnsupportedOperationError(body)
-                    }
+                    Ok(body) => crate::error::GetParametersForImportError {
+                        kind:
+                            crate::error::GetParametersForImportErrorKind::UnsupportedOperationError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetParametersForImportError::unhandled(e),
                 },
                 _ => crate::error::GetParametersForImportError::unhandled(generic),
@@ -3653,43 +3933,73 @@ impl GetPublicKey {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetPublicKeyError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::GetPublicKeyError {
+                        kind: crate::error::GetPublicKeyErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetPublicKeyError::unhandled(e),
                 },
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetPublicKeyError::DisabledError(body),
+                    Ok(body) => crate::error::GetPublicKeyError {
+                        kind: crate::error::GetPublicKeyErrorKind::DisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetPublicKeyError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetPublicKeyError::InvalidArnError(body),
+                    Ok(body) => crate::error::GetPublicKeyError {
+                        kind: crate::error::GetPublicKeyErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetPublicKeyError::unhandled(e),
                 },
                 "InvalidGrantTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetPublicKeyError::InvalidGrantTokenError(body),
+                    Ok(body) => crate::error::GetPublicKeyError {
+                        kind: crate::error::GetPublicKeyErrorKind::InvalidGrantTokenError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetPublicKeyError::unhandled(e),
                 },
                 "InvalidKeyUsageException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetPublicKeyError::InvalidKeyUsageError(body),
+                    Ok(body) => crate::error::GetPublicKeyError {
+                        kind: crate::error::GetPublicKeyErrorKind::InvalidKeyUsageError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetPublicKeyError::unhandled(e),
                 },
                 "KeyUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetPublicKeyError::KeyUnavailableError(body),
+                    Ok(body) => crate::error::GetPublicKeyError {
+                        kind: crate::error::GetPublicKeyErrorKind::KeyUnavailableError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetPublicKeyError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetPublicKeyError::KMSInternalError(body),
+                    Ok(body) => crate::error::GetPublicKeyError {
+                        kind: crate::error::GetPublicKeyErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetPublicKeyError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetPublicKeyError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::GetPublicKeyError {
+                        kind: crate::error::GetPublicKeyErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetPublicKeyError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetPublicKeyError::NotFoundError(body),
+                    Ok(body) => crate::error::GetPublicKeyError {
+                        kind: crate::error::GetPublicKeyErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetPublicKeyError::unhandled(e),
                 },
                 "UnsupportedOperationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetPublicKeyError::UnsupportedOperationError(body),
+                    Ok(body) => crate::error::GetPublicKeyError {
+                        kind: crate::error::GetPublicKeyErrorKind::UnsupportedOperationError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetPublicKeyError::unhandled(e),
                 },
                 _ => crate::error::GetPublicKeyError::unhandled(generic),
@@ -3814,47 +4124,85 @@ impl ImportKeyMaterial {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ImportKeyMaterialError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::ImportKeyMaterialError {
+                        kind: crate::error::ImportKeyMaterialErrorKind::DependencyTimeoutError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ImportKeyMaterialError::unhandled(e),
                 },
                 "ExpiredImportTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ImportKeyMaterialError::ExpiredImportTokenError(body),
+                    Ok(body) => crate::error::ImportKeyMaterialError {
+                        kind: crate::error::ImportKeyMaterialErrorKind::ExpiredImportTokenError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ImportKeyMaterialError::unhandled(e),
                 },
                 "IncorrectKeyMaterialException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ImportKeyMaterialError::IncorrectKeyMaterialError(body)
-                    }
+                    Ok(body) => crate::error::ImportKeyMaterialError {
+                        kind: crate::error::ImportKeyMaterialErrorKind::IncorrectKeyMaterialError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ImportKeyMaterialError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ImportKeyMaterialError::InvalidArnError(body),
+                    Ok(body) => crate::error::ImportKeyMaterialError {
+                        kind: crate::error::ImportKeyMaterialErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ImportKeyMaterialError::unhandled(e),
                 },
                 "InvalidCiphertextException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ImportKeyMaterialError::InvalidCiphertextError(body),
+                    Ok(body) => crate::error::ImportKeyMaterialError {
+                        kind: crate::error::ImportKeyMaterialErrorKind::InvalidCiphertextError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ImportKeyMaterialError::unhandled(e),
                 },
                 "InvalidImportTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ImportKeyMaterialError::InvalidImportTokenError(body),
+                    Ok(body) => crate::error::ImportKeyMaterialError {
+                        kind: crate::error::ImportKeyMaterialErrorKind::InvalidImportTokenError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ImportKeyMaterialError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ImportKeyMaterialError::KMSInternalError(body),
+                    Ok(body) => crate::error::ImportKeyMaterialError {
+                        kind: crate::error::ImportKeyMaterialErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ImportKeyMaterialError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ImportKeyMaterialError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::ImportKeyMaterialError {
+                        kind: crate::error::ImportKeyMaterialErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ImportKeyMaterialError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ImportKeyMaterialError::NotFoundError(body),
+                    Ok(body) => crate::error::ImportKeyMaterialError {
+                        kind: crate::error::ImportKeyMaterialErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ImportKeyMaterialError::unhandled(e),
                 },
                 "UnsupportedOperationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ImportKeyMaterialError::UnsupportedOperationError(body)
-                    }
+                    Ok(body) => crate::error::ImportKeyMaterialError {
+                        kind: crate::error::ImportKeyMaterialErrorKind::UnsupportedOperationError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ImportKeyMaterialError::unhandled(e),
                 },
                 _ => crate::error::ImportKeyMaterialError::unhandled(generic),
@@ -3946,23 +4294,38 @@ impl ListAliases {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListAliasesError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::ListAliasesError {
+                        kind: crate::error::ListAliasesErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListAliasesError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListAliasesError::InvalidArnError(body),
+                    Ok(body) => crate::error::ListAliasesError {
+                        kind: crate::error::ListAliasesErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListAliasesError::unhandled(e),
                 },
                 "InvalidMarkerException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListAliasesError::InvalidMarkerError(body),
+                    Ok(body) => crate::error::ListAliasesError {
+                        kind: crate::error::ListAliasesErrorKind::InvalidMarkerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListAliasesError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListAliasesError::KMSInternalError(body),
+                    Ok(body) => crate::error::ListAliasesError {
+                        kind: crate::error::ListAliasesErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListAliasesError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListAliasesError::NotFoundError(body),
+                    Ok(body) => crate::error::ListAliasesError {
+                        kind: crate::error::ListAliasesErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListAliasesError::unhandled(e),
                 },
                 _ => crate::error::ListAliasesError::unhandled(generic),
@@ -4058,27 +4421,45 @@ impl ListGrants {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListGrantsError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::ListGrantsError {
+                        kind: crate::error::ListGrantsErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListGrantsError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListGrantsError::InvalidArnError(body),
+                    Ok(body) => crate::error::ListGrantsError {
+                        kind: crate::error::ListGrantsErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListGrantsError::unhandled(e),
                 },
                 "InvalidMarkerException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListGrantsError::InvalidMarkerError(body),
+                    Ok(body) => crate::error::ListGrantsError {
+                        kind: crate::error::ListGrantsErrorKind::InvalidMarkerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListGrantsError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListGrantsError::KMSInternalError(body),
+                    Ok(body) => crate::error::ListGrantsError {
+                        kind: crate::error::ListGrantsErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListGrantsError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListGrantsError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::ListGrantsError {
+                        kind: crate::error::ListGrantsErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListGrantsError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListGrantsError::NotFoundError(body),
+                    Ok(body) => crate::error::ListGrantsError {
+                        kind: crate::error::ListGrantsErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListGrantsError::unhandled(e),
                 },
                 _ => crate::error::ListGrantsError::unhandled(generic),
@@ -4158,23 +4539,38 @@ impl ListKeyPolicies {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListKeyPoliciesError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::ListKeyPoliciesError {
+                        kind: crate::error::ListKeyPoliciesErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListKeyPoliciesError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListKeyPoliciesError::InvalidArnError(body),
+                    Ok(body) => crate::error::ListKeyPoliciesError {
+                        kind: crate::error::ListKeyPoliciesErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListKeyPoliciesError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListKeyPoliciesError::KMSInternalError(body),
+                    Ok(body) => crate::error::ListKeyPoliciesError {
+                        kind: crate::error::ListKeyPoliciesErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListKeyPoliciesError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListKeyPoliciesError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::ListKeyPoliciesError {
+                        kind: crate::error::ListKeyPoliciesErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListKeyPoliciesError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListKeyPoliciesError::NotFoundError(body),
+                    Ok(body) => crate::error::ListKeyPoliciesError {
+                        kind: crate::error::ListKeyPoliciesErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListKeyPoliciesError::unhandled(e),
                 },
                 _ => crate::error::ListKeyPoliciesError::unhandled(generic),
@@ -4263,15 +4659,24 @@ impl ListKeys {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListKeysError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::ListKeysError {
+                        kind: crate::error::ListKeysErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListKeysError::unhandled(e),
                 },
                 "InvalidMarkerException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListKeysError::InvalidMarkerError(body),
+                    Ok(body) => crate::error::ListKeysError {
+                        kind: crate::error::ListKeysErrorKind::InvalidMarkerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListKeysError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListKeysError::KMSInternalError(body),
+                    Ok(body) => crate::error::ListKeysError {
+                        kind: crate::error::ListKeysErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListKeysError::unhandled(e),
                 },
                 _ => crate::error::ListKeysError::unhandled(generic),
@@ -4353,19 +4758,31 @@ impl ListResourceTags {
             };
             return Err(match error_code {
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListResourceTagsError::InvalidArnError(body),
+                    Ok(body) => crate::error::ListResourceTagsError {
+                        kind: crate::error::ListResourceTagsErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListResourceTagsError::unhandled(e),
                 },
                 "InvalidMarkerException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListResourceTagsError::InvalidMarkerError(body),
+                    Ok(body) => crate::error::ListResourceTagsError {
+                        kind: crate::error::ListResourceTagsErrorKind::InvalidMarkerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListResourceTagsError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListResourceTagsError::KMSInternalError(body),
+                    Ok(body) => crate::error::ListResourceTagsError {
+                        kind: crate::error::ListResourceTagsErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListResourceTagsError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListResourceTagsError::NotFoundError(body),
+                    Ok(body) => crate::error::ListResourceTagsError {
+                        kind: crate::error::ListResourceTagsErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListResourceTagsError::unhandled(e),
                 },
                 _ => crate::error::ListResourceTagsError::unhandled(generic),
@@ -4466,25 +4883,40 @@ impl ListRetirableGrants {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ListRetirableGrantsError::DependencyTimeoutError(body)
-                    }
+                    Ok(body) => crate::error::ListRetirableGrantsError {
+                        kind: crate::error::ListRetirableGrantsErrorKind::DependencyTimeoutError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListRetirableGrantsError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListRetirableGrantsError::InvalidArnError(body),
+                    Ok(body) => crate::error::ListRetirableGrantsError {
+                        kind: crate::error::ListRetirableGrantsErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListRetirableGrantsError::unhandled(e),
                 },
                 "InvalidMarkerException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListRetirableGrantsError::InvalidMarkerError(body),
+                    Ok(body) => crate::error::ListRetirableGrantsError {
+                        kind: crate::error::ListRetirableGrantsErrorKind::InvalidMarkerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListRetirableGrantsError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListRetirableGrantsError::KMSInternalError(body),
+                    Ok(body) => crate::error::ListRetirableGrantsError {
+                        kind: crate::error::ListRetirableGrantsErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListRetirableGrantsError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListRetirableGrantsError::NotFoundError(body),
+                    Ok(body) => crate::error::ListRetirableGrantsError {
+                        kind: crate::error::ListRetirableGrantsErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListRetirableGrantsError::unhandled(e),
                 },
                 _ => crate::error::ListRetirableGrantsError::unhandled(generic),
@@ -4556,35 +4988,61 @@ impl PutKeyPolicy {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutKeyPolicyError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::PutKeyPolicyError {
+                        kind: crate::error::PutKeyPolicyErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutKeyPolicyError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutKeyPolicyError::InvalidArnError(body),
+                    Ok(body) => crate::error::PutKeyPolicyError {
+                        kind: crate::error::PutKeyPolicyErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutKeyPolicyError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutKeyPolicyError::KMSInternalError(body),
+                    Ok(body) => crate::error::PutKeyPolicyError {
+                        kind: crate::error::PutKeyPolicyErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutKeyPolicyError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutKeyPolicyError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::PutKeyPolicyError {
+                        kind: crate::error::PutKeyPolicyErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutKeyPolicyError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutKeyPolicyError::LimitExceededError(body),
+                    Ok(body) => crate::error::PutKeyPolicyError {
+                        kind: crate::error::PutKeyPolicyErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutKeyPolicyError::unhandled(e),
                 },
                 "MalformedPolicyDocumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutKeyPolicyError::MalformedPolicyDocumentError(body),
+                    Ok(body) => crate::error::PutKeyPolicyError {
+                        kind: crate::error::PutKeyPolicyErrorKind::MalformedPolicyDocumentError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutKeyPolicyError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutKeyPolicyError::NotFoundError(body),
+                    Ok(body) => crate::error::PutKeyPolicyError {
+                        kind: crate::error::PutKeyPolicyErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutKeyPolicyError::unhandled(e),
                 },
                 "UnsupportedOperationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutKeyPolicyError::UnsupportedOperationError(body),
+                    Ok(body) => crate::error::PutKeyPolicyError {
+                        kind: crate::error::PutKeyPolicyErrorKind::UnsupportedOperationError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutKeyPolicyError::unhandled(e),
                 },
                 _ => crate::error::PutKeyPolicyError::unhandled(generic),
@@ -4726,43 +5184,73 @@ impl ReEncrypt {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ReEncryptError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::ReEncryptError {
+                        kind: crate::error::ReEncryptErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ReEncryptError::unhandled(e),
                 },
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ReEncryptError::DisabledError(body),
+                    Ok(body) => crate::error::ReEncryptError {
+                        kind: crate::error::ReEncryptErrorKind::DisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ReEncryptError::unhandled(e),
                 },
                 "IncorrectKeyException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ReEncryptError::IncorrectKeyError(body),
+                    Ok(body) => crate::error::ReEncryptError {
+                        kind: crate::error::ReEncryptErrorKind::IncorrectKeyError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ReEncryptError::unhandled(e),
                 },
                 "InvalidCiphertextException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ReEncryptError::InvalidCiphertextError(body),
+                    Ok(body) => crate::error::ReEncryptError {
+                        kind: crate::error::ReEncryptErrorKind::InvalidCiphertextError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ReEncryptError::unhandled(e),
                 },
                 "InvalidGrantTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ReEncryptError::InvalidGrantTokenError(body),
+                    Ok(body) => crate::error::ReEncryptError {
+                        kind: crate::error::ReEncryptErrorKind::InvalidGrantTokenError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ReEncryptError::unhandled(e),
                 },
                 "InvalidKeyUsageException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ReEncryptError::InvalidKeyUsageError(body),
+                    Ok(body) => crate::error::ReEncryptError {
+                        kind: crate::error::ReEncryptErrorKind::InvalidKeyUsageError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ReEncryptError::unhandled(e),
                 },
                 "KeyUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ReEncryptError::KeyUnavailableError(body),
+                    Ok(body) => crate::error::ReEncryptError {
+                        kind: crate::error::ReEncryptErrorKind::KeyUnavailableError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ReEncryptError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ReEncryptError::KMSInternalError(body),
+                    Ok(body) => crate::error::ReEncryptError {
+                        kind: crate::error::ReEncryptErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ReEncryptError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ReEncryptError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::ReEncryptError {
+                        kind: crate::error::ReEncryptErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ReEncryptError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ReEncryptError::NotFoundError(body),
+                    Ok(body) => crate::error::ReEncryptError {
+                        kind: crate::error::ReEncryptErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ReEncryptError::unhandled(e),
                 },
                 _ => crate::error::ReEncryptError::unhandled(generic),
@@ -4874,31 +5362,52 @@ impl RetireGrant {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RetireGrantError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::RetireGrantError {
+                        kind: crate::error::RetireGrantErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RetireGrantError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RetireGrantError::InvalidArnError(body),
+                    Ok(body) => crate::error::RetireGrantError {
+                        kind: crate::error::RetireGrantErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RetireGrantError::unhandled(e),
                 },
                 "InvalidGrantIdException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RetireGrantError::InvalidGrantIdError(body),
+                    Ok(body) => crate::error::RetireGrantError {
+                        kind: crate::error::RetireGrantErrorKind::InvalidGrantIdError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RetireGrantError::unhandled(e),
                 },
                 "InvalidGrantTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RetireGrantError::InvalidGrantTokenError(body),
+                    Ok(body) => crate::error::RetireGrantError {
+                        kind: crate::error::RetireGrantErrorKind::InvalidGrantTokenError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RetireGrantError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RetireGrantError::KMSInternalError(body),
+                    Ok(body) => crate::error::RetireGrantError {
+                        kind: crate::error::RetireGrantErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RetireGrantError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RetireGrantError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::RetireGrantError {
+                        kind: crate::error::RetireGrantErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RetireGrantError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RetireGrantError::NotFoundError(body),
+                    Ok(body) => crate::error::RetireGrantError {
+                        kind: crate::error::RetireGrantErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RetireGrantError::unhandled(e),
                 },
                 _ => crate::error::RetireGrantError::unhandled(generic),
@@ -4982,27 +5491,45 @@ impl RevokeGrant {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RevokeGrantError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::RevokeGrantError {
+                        kind: crate::error::RevokeGrantErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RevokeGrantError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RevokeGrantError::InvalidArnError(body),
+                    Ok(body) => crate::error::RevokeGrantError {
+                        kind: crate::error::RevokeGrantErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RevokeGrantError::unhandled(e),
                 },
                 "InvalidGrantIdException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RevokeGrantError::InvalidGrantIdError(body),
+                    Ok(body) => crate::error::RevokeGrantError {
+                        kind: crate::error::RevokeGrantErrorKind::InvalidGrantIdError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RevokeGrantError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RevokeGrantError::KMSInternalError(body),
+                    Ok(body) => crate::error::RevokeGrantError {
+                        kind: crate::error::RevokeGrantErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RevokeGrantError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RevokeGrantError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::RevokeGrantError {
+                        kind: crate::error::RevokeGrantErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RevokeGrantError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RevokeGrantError::NotFoundError(body),
+                    Ok(body) => crate::error::RevokeGrantError {
+                        kind: crate::error::RevokeGrantErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RevokeGrantError::unhandled(e),
                 },
                 _ => crate::error::RevokeGrantError::unhandled(generic),
@@ -5097,25 +5624,42 @@ impl ScheduleKeyDeletion {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ScheduleKeyDeletionError::DependencyTimeoutError(body)
-                    }
+                    Ok(body) => crate::error::ScheduleKeyDeletionError {
+                        kind: crate::error::ScheduleKeyDeletionErrorKind::DependencyTimeoutError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ScheduleKeyDeletionError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ScheduleKeyDeletionError::InvalidArnError(body),
+                    Ok(body) => crate::error::ScheduleKeyDeletionError {
+                        kind: crate::error::ScheduleKeyDeletionErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ScheduleKeyDeletionError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ScheduleKeyDeletionError::KMSInternalError(body),
+                    Ok(body) => crate::error::ScheduleKeyDeletionError {
+                        kind: crate::error::ScheduleKeyDeletionErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ScheduleKeyDeletionError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ScheduleKeyDeletionError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::ScheduleKeyDeletionError {
+                        kind: crate::error::ScheduleKeyDeletionErrorKind::KMSInvalidStateError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ScheduleKeyDeletionError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ScheduleKeyDeletionError::NotFoundError(body),
+                    Ok(body) => crate::error::ScheduleKeyDeletionError {
+                        kind: crate::error::ScheduleKeyDeletionErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ScheduleKeyDeletionError::unhandled(e),
                 },
                 _ => crate::error::ScheduleKeyDeletionError::unhandled(generic),
@@ -5219,35 +5763,59 @@ impl Sign {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SignError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::SignError {
+                        kind: crate::error::SignErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SignError::unhandled(e),
                 },
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SignError::DisabledError(body),
+                    Ok(body) => crate::error::SignError {
+                        kind: crate::error::SignErrorKind::DisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SignError::unhandled(e),
                 },
                 "InvalidGrantTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SignError::InvalidGrantTokenError(body),
+                    Ok(body) => crate::error::SignError {
+                        kind: crate::error::SignErrorKind::InvalidGrantTokenError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SignError::unhandled(e),
                 },
                 "InvalidKeyUsageException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SignError::InvalidKeyUsageError(body),
+                    Ok(body) => crate::error::SignError {
+                        kind: crate::error::SignErrorKind::InvalidKeyUsageError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SignError::unhandled(e),
                 },
                 "KeyUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SignError::KeyUnavailableError(body),
+                    Ok(body) => crate::error::SignError {
+                        kind: crate::error::SignErrorKind::KeyUnavailableError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SignError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SignError::KMSInternalError(body),
+                    Ok(body) => crate::error::SignError {
+                        kind: crate::error::SignErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SignError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SignError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::SignError {
+                        kind: crate::error::SignErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SignError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SignError::NotFoundError(body),
+                    Ok(body) => crate::error::SignError {
+                        kind: crate::error::SignErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SignError::unhandled(e),
                 },
                 _ => crate::error::SignError::unhandled(generic),
@@ -5339,27 +5907,45 @@ impl TagResource {
             };
             return Err(match error_code {
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::InvalidArnError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::KMSInternalError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::LimitExceededError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::NotFoundError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 "TagException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::TagError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::TagError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 _ => crate::error::TagResourceError::unhandled(generic),
@@ -5442,23 +6028,38 @@ impl UntagResource {
             };
             return Err(match error_code {
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::InvalidArnError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::KMSInternalError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::NotFoundError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 "TagException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::TagError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::TagError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 _ => crate::error::UntagResourceError::unhandled(generic),
@@ -5567,23 +6168,38 @@ impl UpdateAlias {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateAliasError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::UpdateAliasError {
+                        kind: crate::error::UpdateAliasErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateAliasError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateAliasError::KMSInternalError(body),
+                    Ok(body) => crate::error::UpdateAliasError {
+                        kind: crate::error::UpdateAliasErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateAliasError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateAliasError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::UpdateAliasError {
+                        kind: crate::error::UpdateAliasErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateAliasError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateAliasError::LimitExceededError(body),
+                    Ok(body) => crate::error::UpdateAliasError {
+                        kind: crate::error::UpdateAliasErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateAliasError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateAliasError::NotFoundError(body),
+                    Ok(body) => crate::error::UpdateAliasError {
+                        kind: crate::error::UpdateAliasErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateAliasError::unhandled(e),
                 },
                 _ => crate::error::UpdateAliasError::unhandled(generic),
@@ -5710,35 +6326,35 @@ impl UpdateCustomKeyStore {
             };
             return Err(match error_code {
                 "CloudHsmClusterInvalidConfigurationException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(body),
+                    Ok(body) => crate::error::UpdateCustomKeyStoreError { kind: crate::error::UpdateCustomKeyStoreErrorKind::CloudHsmClusterInvalidConfigurationError(body), meta: generic },
                     Err(e) => crate::error::UpdateCustomKeyStoreError::unhandled(e)
                 }
                 "CloudHsmClusterNotActiveException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateCustomKeyStoreError::CloudHsmClusterNotActiveError(body),
+                    Ok(body) => crate::error::UpdateCustomKeyStoreError { kind: crate::error::UpdateCustomKeyStoreErrorKind::CloudHsmClusterNotActiveError(body), meta: generic },
                     Err(e) => crate::error::UpdateCustomKeyStoreError::unhandled(e)
                 }
                 "CloudHsmClusterNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateCustomKeyStoreError::CloudHsmClusterNotFoundError(body),
+                    Ok(body) => crate::error::UpdateCustomKeyStoreError { kind: crate::error::UpdateCustomKeyStoreErrorKind::CloudHsmClusterNotFoundError(body), meta: generic },
                     Err(e) => crate::error::UpdateCustomKeyStoreError::unhandled(e)
                 }
                 "CloudHsmClusterNotRelatedException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateCustomKeyStoreError::CloudHsmClusterNotRelatedError(body),
+                    Ok(body) => crate::error::UpdateCustomKeyStoreError { kind: crate::error::UpdateCustomKeyStoreErrorKind::CloudHsmClusterNotRelatedError(body), meta: generic },
                     Err(e) => crate::error::UpdateCustomKeyStoreError::unhandled(e)
                 }
                 "CustomKeyStoreInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateCustomKeyStoreError::CustomKeyStoreInvalidStateError(body),
+                    Ok(body) => crate::error::UpdateCustomKeyStoreError { kind: crate::error::UpdateCustomKeyStoreErrorKind::CustomKeyStoreInvalidStateError(body), meta: generic },
                     Err(e) => crate::error::UpdateCustomKeyStoreError::unhandled(e)
                 }
                 "CustomKeyStoreNameInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateCustomKeyStoreError::CustomKeyStoreNameInUseError(body),
+                    Ok(body) => crate::error::UpdateCustomKeyStoreError { kind: crate::error::UpdateCustomKeyStoreErrorKind::CustomKeyStoreNameInUseError(body), meta: generic },
                     Err(e) => crate::error::UpdateCustomKeyStoreError::unhandled(e)
                 }
                 "CustomKeyStoreNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateCustomKeyStoreError::CustomKeyStoreNotFoundError(body),
+                    Ok(body) => crate::error::UpdateCustomKeyStoreError { kind: crate::error::UpdateCustomKeyStoreErrorKind::CustomKeyStoreNotFoundError(body), meta: generic },
                     Err(e) => crate::error::UpdateCustomKeyStoreError::unhandled(e)
                 }
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateCustomKeyStoreError::KMSInternalError(body),
+                    Ok(body) => crate::error::UpdateCustomKeyStoreError { kind: crate::error::UpdateCustomKeyStoreErrorKind::KMSInternalError(body), meta: generic },
                     Err(e) => crate::error::UpdateCustomKeyStoreError::unhandled(e)
                 }
                 _ => crate::error::UpdateCustomKeyStoreError::unhandled(generic)
@@ -5817,25 +6433,42 @@ impl UpdateKeyDescription {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateKeyDescriptionError::DependencyTimeoutError(body)
-                    }
+                    Ok(body) => crate::error::UpdateKeyDescriptionError {
+                        kind: crate::error::UpdateKeyDescriptionErrorKind::DependencyTimeoutError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateKeyDescriptionError::unhandled(e),
                 },
                 "InvalidArnException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateKeyDescriptionError::InvalidArnError(body),
+                    Ok(body) => crate::error::UpdateKeyDescriptionError {
+                        kind: crate::error::UpdateKeyDescriptionErrorKind::InvalidArnError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateKeyDescriptionError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateKeyDescriptionError::KMSInternalError(body),
+                    Ok(body) => crate::error::UpdateKeyDescriptionError {
+                        kind: crate::error::UpdateKeyDescriptionErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateKeyDescriptionError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateKeyDescriptionError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::UpdateKeyDescriptionError {
+                        kind: crate::error::UpdateKeyDescriptionErrorKind::KMSInvalidStateError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateKeyDescriptionError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateKeyDescriptionError::NotFoundError(body),
+                    Ok(body) => crate::error::UpdateKeyDescriptionError {
+                        kind: crate::error::UpdateKeyDescriptionErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateKeyDescriptionError::unhandled(e),
                 },
                 _ => crate::error::UpdateKeyDescriptionError::unhandled(generic),
@@ -5918,39 +6551,66 @@ impl Verify {
             };
             return Err(match error_code {
                 "DependencyTimeoutException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::VerifyError::DependencyTimeoutError(body),
+                    Ok(body) => crate::error::VerifyError {
+                        kind: crate::error::VerifyErrorKind::DependencyTimeoutError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::VerifyError::unhandled(e),
                 },
                 "DisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::VerifyError::DisabledError(body),
+                    Ok(body) => crate::error::VerifyError {
+                        kind: crate::error::VerifyErrorKind::DisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::VerifyError::unhandled(e),
                 },
                 "InvalidGrantTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::VerifyError::InvalidGrantTokenError(body),
+                    Ok(body) => crate::error::VerifyError {
+                        kind: crate::error::VerifyErrorKind::InvalidGrantTokenError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::VerifyError::unhandled(e),
                 },
                 "InvalidKeyUsageException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::VerifyError::InvalidKeyUsageError(body),
+                    Ok(body) => crate::error::VerifyError {
+                        kind: crate::error::VerifyErrorKind::InvalidKeyUsageError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::VerifyError::unhandled(e),
                 },
                 "KeyUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::VerifyError::KeyUnavailableError(body),
+                    Ok(body) => crate::error::VerifyError {
+                        kind: crate::error::VerifyErrorKind::KeyUnavailableError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::VerifyError::unhandled(e),
                 },
                 "KMSInternalException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::VerifyError::KMSInternalError(body),
+                    Ok(body) => crate::error::VerifyError {
+                        kind: crate::error::VerifyErrorKind::KMSInternalError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::VerifyError::unhandled(e),
                 },
                 "KMSInvalidSignatureException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::VerifyError::KMSInvalidSignatureError(body),
+                    Ok(body) => crate::error::VerifyError {
+                        kind: crate::error::VerifyErrorKind::KMSInvalidSignatureError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::VerifyError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::VerifyError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::VerifyError {
+                        kind: crate::error::VerifyErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::VerifyError::unhandled(e),
                 },
                 "NotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::VerifyError::NotFoundError(body),
+                    Ok(body) => crate::error::VerifyError {
+                        kind: crate::error::VerifyErrorKind::NotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::VerifyError::unhandled(e),
                 },
                 _ => crate::error::VerifyError::unhandled(generic),

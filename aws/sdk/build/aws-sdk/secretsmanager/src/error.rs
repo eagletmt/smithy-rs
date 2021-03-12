@@ -2,23 +2,29 @@
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum CancelRotateSecretError {
+pub struct CancelRotateSecretError {
+    pub kind: CancelRotateSecretErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum CancelRotateSecretErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
     InvalidRequestError(InvalidRequestError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for CancelRotateSecretError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            CancelRotateSecretError::InternalServiceError(_inner) => _inner.fmt(f),
-            CancelRotateSecretError::InvalidParameterError(_inner) => _inner.fmt(f),
-            CancelRotateSecretError::InvalidRequestError(_inner) => _inner.fmt(f),
-            CancelRotateSecretError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            CancelRotateSecretError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            CancelRotateSecretErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            CancelRotateSecretErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            CancelRotateSecretErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            CancelRotateSecretErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            CancelRotateSecretErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -27,73 +33,56 @@ impl ::smithy_types::retry::ProvideErrorKind for CancelRotateSecretError {
         CancelRotateSecretError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            CancelRotateSecretError::InternalServiceError(_inner) => None,
-            CancelRotateSecretError::InvalidParameterError(_inner) => None,
-            CancelRotateSecretError::InvalidRequestError(_inner) => None,
-            CancelRotateSecretError::ResourceNotFoundError(_inner) => None,
-            CancelRotateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl CancelRotateSecretError {
+    pub fn new(kind: CancelRotateSecretErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        CancelRotateSecretError::Unhandled(err.into())
+        Self {
+            kind: CancelRotateSecretErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: CancelRotateSecretErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            CancelRotateSecretError::InternalServiceError(_inner) => _inner.message(),
-            CancelRotateSecretError::InvalidParameterError(_inner) => _inner.message(),
-            CancelRotateSecretError::InvalidRequestError(_inner) => _inner.message(),
-            CancelRotateSecretError::ResourceNotFoundError(_inner) => _inner.message(),
-            CancelRotateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            CancelRotateSecretError::InternalServiceError(_inner) => Some(_inner.code()),
-            CancelRotateSecretError::InvalidParameterError(_inner) => Some(_inner.code()),
-            CancelRotateSecretError::InvalidRequestError(_inner) => Some(_inner.code()),
-            CancelRotateSecretError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            CancelRotateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for CancelRotateSecretError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            CancelRotateSecretError::InternalServiceError(_inner) => Some(_inner),
-            CancelRotateSecretError::InvalidParameterError(_inner) => Some(_inner),
-            CancelRotateSecretError::InvalidRequestError(_inner) => Some(_inner),
-            CancelRotateSecretError::ResourceNotFoundError(_inner) => Some(_inner),
-            CancelRotateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            CancelRotateSecretErrorKind::InternalServiceError(_inner) => Some(_inner),
+            CancelRotateSecretErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            CancelRotateSecretErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            CancelRotateSecretErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            CancelRotateSecretErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum CreateSecretError {
+pub struct CreateSecretError {
+    pub kind: CreateSecretErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum CreateSecretErrorKind {
     EncryptionFailure(EncryptionFailure),
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
@@ -104,22 +93,22 @@ pub enum CreateSecretError {
     ResourceExistsError(ResourceExistsError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for CreateSecretError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            CreateSecretError::EncryptionFailure(_inner) => _inner.fmt(f),
-            CreateSecretError::InternalServiceError(_inner) => _inner.fmt(f),
-            CreateSecretError::InvalidParameterError(_inner) => _inner.fmt(f),
-            CreateSecretError::InvalidRequestError(_inner) => _inner.fmt(f),
-            CreateSecretError::LimitExceededError(_inner) => _inner.fmt(f),
-            CreateSecretError::MalformedPolicyDocumentError(_inner) => _inner.fmt(f),
-            CreateSecretError::PreconditionNotMetError(_inner) => _inner.fmt(f),
-            CreateSecretError::ResourceExistsError(_inner) => _inner.fmt(f),
-            CreateSecretError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            CreateSecretError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            CreateSecretErrorKind::EncryptionFailure(_inner) => _inner.fmt(f),
+            CreateSecretErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            CreateSecretErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            CreateSecretErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            CreateSecretErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            CreateSecretErrorKind::MalformedPolicyDocumentError(_inner) => _inner.fmt(f),
+            CreateSecretErrorKind::PreconditionNotMetError(_inner) => _inner.fmt(f),
+            CreateSecretErrorKind::ResourceExistsError(_inner) => _inner.fmt(f),
+            CreateSecretErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            CreateSecretErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -128,107 +117,75 @@ impl ::smithy_types::retry::ProvideErrorKind for CreateSecretError {
         CreateSecretError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            CreateSecretError::EncryptionFailure(_inner) => None,
-            CreateSecretError::InternalServiceError(_inner) => None,
-            CreateSecretError::InvalidParameterError(_inner) => None,
-            CreateSecretError::InvalidRequestError(_inner) => None,
-            CreateSecretError::LimitExceededError(_inner) => None,
-            CreateSecretError::MalformedPolicyDocumentError(_inner) => None,
-            CreateSecretError::PreconditionNotMetError(_inner) => None,
-            CreateSecretError::ResourceExistsError(_inner) => None,
-            CreateSecretError::ResourceNotFoundError(_inner) => None,
-            CreateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl CreateSecretError {
+    pub fn new(kind: CreateSecretErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        CreateSecretError::Unhandled(err.into())
+        Self {
+            kind: CreateSecretErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: CreateSecretErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            CreateSecretError::EncryptionFailure(_inner) => _inner.message(),
-            CreateSecretError::InternalServiceError(_inner) => _inner.message(),
-            CreateSecretError::InvalidParameterError(_inner) => _inner.message(),
-            CreateSecretError::InvalidRequestError(_inner) => _inner.message(),
-            CreateSecretError::LimitExceededError(_inner) => _inner.message(),
-            CreateSecretError::MalformedPolicyDocumentError(_inner) => _inner.message(),
-            CreateSecretError::PreconditionNotMetError(_inner) => _inner.message(),
-            CreateSecretError::ResourceExistsError(_inner) => _inner.message(),
-            CreateSecretError::ResourceNotFoundError(_inner) => _inner.message(),
-            CreateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            CreateSecretError::EncryptionFailure(_inner) => Some(_inner.code()),
-            CreateSecretError::InternalServiceError(_inner) => Some(_inner.code()),
-            CreateSecretError::InvalidParameterError(_inner) => Some(_inner.code()),
-            CreateSecretError::InvalidRequestError(_inner) => Some(_inner.code()),
-            CreateSecretError::LimitExceededError(_inner) => Some(_inner.code()),
-            CreateSecretError::MalformedPolicyDocumentError(_inner) => Some(_inner.code()),
-            CreateSecretError::PreconditionNotMetError(_inner) => Some(_inner.code()),
-            CreateSecretError::ResourceExistsError(_inner) => Some(_inner.code()),
-            CreateSecretError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            CreateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for CreateSecretError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            CreateSecretError::EncryptionFailure(_inner) => Some(_inner),
-            CreateSecretError::InternalServiceError(_inner) => Some(_inner),
-            CreateSecretError::InvalidParameterError(_inner) => Some(_inner),
-            CreateSecretError::InvalidRequestError(_inner) => Some(_inner),
-            CreateSecretError::LimitExceededError(_inner) => Some(_inner),
-            CreateSecretError::MalformedPolicyDocumentError(_inner) => Some(_inner),
-            CreateSecretError::PreconditionNotMetError(_inner) => Some(_inner),
-            CreateSecretError::ResourceExistsError(_inner) => Some(_inner),
-            CreateSecretError::ResourceNotFoundError(_inner) => Some(_inner),
-            CreateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            CreateSecretErrorKind::EncryptionFailure(_inner) => Some(_inner),
+            CreateSecretErrorKind::InternalServiceError(_inner) => Some(_inner),
+            CreateSecretErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            CreateSecretErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            CreateSecretErrorKind::LimitExceededError(_inner) => Some(_inner),
+            CreateSecretErrorKind::MalformedPolicyDocumentError(_inner) => Some(_inner),
+            CreateSecretErrorKind::PreconditionNotMetError(_inner) => Some(_inner),
+            CreateSecretErrorKind::ResourceExistsError(_inner) => Some(_inner),
+            CreateSecretErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            CreateSecretErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DeleteResourcePolicyError {
+pub struct DeleteResourcePolicyError {
+    pub kind: DeleteResourcePolicyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DeleteResourcePolicyErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidRequestError(InvalidRequestError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DeleteResourcePolicyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DeleteResourcePolicyError::InternalServiceError(_inner) => _inner.fmt(f),
-            DeleteResourcePolicyError::InvalidRequestError(_inner) => _inner.fmt(f),
-            DeleteResourcePolicyError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            DeleteResourcePolicyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DeleteResourcePolicyErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            DeleteResourcePolicyErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            DeleteResourcePolicyErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            DeleteResourcePolicyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -237,85 +194,71 @@ impl ::smithy_types::retry::ProvideErrorKind for DeleteResourcePolicyError {
         DeleteResourcePolicyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DeleteResourcePolicyError::InternalServiceError(_inner) => None,
-            DeleteResourcePolicyError::InvalidRequestError(_inner) => None,
-            DeleteResourcePolicyError::ResourceNotFoundError(_inner) => None,
-            DeleteResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DeleteResourcePolicyError {
+    pub fn new(kind: DeleteResourcePolicyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DeleteResourcePolicyError::Unhandled(err.into())
+        Self {
+            kind: DeleteResourcePolicyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DeleteResourcePolicyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DeleteResourcePolicyError::InternalServiceError(_inner) => _inner.message(),
-            DeleteResourcePolicyError::InvalidRequestError(_inner) => _inner.message(),
-            DeleteResourcePolicyError::ResourceNotFoundError(_inner) => _inner.message(),
-            DeleteResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DeleteResourcePolicyError::InternalServiceError(_inner) => Some(_inner.code()),
-            DeleteResourcePolicyError::InvalidRequestError(_inner) => Some(_inner.code()),
-            DeleteResourcePolicyError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            DeleteResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DeleteResourcePolicyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DeleteResourcePolicyError::InternalServiceError(_inner) => Some(_inner),
-            DeleteResourcePolicyError::InvalidRequestError(_inner) => Some(_inner),
-            DeleteResourcePolicyError::ResourceNotFoundError(_inner) => Some(_inner),
-            DeleteResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DeleteResourcePolicyErrorKind::InternalServiceError(_inner) => Some(_inner),
+            DeleteResourcePolicyErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            DeleteResourcePolicyErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            DeleteResourcePolicyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DeleteSecretError {
+pub struct DeleteSecretError {
+    pub kind: DeleteSecretErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DeleteSecretErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
     InvalidRequestError(InvalidRequestError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DeleteSecretError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DeleteSecretError::InternalServiceError(_inner) => _inner.fmt(f),
-            DeleteSecretError::InvalidParameterError(_inner) => _inner.fmt(f),
-            DeleteSecretError::InvalidRequestError(_inner) => _inner.fmt(f),
-            DeleteSecretError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            DeleteSecretError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DeleteSecretErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            DeleteSecretErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            DeleteSecretErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            DeleteSecretErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            DeleteSecretErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -324,85 +267,68 @@ impl ::smithy_types::retry::ProvideErrorKind for DeleteSecretError {
         DeleteSecretError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DeleteSecretError::InternalServiceError(_inner) => None,
-            DeleteSecretError::InvalidParameterError(_inner) => None,
-            DeleteSecretError::InvalidRequestError(_inner) => None,
-            DeleteSecretError::ResourceNotFoundError(_inner) => None,
-            DeleteSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DeleteSecretError {
+    pub fn new(kind: DeleteSecretErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DeleteSecretError::Unhandled(err.into())
+        Self {
+            kind: DeleteSecretErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DeleteSecretErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DeleteSecretError::InternalServiceError(_inner) => _inner.message(),
-            DeleteSecretError::InvalidParameterError(_inner) => _inner.message(),
-            DeleteSecretError::InvalidRequestError(_inner) => _inner.message(),
-            DeleteSecretError::ResourceNotFoundError(_inner) => _inner.message(),
-            DeleteSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DeleteSecretError::InternalServiceError(_inner) => Some(_inner.code()),
-            DeleteSecretError::InvalidParameterError(_inner) => Some(_inner.code()),
-            DeleteSecretError::InvalidRequestError(_inner) => Some(_inner.code()),
-            DeleteSecretError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            DeleteSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DeleteSecretError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DeleteSecretError::InternalServiceError(_inner) => Some(_inner),
-            DeleteSecretError::InvalidParameterError(_inner) => Some(_inner),
-            DeleteSecretError::InvalidRequestError(_inner) => Some(_inner),
-            DeleteSecretError::ResourceNotFoundError(_inner) => Some(_inner),
-            DeleteSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DeleteSecretErrorKind::InternalServiceError(_inner) => Some(_inner),
+            DeleteSecretErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            DeleteSecretErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            DeleteSecretErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            DeleteSecretErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DescribeSecretError {
+pub struct DescribeSecretError {
+    pub kind: DescribeSecretErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DescribeSecretErrorKind {
     InternalServiceError(InternalServiceError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DescribeSecretError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DescribeSecretError::InternalServiceError(_inner) => _inner.fmt(f),
-            DescribeSecretError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            DescribeSecretError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DescribeSecretErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            DescribeSecretErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            DescribeSecretErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -411,79 +337,68 @@ impl ::smithy_types::retry::ProvideErrorKind for DescribeSecretError {
         DescribeSecretError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DescribeSecretError::InternalServiceError(_inner) => None,
-            DescribeSecretError::ResourceNotFoundError(_inner) => None,
-            DescribeSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DescribeSecretError {
+    pub fn new(kind: DescribeSecretErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DescribeSecretError::Unhandled(err.into())
+        Self {
+            kind: DescribeSecretErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DescribeSecretErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DescribeSecretError::InternalServiceError(_inner) => _inner.message(),
-            DescribeSecretError::ResourceNotFoundError(_inner) => _inner.message(),
-            DescribeSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DescribeSecretError::InternalServiceError(_inner) => Some(_inner.code()),
-            DescribeSecretError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            DescribeSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DescribeSecretError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DescribeSecretError::InternalServiceError(_inner) => Some(_inner),
-            DescribeSecretError::ResourceNotFoundError(_inner) => Some(_inner),
-            DescribeSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DescribeSecretErrorKind::InternalServiceError(_inner) => Some(_inner),
+            DescribeSecretErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            DescribeSecretErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GetRandomPasswordError {
+pub struct GetRandomPasswordError {
+    pub kind: GetRandomPasswordErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GetRandomPasswordErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
     InvalidRequestError(InvalidRequestError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GetRandomPasswordError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GetRandomPasswordError::InternalServiceError(_inner) => _inner.fmt(f),
-            GetRandomPasswordError::InvalidParameterError(_inner) => _inner.fmt(f),
-            GetRandomPasswordError::InvalidRequestError(_inner) => _inner.fmt(f),
-            GetRandomPasswordError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GetRandomPasswordErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            GetRandomPasswordErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            GetRandomPasswordErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            GetRandomPasswordErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -492,83 +407,69 @@ impl ::smithy_types::retry::ProvideErrorKind for GetRandomPasswordError {
         GetRandomPasswordError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GetRandomPasswordError::InternalServiceError(_inner) => None,
-            GetRandomPasswordError::InvalidParameterError(_inner) => None,
-            GetRandomPasswordError::InvalidRequestError(_inner) => None,
-            GetRandomPasswordError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GetRandomPasswordError {
+    pub fn new(kind: GetRandomPasswordErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GetRandomPasswordError::Unhandled(err.into())
+        Self {
+            kind: GetRandomPasswordErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GetRandomPasswordErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GetRandomPasswordError::InternalServiceError(_inner) => _inner.message(),
-            GetRandomPasswordError::InvalidParameterError(_inner) => _inner.message(),
-            GetRandomPasswordError::InvalidRequestError(_inner) => _inner.message(),
-            GetRandomPasswordError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GetRandomPasswordError::InternalServiceError(_inner) => Some(_inner.code()),
-            GetRandomPasswordError::InvalidParameterError(_inner) => Some(_inner.code()),
-            GetRandomPasswordError::InvalidRequestError(_inner) => Some(_inner.code()),
-            GetRandomPasswordError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GetRandomPasswordError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GetRandomPasswordError::InternalServiceError(_inner) => Some(_inner),
-            GetRandomPasswordError::InvalidParameterError(_inner) => Some(_inner),
-            GetRandomPasswordError::InvalidRequestError(_inner) => Some(_inner),
-            GetRandomPasswordError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            GetRandomPasswordErrorKind::InternalServiceError(_inner) => Some(_inner),
+            GetRandomPasswordErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            GetRandomPasswordErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            GetRandomPasswordErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GetResourcePolicyError {
+pub struct GetResourcePolicyError {
+    pub kind: GetResourcePolicyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GetResourcePolicyErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidRequestError(InvalidRequestError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GetResourcePolicyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GetResourcePolicyError::InternalServiceError(_inner) => _inner.fmt(f),
-            GetResourcePolicyError::InvalidRequestError(_inner) => _inner.fmt(f),
-            GetResourcePolicyError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            GetResourcePolicyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GetResourcePolicyErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            GetResourcePolicyErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            GetResourcePolicyErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            GetResourcePolicyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -577,87 +478,73 @@ impl ::smithy_types::retry::ProvideErrorKind for GetResourcePolicyError {
         GetResourcePolicyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GetResourcePolicyError::InternalServiceError(_inner) => None,
-            GetResourcePolicyError::InvalidRequestError(_inner) => None,
-            GetResourcePolicyError::ResourceNotFoundError(_inner) => None,
-            GetResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GetResourcePolicyError {
+    pub fn new(kind: GetResourcePolicyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GetResourcePolicyError::Unhandled(err.into())
+        Self {
+            kind: GetResourcePolicyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GetResourcePolicyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GetResourcePolicyError::InternalServiceError(_inner) => _inner.message(),
-            GetResourcePolicyError::InvalidRequestError(_inner) => _inner.message(),
-            GetResourcePolicyError::ResourceNotFoundError(_inner) => _inner.message(),
-            GetResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GetResourcePolicyError::InternalServiceError(_inner) => Some(_inner.code()),
-            GetResourcePolicyError::InvalidRequestError(_inner) => Some(_inner.code()),
-            GetResourcePolicyError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            GetResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GetResourcePolicyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GetResourcePolicyError::InternalServiceError(_inner) => Some(_inner),
-            GetResourcePolicyError::InvalidRequestError(_inner) => Some(_inner),
-            GetResourcePolicyError::ResourceNotFoundError(_inner) => Some(_inner),
-            GetResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            GetResourcePolicyErrorKind::InternalServiceError(_inner) => Some(_inner),
+            GetResourcePolicyErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            GetResourcePolicyErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            GetResourcePolicyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GetSecretValueError {
+pub struct GetSecretValueError {
+    pub kind: GetSecretValueErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GetSecretValueErrorKind {
     DecryptionFailure(DecryptionFailure),
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
     InvalidRequestError(InvalidRequestError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GetSecretValueError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GetSecretValueError::DecryptionFailure(_inner) => _inner.fmt(f),
-            GetSecretValueError::InternalServiceError(_inner) => _inner.fmt(f),
-            GetSecretValueError::InvalidParameterError(_inner) => _inner.fmt(f),
-            GetSecretValueError::InvalidRequestError(_inner) => _inner.fmt(f),
-            GetSecretValueError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            GetSecretValueError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GetSecretValueErrorKind::DecryptionFailure(_inner) => _inner.fmt(f),
+            GetSecretValueErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            GetSecretValueErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            GetSecretValueErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            GetSecretValueErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            GetSecretValueErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -666,91 +553,71 @@ impl ::smithy_types::retry::ProvideErrorKind for GetSecretValueError {
         GetSecretValueError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GetSecretValueError::DecryptionFailure(_inner) => None,
-            GetSecretValueError::InternalServiceError(_inner) => None,
-            GetSecretValueError::InvalidParameterError(_inner) => None,
-            GetSecretValueError::InvalidRequestError(_inner) => None,
-            GetSecretValueError::ResourceNotFoundError(_inner) => None,
-            GetSecretValueError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GetSecretValueError {
+    pub fn new(kind: GetSecretValueErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GetSecretValueError::Unhandled(err.into())
+        Self {
+            kind: GetSecretValueErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GetSecretValueErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GetSecretValueError::DecryptionFailure(_inner) => _inner.message(),
-            GetSecretValueError::InternalServiceError(_inner) => _inner.message(),
-            GetSecretValueError::InvalidParameterError(_inner) => _inner.message(),
-            GetSecretValueError::InvalidRequestError(_inner) => _inner.message(),
-            GetSecretValueError::ResourceNotFoundError(_inner) => _inner.message(),
-            GetSecretValueError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GetSecretValueError::DecryptionFailure(_inner) => Some(_inner.code()),
-            GetSecretValueError::InternalServiceError(_inner) => Some(_inner.code()),
-            GetSecretValueError::InvalidParameterError(_inner) => Some(_inner.code()),
-            GetSecretValueError::InvalidRequestError(_inner) => Some(_inner.code()),
-            GetSecretValueError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            GetSecretValueError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GetSecretValueError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GetSecretValueError::DecryptionFailure(_inner) => Some(_inner),
-            GetSecretValueError::InternalServiceError(_inner) => Some(_inner),
-            GetSecretValueError::InvalidParameterError(_inner) => Some(_inner),
-            GetSecretValueError::InvalidRequestError(_inner) => Some(_inner),
-            GetSecretValueError::ResourceNotFoundError(_inner) => Some(_inner),
-            GetSecretValueError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            GetSecretValueErrorKind::DecryptionFailure(_inner) => Some(_inner),
+            GetSecretValueErrorKind::InternalServiceError(_inner) => Some(_inner),
+            GetSecretValueErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            GetSecretValueErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            GetSecretValueErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            GetSecretValueErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ListSecretsError {
+pub struct ListSecretsError {
+    pub kind: ListSecretsErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ListSecretsErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidNextTokenError(InvalidNextTokenError),
     InvalidParameterError(InvalidParameterError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ListSecretsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ListSecretsError::InternalServiceError(_inner) => _inner.fmt(f),
-            ListSecretsError::InvalidNextTokenError(_inner) => _inner.fmt(f),
-            ListSecretsError::InvalidParameterError(_inner) => _inner.fmt(f),
-            ListSecretsError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ListSecretsErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            ListSecretsErrorKind::InvalidNextTokenError(_inner) => _inner.fmt(f),
+            ListSecretsErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            ListSecretsErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -759,83 +626,69 @@ impl ::smithy_types::retry::ProvideErrorKind for ListSecretsError {
         ListSecretsError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ListSecretsError::InternalServiceError(_inner) => None,
-            ListSecretsError::InvalidNextTokenError(_inner) => None,
-            ListSecretsError::InvalidParameterError(_inner) => None,
-            ListSecretsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ListSecretsError {
+    pub fn new(kind: ListSecretsErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ListSecretsError::Unhandled(err.into())
+        Self {
+            kind: ListSecretsErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ListSecretsErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ListSecretsError::InternalServiceError(_inner) => _inner.message(),
-            ListSecretsError::InvalidNextTokenError(_inner) => _inner.message(),
-            ListSecretsError::InvalidParameterError(_inner) => _inner.message(),
-            ListSecretsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ListSecretsError::InternalServiceError(_inner) => Some(_inner.code()),
-            ListSecretsError::InvalidNextTokenError(_inner) => Some(_inner.code()),
-            ListSecretsError::InvalidParameterError(_inner) => Some(_inner.code()),
-            ListSecretsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ListSecretsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ListSecretsError::InternalServiceError(_inner) => Some(_inner),
-            ListSecretsError::InvalidNextTokenError(_inner) => Some(_inner),
-            ListSecretsError::InvalidParameterError(_inner) => Some(_inner),
-            ListSecretsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ListSecretsErrorKind::InternalServiceError(_inner) => Some(_inner),
+            ListSecretsErrorKind::InvalidNextTokenError(_inner) => Some(_inner),
+            ListSecretsErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            ListSecretsErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ListSecretVersionIdsError {
+pub struct ListSecretVersionIdsError {
+    pub kind: ListSecretVersionIdsErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ListSecretVersionIdsErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidNextTokenError(InvalidNextTokenError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ListSecretVersionIdsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ListSecretVersionIdsError::InternalServiceError(_inner) => _inner.fmt(f),
-            ListSecretVersionIdsError::InvalidNextTokenError(_inner) => _inner.fmt(f),
-            ListSecretVersionIdsError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            ListSecretVersionIdsError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ListSecretVersionIdsErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            ListSecretVersionIdsErrorKind::InvalidNextTokenError(_inner) => _inner.fmt(f),
+            ListSecretVersionIdsErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            ListSecretVersionIdsErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -844,69 +697,55 @@ impl ::smithy_types::retry::ProvideErrorKind for ListSecretVersionIdsError {
         ListSecretVersionIdsError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ListSecretVersionIdsError::InternalServiceError(_inner) => None,
-            ListSecretVersionIdsError::InvalidNextTokenError(_inner) => None,
-            ListSecretVersionIdsError::ResourceNotFoundError(_inner) => None,
-            ListSecretVersionIdsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ListSecretVersionIdsError {
+    pub fn new(kind: ListSecretVersionIdsErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ListSecretVersionIdsError::Unhandled(err.into())
+        Self {
+            kind: ListSecretVersionIdsErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ListSecretVersionIdsErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ListSecretVersionIdsError::InternalServiceError(_inner) => _inner.message(),
-            ListSecretVersionIdsError::InvalidNextTokenError(_inner) => _inner.message(),
-            ListSecretVersionIdsError::ResourceNotFoundError(_inner) => _inner.message(),
-            ListSecretVersionIdsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ListSecretVersionIdsError::InternalServiceError(_inner) => Some(_inner.code()),
-            ListSecretVersionIdsError::InvalidNextTokenError(_inner) => Some(_inner.code()),
-            ListSecretVersionIdsError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            ListSecretVersionIdsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ListSecretVersionIdsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ListSecretVersionIdsError::InternalServiceError(_inner) => Some(_inner),
-            ListSecretVersionIdsError::InvalidNextTokenError(_inner) => Some(_inner),
-            ListSecretVersionIdsError::ResourceNotFoundError(_inner) => Some(_inner),
-            ListSecretVersionIdsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ListSecretVersionIdsErrorKind::InternalServiceError(_inner) => Some(_inner),
+            ListSecretVersionIdsErrorKind::InvalidNextTokenError(_inner) => Some(_inner),
+            ListSecretVersionIdsErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            ListSecretVersionIdsErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum PutResourcePolicyError {
+pub struct PutResourcePolicyError {
+    pub kind: PutResourcePolicyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum PutResourcePolicyErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
     InvalidRequestError(InvalidRequestError),
@@ -914,19 +753,19 @@ pub enum PutResourcePolicyError {
     PublicPolicyError(PublicPolicyError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for PutResourcePolicyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            PutResourcePolicyError::InternalServiceError(_inner) => _inner.fmt(f),
-            PutResourcePolicyError::InvalidParameterError(_inner) => _inner.fmt(f),
-            PutResourcePolicyError::InvalidRequestError(_inner) => _inner.fmt(f),
-            PutResourcePolicyError::MalformedPolicyDocumentError(_inner) => _inner.fmt(f),
-            PutResourcePolicyError::PublicPolicyError(_inner) => _inner.fmt(f),
-            PutResourcePolicyError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            PutResourcePolicyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            PutResourcePolicyErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            PutResourcePolicyErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            PutResourcePolicyErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            PutResourcePolicyErrorKind::MalformedPolicyDocumentError(_inner) => _inner.fmt(f),
+            PutResourcePolicyErrorKind::PublicPolicyError(_inner) => _inner.fmt(f),
+            PutResourcePolicyErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            PutResourcePolicyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -935,81 +774,58 @@ impl ::smithy_types::retry::ProvideErrorKind for PutResourcePolicyError {
         PutResourcePolicyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            PutResourcePolicyError::InternalServiceError(_inner) => None,
-            PutResourcePolicyError::InvalidParameterError(_inner) => None,
-            PutResourcePolicyError::InvalidRequestError(_inner) => None,
-            PutResourcePolicyError::MalformedPolicyDocumentError(_inner) => None,
-            PutResourcePolicyError::PublicPolicyError(_inner) => None,
-            PutResourcePolicyError::ResourceNotFoundError(_inner) => None,
-            PutResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl PutResourcePolicyError {
+    pub fn new(kind: PutResourcePolicyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        PutResourcePolicyError::Unhandled(err.into())
+        Self {
+            kind: PutResourcePolicyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: PutResourcePolicyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            PutResourcePolicyError::InternalServiceError(_inner) => _inner.message(),
-            PutResourcePolicyError::InvalidParameterError(_inner) => _inner.message(),
-            PutResourcePolicyError::InvalidRequestError(_inner) => _inner.message(),
-            PutResourcePolicyError::MalformedPolicyDocumentError(_inner) => _inner.message(),
-            PutResourcePolicyError::PublicPolicyError(_inner) => _inner.message(),
-            PutResourcePolicyError::ResourceNotFoundError(_inner) => _inner.message(),
-            PutResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            PutResourcePolicyError::InternalServiceError(_inner) => Some(_inner.code()),
-            PutResourcePolicyError::InvalidParameterError(_inner) => Some(_inner.code()),
-            PutResourcePolicyError::InvalidRequestError(_inner) => Some(_inner.code()),
-            PutResourcePolicyError::MalformedPolicyDocumentError(_inner) => Some(_inner.code()),
-            PutResourcePolicyError::PublicPolicyError(_inner) => Some(_inner.code()),
-            PutResourcePolicyError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            PutResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for PutResourcePolicyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            PutResourcePolicyError::InternalServiceError(_inner) => Some(_inner),
-            PutResourcePolicyError::InvalidParameterError(_inner) => Some(_inner),
-            PutResourcePolicyError::InvalidRequestError(_inner) => Some(_inner),
-            PutResourcePolicyError::MalformedPolicyDocumentError(_inner) => Some(_inner),
-            PutResourcePolicyError::PublicPolicyError(_inner) => Some(_inner),
-            PutResourcePolicyError::ResourceNotFoundError(_inner) => Some(_inner),
-            PutResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            PutResourcePolicyErrorKind::InternalServiceError(_inner) => Some(_inner),
+            PutResourcePolicyErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            PutResourcePolicyErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            PutResourcePolicyErrorKind::MalformedPolicyDocumentError(_inner) => Some(_inner),
+            PutResourcePolicyErrorKind::PublicPolicyError(_inner) => Some(_inner),
+            PutResourcePolicyErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            PutResourcePolicyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum PutSecretValueError {
+pub struct PutSecretValueError {
+    pub kind: PutSecretValueErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum PutSecretValueErrorKind {
     EncryptionFailure(EncryptionFailure),
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
@@ -1018,20 +834,20 @@ pub enum PutSecretValueError {
     ResourceExistsError(ResourceExistsError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for PutSecretValueError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            PutSecretValueError::EncryptionFailure(_inner) => _inner.fmt(f),
-            PutSecretValueError::InternalServiceError(_inner) => _inner.fmt(f),
-            PutSecretValueError::InvalidParameterError(_inner) => _inner.fmt(f),
-            PutSecretValueError::InvalidRequestError(_inner) => _inner.fmt(f),
-            PutSecretValueError::LimitExceededError(_inner) => _inner.fmt(f),
-            PutSecretValueError::ResourceExistsError(_inner) => _inner.fmt(f),
-            PutSecretValueError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            PutSecretValueError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            PutSecretValueErrorKind::EncryptionFailure(_inner) => _inner.fmt(f),
+            PutSecretValueErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            PutSecretValueErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            PutSecretValueErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            PutSecretValueErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            PutSecretValueErrorKind::ResourceExistsError(_inner) => _inner.fmt(f),
+            PutSecretValueErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            PutSecretValueErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1040,101 +856,75 @@ impl ::smithy_types::retry::ProvideErrorKind for PutSecretValueError {
         PutSecretValueError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            PutSecretValueError::EncryptionFailure(_inner) => None,
-            PutSecretValueError::InternalServiceError(_inner) => None,
-            PutSecretValueError::InvalidParameterError(_inner) => None,
-            PutSecretValueError::InvalidRequestError(_inner) => None,
-            PutSecretValueError::LimitExceededError(_inner) => None,
-            PutSecretValueError::ResourceExistsError(_inner) => None,
-            PutSecretValueError::ResourceNotFoundError(_inner) => None,
-            PutSecretValueError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl PutSecretValueError {
+    pub fn new(kind: PutSecretValueErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        PutSecretValueError::Unhandled(err.into())
+        Self {
+            kind: PutSecretValueErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: PutSecretValueErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            PutSecretValueError::EncryptionFailure(_inner) => _inner.message(),
-            PutSecretValueError::InternalServiceError(_inner) => _inner.message(),
-            PutSecretValueError::InvalidParameterError(_inner) => _inner.message(),
-            PutSecretValueError::InvalidRequestError(_inner) => _inner.message(),
-            PutSecretValueError::LimitExceededError(_inner) => _inner.message(),
-            PutSecretValueError::ResourceExistsError(_inner) => _inner.message(),
-            PutSecretValueError::ResourceNotFoundError(_inner) => _inner.message(),
-            PutSecretValueError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            PutSecretValueError::EncryptionFailure(_inner) => Some(_inner.code()),
-            PutSecretValueError::InternalServiceError(_inner) => Some(_inner.code()),
-            PutSecretValueError::InvalidParameterError(_inner) => Some(_inner.code()),
-            PutSecretValueError::InvalidRequestError(_inner) => Some(_inner.code()),
-            PutSecretValueError::LimitExceededError(_inner) => Some(_inner.code()),
-            PutSecretValueError::ResourceExistsError(_inner) => Some(_inner.code()),
-            PutSecretValueError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            PutSecretValueError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for PutSecretValueError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            PutSecretValueError::EncryptionFailure(_inner) => Some(_inner),
-            PutSecretValueError::InternalServiceError(_inner) => Some(_inner),
-            PutSecretValueError::InvalidParameterError(_inner) => Some(_inner),
-            PutSecretValueError::InvalidRequestError(_inner) => Some(_inner),
-            PutSecretValueError::LimitExceededError(_inner) => Some(_inner),
-            PutSecretValueError::ResourceExistsError(_inner) => Some(_inner),
-            PutSecretValueError::ResourceNotFoundError(_inner) => Some(_inner),
-            PutSecretValueError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            PutSecretValueErrorKind::EncryptionFailure(_inner) => Some(_inner),
+            PutSecretValueErrorKind::InternalServiceError(_inner) => Some(_inner),
+            PutSecretValueErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            PutSecretValueErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            PutSecretValueErrorKind::LimitExceededError(_inner) => Some(_inner),
+            PutSecretValueErrorKind::ResourceExistsError(_inner) => Some(_inner),
+            PutSecretValueErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            PutSecretValueErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum RestoreSecretError {
+pub struct RestoreSecretError {
+    pub kind: RestoreSecretErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum RestoreSecretErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
     InvalidRequestError(InvalidRequestError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for RestoreSecretError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            RestoreSecretError::InternalServiceError(_inner) => _inner.fmt(f),
-            RestoreSecretError::InvalidParameterError(_inner) => _inner.fmt(f),
-            RestoreSecretError::InvalidRequestError(_inner) => _inner.fmt(f),
-            RestoreSecretError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            RestoreSecretError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            RestoreSecretErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            RestoreSecretErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            RestoreSecretErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            RestoreSecretErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            RestoreSecretErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1143,89 +933,72 @@ impl ::smithy_types::retry::ProvideErrorKind for RestoreSecretError {
         RestoreSecretError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            RestoreSecretError::InternalServiceError(_inner) => None,
-            RestoreSecretError::InvalidParameterError(_inner) => None,
-            RestoreSecretError::InvalidRequestError(_inner) => None,
-            RestoreSecretError::ResourceNotFoundError(_inner) => None,
-            RestoreSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl RestoreSecretError {
+    pub fn new(kind: RestoreSecretErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        RestoreSecretError::Unhandled(err.into())
+        Self {
+            kind: RestoreSecretErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: RestoreSecretErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            RestoreSecretError::InternalServiceError(_inner) => _inner.message(),
-            RestoreSecretError::InvalidParameterError(_inner) => _inner.message(),
-            RestoreSecretError::InvalidRequestError(_inner) => _inner.message(),
-            RestoreSecretError::ResourceNotFoundError(_inner) => _inner.message(),
-            RestoreSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            RestoreSecretError::InternalServiceError(_inner) => Some(_inner.code()),
-            RestoreSecretError::InvalidParameterError(_inner) => Some(_inner.code()),
-            RestoreSecretError::InvalidRequestError(_inner) => Some(_inner.code()),
-            RestoreSecretError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            RestoreSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for RestoreSecretError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            RestoreSecretError::InternalServiceError(_inner) => Some(_inner),
-            RestoreSecretError::InvalidParameterError(_inner) => Some(_inner),
-            RestoreSecretError::InvalidRequestError(_inner) => Some(_inner),
-            RestoreSecretError::ResourceNotFoundError(_inner) => Some(_inner),
-            RestoreSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            RestoreSecretErrorKind::InternalServiceError(_inner) => Some(_inner),
+            RestoreSecretErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            RestoreSecretErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            RestoreSecretErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            RestoreSecretErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum RotateSecretError {
+pub struct RotateSecretError {
+    pub kind: RotateSecretErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum RotateSecretErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
     InvalidRequestError(InvalidRequestError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for RotateSecretError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            RotateSecretError::InternalServiceError(_inner) => _inner.fmt(f),
-            RotateSecretError::InvalidParameterError(_inner) => _inner.fmt(f),
-            RotateSecretError::InvalidRequestError(_inner) => _inner.fmt(f),
-            RotateSecretError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            RotateSecretError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            RotateSecretErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            RotateSecretErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            RotateSecretErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            RotateSecretErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            RotateSecretErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1234,89 +1007,72 @@ impl ::smithy_types::retry::ProvideErrorKind for RotateSecretError {
         RotateSecretError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            RotateSecretError::InternalServiceError(_inner) => None,
-            RotateSecretError::InvalidParameterError(_inner) => None,
-            RotateSecretError::InvalidRequestError(_inner) => None,
-            RotateSecretError::ResourceNotFoundError(_inner) => None,
-            RotateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl RotateSecretError {
+    pub fn new(kind: RotateSecretErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        RotateSecretError::Unhandled(err.into())
+        Self {
+            kind: RotateSecretErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: RotateSecretErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            RotateSecretError::InternalServiceError(_inner) => _inner.message(),
-            RotateSecretError::InvalidParameterError(_inner) => _inner.message(),
-            RotateSecretError::InvalidRequestError(_inner) => _inner.message(),
-            RotateSecretError::ResourceNotFoundError(_inner) => _inner.message(),
-            RotateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            RotateSecretError::InternalServiceError(_inner) => Some(_inner.code()),
-            RotateSecretError::InvalidParameterError(_inner) => Some(_inner.code()),
-            RotateSecretError::InvalidRequestError(_inner) => Some(_inner.code()),
-            RotateSecretError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            RotateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for RotateSecretError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            RotateSecretError::InternalServiceError(_inner) => Some(_inner),
-            RotateSecretError::InvalidParameterError(_inner) => Some(_inner),
-            RotateSecretError::InvalidRequestError(_inner) => Some(_inner),
-            RotateSecretError::ResourceNotFoundError(_inner) => Some(_inner),
-            RotateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            RotateSecretErrorKind::InternalServiceError(_inner) => Some(_inner),
+            RotateSecretErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            RotateSecretErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            RotateSecretErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            RotateSecretErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum TagResourceError {
+pub struct TagResourceError {
+    pub kind: TagResourceErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum TagResourceErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
     InvalidRequestError(InvalidRequestError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for TagResourceError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            TagResourceError::InternalServiceError(_inner) => _inner.fmt(f),
-            TagResourceError::InvalidParameterError(_inner) => _inner.fmt(f),
-            TagResourceError::InvalidRequestError(_inner) => _inner.fmt(f),
-            TagResourceError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            TagResourceError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            TagResourceErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            TagResourceErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            TagResourceErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            TagResourceErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            TagResourceErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1325,89 +1081,72 @@ impl ::smithy_types::retry::ProvideErrorKind for TagResourceError {
         TagResourceError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            TagResourceError::InternalServiceError(_inner) => None,
-            TagResourceError::InvalidParameterError(_inner) => None,
-            TagResourceError::InvalidRequestError(_inner) => None,
-            TagResourceError::ResourceNotFoundError(_inner) => None,
-            TagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl TagResourceError {
+    pub fn new(kind: TagResourceErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        TagResourceError::Unhandled(err.into())
+        Self {
+            kind: TagResourceErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: TagResourceErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            TagResourceError::InternalServiceError(_inner) => _inner.message(),
-            TagResourceError::InvalidParameterError(_inner) => _inner.message(),
-            TagResourceError::InvalidRequestError(_inner) => _inner.message(),
-            TagResourceError::ResourceNotFoundError(_inner) => _inner.message(),
-            TagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            TagResourceError::InternalServiceError(_inner) => Some(_inner.code()),
-            TagResourceError::InvalidParameterError(_inner) => Some(_inner.code()),
-            TagResourceError::InvalidRequestError(_inner) => Some(_inner.code()),
-            TagResourceError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            TagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for TagResourceError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            TagResourceError::InternalServiceError(_inner) => Some(_inner),
-            TagResourceError::InvalidParameterError(_inner) => Some(_inner),
-            TagResourceError::InvalidRequestError(_inner) => Some(_inner),
-            TagResourceError::ResourceNotFoundError(_inner) => Some(_inner),
-            TagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            TagResourceErrorKind::InternalServiceError(_inner) => Some(_inner),
+            TagResourceErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            TagResourceErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            TagResourceErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            TagResourceErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum UntagResourceError {
+pub struct UntagResourceError {
+    pub kind: UntagResourceErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum UntagResourceErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
     InvalidRequestError(InvalidRequestError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for UntagResourceError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            UntagResourceError::InternalServiceError(_inner) => _inner.fmt(f),
-            UntagResourceError::InvalidParameterError(_inner) => _inner.fmt(f),
-            UntagResourceError::InvalidRequestError(_inner) => _inner.fmt(f),
-            UntagResourceError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            UntagResourceError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            UntagResourceErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            UntagResourceErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            UntagResourceErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            UntagResourceErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            UntagResourceErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1416,73 +1155,56 @@ impl ::smithy_types::retry::ProvideErrorKind for UntagResourceError {
         UntagResourceError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            UntagResourceError::InternalServiceError(_inner) => None,
-            UntagResourceError::InvalidParameterError(_inner) => None,
-            UntagResourceError::InvalidRequestError(_inner) => None,
-            UntagResourceError::ResourceNotFoundError(_inner) => None,
-            UntagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl UntagResourceError {
+    pub fn new(kind: UntagResourceErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        UntagResourceError::Unhandled(err.into())
+        Self {
+            kind: UntagResourceErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: UntagResourceErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            UntagResourceError::InternalServiceError(_inner) => _inner.message(),
-            UntagResourceError::InvalidParameterError(_inner) => _inner.message(),
-            UntagResourceError::InvalidRequestError(_inner) => _inner.message(),
-            UntagResourceError::ResourceNotFoundError(_inner) => _inner.message(),
-            UntagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            UntagResourceError::InternalServiceError(_inner) => Some(_inner.code()),
-            UntagResourceError::InvalidParameterError(_inner) => Some(_inner.code()),
-            UntagResourceError::InvalidRequestError(_inner) => Some(_inner.code()),
-            UntagResourceError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            UntagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for UntagResourceError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            UntagResourceError::InternalServiceError(_inner) => Some(_inner),
-            UntagResourceError::InvalidParameterError(_inner) => Some(_inner),
-            UntagResourceError::InvalidRequestError(_inner) => Some(_inner),
-            UntagResourceError::ResourceNotFoundError(_inner) => Some(_inner),
-            UntagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            UntagResourceErrorKind::InternalServiceError(_inner) => Some(_inner),
+            UntagResourceErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            UntagResourceErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            UntagResourceErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            UntagResourceErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum UpdateSecretError {
+pub struct UpdateSecretError {
+    pub kind: UpdateSecretErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum UpdateSecretErrorKind {
     EncryptionFailure(EncryptionFailure),
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
@@ -1493,22 +1215,22 @@ pub enum UpdateSecretError {
     ResourceExistsError(ResourceExistsError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for UpdateSecretError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            UpdateSecretError::EncryptionFailure(_inner) => _inner.fmt(f),
-            UpdateSecretError::InternalServiceError(_inner) => _inner.fmt(f),
-            UpdateSecretError::InvalidParameterError(_inner) => _inner.fmt(f),
-            UpdateSecretError::InvalidRequestError(_inner) => _inner.fmt(f),
-            UpdateSecretError::LimitExceededError(_inner) => _inner.fmt(f),
-            UpdateSecretError::MalformedPolicyDocumentError(_inner) => _inner.fmt(f),
-            UpdateSecretError::PreconditionNotMetError(_inner) => _inner.fmt(f),
-            UpdateSecretError::ResourceExistsError(_inner) => _inner.fmt(f),
-            UpdateSecretError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            UpdateSecretError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            UpdateSecretErrorKind::EncryptionFailure(_inner) => _inner.fmt(f),
+            UpdateSecretErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            UpdateSecretErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            UpdateSecretErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            UpdateSecretErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            UpdateSecretErrorKind::MalformedPolicyDocumentError(_inner) => _inner.fmt(f),
+            UpdateSecretErrorKind::PreconditionNotMetError(_inner) => _inner.fmt(f),
+            UpdateSecretErrorKind::ResourceExistsError(_inner) => _inner.fmt(f),
+            UpdateSecretErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            UpdateSecretErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1517,111 +1239,79 @@ impl ::smithy_types::retry::ProvideErrorKind for UpdateSecretError {
         UpdateSecretError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            UpdateSecretError::EncryptionFailure(_inner) => None,
-            UpdateSecretError::InternalServiceError(_inner) => None,
-            UpdateSecretError::InvalidParameterError(_inner) => None,
-            UpdateSecretError::InvalidRequestError(_inner) => None,
-            UpdateSecretError::LimitExceededError(_inner) => None,
-            UpdateSecretError::MalformedPolicyDocumentError(_inner) => None,
-            UpdateSecretError::PreconditionNotMetError(_inner) => None,
-            UpdateSecretError::ResourceExistsError(_inner) => None,
-            UpdateSecretError::ResourceNotFoundError(_inner) => None,
-            UpdateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl UpdateSecretError {
+    pub fn new(kind: UpdateSecretErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        UpdateSecretError::Unhandled(err.into())
+        Self {
+            kind: UpdateSecretErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: UpdateSecretErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            UpdateSecretError::EncryptionFailure(_inner) => _inner.message(),
-            UpdateSecretError::InternalServiceError(_inner) => _inner.message(),
-            UpdateSecretError::InvalidParameterError(_inner) => _inner.message(),
-            UpdateSecretError::InvalidRequestError(_inner) => _inner.message(),
-            UpdateSecretError::LimitExceededError(_inner) => _inner.message(),
-            UpdateSecretError::MalformedPolicyDocumentError(_inner) => _inner.message(),
-            UpdateSecretError::PreconditionNotMetError(_inner) => _inner.message(),
-            UpdateSecretError::ResourceExistsError(_inner) => _inner.message(),
-            UpdateSecretError::ResourceNotFoundError(_inner) => _inner.message(),
-            UpdateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            UpdateSecretError::EncryptionFailure(_inner) => Some(_inner.code()),
-            UpdateSecretError::InternalServiceError(_inner) => Some(_inner.code()),
-            UpdateSecretError::InvalidParameterError(_inner) => Some(_inner.code()),
-            UpdateSecretError::InvalidRequestError(_inner) => Some(_inner.code()),
-            UpdateSecretError::LimitExceededError(_inner) => Some(_inner.code()),
-            UpdateSecretError::MalformedPolicyDocumentError(_inner) => Some(_inner.code()),
-            UpdateSecretError::PreconditionNotMetError(_inner) => Some(_inner.code()),
-            UpdateSecretError::ResourceExistsError(_inner) => Some(_inner.code()),
-            UpdateSecretError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            UpdateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for UpdateSecretError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            UpdateSecretError::EncryptionFailure(_inner) => Some(_inner),
-            UpdateSecretError::InternalServiceError(_inner) => Some(_inner),
-            UpdateSecretError::InvalidParameterError(_inner) => Some(_inner),
-            UpdateSecretError::InvalidRequestError(_inner) => Some(_inner),
-            UpdateSecretError::LimitExceededError(_inner) => Some(_inner),
-            UpdateSecretError::MalformedPolicyDocumentError(_inner) => Some(_inner),
-            UpdateSecretError::PreconditionNotMetError(_inner) => Some(_inner),
-            UpdateSecretError::ResourceExistsError(_inner) => Some(_inner),
-            UpdateSecretError::ResourceNotFoundError(_inner) => Some(_inner),
-            UpdateSecretError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            UpdateSecretErrorKind::EncryptionFailure(_inner) => Some(_inner),
+            UpdateSecretErrorKind::InternalServiceError(_inner) => Some(_inner),
+            UpdateSecretErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            UpdateSecretErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            UpdateSecretErrorKind::LimitExceededError(_inner) => Some(_inner),
+            UpdateSecretErrorKind::MalformedPolicyDocumentError(_inner) => Some(_inner),
+            UpdateSecretErrorKind::PreconditionNotMetError(_inner) => Some(_inner),
+            UpdateSecretErrorKind::ResourceExistsError(_inner) => Some(_inner),
+            UpdateSecretErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            UpdateSecretErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum UpdateSecretVersionStageError {
+pub struct UpdateSecretVersionStageError {
+    pub kind: UpdateSecretVersionStageErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum UpdateSecretVersionStageErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
     InvalidRequestError(InvalidRequestError),
     LimitExceededError(LimitExceededError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for UpdateSecretVersionStageError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            UpdateSecretVersionStageError::InternalServiceError(_inner) => _inner.fmt(f),
-            UpdateSecretVersionStageError::InvalidParameterError(_inner) => _inner.fmt(f),
-            UpdateSecretVersionStageError::InvalidRequestError(_inner) => _inner.fmt(f),
-            UpdateSecretVersionStageError::LimitExceededError(_inner) => _inner.fmt(f),
-            UpdateSecretVersionStageError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            UpdateSecretVersionStageError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            UpdateSecretVersionStageErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            UpdateSecretVersionStageErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            UpdateSecretVersionStageErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            UpdateSecretVersionStageErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            UpdateSecretVersionStageErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            UpdateSecretVersionStageErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1630,95 +1320,75 @@ impl ::smithy_types::retry::ProvideErrorKind for UpdateSecretVersionStageError {
         UpdateSecretVersionStageError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            UpdateSecretVersionStageError::InternalServiceError(_inner) => None,
-            UpdateSecretVersionStageError::InvalidParameterError(_inner) => None,
-            UpdateSecretVersionStageError::InvalidRequestError(_inner) => None,
-            UpdateSecretVersionStageError::LimitExceededError(_inner) => None,
-            UpdateSecretVersionStageError::ResourceNotFoundError(_inner) => None,
-            UpdateSecretVersionStageError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl UpdateSecretVersionStageError {
+    pub fn new(kind: UpdateSecretVersionStageErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        UpdateSecretVersionStageError::Unhandled(err.into())
+        Self {
+            kind: UpdateSecretVersionStageErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: UpdateSecretVersionStageErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            UpdateSecretVersionStageError::InternalServiceError(_inner) => _inner.message(),
-            UpdateSecretVersionStageError::InvalidParameterError(_inner) => _inner.message(),
-            UpdateSecretVersionStageError::InvalidRequestError(_inner) => _inner.message(),
-            UpdateSecretVersionStageError::LimitExceededError(_inner) => _inner.message(),
-            UpdateSecretVersionStageError::ResourceNotFoundError(_inner) => _inner.message(),
-            UpdateSecretVersionStageError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            UpdateSecretVersionStageError::InternalServiceError(_inner) => Some(_inner.code()),
-            UpdateSecretVersionStageError::InvalidParameterError(_inner) => Some(_inner.code()),
-            UpdateSecretVersionStageError::InvalidRequestError(_inner) => Some(_inner.code()),
-            UpdateSecretVersionStageError::LimitExceededError(_inner) => Some(_inner.code()),
-            UpdateSecretVersionStageError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            UpdateSecretVersionStageError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for UpdateSecretVersionStageError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            UpdateSecretVersionStageError::InternalServiceError(_inner) => Some(_inner),
-            UpdateSecretVersionStageError::InvalidParameterError(_inner) => Some(_inner),
-            UpdateSecretVersionStageError::InvalidRequestError(_inner) => Some(_inner),
-            UpdateSecretVersionStageError::LimitExceededError(_inner) => Some(_inner),
-            UpdateSecretVersionStageError::ResourceNotFoundError(_inner) => Some(_inner),
-            UpdateSecretVersionStageError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            UpdateSecretVersionStageErrorKind::InternalServiceError(_inner) => Some(_inner),
+            UpdateSecretVersionStageErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            UpdateSecretVersionStageErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            UpdateSecretVersionStageErrorKind::LimitExceededError(_inner) => Some(_inner),
+            UpdateSecretVersionStageErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            UpdateSecretVersionStageErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ValidateResourcePolicyError {
+pub struct ValidateResourcePolicyError {
+    pub kind: ValidateResourcePolicyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ValidateResourcePolicyErrorKind {
     InternalServiceError(InternalServiceError),
     InvalidParameterError(InvalidParameterError),
     InvalidRequestError(InvalidRequestError),
     MalformedPolicyDocumentError(MalformedPolicyDocumentError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ValidateResourcePolicyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ValidateResourcePolicyError::InternalServiceError(_inner) => _inner.fmt(f),
-            ValidateResourcePolicyError::InvalidParameterError(_inner) => _inner.fmt(f),
-            ValidateResourcePolicyError::InvalidRequestError(_inner) => _inner.fmt(f),
-            ValidateResourcePolicyError::MalformedPolicyDocumentError(_inner) => _inner.fmt(f),
-            ValidateResourcePolicyError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            ValidateResourcePolicyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ValidateResourcePolicyErrorKind::InternalServiceError(_inner) => _inner.fmt(f),
+            ValidateResourcePolicyErrorKind::InvalidParameterError(_inner) => _inner.fmt(f),
+            ValidateResourcePolicyErrorKind::InvalidRequestError(_inner) => _inner.fmt(f),
+            ValidateResourcePolicyErrorKind::MalformedPolicyDocumentError(_inner) => _inner.fmt(f),
+            ValidateResourcePolicyErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            ValidateResourcePolicyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1727,72 +1397,44 @@ impl ::smithy_types::retry::ProvideErrorKind for ValidateResourcePolicyError {
         ValidateResourcePolicyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ValidateResourcePolicyError::InternalServiceError(_inner) => None,
-            ValidateResourcePolicyError::InvalidParameterError(_inner) => None,
-            ValidateResourcePolicyError::InvalidRequestError(_inner) => None,
-            ValidateResourcePolicyError::MalformedPolicyDocumentError(_inner) => None,
-            ValidateResourcePolicyError::ResourceNotFoundError(_inner) => None,
-            ValidateResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ValidateResourcePolicyError {
+    pub fn new(kind: ValidateResourcePolicyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ValidateResourcePolicyError::Unhandled(err.into())
+        Self {
+            kind: ValidateResourcePolicyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ValidateResourcePolicyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ValidateResourcePolicyError::InternalServiceError(_inner) => _inner.message(),
-            ValidateResourcePolicyError::InvalidParameterError(_inner) => _inner.message(),
-            ValidateResourcePolicyError::InvalidRequestError(_inner) => _inner.message(),
-            ValidateResourcePolicyError::MalformedPolicyDocumentError(_inner) => _inner.message(),
-            ValidateResourcePolicyError::ResourceNotFoundError(_inner) => _inner.message(),
-            ValidateResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ValidateResourcePolicyError::InternalServiceError(_inner) => Some(_inner.code()),
-            ValidateResourcePolicyError::InvalidParameterError(_inner) => Some(_inner.code()),
-            ValidateResourcePolicyError::InvalidRequestError(_inner) => Some(_inner.code()),
-            ValidateResourcePolicyError::MalformedPolicyDocumentError(_inner) => {
-                Some(_inner.code())
-            }
-            ValidateResourcePolicyError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            ValidateResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ValidateResourcePolicyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ValidateResourcePolicyError::InternalServiceError(_inner) => Some(_inner),
-            ValidateResourcePolicyError::InvalidParameterError(_inner) => Some(_inner),
-            ValidateResourcePolicyError::InvalidRequestError(_inner) => Some(_inner),
-            ValidateResourcePolicyError::MalformedPolicyDocumentError(_inner) => Some(_inner),
-            ValidateResourcePolicyError::ResourceNotFoundError(_inner) => Some(_inner),
-            ValidateResourcePolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ValidateResourcePolicyErrorKind::InternalServiceError(_inner) => Some(_inner),
+            ValidateResourcePolicyErrorKind::InvalidParameterError(_inner) => Some(_inner),
+            ValidateResourcePolicyErrorKind::InvalidRequestError(_inner) => Some(_inner),
+            ValidateResourcePolicyErrorKind::MalformedPolicyDocumentError(_inner) => Some(_inner),
+            ValidateResourcePolicyErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            ValidateResourcePolicyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
@@ -1814,16 +1456,13 @@ impl ::std::fmt::Debug for ResourceNotFoundError {
     }
 }
 impl ResourceNotFoundError {
-    pub fn code(&self) -> &str {
-        "ResourceNotFoundException"
-    }
     pub fn message(&self) -> Option<&str> {
         None
     }
 }
 impl ::std::fmt::Display for ResourceNotFoundError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "ResourceNotFoundError")?;
+        write!(f, "ResourceNotFoundError [ResourceNotFoundException]")?;
         Ok(())
     }
 }
@@ -1875,16 +1514,16 @@ impl ::std::fmt::Debug for MalformedPolicyDocumentError {
     }
 }
 impl MalformedPolicyDocumentError {
-    pub fn code(&self) -> &str {
-        "MalformedPolicyDocumentException"
-    }
     pub fn message(&self) -> Option<&str> {
         None
     }
 }
 impl ::std::fmt::Display for MalformedPolicyDocumentError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "MalformedPolicyDocumentError")?;
+        write!(
+            f,
+            "MalformedPolicyDocumentError [MalformedPolicyDocumentException]"
+        )?;
         Ok(())
     }
 }
@@ -1947,16 +1586,13 @@ impl ::std::fmt::Debug for InvalidRequestError {
     }
 }
 impl InvalidRequestError {
-    pub fn code(&self) -> &str {
-        "InvalidRequestException"
-    }
     pub fn message(&self) -> Option<&str> {
         None
     }
 }
 impl ::std::fmt::Display for InvalidRequestError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InvalidRequestError")?;
+        write!(f, "InvalidRequestError [InvalidRequestException]")?;
         Ok(())
     }
 }
@@ -2008,16 +1644,13 @@ impl ::std::fmt::Debug for InvalidParameterError {
     }
 }
 impl InvalidParameterError {
-    pub fn code(&self) -> &str {
-        "InvalidParameterException"
-    }
     pub fn message(&self) -> Option<&str> {
         None
     }
 }
 impl ::std::fmt::Display for InvalidParameterError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InvalidParameterError")?;
+        write!(f, "InvalidParameterError [InvalidParameterException]")?;
         Ok(())
     }
 }
@@ -2069,9 +1702,6 @@ impl ::std::fmt::Debug for InternalServiceError {
     }
 }
 impl InternalServiceError {
-    pub fn code(&self) -> &str {
-        "InternalServiceError"
-    }
     pub fn message(&self) -> Option<&str> {
         None
     }
@@ -2130,16 +1760,13 @@ impl ::std::fmt::Debug for LimitExceededError {
     }
 }
 impl LimitExceededError {
-    pub fn code(&self) -> &str {
-        "LimitExceededException"
-    }
     pub fn message(&self) -> Option<&str> {
         None
     }
 }
 impl ::std::fmt::Display for LimitExceededError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "LimitExceededError")?;
+        write!(f, "LimitExceededError [LimitExceededException]")?;
         Ok(())
     }
 }
@@ -2191,16 +1818,13 @@ impl ::std::fmt::Debug for ResourceExistsError {
     }
 }
 impl ResourceExistsError {
-    pub fn code(&self) -> &str {
-        "ResourceExistsException"
-    }
     pub fn message(&self) -> Option<&str> {
         None
     }
 }
 impl ::std::fmt::Display for ResourceExistsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "ResourceExistsError")?;
+        write!(f, "ResourceExistsError [ResourceExistsException]")?;
         Ok(())
     }
 }
@@ -2252,16 +1876,13 @@ impl ::std::fmt::Debug for PreconditionNotMetError {
     }
 }
 impl PreconditionNotMetError {
-    pub fn code(&self) -> &str {
-        "PreconditionNotMetException"
-    }
     pub fn message(&self) -> Option<&str> {
         None
     }
 }
 impl ::std::fmt::Display for PreconditionNotMetError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "PreconditionNotMetError")?;
+        write!(f, "PreconditionNotMetError [PreconditionNotMetException]")?;
         Ok(())
     }
 }
@@ -2316,9 +1937,6 @@ impl ::std::fmt::Debug for EncryptionFailure {
     }
 }
 impl EncryptionFailure {
-    pub fn code(&self) -> &str {
-        "EncryptionFailure"
-    }
     pub fn message(&self) -> Option<&str> {
         None
     }
@@ -2377,16 +1995,13 @@ impl ::std::fmt::Debug for PublicPolicyError {
     }
 }
 impl PublicPolicyError {
-    pub fn code(&self) -> &str {
-        "PublicPolicyException"
-    }
     pub fn message(&self) -> Option<&str> {
         None
     }
 }
 impl ::std::fmt::Display for PublicPolicyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "PublicPolicyError")?;
+        write!(f, "PublicPolicyError [PublicPolicyException]")?;
         Ok(())
     }
 }
@@ -2438,16 +2053,13 @@ impl ::std::fmt::Debug for InvalidNextTokenError {
     }
 }
 impl InvalidNextTokenError {
-    pub fn code(&self) -> &str {
-        "InvalidNextTokenException"
-    }
     pub fn message(&self) -> Option<&str> {
         None
     }
 }
 impl ::std::fmt::Display for InvalidNextTokenError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InvalidNextTokenError")?;
+        write!(f, "InvalidNextTokenError [InvalidNextTokenException]")?;
         Ok(())
     }
 }
@@ -2499,9 +2111,6 @@ impl ::std::fmt::Debug for DecryptionFailure {
     }
 }
 impl DecryptionFailure {
-    pub fn code(&self) -> &str {
-        "DecryptionFailure"
-    }
     pub fn message(&self) -> Option<&str> {
         None
     }

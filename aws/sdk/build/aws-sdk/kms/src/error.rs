@@ -2,25 +2,31 @@
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum CancelKeyDeletionError {
+pub struct CancelKeyDeletionError {
+    pub kind: CancelKeyDeletionErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum CancelKeyDeletionErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for CancelKeyDeletionError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            CancelKeyDeletionError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            CancelKeyDeletionError::InvalidArnError(_inner) => _inner.fmt(f),
-            CancelKeyDeletionError::KMSInternalError(_inner) => _inner.fmt(f),
-            CancelKeyDeletionError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            CancelKeyDeletionError::NotFoundError(_inner) => _inner.fmt(f),
-            CancelKeyDeletionError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            CancelKeyDeletionErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            CancelKeyDeletionErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            CancelKeyDeletionErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            CancelKeyDeletionErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            CancelKeyDeletionErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            CancelKeyDeletionErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -29,97 +35,79 @@ impl ::smithy_types::retry::ProvideErrorKind for CancelKeyDeletionError {
         CancelKeyDeletionError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            CancelKeyDeletionError::DependencyTimeoutError(_inner) => None,
-            CancelKeyDeletionError::InvalidArnError(_inner) => None,
-            CancelKeyDeletionError::KMSInternalError(_inner) => None,
-            CancelKeyDeletionError::KMSInvalidStateError(_inner) => None,
-            CancelKeyDeletionError::NotFoundError(_inner) => None,
-            CancelKeyDeletionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl CancelKeyDeletionError {
+    pub fn new(kind: CancelKeyDeletionErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        CancelKeyDeletionError::Unhandled(err.into())
+        Self {
+            kind: CancelKeyDeletionErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: CancelKeyDeletionErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            CancelKeyDeletionError::DependencyTimeoutError(_inner) => _inner.message(),
-            CancelKeyDeletionError::InvalidArnError(_inner) => _inner.message(),
-            CancelKeyDeletionError::KMSInternalError(_inner) => _inner.message(),
-            CancelKeyDeletionError::KMSInvalidStateError(_inner) => _inner.message(),
-            CancelKeyDeletionError::NotFoundError(_inner) => _inner.message(),
-            CancelKeyDeletionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            CancelKeyDeletionError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            CancelKeyDeletionError::InvalidArnError(_inner) => Some(_inner.code()),
-            CancelKeyDeletionError::KMSInternalError(_inner) => Some(_inner.code()),
-            CancelKeyDeletionError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            CancelKeyDeletionError::NotFoundError(_inner) => Some(_inner.code()),
-            CancelKeyDeletionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for CancelKeyDeletionError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            CancelKeyDeletionError::DependencyTimeoutError(_inner) => Some(_inner),
-            CancelKeyDeletionError::InvalidArnError(_inner) => Some(_inner),
-            CancelKeyDeletionError::KMSInternalError(_inner) => Some(_inner),
-            CancelKeyDeletionError::KMSInvalidStateError(_inner) => Some(_inner),
-            CancelKeyDeletionError::NotFoundError(_inner) => Some(_inner),
-            CancelKeyDeletionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            CancelKeyDeletionErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            CancelKeyDeletionErrorKind::InvalidArnError(_inner) => Some(_inner),
+            CancelKeyDeletionErrorKind::KMSInternalError(_inner) => Some(_inner),
+            CancelKeyDeletionErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            CancelKeyDeletionErrorKind::NotFoundError(_inner) => Some(_inner),
+            CancelKeyDeletionErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ConnectCustomKeyStoreError {
+pub struct ConnectCustomKeyStoreError {
+    pub kind: ConnectCustomKeyStoreErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ConnectCustomKeyStoreErrorKind {
     CloudHsmClusterInvalidConfigurationError(CloudHsmClusterInvalidConfigurationError),
     CloudHsmClusterNotActiveError(CloudHsmClusterNotActiveError),
     CustomKeyStoreInvalidStateError(CustomKeyStoreInvalidStateError),
     CustomKeyStoreNotFoundError(CustomKeyStoreNotFoundError),
     KMSInternalError(KMSInternalError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ConnectCustomKeyStoreError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ConnectCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => {
+        match &self.kind {
+            ConnectCustomKeyStoreErrorKind::CloudHsmClusterInvalidConfigurationError(_inner) => {
                 _inner.fmt(f)
             }
-            ConnectCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => _inner.fmt(f),
-            ConnectCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => _inner.fmt(f),
-            ConnectCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
-            ConnectCustomKeyStoreError::KMSInternalError(_inner) => _inner.fmt(f),
-            ConnectCustomKeyStoreError::Unhandled(_inner) => _inner.fmt(f),
+            ConnectCustomKeyStoreErrorKind::CloudHsmClusterNotActiveError(_inner) => _inner.fmt(f),
+            ConnectCustomKeyStoreErrorKind::CustomKeyStoreInvalidStateError(_inner) => {
+                _inner.fmt(f)
+            }
+            ConnectCustomKeyStoreErrorKind::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
+            ConnectCustomKeyStoreErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            ConnectCustomKeyStoreErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -128,87 +116,59 @@ impl ::smithy_types::retry::ProvideErrorKind for ConnectCustomKeyStoreError {
         ConnectCustomKeyStoreError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ConnectCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => None,
-            ConnectCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => None,
-            ConnectCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => None,
-            ConnectCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => None,
-            ConnectCustomKeyStoreError::KMSInternalError(_inner) => None,
-            ConnectCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ConnectCustomKeyStoreError {
+    pub fn new(kind: ConnectCustomKeyStoreErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ConnectCustomKeyStoreError::Unhandled(err.into())
+        Self {
+            kind: ConnectCustomKeyStoreErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ConnectCustomKeyStoreErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ConnectCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => {
-                _inner.message()
-            }
-            ConnectCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => _inner.message(),
-            ConnectCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => _inner.message(),
-            ConnectCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => _inner.message(),
-            ConnectCustomKeyStoreError::KMSInternalError(_inner) => _inner.message(),
-            ConnectCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ConnectCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => {
-                Some(_inner.code())
-            }
-            ConnectCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => {
-                Some(_inner.code())
-            }
-            ConnectCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => {
-                Some(_inner.code())
-            }
-            ConnectCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => Some(_inner.code()),
-            ConnectCustomKeyStoreError::KMSInternalError(_inner) => Some(_inner.code()),
-            ConnectCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ConnectCustomKeyStoreError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ConnectCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => {
+        match &self.kind {
+            ConnectCustomKeyStoreErrorKind::CloudHsmClusterInvalidConfigurationError(_inner) => {
                 Some(_inner)
             }
-            ConnectCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => Some(_inner),
-            ConnectCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => Some(_inner),
-            ConnectCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
-            ConnectCustomKeyStoreError::KMSInternalError(_inner) => Some(_inner),
-            ConnectCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+            ConnectCustomKeyStoreErrorKind::CloudHsmClusterNotActiveError(_inner) => Some(_inner),
+            ConnectCustomKeyStoreErrorKind::CustomKeyStoreInvalidStateError(_inner) => Some(_inner),
+            ConnectCustomKeyStoreErrorKind::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
+            ConnectCustomKeyStoreErrorKind::KMSInternalError(_inner) => Some(_inner),
+            ConnectCustomKeyStoreErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum CreateAliasError {
+pub struct CreateAliasError {
+    pub kind: CreateAliasErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum CreateAliasErrorKind {
     AlreadyExistsError(AlreadyExistsError),
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidAliasNameError(InvalidAliasNameError),
@@ -217,20 +177,20 @@ pub enum CreateAliasError {
     LimitExceededError(LimitExceededError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for CreateAliasError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            CreateAliasError::AlreadyExistsError(_inner) => _inner.fmt(f),
-            CreateAliasError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            CreateAliasError::InvalidAliasNameError(_inner) => _inner.fmt(f),
-            CreateAliasError::KMSInternalError(_inner) => _inner.fmt(f),
-            CreateAliasError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            CreateAliasError::LimitExceededError(_inner) => _inner.fmt(f),
-            CreateAliasError::NotFoundError(_inner) => _inner.fmt(f),
-            CreateAliasError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            CreateAliasErrorKind::AlreadyExistsError(_inner) => _inner.fmt(f),
+            CreateAliasErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            CreateAliasErrorKind::InvalidAliasNameError(_inner) => _inner.fmt(f),
+            CreateAliasErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            CreateAliasErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            CreateAliasErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            CreateAliasErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            CreateAliasErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -239,85 +199,59 @@ impl ::smithy_types::retry::ProvideErrorKind for CreateAliasError {
         CreateAliasError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            CreateAliasError::AlreadyExistsError(_inner) => None,
-            CreateAliasError::DependencyTimeoutError(_inner) => None,
-            CreateAliasError::InvalidAliasNameError(_inner) => None,
-            CreateAliasError::KMSInternalError(_inner) => None,
-            CreateAliasError::KMSInvalidStateError(_inner) => None,
-            CreateAliasError::LimitExceededError(_inner) => None,
-            CreateAliasError::NotFoundError(_inner) => None,
-            CreateAliasError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl CreateAliasError {
+    pub fn new(kind: CreateAliasErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        CreateAliasError::Unhandled(err.into())
+        Self {
+            kind: CreateAliasErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: CreateAliasErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            CreateAliasError::AlreadyExistsError(_inner) => _inner.message(),
-            CreateAliasError::DependencyTimeoutError(_inner) => _inner.message(),
-            CreateAliasError::InvalidAliasNameError(_inner) => _inner.message(),
-            CreateAliasError::KMSInternalError(_inner) => _inner.message(),
-            CreateAliasError::KMSInvalidStateError(_inner) => _inner.message(),
-            CreateAliasError::LimitExceededError(_inner) => _inner.message(),
-            CreateAliasError::NotFoundError(_inner) => _inner.message(),
-            CreateAliasError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            CreateAliasError::AlreadyExistsError(_inner) => Some(_inner.code()),
-            CreateAliasError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            CreateAliasError::InvalidAliasNameError(_inner) => Some(_inner.code()),
-            CreateAliasError::KMSInternalError(_inner) => Some(_inner.code()),
-            CreateAliasError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            CreateAliasError::LimitExceededError(_inner) => Some(_inner.code()),
-            CreateAliasError::NotFoundError(_inner) => Some(_inner.code()),
-            CreateAliasError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for CreateAliasError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            CreateAliasError::AlreadyExistsError(_inner) => Some(_inner),
-            CreateAliasError::DependencyTimeoutError(_inner) => Some(_inner),
-            CreateAliasError::InvalidAliasNameError(_inner) => Some(_inner),
-            CreateAliasError::KMSInternalError(_inner) => Some(_inner),
-            CreateAliasError::KMSInvalidStateError(_inner) => Some(_inner),
-            CreateAliasError::LimitExceededError(_inner) => Some(_inner),
-            CreateAliasError::NotFoundError(_inner) => Some(_inner),
-            CreateAliasError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            CreateAliasErrorKind::AlreadyExistsError(_inner) => Some(_inner),
+            CreateAliasErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            CreateAliasErrorKind::InvalidAliasNameError(_inner) => Some(_inner),
+            CreateAliasErrorKind::KMSInternalError(_inner) => Some(_inner),
+            CreateAliasErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            CreateAliasErrorKind::LimitExceededError(_inner) => Some(_inner),
+            CreateAliasErrorKind::NotFoundError(_inner) => Some(_inner),
+            CreateAliasErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum CreateCustomKeyStoreError {
+pub struct CreateCustomKeyStoreError {
+    pub kind: CreateCustomKeyStoreErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum CreateCustomKeyStoreErrorKind {
     CloudHsmClusterInUseError(CloudHsmClusterInUseError),
     CloudHsmClusterInvalidConfigurationError(CloudHsmClusterInvalidConfigurationError),
     CloudHsmClusterNotActiveError(CloudHsmClusterNotActiveError),
@@ -326,22 +260,22 @@ pub enum CreateCustomKeyStoreError {
     IncorrectTrustAnchorError(IncorrectTrustAnchorError),
     KMSInternalError(KMSInternalError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for CreateCustomKeyStoreError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            CreateCustomKeyStoreError::CloudHsmClusterInUseError(_inner) => _inner.fmt(f),
-            CreateCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => {
+        match &self.kind {
+            CreateCustomKeyStoreErrorKind::CloudHsmClusterInUseError(_inner) => _inner.fmt(f),
+            CreateCustomKeyStoreErrorKind::CloudHsmClusterInvalidConfigurationError(_inner) => {
                 _inner.fmt(f)
             }
-            CreateCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => _inner.fmt(f),
-            CreateCustomKeyStoreError::CloudHsmClusterNotFoundError(_inner) => _inner.fmt(f),
-            CreateCustomKeyStoreError::CustomKeyStoreNameInUseError(_inner) => _inner.fmt(f),
-            CreateCustomKeyStoreError::IncorrectTrustAnchorError(_inner) => _inner.fmt(f),
-            CreateCustomKeyStoreError::KMSInternalError(_inner) => _inner.fmt(f),
-            CreateCustomKeyStoreError::Unhandled(_inner) => _inner.fmt(f),
+            CreateCustomKeyStoreErrorKind::CloudHsmClusterNotActiveError(_inner) => _inner.fmt(f),
+            CreateCustomKeyStoreErrorKind::CloudHsmClusterNotFoundError(_inner) => _inner.fmt(f),
+            CreateCustomKeyStoreErrorKind::CustomKeyStoreNameInUseError(_inner) => _inner.fmt(f),
+            CreateCustomKeyStoreErrorKind::IncorrectTrustAnchorError(_inner) => _inner.fmt(f),
+            CreateCustomKeyStoreErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            CreateCustomKeyStoreErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -350,91 +284,61 @@ impl ::smithy_types::retry::ProvideErrorKind for CreateCustomKeyStoreError {
         CreateCustomKeyStoreError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            CreateCustomKeyStoreError::CloudHsmClusterInUseError(_inner) => None,
-            CreateCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => None,
-            CreateCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => None,
-            CreateCustomKeyStoreError::CloudHsmClusterNotFoundError(_inner) => None,
-            CreateCustomKeyStoreError::CustomKeyStoreNameInUseError(_inner) => None,
-            CreateCustomKeyStoreError::IncorrectTrustAnchorError(_inner) => None,
-            CreateCustomKeyStoreError::KMSInternalError(_inner) => None,
-            CreateCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl CreateCustomKeyStoreError {
+    pub fn new(kind: CreateCustomKeyStoreErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        CreateCustomKeyStoreError::Unhandled(err.into())
+        Self {
+            kind: CreateCustomKeyStoreErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: CreateCustomKeyStoreErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            CreateCustomKeyStoreError::CloudHsmClusterInUseError(_inner) => _inner.message(),
-            CreateCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => {
-                _inner.message()
-            }
-            CreateCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => _inner.message(),
-            CreateCustomKeyStoreError::CloudHsmClusterNotFoundError(_inner) => _inner.message(),
-            CreateCustomKeyStoreError::CustomKeyStoreNameInUseError(_inner) => _inner.message(),
-            CreateCustomKeyStoreError::IncorrectTrustAnchorError(_inner) => _inner.message(),
-            CreateCustomKeyStoreError::KMSInternalError(_inner) => _inner.message(),
-            CreateCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            CreateCustomKeyStoreError::CloudHsmClusterInUseError(_inner) => Some(_inner.code()),
-            CreateCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => {
-                Some(_inner.code())
-            }
-            CreateCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => Some(_inner.code()),
-            CreateCustomKeyStoreError::CloudHsmClusterNotFoundError(_inner) => Some(_inner.code()),
-            CreateCustomKeyStoreError::CustomKeyStoreNameInUseError(_inner) => Some(_inner.code()),
-            CreateCustomKeyStoreError::IncorrectTrustAnchorError(_inner) => Some(_inner.code()),
-            CreateCustomKeyStoreError::KMSInternalError(_inner) => Some(_inner.code()),
-            CreateCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for CreateCustomKeyStoreError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            CreateCustomKeyStoreError::CloudHsmClusterInUseError(_inner) => Some(_inner),
-            CreateCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => {
+        match &self.kind {
+            CreateCustomKeyStoreErrorKind::CloudHsmClusterInUseError(_inner) => Some(_inner),
+            CreateCustomKeyStoreErrorKind::CloudHsmClusterInvalidConfigurationError(_inner) => {
                 Some(_inner)
             }
-            CreateCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => Some(_inner),
-            CreateCustomKeyStoreError::CloudHsmClusterNotFoundError(_inner) => Some(_inner),
-            CreateCustomKeyStoreError::CustomKeyStoreNameInUseError(_inner) => Some(_inner),
-            CreateCustomKeyStoreError::IncorrectTrustAnchorError(_inner) => Some(_inner),
-            CreateCustomKeyStoreError::KMSInternalError(_inner) => Some(_inner),
-            CreateCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+            CreateCustomKeyStoreErrorKind::CloudHsmClusterNotActiveError(_inner) => Some(_inner),
+            CreateCustomKeyStoreErrorKind::CloudHsmClusterNotFoundError(_inner) => Some(_inner),
+            CreateCustomKeyStoreErrorKind::CustomKeyStoreNameInUseError(_inner) => Some(_inner),
+            CreateCustomKeyStoreErrorKind::IncorrectTrustAnchorError(_inner) => Some(_inner),
+            CreateCustomKeyStoreErrorKind::KMSInternalError(_inner) => Some(_inner),
+            CreateCustomKeyStoreErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum CreateGrantError {
+pub struct CreateGrantError {
+    pub kind: CreateGrantErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum CreateGrantErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     InvalidArnError(InvalidArnError),
@@ -444,21 +348,21 @@ pub enum CreateGrantError {
     LimitExceededError(LimitExceededError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for CreateGrantError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            CreateGrantError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            CreateGrantError::DisabledError(_inner) => _inner.fmt(f),
-            CreateGrantError::InvalidArnError(_inner) => _inner.fmt(f),
-            CreateGrantError::InvalidGrantTokenError(_inner) => _inner.fmt(f),
-            CreateGrantError::KMSInternalError(_inner) => _inner.fmt(f),
-            CreateGrantError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            CreateGrantError::LimitExceededError(_inner) => _inner.fmt(f),
-            CreateGrantError::NotFoundError(_inner) => _inner.fmt(f),
-            CreateGrantError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            CreateGrantErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            CreateGrantErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            CreateGrantErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            CreateGrantErrorKind::InvalidGrantTokenError(_inner) => _inner.fmt(f),
+            CreateGrantErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            CreateGrantErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            CreateGrantErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            CreateGrantErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            CreateGrantErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -467,89 +371,60 @@ impl ::smithy_types::retry::ProvideErrorKind for CreateGrantError {
         CreateGrantError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            CreateGrantError::DependencyTimeoutError(_inner) => None,
-            CreateGrantError::DisabledError(_inner) => None,
-            CreateGrantError::InvalidArnError(_inner) => None,
-            CreateGrantError::InvalidGrantTokenError(_inner) => None,
-            CreateGrantError::KMSInternalError(_inner) => None,
-            CreateGrantError::KMSInvalidStateError(_inner) => None,
-            CreateGrantError::LimitExceededError(_inner) => None,
-            CreateGrantError::NotFoundError(_inner) => None,
-            CreateGrantError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl CreateGrantError {
+    pub fn new(kind: CreateGrantErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        CreateGrantError::Unhandled(err.into())
+        Self {
+            kind: CreateGrantErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: CreateGrantErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            CreateGrantError::DependencyTimeoutError(_inner) => _inner.message(),
-            CreateGrantError::DisabledError(_inner) => _inner.message(),
-            CreateGrantError::InvalidArnError(_inner) => _inner.message(),
-            CreateGrantError::InvalidGrantTokenError(_inner) => _inner.message(),
-            CreateGrantError::KMSInternalError(_inner) => _inner.message(),
-            CreateGrantError::KMSInvalidStateError(_inner) => _inner.message(),
-            CreateGrantError::LimitExceededError(_inner) => _inner.message(),
-            CreateGrantError::NotFoundError(_inner) => _inner.message(),
-            CreateGrantError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            CreateGrantError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            CreateGrantError::DisabledError(_inner) => Some(_inner.code()),
-            CreateGrantError::InvalidArnError(_inner) => Some(_inner.code()),
-            CreateGrantError::InvalidGrantTokenError(_inner) => Some(_inner.code()),
-            CreateGrantError::KMSInternalError(_inner) => Some(_inner.code()),
-            CreateGrantError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            CreateGrantError::LimitExceededError(_inner) => Some(_inner.code()),
-            CreateGrantError::NotFoundError(_inner) => Some(_inner.code()),
-            CreateGrantError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for CreateGrantError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            CreateGrantError::DependencyTimeoutError(_inner) => Some(_inner),
-            CreateGrantError::DisabledError(_inner) => Some(_inner),
-            CreateGrantError::InvalidArnError(_inner) => Some(_inner),
-            CreateGrantError::InvalidGrantTokenError(_inner) => Some(_inner),
-            CreateGrantError::KMSInternalError(_inner) => Some(_inner),
-            CreateGrantError::KMSInvalidStateError(_inner) => Some(_inner),
-            CreateGrantError::LimitExceededError(_inner) => Some(_inner),
-            CreateGrantError::NotFoundError(_inner) => Some(_inner),
-            CreateGrantError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            CreateGrantErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            CreateGrantErrorKind::DisabledError(_inner) => Some(_inner),
+            CreateGrantErrorKind::InvalidArnError(_inner) => Some(_inner),
+            CreateGrantErrorKind::InvalidGrantTokenError(_inner) => Some(_inner),
+            CreateGrantErrorKind::KMSInternalError(_inner) => Some(_inner),
+            CreateGrantErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            CreateGrantErrorKind::LimitExceededError(_inner) => Some(_inner),
+            CreateGrantErrorKind::NotFoundError(_inner) => Some(_inner),
+            CreateGrantErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum CreateKeyError {
+pub struct CreateKeyError {
+    pub kind: CreateKeyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum CreateKeyErrorKind {
     CloudHsmClusterInvalidConfigurationError(CloudHsmClusterInvalidConfigurationError),
     CustomKeyStoreInvalidStateError(CustomKeyStoreInvalidStateError),
     CustomKeyStoreNotFoundError(CustomKeyStoreNotFoundError),
@@ -561,23 +436,23 @@ pub enum CreateKeyError {
     TagError(TagError),
     UnsupportedOperationError(UnsupportedOperationError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for CreateKeyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            CreateKeyError::CloudHsmClusterInvalidConfigurationError(_inner) => _inner.fmt(f),
-            CreateKeyError::CustomKeyStoreInvalidStateError(_inner) => _inner.fmt(f),
-            CreateKeyError::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
-            CreateKeyError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            CreateKeyError::InvalidArnError(_inner) => _inner.fmt(f),
-            CreateKeyError::KMSInternalError(_inner) => _inner.fmt(f),
-            CreateKeyError::LimitExceededError(_inner) => _inner.fmt(f),
-            CreateKeyError::MalformedPolicyDocumentError(_inner) => _inner.fmt(f),
-            CreateKeyError::TagError(_inner) => _inner.fmt(f),
-            CreateKeyError::UnsupportedOperationError(_inner) => _inner.fmt(f),
-            CreateKeyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            CreateKeyErrorKind::CloudHsmClusterInvalidConfigurationError(_inner) => _inner.fmt(f),
+            CreateKeyErrorKind::CustomKeyStoreInvalidStateError(_inner) => _inner.fmt(f),
+            CreateKeyErrorKind::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
+            CreateKeyErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            CreateKeyErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            CreateKeyErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            CreateKeyErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            CreateKeyErrorKind::MalformedPolicyDocumentError(_inner) => _inner.fmt(f),
+            CreateKeyErrorKind::TagError(_inner) => _inner.fmt(f),
+            CreateKeyErrorKind::UnsupportedOperationError(_inner) => _inner.fmt(f),
+            CreateKeyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -586,97 +461,62 @@ impl ::smithy_types::retry::ProvideErrorKind for CreateKeyError {
         CreateKeyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            CreateKeyError::CloudHsmClusterInvalidConfigurationError(_inner) => None,
-            CreateKeyError::CustomKeyStoreInvalidStateError(_inner) => None,
-            CreateKeyError::CustomKeyStoreNotFoundError(_inner) => None,
-            CreateKeyError::DependencyTimeoutError(_inner) => None,
-            CreateKeyError::InvalidArnError(_inner) => None,
-            CreateKeyError::KMSInternalError(_inner) => None,
-            CreateKeyError::LimitExceededError(_inner) => None,
-            CreateKeyError::MalformedPolicyDocumentError(_inner) => None,
-            CreateKeyError::TagError(_inner) => None,
-            CreateKeyError::UnsupportedOperationError(_inner) => None,
-            CreateKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl CreateKeyError {
+    pub fn new(kind: CreateKeyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        CreateKeyError::Unhandled(err.into())
+        Self {
+            kind: CreateKeyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: CreateKeyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            CreateKeyError::CloudHsmClusterInvalidConfigurationError(_inner) => _inner.message(),
-            CreateKeyError::CustomKeyStoreInvalidStateError(_inner) => _inner.message(),
-            CreateKeyError::CustomKeyStoreNotFoundError(_inner) => _inner.message(),
-            CreateKeyError::DependencyTimeoutError(_inner) => _inner.message(),
-            CreateKeyError::InvalidArnError(_inner) => _inner.message(),
-            CreateKeyError::KMSInternalError(_inner) => _inner.message(),
-            CreateKeyError::LimitExceededError(_inner) => _inner.message(),
-            CreateKeyError::MalformedPolicyDocumentError(_inner) => _inner.message(),
-            CreateKeyError::TagError(_inner) => _inner.message(),
-            CreateKeyError::UnsupportedOperationError(_inner) => _inner.message(),
-            CreateKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            CreateKeyError::CloudHsmClusterInvalidConfigurationError(_inner) => Some(_inner.code()),
-            CreateKeyError::CustomKeyStoreInvalidStateError(_inner) => Some(_inner.code()),
-            CreateKeyError::CustomKeyStoreNotFoundError(_inner) => Some(_inner.code()),
-            CreateKeyError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            CreateKeyError::InvalidArnError(_inner) => Some(_inner.code()),
-            CreateKeyError::KMSInternalError(_inner) => Some(_inner.code()),
-            CreateKeyError::LimitExceededError(_inner) => Some(_inner.code()),
-            CreateKeyError::MalformedPolicyDocumentError(_inner) => Some(_inner.code()),
-            CreateKeyError::TagError(_inner) => Some(_inner.code()),
-            CreateKeyError::UnsupportedOperationError(_inner) => Some(_inner.code()),
-            CreateKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for CreateKeyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            CreateKeyError::CloudHsmClusterInvalidConfigurationError(_inner) => Some(_inner),
-            CreateKeyError::CustomKeyStoreInvalidStateError(_inner) => Some(_inner),
-            CreateKeyError::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
-            CreateKeyError::DependencyTimeoutError(_inner) => Some(_inner),
-            CreateKeyError::InvalidArnError(_inner) => Some(_inner),
-            CreateKeyError::KMSInternalError(_inner) => Some(_inner),
-            CreateKeyError::LimitExceededError(_inner) => Some(_inner),
-            CreateKeyError::MalformedPolicyDocumentError(_inner) => Some(_inner),
-            CreateKeyError::TagError(_inner) => Some(_inner),
-            CreateKeyError::UnsupportedOperationError(_inner) => Some(_inner),
-            CreateKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            CreateKeyErrorKind::CloudHsmClusterInvalidConfigurationError(_inner) => Some(_inner),
+            CreateKeyErrorKind::CustomKeyStoreInvalidStateError(_inner) => Some(_inner),
+            CreateKeyErrorKind::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
+            CreateKeyErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            CreateKeyErrorKind::InvalidArnError(_inner) => Some(_inner),
+            CreateKeyErrorKind::KMSInternalError(_inner) => Some(_inner),
+            CreateKeyErrorKind::LimitExceededError(_inner) => Some(_inner),
+            CreateKeyErrorKind::MalformedPolicyDocumentError(_inner) => Some(_inner),
+            CreateKeyErrorKind::TagError(_inner) => Some(_inner),
+            CreateKeyErrorKind::UnsupportedOperationError(_inner) => Some(_inner),
+            CreateKeyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DecryptError {
+pub struct DecryptError {
+    pub kind: DecryptErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DecryptErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     IncorrectKeyError(IncorrectKeyError),
@@ -688,23 +528,23 @@ pub enum DecryptError {
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DecryptError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DecryptError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            DecryptError::DisabledError(_inner) => _inner.fmt(f),
-            DecryptError::IncorrectKeyError(_inner) => _inner.fmt(f),
-            DecryptError::InvalidCiphertextError(_inner) => _inner.fmt(f),
-            DecryptError::InvalidGrantTokenError(_inner) => _inner.fmt(f),
-            DecryptError::InvalidKeyUsageError(_inner) => _inner.fmt(f),
-            DecryptError::KeyUnavailableError(_inner) => _inner.fmt(f),
-            DecryptError::KMSInternalError(_inner) => _inner.fmt(f),
-            DecryptError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            DecryptError::NotFoundError(_inner) => _inner.fmt(f),
-            DecryptError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DecryptErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            DecryptErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            DecryptErrorKind::IncorrectKeyError(_inner) => _inner.fmt(f),
+            DecryptErrorKind::InvalidCiphertextError(_inner) => _inner.fmt(f),
+            DecryptErrorKind::InvalidGrantTokenError(_inner) => _inner.fmt(f),
+            DecryptErrorKind::InvalidKeyUsageError(_inner) => _inner.fmt(f),
+            DecryptErrorKind::KeyUnavailableError(_inner) => _inner.fmt(f),
+            DecryptErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            DecryptErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            DecryptErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            DecryptErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -713,113 +553,78 @@ impl ::smithy_types::retry::ProvideErrorKind for DecryptError {
         DecryptError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DecryptError::DependencyTimeoutError(_inner) => None,
-            DecryptError::DisabledError(_inner) => None,
-            DecryptError::IncorrectKeyError(_inner) => None,
-            DecryptError::InvalidCiphertextError(_inner) => None,
-            DecryptError::InvalidGrantTokenError(_inner) => None,
-            DecryptError::InvalidKeyUsageError(_inner) => None,
-            DecryptError::KeyUnavailableError(_inner) => None,
-            DecryptError::KMSInternalError(_inner) => None,
-            DecryptError::KMSInvalidStateError(_inner) => None,
-            DecryptError::NotFoundError(_inner) => None,
-            DecryptError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DecryptError {
+    pub fn new(kind: DecryptErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DecryptError::Unhandled(err.into())
+        Self {
+            kind: DecryptErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DecryptErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DecryptError::DependencyTimeoutError(_inner) => _inner.message(),
-            DecryptError::DisabledError(_inner) => _inner.message(),
-            DecryptError::IncorrectKeyError(_inner) => _inner.message(),
-            DecryptError::InvalidCiphertextError(_inner) => _inner.message(),
-            DecryptError::InvalidGrantTokenError(_inner) => _inner.message(),
-            DecryptError::InvalidKeyUsageError(_inner) => _inner.message(),
-            DecryptError::KeyUnavailableError(_inner) => _inner.message(),
-            DecryptError::KMSInternalError(_inner) => _inner.message(),
-            DecryptError::KMSInvalidStateError(_inner) => _inner.message(),
-            DecryptError::NotFoundError(_inner) => _inner.message(),
-            DecryptError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DecryptError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            DecryptError::DisabledError(_inner) => Some(_inner.code()),
-            DecryptError::IncorrectKeyError(_inner) => Some(_inner.code()),
-            DecryptError::InvalidCiphertextError(_inner) => Some(_inner.code()),
-            DecryptError::InvalidGrantTokenError(_inner) => Some(_inner.code()),
-            DecryptError::InvalidKeyUsageError(_inner) => Some(_inner.code()),
-            DecryptError::KeyUnavailableError(_inner) => Some(_inner.code()),
-            DecryptError::KMSInternalError(_inner) => Some(_inner.code()),
-            DecryptError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            DecryptError::NotFoundError(_inner) => Some(_inner.code()),
-            DecryptError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DecryptError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DecryptError::DependencyTimeoutError(_inner) => Some(_inner),
-            DecryptError::DisabledError(_inner) => Some(_inner),
-            DecryptError::IncorrectKeyError(_inner) => Some(_inner),
-            DecryptError::InvalidCiphertextError(_inner) => Some(_inner),
-            DecryptError::InvalidGrantTokenError(_inner) => Some(_inner),
-            DecryptError::InvalidKeyUsageError(_inner) => Some(_inner),
-            DecryptError::KeyUnavailableError(_inner) => Some(_inner),
-            DecryptError::KMSInternalError(_inner) => Some(_inner),
-            DecryptError::KMSInvalidStateError(_inner) => Some(_inner),
-            DecryptError::NotFoundError(_inner) => Some(_inner),
-            DecryptError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DecryptErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            DecryptErrorKind::DisabledError(_inner) => Some(_inner),
+            DecryptErrorKind::IncorrectKeyError(_inner) => Some(_inner),
+            DecryptErrorKind::InvalidCiphertextError(_inner) => Some(_inner),
+            DecryptErrorKind::InvalidGrantTokenError(_inner) => Some(_inner),
+            DecryptErrorKind::InvalidKeyUsageError(_inner) => Some(_inner),
+            DecryptErrorKind::KeyUnavailableError(_inner) => Some(_inner),
+            DecryptErrorKind::KMSInternalError(_inner) => Some(_inner),
+            DecryptErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            DecryptErrorKind::NotFoundError(_inner) => Some(_inner),
+            DecryptErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DeleteAliasError {
+pub struct DeleteAliasError {
+    pub kind: DeleteAliasErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DeleteAliasErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     KMSInternalError(KMSInternalError),
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DeleteAliasError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DeleteAliasError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            DeleteAliasError::KMSInternalError(_inner) => _inner.fmt(f),
-            DeleteAliasError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            DeleteAliasError::NotFoundError(_inner) => _inner.fmt(f),
-            DeleteAliasError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DeleteAliasErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            DeleteAliasErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            DeleteAliasErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            DeleteAliasErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            DeleteAliasErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -828,89 +633,72 @@ impl ::smithy_types::retry::ProvideErrorKind for DeleteAliasError {
         DeleteAliasError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DeleteAliasError::DependencyTimeoutError(_inner) => None,
-            DeleteAliasError::KMSInternalError(_inner) => None,
-            DeleteAliasError::KMSInvalidStateError(_inner) => None,
-            DeleteAliasError::NotFoundError(_inner) => None,
-            DeleteAliasError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DeleteAliasError {
+    pub fn new(kind: DeleteAliasErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DeleteAliasError::Unhandled(err.into())
+        Self {
+            kind: DeleteAliasErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DeleteAliasErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DeleteAliasError::DependencyTimeoutError(_inner) => _inner.message(),
-            DeleteAliasError::KMSInternalError(_inner) => _inner.message(),
-            DeleteAliasError::KMSInvalidStateError(_inner) => _inner.message(),
-            DeleteAliasError::NotFoundError(_inner) => _inner.message(),
-            DeleteAliasError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DeleteAliasError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            DeleteAliasError::KMSInternalError(_inner) => Some(_inner.code()),
-            DeleteAliasError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            DeleteAliasError::NotFoundError(_inner) => Some(_inner.code()),
-            DeleteAliasError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DeleteAliasError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DeleteAliasError::DependencyTimeoutError(_inner) => Some(_inner),
-            DeleteAliasError::KMSInternalError(_inner) => Some(_inner),
-            DeleteAliasError::KMSInvalidStateError(_inner) => Some(_inner),
-            DeleteAliasError::NotFoundError(_inner) => Some(_inner),
-            DeleteAliasError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DeleteAliasErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            DeleteAliasErrorKind::KMSInternalError(_inner) => Some(_inner),
+            DeleteAliasErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            DeleteAliasErrorKind::NotFoundError(_inner) => Some(_inner),
+            DeleteAliasErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DeleteCustomKeyStoreError {
+pub struct DeleteCustomKeyStoreError {
+    pub kind: DeleteCustomKeyStoreErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DeleteCustomKeyStoreErrorKind {
     CustomKeyStoreHasCMKsError(CustomKeyStoreHasCMKsError),
     CustomKeyStoreInvalidStateError(CustomKeyStoreInvalidStateError),
     CustomKeyStoreNotFoundError(CustomKeyStoreNotFoundError),
     KMSInternalError(KMSInternalError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DeleteCustomKeyStoreError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DeleteCustomKeyStoreError::CustomKeyStoreHasCMKsError(_inner) => _inner.fmt(f),
-            DeleteCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => _inner.fmt(f),
-            DeleteCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
-            DeleteCustomKeyStoreError::KMSInternalError(_inner) => _inner.fmt(f),
-            DeleteCustomKeyStoreError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DeleteCustomKeyStoreErrorKind::CustomKeyStoreHasCMKsError(_inner) => _inner.fmt(f),
+            DeleteCustomKeyStoreErrorKind::CustomKeyStoreInvalidStateError(_inner) => _inner.fmt(f),
+            DeleteCustomKeyStoreErrorKind::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
+            DeleteCustomKeyStoreErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            DeleteCustomKeyStoreErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -919,75 +707,56 @@ impl ::smithy_types::retry::ProvideErrorKind for DeleteCustomKeyStoreError {
         DeleteCustomKeyStoreError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DeleteCustomKeyStoreError::CustomKeyStoreHasCMKsError(_inner) => None,
-            DeleteCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => None,
-            DeleteCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => None,
-            DeleteCustomKeyStoreError::KMSInternalError(_inner) => None,
-            DeleteCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DeleteCustomKeyStoreError {
+    pub fn new(kind: DeleteCustomKeyStoreErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DeleteCustomKeyStoreError::Unhandled(err.into())
+        Self {
+            kind: DeleteCustomKeyStoreErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DeleteCustomKeyStoreErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DeleteCustomKeyStoreError::CustomKeyStoreHasCMKsError(_inner) => _inner.message(),
-            DeleteCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => _inner.message(),
-            DeleteCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => _inner.message(),
-            DeleteCustomKeyStoreError::KMSInternalError(_inner) => _inner.message(),
-            DeleteCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DeleteCustomKeyStoreError::CustomKeyStoreHasCMKsError(_inner) => Some(_inner.code()),
-            DeleteCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => {
-                Some(_inner.code())
-            }
-            DeleteCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => Some(_inner.code()),
-            DeleteCustomKeyStoreError::KMSInternalError(_inner) => Some(_inner.code()),
-            DeleteCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DeleteCustomKeyStoreError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DeleteCustomKeyStoreError::CustomKeyStoreHasCMKsError(_inner) => Some(_inner),
-            DeleteCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => Some(_inner),
-            DeleteCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
-            DeleteCustomKeyStoreError::KMSInternalError(_inner) => Some(_inner),
-            DeleteCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DeleteCustomKeyStoreErrorKind::CustomKeyStoreHasCMKsError(_inner) => Some(_inner),
+            DeleteCustomKeyStoreErrorKind::CustomKeyStoreInvalidStateError(_inner) => Some(_inner),
+            DeleteCustomKeyStoreErrorKind::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
+            DeleteCustomKeyStoreErrorKind::KMSInternalError(_inner) => Some(_inner),
+            DeleteCustomKeyStoreErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DeleteImportedKeyMaterialError {
+pub struct DeleteImportedKeyMaterialError {
+    pub kind: DeleteImportedKeyMaterialErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DeleteImportedKeyMaterialErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
@@ -995,19 +764,19 @@ pub enum DeleteImportedKeyMaterialError {
     NotFoundError(NotFoundError),
     UnsupportedOperationError(UnsupportedOperationError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DeleteImportedKeyMaterialError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DeleteImportedKeyMaterialError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            DeleteImportedKeyMaterialError::InvalidArnError(_inner) => _inner.fmt(f),
-            DeleteImportedKeyMaterialError::KMSInternalError(_inner) => _inner.fmt(f),
-            DeleteImportedKeyMaterialError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            DeleteImportedKeyMaterialError::NotFoundError(_inner) => _inner.fmt(f),
-            DeleteImportedKeyMaterialError::UnsupportedOperationError(_inner) => _inner.fmt(f),
-            DeleteImportedKeyMaterialError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DeleteImportedKeyMaterialErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            DeleteImportedKeyMaterialErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            DeleteImportedKeyMaterialErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            DeleteImportedKeyMaterialErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            DeleteImportedKeyMaterialErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            DeleteImportedKeyMaterialErrorKind::UnsupportedOperationError(_inner) => _inner.fmt(f),
+            DeleteImportedKeyMaterialErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1016,95 +785,70 @@ impl ::smithy_types::retry::ProvideErrorKind for DeleteImportedKeyMaterialError 
         DeleteImportedKeyMaterialError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DeleteImportedKeyMaterialError::DependencyTimeoutError(_inner) => None,
-            DeleteImportedKeyMaterialError::InvalidArnError(_inner) => None,
-            DeleteImportedKeyMaterialError::KMSInternalError(_inner) => None,
-            DeleteImportedKeyMaterialError::KMSInvalidStateError(_inner) => None,
-            DeleteImportedKeyMaterialError::NotFoundError(_inner) => None,
-            DeleteImportedKeyMaterialError::UnsupportedOperationError(_inner) => None,
-            DeleteImportedKeyMaterialError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DeleteImportedKeyMaterialError {
+    pub fn new(kind: DeleteImportedKeyMaterialErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DeleteImportedKeyMaterialError::Unhandled(err.into())
+        Self {
+            kind: DeleteImportedKeyMaterialErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DeleteImportedKeyMaterialErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DeleteImportedKeyMaterialError::DependencyTimeoutError(_inner) => _inner.message(),
-            DeleteImportedKeyMaterialError::InvalidArnError(_inner) => _inner.message(),
-            DeleteImportedKeyMaterialError::KMSInternalError(_inner) => _inner.message(),
-            DeleteImportedKeyMaterialError::KMSInvalidStateError(_inner) => _inner.message(),
-            DeleteImportedKeyMaterialError::NotFoundError(_inner) => _inner.message(),
-            DeleteImportedKeyMaterialError::UnsupportedOperationError(_inner) => _inner.message(),
-            DeleteImportedKeyMaterialError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DeleteImportedKeyMaterialError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            DeleteImportedKeyMaterialError::InvalidArnError(_inner) => Some(_inner.code()),
-            DeleteImportedKeyMaterialError::KMSInternalError(_inner) => Some(_inner.code()),
-            DeleteImportedKeyMaterialError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            DeleteImportedKeyMaterialError::NotFoundError(_inner) => Some(_inner.code()),
-            DeleteImportedKeyMaterialError::UnsupportedOperationError(_inner) => {
-                Some(_inner.code())
-            }
-            DeleteImportedKeyMaterialError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DeleteImportedKeyMaterialError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DeleteImportedKeyMaterialError::DependencyTimeoutError(_inner) => Some(_inner),
-            DeleteImportedKeyMaterialError::InvalidArnError(_inner) => Some(_inner),
-            DeleteImportedKeyMaterialError::KMSInternalError(_inner) => Some(_inner),
-            DeleteImportedKeyMaterialError::KMSInvalidStateError(_inner) => Some(_inner),
-            DeleteImportedKeyMaterialError::NotFoundError(_inner) => Some(_inner),
-            DeleteImportedKeyMaterialError::UnsupportedOperationError(_inner) => Some(_inner),
-            DeleteImportedKeyMaterialError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DeleteImportedKeyMaterialErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            DeleteImportedKeyMaterialErrorKind::InvalidArnError(_inner) => Some(_inner),
+            DeleteImportedKeyMaterialErrorKind::KMSInternalError(_inner) => Some(_inner),
+            DeleteImportedKeyMaterialErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            DeleteImportedKeyMaterialErrorKind::NotFoundError(_inner) => Some(_inner),
+            DeleteImportedKeyMaterialErrorKind::UnsupportedOperationError(_inner) => Some(_inner),
+            DeleteImportedKeyMaterialErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DescribeCustomKeyStoresError {
+pub struct DescribeCustomKeyStoresError {
+    pub kind: DescribeCustomKeyStoresErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DescribeCustomKeyStoresErrorKind {
     CustomKeyStoreNotFoundError(CustomKeyStoreNotFoundError),
     KMSInternalError(KMSInternalError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DescribeCustomKeyStoresError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DescribeCustomKeyStoresError::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
-            DescribeCustomKeyStoresError::KMSInternalError(_inner) => _inner.fmt(f),
-            DescribeCustomKeyStoresError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DescribeCustomKeyStoresErrorKind::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
+            DescribeCustomKeyStoresErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            DescribeCustomKeyStoresErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1113,83 +857,70 @@ impl ::smithy_types::retry::ProvideErrorKind for DescribeCustomKeyStoresError {
         DescribeCustomKeyStoresError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DescribeCustomKeyStoresError::CustomKeyStoreNotFoundError(_inner) => None,
-            DescribeCustomKeyStoresError::KMSInternalError(_inner) => None,
-            DescribeCustomKeyStoresError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DescribeCustomKeyStoresError {
+    pub fn new(kind: DescribeCustomKeyStoresErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DescribeCustomKeyStoresError::Unhandled(err.into())
+        Self {
+            kind: DescribeCustomKeyStoresErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DescribeCustomKeyStoresErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DescribeCustomKeyStoresError::CustomKeyStoreNotFoundError(_inner) => _inner.message(),
-            DescribeCustomKeyStoresError::KMSInternalError(_inner) => _inner.message(),
-            DescribeCustomKeyStoresError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DescribeCustomKeyStoresError::CustomKeyStoreNotFoundError(_inner) => {
-                Some(_inner.code())
-            }
-            DescribeCustomKeyStoresError::KMSInternalError(_inner) => Some(_inner.code()),
-            DescribeCustomKeyStoresError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DescribeCustomKeyStoresError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DescribeCustomKeyStoresError::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
-            DescribeCustomKeyStoresError::KMSInternalError(_inner) => Some(_inner),
-            DescribeCustomKeyStoresError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DescribeCustomKeyStoresErrorKind::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
+            DescribeCustomKeyStoresErrorKind::KMSInternalError(_inner) => Some(_inner),
+            DescribeCustomKeyStoresErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DescribeKeyError {
+pub struct DescribeKeyError {
+    pub kind: DescribeKeyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DescribeKeyErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DescribeKeyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DescribeKeyError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            DescribeKeyError::InvalidArnError(_inner) => _inner.fmt(f),
-            DescribeKeyError::KMSInternalError(_inner) => _inner.fmt(f),
-            DescribeKeyError::NotFoundError(_inner) => _inner.fmt(f),
-            DescribeKeyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DescribeKeyErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            DescribeKeyErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            DescribeKeyErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            DescribeKeyErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            DescribeKeyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1198,91 +929,74 @@ impl ::smithy_types::retry::ProvideErrorKind for DescribeKeyError {
         DescribeKeyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DescribeKeyError::DependencyTimeoutError(_inner) => None,
-            DescribeKeyError::InvalidArnError(_inner) => None,
-            DescribeKeyError::KMSInternalError(_inner) => None,
-            DescribeKeyError::NotFoundError(_inner) => None,
-            DescribeKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DescribeKeyError {
+    pub fn new(kind: DescribeKeyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DescribeKeyError::Unhandled(err.into())
+        Self {
+            kind: DescribeKeyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DescribeKeyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DescribeKeyError::DependencyTimeoutError(_inner) => _inner.message(),
-            DescribeKeyError::InvalidArnError(_inner) => _inner.message(),
-            DescribeKeyError::KMSInternalError(_inner) => _inner.message(),
-            DescribeKeyError::NotFoundError(_inner) => _inner.message(),
-            DescribeKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DescribeKeyError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            DescribeKeyError::InvalidArnError(_inner) => Some(_inner.code()),
-            DescribeKeyError::KMSInternalError(_inner) => Some(_inner.code()),
-            DescribeKeyError::NotFoundError(_inner) => Some(_inner.code()),
-            DescribeKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DescribeKeyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DescribeKeyError::DependencyTimeoutError(_inner) => Some(_inner),
-            DescribeKeyError::InvalidArnError(_inner) => Some(_inner),
-            DescribeKeyError::KMSInternalError(_inner) => Some(_inner),
-            DescribeKeyError::NotFoundError(_inner) => Some(_inner),
-            DescribeKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DescribeKeyErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            DescribeKeyErrorKind::InvalidArnError(_inner) => Some(_inner),
+            DescribeKeyErrorKind::KMSInternalError(_inner) => Some(_inner),
+            DescribeKeyErrorKind::NotFoundError(_inner) => Some(_inner),
+            DescribeKeyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DisableKeyError {
+pub struct DisableKeyError {
+    pub kind: DisableKeyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DisableKeyErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DisableKeyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DisableKeyError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            DisableKeyError::InvalidArnError(_inner) => _inner.fmt(f),
-            DisableKeyError::KMSInternalError(_inner) => _inner.fmt(f),
-            DisableKeyError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            DisableKeyError::NotFoundError(_inner) => _inner.fmt(f),
-            DisableKeyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DisableKeyErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            DisableKeyErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            DisableKeyErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            DisableKeyErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            DisableKeyErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            DisableKeyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1291,77 +1005,57 @@ impl ::smithy_types::retry::ProvideErrorKind for DisableKeyError {
         DisableKeyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DisableKeyError::DependencyTimeoutError(_inner) => None,
-            DisableKeyError::InvalidArnError(_inner) => None,
-            DisableKeyError::KMSInternalError(_inner) => None,
-            DisableKeyError::KMSInvalidStateError(_inner) => None,
-            DisableKeyError::NotFoundError(_inner) => None,
-            DisableKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DisableKeyError {
+    pub fn new(kind: DisableKeyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DisableKeyError::Unhandled(err.into())
+        Self {
+            kind: DisableKeyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DisableKeyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DisableKeyError::DependencyTimeoutError(_inner) => _inner.message(),
-            DisableKeyError::InvalidArnError(_inner) => _inner.message(),
-            DisableKeyError::KMSInternalError(_inner) => _inner.message(),
-            DisableKeyError::KMSInvalidStateError(_inner) => _inner.message(),
-            DisableKeyError::NotFoundError(_inner) => _inner.message(),
-            DisableKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DisableKeyError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            DisableKeyError::InvalidArnError(_inner) => Some(_inner.code()),
-            DisableKeyError::KMSInternalError(_inner) => Some(_inner.code()),
-            DisableKeyError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            DisableKeyError::NotFoundError(_inner) => Some(_inner.code()),
-            DisableKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DisableKeyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DisableKeyError::DependencyTimeoutError(_inner) => Some(_inner),
-            DisableKeyError::InvalidArnError(_inner) => Some(_inner),
-            DisableKeyError::KMSInternalError(_inner) => Some(_inner),
-            DisableKeyError::KMSInvalidStateError(_inner) => Some(_inner),
-            DisableKeyError::NotFoundError(_inner) => Some(_inner),
-            DisableKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DisableKeyErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            DisableKeyErrorKind::InvalidArnError(_inner) => Some(_inner),
+            DisableKeyErrorKind::KMSInternalError(_inner) => Some(_inner),
+            DisableKeyErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            DisableKeyErrorKind::NotFoundError(_inner) => Some(_inner),
+            DisableKeyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DisableKeyRotationError {
+pub struct DisableKeyRotationError {
+    pub kind: DisableKeyRotationErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DisableKeyRotationErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     InvalidArnError(InvalidArnError),
@@ -1370,20 +1064,20 @@ pub enum DisableKeyRotationError {
     NotFoundError(NotFoundError),
     UnsupportedOperationError(UnsupportedOperationError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DisableKeyRotationError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DisableKeyRotationError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            DisableKeyRotationError::DisabledError(_inner) => _inner.fmt(f),
-            DisableKeyRotationError::InvalidArnError(_inner) => _inner.fmt(f),
-            DisableKeyRotationError::KMSInternalError(_inner) => _inner.fmt(f),
-            DisableKeyRotationError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            DisableKeyRotationError::NotFoundError(_inner) => _inner.fmt(f),
-            DisableKeyRotationError::UnsupportedOperationError(_inner) => _inner.fmt(f),
-            DisableKeyRotationError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DisableKeyRotationErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            DisableKeyRotationErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            DisableKeyRotationErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            DisableKeyRotationErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            DisableKeyRotationErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            DisableKeyRotationErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            DisableKeyRotationErrorKind::UnsupportedOperationError(_inner) => _inner.fmt(f),
+            DisableKeyRotationErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1392,99 +1086,75 @@ impl ::smithy_types::retry::ProvideErrorKind for DisableKeyRotationError {
         DisableKeyRotationError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DisableKeyRotationError::DependencyTimeoutError(_inner) => None,
-            DisableKeyRotationError::DisabledError(_inner) => None,
-            DisableKeyRotationError::InvalidArnError(_inner) => None,
-            DisableKeyRotationError::KMSInternalError(_inner) => None,
-            DisableKeyRotationError::KMSInvalidStateError(_inner) => None,
-            DisableKeyRotationError::NotFoundError(_inner) => None,
-            DisableKeyRotationError::UnsupportedOperationError(_inner) => None,
-            DisableKeyRotationError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DisableKeyRotationError {
+    pub fn new(kind: DisableKeyRotationErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DisableKeyRotationError::Unhandled(err.into())
+        Self {
+            kind: DisableKeyRotationErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DisableKeyRotationErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DisableKeyRotationError::DependencyTimeoutError(_inner) => _inner.message(),
-            DisableKeyRotationError::DisabledError(_inner) => _inner.message(),
-            DisableKeyRotationError::InvalidArnError(_inner) => _inner.message(),
-            DisableKeyRotationError::KMSInternalError(_inner) => _inner.message(),
-            DisableKeyRotationError::KMSInvalidStateError(_inner) => _inner.message(),
-            DisableKeyRotationError::NotFoundError(_inner) => _inner.message(),
-            DisableKeyRotationError::UnsupportedOperationError(_inner) => _inner.message(),
-            DisableKeyRotationError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DisableKeyRotationError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            DisableKeyRotationError::DisabledError(_inner) => Some(_inner.code()),
-            DisableKeyRotationError::InvalidArnError(_inner) => Some(_inner.code()),
-            DisableKeyRotationError::KMSInternalError(_inner) => Some(_inner.code()),
-            DisableKeyRotationError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            DisableKeyRotationError::NotFoundError(_inner) => Some(_inner.code()),
-            DisableKeyRotationError::UnsupportedOperationError(_inner) => Some(_inner.code()),
-            DisableKeyRotationError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DisableKeyRotationError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DisableKeyRotationError::DependencyTimeoutError(_inner) => Some(_inner),
-            DisableKeyRotationError::DisabledError(_inner) => Some(_inner),
-            DisableKeyRotationError::InvalidArnError(_inner) => Some(_inner),
-            DisableKeyRotationError::KMSInternalError(_inner) => Some(_inner),
-            DisableKeyRotationError::KMSInvalidStateError(_inner) => Some(_inner),
-            DisableKeyRotationError::NotFoundError(_inner) => Some(_inner),
-            DisableKeyRotationError::UnsupportedOperationError(_inner) => Some(_inner),
-            DisableKeyRotationError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DisableKeyRotationErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            DisableKeyRotationErrorKind::DisabledError(_inner) => Some(_inner),
+            DisableKeyRotationErrorKind::InvalidArnError(_inner) => Some(_inner),
+            DisableKeyRotationErrorKind::KMSInternalError(_inner) => Some(_inner),
+            DisableKeyRotationErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            DisableKeyRotationErrorKind::NotFoundError(_inner) => Some(_inner),
+            DisableKeyRotationErrorKind::UnsupportedOperationError(_inner) => Some(_inner),
+            DisableKeyRotationErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DisconnectCustomKeyStoreError {
+pub struct DisconnectCustomKeyStoreError {
+    pub kind: DisconnectCustomKeyStoreErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DisconnectCustomKeyStoreErrorKind {
     CustomKeyStoreInvalidStateError(CustomKeyStoreInvalidStateError),
     CustomKeyStoreNotFoundError(CustomKeyStoreNotFoundError),
     KMSInternalError(KMSInternalError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DisconnectCustomKeyStoreError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DisconnectCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => _inner.fmt(f),
-            DisconnectCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
-            DisconnectCustomKeyStoreError::KMSInternalError(_inner) => _inner.fmt(f),
-            DisconnectCustomKeyStoreError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DisconnectCustomKeyStoreErrorKind::CustomKeyStoreInvalidStateError(_inner) => {
+                _inner.fmt(f)
+            }
+            DisconnectCustomKeyStoreErrorKind::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
+            DisconnectCustomKeyStoreErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            DisconnectCustomKeyStoreErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1493,75 +1163,57 @@ impl ::smithy_types::retry::ProvideErrorKind for DisconnectCustomKeyStoreError {
         DisconnectCustomKeyStoreError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DisconnectCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => None,
-            DisconnectCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => None,
-            DisconnectCustomKeyStoreError::KMSInternalError(_inner) => None,
-            DisconnectCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DisconnectCustomKeyStoreError {
+    pub fn new(kind: DisconnectCustomKeyStoreErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DisconnectCustomKeyStoreError::Unhandled(err.into())
+        Self {
+            kind: DisconnectCustomKeyStoreErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DisconnectCustomKeyStoreErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DisconnectCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => {
-                _inner.message()
-            }
-            DisconnectCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => _inner.message(),
-            DisconnectCustomKeyStoreError::KMSInternalError(_inner) => _inner.message(),
-            DisconnectCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DisconnectCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => {
-                Some(_inner.code())
-            }
-            DisconnectCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => {
-                Some(_inner.code())
-            }
-            DisconnectCustomKeyStoreError::KMSInternalError(_inner) => Some(_inner.code()),
-            DisconnectCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DisconnectCustomKeyStoreError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DisconnectCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => Some(_inner),
-            DisconnectCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
-            DisconnectCustomKeyStoreError::KMSInternalError(_inner) => Some(_inner),
-            DisconnectCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
+        match &self.kind {
+            DisconnectCustomKeyStoreErrorKind::CustomKeyStoreInvalidStateError(_inner) => {
+                Some(_inner)
             }
+            DisconnectCustomKeyStoreErrorKind::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
+            DisconnectCustomKeyStoreErrorKind::KMSInternalError(_inner) => Some(_inner),
+            DisconnectCustomKeyStoreErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum EnableKeyError {
+pub struct EnableKeyError {
+    pub kind: EnableKeyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum EnableKeyErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
@@ -1569,19 +1221,19 @@ pub enum EnableKeyError {
     LimitExceededError(LimitExceededError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for EnableKeyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            EnableKeyError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            EnableKeyError::InvalidArnError(_inner) => _inner.fmt(f),
-            EnableKeyError::KMSInternalError(_inner) => _inner.fmt(f),
-            EnableKeyError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            EnableKeyError::LimitExceededError(_inner) => _inner.fmt(f),
-            EnableKeyError::NotFoundError(_inner) => _inner.fmt(f),
-            EnableKeyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            EnableKeyErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            EnableKeyErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            EnableKeyErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            EnableKeyErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            EnableKeyErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            EnableKeyErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            EnableKeyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1590,81 +1242,58 @@ impl ::smithy_types::retry::ProvideErrorKind for EnableKeyError {
         EnableKeyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            EnableKeyError::DependencyTimeoutError(_inner) => None,
-            EnableKeyError::InvalidArnError(_inner) => None,
-            EnableKeyError::KMSInternalError(_inner) => None,
-            EnableKeyError::KMSInvalidStateError(_inner) => None,
-            EnableKeyError::LimitExceededError(_inner) => None,
-            EnableKeyError::NotFoundError(_inner) => None,
-            EnableKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl EnableKeyError {
+    pub fn new(kind: EnableKeyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        EnableKeyError::Unhandled(err.into())
+        Self {
+            kind: EnableKeyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: EnableKeyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            EnableKeyError::DependencyTimeoutError(_inner) => _inner.message(),
-            EnableKeyError::InvalidArnError(_inner) => _inner.message(),
-            EnableKeyError::KMSInternalError(_inner) => _inner.message(),
-            EnableKeyError::KMSInvalidStateError(_inner) => _inner.message(),
-            EnableKeyError::LimitExceededError(_inner) => _inner.message(),
-            EnableKeyError::NotFoundError(_inner) => _inner.message(),
-            EnableKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            EnableKeyError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            EnableKeyError::InvalidArnError(_inner) => Some(_inner.code()),
-            EnableKeyError::KMSInternalError(_inner) => Some(_inner.code()),
-            EnableKeyError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            EnableKeyError::LimitExceededError(_inner) => Some(_inner.code()),
-            EnableKeyError::NotFoundError(_inner) => Some(_inner.code()),
-            EnableKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for EnableKeyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            EnableKeyError::DependencyTimeoutError(_inner) => Some(_inner),
-            EnableKeyError::InvalidArnError(_inner) => Some(_inner),
-            EnableKeyError::KMSInternalError(_inner) => Some(_inner),
-            EnableKeyError::KMSInvalidStateError(_inner) => Some(_inner),
-            EnableKeyError::LimitExceededError(_inner) => Some(_inner),
-            EnableKeyError::NotFoundError(_inner) => Some(_inner),
-            EnableKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            EnableKeyErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            EnableKeyErrorKind::InvalidArnError(_inner) => Some(_inner),
+            EnableKeyErrorKind::KMSInternalError(_inner) => Some(_inner),
+            EnableKeyErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            EnableKeyErrorKind::LimitExceededError(_inner) => Some(_inner),
+            EnableKeyErrorKind::NotFoundError(_inner) => Some(_inner),
+            EnableKeyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum EnableKeyRotationError {
+pub struct EnableKeyRotationError {
+    pub kind: EnableKeyRotationErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum EnableKeyRotationErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     InvalidArnError(InvalidArnError),
@@ -1673,20 +1302,20 @@ pub enum EnableKeyRotationError {
     NotFoundError(NotFoundError),
     UnsupportedOperationError(UnsupportedOperationError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for EnableKeyRotationError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            EnableKeyRotationError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            EnableKeyRotationError::DisabledError(_inner) => _inner.fmt(f),
-            EnableKeyRotationError::InvalidArnError(_inner) => _inner.fmt(f),
-            EnableKeyRotationError::KMSInternalError(_inner) => _inner.fmt(f),
-            EnableKeyRotationError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            EnableKeyRotationError::NotFoundError(_inner) => _inner.fmt(f),
-            EnableKeyRotationError::UnsupportedOperationError(_inner) => _inner.fmt(f),
-            EnableKeyRotationError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            EnableKeyRotationErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            EnableKeyRotationErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            EnableKeyRotationErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            EnableKeyRotationErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            EnableKeyRotationErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            EnableKeyRotationErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            EnableKeyRotationErrorKind::UnsupportedOperationError(_inner) => _inner.fmt(f),
+            EnableKeyRotationErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1695,85 +1324,59 @@ impl ::smithy_types::retry::ProvideErrorKind for EnableKeyRotationError {
         EnableKeyRotationError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            EnableKeyRotationError::DependencyTimeoutError(_inner) => None,
-            EnableKeyRotationError::DisabledError(_inner) => None,
-            EnableKeyRotationError::InvalidArnError(_inner) => None,
-            EnableKeyRotationError::KMSInternalError(_inner) => None,
-            EnableKeyRotationError::KMSInvalidStateError(_inner) => None,
-            EnableKeyRotationError::NotFoundError(_inner) => None,
-            EnableKeyRotationError::UnsupportedOperationError(_inner) => None,
-            EnableKeyRotationError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl EnableKeyRotationError {
+    pub fn new(kind: EnableKeyRotationErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        EnableKeyRotationError::Unhandled(err.into())
+        Self {
+            kind: EnableKeyRotationErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: EnableKeyRotationErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            EnableKeyRotationError::DependencyTimeoutError(_inner) => _inner.message(),
-            EnableKeyRotationError::DisabledError(_inner) => _inner.message(),
-            EnableKeyRotationError::InvalidArnError(_inner) => _inner.message(),
-            EnableKeyRotationError::KMSInternalError(_inner) => _inner.message(),
-            EnableKeyRotationError::KMSInvalidStateError(_inner) => _inner.message(),
-            EnableKeyRotationError::NotFoundError(_inner) => _inner.message(),
-            EnableKeyRotationError::UnsupportedOperationError(_inner) => _inner.message(),
-            EnableKeyRotationError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            EnableKeyRotationError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            EnableKeyRotationError::DisabledError(_inner) => Some(_inner.code()),
-            EnableKeyRotationError::InvalidArnError(_inner) => Some(_inner.code()),
-            EnableKeyRotationError::KMSInternalError(_inner) => Some(_inner.code()),
-            EnableKeyRotationError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            EnableKeyRotationError::NotFoundError(_inner) => Some(_inner.code()),
-            EnableKeyRotationError::UnsupportedOperationError(_inner) => Some(_inner.code()),
-            EnableKeyRotationError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for EnableKeyRotationError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            EnableKeyRotationError::DependencyTimeoutError(_inner) => Some(_inner),
-            EnableKeyRotationError::DisabledError(_inner) => Some(_inner),
-            EnableKeyRotationError::InvalidArnError(_inner) => Some(_inner),
-            EnableKeyRotationError::KMSInternalError(_inner) => Some(_inner),
-            EnableKeyRotationError::KMSInvalidStateError(_inner) => Some(_inner),
-            EnableKeyRotationError::NotFoundError(_inner) => Some(_inner),
-            EnableKeyRotationError::UnsupportedOperationError(_inner) => Some(_inner),
-            EnableKeyRotationError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            EnableKeyRotationErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            EnableKeyRotationErrorKind::DisabledError(_inner) => Some(_inner),
+            EnableKeyRotationErrorKind::InvalidArnError(_inner) => Some(_inner),
+            EnableKeyRotationErrorKind::KMSInternalError(_inner) => Some(_inner),
+            EnableKeyRotationErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            EnableKeyRotationErrorKind::NotFoundError(_inner) => Some(_inner),
+            EnableKeyRotationErrorKind::UnsupportedOperationError(_inner) => Some(_inner),
+            EnableKeyRotationErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum EncryptError {
+pub struct EncryptError {
+    pub kind: EncryptErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum EncryptErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     InvalidGrantTokenError(InvalidGrantTokenError),
@@ -1783,21 +1386,21 @@ pub enum EncryptError {
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for EncryptError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            EncryptError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            EncryptError::DisabledError(_inner) => _inner.fmt(f),
-            EncryptError::InvalidGrantTokenError(_inner) => _inner.fmt(f),
-            EncryptError::InvalidKeyUsageError(_inner) => _inner.fmt(f),
-            EncryptError::KeyUnavailableError(_inner) => _inner.fmt(f),
-            EncryptError::KMSInternalError(_inner) => _inner.fmt(f),
-            EncryptError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            EncryptError::NotFoundError(_inner) => _inner.fmt(f),
-            EncryptError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            EncryptErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            EncryptErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            EncryptErrorKind::InvalidGrantTokenError(_inner) => _inner.fmt(f),
+            EncryptErrorKind::InvalidKeyUsageError(_inner) => _inner.fmt(f),
+            EncryptErrorKind::KeyUnavailableError(_inner) => _inner.fmt(f),
+            EncryptErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            EncryptErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            EncryptErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            EncryptErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1806,89 +1409,60 @@ impl ::smithy_types::retry::ProvideErrorKind for EncryptError {
         EncryptError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            EncryptError::DependencyTimeoutError(_inner) => None,
-            EncryptError::DisabledError(_inner) => None,
-            EncryptError::InvalidGrantTokenError(_inner) => None,
-            EncryptError::InvalidKeyUsageError(_inner) => None,
-            EncryptError::KeyUnavailableError(_inner) => None,
-            EncryptError::KMSInternalError(_inner) => None,
-            EncryptError::KMSInvalidStateError(_inner) => None,
-            EncryptError::NotFoundError(_inner) => None,
-            EncryptError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl EncryptError {
+    pub fn new(kind: EncryptErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        EncryptError::Unhandled(err.into())
+        Self {
+            kind: EncryptErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: EncryptErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            EncryptError::DependencyTimeoutError(_inner) => _inner.message(),
-            EncryptError::DisabledError(_inner) => _inner.message(),
-            EncryptError::InvalidGrantTokenError(_inner) => _inner.message(),
-            EncryptError::InvalidKeyUsageError(_inner) => _inner.message(),
-            EncryptError::KeyUnavailableError(_inner) => _inner.message(),
-            EncryptError::KMSInternalError(_inner) => _inner.message(),
-            EncryptError::KMSInvalidStateError(_inner) => _inner.message(),
-            EncryptError::NotFoundError(_inner) => _inner.message(),
-            EncryptError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            EncryptError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            EncryptError::DisabledError(_inner) => Some(_inner.code()),
-            EncryptError::InvalidGrantTokenError(_inner) => Some(_inner.code()),
-            EncryptError::InvalidKeyUsageError(_inner) => Some(_inner.code()),
-            EncryptError::KeyUnavailableError(_inner) => Some(_inner.code()),
-            EncryptError::KMSInternalError(_inner) => Some(_inner.code()),
-            EncryptError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            EncryptError::NotFoundError(_inner) => Some(_inner.code()),
-            EncryptError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for EncryptError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            EncryptError::DependencyTimeoutError(_inner) => Some(_inner),
-            EncryptError::DisabledError(_inner) => Some(_inner),
-            EncryptError::InvalidGrantTokenError(_inner) => Some(_inner),
-            EncryptError::InvalidKeyUsageError(_inner) => Some(_inner),
-            EncryptError::KeyUnavailableError(_inner) => Some(_inner),
-            EncryptError::KMSInternalError(_inner) => Some(_inner),
-            EncryptError::KMSInvalidStateError(_inner) => Some(_inner),
-            EncryptError::NotFoundError(_inner) => Some(_inner),
-            EncryptError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            EncryptErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            EncryptErrorKind::DisabledError(_inner) => Some(_inner),
+            EncryptErrorKind::InvalidGrantTokenError(_inner) => Some(_inner),
+            EncryptErrorKind::InvalidKeyUsageError(_inner) => Some(_inner),
+            EncryptErrorKind::KeyUnavailableError(_inner) => Some(_inner),
+            EncryptErrorKind::KMSInternalError(_inner) => Some(_inner),
+            EncryptErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            EncryptErrorKind::NotFoundError(_inner) => Some(_inner),
+            EncryptErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GenerateDataKeyError {
+pub struct GenerateDataKeyError {
+    pub kind: GenerateDataKeyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GenerateDataKeyErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     InvalidGrantTokenError(InvalidGrantTokenError),
@@ -1898,21 +1472,21 @@ pub enum GenerateDataKeyError {
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GenerateDataKeyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GenerateDataKeyError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            GenerateDataKeyError::DisabledError(_inner) => _inner.fmt(f),
-            GenerateDataKeyError::InvalidGrantTokenError(_inner) => _inner.fmt(f),
-            GenerateDataKeyError::InvalidKeyUsageError(_inner) => _inner.fmt(f),
-            GenerateDataKeyError::KeyUnavailableError(_inner) => _inner.fmt(f),
-            GenerateDataKeyError::KMSInternalError(_inner) => _inner.fmt(f),
-            GenerateDataKeyError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            GenerateDataKeyError::NotFoundError(_inner) => _inner.fmt(f),
-            GenerateDataKeyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GenerateDataKeyErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            GenerateDataKeyErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            GenerateDataKeyErrorKind::InvalidGrantTokenError(_inner) => _inner.fmt(f),
+            GenerateDataKeyErrorKind::InvalidKeyUsageError(_inner) => _inner.fmt(f),
+            GenerateDataKeyErrorKind::KeyUnavailableError(_inner) => _inner.fmt(f),
+            GenerateDataKeyErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            GenerateDataKeyErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            GenerateDataKeyErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            GenerateDataKeyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1921,89 +1495,60 @@ impl ::smithy_types::retry::ProvideErrorKind for GenerateDataKeyError {
         GenerateDataKeyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GenerateDataKeyError::DependencyTimeoutError(_inner) => None,
-            GenerateDataKeyError::DisabledError(_inner) => None,
-            GenerateDataKeyError::InvalidGrantTokenError(_inner) => None,
-            GenerateDataKeyError::InvalidKeyUsageError(_inner) => None,
-            GenerateDataKeyError::KeyUnavailableError(_inner) => None,
-            GenerateDataKeyError::KMSInternalError(_inner) => None,
-            GenerateDataKeyError::KMSInvalidStateError(_inner) => None,
-            GenerateDataKeyError::NotFoundError(_inner) => None,
-            GenerateDataKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GenerateDataKeyError {
+    pub fn new(kind: GenerateDataKeyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GenerateDataKeyError::Unhandled(err.into())
+        Self {
+            kind: GenerateDataKeyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GenerateDataKeyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GenerateDataKeyError::DependencyTimeoutError(_inner) => _inner.message(),
-            GenerateDataKeyError::DisabledError(_inner) => _inner.message(),
-            GenerateDataKeyError::InvalidGrantTokenError(_inner) => _inner.message(),
-            GenerateDataKeyError::InvalidKeyUsageError(_inner) => _inner.message(),
-            GenerateDataKeyError::KeyUnavailableError(_inner) => _inner.message(),
-            GenerateDataKeyError::KMSInternalError(_inner) => _inner.message(),
-            GenerateDataKeyError::KMSInvalidStateError(_inner) => _inner.message(),
-            GenerateDataKeyError::NotFoundError(_inner) => _inner.message(),
-            GenerateDataKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GenerateDataKeyError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            GenerateDataKeyError::DisabledError(_inner) => Some(_inner.code()),
-            GenerateDataKeyError::InvalidGrantTokenError(_inner) => Some(_inner.code()),
-            GenerateDataKeyError::InvalidKeyUsageError(_inner) => Some(_inner.code()),
-            GenerateDataKeyError::KeyUnavailableError(_inner) => Some(_inner.code()),
-            GenerateDataKeyError::KMSInternalError(_inner) => Some(_inner.code()),
-            GenerateDataKeyError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            GenerateDataKeyError::NotFoundError(_inner) => Some(_inner.code()),
-            GenerateDataKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GenerateDataKeyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GenerateDataKeyError::DependencyTimeoutError(_inner) => Some(_inner),
-            GenerateDataKeyError::DisabledError(_inner) => Some(_inner),
-            GenerateDataKeyError::InvalidGrantTokenError(_inner) => Some(_inner),
-            GenerateDataKeyError::InvalidKeyUsageError(_inner) => Some(_inner),
-            GenerateDataKeyError::KeyUnavailableError(_inner) => Some(_inner),
-            GenerateDataKeyError::KMSInternalError(_inner) => Some(_inner),
-            GenerateDataKeyError::KMSInvalidStateError(_inner) => Some(_inner),
-            GenerateDataKeyError::NotFoundError(_inner) => Some(_inner),
-            GenerateDataKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            GenerateDataKeyErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            GenerateDataKeyErrorKind::DisabledError(_inner) => Some(_inner),
+            GenerateDataKeyErrorKind::InvalidGrantTokenError(_inner) => Some(_inner),
+            GenerateDataKeyErrorKind::InvalidKeyUsageError(_inner) => Some(_inner),
+            GenerateDataKeyErrorKind::KeyUnavailableError(_inner) => Some(_inner),
+            GenerateDataKeyErrorKind::KMSInternalError(_inner) => Some(_inner),
+            GenerateDataKeyErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            GenerateDataKeyErrorKind::NotFoundError(_inner) => Some(_inner),
+            GenerateDataKeyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GenerateDataKeyPairError {
+pub struct GenerateDataKeyPairError {
+    pub kind: GenerateDataKeyPairErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GenerateDataKeyPairErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     InvalidGrantTokenError(InvalidGrantTokenError),
@@ -2014,22 +1559,22 @@ pub enum GenerateDataKeyPairError {
     NotFoundError(NotFoundError),
     UnsupportedOperationError(UnsupportedOperationError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GenerateDataKeyPairError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GenerateDataKeyPairError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairError::DisabledError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairError::InvalidGrantTokenError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairError::InvalidKeyUsageError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairError::KeyUnavailableError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairError::KMSInternalError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairError::NotFoundError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairError::UnsupportedOperationError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GenerateDataKeyPairErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairErrorKind::InvalidGrantTokenError(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairErrorKind::InvalidKeyUsageError(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairErrorKind::KeyUnavailableError(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairErrorKind::UnsupportedOperationError(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2038,93 +1583,61 @@ impl ::smithy_types::retry::ProvideErrorKind for GenerateDataKeyPairError {
         GenerateDataKeyPairError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GenerateDataKeyPairError::DependencyTimeoutError(_inner) => None,
-            GenerateDataKeyPairError::DisabledError(_inner) => None,
-            GenerateDataKeyPairError::InvalidGrantTokenError(_inner) => None,
-            GenerateDataKeyPairError::InvalidKeyUsageError(_inner) => None,
-            GenerateDataKeyPairError::KeyUnavailableError(_inner) => None,
-            GenerateDataKeyPairError::KMSInternalError(_inner) => None,
-            GenerateDataKeyPairError::KMSInvalidStateError(_inner) => None,
-            GenerateDataKeyPairError::NotFoundError(_inner) => None,
-            GenerateDataKeyPairError::UnsupportedOperationError(_inner) => None,
-            GenerateDataKeyPairError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GenerateDataKeyPairError {
+    pub fn new(kind: GenerateDataKeyPairErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GenerateDataKeyPairError::Unhandled(err.into())
+        Self {
+            kind: GenerateDataKeyPairErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GenerateDataKeyPairErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GenerateDataKeyPairError::DependencyTimeoutError(_inner) => _inner.message(),
-            GenerateDataKeyPairError::DisabledError(_inner) => _inner.message(),
-            GenerateDataKeyPairError::InvalidGrantTokenError(_inner) => _inner.message(),
-            GenerateDataKeyPairError::InvalidKeyUsageError(_inner) => _inner.message(),
-            GenerateDataKeyPairError::KeyUnavailableError(_inner) => _inner.message(),
-            GenerateDataKeyPairError::KMSInternalError(_inner) => _inner.message(),
-            GenerateDataKeyPairError::KMSInvalidStateError(_inner) => _inner.message(),
-            GenerateDataKeyPairError::NotFoundError(_inner) => _inner.message(),
-            GenerateDataKeyPairError::UnsupportedOperationError(_inner) => _inner.message(),
-            GenerateDataKeyPairError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GenerateDataKeyPairError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            GenerateDataKeyPairError::DisabledError(_inner) => Some(_inner.code()),
-            GenerateDataKeyPairError::InvalidGrantTokenError(_inner) => Some(_inner.code()),
-            GenerateDataKeyPairError::InvalidKeyUsageError(_inner) => Some(_inner.code()),
-            GenerateDataKeyPairError::KeyUnavailableError(_inner) => Some(_inner.code()),
-            GenerateDataKeyPairError::KMSInternalError(_inner) => Some(_inner.code()),
-            GenerateDataKeyPairError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            GenerateDataKeyPairError::NotFoundError(_inner) => Some(_inner.code()),
-            GenerateDataKeyPairError::UnsupportedOperationError(_inner) => Some(_inner.code()),
-            GenerateDataKeyPairError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GenerateDataKeyPairError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GenerateDataKeyPairError::DependencyTimeoutError(_inner) => Some(_inner),
-            GenerateDataKeyPairError::DisabledError(_inner) => Some(_inner),
-            GenerateDataKeyPairError::InvalidGrantTokenError(_inner) => Some(_inner),
-            GenerateDataKeyPairError::InvalidKeyUsageError(_inner) => Some(_inner),
-            GenerateDataKeyPairError::KeyUnavailableError(_inner) => Some(_inner),
-            GenerateDataKeyPairError::KMSInternalError(_inner) => Some(_inner),
-            GenerateDataKeyPairError::KMSInvalidStateError(_inner) => Some(_inner),
-            GenerateDataKeyPairError::NotFoundError(_inner) => Some(_inner),
-            GenerateDataKeyPairError::UnsupportedOperationError(_inner) => Some(_inner),
-            GenerateDataKeyPairError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            GenerateDataKeyPairErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            GenerateDataKeyPairErrorKind::DisabledError(_inner) => Some(_inner),
+            GenerateDataKeyPairErrorKind::InvalidGrantTokenError(_inner) => Some(_inner),
+            GenerateDataKeyPairErrorKind::InvalidKeyUsageError(_inner) => Some(_inner),
+            GenerateDataKeyPairErrorKind::KeyUnavailableError(_inner) => Some(_inner),
+            GenerateDataKeyPairErrorKind::KMSInternalError(_inner) => Some(_inner),
+            GenerateDataKeyPairErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            GenerateDataKeyPairErrorKind::NotFoundError(_inner) => Some(_inner),
+            GenerateDataKeyPairErrorKind::UnsupportedOperationError(_inner) => Some(_inner),
+            GenerateDataKeyPairErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GenerateDataKeyPairWithoutPlaintextError {
+pub struct GenerateDataKeyPairWithoutPlaintextError {
+    pub kind: GenerateDataKeyPairWithoutPlaintextErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GenerateDataKeyPairWithoutPlaintextErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     InvalidGrantTokenError(InvalidGrantTokenError),
@@ -2135,28 +1648,34 @@ pub enum GenerateDataKeyPairWithoutPlaintextError {
     NotFoundError(NotFoundError),
     UnsupportedOperationError(UnsupportedOperationError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GenerateDataKeyPairWithoutPlaintextError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GenerateDataKeyPairWithoutPlaintextError::DependencyTimeoutError(_inner) => {
+        match &self.kind {
+            GenerateDataKeyPairWithoutPlaintextErrorKind::DependencyTimeoutError(_inner) => {
                 _inner.fmt(f)
             }
-            GenerateDataKeyPairWithoutPlaintextError::DisabledError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairWithoutPlaintextError::InvalidGrantTokenError(_inner) => {
+            GenerateDataKeyPairWithoutPlaintextErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairWithoutPlaintextErrorKind::InvalidGrantTokenError(_inner) => {
                 _inner.fmt(f)
             }
-            GenerateDataKeyPairWithoutPlaintextError::InvalidKeyUsageError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairWithoutPlaintextError::KeyUnavailableError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairWithoutPlaintextError::KMSInternalError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairWithoutPlaintextError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairWithoutPlaintextError::NotFoundError(_inner) => _inner.fmt(f),
-            GenerateDataKeyPairWithoutPlaintextError::UnsupportedOperationError(_inner) => {
+            GenerateDataKeyPairWithoutPlaintextErrorKind::InvalidKeyUsageError(_inner) => {
                 _inner.fmt(f)
             }
-            GenerateDataKeyPairWithoutPlaintextError::Unhandled(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairWithoutPlaintextErrorKind::KeyUnavailableError(_inner) => {
+                _inner.fmt(f)
+            }
+            GenerateDataKeyPairWithoutPlaintextErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairWithoutPlaintextErrorKind::KMSInvalidStateError(_inner) => {
+                _inner.fmt(f)
+            }
+            GenerateDataKeyPairWithoutPlaintextErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            GenerateDataKeyPairWithoutPlaintextErrorKind::UnsupportedOperationError(_inner) => {
+                _inner.fmt(f)
+            }
+            GenerateDataKeyPairWithoutPlaintextErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2165,117 +1684,64 @@ impl ::smithy_types::retry::ProvideErrorKind for GenerateDataKeyPairWithoutPlain
         GenerateDataKeyPairWithoutPlaintextError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GenerateDataKeyPairWithoutPlaintextError::DependencyTimeoutError(_inner) => None,
-            GenerateDataKeyPairWithoutPlaintextError::DisabledError(_inner) => None,
-            GenerateDataKeyPairWithoutPlaintextError::InvalidGrantTokenError(_inner) => None,
-            GenerateDataKeyPairWithoutPlaintextError::InvalidKeyUsageError(_inner) => None,
-            GenerateDataKeyPairWithoutPlaintextError::KeyUnavailableError(_inner) => None,
-            GenerateDataKeyPairWithoutPlaintextError::KMSInternalError(_inner) => None,
-            GenerateDataKeyPairWithoutPlaintextError::KMSInvalidStateError(_inner) => None,
-            GenerateDataKeyPairWithoutPlaintextError::NotFoundError(_inner) => None,
-            GenerateDataKeyPairWithoutPlaintextError::UnsupportedOperationError(_inner) => None,
-            GenerateDataKeyPairWithoutPlaintextError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GenerateDataKeyPairWithoutPlaintextError {
+    pub fn new(
+        kind: GenerateDataKeyPairWithoutPlaintextErrorKind,
+        meta: ::smithy_types::Error,
+    ) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GenerateDataKeyPairWithoutPlaintextError::Unhandled(err.into())
+        Self {
+            kind: GenerateDataKeyPairWithoutPlaintextErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GenerateDataKeyPairWithoutPlaintextErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GenerateDataKeyPairWithoutPlaintextError::DependencyTimeoutError(_inner) => {
-                _inner.message()
-            }
-            GenerateDataKeyPairWithoutPlaintextError::DisabledError(_inner) => _inner.message(),
-            GenerateDataKeyPairWithoutPlaintextError::InvalidGrantTokenError(_inner) => {
-                _inner.message()
-            }
-            GenerateDataKeyPairWithoutPlaintextError::InvalidKeyUsageError(_inner) => {
-                _inner.message()
-            }
-            GenerateDataKeyPairWithoutPlaintextError::KeyUnavailableError(_inner) => {
-                _inner.message()
-            }
-            GenerateDataKeyPairWithoutPlaintextError::KMSInternalError(_inner) => _inner.message(),
-            GenerateDataKeyPairWithoutPlaintextError::KMSInvalidStateError(_inner) => {
-                _inner.message()
-            }
-            GenerateDataKeyPairWithoutPlaintextError::NotFoundError(_inner) => _inner.message(),
-            GenerateDataKeyPairWithoutPlaintextError::UnsupportedOperationError(_inner) => {
-                _inner.message()
-            }
-            GenerateDataKeyPairWithoutPlaintextError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GenerateDataKeyPairWithoutPlaintextError::DependencyTimeoutError(_inner) => {
-                Some(_inner.code())
-            }
-            GenerateDataKeyPairWithoutPlaintextError::DisabledError(_inner) => Some(_inner.code()),
-            GenerateDataKeyPairWithoutPlaintextError::InvalidGrantTokenError(_inner) => {
-                Some(_inner.code())
-            }
-            GenerateDataKeyPairWithoutPlaintextError::InvalidKeyUsageError(_inner) => {
-                Some(_inner.code())
-            }
-            GenerateDataKeyPairWithoutPlaintextError::KeyUnavailableError(_inner) => {
-                Some(_inner.code())
-            }
-            GenerateDataKeyPairWithoutPlaintextError::KMSInternalError(_inner) => {
-                Some(_inner.code())
-            }
-            GenerateDataKeyPairWithoutPlaintextError::KMSInvalidStateError(_inner) => {
-                Some(_inner.code())
-            }
-            GenerateDataKeyPairWithoutPlaintextError::NotFoundError(_inner) => Some(_inner.code()),
-            GenerateDataKeyPairWithoutPlaintextError::UnsupportedOperationError(_inner) => {
-                Some(_inner.code())
-            }
-            GenerateDataKeyPairWithoutPlaintextError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GenerateDataKeyPairWithoutPlaintextError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GenerateDataKeyPairWithoutPlaintextError::DependencyTimeoutError(_inner) => {
+        match &self.kind {
+            GenerateDataKeyPairWithoutPlaintextErrorKind::DependencyTimeoutError(_inner) => {
                 Some(_inner)
             }
-            GenerateDataKeyPairWithoutPlaintextError::DisabledError(_inner) => Some(_inner),
-            GenerateDataKeyPairWithoutPlaintextError::InvalidGrantTokenError(_inner) => {
+            GenerateDataKeyPairWithoutPlaintextErrorKind::DisabledError(_inner) => Some(_inner),
+            GenerateDataKeyPairWithoutPlaintextErrorKind::InvalidGrantTokenError(_inner) => {
                 Some(_inner)
             }
-            GenerateDataKeyPairWithoutPlaintextError::InvalidKeyUsageError(_inner) => Some(_inner),
-            GenerateDataKeyPairWithoutPlaintextError::KeyUnavailableError(_inner) => Some(_inner),
-            GenerateDataKeyPairWithoutPlaintextError::KMSInternalError(_inner) => Some(_inner),
-            GenerateDataKeyPairWithoutPlaintextError::KMSInvalidStateError(_inner) => Some(_inner),
-            GenerateDataKeyPairWithoutPlaintextError::NotFoundError(_inner) => Some(_inner),
-            GenerateDataKeyPairWithoutPlaintextError::UnsupportedOperationError(_inner) => {
+            GenerateDataKeyPairWithoutPlaintextErrorKind::InvalidKeyUsageError(_inner) => {
                 Some(_inner)
             }
-            GenerateDataKeyPairWithoutPlaintextError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
+            GenerateDataKeyPairWithoutPlaintextErrorKind::KeyUnavailableError(_inner) => {
+                Some(_inner)
+            }
+            GenerateDataKeyPairWithoutPlaintextErrorKind::KMSInternalError(_inner) => Some(_inner),
+            GenerateDataKeyPairWithoutPlaintextErrorKind::KMSInvalidStateError(_inner) => {
+                Some(_inner)
+            }
+            GenerateDataKeyPairWithoutPlaintextErrorKind::NotFoundError(_inner) => Some(_inner),
+            GenerateDataKeyPairWithoutPlaintextErrorKind::UnsupportedOperationError(_inner) => {
+                Some(_inner)
+            }
+            GenerateDataKeyPairWithoutPlaintextErrorKind::Unhandled(_inner) => {
+                Some(_inner.as_ref())
             }
         }
     }
@@ -2283,7 +1749,13 @@ impl ::std::error::Error for GenerateDataKeyPairWithoutPlaintextError {
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GenerateDataKeyWithoutPlaintextError {
+pub struct GenerateDataKeyWithoutPlaintextError {
+    pub kind: GenerateDataKeyWithoutPlaintextErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GenerateDataKeyWithoutPlaintextErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     InvalidGrantTokenError(InvalidGrantTokenError),
@@ -2293,21 +1765,25 @@ pub enum GenerateDataKeyWithoutPlaintextError {
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GenerateDataKeyWithoutPlaintextError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GenerateDataKeyWithoutPlaintextError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            GenerateDataKeyWithoutPlaintextError::DisabledError(_inner) => _inner.fmt(f),
-            GenerateDataKeyWithoutPlaintextError::InvalidGrantTokenError(_inner) => _inner.fmt(f),
-            GenerateDataKeyWithoutPlaintextError::InvalidKeyUsageError(_inner) => _inner.fmt(f),
-            GenerateDataKeyWithoutPlaintextError::KeyUnavailableError(_inner) => _inner.fmt(f),
-            GenerateDataKeyWithoutPlaintextError::KMSInternalError(_inner) => _inner.fmt(f),
-            GenerateDataKeyWithoutPlaintextError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            GenerateDataKeyWithoutPlaintextError::NotFoundError(_inner) => _inner.fmt(f),
-            GenerateDataKeyWithoutPlaintextError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GenerateDataKeyWithoutPlaintextErrorKind::DependencyTimeoutError(_inner) => {
+                _inner.fmt(f)
+            }
+            GenerateDataKeyWithoutPlaintextErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            GenerateDataKeyWithoutPlaintextErrorKind::InvalidGrantTokenError(_inner) => {
+                _inner.fmt(f)
+            }
+            GenerateDataKeyWithoutPlaintextErrorKind::InvalidKeyUsageError(_inner) => _inner.fmt(f),
+            GenerateDataKeyWithoutPlaintextErrorKind::KeyUnavailableError(_inner) => _inner.fmt(f),
+            GenerateDataKeyWithoutPlaintextErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            GenerateDataKeyWithoutPlaintextErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            GenerateDataKeyWithoutPlaintextErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            GenerateDataKeyWithoutPlaintextErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2316,119 +1792,83 @@ impl ::smithy_types::retry::ProvideErrorKind for GenerateDataKeyWithoutPlaintext
         GenerateDataKeyWithoutPlaintextError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GenerateDataKeyWithoutPlaintextError::DependencyTimeoutError(_inner) => None,
-            GenerateDataKeyWithoutPlaintextError::DisabledError(_inner) => None,
-            GenerateDataKeyWithoutPlaintextError::InvalidGrantTokenError(_inner) => None,
-            GenerateDataKeyWithoutPlaintextError::InvalidKeyUsageError(_inner) => None,
-            GenerateDataKeyWithoutPlaintextError::KeyUnavailableError(_inner) => None,
-            GenerateDataKeyWithoutPlaintextError::KMSInternalError(_inner) => None,
-            GenerateDataKeyWithoutPlaintextError::KMSInvalidStateError(_inner) => None,
-            GenerateDataKeyWithoutPlaintextError::NotFoundError(_inner) => None,
-            GenerateDataKeyWithoutPlaintextError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GenerateDataKeyWithoutPlaintextError {
+    pub fn new(
+        kind: GenerateDataKeyWithoutPlaintextErrorKind,
+        meta: ::smithy_types::Error,
+    ) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GenerateDataKeyWithoutPlaintextError::Unhandled(err.into())
+        Self {
+            kind: GenerateDataKeyWithoutPlaintextErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GenerateDataKeyWithoutPlaintextErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GenerateDataKeyWithoutPlaintextError::DependencyTimeoutError(_inner) => {
-                _inner.message()
-            }
-            GenerateDataKeyWithoutPlaintextError::DisabledError(_inner) => _inner.message(),
-            GenerateDataKeyWithoutPlaintextError::InvalidGrantTokenError(_inner) => {
-                _inner.message()
-            }
-            GenerateDataKeyWithoutPlaintextError::InvalidKeyUsageError(_inner) => _inner.message(),
-            GenerateDataKeyWithoutPlaintextError::KeyUnavailableError(_inner) => _inner.message(),
-            GenerateDataKeyWithoutPlaintextError::KMSInternalError(_inner) => _inner.message(),
-            GenerateDataKeyWithoutPlaintextError::KMSInvalidStateError(_inner) => _inner.message(),
-            GenerateDataKeyWithoutPlaintextError::NotFoundError(_inner) => _inner.message(),
-            GenerateDataKeyWithoutPlaintextError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GenerateDataKeyWithoutPlaintextError::DependencyTimeoutError(_inner) => {
-                Some(_inner.code())
-            }
-            GenerateDataKeyWithoutPlaintextError::DisabledError(_inner) => Some(_inner.code()),
-            GenerateDataKeyWithoutPlaintextError::InvalidGrantTokenError(_inner) => {
-                Some(_inner.code())
-            }
-            GenerateDataKeyWithoutPlaintextError::InvalidKeyUsageError(_inner) => {
-                Some(_inner.code())
-            }
-            GenerateDataKeyWithoutPlaintextError::KeyUnavailableError(_inner) => {
-                Some(_inner.code())
-            }
-            GenerateDataKeyWithoutPlaintextError::KMSInternalError(_inner) => Some(_inner.code()),
-            GenerateDataKeyWithoutPlaintextError::KMSInvalidStateError(_inner) => {
-                Some(_inner.code())
-            }
-            GenerateDataKeyWithoutPlaintextError::NotFoundError(_inner) => Some(_inner.code()),
-            GenerateDataKeyWithoutPlaintextError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GenerateDataKeyWithoutPlaintextError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GenerateDataKeyWithoutPlaintextError::DependencyTimeoutError(_inner) => Some(_inner),
-            GenerateDataKeyWithoutPlaintextError::DisabledError(_inner) => Some(_inner),
-            GenerateDataKeyWithoutPlaintextError::InvalidGrantTokenError(_inner) => Some(_inner),
-            GenerateDataKeyWithoutPlaintextError::InvalidKeyUsageError(_inner) => Some(_inner),
-            GenerateDataKeyWithoutPlaintextError::KeyUnavailableError(_inner) => Some(_inner),
-            GenerateDataKeyWithoutPlaintextError::KMSInternalError(_inner) => Some(_inner),
-            GenerateDataKeyWithoutPlaintextError::KMSInvalidStateError(_inner) => Some(_inner),
-            GenerateDataKeyWithoutPlaintextError::NotFoundError(_inner) => Some(_inner),
-            GenerateDataKeyWithoutPlaintextError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
+        match &self.kind {
+            GenerateDataKeyWithoutPlaintextErrorKind::DependencyTimeoutError(_inner) => {
+                Some(_inner)
             }
+            GenerateDataKeyWithoutPlaintextErrorKind::DisabledError(_inner) => Some(_inner),
+            GenerateDataKeyWithoutPlaintextErrorKind::InvalidGrantTokenError(_inner) => {
+                Some(_inner)
+            }
+            GenerateDataKeyWithoutPlaintextErrorKind::InvalidKeyUsageError(_inner) => Some(_inner),
+            GenerateDataKeyWithoutPlaintextErrorKind::KeyUnavailableError(_inner) => Some(_inner),
+            GenerateDataKeyWithoutPlaintextErrorKind::KMSInternalError(_inner) => Some(_inner),
+            GenerateDataKeyWithoutPlaintextErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            GenerateDataKeyWithoutPlaintextErrorKind::NotFoundError(_inner) => Some(_inner),
+            GenerateDataKeyWithoutPlaintextErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GenerateRandomError {
+pub struct GenerateRandomError {
+    pub kind: GenerateRandomErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GenerateRandomErrorKind {
     CustomKeyStoreInvalidStateError(CustomKeyStoreInvalidStateError),
     CustomKeyStoreNotFoundError(CustomKeyStoreNotFoundError),
     DependencyTimeoutError(DependencyTimeoutError),
     KMSInternalError(KMSInternalError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GenerateRandomError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GenerateRandomError::CustomKeyStoreInvalidStateError(_inner) => _inner.fmt(f),
-            GenerateRandomError::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
-            GenerateRandomError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            GenerateRandomError::KMSInternalError(_inner) => _inner.fmt(f),
-            GenerateRandomError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GenerateRandomErrorKind::CustomKeyStoreInvalidStateError(_inner) => _inner.fmt(f),
+            GenerateRandomErrorKind::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
+            GenerateRandomErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            GenerateRandomErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            GenerateRandomErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2437,91 +1877,74 @@ impl ::smithy_types::retry::ProvideErrorKind for GenerateRandomError {
         GenerateRandomError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GenerateRandomError::CustomKeyStoreInvalidStateError(_inner) => None,
-            GenerateRandomError::CustomKeyStoreNotFoundError(_inner) => None,
-            GenerateRandomError::DependencyTimeoutError(_inner) => None,
-            GenerateRandomError::KMSInternalError(_inner) => None,
-            GenerateRandomError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GenerateRandomError {
+    pub fn new(kind: GenerateRandomErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GenerateRandomError::Unhandled(err.into())
+        Self {
+            kind: GenerateRandomErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GenerateRandomErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GenerateRandomError::CustomKeyStoreInvalidStateError(_inner) => _inner.message(),
-            GenerateRandomError::CustomKeyStoreNotFoundError(_inner) => _inner.message(),
-            GenerateRandomError::DependencyTimeoutError(_inner) => _inner.message(),
-            GenerateRandomError::KMSInternalError(_inner) => _inner.message(),
-            GenerateRandomError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GenerateRandomError::CustomKeyStoreInvalidStateError(_inner) => Some(_inner.code()),
-            GenerateRandomError::CustomKeyStoreNotFoundError(_inner) => Some(_inner.code()),
-            GenerateRandomError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            GenerateRandomError::KMSInternalError(_inner) => Some(_inner.code()),
-            GenerateRandomError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GenerateRandomError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GenerateRandomError::CustomKeyStoreInvalidStateError(_inner) => Some(_inner),
-            GenerateRandomError::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
-            GenerateRandomError::DependencyTimeoutError(_inner) => Some(_inner),
-            GenerateRandomError::KMSInternalError(_inner) => Some(_inner),
-            GenerateRandomError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            GenerateRandomErrorKind::CustomKeyStoreInvalidStateError(_inner) => Some(_inner),
+            GenerateRandomErrorKind::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
+            GenerateRandomErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            GenerateRandomErrorKind::KMSInternalError(_inner) => Some(_inner),
+            GenerateRandomErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GetKeyPolicyError {
+pub struct GetKeyPolicyError {
+    pub kind: GetKeyPolicyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GetKeyPolicyErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GetKeyPolicyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GetKeyPolicyError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            GetKeyPolicyError::InvalidArnError(_inner) => _inner.fmt(f),
-            GetKeyPolicyError::KMSInternalError(_inner) => _inner.fmt(f),
-            GetKeyPolicyError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            GetKeyPolicyError::NotFoundError(_inner) => _inner.fmt(f),
-            GetKeyPolicyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GetKeyPolicyErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            GetKeyPolicyErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            GetKeyPolicyErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            GetKeyPolicyErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            GetKeyPolicyErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            GetKeyPolicyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2530,77 +1953,57 @@ impl ::smithy_types::retry::ProvideErrorKind for GetKeyPolicyError {
         GetKeyPolicyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GetKeyPolicyError::DependencyTimeoutError(_inner) => None,
-            GetKeyPolicyError::InvalidArnError(_inner) => None,
-            GetKeyPolicyError::KMSInternalError(_inner) => None,
-            GetKeyPolicyError::KMSInvalidStateError(_inner) => None,
-            GetKeyPolicyError::NotFoundError(_inner) => None,
-            GetKeyPolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GetKeyPolicyError {
+    pub fn new(kind: GetKeyPolicyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GetKeyPolicyError::Unhandled(err.into())
+        Self {
+            kind: GetKeyPolicyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GetKeyPolicyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GetKeyPolicyError::DependencyTimeoutError(_inner) => _inner.message(),
-            GetKeyPolicyError::InvalidArnError(_inner) => _inner.message(),
-            GetKeyPolicyError::KMSInternalError(_inner) => _inner.message(),
-            GetKeyPolicyError::KMSInvalidStateError(_inner) => _inner.message(),
-            GetKeyPolicyError::NotFoundError(_inner) => _inner.message(),
-            GetKeyPolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GetKeyPolicyError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            GetKeyPolicyError::InvalidArnError(_inner) => Some(_inner.code()),
-            GetKeyPolicyError::KMSInternalError(_inner) => Some(_inner.code()),
-            GetKeyPolicyError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            GetKeyPolicyError::NotFoundError(_inner) => Some(_inner.code()),
-            GetKeyPolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GetKeyPolicyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GetKeyPolicyError::DependencyTimeoutError(_inner) => Some(_inner),
-            GetKeyPolicyError::InvalidArnError(_inner) => Some(_inner),
-            GetKeyPolicyError::KMSInternalError(_inner) => Some(_inner),
-            GetKeyPolicyError::KMSInvalidStateError(_inner) => Some(_inner),
-            GetKeyPolicyError::NotFoundError(_inner) => Some(_inner),
-            GetKeyPolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            GetKeyPolicyErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            GetKeyPolicyErrorKind::InvalidArnError(_inner) => Some(_inner),
+            GetKeyPolicyErrorKind::KMSInternalError(_inner) => Some(_inner),
+            GetKeyPolicyErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            GetKeyPolicyErrorKind::NotFoundError(_inner) => Some(_inner),
+            GetKeyPolicyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GetKeyRotationStatusError {
+pub struct GetKeyRotationStatusError {
+    pub kind: GetKeyRotationStatusErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GetKeyRotationStatusErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
@@ -2608,19 +2011,19 @@ pub enum GetKeyRotationStatusError {
     NotFoundError(NotFoundError),
     UnsupportedOperationError(UnsupportedOperationError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GetKeyRotationStatusError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GetKeyRotationStatusError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            GetKeyRotationStatusError::InvalidArnError(_inner) => _inner.fmt(f),
-            GetKeyRotationStatusError::KMSInternalError(_inner) => _inner.fmt(f),
-            GetKeyRotationStatusError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            GetKeyRotationStatusError::NotFoundError(_inner) => _inner.fmt(f),
-            GetKeyRotationStatusError::UnsupportedOperationError(_inner) => _inner.fmt(f),
-            GetKeyRotationStatusError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GetKeyRotationStatusErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            GetKeyRotationStatusErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            GetKeyRotationStatusErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            GetKeyRotationStatusErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            GetKeyRotationStatusErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            GetKeyRotationStatusErrorKind::UnsupportedOperationError(_inner) => _inner.fmt(f),
+            GetKeyRotationStatusErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2629,81 +2032,58 @@ impl ::smithy_types::retry::ProvideErrorKind for GetKeyRotationStatusError {
         GetKeyRotationStatusError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GetKeyRotationStatusError::DependencyTimeoutError(_inner) => None,
-            GetKeyRotationStatusError::InvalidArnError(_inner) => None,
-            GetKeyRotationStatusError::KMSInternalError(_inner) => None,
-            GetKeyRotationStatusError::KMSInvalidStateError(_inner) => None,
-            GetKeyRotationStatusError::NotFoundError(_inner) => None,
-            GetKeyRotationStatusError::UnsupportedOperationError(_inner) => None,
-            GetKeyRotationStatusError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GetKeyRotationStatusError {
+    pub fn new(kind: GetKeyRotationStatusErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GetKeyRotationStatusError::Unhandled(err.into())
+        Self {
+            kind: GetKeyRotationStatusErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GetKeyRotationStatusErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GetKeyRotationStatusError::DependencyTimeoutError(_inner) => _inner.message(),
-            GetKeyRotationStatusError::InvalidArnError(_inner) => _inner.message(),
-            GetKeyRotationStatusError::KMSInternalError(_inner) => _inner.message(),
-            GetKeyRotationStatusError::KMSInvalidStateError(_inner) => _inner.message(),
-            GetKeyRotationStatusError::NotFoundError(_inner) => _inner.message(),
-            GetKeyRotationStatusError::UnsupportedOperationError(_inner) => _inner.message(),
-            GetKeyRotationStatusError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GetKeyRotationStatusError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            GetKeyRotationStatusError::InvalidArnError(_inner) => Some(_inner.code()),
-            GetKeyRotationStatusError::KMSInternalError(_inner) => Some(_inner.code()),
-            GetKeyRotationStatusError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            GetKeyRotationStatusError::NotFoundError(_inner) => Some(_inner.code()),
-            GetKeyRotationStatusError::UnsupportedOperationError(_inner) => Some(_inner.code()),
-            GetKeyRotationStatusError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GetKeyRotationStatusError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GetKeyRotationStatusError::DependencyTimeoutError(_inner) => Some(_inner),
-            GetKeyRotationStatusError::InvalidArnError(_inner) => Some(_inner),
-            GetKeyRotationStatusError::KMSInternalError(_inner) => Some(_inner),
-            GetKeyRotationStatusError::KMSInvalidStateError(_inner) => Some(_inner),
-            GetKeyRotationStatusError::NotFoundError(_inner) => Some(_inner),
-            GetKeyRotationStatusError::UnsupportedOperationError(_inner) => Some(_inner),
-            GetKeyRotationStatusError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            GetKeyRotationStatusErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            GetKeyRotationStatusErrorKind::InvalidArnError(_inner) => Some(_inner),
+            GetKeyRotationStatusErrorKind::KMSInternalError(_inner) => Some(_inner),
+            GetKeyRotationStatusErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            GetKeyRotationStatusErrorKind::NotFoundError(_inner) => Some(_inner),
+            GetKeyRotationStatusErrorKind::UnsupportedOperationError(_inner) => Some(_inner),
+            GetKeyRotationStatusErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GetParametersForImportError {
+pub struct GetParametersForImportError {
+    pub kind: GetParametersForImportErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GetParametersForImportErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
@@ -2711,19 +2091,19 @@ pub enum GetParametersForImportError {
     NotFoundError(NotFoundError),
     UnsupportedOperationError(UnsupportedOperationError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GetParametersForImportError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GetParametersForImportError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            GetParametersForImportError::InvalidArnError(_inner) => _inner.fmt(f),
-            GetParametersForImportError::KMSInternalError(_inner) => _inner.fmt(f),
-            GetParametersForImportError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            GetParametersForImportError::NotFoundError(_inner) => _inner.fmt(f),
-            GetParametersForImportError::UnsupportedOperationError(_inner) => _inner.fmt(f),
-            GetParametersForImportError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GetParametersForImportErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            GetParametersForImportErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            GetParametersForImportErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            GetParametersForImportErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            GetParametersForImportErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            GetParametersForImportErrorKind::UnsupportedOperationError(_inner) => _inner.fmt(f),
+            GetParametersForImportErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2732,81 +2112,58 @@ impl ::smithy_types::retry::ProvideErrorKind for GetParametersForImportError {
         GetParametersForImportError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GetParametersForImportError::DependencyTimeoutError(_inner) => None,
-            GetParametersForImportError::InvalidArnError(_inner) => None,
-            GetParametersForImportError::KMSInternalError(_inner) => None,
-            GetParametersForImportError::KMSInvalidStateError(_inner) => None,
-            GetParametersForImportError::NotFoundError(_inner) => None,
-            GetParametersForImportError::UnsupportedOperationError(_inner) => None,
-            GetParametersForImportError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GetParametersForImportError {
+    pub fn new(kind: GetParametersForImportErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GetParametersForImportError::Unhandled(err.into())
+        Self {
+            kind: GetParametersForImportErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GetParametersForImportErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GetParametersForImportError::DependencyTimeoutError(_inner) => _inner.message(),
-            GetParametersForImportError::InvalidArnError(_inner) => _inner.message(),
-            GetParametersForImportError::KMSInternalError(_inner) => _inner.message(),
-            GetParametersForImportError::KMSInvalidStateError(_inner) => _inner.message(),
-            GetParametersForImportError::NotFoundError(_inner) => _inner.message(),
-            GetParametersForImportError::UnsupportedOperationError(_inner) => _inner.message(),
-            GetParametersForImportError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GetParametersForImportError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            GetParametersForImportError::InvalidArnError(_inner) => Some(_inner.code()),
-            GetParametersForImportError::KMSInternalError(_inner) => Some(_inner.code()),
-            GetParametersForImportError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            GetParametersForImportError::NotFoundError(_inner) => Some(_inner.code()),
-            GetParametersForImportError::UnsupportedOperationError(_inner) => Some(_inner.code()),
-            GetParametersForImportError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GetParametersForImportError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GetParametersForImportError::DependencyTimeoutError(_inner) => Some(_inner),
-            GetParametersForImportError::InvalidArnError(_inner) => Some(_inner),
-            GetParametersForImportError::KMSInternalError(_inner) => Some(_inner),
-            GetParametersForImportError::KMSInvalidStateError(_inner) => Some(_inner),
-            GetParametersForImportError::NotFoundError(_inner) => Some(_inner),
-            GetParametersForImportError::UnsupportedOperationError(_inner) => Some(_inner),
-            GetParametersForImportError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            GetParametersForImportErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            GetParametersForImportErrorKind::InvalidArnError(_inner) => Some(_inner),
+            GetParametersForImportErrorKind::KMSInternalError(_inner) => Some(_inner),
+            GetParametersForImportErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            GetParametersForImportErrorKind::NotFoundError(_inner) => Some(_inner),
+            GetParametersForImportErrorKind::UnsupportedOperationError(_inner) => Some(_inner),
+            GetParametersForImportErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GetPublicKeyError {
+pub struct GetPublicKeyError {
+    pub kind: GetPublicKeyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GetPublicKeyErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     InvalidArnError(InvalidArnError),
@@ -2818,23 +2175,23 @@ pub enum GetPublicKeyError {
     NotFoundError(NotFoundError),
     UnsupportedOperationError(UnsupportedOperationError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GetPublicKeyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GetPublicKeyError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            GetPublicKeyError::DisabledError(_inner) => _inner.fmt(f),
-            GetPublicKeyError::InvalidArnError(_inner) => _inner.fmt(f),
-            GetPublicKeyError::InvalidGrantTokenError(_inner) => _inner.fmt(f),
-            GetPublicKeyError::InvalidKeyUsageError(_inner) => _inner.fmt(f),
-            GetPublicKeyError::KeyUnavailableError(_inner) => _inner.fmt(f),
-            GetPublicKeyError::KMSInternalError(_inner) => _inner.fmt(f),
-            GetPublicKeyError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            GetPublicKeyError::NotFoundError(_inner) => _inner.fmt(f),
-            GetPublicKeyError::UnsupportedOperationError(_inner) => _inner.fmt(f),
-            GetPublicKeyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GetPublicKeyErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            GetPublicKeyErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            GetPublicKeyErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            GetPublicKeyErrorKind::InvalidGrantTokenError(_inner) => _inner.fmt(f),
+            GetPublicKeyErrorKind::InvalidKeyUsageError(_inner) => _inner.fmt(f),
+            GetPublicKeyErrorKind::KeyUnavailableError(_inner) => _inner.fmt(f),
+            GetPublicKeyErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            GetPublicKeyErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            GetPublicKeyErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            GetPublicKeyErrorKind::UnsupportedOperationError(_inner) => _inner.fmt(f),
+            GetPublicKeyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2843,97 +2200,62 @@ impl ::smithy_types::retry::ProvideErrorKind for GetPublicKeyError {
         GetPublicKeyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GetPublicKeyError::DependencyTimeoutError(_inner) => None,
-            GetPublicKeyError::DisabledError(_inner) => None,
-            GetPublicKeyError::InvalidArnError(_inner) => None,
-            GetPublicKeyError::InvalidGrantTokenError(_inner) => None,
-            GetPublicKeyError::InvalidKeyUsageError(_inner) => None,
-            GetPublicKeyError::KeyUnavailableError(_inner) => None,
-            GetPublicKeyError::KMSInternalError(_inner) => None,
-            GetPublicKeyError::KMSInvalidStateError(_inner) => None,
-            GetPublicKeyError::NotFoundError(_inner) => None,
-            GetPublicKeyError::UnsupportedOperationError(_inner) => None,
-            GetPublicKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GetPublicKeyError {
+    pub fn new(kind: GetPublicKeyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GetPublicKeyError::Unhandled(err.into())
+        Self {
+            kind: GetPublicKeyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GetPublicKeyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GetPublicKeyError::DependencyTimeoutError(_inner) => _inner.message(),
-            GetPublicKeyError::DisabledError(_inner) => _inner.message(),
-            GetPublicKeyError::InvalidArnError(_inner) => _inner.message(),
-            GetPublicKeyError::InvalidGrantTokenError(_inner) => _inner.message(),
-            GetPublicKeyError::InvalidKeyUsageError(_inner) => _inner.message(),
-            GetPublicKeyError::KeyUnavailableError(_inner) => _inner.message(),
-            GetPublicKeyError::KMSInternalError(_inner) => _inner.message(),
-            GetPublicKeyError::KMSInvalidStateError(_inner) => _inner.message(),
-            GetPublicKeyError::NotFoundError(_inner) => _inner.message(),
-            GetPublicKeyError::UnsupportedOperationError(_inner) => _inner.message(),
-            GetPublicKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GetPublicKeyError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            GetPublicKeyError::DisabledError(_inner) => Some(_inner.code()),
-            GetPublicKeyError::InvalidArnError(_inner) => Some(_inner.code()),
-            GetPublicKeyError::InvalidGrantTokenError(_inner) => Some(_inner.code()),
-            GetPublicKeyError::InvalidKeyUsageError(_inner) => Some(_inner.code()),
-            GetPublicKeyError::KeyUnavailableError(_inner) => Some(_inner.code()),
-            GetPublicKeyError::KMSInternalError(_inner) => Some(_inner.code()),
-            GetPublicKeyError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            GetPublicKeyError::NotFoundError(_inner) => Some(_inner.code()),
-            GetPublicKeyError::UnsupportedOperationError(_inner) => Some(_inner.code()),
-            GetPublicKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GetPublicKeyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GetPublicKeyError::DependencyTimeoutError(_inner) => Some(_inner),
-            GetPublicKeyError::DisabledError(_inner) => Some(_inner),
-            GetPublicKeyError::InvalidArnError(_inner) => Some(_inner),
-            GetPublicKeyError::InvalidGrantTokenError(_inner) => Some(_inner),
-            GetPublicKeyError::InvalidKeyUsageError(_inner) => Some(_inner),
-            GetPublicKeyError::KeyUnavailableError(_inner) => Some(_inner),
-            GetPublicKeyError::KMSInternalError(_inner) => Some(_inner),
-            GetPublicKeyError::KMSInvalidStateError(_inner) => Some(_inner),
-            GetPublicKeyError::NotFoundError(_inner) => Some(_inner),
-            GetPublicKeyError::UnsupportedOperationError(_inner) => Some(_inner),
-            GetPublicKeyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            GetPublicKeyErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            GetPublicKeyErrorKind::DisabledError(_inner) => Some(_inner),
+            GetPublicKeyErrorKind::InvalidArnError(_inner) => Some(_inner),
+            GetPublicKeyErrorKind::InvalidGrantTokenError(_inner) => Some(_inner),
+            GetPublicKeyErrorKind::InvalidKeyUsageError(_inner) => Some(_inner),
+            GetPublicKeyErrorKind::KeyUnavailableError(_inner) => Some(_inner),
+            GetPublicKeyErrorKind::KMSInternalError(_inner) => Some(_inner),
+            GetPublicKeyErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            GetPublicKeyErrorKind::NotFoundError(_inner) => Some(_inner),
+            GetPublicKeyErrorKind::UnsupportedOperationError(_inner) => Some(_inner),
+            GetPublicKeyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ImportKeyMaterialError {
+pub struct ImportKeyMaterialError {
+    pub kind: ImportKeyMaterialErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ImportKeyMaterialErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     ExpiredImportTokenError(ExpiredImportTokenError),
     IncorrectKeyMaterialError(IncorrectKeyMaterialError),
@@ -2945,23 +2267,23 @@ pub enum ImportKeyMaterialError {
     NotFoundError(NotFoundError),
     UnsupportedOperationError(UnsupportedOperationError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ImportKeyMaterialError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ImportKeyMaterialError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            ImportKeyMaterialError::ExpiredImportTokenError(_inner) => _inner.fmt(f),
-            ImportKeyMaterialError::IncorrectKeyMaterialError(_inner) => _inner.fmt(f),
-            ImportKeyMaterialError::InvalidArnError(_inner) => _inner.fmt(f),
-            ImportKeyMaterialError::InvalidCiphertextError(_inner) => _inner.fmt(f),
-            ImportKeyMaterialError::InvalidImportTokenError(_inner) => _inner.fmt(f),
-            ImportKeyMaterialError::KMSInternalError(_inner) => _inner.fmt(f),
-            ImportKeyMaterialError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            ImportKeyMaterialError::NotFoundError(_inner) => _inner.fmt(f),
-            ImportKeyMaterialError::UnsupportedOperationError(_inner) => _inner.fmt(f),
-            ImportKeyMaterialError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ImportKeyMaterialErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            ImportKeyMaterialErrorKind::ExpiredImportTokenError(_inner) => _inner.fmt(f),
+            ImportKeyMaterialErrorKind::IncorrectKeyMaterialError(_inner) => _inner.fmt(f),
+            ImportKeyMaterialErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            ImportKeyMaterialErrorKind::InvalidCiphertextError(_inner) => _inner.fmt(f),
+            ImportKeyMaterialErrorKind::InvalidImportTokenError(_inner) => _inner.fmt(f),
+            ImportKeyMaterialErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            ImportKeyMaterialErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            ImportKeyMaterialErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            ImportKeyMaterialErrorKind::UnsupportedOperationError(_inner) => _inner.fmt(f),
+            ImportKeyMaterialErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2970,115 +2292,80 @@ impl ::smithy_types::retry::ProvideErrorKind for ImportKeyMaterialError {
         ImportKeyMaterialError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ImportKeyMaterialError::DependencyTimeoutError(_inner) => None,
-            ImportKeyMaterialError::ExpiredImportTokenError(_inner) => None,
-            ImportKeyMaterialError::IncorrectKeyMaterialError(_inner) => None,
-            ImportKeyMaterialError::InvalidArnError(_inner) => None,
-            ImportKeyMaterialError::InvalidCiphertextError(_inner) => None,
-            ImportKeyMaterialError::InvalidImportTokenError(_inner) => None,
-            ImportKeyMaterialError::KMSInternalError(_inner) => None,
-            ImportKeyMaterialError::KMSInvalidStateError(_inner) => None,
-            ImportKeyMaterialError::NotFoundError(_inner) => None,
-            ImportKeyMaterialError::UnsupportedOperationError(_inner) => None,
-            ImportKeyMaterialError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ImportKeyMaterialError {
+    pub fn new(kind: ImportKeyMaterialErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ImportKeyMaterialError::Unhandled(err.into())
+        Self {
+            kind: ImportKeyMaterialErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ImportKeyMaterialErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ImportKeyMaterialError::DependencyTimeoutError(_inner) => _inner.message(),
-            ImportKeyMaterialError::ExpiredImportTokenError(_inner) => _inner.message(),
-            ImportKeyMaterialError::IncorrectKeyMaterialError(_inner) => _inner.message(),
-            ImportKeyMaterialError::InvalidArnError(_inner) => _inner.message(),
-            ImportKeyMaterialError::InvalidCiphertextError(_inner) => _inner.message(),
-            ImportKeyMaterialError::InvalidImportTokenError(_inner) => _inner.message(),
-            ImportKeyMaterialError::KMSInternalError(_inner) => _inner.message(),
-            ImportKeyMaterialError::KMSInvalidStateError(_inner) => _inner.message(),
-            ImportKeyMaterialError::NotFoundError(_inner) => _inner.message(),
-            ImportKeyMaterialError::UnsupportedOperationError(_inner) => _inner.message(),
-            ImportKeyMaterialError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ImportKeyMaterialError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            ImportKeyMaterialError::ExpiredImportTokenError(_inner) => Some(_inner.code()),
-            ImportKeyMaterialError::IncorrectKeyMaterialError(_inner) => Some(_inner.code()),
-            ImportKeyMaterialError::InvalidArnError(_inner) => Some(_inner.code()),
-            ImportKeyMaterialError::InvalidCiphertextError(_inner) => Some(_inner.code()),
-            ImportKeyMaterialError::InvalidImportTokenError(_inner) => Some(_inner.code()),
-            ImportKeyMaterialError::KMSInternalError(_inner) => Some(_inner.code()),
-            ImportKeyMaterialError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            ImportKeyMaterialError::NotFoundError(_inner) => Some(_inner.code()),
-            ImportKeyMaterialError::UnsupportedOperationError(_inner) => Some(_inner.code()),
-            ImportKeyMaterialError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ImportKeyMaterialError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ImportKeyMaterialError::DependencyTimeoutError(_inner) => Some(_inner),
-            ImportKeyMaterialError::ExpiredImportTokenError(_inner) => Some(_inner),
-            ImportKeyMaterialError::IncorrectKeyMaterialError(_inner) => Some(_inner),
-            ImportKeyMaterialError::InvalidArnError(_inner) => Some(_inner),
-            ImportKeyMaterialError::InvalidCiphertextError(_inner) => Some(_inner),
-            ImportKeyMaterialError::InvalidImportTokenError(_inner) => Some(_inner),
-            ImportKeyMaterialError::KMSInternalError(_inner) => Some(_inner),
-            ImportKeyMaterialError::KMSInvalidStateError(_inner) => Some(_inner),
-            ImportKeyMaterialError::NotFoundError(_inner) => Some(_inner),
-            ImportKeyMaterialError::UnsupportedOperationError(_inner) => Some(_inner),
-            ImportKeyMaterialError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ImportKeyMaterialErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            ImportKeyMaterialErrorKind::ExpiredImportTokenError(_inner) => Some(_inner),
+            ImportKeyMaterialErrorKind::IncorrectKeyMaterialError(_inner) => Some(_inner),
+            ImportKeyMaterialErrorKind::InvalidArnError(_inner) => Some(_inner),
+            ImportKeyMaterialErrorKind::InvalidCiphertextError(_inner) => Some(_inner),
+            ImportKeyMaterialErrorKind::InvalidImportTokenError(_inner) => Some(_inner),
+            ImportKeyMaterialErrorKind::KMSInternalError(_inner) => Some(_inner),
+            ImportKeyMaterialErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            ImportKeyMaterialErrorKind::NotFoundError(_inner) => Some(_inner),
+            ImportKeyMaterialErrorKind::UnsupportedOperationError(_inner) => Some(_inner),
+            ImportKeyMaterialErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ListAliasesError {
+pub struct ListAliasesError {
+    pub kind: ListAliasesErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ListAliasesErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     InvalidMarkerError(InvalidMarkerError),
     KMSInternalError(KMSInternalError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ListAliasesError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ListAliasesError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            ListAliasesError::InvalidArnError(_inner) => _inner.fmt(f),
-            ListAliasesError::InvalidMarkerError(_inner) => _inner.fmt(f),
-            ListAliasesError::KMSInternalError(_inner) => _inner.fmt(f),
-            ListAliasesError::NotFoundError(_inner) => _inner.fmt(f),
-            ListAliasesError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ListAliasesErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            ListAliasesErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            ListAliasesErrorKind::InvalidMarkerError(_inner) => _inner.fmt(f),
+            ListAliasesErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            ListAliasesErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            ListAliasesErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -3087,77 +2374,57 @@ impl ::smithy_types::retry::ProvideErrorKind for ListAliasesError {
         ListAliasesError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ListAliasesError::DependencyTimeoutError(_inner) => None,
-            ListAliasesError::InvalidArnError(_inner) => None,
-            ListAliasesError::InvalidMarkerError(_inner) => None,
-            ListAliasesError::KMSInternalError(_inner) => None,
-            ListAliasesError::NotFoundError(_inner) => None,
-            ListAliasesError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ListAliasesError {
+    pub fn new(kind: ListAliasesErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ListAliasesError::Unhandled(err.into())
+        Self {
+            kind: ListAliasesErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ListAliasesErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ListAliasesError::DependencyTimeoutError(_inner) => _inner.message(),
-            ListAliasesError::InvalidArnError(_inner) => _inner.message(),
-            ListAliasesError::InvalidMarkerError(_inner) => _inner.message(),
-            ListAliasesError::KMSInternalError(_inner) => _inner.message(),
-            ListAliasesError::NotFoundError(_inner) => _inner.message(),
-            ListAliasesError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ListAliasesError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            ListAliasesError::InvalidArnError(_inner) => Some(_inner.code()),
-            ListAliasesError::InvalidMarkerError(_inner) => Some(_inner.code()),
-            ListAliasesError::KMSInternalError(_inner) => Some(_inner.code()),
-            ListAliasesError::NotFoundError(_inner) => Some(_inner.code()),
-            ListAliasesError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ListAliasesError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ListAliasesError::DependencyTimeoutError(_inner) => Some(_inner),
-            ListAliasesError::InvalidArnError(_inner) => Some(_inner),
-            ListAliasesError::InvalidMarkerError(_inner) => Some(_inner),
-            ListAliasesError::KMSInternalError(_inner) => Some(_inner),
-            ListAliasesError::NotFoundError(_inner) => Some(_inner),
-            ListAliasesError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ListAliasesErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            ListAliasesErrorKind::InvalidArnError(_inner) => Some(_inner),
+            ListAliasesErrorKind::InvalidMarkerError(_inner) => Some(_inner),
+            ListAliasesErrorKind::KMSInternalError(_inner) => Some(_inner),
+            ListAliasesErrorKind::NotFoundError(_inner) => Some(_inner),
+            ListAliasesErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ListGrantsError {
+pub struct ListGrantsError {
+    pub kind: ListGrantsErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ListGrantsErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     InvalidMarkerError(InvalidMarkerError),
@@ -3165,19 +2432,19 @@ pub enum ListGrantsError {
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ListGrantsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ListGrantsError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            ListGrantsError::InvalidArnError(_inner) => _inner.fmt(f),
-            ListGrantsError::InvalidMarkerError(_inner) => _inner.fmt(f),
-            ListGrantsError::KMSInternalError(_inner) => _inner.fmt(f),
-            ListGrantsError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            ListGrantsError::NotFoundError(_inner) => _inner.fmt(f),
-            ListGrantsError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ListGrantsErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            ListGrantsErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            ListGrantsErrorKind::InvalidMarkerError(_inner) => _inner.fmt(f),
+            ListGrantsErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            ListGrantsErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            ListGrantsErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            ListGrantsErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -3186,99 +2453,76 @@ impl ::smithy_types::retry::ProvideErrorKind for ListGrantsError {
         ListGrantsError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ListGrantsError::DependencyTimeoutError(_inner) => None,
-            ListGrantsError::InvalidArnError(_inner) => None,
-            ListGrantsError::InvalidMarkerError(_inner) => None,
-            ListGrantsError::KMSInternalError(_inner) => None,
-            ListGrantsError::KMSInvalidStateError(_inner) => None,
-            ListGrantsError::NotFoundError(_inner) => None,
-            ListGrantsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ListGrantsError {
+    pub fn new(kind: ListGrantsErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ListGrantsError::Unhandled(err.into())
+        Self {
+            kind: ListGrantsErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ListGrantsErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ListGrantsError::DependencyTimeoutError(_inner) => _inner.message(),
-            ListGrantsError::InvalidArnError(_inner) => _inner.message(),
-            ListGrantsError::InvalidMarkerError(_inner) => _inner.message(),
-            ListGrantsError::KMSInternalError(_inner) => _inner.message(),
-            ListGrantsError::KMSInvalidStateError(_inner) => _inner.message(),
-            ListGrantsError::NotFoundError(_inner) => _inner.message(),
-            ListGrantsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ListGrantsError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            ListGrantsError::InvalidArnError(_inner) => Some(_inner.code()),
-            ListGrantsError::InvalidMarkerError(_inner) => Some(_inner.code()),
-            ListGrantsError::KMSInternalError(_inner) => Some(_inner.code()),
-            ListGrantsError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            ListGrantsError::NotFoundError(_inner) => Some(_inner.code()),
-            ListGrantsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ListGrantsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ListGrantsError::DependencyTimeoutError(_inner) => Some(_inner),
-            ListGrantsError::InvalidArnError(_inner) => Some(_inner),
-            ListGrantsError::InvalidMarkerError(_inner) => Some(_inner),
-            ListGrantsError::KMSInternalError(_inner) => Some(_inner),
-            ListGrantsError::KMSInvalidStateError(_inner) => Some(_inner),
-            ListGrantsError::NotFoundError(_inner) => Some(_inner),
-            ListGrantsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ListGrantsErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            ListGrantsErrorKind::InvalidArnError(_inner) => Some(_inner),
+            ListGrantsErrorKind::InvalidMarkerError(_inner) => Some(_inner),
+            ListGrantsErrorKind::KMSInternalError(_inner) => Some(_inner),
+            ListGrantsErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            ListGrantsErrorKind::NotFoundError(_inner) => Some(_inner),
+            ListGrantsErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ListKeyPoliciesError {
+pub struct ListKeyPoliciesError {
+    pub kind: ListKeyPoliciesErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ListKeyPoliciesErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ListKeyPoliciesError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ListKeyPoliciesError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            ListKeyPoliciesError::InvalidArnError(_inner) => _inner.fmt(f),
-            ListKeyPoliciesError::KMSInternalError(_inner) => _inner.fmt(f),
-            ListKeyPoliciesError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            ListKeyPoliciesError::NotFoundError(_inner) => _inner.fmt(f),
-            ListKeyPoliciesError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ListKeyPoliciesErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            ListKeyPoliciesErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            ListKeyPoliciesErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            ListKeyPoliciesErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            ListKeyPoliciesErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            ListKeyPoliciesErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -3287,91 +2531,71 @@ impl ::smithy_types::retry::ProvideErrorKind for ListKeyPoliciesError {
         ListKeyPoliciesError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ListKeyPoliciesError::DependencyTimeoutError(_inner) => None,
-            ListKeyPoliciesError::InvalidArnError(_inner) => None,
-            ListKeyPoliciesError::KMSInternalError(_inner) => None,
-            ListKeyPoliciesError::KMSInvalidStateError(_inner) => None,
-            ListKeyPoliciesError::NotFoundError(_inner) => None,
-            ListKeyPoliciesError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ListKeyPoliciesError {
+    pub fn new(kind: ListKeyPoliciesErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ListKeyPoliciesError::Unhandled(err.into())
+        Self {
+            kind: ListKeyPoliciesErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ListKeyPoliciesErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ListKeyPoliciesError::DependencyTimeoutError(_inner) => _inner.message(),
-            ListKeyPoliciesError::InvalidArnError(_inner) => _inner.message(),
-            ListKeyPoliciesError::KMSInternalError(_inner) => _inner.message(),
-            ListKeyPoliciesError::KMSInvalidStateError(_inner) => _inner.message(),
-            ListKeyPoliciesError::NotFoundError(_inner) => _inner.message(),
-            ListKeyPoliciesError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ListKeyPoliciesError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            ListKeyPoliciesError::InvalidArnError(_inner) => Some(_inner.code()),
-            ListKeyPoliciesError::KMSInternalError(_inner) => Some(_inner.code()),
-            ListKeyPoliciesError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            ListKeyPoliciesError::NotFoundError(_inner) => Some(_inner.code()),
-            ListKeyPoliciesError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ListKeyPoliciesError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ListKeyPoliciesError::DependencyTimeoutError(_inner) => Some(_inner),
-            ListKeyPoliciesError::InvalidArnError(_inner) => Some(_inner),
-            ListKeyPoliciesError::KMSInternalError(_inner) => Some(_inner),
-            ListKeyPoliciesError::KMSInvalidStateError(_inner) => Some(_inner),
-            ListKeyPoliciesError::NotFoundError(_inner) => Some(_inner),
-            ListKeyPoliciesError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ListKeyPoliciesErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            ListKeyPoliciesErrorKind::InvalidArnError(_inner) => Some(_inner),
+            ListKeyPoliciesErrorKind::KMSInternalError(_inner) => Some(_inner),
+            ListKeyPoliciesErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            ListKeyPoliciesErrorKind::NotFoundError(_inner) => Some(_inner),
+            ListKeyPoliciesErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ListKeysError {
+pub struct ListKeysError {
+    pub kind: ListKeysErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ListKeysErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidMarkerError(InvalidMarkerError),
     KMSInternalError(KMSInternalError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ListKeysError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ListKeysError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            ListKeysError::InvalidMarkerError(_inner) => _inner.fmt(f),
-            ListKeysError::KMSInternalError(_inner) => _inner.fmt(f),
-            ListKeysError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ListKeysErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            ListKeysErrorKind::InvalidMarkerError(_inner) => _inner.fmt(f),
+            ListKeysErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            ListKeysErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -3380,85 +2604,71 @@ impl ::smithy_types::retry::ProvideErrorKind for ListKeysError {
         ListKeysError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ListKeysError::DependencyTimeoutError(_inner) => None,
-            ListKeysError::InvalidMarkerError(_inner) => None,
-            ListKeysError::KMSInternalError(_inner) => None,
-            ListKeysError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ListKeysError {
+    pub fn new(kind: ListKeysErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ListKeysError::Unhandled(err.into())
+        Self {
+            kind: ListKeysErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ListKeysErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ListKeysError::DependencyTimeoutError(_inner) => _inner.message(),
-            ListKeysError::InvalidMarkerError(_inner) => _inner.message(),
-            ListKeysError::KMSInternalError(_inner) => _inner.message(),
-            ListKeysError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ListKeysError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            ListKeysError::InvalidMarkerError(_inner) => Some(_inner.code()),
-            ListKeysError::KMSInternalError(_inner) => Some(_inner.code()),
-            ListKeysError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ListKeysError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ListKeysError::DependencyTimeoutError(_inner) => Some(_inner),
-            ListKeysError::InvalidMarkerError(_inner) => Some(_inner),
-            ListKeysError::KMSInternalError(_inner) => Some(_inner),
-            ListKeysError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ListKeysErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            ListKeysErrorKind::InvalidMarkerError(_inner) => Some(_inner),
+            ListKeysErrorKind::KMSInternalError(_inner) => Some(_inner),
+            ListKeysErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ListResourceTagsError {
+pub struct ListResourceTagsError {
+    pub kind: ListResourceTagsErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ListResourceTagsErrorKind {
     InvalidArnError(InvalidArnError),
     InvalidMarkerError(InvalidMarkerError),
     KMSInternalError(KMSInternalError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ListResourceTagsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ListResourceTagsError::InvalidArnError(_inner) => _inner.fmt(f),
-            ListResourceTagsError::InvalidMarkerError(_inner) => _inner.fmt(f),
-            ListResourceTagsError::KMSInternalError(_inner) => _inner.fmt(f),
-            ListResourceTagsError::NotFoundError(_inner) => _inner.fmt(f),
-            ListResourceTagsError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ListResourceTagsErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            ListResourceTagsErrorKind::InvalidMarkerError(_inner) => _inner.fmt(f),
+            ListResourceTagsErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            ListResourceTagsErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            ListResourceTagsErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -3467,91 +2677,74 @@ impl ::smithy_types::retry::ProvideErrorKind for ListResourceTagsError {
         ListResourceTagsError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ListResourceTagsError::InvalidArnError(_inner) => None,
-            ListResourceTagsError::InvalidMarkerError(_inner) => None,
-            ListResourceTagsError::KMSInternalError(_inner) => None,
-            ListResourceTagsError::NotFoundError(_inner) => None,
-            ListResourceTagsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ListResourceTagsError {
+    pub fn new(kind: ListResourceTagsErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ListResourceTagsError::Unhandled(err.into())
+        Self {
+            kind: ListResourceTagsErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ListResourceTagsErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ListResourceTagsError::InvalidArnError(_inner) => _inner.message(),
-            ListResourceTagsError::InvalidMarkerError(_inner) => _inner.message(),
-            ListResourceTagsError::KMSInternalError(_inner) => _inner.message(),
-            ListResourceTagsError::NotFoundError(_inner) => _inner.message(),
-            ListResourceTagsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ListResourceTagsError::InvalidArnError(_inner) => Some(_inner.code()),
-            ListResourceTagsError::InvalidMarkerError(_inner) => Some(_inner.code()),
-            ListResourceTagsError::KMSInternalError(_inner) => Some(_inner.code()),
-            ListResourceTagsError::NotFoundError(_inner) => Some(_inner.code()),
-            ListResourceTagsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ListResourceTagsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ListResourceTagsError::InvalidArnError(_inner) => Some(_inner),
-            ListResourceTagsError::InvalidMarkerError(_inner) => Some(_inner),
-            ListResourceTagsError::KMSInternalError(_inner) => Some(_inner),
-            ListResourceTagsError::NotFoundError(_inner) => Some(_inner),
-            ListResourceTagsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ListResourceTagsErrorKind::InvalidArnError(_inner) => Some(_inner),
+            ListResourceTagsErrorKind::InvalidMarkerError(_inner) => Some(_inner),
+            ListResourceTagsErrorKind::KMSInternalError(_inner) => Some(_inner),
+            ListResourceTagsErrorKind::NotFoundError(_inner) => Some(_inner),
+            ListResourceTagsErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ListRetirableGrantsError {
+pub struct ListRetirableGrantsError {
+    pub kind: ListRetirableGrantsErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ListRetirableGrantsErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     InvalidMarkerError(InvalidMarkerError),
     KMSInternalError(KMSInternalError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ListRetirableGrantsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ListRetirableGrantsError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            ListRetirableGrantsError::InvalidArnError(_inner) => _inner.fmt(f),
-            ListRetirableGrantsError::InvalidMarkerError(_inner) => _inner.fmt(f),
-            ListRetirableGrantsError::KMSInternalError(_inner) => _inner.fmt(f),
-            ListRetirableGrantsError::NotFoundError(_inner) => _inner.fmt(f),
-            ListRetirableGrantsError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ListRetirableGrantsErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            ListRetirableGrantsErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            ListRetirableGrantsErrorKind::InvalidMarkerError(_inner) => _inner.fmt(f),
+            ListRetirableGrantsErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            ListRetirableGrantsErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            ListRetirableGrantsErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -3560,77 +2753,57 @@ impl ::smithy_types::retry::ProvideErrorKind for ListRetirableGrantsError {
         ListRetirableGrantsError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ListRetirableGrantsError::DependencyTimeoutError(_inner) => None,
-            ListRetirableGrantsError::InvalidArnError(_inner) => None,
-            ListRetirableGrantsError::InvalidMarkerError(_inner) => None,
-            ListRetirableGrantsError::KMSInternalError(_inner) => None,
-            ListRetirableGrantsError::NotFoundError(_inner) => None,
-            ListRetirableGrantsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ListRetirableGrantsError {
+    pub fn new(kind: ListRetirableGrantsErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ListRetirableGrantsError::Unhandled(err.into())
+        Self {
+            kind: ListRetirableGrantsErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ListRetirableGrantsErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ListRetirableGrantsError::DependencyTimeoutError(_inner) => _inner.message(),
-            ListRetirableGrantsError::InvalidArnError(_inner) => _inner.message(),
-            ListRetirableGrantsError::InvalidMarkerError(_inner) => _inner.message(),
-            ListRetirableGrantsError::KMSInternalError(_inner) => _inner.message(),
-            ListRetirableGrantsError::NotFoundError(_inner) => _inner.message(),
-            ListRetirableGrantsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ListRetirableGrantsError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            ListRetirableGrantsError::InvalidArnError(_inner) => Some(_inner.code()),
-            ListRetirableGrantsError::InvalidMarkerError(_inner) => Some(_inner.code()),
-            ListRetirableGrantsError::KMSInternalError(_inner) => Some(_inner.code()),
-            ListRetirableGrantsError::NotFoundError(_inner) => Some(_inner.code()),
-            ListRetirableGrantsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ListRetirableGrantsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ListRetirableGrantsError::DependencyTimeoutError(_inner) => Some(_inner),
-            ListRetirableGrantsError::InvalidArnError(_inner) => Some(_inner),
-            ListRetirableGrantsError::InvalidMarkerError(_inner) => Some(_inner),
-            ListRetirableGrantsError::KMSInternalError(_inner) => Some(_inner),
-            ListRetirableGrantsError::NotFoundError(_inner) => Some(_inner),
-            ListRetirableGrantsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ListRetirableGrantsErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            ListRetirableGrantsErrorKind::InvalidArnError(_inner) => Some(_inner),
+            ListRetirableGrantsErrorKind::InvalidMarkerError(_inner) => Some(_inner),
+            ListRetirableGrantsErrorKind::KMSInternalError(_inner) => Some(_inner),
+            ListRetirableGrantsErrorKind::NotFoundError(_inner) => Some(_inner),
+            ListRetirableGrantsErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum PutKeyPolicyError {
+pub struct PutKeyPolicyError {
+    pub kind: PutKeyPolicyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum PutKeyPolicyErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
@@ -3640,21 +2813,21 @@ pub enum PutKeyPolicyError {
     NotFoundError(NotFoundError),
     UnsupportedOperationError(UnsupportedOperationError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for PutKeyPolicyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            PutKeyPolicyError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            PutKeyPolicyError::InvalidArnError(_inner) => _inner.fmt(f),
-            PutKeyPolicyError::KMSInternalError(_inner) => _inner.fmt(f),
-            PutKeyPolicyError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            PutKeyPolicyError::LimitExceededError(_inner) => _inner.fmt(f),
-            PutKeyPolicyError::MalformedPolicyDocumentError(_inner) => _inner.fmt(f),
-            PutKeyPolicyError::NotFoundError(_inner) => _inner.fmt(f),
-            PutKeyPolicyError::UnsupportedOperationError(_inner) => _inner.fmt(f),
-            PutKeyPolicyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            PutKeyPolicyErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            PutKeyPolicyErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            PutKeyPolicyErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            PutKeyPolicyErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            PutKeyPolicyErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            PutKeyPolicyErrorKind::MalformedPolicyDocumentError(_inner) => _inner.fmt(f),
+            PutKeyPolicyErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            PutKeyPolicyErrorKind::UnsupportedOperationError(_inner) => _inner.fmt(f),
+            PutKeyPolicyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -3663,89 +2836,60 @@ impl ::smithy_types::retry::ProvideErrorKind for PutKeyPolicyError {
         PutKeyPolicyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            PutKeyPolicyError::DependencyTimeoutError(_inner) => None,
-            PutKeyPolicyError::InvalidArnError(_inner) => None,
-            PutKeyPolicyError::KMSInternalError(_inner) => None,
-            PutKeyPolicyError::KMSInvalidStateError(_inner) => None,
-            PutKeyPolicyError::LimitExceededError(_inner) => None,
-            PutKeyPolicyError::MalformedPolicyDocumentError(_inner) => None,
-            PutKeyPolicyError::NotFoundError(_inner) => None,
-            PutKeyPolicyError::UnsupportedOperationError(_inner) => None,
-            PutKeyPolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl PutKeyPolicyError {
+    pub fn new(kind: PutKeyPolicyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        PutKeyPolicyError::Unhandled(err.into())
+        Self {
+            kind: PutKeyPolicyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: PutKeyPolicyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            PutKeyPolicyError::DependencyTimeoutError(_inner) => _inner.message(),
-            PutKeyPolicyError::InvalidArnError(_inner) => _inner.message(),
-            PutKeyPolicyError::KMSInternalError(_inner) => _inner.message(),
-            PutKeyPolicyError::KMSInvalidStateError(_inner) => _inner.message(),
-            PutKeyPolicyError::LimitExceededError(_inner) => _inner.message(),
-            PutKeyPolicyError::MalformedPolicyDocumentError(_inner) => _inner.message(),
-            PutKeyPolicyError::NotFoundError(_inner) => _inner.message(),
-            PutKeyPolicyError::UnsupportedOperationError(_inner) => _inner.message(),
-            PutKeyPolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            PutKeyPolicyError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            PutKeyPolicyError::InvalidArnError(_inner) => Some(_inner.code()),
-            PutKeyPolicyError::KMSInternalError(_inner) => Some(_inner.code()),
-            PutKeyPolicyError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            PutKeyPolicyError::LimitExceededError(_inner) => Some(_inner.code()),
-            PutKeyPolicyError::MalformedPolicyDocumentError(_inner) => Some(_inner.code()),
-            PutKeyPolicyError::NotFoundError(_inner) => Some(_inner.code()),
-            PutKeyPolicyError::UnsupportedOperationError(_inner) => Some(_inner.code()),
-            PutKeyPolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for PutKeyPolicyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            PutKeyPolicyError::DependencyTimeoutError(_inner) => Some(_inner),
-            PutKeyPolicyError::InvalidArnError(_inner) => Some(_inner),
-            PutKeyPolicyError::KMSInternalError(_inner) => Some(_inner),
-            PutKeyPolicyError::KMSInvalidStateError(_inner) => Some(_inner),
-            PutKeyPolicyError::LimitExceededError(_inner) => Some(_inner),
-            PutKeyPolicyError::MalformedPolicyDocumentError(_inner) => Some(_inner),
-            PutKeyPolicyError::NotFoundError(_inner) => Some(_inner),
-            PutKeyPolicyError::UnsupportedOperationError(_inner) => Some(_inner),
-            PutKeyPolicyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            PutKeyPolicyErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            PutKeyPolicyErrorKind::InvalidArnError(_inner) => Some(_inner),
+            PutKeyPolicyErrorKind::KMSInternalError(_inner) => Some(_inner),
+            PutKeyPolicyErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            PutKeyPolicyErrorKind::LimitExceededError(_inner) => Some(_inner),
+            PutKeyPolicyErrorKind::MalformedPolicyDocumentError(_inner) => Some(_inner),
+            PutKeyPolicyErrorKind::NotFoundError(_inner) => Some(_inner),
+            PutKeyPolicyErrorKind::UnsupportedOperationError(_inner) => Some(_inner),
+            PutKeyPolicyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ReEncryptError {
+pub struct ReEncryptError {
+    pub kind: ReEncryptErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ReEncryptErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     IncorrectKeyError(IncorrectKeyError),
@@ -3757,23 +2901,23 @@ pub enum ReEncryptError {
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ReEncryptError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ReEncryptError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            ReEncryptError::DisabledError(_inner) => _inner.fmt(f),
-            ReEncryptError::IncorrectKeyError(_inner) => _inner.fmt(f),
-            ReEncryptError::InvalidCiphertextError(_inner) => _inner.fmt(f),
-            ReEncryptError::InvalidGrantTokenError(_inner) => _inner.fmt(f),
-            ReEncryptError::InvalidKeyUsageError(_inner) => _inner.fmt(f),
-            ReEncryptError::KeyUnavailableError(_inner) => _inner.fmt(f),
-            ReEncryptError::KMSInternalError(_inner) => _inner.fmt(f),
-            ReEncryptError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            ReEncryptError::NotFoundError(_inner) => _inner.fmt(f),
-            ReEncryptError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ReEncryptErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            ReEncryptErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            ReEncryptErrorKind::IncorrectKeyError(_inner) => _inner.fmt(f),
+            ReEncryptErrorKind::InvalidCiphertextError(_inner) => _inner.fmt(f),
+            ReEncryptErrorKind::InvalidGrantTokenError(_inner) => _inner.fmt(f),
+            ReEncryptErrorKind::InvalidKeyUsageError(_inner) => _inner.fmt(f),
+            ReEncryptErrorKind::KeyUnavailableError(_inner) => _inner.fmt(f),
+            ReEncryptErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            ReEncryptErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            ReEncryptErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            ReEncryptErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -3782,97 +2926,62 @@ impl ::smithy_types::retry::ProvideErrorKind for ReEncryptError {
         ReEncryptError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ReEncryptError::DependencyTimeoutError(_inner) => None,
-            ReEncryptError::DisabledError(_inner) => None,
-            ReEncryptError::IncorrectKeyError(_inner) => None,
-            ReEncryptError::InvalidCiphertextError(_inner) => None,
-            ReEncryptError::InvalidGrantTokenError(_inner) => None,
-            ReEncryptError::InvalidKeyUsageError(_inner) => None,
-            ReEncryptError::KeyUnavailableError(_inner) => None,
-            ReEncryptError::KMSInternalError(_inner) => None,
-            ReEncryptError::KMSInvalidStateError(_inner) => None,
-            ReEncryptError::NotFoundError(_inner) => None,
-            ReEncryptError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ReEncryptError {
+    pub fn new(kind: ReEncryptErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ReEncryptError::Unhandled(err.into())
+        Self {
+            kind: ReEncryptErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ReEncryptErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ReEncryptError::DependencyTimeoutError(_inner) => _inner.message(),
-            ReEncryptError::DisabledError(_inner) => _inner.message(),
-            ReEncryptError::IncorrectKeyError(_inner) => _inner.message(),
-            ReEncryptError::InvalidCiphertextError(_inner) => _inner.message(),
-            ReEncryptError::InvalidGrantTokenError(_inner) => _inner.message(),
-            ReEncryptError::InvalidKeyUsageError(_inner) => _inner.message(),
-            ReEncryptError::KeyUnavailableError(_inner) => _inner.message(),
-            ReEncryptError::KMSInternalError(_inner) => _inner.message(),
-            ReEncryptError::KMSInvalidStateError(_inner) => _inner.message(),
-            ReEncryptError::NotFoundError(_inner) => _inner.message(),
-            ReEncryptError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ReEncryptError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            ReEncryptError::DisabledError(_inner) => Some(_inner.code()),
-            ReEncryptError::IncorrectKeyError(_inner) => Some(_inner.code()),
-            ReEncryptError::InvalidCiphertextError(_inner) => Some(_inner.code()),
-            ReEncryptError::InvalidGrantTokenError(_inner) => Some(_inner.code()),
-            ReEncryptError::InvalidKeyUsageError(_inner) => Some(_inner.code()),
-            ReEncryptError::KeyUnavailableError(_inner) => Some(_inner.code()),
-            ReEncryptError::KMSInternalError(_inner) => Some(_inner.code()),
-            ReEncryptError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            ReEncryptError::NotFoundError(_inner) => Some(_inner.code()),
-            ReEncryptError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ReEncryptError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ReEncryptError::DependencyTimeoutError(_inner) => Some(_inner),
-            ReEncryptError::DisabledError(_inner) => Some(_inner),
-            ReEncryptError::IncorrectKeyError(_inner) => Some(_inner),
-            ReEncryptError::InvalidCiphertextError(_inner) => Some(_inner),
-            ReEncryptError::InvalidGrantTokenError(_inner) => Some(_inner),
-            ReEncryptError::InvalidKeyUsageError(_inner) => Some(_inner),
-            ReEncryptError::KeyUnavailableError(_inner) => Some(_inner),
-            ReEncryptError::KMSInternalError(_inner) => Some(_inner),
-            ReEncryptError::KMSInvalidStateError(_inner) => Some(_inner),
-            ReEncryptError::NotFoundError(_inner) => Some(_inner),
-            ReEncryptError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ReEncryptErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            ReEncryptErrorKind::DisabledError(_inner) => Some(_inner),
+            ReEncryptErrorKind::IncorrectKeyError(_inner) => Some(_inner),
+            ReEncryptErrorKind::InvalidCiphertextError(_inner) => Some(_inner),
+            ReEncryptErrorKind::InvalidGrantTokenError(_inner) => Some(_inner),
+            ReEncryptErrorKind::InvalidKeyUsageError(_inner) => Some(_inner),
+            ReEncryptErrorKind::KeyUnavailableError(_inner) => Some(_inner),
+            ReEncryptErrorKind::KMSInternalError(_inner) => Some(_inner),
+            ReEncryptErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            ReEncryptErrorKind::NotFoundError(_inner) => Some(_inner),
+            ReEncryptErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum RetireGrantError {
+pub struct RetireGrantError {
+    pub kind: RetireGrantErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum RetireGrantErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     InvalidGrantIdError(InvalidGrantIdError),
@@ -3881,20 +2990,20 @@ pub enum RetireGrantError {
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for RetireGrantError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            RetireGrantError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            RetireGrantError::InvalidArnError(_inner) => _inner.fmt(f),
-            RetireGrantError::InvalidGrantIdError(_inner) => _inner.fmt(f),
-            RetireGrantError::InvalidGrantTokenError(_inner) => _inner.fmt(f),
-            RetireGrantError::KMSInternalError(_inner) => _inner.fmt(f),
-            RetireGrantError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            RetireGrantError::NotFoundError(_inner) => _inner.fmt(f),
-            RetireGrantError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            RetireGrantErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            RetireGrantErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            RetireGrantErrorKind::InvalidGrantIdError(_inner) => _inner.fmt(f),
+            RetireGrantErrorKind::InvalidGrantTokenError(_inner) => _inner.fmt(f),
+            RetireGrantErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            RetireGrantErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            RetireGrantErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            RetireGrantErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -3903,85 +3012,59 @@ impl ::smithy_types::retry::ProvideErrorKind for RetireGrantError {
         RetireGrantError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            RetireGrantError::DependencyTimeoutError(_inner) => None,
-            RetireGrantError::InvalidArnError(_inner) => None,
-            RetireGrantError::InvalidGrantIdError(_inner) => None,
-            RetireGrantError::InvalidGrantTokenError(_inner) => None,
-            RetireGrantError::KMSInternalError(_inner) => None,
-            RetireGrantError::KMSInvalidStateError(_inner) => None,
-            RetireGrantError::NotFoundError(_inner) => None,
-            RetireGrantError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl RetireGrantError {
+    pub fn new(kind: RetireGrantErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        RetireGrantError::Unhandled(err.into())
+        Self {
+            kind: RetireGrantErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: RetireGrantErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            RetireGrantError::DependencyTimeoutError(_inner) => _inner.message(),
-            RetireGrantError::InvalidArnError(_inner) => _inner.message(),
-            RetireGrantError::InvalidGrantIdError(_inner) => _inner.message(),
-            RetireGrantError::InvalidGrantTokenError(_inner) => _inner.message(),
-            RetireGrantError::KMSInternalError(_inner) => _inner.message(),
-            RetireGrantError::KMSInvalidStateError(_inner) => _inner.message(),
-            RetireGrantError::NotFoundError(_inner) => _inner.message(),
-            RetireGrantError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            RetireGrantError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            RetireGrantError::InvalidArnError(_inner) => Some(_inner.code()),
-            RetireGrantError::InvalidGrantIdError(_inner) => Some(_inner.code()),
-            RetireGrantError::InvalidGrantTokenError(_inner) => Some(_inner.code()),
-            RetireGrantError::KMSInternalError(_inner) => Some(_inner.code()),
-            RetireGrantError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            RetireGrantError::NotFoundError(_inner) => Some(_inner.code()),
-            RetireGrantError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for RetireGrantError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            RetireGrantError::DependencyTimeoutError(_inner) => Some(_inner),
-            RetireGrantError::InvalidArnError(_inner) => Some(_inner),
-            RetireGrantError::InvalidGrantIdError(_inner) => Some(_inner),
-            RetireGrantError::InvalidGrantTokenError(_inner) => Some(_inner),
-            RetireGrantError::KMSInternalError(_inner) => Some(_inner),
-            RetireGrantError::KMSInvalidStateError(_inner) => Some(_inner),
-            RetireGrantError::NotFoundError(_inner) => Some(_inner),
-            RetireGrantError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            RetireGrantErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            RetireGrantErrorKind::InvalidArnError(_inner) => Some(_inner),
+            RetireGrantErrorKind::InvalidGrantIdError(_inner) => Some(_inner),
+            RetireGrantErrorKind::InvalidGrantTokenError(_inner) => Some(_inner),
+            RetireGrantErrorKind::KMSInternalError(_inner) => Some(_inner),
+            RetireGrantErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            RetireGrantErrorKind::NotFoundError(_inner) => Some(_inner),
+            RetireGrantErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum RevokeGrantError {
+pub struct RevokeGrantError {
+    pub kind: RevokeGrantErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum RevokeGrantErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     InvalidGrantIdError(InvalidGrantIdError),
@@ -3989,19 +3072,19 @@ pub enum RevokeGrantError {
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for RevokeGrantError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            RevokeGrantError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            RevokeGrantError::InvalidArnError(_inner) => _inner.fmt(f),
-            RevokeGrantError::InvalidGrantIdError(_inner) => _inner.fmt(f),
-            RevokeGrantError::KMSInternalError(_inner) => _inner.fmt(f),
-            RevokeGrantError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            RevokeGrantError::NotFoundError(_inner) => _inner.fmt(f),
-            RevokeGrantError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            RevokeGrantErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            RevokeGrantErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            RevokeGrantErrorKind::InvalidGrantIdError(_inner) => _inner.fmt(f),
+            RevokeGrantErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            RevokeGrantErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            RevokeGrantErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            RevokeGrantErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -4010,99 +3093,76 @@ impl ::smithy_types::retry::ProvideErrorKind for RevokeGrantError {
         RevokeGrantError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            RevokeGrantError::DependencyTimeoutError(_inner) => None,
-            RevokeGrantError::InvalidArnError(_inner) => None,
-            RevokeGrantError::InvalidGrantIdError(_inner) => None,
-            RevokeGrantError::KMSInternalError(_inner) => None,
-            RevokeGrantError::KMSInvalidStateError(_inner) => None,
-            RevokeGrantError::NotFoundError(_inner) => None,
-            RevokeGrantError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl RevokeGrantError {
+    pub fn new(kind: RevokeGrantErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        RevokeGrantError::Unhandled(err.into())
+        Self {
+            kind: RevokeGrantErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: RevokeGrantErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            RevokeGrantError::DependencyTimeoutError(_inner) => _inner.message(),
-            RevokeGrantError::InvalidArnError(_inner) => _inner.message(),
-            RevokeGrantError::InvalidGrantIdError(_inner) => _inner.message(),
-            RevokeGrantError::KMSInternalError(_inner) => _inner.message(),
-            RevokeGrantError::KMSInvalidStateError(_inner) => _inner.message(),
-            RevokeGrantError::NotFoundError(_inner) => _inner.message(),
-            RevokeGrantError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            RevokeGrantError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            RevokeGrantError::InvalidArnError(_inner) => Some(_inner.code()),
-            RevokeGrantError::InvalidGrantIdError(_inner) => Some(_inner.code()),
-            RevokeGrantError::KMSInternalError(_inner) => Some(_inner.code()),
-            RevokeGrantError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            RevokeGrantError::NotFoundError(_inner) => Some(_inner.code()),
-            RevokeGrantError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for RevokeGrantError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            RevokeGrantError::DependencyTimeoutError(_inner) => Some(_inner),
-            RevokeGrantError::InvalidArnError(_inner) => Some(_inner),
-            RevokeGrantError::InvalidGrantIdError(_inner) => Some(_inner),
-            RevokeGrantError::KMSInternalError(_inner) => Some(_inner),
-            RevokeGrantError::KMSInvalidStateError(_inner) => Some(_inner),
-            RevokeGrantError::NotFoundError(_inner) => Some(_inner),
-            RevokeGrantError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            RevokeGrantErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            RevokeGrantErrorKind::InvalidArnError(_inner) => Some(_inner),
+            RevokeGrantErrorKind::InvalidGrantIdError(_inner) => Some(_inner),
+            RevokeGrantErrorKind::KMSInternalError(_inner) => Some(_inner),
+            RevokeGrantErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            RevokeGrantErrorKind::NotFoundError(_inner) => Some(_inner),
+            RevokeGrantErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ScheduleKeyDeletionError {
+pub struct ScheduleKeyDeletionError {
+    pub kind: ScheduleKeyDeletionErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ScheduleKeyDeletionErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ScheduleKeyDeletionError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ScheduleKeyDeletionError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            ScheduleKeyDeletionError::InvalidArnError(_inner) => _inner.fmt(f),
-            ScheduleKeyDeletionError::KMSInternalError(_inner) => _inner.fmt(f),
-            ScheduleKeyDeletionError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            ScheduleKeyDeletionError::NotFoundError(_inner) => _inner.fmt(f),
-            ScheduleKeyDeletionError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ScheduleKeyDeletionErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            ScheduleKeyDeletionErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            ScheduleKeyDeletionErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            ScheduleKeyDeletionErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            ScheduleKeyDeletionErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            ScheduleKeyDeletionErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -4111,77 +3171,57 @@ impl ::smithy_types::retry::ProvideErrorKind for ScheduleKeyDeletionError {
         ScheduleKeyDeletionError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ScheduleKeyDeletionError::DependencyTimeoutError(_inner) => None,
-            ScheduleKeyDeletionError::InvalidArnError(_inner) => None,
-            ScheduleKeyDeletionError::KMSInternalError(_inner) => None,
-            ScheduleKeyDeletionError::KMSInvalidStateError(_inner) => None,
-            ScheduleKeyDeletionError::NotFoundError(_inner) => None,
-            ScheduleKeyDeletionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ScheduleKeyDeletionError {
+    pub fn new(kind: ScheduleKeyDeletionErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ScheduleKeyDeletionError::Unhandled(err.into())
+        Self {
+            kind: ScheduleKeyDeletionErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ScheduleKeyDeletionErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ScheduleKeyDeletionError::DependencyTimeoutError(_inner) => _inner.message(),
-            ScheduleKeyDeletionError::InvalidArnError(_inner) => _inner.message(),
-            ScheduleKeyDeletionError::KMSInternalError(_inner) => _inner.message(),
-            ScheduleKeyDeletionError::KMSInvalidStateError(_inner) => _inner.message(),
-            ScheduleKeyDeletionError::NotFoundError(_inner) => _inner.message(),
-            ScheduleKeyDeletionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ScheduleKeyDeletionError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            ScheduleKeyDeletionError::InvalidArnError(_inner) => Some(_inner.code()),
-            ScheduleKeyDeletionError::KMSInternalError(_inner) => Some(_inner.code()),
-            ScheduleKeyDeletionError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            ScheduleKeyDeletionError::NotFoundError(_inner) => Some(_inner.code()),
-            ScheduleKeyDeletionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ScheduleKeyDeletionError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ScheduleKeyDeletionError::DependencyTimeoutError(_inner) => Some(_inner),
-            ScheduleKeyDeletionError::InvalidArnError(_inner) => Some(_inner),
-            ScheduleKeyDeletionError::KMSInternalError(_inner) => Some(_inner),
-            ScheduleKeyDeletionError::KMSInvalidStateError(_inner) => Some(_inner),
-            ScheduleKeyDeletionError::NotFoundError(_inner) => Some(_inner),
-            ScheduleKeyDeletionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ScheduleKeyDeletionErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            ScheduleKeyDeletionErrorKind::InvalidArnError(_inner) => Some(_inner),
+            ScheduleKeyDeletionErrorKind::KMSInternalError(_inner) => Some(_inner),
+            ScheduleKeyDeletionErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            ScheduleKeyDeletionErrorKind::NotFoundError(_inner) => Some(_inner),
+            ScheduleKeyDeletionErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum SignError {
+pub struct SignError {
+    pub kind: SignErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum SignErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     InvalidGrantTokenError(InvalidGrantTokenError),
@@ -4191,21 +3231,21 @@ pub enum SignError {
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for SignError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            SignError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            SignError::DisabledError(_inner) => _inner.fmt(f),
-            SignError::InvalidGrantTokenError(_inner) => _inner.fmt(f),
-            SignError::InvalidKeyUsageError(_inner) => _inner.fmt(f),
-            SignError::KeyUnavailableError(_inner) => _inner.fmt(f),
-            SignError::KMSInternalError(_inner) => _inner.fmt(f),
-            SignError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            SignError::NotFoundError(_inner) => _inner.fmt(f),
-            SignError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            SignErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            SignErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            SignErrorKind::InvalidGrantTokenError(_inner) => _inner.fmt(f),
+            SignErrorKind::InvalidKeyUsageError(_inner) => _inner.fmt(f),
+            SignErrorKind::KeyUnavailableError(_inner) => _inner.fmt(f),
+            SignErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            SignErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            SignErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            SignErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -4214,81 +3254,60 @@ impl ::smithy_types::retry::ProvideErrorKind for SignError {
         SignError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            SignError::DependencyTimeoutError(_inner) => None,
-            SignError::DisabledError(_inner) => None,
-            SignError::InvalidGrantTokenError(_inner) => None,
-            SignError::InvalidKeyUsageError(_inner) => None,
-            SignError::KeyUnavailableError(_inner) => None,
-            SignError::KMSInternalError(_inner) => None,
-            SignError::KMSInvalidStateError(_inner) => None,
-            SignError::NotFoundError(_inner) => None,
-            SignError::Unhandled(_inner) => match _inner.downcast_ref::<::smithy_types::Error>() {
-                Some(_inner) => _inner.retryable_error_kind(),
-                None => None,
-            },
-        }
+        None
     }
 }
 impl SignError {
+    pub fn new(kind: SignErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        SignError::Unhandled(err.into())
+        Self {
+            kind: SignErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: SignErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            SignError::DependencyTimeoutError(_inner) => _inner.message(),
-            SignError::DisabledError(_inner) => _inner.message(),
-            SignError::InvalidGrantTokenError(_inner) => _inner.message(),
-            SignError::InvalidKeyUsageError(_inner) => _inner.message(),
-            SignError::KeyUnavailableError(_inner) => _inner.message(),
-            SignError::KMSInternalError(_inner) => _inner.message(),
-            SignError::KMSInvalidStateError(_inner) => _inner.message(),
-            SignError::NotFoundError(_inner) => _inner.message(),
-            SignError::Unhandled(_inner) => match _inner.downcast_ref::<::smithy_types::Error>() {
-                Some(_inner) => _inner.message(),
-                None => None,
-            },
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            SignError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            SignError::DisabledError(_inner) => Some(_inner.code()),
-            SignError::InvalidGrantTokenError(_inner) => Some(_inner.code()),
-            SignError::InvalidKeyUsageError(_inner) => Some(_inner.code()),
-            SignError::KeyUnavailableError(_inner) => Some(_inner.code()),
-            SignError::KMSInternalError(_inner) => Some(_inner.code()),
-            SignError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            SignError::NotFoundError(_inner) => Some(_inner.code()),
-            SignError::Unhandled(_inner) => match _inner.downcast_ref::<::smithy_types::Error>() {
-                Some(_inner) => _inner.code(),
-                None => None,
-            },
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for SignError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            SignError::DependencyTimeoutError(_inner) => Some(_inner),
-            SignError::DisabledError(_inner) => Some(_inner),
-            SignError::InvalidGrantTokenError(_inner) => Some(_inner),
-            SignError::InvalidKeyUsageError(_inner) => Some(_inner),
-            SignError::KeyUnavailableError(_inner) => Some(_inner),
-            SignError::KMSInternalError(_inner) => Some(_inner),
-            SignError::KMSInvalidStateError(_inner) => Some(_inner),
-            SignError::NotFoundError(_inner) => Some(_inner),
-            SignError::Unhandled(_inner) => match _inner.downcast_ref::<::smithy_types::Error>() {
-                Some(_inner) => Some(_inner),
-                None => Some(_inner.as_ref()),
-            },
+        match &self.kind {
+            SignErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            SignErrorKind::DisabledError(_inner) => Some(_inner),
+            SignErrorKind::InvalidGrantTokenError(_inner) => Some(_inner),
+            SignErrorKind::InvalidKeyUsageError(_inner) => Some(_inner),
+            SignErrorKind::KeyUnavailableError(_inner) => Some(_inner),
+            SignErrorKind::KMSInternalError(_inner) => Some(_inner),
+            SignErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            SignErrorKind::NotFoundError(_inner) => Some(_inner),
+            SignErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum TagResourceError {
+pub struct TagResourceError {
+    pub kind: TagResourceErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum TagResourceErrorKind {
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
     KMSInvalidStateError(KMSInvalidStateError),
@@ -4296,19 +3315,19 @@ pub enum TagResourceError {
     NotFoundError(NotFoundError),
     TagError(TagError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for TagResourceError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            TagResourceError::InvalidArnError(_inner) => _inner.fmt(f),
-            TagResourceError::KMSInternalError(_inner) => _inner.fmt(f),
-            TagResourceError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            TagResourceError::LimitExceededError(_inner) => _inner.fmt(f),
-            TagResourceError::NotFoundError(_inner) => _inner.fmt(f),
-            TagResourceError::TagError(_inner) => _inner.fmt(f),
-            TagResourceError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            TagResourceErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            TagResourceErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            TagResourceErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            TagResourceErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            TagResourceErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            TagResourceErrorKind::TagError(_inner) => _inner.fmt(f),
+            TagResourceErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -4317,99 +3336,76 @@ impl ::smithy_types::retry::ProvideErrorKind for TagResourceError {
         TagResourceError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            TagResourceError::InvalidArnError(_inner) => None,
-            TagResourceError::KMSInternalError(_inner) => None,
-            TagResourceError::KMSInvalidStateError(_inner) => None,
-            TagResourceError::LimitExceededError(_inner) => None,
-            TagResourceError::NotFoundError(_inner) => None,
-            TagResourceError::TagError(_inner) => None,
-            TagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl TagResourceError {
+    pub fn new(kind: TagResourceErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        TagResourceError::Unhandled(err.into())
+        Self {
+            kind: TagResourceErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: TagResourceErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            TagResourceError::InvalidArnError(_inner) => _inner.message(),
-            TagResourceError::KMSInternalError(_inner) => _inner.message(),
-            TagResourceError::KMSInvalidStateError(_inner) => _inner.message(),
-            TagResourceError::LimitExceededError(_inner) => _inner.message(),
-            TagResourceError::NotFoundError(_inner) => _inner.message(),
-            TagResourceError::TagError(_inner) => _inner.message(),
-            TagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            TagResourceError::InvalidArnError(_inner) => Some(_inner.code()),
-            TagResourceError::KMSInternalError(_inner) => Some(_inner.code()),
-            TagResourceError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            TagResourceError::LimitExceededError(_inner) => Some(_inner.code()),
-            TagResourceError::NotFoundError(_inner) => Some(_inner.code()),
-            TagResourceError::TagError(_inner) => Some(_inner.code()),
-            TagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for TagResourceError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            TagResourceError::InvalidArnError(_inner) => Some(_inner),
-            TagResourceError::KMSInternalError(_inner) => Some(_inner),
-            TagResourceError::KMSInvalidStateError(_inner) => Some(_inner),
-            TagResourceError::LimitExceededError(_inner) => Some(_inner),
-            TagResourceError::NotFoundError(_inner) => Some(_inner),
-            TagResourceError::TagError(_inner) => Some(_inner),
-            TagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            TagResourceErrorKind::InvalidArnError(_inner) => Some(_inner),
+            TagResourceErrorKind::KMSInternalError(_inner) => Some(_inner),
+            TagResourceErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            TagResourceErrorKind::LimitExceededError(_inner) => Some(_inner),
+            TagResourceErrorKind::NotFoundError(_inner) => Some(_inner),
+            TagResourceErrorKind::TagError(_inner) => Some(_inner),
+            TagResourceErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum UntagResourceError {
+pub struct UntagResourceError {
+    pub kind: UntagResourceErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum UntagResourceErrorKind {
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
     TagError(TagError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for UntagResourceError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            UntagResourceError::InvalidArnError(_inner) => _inner.fmt(f),
-            UntagResourceError::KMSInternalError(_inner) => _inner.fmt(f),
-            UntagResourceError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            UntagResourceError::NotFoundError(_inner) => _inner.fmt(f),
-            UntagResourceError::TagError(_inner) => _inner.fmt(f),
-            UntagResourceError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            UntagResourceErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            UntagResourceErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            UntagResourceErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            UntagResourceErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            UntagResourceErrorKind::TagError(_inner) => _inner.fmt(f),
+            UntagResourceErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -4418,95 +3414,75 @@ impl ::smithy_types::retry::ProvideErrorKind for UntagResourceError {
         UntagResourceError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            UntagResourceError::InvalidArnError(_inner) => None,
-            UntagResourceError::KMSInternalError(_inner) => None,
-            UntagResourceError::KMSInvalidStateError(_inner) => None,
-            UntagResourceError::NotFoundError(_inner) => None,
-            UntagResourceError::TagError(_inner) => None,
-            UntagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl UntagResourceError {
+    pub fn new(kind: UntagResourceErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        UntagResourceError::Unhandled(err.into())
+        Self {
+            kind: UntagResourceErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: UntagResourceErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            UntagResourceError::InvalidArnError(_inner) => _inner.message(),
-            UntagResourceError::KMSInternalError(_inner) => _inner.message(),
-            UntagResourceError::KMSInvalidStateError(_inner) => _inner.message(),
-            UntagResourceError::NotFoundError(_inner) => _inner.message(),
-            UntagResourceError::TagError(_inner) => _inner.message(),
-            UntagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            UntagResourceError::InvalidArnError(_inner) => Some(_inner.code()),
-            UntagResourceError::KMSInternalError(_inner) => Some(_inner.code()),
-            UntagResourceError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            UntagResourceError::NotFoundError(_inner) => Some(_inner.code()),
-            UntagResourceError::TagError(_inner) => Some(_inner.code()),
-            UntagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for UntagResourceError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            UntagResourceError::InvalidArnError(_inner) => Some(_inner),
-            UntagResourceError::KMSInternalError(_inner) => Some(_inner),
-            UntagResourceError::KMSInvalidStateError(_inner) => Some(_inner),
-            UntagResourceError::NotFoundError(_inner) => Some(_inner),
-            UntagResourceError::TagError(_inner) => Some(_inner),
-            UntagResourceError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            UntagResourceErrorKind::InvalidArnError(_inner) => Some(_inner),
+            UntagResourceErrorKind::KMSInternalError(_inner) => Some(_inner),
+            UntagResourceErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            UntagResourceErrorKind::NotFoundError(_inner) => Some(_inner),
+            UntagResourceErrorKind::TagError(_inner) => Some(_inner),
+            UntagResourceErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum UpdateAliasError {
+pub struct UpdateAliasError {
+    pub kind: UpdateAliasErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum UpdateAliasErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     KMSInternalError(KMSInternalError),
     KMSInvalidStateError(KMSInvalidStateError),
     LimitExceededError(LimitExceededError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for UpdateAliasError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            UpdateAliasError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            UpdateAliasError::KMSInternalError(_inner) => _inner.fmt(f),
-            UpdateAliasError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            UpdateAliasError::LimitExceededError(_inner) => _inner.fmt(f),
-            UpdateAliasError::NotFoundError(_inner) => _inner.fmt(f),
-            UpdateAliasError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            UpdateAliasErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            UpdateAliasErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            UpdateAliasErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            UpdateAliasErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            UpdateAliasErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            UpdateAliasErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -4515,77 +3491,57 @@ impl ::smithy_types::retry::ProvideErrorKind for UpdateAliasError {
         UpdateAliasError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            UpdateAliasError::DependencyTimeoutError(_inner) => None,
-            UpdateAliasError::KMSInternalError(_inner) => None,
-            UpdateAliasError::KMSInvalidStateError(_inner) => None,
-            UpdateAliasError::LimitExceededError(_inner) => None,
-            UpdateAliasError::NotFoundError(_inner) => None,
-            UpdateAliasError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl UpdateAliasError {
+    pub fn new(kind: UpdateAliasErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        UpdateAliasError::Unhandled(err.into())
+        Self {
+            kind: UpdateAliasErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: UpdateAliasErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            UpdateAliasError::DependencyTimeoutError(_inner) => _inner.message(),
-            UpdateAliasError::KMSInternalError(_inner) => _inner.message(),
-            UpdateAliasError::KMSInvalidStateError(_inner) => _inner.message(),
-            UpdateAliasError::LimitExceededError(_inner) => _inner.message(),
-            UpdateAliasError::NotFoundError(_inner) => _inner.message(),
-            UpdateAliasError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            UpdateAliasError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            UpdateAliasError::KMSInternalError(_inner) => Some(_inner.code()),
-            UpdateAliasError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            UpdateAliasError::LimitExceededError(_inner) => Some(_inner.code()),
-            UpdateAliasError::NotFoundError(_inner) => Some(_inner.code()),
-            UpdateAliasError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for UpdateAliasError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            UpdateAliasError::DependencyTimeoutError(_inner) => Some(_inner),
-            UpdateAliasError::KMSInternalError(_inner) => Some(_inner),
-            UpdateAliasError::KMSInvalidStateError(_inner) => Some(_inner),
-            UpdateAliasError::LimitExceededError(_inner) => Some(_inner),
-            UpdateAliasError::NotFoundError(_inner) => Some(_inner),
-            UpdateAliasError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            UpdateAliasErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            UpdateAliasErrorKind::KMSInternalError(_inner) => Some(_inner),
+            UpdateAliasErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            UpdateAliasErrorKind::LimitExceededError(_inner) => Some(_inner),
+            UpdateAliasErrorKind::NotFoundError(_inner) => Some(_inner),
+            UpdateAliasErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum UpdateCustomKeyStoreError {
+pub struct UpdateCustomKeyStoreError {
+    pub kind: UpdateCustomKeyStoreErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum UpdateCustomKeyStoreErrorKind {
     CloudHsmClusterInvalidConfigurationError(CloudHsmClusterInvalidConfigurationError),
     CloudHsmClusterNotActiveError(CloudHsmClusterNotActiveError),
     CloudHsmClusterNotFoundError(CloudHsmClusterNotFoundError),
@@ -4595,23 +3551,23 @@ pub enum UpdateCustomKeyStoreError {
     CustomKeyStoreNotFoundError(CustomKeyStoreNotFoundError),
     KMSInternalError(KMSInternalError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for UpdateCustomKeyStoreError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            UpdateCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => {
+        match &self.kind {
+            UpdateCustomKeyStoreErrorKind::CloudHsmClusterInvalidConfigurationError(_inner) => {
                 _inner.fmt(f)
             }
-            UpdateCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => _inner.fmt(f),
-            UpdateCustomKeyStoreError::CloudHsmClusterNotFoundError(_inner) => _inner.fmt(f),
-            UpdateCustomKeyStoreError::CloudHsmClusterNotRelatedError(_inner) => _inner.fmt(f),
-            UpdateCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => _inner.fmt(f),
-            UpdateCustomKeyStoreError::CustomKeyStoreNameInUseError(_inner) => _inner.fmt(f),
-            UpdateCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
-            UpdateCustomKeyStoreError::KMSInternalError(_inner) => _inner.fmt(f),
-            UpdateCustomKeyStoreError::Unhandled(_inner) => _inner.fmt(f),
+            UpdateCustomKeyStoreErrorKind::CloudHsmClusterNotActiveError(_inner) => _inner.fmt(f),
+            UpdateCustomKeyStoreErrorKind::CloudHsmClusterNotFoundError(_inner) => _inner.fmt(f),
+            UpdateCustomKeyStoreErrorKind::CloudHsmClusterNotRelatedError(_inner) => _inner.fmt(f),
+            UpdateCustomKeyStoreErrorKind::CustomKeyStoreInvalidStateError(_inner) => _inner.fmt(f),
+            UpdateCustomKeyStoreErrorKind::CustomKeyStoreNameInUseError(_inner) => _inner.fmt(f),
+            UpdateCustomKeyStoreErrorKind::CustomKeyStoreNotFoundError(_inner) => _inner.fmt(f),
+            UpdateCustomKeyStoreErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            UpdateCustomKeyStoreErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -4620,117 +3576,80 @@ impl ::smithy_types::retry::ProvideErrorKind for UpdateCustomKeyStoreError {
         UpdateCustomKeyStoreError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            UpdateCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => None,
-            UpdateCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => None,
-            UpdateCustomKeyStoreError::CloudHsmClusterNotFoundError(_inner) => None,
-            UpdateCustomKeyStoreError::CloudHsmClusterNotRelatedError(_inner) => None,
-            UpdateCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => None,
-            UpdateCustomKeyStoreError::CustomKeyStoreNameInUseError(_inner) => None,
-            UpdateCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => None,
-            UpdateCustomKeyStoreError::KMSInternalError(_inner) => None,
-            UpdateCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl UpdateCustomKeyStoreError {
+    pub fn new(kind: UpdateCustomKeyStoreErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        UpdateCustomKeyStoreError::Unhandled(err.into())
+        Self {
+            kind: UpdateCustomKeyStoreErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: UpdateCustomKeyStoreErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            UpdateCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => {
-                _inner.message()
-            }
-            UpdateCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => _inner.message(),
-            UpdateCustomKeyStoreError::CloudHsmClusterNotFoundError(_inner) => _inner.message(),
-            UpdateCustomKeyStoreError::CloudHsmClusterNotRelatedError(_inner) => _inner.message(),
-            UpdateCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => _inner.message(),
-            UpdateCustomKeyStoreError::CustomKeyStoreNameInUseError(_inner) => _inner.message(),
-            UpdateCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => _inner.message(),
-            UpdateCustomKeyStoreError::KMSInternalError(_inner) => _inner.message(),
-            UpdateCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            UpdateCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => {
-                Some(_inner.code())
-            }
-            UpdateCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => Some(_inner.code()),
-            UpdateCustomKeyStoreError::CloudHsmClusterNotFoundError(_inner) => Some(_inner.code()),
-            UpdateCustomKeyStoreError::CloudHsmClusterNotRelatedError(_inner) => {
-                Some(_inner.code())
-            }
-            UpdateCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => {
-                Some(_inner.code())
-            }
-            UpdateCustomKeyStoreError::CustomKeyStoreNameInUseError(_inner) => Some(_inner.code()),
-            UpdateCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => Some(_inner.code()),
-            UpdateCustomKeyStoreError::KMSInternalError(_inner) => Some(_inner.code()),
-            UpdateCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for UpdateCustomKeyStoreError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            UpdateCustomKeyStoreError::CloudHsmClusterInvalidConfigurationError(_inner) => {
+        match &self.kind {
+            UpdateCustomKeyStoreErrorKind::CloudHsmClusterInvalidConfigurationError(_inner) => {
                 Some(_inner)
             }
-            UpdateCustomKeyStoreError::CloudHsmClusterNotActiveError(_inner) => Some(_inner),
-            UpdateCustomKeyStoreError::CloudHsmClusterNotFoundError(_inner) => Some(_inner),
-            UpdateCustomKeyStoreError::CloudHsmClusterNotRelatedError(_inner) => Some(_inner),
-            UpdateCustomKeyStoreError::CustomKeyStoreInvalidStateError(_inner) => Some(_inner),
-            UpdateCustomKeyStoreError::CustomKeyStoreNameInUseError(_inner) => Some(_inner),
-            UpdateCustomKeyStoreError::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
-            UpdateCustomKeyStoreError::KMSInternalError(_inner) => Some(_inner),
-            UpdateCustomKeyStoreError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+            UpdateCustomKeyStoreErrorKind::CloudHsmClusterNotActiveError(_inner) => Some(_inner),
+            UpdateCustomKeyStoreErrorKind::CloudHsmClusterNotFoundError(_inner) => Some(_inner),
+            UpdateCustomKeyStoreErrorKind::CloudHsmClusterNotRelatedError(_inner) => Some(_inner),
+            UpdateCustomKeyStoreErrorKind::CustomKeyStoreInvalidStateError(_inner) => Some(_inner),
+            UpdateCustomKeyStoreErrorKind::CustomKeyStoreNameInUseError(_inner) => Some(_inner),
+            UpdateCustomKeyStoreErrorKind::CustomKeyStoreNotFoundError(_inner) => Some(_inner),
+            UpdateCustomKeyStoreErrorKind::KMSInternalError(_inner) => Some(_inner),
+            UpdateCustomKeyStoreErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum UpdateKeyDescriptionError {
+pub struct UpdateKeyDescriptionError {
+    pub kind: UpdateKeyDescriptionErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum UpdateKeyDescriptionErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     InvalidArnError(InvalidArnError),
     KMSInternalError(KMSInternalError),
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for UpdateKeyDescriptionError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            UpdateKeyDescriptionError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            UpdateKeyDescriptionError::InvalidArnError(_inner) => _inner.fmt(f),
-            UpdateKeyDescriptionError::KMSInternalError(_inner) => _inner.fmt(f),
-            UpdateKeyDescriptionError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            UpdateKeyDescriptionError::NotFoundError(_inner) => _inner.fmt(f),
-            UpdateKeyDescriptionError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            UpdateKeyDescriptionErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            UpdateKeyDescriptionErrorKind::InvalidArnError(_inner) => _inner.fmt(f),
+            UpdateKeyDescriptionErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            UpdateKeyDescriptionErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            UpdateKeyDescriptionErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            UpdateKeyDescriptionErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -4739,77 +3658,57 @@ impl ::smithy_types::retry::ProvideErrorKind for UpdateKeyDescriptionError {
         UpdateKeyDescriptionError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            UpdateKeyDescriptionError::DependencyTimeoutError(_inner) => None,
-            UpdateKeyDescriptionError::InvalidArnError(_inner) => None,
-            UpdateKeyDescriptionError::KMSInternalError(_inner) => None,
-            UpdateKeyDescriptionError::KMSInvalidStateError(_inner) => None,
-            UpdateKeyDescriptionError::NotFoundError(_inner) => None,
-            UpdateKeyDescriptionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl UpdateKeyDescriptionError {
+    pub fn new(kind: UpdateKeyDescriptionErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        UpdateKeyDescriptionError::Unhandled(err.into())
+        Self {
+            kind: UpdateKeyDescriptionErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: UpdateKeyDescriptionErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            UpdateKeyDescriptionError::DependencyTimeoutError(_inner) => _inner.message(),
-            UpdateKeyDescriptionError::InvalidArnError(_inner) => _inner.message(),
-            UpdateKeyDescriptionError::KMSInternalError(_inner) => _inner.message(),
-            UpdateKeyDescriptionError::KMSInvalidStateError(_inner) => _inner.message(),
-            UpdateKeyDescriptionError::NotFoundError(_inner) => _inner.message(),
-            UpdateKeyDescriptionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            UpdateKeyDescriptionError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            UpdateKeyDescriptionError::InvalidArnError(_inner) => Some(_inner.code()),
-            UpdateKeyDescriptionError::KMSInternalError(_inner) => Some(_inner.code()),
-            UpdateKeyDescriptionError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            UpdateKeyDescriptionError::NotFoundError(_inner) => Some(_inner.code()),
-            UpdateKeyDescriptionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for UpdateKeyDescriptionError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            UpdateKeyDescriptionError::DependencyTimeoutError(_inner) => Some(_inner),
-            UpdateKeyDescriptionError::InvalidArnError(_inner) => Some(_inner),
-            UpdateKeyDescriptionError::KMSInternalError(_inner) => Some(_inner),
-            UpdateKeyDescriptionError::KMSInvalidStateError(_inner) => Some(_inner),
-            UpdateKeyDescriptionError::NotFoundError(_inner) => Some(_inner),
-            UpdateKeyDescriptionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            UpdateKeyDescriptionErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            UpdateKeyDescriptionErrorKind::InvalidArnError(_inner) => Some(_inner),
+            UpdateKeyDescriptionErrorKind::KMSInternalError(_inner) => Some(_inner),
+            UpdateKeyDescriptionErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            UpdateKeyDescriptionErrorKind::NotFoundError(_inner) => Some(_inner),
+            UpdateKeyDescriptionErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum VerifyError {
+pub struct VerifyError {
+    pub kind: VerifyErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum VerifyErrorKind {
     DependencyTimeoutError(DependencyTimeoutError),
     DisabledError(DisabledError),
     InvalidGrantTokenError(InvalidGrantTokenError),
@@ -4820,22 +3719,22 @@ pub enum VerifyError {
     KMSInvalidStateError(KMSInvalidStateError),
     NotFoundError(NotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for VerifyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            VerifyError::DependencyTimeoutError(_inner) => _inner.fmt(f),
-            VerifyError::DisabledError(_inner) => _inner.fmt(f),
-            VerifyError::InvalidGrantTokenError(_inner) => _inner.fmt(f),
-            VerifyError::InvalidKeyUsageError(_inner) => _inner.fmt(f),
-            VerifyError::KeyUnavailableError(_inner) => _inner.fmt(f),
-            VerifyError::KMSInternalError(_inner) => _inner.fmt(f),
-            VerifyError::KMSInvalidSignatureError(_inner) => _inner.fmt(f),
-            VerifyError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            VerifyError::NotFoundError(_inner) => _inner.fmt(f),
-            VerifyError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            VerifyErrorKind::DependencyTimeoutError(_inner) => _inner.fmt(f),
+            VerifyErrorKind::DisabledError(_inner) => _inner.fmt(f),
+            VerifyErrorKind::InvalidGrantTokenError(_inner) => _inner.fmt(f),
+            VerifyErrorKind::InvalidKeyUsageError(_inner) => _inner.fmt(f),
+            VerifyErrorKind::KeyUnavailableError(_inner) => _inner.fmt(f),
+            VerifyErrorKind::KMSInternalError(_inner) => _inner.fmt(f),
+            VerifyErrorKind::KMSInvalidSignatureError(_inner) => _inner.fmt(f),
+            VerifyErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            VerifyErrorKind::NotFoundError(_inner) => _inner.fmt(f),
+            VerifyErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -4844,86 +3743,48 @@ impl ::smithy_types::retry::ProvideErrorKind for VerifyError {
         VerifyError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            VerifyError::DependencyTimeoutError(_inner) => None,
-            VerifyError::DisabledError(_inner) => None,
-            VerifyError::InvalidGrantTokenError(_inner) => None,
-            VerifyError::InvalidKeyUsageError(_inner) => None,
-            VerifyError::KeyUnavailableError(_inner) => None,
-            VerifyError::KMSInternalError(_inner) => None,
-            VerifyError::KMSInvalidSignatureError(_inner) => None,
-            VerifyError::KMSInvalidStateError(_inner) => None,
-            VerifyError::NotFoundError(_inner) => None,
-            VerifyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl VerifyError {
+    pub fn new(kind: VerifyErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        VerifyError::Unhandled(err.into())
+        Self {
+            kind: VerifyErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: VerifyErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            VerifyError::DependencyTimeoutError(_inner) => _inner.message(),
-            VerifyError::DisabledError(_inner) => _inner.message(),
-            VerifyError::InvalidGrantTokenError(_inner) => _inner.message(),
-            VerifyError::InvalidKeyUsageError(_inner) => _inner.message(),
-            VerifyError::KeyUnavailableError(_inner) => _inner.message(),
-            VerifyError::KMSInternalError(_inner) => _inner.message(),
-            VerifyError::KMSInvalidSignatureError(_inner) => _inner.message(),
-            VerifyError::KMSInvalidStateError(_inner) => _inner.message(),
-            VerifyError::NotFoundError(_inner) => _inner.message(),
-            VerifyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            VerifyError::DependencyTimeoutError(_inner) => Some(_inner.code()),
-            VerifyError::DisabledError(_inner) => Some(_inner.code()),
-            VerifyError::InvalidGrantTokenError(_inner) => Some(_inner.code()),
-            VerifyError::InvalidKeyUsageError(_inner) => Some(_inner.code()),
-            VerifyError::KeyUnavailableError(_inner) => Some(_inner.code()),
-            VerifyError::KMSInternalError(_inner) => Some(_inner.code()),
-            VerifyError::KMSInvalidSignatureError(_inner) => Some(_inner.code()),
-            VerifyError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            VerifyError::NotFoundError(_inner) => Some(_inner.code()),
-            VerifyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for VerifyError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            VerifyError::DependencyTimeoutError(_inner) => Some(_inner),
-            VerifyError::DisabledError(_inner) => Some(_inner),
-            VerifyError::InvalidGrantTokenError(_inner) => Some(_inner),
-            VerifyError::InvalidKeyUsageError(_inner) => Some(_inner),
-            VerifyError::KeyUnavailableError(_inner) => Some(_inner),
-            VerifyError::KMSInternalError(_inner) => Some(_inner),
-            VerifyError::KMSInvalidSignatureError(_inner) => Some(_inner),
-            VerifyError::KMSInvalidStateError(_inner) => Some(_inner),
-            VerifyError::NotFoundError(_inner) => Some(_inner),
-            VerifyError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            VerifyErrorKind::DependencyTimeoutError(_inner) => Some(_inner),
+            VerifyErrorKind::DisabledError(_inner) => Some(_inner),
+            VerifyErrorKind::InvalidGrantTokenError(_inner) => Some(_inner),
+            VerifyErrorKind::InvalidKeyUsageError(_inner) => Some(_inner),
+            VerifyErrorKind::KeyUnavailableError(_inner) => Some(_inner),
+            VerifyErrorKind::KMSInternalError(_inner) => Some(_inner),
+            VerifyErrorKind::KMSInvalidSignatureError(_inner) => Some(_inner),
+            VerifyErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            VerifyErrorKind::NotFoundError(_inner) => Some(_inner),
+            VerifyErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
@@ -4946,16 +3807,13 @@ impl ::std::fmt::Debug for NotFoundError {
     }
 }
 impl NotFoundError {
-    pub fn code(&self) -> &str {
-        "NotFoundException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for NotFoundError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "NotFoundError")?;
+        write!(f, "NotFoundError [NotFoundException]")?;
         if let Some(inner_1) = &self.message {
             write!(f, ": {}", inner_1)?;
         }
@@ -5015,16 +3873,13 @@ impl ::std::fmt::Debug for KMSInvalidStateError {
     }
 }
 impl KMSInvalidStateError {
-    pub fn code(&self) -> &str {
-        "KMSInvalidStateException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for KMSInvalidStateError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "KMSInvalidStateError")?;
+        write!(f, "KMSInvalidStateError [KMSInvalidStateException]")?;
         if let Some(inner_2) = &self.message {
             write!(f, ": {}", inner_2)?;
         }
@@ -5081,16 +3936,13 @@ impl ::std::fmt::Debug for KMSInvalidSignatureError {
     }
 }
 impl KMSInvalidSignatureError {
-    pub fn code(&self) -> &str {
-        "KMSInvalidSignatureException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for KMSInvalidSignatureError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "KMSInvalidSignatureError")?;
+        write!(f, "KMSInvalidSignatureError [KMSInvalidSignatureException]")?;
         if let Some(inner_3) = &self.message {
             write!(f, ": {}", inner_3)?;
         }
@@ -5146,16 +3998,13 @@ impl ::std::fmt::Debug for KMSInternalError {
     }
 }
 impl KMSInternalError {
-    pub fn code(&self) -> &str {
-        "KMSInternalException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for KMSInternalError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "KMSInternalError")?;
+        write!(f, "KMSInternalError [KMSInternalException]")?;
         if let Some(inner_4) = &self.message {
             write!(f, ": {}", inner_4)?;
         }
@@ -5211,16 +4060,13 @@ impl ::std::fmt::Debug for KeyUnavailableError {
     }
 }
 impl KeyUnavailableError {
-    pub fn code(&self) -> &str {
-        "KeyUnavailableException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for KeyUnavailableError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "KeyUnavailableError")?;
+        write!(f, "KeyUnavailableError [KeyUnavailableException]")?;
         if let Some(inner_5) = &self.message {
             write!(f, ": {}", inner_5)?;
         }
@@ -5291,16 +4137,13 @@ impl ::std::fmt::Debug for InvalidKeyUsageError {
     }
 }
 impl InvalidKeyUsageError {
-    pub fn code(&self) -> &str {
-        "InvalidKeyUsageException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for InvalidKeyUsageError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InvalidKeyUsageError")?;
+        write!(f, "InvalidKeyUsageError [InvalidKeyUsageException]")?;
         if let Some(inner_6) = &self.message {
             write!(f, ": {}", inner_6)?;
         }
@@ -5355,16 +4198,13 @@ impl ::std::fmt::Debug for InvalidGrantTokenError {
     }
 }
 impl InvalidGrantTokenError {
-    pub fn code(&self) -> &str {
-        "InvalidGrantTokenException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for InvalidGrantTokenError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InvalidGrantTokenError")?;
+        write!(f, "InvalidGrantTokenError [InvalidGrantTokenException]")?;
         if let Some(inner_7) = &self.message {
             write!(f, ": {}", inner_7)?;
         }
@@ -5419,16 +4259,13 @@ impl ::std::fmt::Debug for DisabledError {
     }
 }
 impl DisabledError {
-    pub fn code(&self) -> &str {
-        "DisabledException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for DisabledError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "DisabledError")?;
+        write!(f, "DisabledError [DisabledException]")?;
         if let Some(inner_8) = &self.message {
             write!(f, ": {}", inner_8)?;
         }
@@ -5484,16 +4321,13 @@ impl ::std::fmt::Debug for DependencyTimeoutError {
     }
 }
 impl DependencyTimeoutError {
-    pub fn code(&self) -> &str {
-        "DependencyTimeoutException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for DependencyTimeoutError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "DependencyTimeoutError")?;
+        write!(f, "DependencyTimeoutError [DependencyTimeoutException]")?;
         if let Some(inner_9) = &self.message {
             write!(f, ": {}", inner_9)?;
         }
@@ -5549,16 +4383,13 @@ impl ::std::fmt::Debug for InvalidArnError {
     }
 }
 impl InvalidArnError {
-    pub fn code(&self) -> &str {
-        "InvalidArnException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for InvalidArnError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InvalidArnError")?;
+        write!(f, "InvalidArnError [InvalidArnException]")?;
         if let Some(inner_10) = &self.message {
             write!(f, ": {}", inner_10)?;
         }
@@ -5614,16 +4445,16 @@ impl ::std::fmt::Debug for CustomKeyStoreNotFoundError {
     }
 }
 impl CustomKeyStoreNotFoundError {
-    pub fn code(&self) -> &str {
-        "CustomKeyStoreNotFoundException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for CustomKeyStoreNotFoundError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "CustomKeyStoreNotFoundError")?;
+        write!(
+            f,
+            "CustomKeyStoreNotFoundError [CustomKeyStoreNotFoundException]"
+        )?;
         if let Some(inner_11) = &self.message {
             write!(f, ": {}", inner_11)?;
         }
@@ -5680,16 +4511,16 @@ impl ::std::fmt::Debug for CustomKeyStoreNameInUseError {
     }
 }
 impl CustomKeyStoreNameInUseError {
-    pub fn code(&self) -> &str {
-        "CustomKeyStoreNameInUseException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for CustomKeyStoreNameInUseError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "CustomKeyStoreNameInUseError")?;
+        write!(
+            f,
+            "CustomKeyStoreNameInUseError [CustomKeyStoreNameInUseException]"
+        )?;
         if let Some(inner_12) = &self.message {
             write!(f, ": {}", inner_12)?;
         }
@@ -5764,16 +4595,16 @@ impl ::std::fmt::Debug for CustomKeyStoreInvalidStateError {
     }
 }
 impl CustomKeyStoreInvalidStateError {
-    pub fn code(&self) -> &str {
-        "CustomKeyStoreInvalidStateException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for CustomKeyStoreInvalidStateError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "CustomKeyStoreInvalidStateError")?;
+        write!(
+            f,
+            "CustomKeyStoreInvalidStateError [CustomKeyStoreInvalidStateException]"
+        )?;
         if let Some(inner_13) = &self.message {
             write!(f, ": {}", inner_13)?;
         }
@@ -5835,16 +4666,16 @@ impl ::std::fmt::Debug for CloudHsmClusterNotRelatedError {
     }
 }
 impl CloudHsmClusterNotRelatedError {
-    pub fn code(&self) -> &str {
-        "CloudHsmClusterNotRelatedException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for CloudHsmClusterNotRelatedError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "CloudHsmClusterNotRelatedError")?;
+        write!(
+            f,
+            "CloudHsmClusterNotRelatedError [CloudHsmClusterNotRelatedException]"
+        )?;
         if let Some(inner_14) = &self.message {
             write!(f, ": {}", inner_14)?;
         }
@@ -5900,16 +4731,16 @@ impl ::std::fmt::Debug for CloudHsmClusterNotFoundError {
     }
 }
 impl CloudHsmClusterNotFoundError {
-    pub fn code(&self) -> &str {
-        "CloudHsmClusterNotFoundException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for CloudHsmClusterNotFoundError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "CloudHsmClusterNotFoundError")?;
+        write!(
+            f,
+            "CloudHsmClusterNotFoundError [CloudHsmClusterNotFoundException]"
+        )?;
         if let Some(inner_15) = &self.message {
             write!(f, ": {}", inner_15)?;
         }
@@ -5966,16 +4797,16 @@ impl ::std::fmt::Debug for CloudHsmClusterNotActiveError {
     }
 }
 impl CloudHsmClusterNotActiveError {
-    pub fn code(&self) -> &str {
-        "CloudHsmClusterNotActiveException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for CloudHsmClusterNotActiveError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "CloudHsmClusterNotActiveError")?;
+        write!(
+            f,
+            "CloudHsmClusterNotActiveError [CloudHsmClusterNotActiveException]"
+        )?;
         if let Some(inner_16) = &self.message {
             write!(f, ": {}", inner_16)?;
         }
@@ -6061,16 +4892,13 @@ impl ::std::fmt::Debug for CloudHsmClusterInvalidConfigurationError {
     }
 }
 impl CloudHsmClusterInvalidConfigurationError {
-    pub fn code(&self) -> &str {
-        "CloudHsmClusterInvalidConfigurationException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for CloudHsmClusterInvalidConfigurationError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "CloudHsmClusterInvalidConfigurationError")?;
+        write!(f, "CloudHsmClusterInvalidConfigurationError [CloudHsmClusterInvalidConfigurationException]")?;
         if let Some(inner_17) = &self.message {
             write!(f, ": {}", inner_17)?;
         }
@@ -6126,16 +4954,13 @@ impl ::std::fmt::Debug for LimitExceededError {
     }
 }
 impl LimitExceededError {
-    pub fn code(&self) -> &str {
-        "LimitExceededException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for LimitExceededError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "LimitExceededError")?;
+        write!(f, "LimitExceededError [LimitExceededException]")?;
         if let Some(inner_18) = &self.message {
             write!(f, ": {}", inner_18)?;
         }
@@ -6190,16 +5015,13 @@ impl ::std::fmt::Debug for TagError {
     }
 }
 impl TagError {
-    pub fn code(&self) -> &str {
-        "TagException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for TagError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "TagError")?;
+        write!(f, "TagError [TagException]")?;
         if let Some(inner_19) = &self.message {
             write!(f, ": {}", inner_19)?;
         }
@@ -6254,16 +5076,13 @@ impl ::std::fmt::Debug for InvalidGrantIdError {
     }
 }
 impl InvalidGrantIdError {
-    pub fn code(&self) -> &str {
-        "InvalidGrantIdException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for InvalidGrantIdError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InvalidGrantIdError")?;
+        write!(f, "InvalidGrantIdError [InvalidGrantIdException]")?;
         if let Some(inner_20) = &self.message {
             write!(f, ": {}", inner_20)?;
         }
@@ -6323,16 +5142,13 @@ impl ::std::fmt::Debug for InvalidCiphertextError {
     }
 }
 impl InvalidCiphertextError {
-    pub fn code(&self) -> &str {
-        "InvalidCiphertextException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for InvalidCiphertextError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InvalidCiphertextError")?;
+        write!(f, "InvalidCiphertextError [InvalidCiphertextException]")?;
         if let Some(inner_21) = &self.message {
             write!(f, ": {}", inner_21)?;
         }
@@ -6390,16 +5206,13 @@ impl ::std::fmt::Debug for IncorrectKeyError {
     }
 }
 impl IncorrectKeyError {
-    pub fn code(&self) -> &str {
-        "IncorrectKeyException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for IncorrectKeyError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "IncorrectKeyError")?;
+        write!(f, "IncorrectKeyError [IncorrectKeyException]")?;
         if let Some(inner_22) = &self.message {
             write!(f, ": {}", inner_22)?;
         }
@@ -6455,16 +5268,16 @@ impl ::std::fmt::Debug for UnsupportedOperationError {
     }
 }
 impl UnsupportedOperationError {
-    pub fn code(&self) -> &str {
-        "UnsupportedOperationException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for UnsupportedOperationError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "UnsupportedOperationError")?;
+        write!(
+            f,
+            "UnsupportedOperationError [UnsupportedOperationException]"
+        )?;
         if let Some(inner_23) = &self.message {
             write!(f, ": {}", inner_23)?;
         }
@@ -6520,16 +5333,16 @@ impl ::std::fmt::Debug for MalformedPolicyDocumentError {
     }
 }
 impl MalformedPolicyDocumentError {
-    pub fn code(&self) -> &str {
-        "MalformedPolicyDocumentException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for MalformedPolicyDocumentError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "MalformedPolicyDocumentError")?;
+        write!(
+            f,
+            "MalformedPolicyDocumentError [MalformedPolicyDocumentException]"
+        )?;
         if let Some(inner_24) = &self.message {
             write!(f, ": {}", inner_24)?;
         }
@@ -6585,16 +5398,13 @@ impl ::std::fmt::Debug for InvalidMarkerError {
     }
 }
 impl InvalidMarkerError {
-    pub fn code(&self) -> &str {
-        "InvalidMarkerException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for InvalidMarkerError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InvalidMarkerError")?;
+        write!(f, "InvalidMarkerError [InvalidMarkerException]")?;
         if let Some(inner_25) = &self.message {
             write!(f, ": {}", inner_25)?;
         }
@@ -6650,16 +5460,13 @@ impl ::std::fmt::Debug for InvalidImportTokenError {
     }
 }
 impl InvalidImportTokenError {
-    pub fn code(&self) -> &str {
-        "InvalidImportTokenException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for InvalidImportTokenError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InvalidImportTokenError")?;
+        write!(f, "InvalidImportTokenError [InvalidImportTokenException]")?;
         if let Some(inner_26) = &self.message {
             write!(f, ": {}", inner_26)?;
         }
@@ -6716,16 +5523,16 @@ impl ::std::fmt::Debug for IncorrectKeyMaterialError {
     }
 }
 impl IncorrectKeyMaterialError {
-    pub fn code(&self) -> &str {
-        "IncorrectKeyMaterialException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for IncorrectKeyMaterialError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "IncorrectKeyMaterialError")?;
+        write!(
+            f,
+            "IncorrectKeyMaterialError [IncorrectKeyMaterialException]"
+        )?;
         if let Some(inner_27) = &self.message {
             write!(f, ": {}", inner_27)?;
         }
@@ -6781,16 +5588,13 @@ impl ::std::fmt::Debug for ExpiredImportTokenError {
     }
 }
 impl ExpiredImportTokenError {
-    pub fn code(&self) -> &str {
-        "ExpiredImportTokenException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for ExpiredImportTokenError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "ExpiredImportTokenError")?;
+        write!(f, "ExpiredImportTokenError [ExpiredImportTokenException]")?;
         if let Some(inner_28) = &self.message {
             write!(f, ": {}", inner_28)?;
         }
@@ -6847,16 +5651,16 @@ impl ::std::fmt::Debug for CustomKeyStoreHasCMKsError {
     }
 }
 impl CustomKeyStoreHasCMKsError {
-    pub fn code(&self) -> &str {
-        "CustomKeyStoreHasCMKsException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for CustomKeyStoreHasCMKsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "CustomKeyStoreHasCMKsError")?;
+        write!(
+            f,
+            "CustomKeyStoreHasCMKsError [CustomKeyStoreHasCMKsException]"
+        )?;
         if let Some(inner_29) = &self.message {
             write!(f, ": {}", inner_29)?;
         }
@@ -6914,16 +5718,16 @@ impl ::std::fmt::Debug for IncorrectTrustAnchorError {
     }
 }
 impl IncorrectTrustAnchorError {
-    pub fn code(&self) -> &str {
-        "IncorrectTrustAnchorException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for IncorrectTrustAnchorError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "IncorrectTrustAnchorError")?;
+        write!(
+            f,
+            "IncorrectTrustAnchorError [IncorrectTrustAnchorException]"
+        )?;
         if let Some(inner_30) = &self.message {
             write!(f, ": {}", inner_30)?;
         }
@@ -6982,16 +5786,16 @@ impl ::std::fmt::Debug for CloudHsmClusterInUseError {
     }
 }
 impl CloudHsmClusterInUseError {
-    pub fn code(&self) -> &str {
-        "CloudHsmClusterInUseException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for CloudHsmClusterInUseError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "CloudHsmClusterInUseError")?;
+        write!(
+            f,
+            "CloudHsmClusterInUseError [CloudHsmClusterInUseException]"
+        )?;
         if let Some(inner_31) = &self.message {
             write!(f, ": {}", inner_31)?;
         }
@@ -7046,16 +5850,13 @@ impl ::std::fmt::Debug for InvalidAliasNameError {
     }
 }
 impl InvalidAliasNameError {
-    pub fn code(&self) -> &str {
-        "InvalidAliasNameException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for InvalidAliasNameError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InvalidAliasNameError")?;
+        write!(f, "InvalidAliasNameError [InvalidAliasNameException]")?;
         if let Some(inner_32) = &self.message {
             write!(f, ": {}", inner_32)?;
         }
@@ -7111,16 +5912,13 @@ impl ::std::fmt::Debug for AlreadyExistsError {
     }
 }
 impl AlreadyExistsError {
-    pub fn code(&self) -> &str {
-        "AlreadyExistsException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for AlreadyExistsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "AlreadyExistsError")?;
+        write!(f, "AlreadyExistsError [AlreadyExistsException]")?;
         if let Some(inner_33) = &self.message {
             write!(f, ": {}", inner_33)?;
         }

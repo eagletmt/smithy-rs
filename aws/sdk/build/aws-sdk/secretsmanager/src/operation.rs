@@ -135,19 +135,35 @@ impl CancelRotateSecret {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CancelRotateSecretError::InternalServiceError(body),
+                    Ok(body) => crate::error::CancelRotateSecretError {
+                        kind: crate::error::CancelRotateSecretErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CancelRotateSecretError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CancelRotateSecretError::InvalidParameterError(body),
+                    Ok(body) => crate::error::CancelRotateSecretError {
+                        kind: crate::error::CancelRotateSecretErrorKind::InvalidParameterError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CancelRotateSecretError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CancelRotateSecretError::InvalidRequestError(body),
+                    Ok(body) => crate::error::CancelRotateSecretError {
+                        kind: crate::error::CancelRotateSecretErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CancelRotateSecretError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CancelRotateSecretError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::CancelRotateSecretError {
+                        kind: crate::error::CancelRotateSecretErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CancelRotateSecretError::unhandled(e),
                 },
                 _ => crate::error::CancelRotateSecretError::unhandled(generic),
@@ -293,39 +309,68 @@ impl CreateSecret {
             };
             return Err(match error_code {
                 "EncryptionFailure" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateSecretError::EncryptionFailure(body),
+                    Ok(body) => crate::error::CreateSecretError {
+                        kind: crate::error::CreateSecretErrorKind::EncryptionFailure(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateSecretError::unhandled(e),
                 },
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateSecretError::InternalServiceError(body),
+                    Ok(body) => crate::error::CreateSecretError {
+                        kind: crate::error::CreateSecretErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateSecretError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateSecretError::InvalidParameterError(body),
+                    Ok(body) => crate::error::CreateSecretError {
+                        kind: crate::error::CreateSecretErrorKind::InvalidParameterError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateSecretError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateSecretError::InvalidRequestError(body),
+                    Ok(body) => crate::error::CreateSecretError {
+                        kind: crate::error::CreateSecretErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateSecretError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateSecretError::LimitExceededError(body),
+                    Ok(body) => crate::error::CreateSecretError {
+                        kind: crate::error::CreateSecretErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateSecretError::unhandled(e),
                 },
                 "MalformedPolicyDocumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateSecretError::MalformedPolicyDocumentError(body),
+                    Ok(body) => crate::error::CreateSecretError {
+                        kind: crate::error::CreateSecretErrorKind::MalformedPolicyDocumentError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateSecretError::unhandled(e),
                 },
                 "PreconditionNotMetException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateSecretError::PreconditionNotMetError(body),
+                    Ok(body) => crate::error::CreateSecretError {
+                        kind: crate::error::CreateSecretErrorKind::PreconditionNotMetError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateSecretError::unhandled(e),
                 },
                 "ResourceExistsException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateSecretError::ResourceExistsError(body),
+                    Ok(body) => crate::error::CreateSecretError {
+                        kind: crate::error::CreateSecretErrorKind::ResourceExistsError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateSecretError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateSecretError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::CreateSecretError {
+                        kind: crate::error::CreateSecretErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateSecretError::unhandled(e),
                 },
                 _ => crate::error::CreateSecretError::unhandled(generic),
@@ -410,17 +455,30 @@ impl DeleteResourcePolicy {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteResourcePolicyError::InternalServiceError(body),
+                    Ok(body) => crate::error::DeleteResourcePolicyError {
+                        kind: crate::error::DeleteResourcePolicyErrorKind::InternalServiceError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteResourcePolicyError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteResourcePolicyError::InvalidRequestError(body),
+                    Ok(body) => crate::error::DeleteResourcePolicyError {
+                        kind: crate::error::DeleteResourcePolicyErrorKind::InvalidRequestError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteResourcePolicyError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DeleteResourcePolicyError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::DeleteResourcePolicyError {
+                        kind: crate::error::DeleteResourcePolicyErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteResourcePolicyError::unhandled(e),
                 },
                 _ => crate::error::DeleteResourcePolicyError::unhandled(generic),
@@ -524,19 +582,31 @@ impl DeleteSecret {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteSecretError::InternalServiceError(body),
+                    Ok(body) => crate::error::DeleteSecretError {
+                        kind: crate::error::DeleteSecretErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteSecretError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteSecretError::InvalidParameterError(body),
+                    Ok(body) => crate::error::DeleteSecretError {
+                        kind: crate::error::DeleteSecretErrorKind::InvalidParameterError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteSecretError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteSecretError::InvalidRequestError(body),
+                    Ok(body) => crate::error::DeleteSecretError {
+                        kind: crate::error::DeleteSecretErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteSecretError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteSecretError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::DeleteSecretError {
+                        kind: crate::error::DeleteSecretErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteSecretError::unhandled(e),
                 },
                 _ => crate::error::DeleteSecretError::unhandled(generic),
@@ -622,11 +692,17 @@ impl DescribeSecret {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeSecretError::InternalServiceError(body),
+                    Ok(body) => crate::error::DescribeSecretError {
+                        kind: crate::error::DescribeSecretErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeSecretError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeSecretError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::DescribeSecretError {
+                        kind: crate::error::DescribeSecretErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeSecretError::unhandled(e),
                 },
                 _ => crate::error::DescribeSecretError::unhandled(generic),
@@ -709,15 +785,24 @@ impl GetRandomPassword {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetRandomPasswordError::InternalServiceError(body),
+                    Ok(body) => crate::error::GetRandomPasswordError {
+                        kind: crate::error::GetRandomPasswordErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRandomPasswordError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetRandomPasswordError::InvalidParameterError(body),
+                    Ok(body) => crate::error::GetRandomPasswordError {
+                        kind: crate::error::GetRandomPasswordErrorKind::InvalidParameterError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRandomPasswordError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetRandomPasswordError::InvalidRequestError(body),
+                    Ok(body) => crate::error::GetRandomPasswordError {
+                        kind: crate::error::GetRandomPasswordErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRandomPasswordError::unhandled(e),
                 },
                 _ => crate::error::GetRandomPasswordError::unhandled(generic),
@@ -800,15 +885,24 @@ impl GetResourcePolicy {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetResourcePolicyError::InternalServiceError(body),
+                    Ok(body) => crate::error::GetResourcePolicyError {
+                        kind: crate::error::GetResourcePolicyErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetResourcePolicyError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetResourcePolicyError::InvalidRequestError(body),
+                    Ok(body) => crate::error::GetResourcePolicyError {
+                        kind: crate::error::GetResourcePolicyErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetResourcePolicyError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetResourcePolicyError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::GetResourcePolicyError {
+                        kind: crate::error::GetResourcePolicyErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetResourcePolicyError::unhandled(e),
                 },
                 _ => crate::error::GetResourcePolicyError::unhandled(generic),
@@ -894,23 +988,38 @@ impl GetSecretValue {
             };
             return Err(match error_code {
                 "DecryptionFailure" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetSecretValueError::DecryptionFailure(body),
+                    Ok(body) => crate::error::GetSecretValueError {
+                        kind: crate::error::GetSecretValueErrorKind::DecryptionFailure(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetSecretValueError::unhandled(e),
                 },
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetSecretValueError::InternalServiceError(body),
+                    Ok(body) => crate::error::GetSecretValueError {
+                        kind: crate::error::GetSecretValueErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetSecretValueError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetSecretValueError::InvalidParameterError(body),
+                    Ok(body) => crate::error::GetSecretValueError {
+                        kind: crate::error::GetSecretValueErrorKind::InvalidParameterError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetSecretValueError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetSecretValueError::InvalidRequestError(body),
+                    Ok(body) => crate::error::GetSecretValueError {
+                        kind: crate::error::GetSecretValueErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetSecretValueError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetSecretValueError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::GetSecretValueError {
+                        kind: crate::error::GetSecretValueErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetSecretValueError::unhandled(e),
                 },
                 _ => crate::error::GetSecretValueError::unhandled(generic),
@@ -1002,15 +1111,24 @@ impl ListSecrets {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListSecretsError::InternalServiceError(body),
+                    Ok(body) => crate::error::ListSecretsError {
+                        kind: crate::error::ListSecretsErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListSecretsError::unhandled(e),
                 },
                 "InvalidNextTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListSecretsError::InvalidNextTokenError(body),
+                    Ok(body) => crate::error::ListSecretsError {
+                        kind: crate::error::ListSecretsErrorKind::InvalidNextTokenError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListSecretsError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListSecretsError::InvalidParameterError(body),
+                    Ok(body) => crate::error::ListSecretsError {
+                        kind: crate::error::ListSecretsErrorKind::InvalidParameterError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListSecretsError::unhandled(e),
                 },
                 _ => crate::error::ListSecretsError::unhandled(generic),
@@ -1099,19 +1217,30 @@ impl ListSecretVersionIds {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListSecretVersionIdsError::InternalServiceError(body),
+                    Ok(body) => crate::error::ListSecretVersionIdsError {
+                        kind: crate::error::ListSecretVersionIdsErrorKind::InternalServiceError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListSecretVersionIdsError::unhandled(e),
                 },
                 "InvalidNextTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ListSecretVersionIdsError::InvalidNextTokenError(body)
-                    }
+                    Ok(body) => crate::error::ListSecretVersionIdsError {
+                        kind: crate::error::ListSecretVersionIdsErrorKind::InvalidNextTokenError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListSecretVersionIdsError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ListSecretVersionIdsError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::ListSecretVersionIdsError {
+                        kind: crate::error::ListSecretVersionIdsErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListSecretVersionIdsError::unhandled(e),
                 },
                 _ => crate::error::ListSecretVersionIdsError::unhandled(generic),
@@ -1203,29 +1332,48 @@ impl PutResourcePolicy {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutResourcePolicyError::InternalServiceError(body),
+                    Ok(body) => crate::error::PutResourcePolicyError {
+                        kind: crate::error::PutResourcePolicyErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutResourcePolicyError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutResourcePolicyError::InvalidParameterError(body),
+                    Ok(body) => crate::error::PutResourcePolicyError {
+                        kind: crate::error::PutResourcePolicyErrorKind::InvalidParameterError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutResourcePolicyError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutResourcePolicyError::InvalidRequestError(body),
+                    Ok(body) => crate::error::PutResourcePolicyError {
+                        kind: crate::error::PutResourcePolicyErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutResourcePolicyError::unhandled(e),
                 },
                 "MalformedPolicyDocumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::PutResourcePolicyError::MalformedPolicyDocumentError(body)
-                    }
+                    Ok(body) => crate::error::PutResourcePolicyError {
+                        kind:
+                            crate::error::PutResourcePolicyErrorKind::MalformedPolicyDocumentError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutResourcePolicyError::unhandled(e),
                 },
                 "PublicPolicyException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutResourcePolicyError::PublicPolicyError(body),
+                    Ok(body) => crate::error::PutResourcePolicyError {
+                        kind: crate::error::PutResourcePolicyErrorKind::PublicPolicyError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutResourcePolicyError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutResourcePolicyError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::PutResourcePolicyError {
+                        kind: crate::error::PutResourcePolicyErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutResourcePolicyError::unhandled(e),
                 },
                 _ => crate::error::PutResourcePolicyError::unhandled(generic),
@@ -1372,31 +1520,52 @@ impl PutSecretValue {
             };
             return Err(match error_code {
                 "EncryptionFailure" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutSecretValueError::EncryptionFailure(body),
+                    Ok(body) => crate::error::PutSecretValueError {
+                        kind: crate::error::PutSecretValueErrorKind::EncryptionFailure(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutSecretValueError::unhandled(e),
                 },
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutSecretValueError::InternalServiceError(body),
+                    Ok(body) => crate::error::PutSecretValueError {
+                        kind: crate::error::PutSecretValueErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutSecretValueError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutSecretValueError::InvalidParameterError(body),
+                    Ok(body) => crate::error::PutSecretValueError {
+                        kind: crate::error::PutSecretValueErrorKind::InvalidParameterError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutSecretValueError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutSecretValueError::InvalidRequestError(body),
+                    Ok(body) => crate::error::PutSecretValueError {
+                        kind: crate::error::PutSecretValueErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutSecretValueError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutSecretValueError::LimitExceededError(body),
+                    Ok(body) => crate::error::PutSecretValueError {
+                        kind: crate::error::PutSecretValueErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutSecretValueError::unhandled(e),
                 },
                 "ResourceExistsException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutSecretValueError::ResourceExistsError(body),
+                    Ok(body) => crate::error::PutSecretValueError {
+                        kind: crate::error::PutSecretValueErrorKind::ResourceExistsError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutSecretValueError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutSecretValueError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::PutSecretValueError {
+                        kind: crate::error::PutSecretValueErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutSecretValueError::unhandled(e),
                 },
                 _ => crate::error::PutSecretValueError::unhandled(generic),
@@ -1474,19 +1643,31 @@ impl RestoreSecret {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreSecretError::InternalServiceError(body),
+                    Ok(body) => crate::error::RestoreSecretError {
+                        kind: crate::error::RestoreSecretErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RestoreSecretError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreSecretError::InvalidParameterError(body),
+                    Ok(body) => crate::error::RestoreSecretError {
+                        kind: crate::error::RestoreSecretErrorKind::InvalidParameterError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RestoreSecretError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreSecretError::InvalidRequestError(body),
+                    Ok(body) => crate::error::RestoreSecretError {
+                        kind: crate::error::RestoreSecretErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RestoreSecretError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreSecretError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::RestoreSecretError {
+                        kind: crate::error::RestoreSecretErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RestoreSecretError::unhandled(e),
                 },
                 _ => crate::error::RestoreSecretError::unhandled(generic),
@@ -1605,19 +1786,31 @@ impl RotateSecret {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RotateSecretError::InternalServiceError(body),
+                    Ok(body) => crate::error::RotateSecretError {
+                        kind: crate::error::RotateSecretErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RotateSecretError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RotateSecretError::InvalidParameterError(body),
+                    Ok(body) => crate::error::RotateSecretError {
+                        kind: crate::error::RotateSecretErrorKind::InvalidParameterError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RotateSecretError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RotateSecretError::InvalidRequestError(body),
+                    Ok(body) => crate::error::RotateSecretError {
+                        kind: crate::error::RotateSecretErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RotateSecretError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RotateSecretError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::RotateSecretError {
+                        kind: crate::error::RotateSecretErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RotateSecretError::unhandled(e),
                 },
                 _ => crate::error::RotateSecretError::unhandled(generic),
@@ -1731,19 +1924,31 @@ impl TagResource {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::InternalServiceError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::InvalidParameterError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::InvalidParameterError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::InvalidRequestError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 _ => crate::error::TagResourceError::unhandled(generic),
@@ -1824,19 +2029,31 @@ impl UntagResource {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::InternalServiceError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::InvalidParameterError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::InvalidParameterError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::InvalidRequestError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 _ => crate::error::UntagResourceError::unhandled(generic),
@@ -1973,39 +2190,68 @@ impl UpdateSecret {
             };
             return Err(match error_code {
                 "EncryptionFailure" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateSecretError::EncryptionFailure(body),
+                    Ok(body) => crate::error::UpdateSecretError {
+                        kind: crate::error::UpdateSecretErrorKind::EncryptionFailure(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretError::unhandled(e),
                 },
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateSecretError::InternalServiceError(body),
+                    Ok(body) => crate::error::UpdateSecretError {
+                        kind: crate::error::UpdateSecretErrorKind::InternalServiceError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateSecretError::InvalidParameterError(body),
+                    Ok(body) => crate::error::UpdateSecretError {
+                        kind: crate::error::UpdateSecretErrorKind::InvalidParameterError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateSecretError::InvalidRequestError(body),
+                    Ok(body) => crate::error::UpdateSecretError {
+                        kind: crate::error::UpdateSecretErrorKind::InvalidRequestError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateSecretError::LimitExceededError(body),
+                    Ok(body) => crate::error::UpdateSecretError {
+                        kind: crate::error::UpdateSecretErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretError::unhandled(e),
                 },
                 "MalformedPolicyDocumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateSecretError::MalformedPolicyDocumentError(body),
+                    Ok(body) => crate::error::UpdateSecretError {
+                        kind: crate::error::UpdateSecretErrorKind::MalformedPolicyDocumentError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretError::unhandled(e),
                 },
                 "PreconditionNotMetException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateSecretError::PreconditionNotMetError(body),
+                    Ok(body) => crate::error::UpdateSecretError {
+                        kind: crate::error::UpdateSecretErrorKind::PreconditionNotMetError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretError::unhandled(e),
                 },
                 "ResourceExistsException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateSecretError::ResourceExistsError(body),
+                    Ok(body) => crate::error::UpdateSecretError {
+                        kind: crate::error::UpdateSecretErrorKind::ResourceExistsError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateSecretError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::UpdateSecretError {
+                        kind: crate::error::UpdateSecretErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretError::unhandled(e),
                 },
                 _ => crate::error::UpdateSecretError::unhandled(generic),
@@ -2107,33 +2353,50 @@ impl UpdateSecretVersionStage {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateSecretVersionStageError::InternalServiceError(body)
-                    }
+                    Ok(body) => crate::error::UpdateSecretVersionStageError {
+                        kind: crate::error::UpdateSecretVersionStageErrorKind::InternalServiceError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretVersionStageError::unhandled(e),
                 },
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateSecretVersionStageError::InvalidParameterError(body)
-                    }
+                    Ok(body) => crate::error::UpdateSecretVersionStageError {
+                        kind:
+                            crate::error::UpdateSecretVersionStageErrorKind::InvalidParameterError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretVersionStageError::unhandled(e),
                 },
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateSecretVersionStageError::InvalidRequestError(body)
-                    }
+                    Ok(body) => crate::error::UpdateSecretVersionStageError {
+                        kind: crate::error::UpdateSecretVersionStageErrorKind::InvalidRequestError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretVersionStageError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateSecretVersionStageError::LimitExceededError(body)
-                    }
+                    Ok(body) => crate::error::UpdateSecretVersionStageError {
+                        kind: crate::error::UpdateSecretVersionStageErrorKind::LimitExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretVersionStageError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateSecretVersionStageError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::UpdateSecretVersionStageError {
+                        kind:
+                            crate::error::UpdateSecretVersionStageErrorKind::ResourceNotFoundError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateSecretVersionStageError::unhandled(e),
                 },
                 _ => crate::error::UpdateSecretVersionStageError::unhandled(generic),
@@ -2204,38 +2467,26 @@ impl ValidateResourcePolicy {
             };
             return Err(match error_code {
                 "InternalServiceError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ValidateResourcePolicyError::InternalServiceError(body)
-                    }
-                    Err(e) => crate::error::ValidateResourcePolicyError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ValidateResourcePolicyError { kind: crate::error::ValidateResourcePolicyErrorKind::InternalServiceError(body), meta: generic },
+                    Err(e) => crate::error::ValidateResourcePolicyError::unhandled(e)
+                }
                 "InvalidParameterException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ValidateResourcePolicyError::InvalidParameterError(body)
-                    }
-                    Err(e) => crate::error::ValidateResourcePolicyError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ValidateResourcePolicyError { kind: crate::error::ValidateResourcePolicyErrorKind::InvalidParameterError(body), meta: generic },
+                    Err(e) => crate::error::ValidateResourcePolicyError::unhandled(e)
+                }
                 "InvalidRequestException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ValidateResourcePolicyError::InvalidRequestError(body)
-                    }
-                    Err(e) => crate::error::ValidateResourcePolicyError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ValidateResourcePolicyError { kind: crate::error::ValidateResourcePolicyErrorKind::InvalidRequestError(body), meta: generic },
+                    Err(e) => crate::error::ValidateResourcePolicyError::unhandled(e)
+                }
                 "MalformedPolicyDocumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ValidateResourcePolicyError::MalformedPolicyDocumentError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::ValidateResourcePolicyError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ValidateResourcePolicyError { kind: crate::error::ValidateResourcePolicyErrorKind::MalformedPolicyDocumentError(body), meta: generic },
+                    Err(e) => crate::error::ValidateResourcePolicyError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ValidateResourcePolicyError::ResourceNotFoundError(body)
-                    }
-                    Err(e) => crate::error::ValidateResourcePolicyError::unhandled(e),
-                },
-                _ => crate::error::ValidateResourcePolicyError::unhandled(generic),
+                    Ok(body) => crate::error::ValidateResourcePolicyError { kind: crate::error::ValidateResourcePolicyErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::ValidateResourcePolicyError::unhandled(e)
+                }
+                _ => crate::error::ValidateResourcePolicyError::unhandled(generic)
             });
         }
         let body: ValidateResourcePolicyOutputBody =

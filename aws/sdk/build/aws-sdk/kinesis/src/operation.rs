@@ -107,19 +107,31 @@ impl AddTagsToStream {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::AddTagsToStreamError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::AddTagsToStreamError {
+                        kind: crate::error::AddTagsToStreamErrorKind::InvalidArgumentError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::AddTagsToStreamError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::AddTagsToStreamError::LimitExceededError(body),
+                    Ok(body) => crate::error::AddTagsToStreamError {
+                        kind: crate::error::AddTagsToStreamErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::AddTagsToStreamError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::AddTagsToStreamError::ResourceInUseError(body),
+                    Ok(body) => crate::error::AddTagsToStreamError {
+                        kind: crate::error::AddTagsToStreamErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::AddTagsToStreamError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::AddTagsToStreamError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::AddTagsToStreamError {
+                        kind: crate::error::AddTagsToStreamErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::AddTagsToStreamError::unhandled(e),
                 },
                 _ => crate::error::AddTagsToStreamError::unhandled(generic),
@@ -210,15 +222,24 @@ impl CreateStream {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateStreamError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::CreateStreamError {
+                        kind: crate::error::CreateStreamErrorKind::InvalidArgumentError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateStreamError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateStreamError::LimitExceededError(body),
+                    Ok(body) => crate::error::CreateStreamError {
+                        kind: crate::error::CreateStreamErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateStreamError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateStreamError::ResourceInUseError(body),
+                    Ok(body) => crate::error::CreateStreamError {
+                        kind: crate::error::CreateStreamErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateStreamError::unhandled(e),
                 },
                 _ => crate::error::CreateStreamError::unhandled(generic),
@@ -284,32 +305,22 @@ impl DecreaseStreamRetentionPeriod {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DecreaseStreamRetentionPeriodError::InvalidArgumentError(body)
-                    }
-                    Err(e) => crate::error::DecreaseStreamRetentionPeriodError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DecreaseStreamRetentionPeriodError { kind: crate::error::DecreaseStreamRetentionPeriodErrorKind::InvalidArgumentError(body), meta: generic },
+                    Err(e) => crate::error::DecreaseStreamRetentionPeriodError::unhandled(e)
+                }
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DecreaseStreamRetentionPeriodError::LimitExceededError(body)
-                    }
-                    Err(e) => crate::error::DecreaseStreamRetentionPeriodError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DecreaseStreamRetentionPeriodError { kind: crate::error::DecreaseStreamRetentionPeriodErrorKind::LimitExceededError(body), meta: generic },
+                    Err(e) => crate::error::DecreaseStreamRetentionPeriodError::unhandled(e)
+                }
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DecreaseStreamRetentionPeriodError::ResourceInUseError(body)
-                    }
-                    Err(e) => crate::error::DecreaseStreamRetentionPeriodError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DecreaseStreamRetentionPeriodError { kind: crate::error::DecreaseStreamRetentionPeriodErrorKind::ResourceInUseError(body), meta: generic },
+                    Err(e) => crate::error::DecreaseStreamRetentionPeriodError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DecreaseStreamRetentionPeriodError::ResourceNotFoundError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DecreaseStreamRetentionPeriodError::unhandled(e),
-                },
-                _ => crate::error::DecreaseStreamRetentionPeriodError::unhandled(generic),
+                    Ok(body) => crate::error::DecreaseStreamRetentionPeriodError { kind: crate::error::DecreaseStreamRetentionPeriodErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::DecreaseStreamRetentionPeriodError::unhandled(e)
+                }
+                _ => crate::error::DecreaseStreamRetentionPeriodError::unhandled(generic)
             });
         }
         Ok(DecreaseStreamRetentionPeriodOutput {})
@@ -381,15 +392,24 @@ impl DeleteStream {
             };
             return Err(match error_code {
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteStreamError::LimitExceededError(body),
+                    Ok(body) => crate::error::DeleteStreamError {
+                        kind: crate::error::DeleteStreamErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteStreamError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteStreamError::ResourceInUseError(body),
+                    Ok(body) => crate::error::DeleteStreamError {
+                        kind: crate::error::DeleteStreamErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteStreamError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteStreamError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::DeleteStreamError {
+                        kind: crate::error::DeleteStreamErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteStreamError::unhandled(e),
                 },
                 _ => crate::error::DeleteStreamError::unhandled(generic),
@@ -456,21 +476,31 @@ impl DeregisterStreamConsumer {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DeregisterStreamConsumerError::InvalidArgumentError(body)
-                    }
+                    Ok(body) => crate::error::DeregisterStreamConsumerError {
+                        kind: crate::error::DeregisterStreamConsumerErrorKind::InvalidArgumentError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeregisterStreamConsumerError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DeregisterStreamConsumerError::LimitExceededError(body)
-                    }
+                    Ok(body) => crate::error::DeregisterStreamConsumerError {
+                        kind: crate::error::DeregisterStreamConsumerErrorKind::LimitExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeregisterStreamConsumerError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DeregisterStreamConsumerError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::DeregisterStreamConsumerError {
+                        kind:
+                            crate::error::DeregisterStreamConsumerErrorKind::ResourceNotFoundError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeregisterStreamConsumerError::unhandled(e),
                 },
                 _ => crate::error::DeregisterStreamConsumerError::unhandled(generic),
@@ -527,7 +557,10 @@ impl DescribeLimits {
             };
             return Err(match error_code {
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeLimitsError::LimitExceededError(body),
+                    Ok(body) => crate::error::DescribeLimitsError {
+                        kind: crate::error::DescribeLimitsErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeLimitsError::unhandled(e),
                 },
                 _ => crate::error::DescribeLimitsError::unhandled(generic),
@@ -599,11 +632,17 @@ impl DescribeStream {
             };
             return Err(match error_code {
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeStreamError::LimitExceededError(body),
+                    Ok(body) => crate::error::DescribeStreamError {
+                        kind: crate::error::DescribeStreamErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeStreamError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeStreamError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::DescribeStreamError {
+                        kind: crate::error::DescribeStreamErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeStreamError::unhandled(e),
                 },
                 _ => crate::error::DescribeStreamError::unhandled(generic),
@@ -674,19 +713,30 @@ impl DescribeStreamConsumer {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeStreamConsumerError::InvalidArgumentError(body)
-                    }
+                    Ok(body) => crate::error::DescribeStreamConsumerError {
+                        kind: crate::error::DescribeStreamConsumerErrorKind::InvalidArgumentError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeStreamConsumerError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeStreamConsumerError::LimitExceededError(body),
+                    Ok(body) => crate::error::DescribeStreamConsumerError {
+                        kind: crate::error::DescribeStreamConsumerErrorKind::LimitExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeStreamConsumerError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeStreamConsumerError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::DescribeStreamConsumerError {
+                        kind: crate::error::DescribeStreamConsumerErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeStreamConsumerError::unhandled(e),
                 },
                 _ => crate::error::DescribeStreamConsumerError::unhandled(generic),
@@ -754,13 +804,21 @@ impl DescribeStreamSummary {
             };
             return Err(match error_code {
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeStreamSummaryError::LimitExceededError(body),
+                    Ok(body) => crate::error::DescribeStreamSummaryError {
+                        kind: crate::error::DescribeStreamSummaryErrorKind::LimitExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeStreamSummaryError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeStreamSummaryError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::DescribeStreamSummaryError {
+                        kind: crate::error::DescribeStreamSummaryErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeStreamSummaryError::unhandled(e),
                 },
                 _ => crate::error::DescribeStreamSummaryError::unhandled(generic),
@@ -825,27 +883,41 @@ impl DisableEnhancedMonitoring {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DisableEnhancedMonitoringError::InvalidArgumentError(body)
-                    }
+                    Ok(body) => crate::error::DisableEnhancedMonitoringError {
+                        kind:
+                            crate::error::DisableEnhancedMonitoringErrorKind::InvalidArgumentError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableEnhancedMonitoringError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DisableEnhancedMonitoringError::LimitExceededError(body)
-                    }
+                    Ok(body) => crate::error::DisableEnhancedMonitoringError {
+                        kind: crate::error::DisableEnhancedMonitoringErrorKind::LimitExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableEnhancedMonitoringError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DisableEnhancedMonitoringError::ResourceInUseError(body)
-                    }
+                    Ok(body) => crate::error::DisableEnhancedMonitoringError {
+                        kind: crate::error::DisableEnhancedMonitoringErrorKind::ResourceInUseError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableEnhancedMonitoringError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DisableEnhancedMonitoringError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::DisableEnhancedMonitoringError {
+                        kind:
+                            crate::error::DisableEnhancedMonitoringErrorKind::ResourceNotFoundError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DisableEnhancedMonitoringError::unhandled(e),
                 },
                 _ => crate::error::DisableEnhancedMonitoringError::unhandled(generic),
@@ -913,27 +985,40 @@ impl EnableEnhancedMonitoring {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::EnableEnhancedMonitoringError::InvalidArgumentError(body)
-                    }
+                    Ok(body) => crate::error::EnableEnhancedMonitoringError {
+                        kind: crate::error::EnableEnhancedMonitoringErrorKind::InvalidArgumentError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableEnhancedMonitoringError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::EnableEnhancedMonitoringError::LimitExceededError(body)
-                    }
+                    Ok(body) => crate::error::EnableEnhancedMonitoringError {
+                        kind: crate::error::EnableEnhancedMonitoringErrorKind::LimitExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableEnhancedMonitoringError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::EnableEnhancedMonitoringError::ResourceInUseError(body)
-                    }
+                    Ok(body) => crate::error::EnableEnhancedMonitoringError {
+                        kind: crate::error::EnableEnhancedMonitoringErrorKind::ResourceInUseError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableEnhancedMonitoringError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::EnableEnhancedMonitoringError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::EnableEnhancedMonitoringError {
+                        kind:
+                            crate::error::EnableEnhancedMonitoringErrorKind::ResourceNotFoundError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::EnableEnhancedMonitoringError::unhandled(e),
                 },
                 _ => crate::error::EnableEnhancedMonitoringError::unhandled(generic),
@@ -1039,45 +1124,75 @@ impl GetRecords {
             };
             return Err(match error_code {
                 "ExpiredIteratorException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetRecordsError::ExpiredIteratorError(body),
+                    Ok(body) => crate::error::GetRecordsError {
+                        kind: crate::error::GetRecordsErrorKind::ExpiredIteratorError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRecordsError::unhandled(e),
                 },
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetRecordsError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::GetRecordsError {
+                        kind: crate::error::GetRecordsErrorKind::InvalidArgumentError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRecordsError::unhandled(e),
                 },
                 "KMSAccessDeniedException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetRecordsError::KMSAccessDeniedError(body),
+                    Ok(body) => crate::error::GetRecordsError {
+                        kind: crate::error::GetRecordsErrorKind::KMSAccessDeniedError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRecordsError::unhandled(e),
                 },
                 "KMSDisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetRecordsError::KMSDisabledError(body),
+                    Ok(body) => crate::error::GetRecordsError {
+                        kind: crate::error::GetRecordsErrorKind::KMSDisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRecordsError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetRecordsError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::GetRecordsError {
+                        kind: crate::error::GetRecordsErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRecordsError::unhandled(e),
                 },
                 "KMSNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetRecordsError::KMSNotFoundError(body),
+                    Ok(body) => crate::error::GetRecordsError {
+                        kind: crate::error::GetRecordsErrorKind::KMSNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRecordsError::unhandled(e),
                 },
                 "KMSOptInRequired" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetRecordsError::KMSOptInRequired(body),
+                    Ok(body) => crate::error::GetRecordsError {
+                        kind: crate::error::GetRecordsErrorKind::KMSOptInRequired(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRecordsError::unhandled(e),
                 },
                 "KMSThrottlingException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetRecordsError::KMSThrottlingError(body),
+                    Ok(body) => crate::error::GetRecordsError {
+                        kind: crate::error::GetRecordsErrorKind::KMSThrottlingError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRecordsError::unhandled(e),
                 },
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GetRecordsError::ProvisionedThroughputExceededError(body)
-                    }
+                    Ok(body) => crate::error::GetRecordsError {
+                        kind: crate::error::GetRecordsErrorKind::ProvisionedThroughputExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRecordsError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetRecordsError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::GetRecordsError {
+                        kind: crate::error::GetRecordsErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetRecordsError::unhandled(e),
                 },
                 _ => crate::error::GetRecordsError::unhandled(generic),
@@ -1170,22 +1285,18 @@ impl GetShardIterator {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetShardIteratorError::InvalidArgumentError(body),
-                    Err(e) => crate::error::GetShardIteratorError::unhandled(e),
-                },
+                    Ok(body) => crate::error::GetShardIteratorError { kind: crate::error::GetShardIteratorErrorKind::InvalidArgumentError(body), meta: generic },
+                    Err(e) => crate::error::GetShardIteratorError::unhandled(e)
+                }
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GetShardIteratorError::ProvisionedThroughputExceededError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::GetShardIteratorError::unhandled(e),
-                },
+                    Ok(body) => crate::error::GetShardIteratorError { kind: crate::error::GetShardIteratorErrorKind::ProvisionedThroughputExceededError(body), meta: generic },
+                    Err(e) => crate::error::GetShardIteratorError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetShardIteratorError::ResourceNotFoundError(body),
-                    Err(e) => crate::error::GetShardIteratorError::unhandled(e),
-                },
-                _ => crate::error::GetShardIteratorError::unhandled(generic),
+                    Ok(body) => crate::error::GetShardIteratorError { kind: crate::error::GetShardIteratorErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::GetShardIteratorError::unhandled(e)
+                }
+                _ => crate::error::GetShardIteratorError::unhandled(generic)
             });
         }
         let body: GetShardIteratorOutputBody =
@@ -1256,32 +1367,22 @@ impl IncreaseStreamRetentionPeriod {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::IncreaseStreamRetentionPeriodError::InvalidArgumentError(body)
-                    }
-                    Err(e) => crate::error::IncreaseStreamRetentionPeriodError::unhandled(e),
-                },
+                    Ok(body) => crate::error::IncreaseStreamRetentionPeriodError { kind: crate::error::IncreaseStreamRetentionPeriodErrorKind::InvalidArgumentError(body), meta: generic },
+                    Err(e) => crate::error::IncreaseStreamRetentionPeriodError::unhandled(e)
+                }
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::IncreaseStreamRetentionPeriodError::LimitExceededError(body)
-                    }
-                    Err(e) => crate::error::IncreaseStreamRetentionPeriodError::unhandled(e),
-                },
+                    Ok(body) => crate::error::IncreaseStreamRetentionPeriodError { kind: crate::error::IncreaseStreamRetentionPeriodErrorKind::LimitExceededError(body), meta: generic },
+                    Err(e) => crate::error::IncreaseStreamRetentionPeriodError::unhandled(e)
+                }
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::IncreaseStreamRetentionPeriodError::ResourceInUseError(body)
-                    }
-                    Err(e) => crate::error::IncreaseStreamRetentionPeriodError::unhandled(e),
-                },
+                    Ok(body) => crate::error::IncreaseStreamRetentionPeriodError { kind: crate::error::IncreaseStreamRetentionPeriodErrorKind::ResourceInUseError(body), meta: generic },
+                    Err(e) => crate::error::IncreaseStreamRetentionPeriodError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::IncreaseStreamRetentionPeriodError::ResourceNotFoundError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::IncreaseStreamRetentionPeriodError::unhandled(e),
-                },
-                _ => crate::error::IncreaseStreamRetentionPeriodError::unhandled(generic),
+                    Ok(body) => crate::error::IncreaseStreamRetentionPeriodError { kind: crate::error::IncreaseStreamRetentionPeriodErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::IncreaseStreamRetentionPeriodError::unhandled(e)
+                }
+                _ => crate::error::IncreaseStreamRetentionPeriodError::unhandled(generic)
             });
         }
         Ok(IncreaseStreamRetentionPeriodOutput {})
@@ -1343,23 +1444,38 @@ impl ListShards {
             };
             return Err(match error_code {
                 "ExpiredNextTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListShardsError::ExpiredNextTokenError(body),
+                    Ok(body) => crate::error::ListShardsError {
+                        kind: crate::error::ListShardsErrorKind::ExpiredNextTokenError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListShardsError::unhandled(e),
                 },
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListShardsError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::ListShardsError {
+                        kind: crate::error::ListShardsErrorKind::InvalidArgumentError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListShardsError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListShardsError::LimitExceededError(body),
+                    Ok(body) => crate::error::ListShardsError {
+                        kind: crate::error::ListShardsErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListShardsError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListShardsError::ResourceInUseError(body),
+                    Ok(body) => crate::error::ListShardsError {
+                        kind: crate::error::ListShardsErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListShardsError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListShardsError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::ListShardsError {
+                        kind: crate::error::ListShardsErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListShardsError::unhandled(e),
                 },
                 _ => crate::error::ListShardsError::unhandled(generic),
@@ -1422,23 +1538,44 @@ impl ListStreamConsumers {
             };
             return Err(match error_code {
                 "ExpiredNextTokenException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListStreamConsumersError::ExpiredNextTokenError(body),
+                    Ok(body) => crate::error::ListStreamConsumersError {
+                        kind: crate::error::ListStreamConsumersErrorKind::ExpiredNextTokenError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListStreamConsumersError::unhandled(e),
                 },
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListStreamConsumersError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::ListStreamConsumersError {
+                        kind: crate::error::ListStreamConsumersErrorKind::InvalidArgumentError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListStreamConsumersError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListStreamConsumersError::LimitExceededError(body),
+                    Ok(body) => crate::error::ListStreamConsumersError {
+                        kind: crate::error::ListStreamConsumersErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListStreamConsumersError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListStreamConsumersError::ResourceInUseError(body),
+                    Ok(body) => crate::error::ListStreamConsumersError {
+                        kind: crate::error::ListStreamConsumersErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListStreamConsumersError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListStreamConsumersError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::ListStreamConsumersError {
+                        kind: crate::error::ListStreamConsumersErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListStreamConsumersError::unhandled(e),
                 },
                 _ => crate::error::ListStreamConsumersError::unhandled(generic),
@@ -1512,7 +1649,10 @@ impl ListStreams {
             };
             return Err(match error_code {
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListStreamsError::LimitExceededError(body),
+                    Ok(body) => crate::error::ListStreamsError {
+                        kind: crate::error::ListStreamsErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListStreamsError::unhandled(e),
                 },
                 _ => crate::error::ListStreamsError::unhandled(generic),
@@ -1571,15 +1711,24 @@ impl ListTagsForStream {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListTagsForStreamError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::ListTagsForStreamError {
+                        kind: crate::error::ListTagsForStreamErrorKind::InvalidArgumentError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListTagsForStreamError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListTagsForStreamError::LimitExceededError(body),
+                    Ok(body) => crate::error::ListTagsForStreamError {
+                        kind: crate::error::ListTagsForStreamErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListTagsForStreamError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListTagsForStreamError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::ListTagsForStreamError {
+                        kind: crate::error::ListTagsForStreamErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListTagsForStreamError::unhandled(e),
                 },
                 _ => crate::error::ListTagsForStreamError::unhandled(generic),
@@ -1672,19 +1821,31 @@ impl MergeShards {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::MergeShardsError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::MergeShardsError {
+                        kind: crate::error::MergeShardsErrorKind::InvalidArgumentError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::MergeShardsError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::MergeShardsError::LimitExceededError(body),
+                    Ok(body) => crate::error::MergeShardsError {
+                        kind: crate::error::MergeShardsErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::MergeShardsError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::MergeShardsError::ResourceInUseError(body),
+                    Ok(body) => crate::error::MergeShardsError {
+                        kind: crate::error::MergeShardsErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::MergeShardsError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::MergeShardsError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::MergeShardsError {
+                        kind: crate::error::MergeShardsErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::MergeShardsError::unhandled(e),
                 },
                 _ => crate::error::MergeShardsError::unhandled(generic),
@@ -1772,41 +1933,68 @@ impl PutRecord {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::PutRecordError {
+                        kind: crate::error::PutRecordErrorKind::InvalidArgumentError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordError::unhandled(e),
                 },
                 "KMSAccessDeniedException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordError::KMSAccessDeniedError(body),
+                    Ok(body) => crate::error::PutRecordError {
+                        kind: crate::error::PutRecordErrorKind::KMSAccessDeniedError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordError::unhandled(e),
                 },
                 "KMSDisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordError::KMSDisabledError(body),
+                    Ok(body) => crate::error::PutRecordError {
+                        kind: crate::error::PutRecordErrorKind::KMSDisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::PutRecordError {
+                        kind: crate::error::PutRecordErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordError::unhandled(e),
                 },
                 "KMSNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordError::KMSNotFoundError(body),
+                    Ok(body) => crate::error::PutRecordError {
+                        kind: crate::error::PutRecordErrorKind::KMSNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordError::unhandled(e),
                 },
                 "KMSOptInRequired" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordError::KMSOptInRequired(body),
+                    Ok(body) => crate::error::PutRecordError {
+                        kind: crate::error::PutRecordErrorKind::KMSOptInRequired(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordError::unhandled(e),
                 },
                 "KMSThrottlingException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordError::KMSThrottlingError(body),
+                    Ok(body) => crate::error::PutRecordError {
+                        kind: crate::error::PutRecordErrorKind::KMSThrottlingError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordError::unhandled(e),
                 },
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::PutRecordError::ProvisionedThroughputExceededError(body)
-                    }
+                    Ok(body) => crate::error::PutRecordError {
+                        kind: crate::error::PutRecordErrorKind::ProvisionedThroughputExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::PutRecordError {
+                        kind: crate::error::PutRecordErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordError::unhandled(e),
                 },
                 _ => crate::error::PutRecordError::unhandled(generic),
@@ -1920,41 +2108,68 @@ impl PutRecords {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordsError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::PutRecordsError {
+                        kind: crate::error::PutRecordsErrorKind::InvalidArgumentError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordsError::unhandled(e),
                 },
                 "KMSAccessDeniedException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordsError::KMSAccessDeniedError(body),
+                    Ok(body) => crate::error::PutRecordsError {
+                        kind: crate::error::PutRecordsErrorKind::KMSAccessDeniedError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordsError::unhandled(e),
                 },
                 "KMSDisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordsError::KMSDisabledError(body),
+                    Ok(body) => crate::error::PutRecordsError {
+                        kind: crate::error::PutRecordsErrorKind::KMSDisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordsError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordsError::KMSInvalidStateError(body),
+                    Ok(body) => crate::error::PutRecordsError {
+                        kind: crate::error::PutRecordsErrorKind::KMSInvalidStateError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordsError::unhandled(e),
                 },
                 "KMSNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordsError::KMSNotFoundError(body),
+                    Ok(body) => crate::error::PutRecordsError {
+                        kind: crate::error::PutRecordsErrorKind::KMSNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordsError::unhandled(e),
                 },
                 "KMSOptInRequired" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordsError::KMSOptInRequired(body),
+                    Ok(body) => crate::error::PutRecordsError {
+                        kind: crate::error::PutRecordsErrorKind::KMSOptInRequired(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordsError::unhandled(e),
                 },
                 "KMSThrottlingException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordsError::KMSThrottlingError(body),
+                    Ok(body) => crate::error::PutRecordsError {
+                        kind: crate::error::PutRecordsErrorKind::KMSThrottlingError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordsError::unhandled(e),
                 },
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::PutRecordsError::ProvisionedThroughputExceededError(body)
-                    }
+                    Ok(body) => crate::error::PutRecordsError {
+                        kind: crate::error::PutRecordsErrorKind::ProvisionedThroughputExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordsError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutRecordsError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::PutRecordsError {
+                        kind: crate::error::PutRecordsErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutRecordsError::unhandled(e),
                 },
                 _ => crate::error::PutRecordsError::unhandled(generic),
@@ -2033,23 +2248,39 @@ impl RegisterStreamConsumer {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::RegisterStreamConsumerError::InvalidArgumentError(body)
-                    }
+                    Ok(body) => crate::error::RegisterStreamConsumerError {
+                        kind: crate::error::RegisterStreamConsumerErrorKind::InvalidArgumentError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RegisterStreamConsumerError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RegisterStreamConsumerError::LimitExceededError(body),
+                    Ok(body) => crate::error::RegisterStreamConsumerError {
+                        kind: crate::error::RegisterStreamConsumerErrorKind::LimitExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RegisterStreamConsumerError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RegisterStreamConsumerError::ResourceInUseError(body),
+                    Ok(body) => crate::error::RegisterStreamConsumerError {
+                        kind: crate::error::RegisterStreamConsumerErrorKind::ResourceInUseError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RegisterStreamConsumerError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::RegisterStreamConsumerError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::RegisterStreamConsumerError {
+                        kind: crate::error::RegisterStreamConsumerErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RegisterStreamConsumerError::unhandled(e),
                 },
                 _ => crate::error::RegisterStreamConsumerError::unhandled(generic),
@@ -2115,21 +2346,35 @@ impl RemoveTagsFromStream {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RemoveTagsFromStreamError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::RemoveTagsFromStreamError {
+                        kind: crate::error::RemoveTagsFromStreamErrorKind::InvalidArgumentError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RemoveTagsFromStreamError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RemoveTagsFromStreamError::LimitExceededError(body),
+                    Ok(body) => crate::error::RemoveTagsFromStreamError {
+                        kind: crate::error::RemoveTagsFromStreamErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RemoveTagsFromStreamError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RemoveTagsFromStreamError::ResourceInUseError(body),
+                    Ok(body) => crate::error::RemoveTagsFromStreamError {
+                        kind: crate::error::RemoveTagsFromStreamErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RemoveTagsFromStreamError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::RemoveTagsFromStreamError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::RemoveTagsFromStreamError {
+                        kind: crate::error::RemoveTagsFromStreamErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RemoveTagsFromStreamError::unhandled(e),
                 },
                 _ => crate::error::RemoveTagsFromStreamError::unhandled(generic),
@@ -2223,19 +2468,31 @@ impl SplitShard {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SplitShardError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::SplitShardError {
+                        kind: crate::error::SplitShardErrorKind::InvalidArgumentError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SplitShardError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SplitShardError::LimitExceededError(body),
+                    Ok(body) => crate::error::SplitShardError {
+                        kind: crate::error::SplitShardErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SplitShardError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SplitShardError::ResourceInUseError(body),
+                    Ok(body) => crate::error::SplitShardError {
+                        kind: crate::error::SplitShardErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SplitShardError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SplitShardError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::SplitShardError {
+                        kind: crate::error::SplitShardErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SplitShardError::unhandled(e),
                 },
                 _ => crate::error::SplitShardError::unhandled(generic),
@@ -2306,51 +2563,87 @@ impl StartStreamEncryption {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::StartStreamEncryptionError::InvalidArgumentError(body)
-                    }
+                    Ok(body) => crate::error::StartStreamEncryptionError {
+                        kind: crate::error::StartStreamEncryptionErrorKind::InvalidArgumentError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StartStreamEncryptionError::unhandled(e),
                 },
                 "KMSAccessDeniedException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::StartStreamEncryptionError::KMSAccessDeniedError(body)
-                    }
+                    Ok(body) => crate::error::StartStreamEncryptionError {
+                        kind: crate::error::StartStreamEncryptionErrorKind::KMSAccessDeniedError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StartStreamEncryptionError::unhandled(e),
                 },
                 "KMSDisabledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::StartStreamEncryptionError::KMSDisabledError(body),
+                    Ok(body) => crate::error::StartStreamEncryptionError {
+                        kind: crate::error::StartStreamEncryptionErrorKind::KMSDisabledError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StartStreamEncryptionError::unhandled(e),
                 },
                 "KMSInvalidStateException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::StartStreamEncryptionError::KMSInvalidStateError(body)
-                    }
+                    Ok(body) => crate::error::StartStreamEncryptionError {
+                        kind: crate::error::StartStreamEncryptionErrorKind::KMSInvalidStateError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StartStreamEncryptionError::unhandled(e),
                 },
                 "KMSNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::StartStreamEncryptionError::KMSNotFoundError(body),
+                    Ok(body) => crate::error::StartStreamEncryptionError {
+                        kind: crate::error::StartStreamEncryptionErrorKind::KMSNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StartStreamEncryptionError::unhandled(e),
                 },
                 "KMSOptInRequired" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::StartStreamEncryptionError::KMSOptInRequired(body),
+                    Ok(body) => crate::error::StartStreamEncryptionError {
+                        kind: crate::error::StartStreamEncryptionErrorKind::KMSOptInRequired(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StartStreamEncryptionError::unhandled(e),
                 },
                 "KMSThrottlingException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::StartStreamEncryptionError::KMSThrottlingError(body),
+                    Ok(body) => crate::error::StartStreamEncryptionError {
+                        kind: crate::error::StartStreamEncryptionErrorKind::KMSThrottlingError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StartStreamEncryptionError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::StartStreamEncryptionError::LimitExceededError(body),
+                    Ok(body) => crate::error::StartStreamEncryptionError {
+                        kind: crate::error::StartStreamEncryptionErrorKind::LimitExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StartStreamEncryptionError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::StartStreamEncryptionError::ResourceInUseError(body),
+                    Ok(body) => crate::error::StartStreamEncryptionError {
+                        kind: crate::error::StartStreamEncryptionErrorKind::ResourceInUseError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StartStreamEncryptionError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::StartStreamEncryptionError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::StartStreamEncryptionError {
+                        kind: crate::error::StartStreamEncryptionErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StartStreamEncryptionError::unhandled(e),
                 },
                 _ => crate::error::StartStreamEncryptionError::unhandled(generic),
@@ -2421,21 +2714,35 @@ impl StopStreamEncryption {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::StopStreamEncryptionError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::StopStreamEncryptionError {
+                        kind: crate::error::StopStreamEncryptionErrorKind::InvalidArgumentError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StopStreamEncryptionError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::StopStreamEncryptionError::LimitExceededError(body),
+                    Ok(body) => crate::error::StopStreamEncryptionError {
+                        kind: crate::error::StopStreamEncryptionErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StopStreamEncryptionError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::StopStreamEncryptionError::ResourceInUseError(body),
+                    Ok(body) => crate::error::StopStreamEncryptionError {
+                        kind: crate::error::StopStreamEncryptionErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StopStreamEncryptionError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::StopStreamEncryptionError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::StopStreamEncryptionError {
+                        kind: crate::error::StopStreamEncryptionErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::StopStreamEncryptionError::unhandled(e),
                 },
                 _ => crate::error::StopStreamEncryptionError::unhandled(generic),
@@ -2509,19 +2816,31 @@ impl SubscribeToShard {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SubscribeToShardError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::SubscribeToShardError {
+                        kind: crate::error::SubscribeToShardErrorKind::InvalidArgumentError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SubscribeToShardError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SubscribeToShardError::LimitExceededError(body),
+                    Ok(body) => crate::error::SubscribeToShardError {
+                        kind: crate::error::SubscribeToShardErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SubscribeToShardError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SubscribeToShardError::ResourceInUseError(body),
+                    Ok(body) => crate::error::SubscribeToShardError {
+                        kind: crate::error::SubscribeToShardErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SubscribeToShardError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::SubscribeToShardError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::SubscribeToShardError {
+                        kind: crate::error::SubscribeToShardErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::SubscribeToShardError::unhandled(e),
                 },
                 _ => crate::error::SubscribeToShardError::unhandled(generic),
@@ -2622,19 +2941,31 @@ impl UpdateShardCount {
             };
             return Err(match error_code {
                 "InvalidArgumentException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateShardCountError::InvalidArgumentError(body),
+                    Ok(body) => crate::error::UpdateShardCountError {
+                        kind: crate::error::UpdateShardCountErrorKind::InvalidArgumentError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateShardCountError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateShardCountError::LimitExceededError(body),
+                    Ok(body) => crate::error::UpdateShardCountError {
+                        kind: crate::error::UpdateShardCountErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateShardCountError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateShardCountError::ResourceInUseError(body),
+                    Ok(body) => crate::error::UpdateShardCountError {
+                        kind: crate::error::UpdateShardCountErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateShardCountError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateShardCountError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::UpdateShardCountError {
+                        kind: crate::error::UpdateShardCountErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateShardCountError::unhandled(e),
                 },
                 _ => crate::error::UpdateShardCountError::unhandled(generic),

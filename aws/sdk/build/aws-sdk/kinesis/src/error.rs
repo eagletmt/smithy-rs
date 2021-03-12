@@ -2,23 +2,29 @@
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum AddTagsToStreamError {
+pub struct AddTagsToStreamError {
+    pub kind: AddTagsToStreamErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum AddTagsToStreamErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for AddTagsToStreamError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            AddTagsToStreamError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            AddTagsToStreamError::LimitExceededError(_inner) => _inner.fmt(f),
-            AddTagsToStreamError::ResourceInUseError(_inner) => _inner.fmt(f),
-            AddTagsToStreamError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            AddTagsToStreamError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            AddTagsToStreamErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            AddTagsToStreamErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            AddTagsToStreamErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            AddTagsToStreamErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            AddTagsToStreamErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -27,87 +33,70 @@ impl ::smithy_types::retry::ProvideErrorKind for AddTagsToStreamError {
         AddTagsToStreamError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            AddTagsToStreamError::InvalidArgumentError(_inner) => None,
-            AddTagsToStreamError::LimitExceededError(_inner) => None,
-            AddTagsToStreamError::ResourceInUseError(_inner) => None,
-            AddTagsToStreamError::ResourceNotFoundError(_inner) => None,
-            AddTagsToStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl AddTagsToStreamError {
+    pub fn new(kind: AddTagsToStreamErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        AddTagsToStreamError::Unhandled(err.into())
+        Self {
+            kind: AddTagsToStreamErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: AddTagsToStreamErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            AddTagsToStreamError::InvalidArgumentError(_inner) => _inner.message(),
-            AddTagsToStreamError::LimitExceededError(_inner) => _inner.message(),
-            AddTagsToStreamError::ResourceInUseError(_inner) => _inner.message(),
-            AddTagsToStreamError::ResourceNotFoundError(_inner) => _inner.message(),
-            AddTagsToStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            AddTagsToStreamError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            AddTagsToStreamError::LimitExceededError(_inner) => Some(_inner.code()),
-            AddTagsToStreamError::ResourceInUseError(_inner) => Some(_inner.code()),
-            AddTagsToStreamError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            AddTagsToStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for AddTagsToStreamError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            AddTagsToStreamError::InvalidArgumentError(_inner) => Some(_inner),
-            AddTagsToStreamError::LimitExceededError(_inner) => Some(_inner),
-            AddTagsToStreamError::ResourceInUseError(_inner) => Some(_inner),
-            AddTagsToStreamError::ResourceNotFoundError(_inner) => Some(_inner),
-            AddTagsToStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            AddTagsToStreamErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            AddTagsToStreamErrorKind::LimitExceededError(_inner) => Some(_inner),
+            AddTagsToStreamErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            AddTagsToStreamErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            AddTagsToStreamErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum CreateStreamError {
+pub struct CreateStreamError {
+    pub kind: CreateStreamErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum CreateStreamErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for CreateStreamError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            CreateStreamError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            CreateStreamError::LimitExceededError(_inner) => _inner.fmt(f),
-            CreateStreamError::ResourceInUseError(_inner) => _inner.fmt(f),
-            CreateStreamError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            CreateStreamErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            CreateStreamErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            CreateStreamErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            CreateStreamErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -116,85 +105,71 @@ impl ::smithy_types::retry::ProvideErrorKind for CreateStreamError {
         CreateStreamError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            CreateStreamError::InvalidArgumentError(_inner) => None,
-            CreateStreamError::LimitExceededError(_inner) => None,
-            CreateStreamError::ResourceInUseError(_inner) => None,
-            CreateStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl CreateStreamError {
+    pub fn new(kind: CreateStreamErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        CreateStreamError::Unhandled(err.into())
+        Self {
+            kind: CreateStreamErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: CreateStreamErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            CreateStreamError::InvalidArgumentError(_inner) => _inner.message(),
-            CreateStreamError::LimitExceededError(_inner) => _inner.message(),
-            CreateStreamError::ResourceInUseError(_inner) => _inner.message(),
-            CreateStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            CreateStreamError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            CreateStreamError::LimitExceededError(_inner) => Some(_inner.code()),
-            CreateStreamError::ResourceInUseError(_inner) => Some(_inner.code()),
-            CreateStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for CreateStreamError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            CreateStreamError::InvalidArgumentError(_inner) => Some(_inner),
-            CreateStreamError::LimitExceededError(_inner) => Some(_inner),
-            CreateStreamError::ResourceInUseError(_inner) => Some(_inner),
-            CreateStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            CreateStreamErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            CreateStreamErrorKind::LimitExceededError(_inner) => Some(_inner),
+            CreateStreamErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            CreateStreamErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DecreaseStreamRetentionPeriodError {
+pub struct DecreaseStreamRetentionPeriodError {
+    pub kind: DecreaseStreamRetentionPeriodErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DecreaseStreamRetentionPeriodErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DecreaseStreamRetentionPeriodError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DecreaseStreamRetentionPeriodError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            DecreaseStreamRetentionPeriodError::LimitExceededError(_inner) => _inner.fmt(f),
-            DecreaseStreamRetentionPeriodError::ResourceInUseError(_inner) => _inner.fmt(f),
-            DecreaseStreamRetentionPeriodError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            DecreaseStreamRetentionPeriodError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DecreaseStreamRetentionPeriodErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            DecreaseStreamRetentionPeriodErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            DecreaseStreamRetentionPeriodErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            DecreaseStreamRetentionPeriodErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            DecreaseStreamRetentionPeriodErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -203,89 +178,70 @@ impl ::smithy_types::retry::ProvideErrorKind for DecreaseStreamRetentionPeriodEr
         DecreaseStreamRetentionPeriodError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DecreaseStreamRetentionPeriodError::InvalidArgumentError(_inner) => None,
-            DecreaseStreamRetentionPeriodError::LimitExceededError(_inner) => None,
-            DecreaseStreamRetentionPeriodError::ResourceInUseError(_inner) => None,
-            DecreaseStreamRetentionPeriodError::ResourceNotFoundError(_inner) => None,
-            DecreaseStreamRetentionPeriodError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DecreaseStreamRetentionPeriodError {
+    pub fn new(kind: DecreaseStreamRetentionPeriodErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DecreaseStreamRetentionPeriodError::Unhandled(err.into())
+        Self {
+            kind: DecreaseStreamRetentionPeriodErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DecreaseStreamRetentionPeriodErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DecreaseStreamRetentionPeriodError::InvalidArgumentError(_inner) => _inner.message(),
-            DecreaseStreamRetentionPeriodError::LimitExceededError(_inner) => _inner.message(),
-            DecreaseStreamRetentionPeriodError::ResourceInUseError(_inner) => _inner.message(),
-            DecreaseStreamRetentionPeriodError::ResourceNotFoundError(_inner) => _inner.message(),
-            DecreaseStreamRetentionPeriodError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DecreaseStreamRetentionPeriodError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            DecreaseStreamRetentionPeriodError::LimitExceededError(_inner) => Some(_inner.code()),
-            DecreaseStreamRetentionPeriodError::ResourceInUseError(_inner) => Some(_inner.code()),
-            DecreaseStreamRetentionPeriodError::ResourceNotFoundError(_inner) => {
-                Some(_inner.code())
-            }
-            DecreaseStreamRetentionPeriodError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DecreaseStreamRetentionPeriodError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DecreaseStreamRetentionPeriodError::InvalidArgumentError(_inner) => Some(_inner),
-            DecreaseStreamRetentionPeriodError::LimitExceededError(_inner) => Some(_inner),
-            DecreaseStreamRetentionPeriodError::ResourceInUseError(_inner) => Some(_inner),
-            DecreaseStreamRetentionPeriodError::ResourceNotFoundError(_inner) => Some(_inner),
-            DecreaseStreamRetentionPeriodError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DecreaseStreamRetentionPeriodErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            DecreaseStreamRetentionPeriodErrorKind::LimitExceededError(_inner) => Some(_inner),
+            DecreaseStreamRetentionPeriodErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            DecreaseStreamRetentionPeriodErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            DecreaseStreamRetentionPeriodErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DeleteStreamError {
+pub struct DeleteStreamError {
+    pub kind: DeleteStreamErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DeleteStreamErrorKind {
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DeleteStreamError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DeleteStreamError::LimitExceededError(_inner) => _inner.fmt(f),
-            DeleteStreamError::ResourceInUseError(_inner) => _inner.fmt(f),
-            DeleteStreamError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            DeleteStreamError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DeleteStreamErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            DeleteStreamErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            DeleteStreamErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            DeleteStreamErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -294,83 +250,69 @@ impl ::smithy_types::retry::ProvideErrorKind for DeleteStreamError {
         DeleteStreamError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DeleteStreamError::LimitExceededError(_inner) => None,
-            DeleteStreamError::ResourceInUseError(_inner) => None,
-            DeleteStreamError::ResourceNotFoundError(_inner) => None,
-            DeleteStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DeleteStreamError {
+    pub fn new(kind: DeleteStreamErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DeleteStreamError::Unhandled(err.into())
+        Self {
+            kind: DeleteStreamErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DeleteStreamErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DeleteStreamError::LimitExceededError(_inner) => _inner.message(),
-            DeleteStreamError::ResourceInUseError(_inner) => _inner.message(),
-            DeleteStreamError::ResourceNotFoundError(_inner) => _inner.message(),
-            DeleteStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DeleteStreamError::LimitExceededError(_inner) => Some(_inner.code()),
-            DeleteStreamError::ResourceInUseError(_inner) => Some(_inner.code()),
-            DeleteStreamError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            DeleteStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DeleteStreamError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DeleteStreamError::LimitExceededError(_inner) => Some(_inner),
-            DeleteStreamError::ResourceInUseError(_inner) => Some(_inner),
-            DeleteStreamError::ResourceNotFoundError(_inner) => Some(_inner),
-            DeleteStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DeleteStreamErrorKind::LimitExceededError(_inner) => Some(_inner),
+            DeleteStreamErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            DeleteStreamErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            DeleteStreamErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DeregisterStreamConsumerError {
+pub struct DeregisterStreamConsumerError {
+    pub kind: DeregisterStreamConsumerErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DeregisterStreamConsumerErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DeregisterStreamConsumerError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DeregisterStreamConsumerError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            DeregisterStreamConsumerError::LimitExceededError(_inner) => _inner.fmt(f),
-            DeregisterStreamConsumerError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            DeregisterStreamConsumerError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DeregisterStreamConsumerErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            DeregisterStreamConsumerErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            DeregisterStreamConsumerErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            DeregisterStreamConsumerErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -379,79 +321,65 @@ impl ::smithy_types::retry::ProvideErrorKind for DeregisterStreamConsumerError {
         DeregisterStreamConsumerError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DeregisterStreamConsumerError::InvalidArgumentError(_inner) => None,
-            DeregisterStreamConsumerError::LimitExceededError(_inner) => None,
-            DeregisterStreamConsumerError::ResourceNotFoundError(_inner) => None,
-            DeregisterStreamConsumerError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DeregisterStreamConsumerError {
+    pub fn new(kind: DeregisterStreamConsumerErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DeregisterStreamConsumerError::Unhandled(err.into())
+        Self {
+            kind: DeregisterStreamConsumerErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DeregisterStreamConsumerErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DeregisterStreamConsumerError::InvalidArgumentError(_inner) => _inner.message(),
-            DeregisterStreamConsumerError::LimitExceededError(_inner) => _inner.message(),
-            DeregisterStreamConsumerError::ResourceNotFoundError(_inner) => _inner.message(),
-            DeregisterStreamConsumerError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DeregisterStreamConsumerError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            DeregisterStreamConsumerError::LimitExceededError(_inner) => Some(_inner.code()),
-            DeregisterStreamConsumerError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            DeregisterStreamConsumerError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DeregisterStreamConsumerError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DeregisterStreamConsumerError::InvalidArgumentError(_inner) => Some(_inner),
-            DeregisterStreamConsumerError::LimitExceededError(_inner) => Some(_inner),
-            DeregisterStreamConsumerError::ResourceNotFoundError(_inner) => Some(_inner),
-            DeregisterStreamConsumerError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DeregisterStreamConsumerErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            DeregisterStreamConsumerErrorKind::LimitExceededError(_inner) => Some(_inner),
+            DeregisterStreamConsumerErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            DeregisterStreamConsumerErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DescribeLimitsError {
+pub struct DescribeLimitsError {
+    pub kind: DescribeLimitsErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DescribeLimitsErrorKind {
     LimitExceededError(LimitExceededError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DescribeLimitsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DescribeLimitsError::LimitExceededError(_inner) => _inner.fmt(f),
-            DescribeLimitsError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DescribeLimitsErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            DescribeLimitsErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -460,73 +388,65 @@ impl ::smithy_types::retry::ProvideErrorKind for DescribeLimitsError {
         DescribeLimitsError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DescribeLimitsError::LimitExceededError(_inner) => None,
-            DescribeLimitsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DescribeLimitsError {
+    pub fn new(kind: DescribeLimitsErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DescribeLimitsError::Unhandled(err.into())
+        Self {
+            kind: DescribeLimitsErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DescribeLimitsErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DescribeLimitsError::LimitExceededError(_inner) => _inner.message(),
-            DescribeLimitsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DescribeLimitsError::LimitExceededError(_inner) => Some(_inner.code()),
-            DescribeLimitsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DescribeLimitsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DescribeLimitsError::LimitExceededError(_inner) => Some(_inner),
-            DescribeLimitsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DescribeLimitsErrorKind::LimitExceededError(_inner) => Some(_inner),
+            DescribeLimitsErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DescribeStreamError {
+pub struct DescribeStreamError {
+    pub kind: DescribeStreamErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DescribeStreamErrorKind {
     LimitExceededError(LimitExceededError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DescribeStreamError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DescribeStreamError::LimitExceededError(_inner) => _inner.fmt(f),
-            DescribeStreamError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            DescribeStreamError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DescribeStreamErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            DescribeStreamErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            DescribeStreamErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -535,79 +455,68 @@ impl ::smithy_types::retry::ProvideErrorKind for DescribeStreamError {
         DescribeStreamError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DescribeStreamError::LimitExceededError(_inner) => None,
-            DescribeStreamError::ResourceNotFoundError(_inner) => None,
-            DescribeStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DescribeStreamError {
+    pub fn new(kind: DescribeStreamErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DescribeStreamError::Unhandled(err.into())
+        Self {
+            kind: DescribeStreamErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DescribeStreamErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DescribeStreamError::LimitExceededError(_inner) => _inner.message(),
-            DescribeStreamError::ResourceNotFoundError(_inner) => _inner.message(),
-            DescribeStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DescribeStreamError::LimitExceededError(_inner) => Some(_inner.code()),
-            DescribeStreamError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            DescribeStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DescribeStreamError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DescribeStreamError::LimitExceededError(_inner) => Some(_inner),
-            DescribeStreamError::ResourceNotFoundError(_inner) => Some(_inner),
-            DescribeStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DescribeStreamErrorKind::LimitExceededError(_inner) => Some(_inner),
+            DescribeStreamErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            DescribeStreamErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DescribeStreamConsumerError {
+pub struct DescribeStreamConsumerError {
+    pub kind: DescribeStreamConsumerErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DescribeStreamConsumerErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DescribeStreamConsumerError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DescribeStreamConsumerError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            DescribeStreamConsumerError::LimitExceededError(_inner) => _inner.fmt(f),
-            DescribeStreamConsumerError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            DescribeStreamConsumerError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DescribeStreamConsumerErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            DescribeStreamConsumerErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            DescribeStreamConsumerErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            DescribeStreamConsumerErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -616,81 +525,67 @@ impl ::smithy_types::retry::ProvideErrorKind for DescribeStreamConsumerError {
         DescribeStreamConsumerError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DescribeStreamConsumerError::InvalidArgumentError(_inner) => None,
-            DescribeStreamConsumerError::LimitExceededError(_inner) => None,
-            DescribeStreamConsumerError::ResourceNotFoundError(_inner) => None,
-            DescribeStreamConsumerError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DescribeStreamConsumerError {
+    pub fn new(kind: DescribeStreamConsumerErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DescribeStreamConsumerError::Unhandled(err.into())
+        Self {
+            kind: DescribeStreamConsumerErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DescribeStreamConsumerErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DescribeStreamConsumerError::InvalidArgumentError(_inner) => _inner.message(),
-            DescribeStreamConsumerError::LimitExceededError(_inner) => _inner.message(),
-            DescribeStreamConsumerError::ResourceNotFoundError(_inner) => _inner.message(),
-            DescribeStreamConsumerError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DescribeStreamConsumerError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            DescribeStreamConsumerError::LimitExceededError(_inner) => Some(_inner.code()),
-            DescribeStreamConsumerError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            DescribeStreamConsumerError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DescribeStreamConsumerError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DescribeStreamConsumerError::InvalidArgumentError(_inner) => Some(_inner),
-            DescribeStreamConsumerError::LimitExceededError(_inner) => Some(_inner),
-            DescribeStreamConsumerError::ResourceNotFoundError(_inner) => Some(_inner),
-            DescribeStreamConsumerError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DescribeStreamConsumerErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            DescribeStreamConsumerErrorKind::LimitExceededError(_inner) => Some(_inner),
+            DescribeStreamConsumerErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            DescribeStreamConsumerErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DescribeStreamSummaryError {
+pub struct DescribeStreamSummaryError {
+    pub kind: DescribeStreamSummaryErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DescribeStreamSummaryErrorKind {
     LimitExceededError(LimitExceededError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DescribeStreamSummaryError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DescribeStreamSummaryError::LimitExceededError(_inner) => _inner.fmt(f),
-            DescribeStreamSummaryError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            DescribeStreamSummaryError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DescribeStreamSummaryErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            DescribeStreamSummaryErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            DescribeStreamSummaryErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -699,81 +594,70 @@ impl ::smithy_types::retry::ProvideErrorKind for DescribeStreamSummaryError {
         DescribeStreamSummaryError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DescribeStreamSummaryError::LimitExceededError(_inner) => None,
-            DescribeStreamSummaryError::ResourceNotFoundError(_inner) => None,
-            DescribeStreamSummaryError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DescribeStreamSummaryError {
+    pub fn new(kind: DescribeStreamSummaryErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DescribeStreamSummaryError::Unhandled(err.into())
+        Self {
+            kind: DescribeStreamSummaryErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DescribeStreamSummaryErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DescribeStreamSummaryError::LimitExceededError(_inner) => _inner.message(),
-            DescribeStreamSummaryError::ResourceNotFoundError(_inner) => _inner.message(),
-            DescribeStreamSummaryError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DescribeStreamSummaryError::LimitExceededError(_inner) => Some(_inner.code()),
-            DescribeStreamSummaryError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            DescribeStreamSummaryError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DescribeStreamSummaryError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DescribeStreamSummaryError::LimitExceededError(_inner) => Some(_inner),
-            DescribeStreamSummaryError::ResourceNotFoundError(_inner) => Some(_inner),
-            DescribeStreamSummaryError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DescribeStreamSummaryErrorKind::LimitExceededError(_inner) => Some(_inner),
+            DescribeStreamSummaryErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            DescribeStreamSummaryErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum DisableEnhancedMonitoringError {
+pub struct DisableEnhancedMonitoringError {
+    pub kind: DisableEnhancedMonitoringErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum DisableEnhancedMonitoringErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for DisableEnhancedMonitoringError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            DisableEnhancedMonitoringError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            DisableEnhancedMonitoringError::LimitExceededError(_inner) => _inner.fmt(f),
-            DisableEnhancedMonitoringError::ResourceInUseError(_inner) => _inner.fmt(f),
-            DisableEnhancedMonitoringError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            DisableEnhancedMonitoringError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            DisableEnhancedMonitoringErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            DisableEnhancedMonitoringErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            DisableEnhancedMonitoringErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            DisableEnhancedMonitoringErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            DisableEnhancedMonitoringErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -782,89 +666,72 @@ impl ::smithy_types::retry::ProvideErrorKind for DisableEnhancedMonitoringError 
         DisableEnhancedMonitoringError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            DisableEnhancedMonitoringError::InvalidArgumentError(_inner) => None,
-            DisableEnhancedMonitoringError::LimitExceededError(_inner) => None,
-            DisableEnhancedMonitoringError::ResourceInUseError(_inner) => None,
-            DisableEnhancedMonitoringError::ResourceNotFoundError(_inner) => None,
-            DisableEnhancedMonitoringError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl DisableEnhancedMonitoringError {
+    pub fn new(kind: DisableEnhancedMonitoringErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        DisableEnhancedMonitoringError::Unhandled(err.into())
+        Self {
+            kind: DisableEnhancedMonitoringErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: DisableEnhancedMonitoringErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            DisableEnhancedMonitoringError::InvalidArgumentError(_inner) => _inner.message(),
-            DisableEnhancedMonitoringError::LimitExceededError(_inner) => _inner.message(),
-            DisableEnhancedMonitoringError::ResourceInUseError(_inner) => _inner.message(),
-            DisableEnhancedMonitoringError::ResourceNotFoundError(_inner) => _inner.message(),
-            DisableEnhancedMonitoringError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            DisableEnhancedMonitoringError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            DisableEnhancedMonitoringError::LimitExceededError(_inner) => Some(_inner.code()),
-            DisableEnhancedMonitoringError::ResourceInUseError(_inner) => Some(_inner.code()),
-            DisableEnhancedMonitoringError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            DisableEnhancedMonitoringError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for DisableEnhancedMonitoringError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            DisableEnhancedMonitoringError::InvalidArgumentError(_inner) => Some(_inner),
-            DisableEnhancedMonitoringError::LimitExceededError(_inner) => Some(_inner),
-            DisableEnhancedMonitoringError::ResourceInUseError(_inner) => Some(_inner),
-            DisableEnhancedMonitoringError::ResourceNotFoundError(_inner) => Some(_inner),
-            DisableEnhancedMonitoringError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            DisableEnhancedMonitoringErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            DisableEnhancedMonitoringErrorKind::LimitExceededError(_inner) => Some(_inner),
+            DisableEnhancedMonitoringErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            DisableEnhancedMonitoringErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            DisableEnhancedMonitoringErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum EnableEnhancedMonitoringError {
+pub struct EnableEnhancedMonitoringError {
+    pub kind: EnableEnhancedMonitoringErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum EnableEnhancedMonitoringErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for EnableEnhancedMonitoringError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            EnableEnhancedMonitoringError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            EnableEnhancedMonitoringError::LimitExceededError(_inner) => _inner.fmt(f),
-            EnableEnhancedMonitoringError::ResourceInUseError(_inner) => _inner.fmt(f),
-            EnableEnhancedMonitoringError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            EnableEnhancedMonitoringError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            EnableEnhancedMonitoringErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            EnableEnhancedMonitoringErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            EnableEnhancedMonitoringErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            EnableEnhancedMonitoringErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            EnableEnhancedMonitoringErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -873,73 +740,56 @@ impl ::smithy_types::retry::ProvideErrorKind for EnableEnhancedMonitoringError {
         EnableEnhancedMonitoringError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            EnableEnhancedMonitoringError::InvalidArgumentError(_inner) => None,
-            EnableEnhancedMonitoringError::LimitExceededError(_inner) => None,
-            EnableEnhancedMonitoringError::ResourceInUseError(_inner) => None,
-            EnableEnhancedMonitoringError::ResourceNotFoundError(_inner) => None,
-            EnableEnhancedMonitoringError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl EnableEnhancedMonitoringError {
+    pub fn new(kind: EnableEnhancedMonitoringErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        EnableEnhancedMonitoringError::Unhandled(err.into())
+        Self {
+            kind: EnableEnhancedMonitoringErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: EnableEnhancedMonitoringErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            EnableEnhancedMonitoringError::InvalidArgumentError(_inner) => _inner.message(),
-            EnableEnhancedMonitoringError::LimitExceededError(_inner) => _inner.message(),
-            EnableEnhancedMonitoringError::ResourceInUseError(_inner) => _inner.message(),
-            EnableEnhancedMonitoringError::ResourceNotFoundError(_inner) => _inner.message(),
-            EnableEnhancedMonitoringError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            EnableEnhancedMonitoringError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            EnableEnhancedMonitoringError::LimitExceededError(_inner) => Some(_inner.code()),
-            EnableEnhancedMonitoringError::ResourceInUseError(_inner) => Some(_inner.code()),
-            EnableEnhancedMonitoringError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            EnableEnhancedMonitoringError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for EnableEnhancedMonitoringError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            EnableEnhancedMonitoringError::InvalidArgumentError(_inner) => Some(_inner),
-            EnableEnhancedMonitoringError::LimitExceededError(_inner) => Some(_inner),
-            EnableEnhancedMonitoringError::ResourceInUseError(_inner) => Some(_inner),
-            EnableEnhancedMonitoringError::ResourceNotFoundError(_inner) => Some(_inner),
-            EnableEnhancedMonitoringError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            EnableEnhancedMonitoringErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            EnableEnhancedMonitoringErrorKind::LimitExceededError(_inner) => Some(_inner),
+            EnableEnhancedMonitoringErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            EnableEnhancedMonitoringErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            EnableEnhancedMonitoringErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GetRecordsError {
+pub struct GetRecordsError {
+    pub kind: GetRecordsErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GetRecordsErrorKind {
     ExpiredIteratorError(ExpiredIteratorError),
     InvalidArgumentError(InvalidArgumentError),
     KMSAccessDeniedError(KMSAccessDeniedError),
@@ -951,23 +801,23 @@ pub enum GetRecordsError {
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GetRecordsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GetRecordsError::ExpiredIteratorError(_inner) => _inner.fmt(f),
-            GetRecordsError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            GetRecordsError::KMSAccessDeniedError(_inner) => _inner.fmt(f),
-            GetRecordsError::KMSDisabledError(_inner) => _inner.fmt(f),
-            GetRecordsError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            GetRecordsError::KMSNotFoundError(_inner) => _inner.fmt(f),
-            GetRecordsError::KMSOptInRequired(_inner) => _inner.fmt(f),
-            GetRecordsError::KMSThrottlingError(_inner) => _inner.fmt(f),
-            GetRecordsError::ProvisionedThroughputExceededError(_inner) => _inner.fmt(f),
-            GetRecordsError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            GetRecordsError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GetRecordsErrorKind::ExpiredIteratorError(_inner) => _inner.fmt(f),
+            GetRecordsErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            GetRecordsErrorKind::KMSAccessDeniedError(_inner) => _inner.fmt(f),
+            GetRecordsErrorKind::KMSDisabledError(_inner) => _inner.fmt(f),
+            GetRecordsErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            GetRecordsErrorKind::KMSNotFoundError(_inner) => _inner.fmt(f),
+            GetRecordsErrorKind::KMSOptInRequired(_inner) => _inner.fmt(f),
+            GetRecordsErrorKind::KMSThrottlingError(_inner) => _inner.fmt(f),
+            GetRecordsErrorKind::ProvisionedThroughputExceededError(_inner) => _inner.fmt(f),
+            GetRecordsErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            GetRecordsErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -976,111 +826,76 @@ impl ::smithy_types::retry::ProvideErrorKind for GetRecordsError {
         GetRecordsError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GetRecordsError::ExpiredIteratorError(_inner) => None,
-            GetRecordsError::InvalidArgumentError(_inner) => None,
-            GetRecordsError::KMSAccessDeniedError(_inner) => None,
-            GetRecordsError::KMSDisabledError(_inner) => None,
-            GetRecordsError::KMSInvalidStateError(_inner) => None,
-            GetRecordsError::KMSNotFoundError(_inner) => None,
-            GetRecordsError::KMSOptInRequired(_inner) => None,
-            GetRecordsError::KMSThrottlingError(_inner) => None,
-            GetRecordsError::ProvisionedThroughputExceededError(_inner) => None,
-            GetRecordsError::ResourceNotFoundError(_inner) => None,
-            GetRecordsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GetRecordsError {
+    pub fn new(kind: GetRecordsErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GetRecordsError::Unhandled(err.into())
+        Self {
+            kind: GetRecordsErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GetRecordsErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GetRecordsError::ExpiredIteratorError(_inner) => _inner.message(),
-            GetRecordsError::InvalidArgumentError(_inner) => _inner.message(),
-            GetRecordsError::KMSAccessDeniedError(_inner) => _inner.message(),
-            GetRecordsError::KMSDisabledError(_inner) => _inner.message(),
-            GetRecordsError::KMSInvalidStateError(_inner) => _inner.message(),
-            GetRecordsError::KMSNotFoundError(_inner) => _inner.message(),
-            GetRecordsError::KMSOptInRequired(_inner) => _inner.message(),
-            GetRecordsError::KMSThrottlingError(_inner) => _inner.message(),
-            GetRecordsError::ProvisionedThroughputExceededError(_inner) => _inner.message(),
-            GetRecordsError::ResourceNotFoundError(_inner) => _inner.message(),
-            GetRecordsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GetRecordsError::ExpiredIteratorError(_inner) => Some(_inner.code()),
-            GetRecordsError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            GetRecordsError::KMSAccessDeniedError(_inner) => Some(_inner.code()),
-            GetRecordsError::KMSDisabledError(_inner) => Some(_inner.code()),
-            GetRecordsError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            GetRecordsError::KMSNotFoundError(_inner) => Some(_inner.code()),
-            GetRecordsError::KMSOptInRequired(_inner) => Some(_inner.code()),
-            GetRecordsError::KMSThrottlingError(_inner) => Some(_inner.code()),
-            GetRecordsError::ProvisionedThroughputExceededError(_inner) => Some(_inner.code()),
-            GetRecordsError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            GetRecordsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GetRecordsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GetRecordsError::ExpiredIteratorError(_inner) => Some(_inner),
-            GetRecordsError::InvalidArgumentError(_inner) => Some(_inner),
-            GetRecordsError::KMSAccessDeniedError(_inner) => Some(_inner),
-            GetRecordsError::KMSDisabledError(_inner) => Some(_inner),
-            GetRecordsError::KMSInvalidStateError(_inner) => Some(_inner),
-            GetRecordsError::KMSNotFoundError(_inner) => Some(_inner),
-            GetRecordsError::KMSOptInRequired(_inner) => Some(_inner),
-            GetRecordsError::KMSThrottlingError(_inner) => Some(_inner),
-            GetRecordsError::ProvisionedThroughputExceededError(_inner) => Some(_inner),
-            GetRecordsError::ResourceNotFoundError(_inner) => Some(_inner),
-            GetRecordsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            GetRecordsErrorKind::ExpiredIteratorError(_inner) => Some(_inner),
+            GetRecordsErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            GetRecordsErrorKind::KMSAccessDeniedError(_inner) => Some(_inner),
+            GetRecordsErrorKind::KMSDisabledError(_inner) => Some(_inner),
+            GetRecordsErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            GetRecordsErrorKind::KMSNotFoundError(_inner) => Some(_inner),
+            GetRecordsErrorKind::KMSOptInRequired(_inner) => Some(_inner),
+            GetRecordsErrorKind::KMSThrottlingError(_inner) => Some(_inner),
+            GetRecordsErrorKind::ProvisionedThroughputExceededError(_inner) => Some(_inner),
+            GetRecordsErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            GetRecordsErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum GetShardIteratorError {
+pub struct GetShardIteratorError {
+    pub kind: GetShardIteratorErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum GetShardIteratorErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for GetShardIteratorError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GetShardIteratorError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            GetShardIteratorError::ProvisionedThroughputExceededError(_inner) => _inner.fmt(f),
-            GetShardIteratorError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            GetShardIteratorError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            GetShardIteratorErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            GetShardIteratorErrorKind::ProvisionedThroughputExceededError(_inner) => _inner.fmt(f),
+            GetShardIteratorErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            GetShardIteratorErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1089,87 +904,71 @@ impl ::smithy_types::retry::ProvideErrorKind for GetShardIteratorError {
         GetShardIteratorError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            GetShardIteratorError::InvalidArgumentError(_inner) => None,
-            GetShardIteratorError::ProvisionedThroughputExceededError(_inner) => None,
-            GetShardIteratorError::ResourceNotFoundError(_inner) => None,
-            GetShardIteratorError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl GetShardIteratorError {
+    pub fn new(kind: GetShardIteratorErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        GetShardIteratorError::Unhandled(err.into())
+        Self {
+            kind: GetShardIteratorErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: GetShardIteratorErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            GetShardIteratorError::InvalidArgumentError(_inner) => _inner.message(),
-            GetShardIteratorError::ProvisionedThroughputExceededError(_inner) => _inner.message(),
-            GetShardIteratorError::ResourceNotFoundError(_inner) => _inner.message(),
-            GetShardIteratorError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            GetShardIteratorError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            GetShardIteratorError::ProvisionedThroughputExceededError(_inner) => {
-                Some(_inner.code())
-            }
-            GetShardIteratorError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            GetShardIteratorError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for GetShardIteratorError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            GetShardIteratorError::InvalidArgumentError(_inner) => Some(_inner),
-            GetShardIteratorError::ProvisionedThroughputExceededError(_inner) => Some(_inner),
-            GetShardIteratorError::ResourceNotFoundError(_inner) => Some(_inner),
-            GetShardIteratorError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            GetShardIteratorErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            GetShardIteratorErrorKind::ProvisionedThroughputExceededError(_inner) => Some(_inner),
+            GetShardIteratorErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            GetShardIteratorErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum IncreaseStreamRetentionPeriodError {
+pub struct IncreaseStreamRetentionPeriodError {
+    pub kind: IncreaseStreamRetentionPeriodErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum IncreaseStreamRetentionPeriodErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for IncreaseStreamRetentionPeriodError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            IncreaseStreamRetentionPeriodError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            IncreaseStreamRetentionPeriodError::LimitExceededError(_inner) => _inner.fmt(f),
-            IncreaseStreamRetentionPeriodError::ResourceInUseError(_inner) => _inner.fmt(f),
-            IncreaseStreamRetentionPeriodError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            IncreaseStreamRetentionPeriodError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            IncreaseStreamRetentionPeriodErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            IncreaseStreamRetentionPeriodErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            IncreaseStreamRetentionPeriodErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            IncreaseStreamRetentionPeriodErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            IncreaseStreamRetentionPeriodErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1178,93 +977,74 @@ impl ::smithy_types::retry::ProvideErrorKind for IncreaseStreamRetentionPeriodEr
         IncreaseStreamRetentionPeriodError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            IncreaseStreamRetentionPeriodError::InvalidArgumentError(_inner) => None,
-            IncreaseStreamRetentionPeriodError::LimitExceededError(_inner) => None,
-            IncreaseStreamRetentionPeriodError::ResourceInUseError(_inner) => None,
-            IncreaseStreamRetentionPeriodError::ResourceNotFoundError(_inner) => None,
-            IncreaseStreamRetentionPeriodError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl IncreaseStreamRetentionPeriodError {
+    pub fn new(kind: IncreaseStreamRetentionPeriodErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        IncreaseStreamRetentionPeriodError::Unhandled(err.into())
+        Self {
+            kind: IncreaseStreamRetentionPeriodErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: IncreaseStreamRetentionPeriodErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            IncreaseStreamRetentionPeriodError::InvalidArgumentError(_inner) => _inner.message(),
-            IncreaseStreamRetentionPeriodError::LimitExceededError(_inner) => _inner.message(),
-            IncreaseStreamRetentionPeriodError::ResourceInUseError(_inner) => _inner.message(),
-            IncreaseStreamRetentionPeriodError::ResourceNotFoundError(_inner) => _inner.message(),
-            IncreaseStreamRetentionPeriodError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            IncreaseStreamRetentionPeriodError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            IncreaseStreamRetentionPeriodError::LimitExceededError(_inner) => Some(_inner.code()),
-            IncreaseStreamRetentionPeriodError::ResourceInUseError(_inner) => Some(_inner.code()),
-            IncreaseStreamRetentionPeriodError::ResourceNotFoundError(_inner) => {
-                Some(_inner.code())
-            }
-            IncreaseStreamRetentionPeriodError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for IncreaseStreamRetentionPeriodError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            IncreaseStreamRetentionPeriodError::InvalidArgumentError(_inner) => Some(_inner),
-            IncreaseStreamRetentionPeriodError::LimitExceededError(_inner) => Some(_inner),
-            IncreaseStreamRetentionPeriodError::ResourceInUseError(_inner) => Some(_inner),
-            IncreaseStreamRetentionPeriodError::ResourceNotFoundError(_inner) => Some(_inner),
-            IncreaseStreamRetentionPeriodError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            IncreaseStreamRetentionPeriodErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            IncreaseStreamRetentionPeriodErrorKind::LimitExceededError(_inner) => Some(_inner),
+            IncreaseStreamRetentionPeriodErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            IncreaseStreamRetentionPeriodErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            IncreaseStreamRetentionPeriodErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ListShardsError {
+pub struct ListShardsError {
+    pub kind: ListShardsErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ListShardsErrorKind {
     ExpiredNextTokenError(ExpiredNextTokenError),
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ListShardsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ListShardsError::ExpiredNextTokenError(_inner) => _inner.fmt(f),
-            ListShardsError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            ListShardsError::LimitExceededError(_inner) => _inner.fmt(f),
-            ListShardsError::ResourceInUseError(_inner) => _inner.fmt(f),
-            ListShardsError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            ListShardsError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ListShardsErrorKind::ExpiredNextTokenError(_inner) => _inner.fmt(f),
+            ListShardsErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            ListShardsErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            ListShardsErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            ListShardsErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            ListShardsErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1273,95 +1053,75 @@ impl ::smithy_types::retry::ProvideErrorKind for ListShardsError {
         ListShardsError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ListShardsError::ExpiredNextTokenError(_inner) => None,
-            ListShardsError::InvalidArgumentError(_inner) => None,
-            ListShardsError::LimitExceededError(_inner) => None,
-            ListShardsError::ResourceInUseError(_inner) => None,
-            ListShardsError::ResourceNotFoundError(_inner) => None,
-            ListShardsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ListShardsError {
+    pub fn new(kind: ListShardsErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ListShardsError::Unhandled(err.into())
+        Self {
+            kind: ListShardsErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ListShardsErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ListShardsError::ExpiredNextTokenError(_inner) => _inner.message(),
-            ListShardsError::InvalidArgumentError(_inner) => _inner.message(),
-            ListShardsError::LimitExceededError(_inner) => _inner.message(),
-            ListShardsError::ResourceInUseError(_inner) => _inner.message(),
-            ListShardsError::ResourceNotFoundError(_inner) => _inner.message(),
-            ListShardsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ListShardsError::ExpiredNextTokenError(_inner) => Some(_inner.code()),
-            ListShardsError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            ListShardsError::LimitExceededError(_inner) => Some(_inner.code()),
-            ListShardsError::ResourceInUseError(_inner) => Some(_inner.code()),
-            ListShardsError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            ListShardsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ListShardsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ListShardsError::ExpiredNextTokenError(_inner) => Some(_inner),
-            ListShardsError::InvalidArgumentError(_inner) => Some(_inner),
-            ListShardsError::LimitExceededError(_inner) => Some(_inner),
-            ListShardsError::ResourceInUseError(_inner) => Some(_inner),
-            ListShardsError::ResourceNotFoundError(_inner) => Some(_inner),
-            ListShardsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ListShardsErrorKind::ExpiredNextTokenError(_inner) => Some(_inner),
+            ListShardsErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            ListShardsErrorKind::LimitExceededError(_inner) => Some(_inner),
+            ListShardsErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            ListShardsErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            ListShardsErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ListStreamConsumersError {
+pub struct ListStreamConsumersError {
+    pub kind: ListStreamConsumersErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ListStreamConsumersErrorKind {
     ExpiredNextTokenError(ExpiredNextTokenError),
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ListStreamConsumersError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ListStreamConsumersError::ExpiredNextTokenError(_inner) => _inner.fmt(f),
-            ListStreamConsumersError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            ListStreamConsumersError::LimitExceededError(_inner) => _inner.fmt(f),
-            ListStreamConsumersError::ResourceInUseError(_inner) => _inner.fmt(f),
-            ListStreamConsumersError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            ListStreamConsumersError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ListStreamConsumersErrorKind::ExpiredNextTokenError(_inner) => _inner.fmt(f),
+            ListStreamConsumersErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            ListStreamConsumersErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            ListStreamConsumersErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            ListStreamConsumersErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            ListStreamConsumersErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1370,87 +1130,67 @@ impl ::smithy_types::retry::ProvideErrorKind for ListStreamConsumersError {
         ListStreamConsumersError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ListStreamConsumersError::ExpiredNextTokenError(_inner) => None,
-            ListStreamConsumersError::InvalidArgumentError(_inner) => None,
-            ListStreamConsumersError::LimitExceededError(_inner) => None,
-            ListStreamConsumersError::ResourceInUseError(_inner) => None,
-            ListStreamConsumersError::ResourceNotFoundError(_inner) => None,
-            ListStreamConsumersError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ListStreamConsumersError {
+    pub fn new(kind: ListStreamConsumersErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ListStreamConsumersError::Unhandled(err.into())
+        Self {
+            kind: ListStreamConsumersErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ListStreamConsumersErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ListStreamConsumersError::ExpiredNextTokenError(_inner) => _inner.message(),
-            ListStreamConsumersError::InvalidArgumentError(_inner) => _inner.message(),
-            ListStreamConsumersError::LimitExceededError(_inner) => _inner.message(),
-            ListStreamConsumersError::ResourceInUseError(_inner) => _inner.message(),
-            ListStreamConsumersError::ResourceNotFoundError(_inner) => _inner.message(),
-            ListStreamConsumersError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ListStreamConsumersError::ExpiredNextTokenError(_inner) => Some(_inner.code()),
-            ListStreamConsumersError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            ListStreamConsumersError::LimitExceededError(_inner) => Some(_inner.code()),
-            ListStreamConsumersError::ResourceInUseError(_inner) => Some(_inner.code()),
-            ListStreamConsumersError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            ListStreamConsumersError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ListStreamConsumersError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ListStreamConsumersError::ExpiredNextTokenError(_inner) => Some(_inner),
-            ListStreamConsumersError::InvalidArgumentError(_inner) => Some(_inner),
-            ListStreamConsumersError::LimitExceededError(_inner) => Some(_inner),
-            ListStreamConsumersError::ResourceInUseError(_inner) => Some(_inner),
-            ListStreamConsumersError::ResourceNotFoundError(_inner) => Some(_inner),
-            ListStreamConsumersError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ListStreamConsumersErrorKind::ExpiredNextTokenError(_inner) => Some(_inner),
+            ListStreamConsumersErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            ListStreamConsumersErrorKind::LimitExceededError(_inner) => Some(_inner),
+            ListStreamConsumersErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            ListStreamConsumersErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            ListStreamConsumersErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ListStreamsError {
+pub struct ListStreamsError {
+    pub kind: ListStreamsErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ListStreamsErrorKind {
     LimitExceededError(LimitExceededError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ListStreamsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ListStreamsError::LimitExceededError(_inner) => _inner.fmt(f),
-            ListStreamsError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ListStreamsErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            ListStreamsErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1459,75 +1199,67 @@ impl ::smithy_types::retry::ProvideErrorKind for ListStreamsError {
         ListStreamsError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ListStreamsError::LimitExceededError(_inner) => None,
-            ListStreamsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ListStreamsError {
+    pub fn new(kind: ListStreamsErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ListStreamsError::Unhandled(err.into())
+        Self {
+            kind: ListStreamsErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ListStreamsErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ListStreamsError::LimitExceededError(_inner) => _inner.message(),
-            ListStreamsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ListStreamsError::LimitExceededError(_inner) => Some(_inner.code()),
-            ListStreamsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ListStreamsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ListStreamsError::LimitExceededError(_inner) => Some(_inner),
-            ListStreamsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ListStreamsErrorKind::LimitExceededError(_inner) => Some(_inner),
+            ListStreamsErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum ListTagsForStreamError {
+pub struct ListTagsForStreamError {
+    pub kind: ListTagsForStreamErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum ListTagsForStreamErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for ListTagsForStreamError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            ListTagsForStreamError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            ListTagsForStreamError::LimitExceededError(_inner) => _inner.fmt(f),
-            ListTagsForStreamError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            ListTagsForStreamError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            ListTagsForStreamErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            ListTagsForStreamErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            ListTagsForStreamErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            ListTagsForStreamErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1536,85 +1268,71 @@ impl ::smithy_types::retry::ProvideErrorKind for ListTagsForStreamError {
         ListTagsForStreamError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            ListTagsForStreamError::InvalidArgumentError(_inner) => None,
-            ListTagsForStreamError::LimitExceededError(_inner) => None,
-            ListTagsForStreamError::ResourceNotFoundError(_inner) => None,
-            ListTagsForStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl ListTagsForStreamError {
+    pub fn new(kind: ListTagsForStreamErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        ListTagsForStreamError::Unhandled(err.into())
+        Self {
+            kind: ListTagsForStreamErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: ListTagsForStreamErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            ListTagsForStreamError::InvalidArgumentError(_inner) => _inner.message(),
-            ListTagsForStreamError::LimitExceededError(_inner) => _inner.message(),
-            ListTagsForStreamError::ResourceNotFoundError(_inner) => _inner.message(),
-            ListTagsForStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            ListTagsForStreamError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            ListTagsForStreamError::LimitExceededError(_inner) => Some(_inner.code()),
-            ListTagsForStreamError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            ListTagsForStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for ListTagsForStreamError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            ListTagsForStreamError::InvalidArgumentError(_inner) => Some(_inner),
-            ListTagsForStreamError::LimitExceededError(_inner) => Some(_inner),
-            ListTagsForStreamError::ResourceNotFoundError(_inner) => Some(_inner),
-            ListTagsForStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            ListTagsForStreamErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            ListTagsForStreamErrorKind::LimitExceededError(_inner) => Some(_inner),
+            ListTagsForStreamErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            ListTagsForStreamErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum MergeShardsError {
+pub struct MergeShardsError {
+    pub kind: MergeShardsErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum MergeShardsErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for MergeShardsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            MergeShardsError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            MergeShardsError::LimitExceededError(_inner) => _inner.fmt(f),
-            MergeShardsError::ResourceInUseError(_inner) => _inner.fmt(f),
-            MergeShardsError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            MergeShardsError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            MergeShardsErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            MergeShardsErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            MergeShardsErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            MergeShardsErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            MergeShardsErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1623,73 +1341,56 @@ impl ::smithy_types::retry::ProvideErrorKind for MergeShardsError {
         MergeShardsError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            MergeShardsError::InvalidArgumentError(_inner) => None,
-            MergeShardsError::LimitExceededError(_inner) => None,
-            MergeShardsError::ResourceInUseError(_inner) => None,
-            MergeShardsError::ResourceNotFoundError(_inner) => None,
-            MergeShardsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl MergeShardsError {
+    pub fn new(kind: MergeShardsErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        MergeShardsError::Unhandled(err.into())
+        Self {
+            kind: MergeShardsErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: MergeShardsErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            MergeShardsError::InvalidArgumentError(_inner) => _inner.message(),
-            MergeShardsError::LimitExceededError(_inner) => _inner.message(),
-            MergeShardsError::ResourceInUseError(_inner) => _inner.message(),
-            MergeShardsError::ResourceNotFoundError(_inner) => _inner.message(),
-            MergeShardsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            MergeShardsError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            MergeShardsError::LimitExceededError(_inner) => Some(_inner.code()),
-            MergeShardsError::ResourceInUseError(_inner) => Some(_inner.code()),
-            MergeShardsError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            MergeShardsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for MergeShardsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            MergeShardsError::InvalidArgumentError(_inner) => Some(_inner),
-            MergeShardsError::LimitExceededError(_inner) => Some(_inner),
-            MergeShardsError::ResourceInUseError(_inner) => Some(_inner),
-            MergeShardsError::ResourceNotFoundError(_inner) => Some(_inner),
-            MergeShardsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            MergeShardsErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            MergeShardsErrorKind::LimitExceededError(_inner) => Some(_inner),
+            MergeShardsErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            MergeShardsErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            MergeShardsErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum PutRecordError {
+pub struct PutRecordError {
+    pub kind: PutRecordErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum PutRecordErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     KMSAccessDeniedError(KMSAccessDeniedError),
     KMSDisabledError(KMSDisabledError),
@@ -1700,22 +1401,22 @@ pub enum PutRecordError {
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for PutRecordError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            PutRecordError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            PutRecordError::KMSAccessDeniedError(_inner) => _inner.fmt(f),
-            PutRecordError::KMSDisabledError(_inner) => _inner.fmt(f),
-            PutRecordError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            PutRecordError::KMSNotFoundError(_inner) => _inner.fmt(f),
-            PutRecordError::KMSOptInRequired(_inner) => _inner.fmt(f),
-            PutRecordError::KMSThrottlingError(_inner) => _inner.fmt(f),
-            PutRecordError::ProvisionedThroughputExceededError(_inner) => _inner.fmt(f),
-            PutRecordError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            PutRecordError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            PutRecordErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            PutRecordErrorKind::KMSAccessDeniedError(_inner) => _inner.fmt(f),
+            PutRecordErrorKind::KMSDisabledError(_inner) => _inner.fmt(f),
+            PutRecordErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            PutRecordErrorKind::KMSNotFoundError(_inner) => _inner.fmt(f),
+            PutRecordErrorKind::KMSOptInRequired(_inner) => _inner.fmt(f),
+            PutRecordErrorKind::KMSThrottlingError(_inner) => _inner.fmt(f),
+            PutRecordErrorKind::ProvisionedThroughputExceededError(_inner) => _inner.fmt(f),
+            PutRecordErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            PutRecordErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1724,93 +1425,61 @@ impl ::smithy_types::retry::ProvideErrorKind for PutRecordError {
         PutRecordError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            PutRecordError::InvalidArgumentError(_inner) => None,
-            PutRecordError::KMSAccessDeniedError(_inner) => None,
-            PutRecordError::KMSDisabledError(_inner) => None,
-            PutRecordError::KMSInvalidStateError(_inner) => None,
-            PutRecordError::KMSNotFoundError(_inner) => None,
-            PutRecordError::KMSOptInRequired(_inner) => None,
-            PutRecordError::KMSThrottlingError(_inner) => None,
-            PutRecordError::ProvisionedThroughputExceededError(_inner) => None,
-            PutRecordError::ResourceNotFoundError(_inner) => None,
-            PutRecordError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl PutRecordError {
+    pub fn new(kind: PutRecordErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        PutRecordError::Unhandled(err.into())
+        Self {
+            kind: PutRecordErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: PutRecordErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            PutRecordError::InvalidArgumentError(_inner) => _inner.message(),
-            PutRecordError::KMSAccessDeniedError(_inner) => _inner.message(),
-            PutRecordError::KMSDisabledError(_inner) => _inner.message(),
-            PutRecordError::KMSInvalidStateError(_inner) => _inner.message(),
-            PutRecordError::KMSNotFoundError(_inner) => _inner.message(),
-            PutRecordError::KMSOptInRequired(_inner) => _inner.message(),
-            PutRecordError::KMSThrottlingError(_inner) => _inner.message(),
-            PutRecordError::ProvisionedThroughputExceededError(_inner) => _inner.message(),
-            PutRecordError::ResourceNotFoundError(_inner) => _inner.message(),
-            PutRecordError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            PutRecordError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            PutRecordError::KMSAccessDeniedError(_inner) => Some(_inner.code()),
-            PutRecordError::KMSDisabledError(_inner) => Some(_inner.code()),
-            PutRecordError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            PutRecordError::KMSNotFoundError(_inner) => Some(_inner.code()),
-            PutRecordError::KMSOptInRequired(_inner) => Some(_inner.code()),
-            PutRecordError::KMSThrottlingError(_inner) => Some(_inner.code()),
-            PutRecordError::ProvisionedThroughputExceededError(_inner) => Some(_inner.code()),
-            PutRecordError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            PutRecordError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for PutRecordError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            PutRecordError::InvalidArgumentError(_inner) => Some(_inner),
-            PutRecordError::KMSAccessDeniedError(_inner) => Some(_inner),
-            PutRecordError::KMSDisabledError(_inner) => Some(_inner),
-            PutRecordError::KMSInvalidStateError(_inner) => Some(_inner),
-            PutRecordError::KMSNotFoundError(_inner) => Some(_inner),
-            PutRecordError::KMSOptInRequired(_inner) => Some(_inner),
-            PutRecordError::KMSThrottlingError(_inner) => Some(_inner),
-            PutRecordError::ProvisionedThroughputExceededError(_inner) => Some(_inner),
-            PutRecordError::ResourceNotFoundError(_inner) => Some(_inner),
-            PutRecordError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            PutRecordErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            PutRecordErrorKind::KMSAccessDeniedError(_inner) => Some(_inner),
+            PutRecordErrorKind::KMSDisabledError(_inner) => Some(_inner),
+            PutRecordErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            PutRecordErrorKind::KMSNotFoundError(_inner) => Some(_inner),
+            PutRecordErrorKind::KMSOptInRequired(_inner) => Some(_inner),
+            PutRecordErrorKind::KMSThrottlingError(_inner) => Some(_inner),
+            PutRecordErrorKind::ProvisionedThroughputExceededError(_inner) => Some(_inner),
+            PutRecordErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            PutRecordErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum PutRecordsError {
+pub struct PutRecordsError {
+    pub kind: PutRecordsErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum PutRecordsErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     KMSAccessDeniedError(KMSAccessDeniedError),
     KMSDisabledError(KMSDisabledError),
@@ -1821,22 +1490,22 @@ pub enum PutRecordsError {
     ProvisionedThroughputExceededError(ProvisionedThroughputExceededError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for PutRecordsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            PutRecordsError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            PutRecordsError::KMSAccessDeniedError(_inner) => _inner.fmt(f),
-            PutRecordsError::KMSDisabledError(_inner) => _inner.fmt(f),
-            PutRecordsError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            PutRecordsError::KMSNotFoundError(_inner) => _inner.fmt(f),
-            PutRecordsError::KMSOptInRequired(_inner) => _inner.fmt(f),
-            PutRecordsError::KMSThrottlingError(_inner) => _inner.fmt(f),
-            PutRecordsError::ProvisionedThroughputExceededError(_inner) => _inner.fmt(f),
-            PutRecordsError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            PutRecordsError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            PutRecordsErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            PutRecordsErrorKind::KMSAccessDeniedError(_inner) => _inner.fmt(f),
+            PutRecordsErrorKind::KMSDisabledError(_inner) => _inner.fmt(f),
+            PutRecordsErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            PutRecordsErrorKind::KMSNotFoundError(_inner) => _inner.fmt(f),
+            PutRecordsErrorKind::KMSOptInRequired(_inner) => _inner.fmt(f),
+            PutRecordsErrorKind::KMSThrottlingError(_inner) => _inner.fmt(f),
+            PutRecordsErrorKind::ProvisionedThroughputExceededError(_inner) => _inner.fmt(f),
+            PutRecordsErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            PutRecordsErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1845,109 +1514,77 @@ impl ::smithy_types::retry::ProvideErrorKind for PutRecordsError {
         PutRecordsError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            PutRecordsError::InvalidArgumentError(_inner) => None,
-            PutRecordsError::KMSAccessDeniedError(_inner) => None,
-            PutRecordsError::KMSDisabledError(_inner) => None,
-            PutRecordsError::KMSInvalidStateError(_inner) => None,
-            PutRecordsError::KMSNotFoundError(_inner) => None,
-            PutRecordsError::KMSOptInRequired(_inner) => None,
-            PutRecordsError::KMSThrottlingError(_inner) => None,
-            PutRecordsError::ProvisionedThroughputExceededError(_inner) => None,
-            PutRecordsError::ResourceNotFoundError(_inner) => None,
-            PutRecordsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl PutRecordsError {
+    pub fn new(kind: PutRecordsErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        PutRecordsError::Unhandled(err.into())
+        Self {
+            kind: PutRecordsErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: PutRecordsErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            PutRecordsError::InvalidArgumentError(_inner) => _inner.message(),
-            PutRecordsError::KMSAccessDeniedError(_inner) => _inner.message(),
-            PutRecordsError::KMSDisabledError(_inner) => _inner.message(),
-            PutRecordsError::KMSInvalidStateError(_inner) => _inner.message(),
-            PutRecordsError::KMSNotFoundError(_inner) => _inner.message(),
-            PutRecordsError::KMSOptInRequired(_inner) => _inner.message(),
-            PutRecordsError::KMSThrottlingError(_inner) => _inner.message(),
-            PutRecordsError::ProvisionedThroughputExceededError(_inner) => _inner.message(),
-            PutRecordsError::ResourceNotFoundError(_inner) => _inner.message(),
-            PutRecordsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            PutRecordsError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            PutRecordsError::KMSAccessDeniedError(_inner) => Some(_inner.code()),
-            PutRecordsError::KMSDisabledError(_inner) => Some(_inner.code()),
-            PutRecordsError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            PutRecordsError::KMSNotFoundError(_inner) => Some(_inner.code()),
-            PutRecordsError::KMSOptInRequired(_inner) => Some(_inner.code()),
-            PutRecordsError::KMSThrottlingError(_inner) => Some(_inner.code()),
-            PutRecordsError::ProvisionedThroughputExceededError(_inner) => Some(_inner.code()),
-            PutRecordsError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            PutRecordsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for PutRecordsError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            PutRecordsError::InvalidArgumentError(_inner) => Some(_inner),
-            PutRecordsError::KMSAccessDeniedError(_inner) => Some(_inner),
-            PutRecordsError::KMSDisabledError(_inner) => Some(_inner),
-            PutRecordsError::KMSInvalidStateError(_inner) => Some(_inner),
-            PutRecordsError::KMSNotFoundError(_inner) => Some(_inner),
-            PutRecordsError::KMSOptInRequired(_inner) => Some(_inner),
-            PutRecordsError::KMSThrottlingError(_inner) => Some(_inner),
-            PutRecordsError::ProvisionedThroughputExceededError(_inner) => Some(_inner),
-            PutRecordsError::ResourceNotFoundError(_inner) => Some(_inner),
-            PutRecordsError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            PutRecordsErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            PutRecordsErrorKind::KMSAccessDeniedError(_inner) => Some(_inner),
+            PutRecordsErrorKind::KMSDisabledError(_inner) => Some(_inner),
+            PutRecordsErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            PutRecordsErrorKind::KMSNotFoundError(_inner) => Some(_inner),
+            PutRecordsErrorKind::KMSOptInRequired(_inner) => Some(_inner),
+            PutRecordsErrorKind::KMSThrottlingError(_inner) => Some(_inner),
+            PutRecordsErrorKind::ProvisionedThroughputExceededError(_inner) => Some(_inner),
+            PutRecordsErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            PutRecordsErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum RegisterStreamConsumerError {
+pub struct RegisterStreamConsumerError {
+    pub kind: RegisterStreamConsumerErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum RegisterStreamConsumerErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for RegisterStreamConsumerError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            RegisterStreamConsumerError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            RegisterStreamConsumerError::LimitExceededError(_inner) => _inner.fmt(f),
-            RegisterStreamConsumerError::ResourceInUseError(_inner) => _inner.fmt(f),
-            RegisterStreamConsumerError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            RegisterStreamConsumerError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            RegisterStreamConsumerErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            RegisterStreamConsumerErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            RegisterStreamConsumerErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            RegisterStreamConsumerErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            RegisterStreamConsumerErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -1956,89 +1593,72 @@ impl ::smithy_types::retry::ProvideErrorKind for RegisterStreamConsumerError {
         RegisterStreamConsumerError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            RegisterStreamConsumerError::InvalidArgumentError(_inner) => None,
-            RegisterStreamConsumerError::LimitExceededError(_inner) => None,
-            RegisterStreamConsumerError::ResourceInUseError(_inner) => None,
-            RegisterStreamConsumerError::ResourceNotFoundError(_inner) => None,
-            RegisterStreamConsumerError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl RegisterStreamConsumerError {
+    pub fn new(kind: RegisterStreamConsumerErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        RegisterStreamConsumerError::Unhandled(err.into())
+        Self {
+            kind: RegisterStreamConsumerErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: RegisterStreamConsumerErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            RegisterStreamConsumerError::InvalidArgumentError(_inner) => _inner.message(),
-            RegisterStreamConsumerError::LimitExceededError(_inner) => _inner.message(),
-            RegisterStreamConsumerError::ResourceInUseError(_inner) => _inner.message(),
-            RegisterStreamConsumerError::ResourceNotFoundError(_inner) => _inner.message(),
-            RegisterStreamConsumerError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            RegisterStreamConsumerError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            RegisterStreamConsumerError::LimitExceededError(_inner) => Some(_inner.code()),
-            RegisterStreamConsumerError::ResourceInUseError(_inner) => Some(_inner.code()),
-            RegisterStreamConsumerError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            RegisterStreamConsumerError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for RegisterStreamConsumerError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            RegisterStreamConsumerError::InvalidArgumentError(_inner) => Some(_inner),
-            RegisterStreamConsumerError::LimitExceededError(_inner) => Some(_inner),
-            RegisterStreamConsumerError::ResourceInUseError(_inner) => Some(_inner),
-            RegisterStreamConsumerError::ResourceNotFoundError(_inner) => Some(_inner),
-            RegisterStreamConsumerError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            RegisterStreamConsumerErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            RegisterStreamConsumerErrorKind::LimitExceededError(_inner) => Some(_inner),
+            RegisterStreamConsumerErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            RegisterStreamConsumerErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            RegisterStreamConsumerErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum RemoveTagsFromStreamError {
+pub struct RemoveTagsFromStreamError {
+    pub kind: RemoveTagsFromStreamErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum RemoveTagsFromStreamErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for RemoveTagsFromStreamError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            RemoveTagsFromStreamError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            RemoveTagsFromStreamError::LimitExceededError(_inner) => _inner.fmt(f),
-            RemoveTagsFromStreamError::ResourceInUseError(_inner) => _inner.fmt(f),
-            RemoveTagsFromStreamError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            RemoveTagsFromStreamError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            RemoveTagsFromStreamErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            RemoveTagsFromStreamErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            RemoveTagsFromStreamErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            RemoveTagsFromStreamErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            RemoveTagsFromStreamErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2047,89 +1667,72 @@ impl ::smithy_types::retry::ProvideErrorKind for RemoveTagsFromStreamError {
         RemoveTagsFromStreamError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            RemoveTagsFromStreamError::InvalidArgumentError(_inner) => None,
-            RemoveTagsFromStreamError::LimitExceededError(_inner) => None,
-            RemoveTagsFromStreamError::ResourceInUseError(_inner) => None,
-            RemoveTagsFromStreamError::ResourceNotFoundError(_inner) => None,
-            RemoveTagsFromStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl RemoveTagsFromStreamError {
+    pub fn new(kind: RemoveTagsFromStreamErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        RemoveTagsFromStreamError::Unhandled(err.into())
+        Self {
+            kind: RemoveTagsFromStreamErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: RemoveTagsFromStreamErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            RemoveTagsFromStreamError::InvalidArgumentError(_inner) => _inner.message(),
-            RemoveTagsFromStreamError::LimitExceededError(_inner) => _inner.message(),
-            RemoveTagsFromStreamError::ResourceInUseError(_inner) => _inner.message(),
-            RemoveTagsFromStreamError::ResourceNotFoundError(_inner) => _inner.message(),
-            RemoveTagsFromStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            RemoveTagsFromStreamError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            RemoveTagsFromStreamError::LimitExceededError(_inner) => Some(_inner.code()),
-            RemoveTagsFromStreamError::ResourceInUseError(_inner) => Some(_inner.code()),
-            RemoveTagsFromStreamError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            RemoveTagsFromStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for RemoveTagsFromStreamError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            RemoveTagsFromStreamError::InvalidArgumentError(_inner) => Some(_inner),
-            RemoveTagsFromStreamError::LimitExceededError(_inner) => Some(_inner),
-            RemoveTagsFromStreamError::ResourceInUseError(_inner) => Some(_inner),
-            RemoveTagsFromStreamError::ResourceNotFoundError(_inner) => Some(_inner),
-            RemoveTagsFromStreamError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            RemoveTagsFromStreamErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            RemoveTagsFromStreamErrorKind::LimitExceededError(_inner) => Some(_inner),
+            RemoveTagsFromStreamErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            RemoveTagsFromStreamErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            RemoveTagsFromStreamErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum SplitShardError {
+pub struct SplitShardError {
+    pub kind: SplitShardErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum SplitShardErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for SplitShardError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            SplitShardError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            SplitShardError::LimitExceededError(_inner) => _inner.fmt(f),
-            SplitShardError::ResourceInUseError(_inner) => _inner.fmt(f),
-            SplitShardError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            SplitShardError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            SplitShardErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            SplitShardErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            SplitShardErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            SplitShardErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            SplitShardErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2138,73 +1741,56 @@ impl ::smithy_types::retry::ProvideErrorKind for SplitShardError {
         SplitShardError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            SplitShardError::InvalidArgumentError(_inner) => None,
-            SplitShardError::LimitExceededError(_inner) => None,
-            SplitShardError::ResourceInUseError(_inner) => None,
-            SplitShardError::ResourceNotFoundError(_inner) => None,
-            SplitShardError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl SplitShardError {
+    pub fn new(kind: SplitShardErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        SplitShardError::Unhandled(err.into())
+        Self {
+            kind: SplitShardErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: SplitShardErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            SplitShardError::InvalidArgumentError(_inner) => _inner.message(),
-            SplitShardError::LimitExceededError(_inner) => _inner.message(),
-            SplitShardError::ResourceInUseError(_inner) => _inner.message(),
-            SplitShardError::ResourceNotFoundError(_inner) => _inner.message(),
-            SplitShardError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            SplitShardError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            SplitShardError::LimitExceededError(_inner) => Some(_inner.code()),
-            SplitShardError::ResourceInUseError(_inner) => Some(_inner.code()),
-            SplitShardError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            SplitShardError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for SplitShardError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            SplitShardError::InvalidArgumentError(_inner) => Some(_inner),
-            SplitShardError::LimitExceededError(_inner) => Some(_inner),
-            SplitShardError::ResourceInUseError(_inner) => Some(_inner),
-            SplitShardError::ResourceNotFoundError(_inner) => Some(_inner),
-            SplitShardError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            SplitShardErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            SplitShardErrorKind::LimitExceededError(_inner) => Some(_inner),
+            SplitShardErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            SplitShardErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            SplitShardErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum StartStreamEncryptionError {
+pub struct StartStreamEncryptionError {
+    pub kind: StartStreamEncryptionErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum StartStreamEncryptionErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     KMSAccessDeniedError(KMSAccessDeniedError),
     KMSDisabledError(KMSDisabledError),
@@ -2216,23 +1802,23 @@ pub enum StartStreamEncryptionError {
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for StartStreamEncryptionError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            StartStreamEncryptionError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            StartStreamEncryptionError::KMSAccessDeniedError(_inner) => _inner.fmt(f),
-            StartStreamEncryptionError::KMSDisabledError(_inner) => _inner.fmt(f),
-            StartStreamEncryptionError::KMSInvalidStateError(_inner) => _inner.fmt(f),
-            StartStreamEncryptionError::KMSNotFoundError(_inner) => _inner.fmt(f),
-            StartStreamEncryptionError::KMSOptInRequired(_inner) => _inner.fmt(f),
-            StartStreamEncryptionError::KMSThrottlingError(_inner) => _inner.fmt(f),
-            StartStreamEncryptionError::LimitExceededError(_inner) => _inner.fmt(f),
-            StartStreamEncryptionError::ResourceInUseError(_inner) => _inner.fmt(f),
-            StartStreamEncryptionError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            StartStreamEncryptionError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            StartStreamEncryptionErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            StartStreamEncryptionErrorKind::KMSAccessDeniedError(_inner) => _inner.fmt(f),
+            StartStreamEncryptionErrorKind::KMSDisabledError(_inner) => _inner.fmt(f),
+            StartStreamEncryptionErrorKind::KMSInvalidStateError(_inner) => _inner.fmt(f),
+            StartStreamEncryptionErrorKind::KMSNotFoundError(_inner) => _inner.fmt(f),
+            StartStreamEncryptionErrorKind::KMSOptInRequired(_inner) => _inner.fmt(f),
+            StartStreamEncryptionErrorKind::KMSThrottlingError(_inner) => _inner.fmt(f),
+            StartStreamEncryptionErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            StartStreamEncryptionErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            StartStreamEncryptionErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            StartStreamEncryptionErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2241,113 +1827,78 @@ impl ::smithy_types::retry::ProvideErrorKind for StartStreamEncryptionError {
         StartStreamEncryptionError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            StartStreamEncryptionError::InvalidArgumentError(_inner) => None,
-            StartStreamEncryptionError::KMSAccessDeniedError(_inner) => None,
-            StartStreamEncryptionError::KMSDisabledError(_inner) => None,
-            StartStreamEncryptionError::KMSInvalidStateError(_inner) => None,
-            StartStreamEncryptionError::KMSNotFoundError(_inner) => None,
-            StartStreamEncryptionError::KMSOptInRequired(_inner) => None,
-            StartStreamEncryptionError::KMSThrottlingError(_inner) => None,
-            StartStreamEncryptionError::LimitExceededError(_inner) => None,
-            StartStreamEncryptionError::ResourceInUseError(_inner) => None,
-            StartStreamEncryptionError::ResourceNotFoundError(_inner) => None,
-            StartStreamEncryptionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl StartStreamEncryptionError {
+    pub fn new(kind: StartStreamEncryptionErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        StartStreamEncryptionError::Unhandled(err.into())
+        Self {
+            kind: StartStreamEncryptionErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: StartStreamEncryptionErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            StartStreamEncryptionError::InvalidArgumentError(_inner) => _inner.message(),
-            StartStreamEncryptionError::KMSAccessDeniedError(_inner) => _inner.message(),
-            StartStreamEncryptionError::KMSDisabledError(_inner) => _inner.message(),
-            StartStreamEncryptionError::KMSInvalidStateError(_inner) => _inner.message(),
-            StartStreamEncryptionError::KMSNotFoundError(_inner) => _inner.message(),
-            StartStreamEncryptionError::KMSOptInRequired(_inner) => _inner.message(),
-            StartStreamEncryptionError::KMSThrottlingError(_inner) => _inner.message(),
-            StartStreamEncryptionError::LimitExceededError(_inner) => _inner.message(),
-            StartStreamEncryptionError::ResourceInUseError(_inner) => _inner.message(),
-            StartStreamEncryptionError::ResourceNotFoundError(_inner) => _inner.message(),
-            StartStreamEncryptionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            StartStreamEncryptionError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            StartStreamEncryptionError::KMSAccessDeniedError(_inner) => Some(_inner.code()),
-            StartStreamEncryptionError::KMSDisabledError(_inner) => Some(_inner.code()),
-            StartStreamEncryptionError::KMSInvalidStateError(_inner) => Some(_inner.code()),
-            StartStreamEncryptionError::KMSNotFoundError(_inner) => Some(_inner.code()),
-            StartStreamEncryptionError::KMSOptInRequired(_inner) => Some(_inner.code()),
-            StartStreamEncryptionError::KMSThrottlingError(_inner) => Some(_inner.code()),
-            StartStreamEncryptionError::LimitExceededError(_inner) => Some(_inner.code()),
-            StartStreamEncryptionError::ResourceInUseError(_inner) => Some(_inner.code()),
-            StartStreamEncryptionError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            StartStreamEncryptionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for StartStreamEncryptionError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            StartStreamEncryptionError::InvalidArgumentError(_inner) => Some(_inner),
-            StartStreamEncryptionError::KMSAccessDeniedError(_inner) => Some(_inner),
-            StartStreamEncryptionError::KMSDisabledError(_inner) => Some(_inner),
-            StartStreamEncryptionError::KMSInvalidStateError(_inner) => Some(_inner),
-            StartStreamEncryptionError::KMSNotFoundError(_inner) => Some(_inner),
-            StartStreamEncryptionError::KMSOptInRequired(_inner) => Some(_inner),
-            StartStreamEncryptionError::KMSThrottlingError(_inner) => Some(_inner),
-            StartStreamEncryptionError::LimitExceededError(_inner) => Some(_inner),
-            StartStreamEncryptionError::ResourceInUseError(_inner) => Some(_inner),
-            StartStreamEncryptionError::ResourceNotFoundError(_inner) => Some(_inner),
-            StartStreamEncryptionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            StartStreamEncryptionErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            StartStreamEncryptionErrorKind::KMSAccessDeniedError(_inner) => Some(_inner),
+            StartStreamEncryptionErrorKind::KMSDisabledError(_inner) => Some(_inner),
+            StartStreamEncryptionErrorKind::KMSInvalidStateError(_inner) => Some(_inner),
+            StartStreamEncryptionErrorKind::KMSNotFoundError(_inner) => Some(_inner),
+            StartStreamEncryptionErrorKind::KMSOptInRequired(_inner) => Some(_inner),
+            StartStreamEncryptionErrorKind::KMSThrottlingError(_inner) => Some(_inner),
+            StartStreamEncryptionErrorKind::LimitExceededError(_inner) => Some(_inner),
+            StartStreamEncryptionErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            StartStreamEncryptionErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            StartStreamEncryptionErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum StopStreamEncryptionError {
+pub struct StopStreamEncryptionError {
+    pub kind: StopStreamEncryptionErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum StopStreamEncryptionErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for StopStreamEncryptionError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            StopStreamEncryptionError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            StopStreamEncryptionError::LimitExceededError(_inner) => _inner.fmt(f),
-            StopStreamEncryptionError::ResourceInUseError(_inner) => _inner.fmt(f),
-            StopStreamEncryptionError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            StopStreamEncryptionError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            StopStreamEncryptionErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            StopStreamEncryptionErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            StopStreamEncryptionErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            StopStreamEncryptionErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            StopStreamEncryptionErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2356,89 +1907,72 @@ impl ::smithy_types::retry::ProvideErrorKind for StopStreamEncryptionError {
         StopStreamEncryptionError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            StopStreamEncryptionError::InvalidArgumentError(_inner) => None,
-            StopStreamEncryptionError::LimitExceededError(_inner) => None,
-            StopStreamEncryptionError::ResourceInUseError(_inner) => None,
-            StopStreamEncryptionError::ResourceNotFoundError(_inner) => None,
-            StopStreamEncryptionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl StopStreamEncryptionError {
+    pub fn new(kind: StopStreamEncryptionErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        StopStreamEncryptionError::Unhandled(err.into())
+        Self {
+            kind: StopStreamEncryptionErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: StopStreamEncryptionErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            StopStreamEncryptionError::InvalidArgumentError(_inner) => _inner.message(),
-            StopStreamEncryptionError::LimitExceededError(_inner) => _inner.message(),
-            StopStreamEncryptionError::ResourceInUseError(_inner) => _inner.message(),
-            StopStreamEncryptionError::ResourceNotFoundError(_inner) => _inner.message(),
-            StopStreamEncryptionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            StopStreamEncryptionError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            StopStreamEncryptionError::LimitExceededError(_inner) => Some(_inner.code()),
-            StopStreamEncryptionError::ResourceInUseError(_inner) => Some(_inner.code()),
-            StopStreamEncryptionError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            StopStreamEncryptionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for StopStreamEncryptionError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            StopStreamEncryptionError::InvalidArgumentError(_inner) => Some(_inner),
-            StopStreamEncryptionError::LimitExceededError(_inner) => Some(_inner),
-            StopStreamEncryptionError::ResourceInUseError(_inner) => Some(_inner),
-            StopStreamEncryptionError::ResourceNotFoundError(_inner) => Some(_inner),
-            StopStreamEncryptionError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            StopStreamEncryptionErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            StopStreamEncryptionErrorKind::LimitExceededError(_inner) => Some(_inner),
+            StopStreamEncryptionErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            StopStreamEncryptionErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            StopStreamEncryptionErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum SubscribeToShardError {
+pub struct SubscribeToShardError {
+    pub kind: SubscribeToShardErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum SubscribeToShardErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for SubscribeToShardError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            SubscribeToShardError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            SubscribeToShardError::LimitExceededError(_inner) => _inner.fmt(f),
-            SubscribeToShardError::ResourceInUseError(_inner) => _inner.fmt(f),
-            SubscribeToShardError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            SubscribeToShardError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            SubscribeToShardErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            SubscribeToShardErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            SubscribeToShardErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            SubscribeToShardErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            SubscribeToShardErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2447,89 +1981,72 @@ impl ::smithy_types::retry::ProvideErrorKind for SubscribeToShardError {
         SubscribeToShardError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            SubscribeToShardError::InvalidArgumentError(_inner) => None,
-            SubscribeToShardError::LimitExceededError(_inner) => None,
-            SubscribeToShardError::ResourceInUseError(_inner) => None,
-            SubscribeToShardError::ResourceNotFoundError(_inner) => None,
-            SubscribeToShardError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl SubscribeToShardError {
+    pub fn new(kind: SubscribeToShardErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        SubscribeToShardError::Unhandled(err.into())
+        Self {
+            kind: SubscribeToShardErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: SubscribeToShardErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            SubscribeToShardError::InvalidArgumentError(_inner) => _inner.message(),
-            SubscribeToShardError::LimitExceededError(_inner) => _inner.message(),
-            SubscribeToShardError::ResourceInUseError(_inner) => _inner.message(),
-            SubscribeToShardError::ResourceNotFoundError(_inner) => _inner.message(),
-            SubscribeToShardError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            SubscribeToShardError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            SubscribeToShardError::LimitExceededError(_inner) => Some(_inner.code()),
-            SubscribeToShardError::ResourceInUseError(_inner) => Some(_inner.code()),
-            SubscribeToShardError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            SubscribeToShardError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for SubscribeToShardError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            SubscribeToShardError::InvalidArgumentError(_inner) => Some(_inner),
-            SubscribeToShardError::LimitExceededError(_inner) => Some(_inner),
-            SubscribeToShardError::ResourceInUseError(_inner) => Some(_inner),
-            SubscribeToShardError::ResourceNotFoundError(_inner) => Some(_inner),
-            SubscribeToShardError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            SubscribeToShardErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            SubscribeToShardErrorKind::LimitExceededError(_inner) => Some(_inner),
+            SubscribeToShardErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            SubscribeToShardErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            SubscribeToShardErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
 
 #[non_exhaustive]
 #[derive(::std::fmt::Debug)]
-pub enum UpdateShardCountError {
+pub struct UpdateShardCountError {
+    pub kind: UpdateShardCountErrorKind,
+    pub(crate) meta: ::smithy_types::Error,
+}
+#[non_exhaustive]
+#[derive(::std::fmt::Debug)]
+pub enum UpdateShardCountErrorKind {
     InvalidArgumentError(InvalidArgumentError),
     LimitExceededError(LimitExceededError),
     ResourceInUseError(ResourceInUseError),
     ResourceNotFoundError(ResourceNotFoundError),
 
-    /// An unexpected error, eg. invalid JSON returned by the service
+    /// An unexpected error, eg. invalid JSON returned by the service or an unknown error code
     Unhandled(Box<dyn ::std::error::Error>),
 }
 impl ::std::fmt::Display for UpdateShardCountError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            UpdateShardCountError::InvalidArgumentError(_inner) => _inner.fmt(f),
-            UpdateShardCountError::LimitExceededError(_inner) => _inner.fmt(f),
-            UpdateShardCountError::ResourceInUseError(_inner) => _inner.fmt(f),
-            UpdateShardCountError::ResourceNotFoundError(_inner) => _inner.fmt(f),
-            UpdateShardCountError::Unhandled(_inner) => _inner.fmt(f),
+        match &self.kind {
+            UpdateShardCountErrorKind::InvalidArgumentError(_inner) => _inner.fmt(f),
+            UpdateShardCountErrorKind::LimitExceededError(_inner) => _inner.fmt(f),
+            UpdateShardCountErrorKind::ResourceInUseError(_inner) => _inner.fmt(f),
+            UpdateShardCountErrorKind::ResourceNotFoundError(_inner) => _inner.fmt(f),
+            UpdateShardCountErrorKind::Unhandled(_inner) => _inner.fmt(f),
         }
     }
 }
@@ -2538,66 +2055,43 @@ impl ::smithy_types::retry::ProvideErrorKind for UpdateShardCountError {
         UpdateShardCountError::code(self)
     }
     fn retryable_error_kind(&self) -> Option<::smithy_types::retry::ErrorKind> {
-        match self {
-            UpdateShardCountError::InvalidArgumentError(_inner) => None,
-            UpdateShardCountError::LimitExceededError(_inner) => None,
-            UpdateShardCountError::ResourceInUseError(_inner) => None,
-            UpdateShardCountError::ResourceNotFoundError(_inner) => None,
-            UpdateShardCountError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.retryable_error_kind(),
-                    None => None,
-                }
-            }
-        }
+        None
     }
 }
 impl UpdateShardCountError {
+    pub fn new(kind: UpdateShardCountErrorKind, meta: ::smithy_types::Error) -> Self {
+        Self { kind, meta }
+    }
     pub fn unhandled<E: Into<Box<dyn ::std::error::Error>>>(err: E) -> Self {
-        UpdateShardCountError::Unhandled(err.into())
+        Self {
+            kind: UpdateShardCountErrorKind::Unhandled(err.into()),
+            meta: Default::default(),
+        }
+    }
+    pub fn generic(err: ::smithy_types::Error) -> Self {
+        Self {
+            meta: err.clone(),
+            kind: UpdateShardCountErrorKind::Unhandled(err.into()),
+        }
     }
     pub fn message(&self) -> Option<&str> {
-        match self {
-            UpdateShardCountError::InvalidArgumentError(_inner) => _inner.message(),
-            UpdateShardCountError::LimitExceededError(_inner) => _inner.message(),
-            UpdateShardCountError::ResourceInUseError(_inner) => _inner.message(),
-            UpdateShardCountError::ResourceNotFoundError(_inner) => _inner.message(),
-            UpdateShardCountError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.message(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.message.as_deref()
+    }
+    pub fn request_id(&self) -> Option<&str> {
+        self.meta.request_id.as_deref()
     }
     pub fn code(&self) -> Option<&str> {
-        match self {
-            UpdateShardCountError::InvalidArgumentError(_inner) => Some(_inner.code()),
-            UpdateShardCountError::LimitExceededError(_inner) => Some(_inner.code()),
-            UpdateShardCountError::ResourceInUseError(_inner) => Some(_inner.code()),
-            UpdateShardCountError::ResourceNotFoundError(_inner) => Some(_inner.code()),
-            UpdateShardCountError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => _inner.code(),
-                    None => None,
-                }
-            }
-        }
+        self.meta.code.as_deref()
     }
 }
 impl ::std::error::Error for UpdateShardCountError {
     fn source(&self) -> Option<&(dyn ::std::error::Error + 'static)> {
-        match self {
-            UpdateShardCountError::InvalidArgumentError(_inner) => Some(_inner),
-            UpdateShardCountError::LimitExceededError(_inner) => Some(_inner),
-            UpdateShardCountError::ResourceInUseError(_inner) => Some(_inner),
-            UpdateShardCountError::ResourceNotFoundError(_inner) => Some(_inner),
-            UpdateShardCountError::Unhandled(_inner) => {
-                match _inner.downcast_ref::<::smithy_types::Error>() {
-                    Some(_inner) => Some(_inner),
-                    None => Some(_inner.as_ref()),
-                }
-            }
+        match &self.kind {
+            UpdateShardCountErrorKind::InvalidArgumentError(_inner) => Some(_inner),
+            UpdateShardCountErrorKind::LimitExceededError(_inner) => Some(_inner),
+            UpdateShardCountErrorKind::ResourceInUseError(_inner) => Some(_inner),
+            UpdateShardCountErrorKind::ResourceNotFoundError(_inner) => Some(_inner),
+            UpdateShardCountErrorKind::Unhandled(_inner) => Some(_inner.as_ref()),
         }
     }
 }
@@ -2621,16 +2115,13 @@ impl ::std::fmt::Debug for ResourceNotFoundError {
     }
 }
 impl ResourceNotFoundError {
-    pub fn code(&self) -> &str {
-        "ResourceNotFoundException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for ResourceNotFoundError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "ResourceNotFoundError")?;
+        write!(f, "ResourceNotFoundError [ResourceNotFoundException]")?;
         if let Some(inner_1) = &self.message {
             write!(f, ": {}", inner_1)?;
         }
@@ -2688,16 +2179,13 @@ impl ::std::fmt::Debug for ResourceInUseError {
     }
 }
 impl ResourceInUseError {
-    pub fn code(&self) -> &str {
-        "ResourceInUseException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for ResourceInUseError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "ResourceInUseError")?;
+        write!(f, "ResourceInUseError [ResourceInUseException]")?;
         if let Some(inner_2) = &self.message {
             write!(f, ": {}", inner_2)?;
         }
@@ -2755,16 +2243,13 @@ impl ::std::fmt::Debug for LimitExceededError {
     }
 }
 impl LimitExceededError {
-    pub fn code(&self) -> &str {
-        "LimitExceededException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for LimitExceededError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "LimitExceededError")?;
+        write!(f, "LimitExceededError [LimitExceededException]")?;
         if let Some(inner_3) = &self.message {
             write!(f, ": {}", inner_3)?;
         }
@@ -2822,16 +2307,13 @@ impl ::std::fmt::Debug for InvalidArgumentError {
     }
 }
 impl InvalidArgumentError {
-    pub fn code(&self) -> &str {
-        "InvalidArgumentException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for InvalidArgumentError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InvalidArgumentError")?;
+        write!(f, "InvalidArgumentError [InvalidArgumentException]")?;
         if let Some(inner_4) = &self.message {
             write!(f, ": {}", inner_4)?;
         }
@@ -2889,16 +2371,13 @@ impl ::std::fmt::Debug for KMSNotFoundError {
     }
 }
 impl KMSNotFoundError {
-    pub fn code(&self) -> &str {
-        "KMSNotFoundException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for KMSNotFoundError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "KMSNotFoundError")?;
+        write!(f, "KMSNotFoundError [KMSNotFoundException]")?;
         if let Some(inner_5) = &self.message {
             write!(f, ": {}", inner_5)?;
         }
@@ -2958,16 +2437,13 @@ impl ::std::fmt::Debug for KMSInvalidStateError {
     }
 }
 impl KMSInvalidStateError {
-    pub fn code(&self) -> &str {
-        "KMSInvalidStateException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for KMSInvalidStateError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "KMSInvalidStateError")?;
+        write!(f, "KMSInvalidStateError [KMSInvalidStateException]")?;
         if let Some(inner_6) = &self.message {
             write!(f, ": {}", inner_6)?;
         }
@@ -3025,16 +2501,13 @@ impl ::std::fmt::Debug for KMSAccessDeniedError {
     }
 }
 impl KMSAccessDeniedError {
-    pub fn code(&self) -> &str {
-        "KMSAccessDeniedException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for KMSAccessDeniedError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "KMSAccessDeniedError")?;
+        write!(f, "KMSAccessDeniedError [KMSAccessDeniedException]")?;
         if let Some(inner_7) = &self.message {
             write!(f, ": {}", inner_7)?;
         }
@@ -3092,16 +2565,13 @@ impl ::std::fmt::Debug for KMSDisabledError {
     }
 }
 impl KMSDisabledError {
-    pub fn code(&self) -> &str {
-        "KMSDisabledException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for KMSDisabledError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "KMSDisabledError")?;
+        write!(f, "KMSDisabledError [KMSDisabledException]")?;
         if let Some(inner_8) = &self.message {
             write!(f, ": {}", inner_8)?;
         }
@@ -3158,9 +2628,6 @@ impl ::std::fmt::Debug for KMSOptInRequired {
     }
 }
 impl KMSOptInRequired {
-    pub fn code(&self) -> &str {
-        "KMSOptInRequired"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
@@ -3224,16 +2691,13 @@ impl ::std::fmt::Debug for InternalFailureError {
     }
 }
 impl InternalFailureError {
-    pub fn code(&self) -> &str {
-        "InternalFailureException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for InternalFailureError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "InternalFailureError")?;
+        write!(f, "InternalFailureError [InternalFailureException]")?;
         if let Some(inner_10) = &self.message {
             write!(f, ": {}", inner_10)?;
         }
@@ -3291,16 +2755,13 @@ impl ::std::fmt::Debug for KMSThrottlingError {
     }
 }
 impl KMSThrottlingError {
-    pub fn code(&self) -> &str {
-        "KMSThrottlingException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for KMSThrottlingError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "KMSThrottlingError")?;
+        write!(f, "KMSThrottlingError [KMSThrottlingException]")?;
         if let Some(inner_11) = &self.message {
             write!(f, ": {}", inner_11)?;
         }
@@ -3362,16 +2823,16 @@ impl ::std::fmt::Debug for ProvisionedThroughputExceededError {
     }
 }
 impl ProvisionedThroughputExceededError {
-    pub fn code(&self) -> &str {
-        "ProvisionedThroughputExceededException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for ProvisionedThroughputExceededError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "ProvisionedThroughputExceededError")?;
+        write!(
+            f,
+            "ProvisionedThroughputExceededError [ProvisionedThroughputExceededException]"
+        )?;
         if let Some(inner_12) = &self.message {
             write!(f, ": {}", inner_12)?;
         }
@@ -3427,16 +2888,13 @@ impl ::std::fmt::Debug for ExpiredNextTokenError {
     }
 }
 impl ExpiredNextTokenError {
-    pub fn code(&self) -> &str {
-        "ExpiredNextTokenException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for ExpiredNextTokenError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "ExpiredNextTokenError")?;
+        write!(f, "ExpiredNextTokenError [ExpiredNextTokenException]")?;
         if let Some(inner_13) = &self.message {
             write!(f, ": {}", inner_13)?;
         }
@@ -3492,16 +2950,13 @@ impl ::std::fmt::Debug for ExpiredIteratorError {
     }
 }
 impl ExpiredIteratorError {
-    pub fn code(&self) -> &str {
-        "ExpiredIteratorException"
-    }
     pub fn message(&self) -> Option<&str> {
         self.message.as_deref()
     }
 }
 impl ::std::fmt::Display for ExpiredIteratorError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "ExpiredIteratorError")?;
+        write!(f, "ExpiredIteratorError [ExpiredIteratorException]")?;
         if let Some(inner_14) = &self.message {
             write!(f, ": {}", inner_14)?;
         }

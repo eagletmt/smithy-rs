@@ -179,13 +179,21 @@ impl BatchExecuteStatement {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::BatchExecuteStatementError::InternalServerError(body),
+                    Ok(body) => crate::error::BatchExecuteStatementError {
+                        kind: crate::error::BatchExecuteStatementErrorKind::InternalServerError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::BatchExecuteStatementError::unhandled(e),
                 },
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::BatchExecuteStatementError::RequestLimitExceeded(body)
-                    }
+                    Ok(body) => crate::error::BatchExecuteStatementError {
+                        kind: crate::error::BatchExecuteStatementErrorKind::RequestLimitExceeded(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::BatchExecuteStatementError::unhandled(e),
                 },
                 _ => crate::error::BatchExecuteStatementError::unhandled(generic),
@@ -288,25 +296,41 @@ impl BatchGetItem {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::BatchGetItemError::InternalServerError(body),
+                    Ok(body) => crate::error::BatchGetItemError {
+                        kind: crate::error::BatchGetItemErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::BatchGetItemError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::BatchGetItemError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::BatchGetItemError {
+                        kind: crate::error::BatchGetItemErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::BatchGetItemError::unhandled(e),
                 },
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::BatchGetItemError::ProvisionedThroughputExceededError(body)
-                    }
+                    Ok(body) => crate::error::BatchGetItemError {
+                        kind:
+                            crate::error::BatchGetItemErrorKind::ProvisionedThroughputExceededError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::BatchGetItemError::unhandled(e),
                 },
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::BatchGetItemError::RequestLimitExceeded(body),
+                    Ok(body) => crate::error::BatchGetItemError {
+                        kind: crate::error::BatchGetItemErrorKind::RequestLimitExceeded(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::BatchGetItemError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::BatchGetItemError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::BatchGetItemError {
+                        kind: crate::error::BatchGetItemErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::BatchGetItemError::unhandled(e),
                 },
                 _ => crate::error::BatchGetItemError::unhandled(generic),
@@ -438,38 +462,30 @@ impl BatchWriteItem {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::BatchWriteItemError::InternalServerError(body),
-                    Err(e) => crate::error::BatchWriteItemError::unhandled(e),
-                },
+                    Ok(body) => crate::error::BatchWriteItemError { kind: crate::error::BatchWriteItemErrorKind::InternalServerError(body), meta: generic },
+                    Err(e) => crate::error::BatchWriteItemError::unhandled(e)
+                }
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::BatchWriteItemError::InvalidEndpointError(body),
-                    Err(e) => crate::error::BatchWriteItemError::unhandled(e),
-                },
-                "ItemCollectionSizeLimitExceededException" => {
-                    match ::serde_json::from_value(body) {
-                        Ok(body) => {
-                            crate::error::BatchWriteItemError::ItemCollectionSizeLimitExceededError(
-                                body,
-                            )
-                        }
-                        Err(e) => crate::error::BatchWriteItemError::unhandled(e),
-                    }
+                    Ok(body) => crate::error::BatchWriteItemError { kind: crate::error::BatchWriteItemErrorKind::InvalidEndpointError(body), meta: generic },
+                    Err(e) => crate::error::BatchWriteItemError::unhandled(e)
+                }
+                "ItemCollectionSizeLimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::BatchWriteItemError { kind: crate::error::BatchWriteItemErrorKind::ItemCollectionSizeLimitExceededError(body), meta: generic },
+                    Err(e) => crate::error::BatchWriteItemError::unhandled(e)
                 }
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::BatchWriteItemError::ProvisionedThroughputExceededError(body)
-                    }
-                    Err(e) => crate::error::BatchWriteItemError::unhandled(e),
-                },
+                    Ok(body) => crate::error::BatchWriteItemError { kind: crate::error::BatchWriteItemErrorKind::ProvisionedThroughputExceededError(body), meta: generic },
+                    Err(e) => crate::error::BatchWriteItemError::unhandled(e)
+                }
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::BatchWriteItemError::RequestLimitExceeded(body),
-                    Err(e) => crate::error::BatchWriteItemError::unhandled(e),
-                },
+                    Ok(body) => crate::error::BatchWriteItemError { kind: crate::error::BatchWriteItemErrorKind::RequestLimitExceeded(body), meta: generic },
+                    Err(e) => crate::error::BatchWriteItemError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::BatchWriteItemError::ResourceNotFoundError(body),
-                    Err(e) => crate::error::BatchWriteItemError::unhandled(e),
-                },
-                _ => crate::error::BatchWriteItemError::unhandled(generic),
+                    Ok(body) => crate::error::BatchWriteItemError { kind: crate::error::BatchWriteItemErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::BatchWriteItemError::unhandled(e)
+                }
+                _ => crate::error::BatchWriteItemError::unhandled(generic)
             });
         }
         let body: BatchWriteItemOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -554,33 +570,55 @@ impl CreateBackup {
             };
             return Err(match error_code {
                 "BackupInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateBackupError::BackupInUseError(body),
+                    Ok(body) => crate::error::CreateBackupError {
+                        kind: crate::error::CreateBackupErrorKind::BackupInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateBackupError::unhandled(e),
                 },
                 "ContinuousBackupsUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::CreateBackupError::ContinuousBackupsUnavailableError(body)
-                    }
+                    Ok(body) => crate::error::CreateBackupError {
+                        kind:
+                            crate::error::CreateBackupErrorKind::ContinuousBackupsUnavailableError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateBackupError::unhandled(e),
                 },
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateBackupError::InternalServerError(body),
+                    Ok(body) => crate::error::CreateBackupError {
+                        kind: crate::error::CreateBackupErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateBackupError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateBackupError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::CreateBackupError {
+                        kind: crate::error::CreateBackupErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateBackupError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateBackupError::LimitExceededError(body),
+                    Ok(body) => crate::error::CreateBackupError {
+                        kind: crate::error::CreateBackupErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateBackupError::unhandled(e),
                 },
                 "TableInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateBackupError::TableInUseError(body),
+                    Ok(body) => crate::error::CreateBackupError {
+                        kind: crate::error::CreateBackupErrorKind::TableInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateBackupError::unhandled(e),
                 },
                 "TableNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateBackupError::TableNotFoundError(body),
+                    Ok(body) => crate::error::CreateBackupError {
+                        kind: crate::error::CreateBackupErrorKind::TableNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateBackupError::unhandled(e),
                 },
                 _ => crate::error::CreateBackupError::unhandled(generic),
@@ -702,25 +740,41 @@ impl CreateGlobalTable {
             };
             return Err(match error_code {
                 "GlobalTableAlreadyExistsException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::CreateGlobalTableError::GlobalTableAlreadyExistsError(body)
-                    }
+                    Ok(body) => crate::error::CreateGlobalTableError {
+                        kind:
+                            crate::error::CreateGlobalTableErrorKind::GlobalTableAlreadyExistsError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGlobalTableError::unhandled(e),
                 },
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateGlobalTableError::InternalServerError(body),
+                    Ok(body) => crate::error::CreateGlobalTableError {
+                        kind: crate::error::CreateGlobalTableErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGlobalTableError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateGlobalTableError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::CreateGlobalTableError {
+                        kind: crate::error::CreateGlobalTableErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGlobalTableError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateGlobalTableError::LimitExceededError(body),
+                    Ok(body) => crate::error::CreateGlobalTableError {
+                        kind: crate::error::CreateGlobalTableErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGlobalTableError::unhandled(e),
                 },
                 "TableNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateGlobalTableError::TableNotFoundError(body),
+                    Ok(body) => crate::error::CreateGlobalTableError {
+                        kind: crate::error::CreateGlobalTableErrorKind::TableNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateGlobalTableError::unhandled(e),
                 },
                 _ => crate::error::CreateGlobalTableError::unhandled(generic),
@@ -789,19 +843,31 @@ impl CreateTable {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateTableError::InternalServerError(body),
+                    Ok(body) => crate::error::CreateTableError {
+                        kind: crate::error::CreateTableErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateTableError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateTableError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::CreateTableError {
+                        kind: crate::error::CreateTableErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateTableError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateTableError::LimitExceededError(body),
+                    Ok(body) => crate::error::CreateTableError {
+                        kind: crate::error::CreateTableErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateTableError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::CreateTableError::ResourceInUseError(body),
+                    Ok(body) => crate::error::CreateTableError {
+                        kind: crate::error::CreateTableErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::CreateTableError::unhandled(e),
                 },
                 _ => crate::error::CreateTableError::unhandled(generic),
@@ -859,23 +925,38 @@ impl DeleteBackup {
             };
             return Err(match error_code {
                 "BackupInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteBackupError::BackupInUseError(body),
+                    Ok(body) => crate::error::DeleteBackupError {
+                        kind: crate::error::DeleteBackupErrorKind::BackupInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteBackupError::unhandled(e),
                 },
                 "BackupNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteBackupError::BackupNotFoundError(body),
+                    Ok(body) => crate::error::DeleteBackupError {
+                        kind: crate::error::DeleteBackupErrorKind::BackupNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteBackupError::unhandled(e),
                 },
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteBackupError::InternalServerError(body),
+                    Ok(body) => crate::error::DeleteBackupError {
+                        kind: crate::error::DeleteBackupErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteBackupError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteBackupError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::DeleteBackupError {
+                        kind: crate::error::DeleteBackupErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteBackupError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteBackupError::LimitExceededError(body),
+                    Ok(body) => crate::error::DeleteBackupError {
+                        kind: crate::error::DeleteBackupErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteBackupError::unhandled(e),
                 },
                 _ => crate::error::DeleteBackupError::unhandled(generic),
@@ -937,43 +1018,64 @@ impl DeleteItem {
             };
             return Err(match error_code {
                 "ConditionalCheckFailedException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteItemError::ConditionalCheckFailedError(body),
+                    Ok(body) => crate::error::DeleteItemError {
+                        kind: crate::error::DeleteItemErrorKind::ConditionalCheckFailedError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteItemError::unhandled(e),
                 },
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteItemError::InternalServerError(body),
+                    Ok(body) => crate::error::DeleteItemError {
+                        kind: crate::error::DeleteItemErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteItemError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteItemError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::DeleteItemError {
+                        kind: crate::error::DeleteItemErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteItemError::unhandled(e),
                 },
-                "ItemCollectionSizeLimitExceededException" => {
-                    match ::serde_json::from_value(body) {
-                        Ok(body) => {
-                            crate::error::DeleteItemError::ItemCollectionSizeLimitExceededError(
+                "ItemCollectionSizeLimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::DeleteItemError {
+                        kind:
+                            crate::error::DeleteItemErrorKind::ItemCollectionSizeLimitExceededError(
                                 body,
-                            )
-                        }
-                        Err(e) => crate::error::DeleteItemError::unhandled(e),
-                    }
-                }
+                            ),
+                        meta: generic,
+                    },
+                    Err(e) => crate::error::DeleteItemError::unhandled(e),
+                },
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DeleteItemError::ProvisionedThroughputExceededError(body)
-                    }
+                    Ok(body) => crate::error::DeleteItemError {
+                        kind: crate::error::DeleteItemErrorKind::ProvisionedThroughputExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteItemError::unhandled(e),
                 },
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteItemError::RequestLimitExceeded(body),
+                    Ok(body) => crate::error::DeleteItemError {
+                        kind: crate::error::DeleteItemErrorKind::RequestLimitExceeded(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteItemError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteItemError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::DeleteItemError {
+                        kind: crate::error::DeleteItemErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteItemError::unhandled(e),
                 },
                 "TransactionConflictException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteItemError::TransactionConflictError(body),
+                    Ok(body) => crate::error::DeleteItemError {
+                        kind: crate::error::DeleteItemErrorKind::TransactionConflictError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteItemError::unhandled(e),
                 },
                 _ => crate::error::DeleteItemError::unhandled(generic),
@@ -1047,23 +1149,38 @@ impl DeleteTable {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteTableError::InternalServerError(body),
+                    Ok(body) => crate::error::DeleteTableError {
+                        kind: crate::error::DeleteTableErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteTableError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteTableError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::DeleteTableError {
+                        kind: crate::error::DeleteTableErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteTableError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteTableError::LimitExceededError(body),
+                    Ok(body) => crate::error::DeleteTableError {
+                        kind: crate::error::DeleteTableErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteTableError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteTableError::ResourceInUseError(body),
+                    Ok(body) => crate::error::DeleteTableError {
+                        kind: crate::error::DeleteTableErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteTableError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DeleteTableError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::DeleteTableError {
+                        kind: crate::error::DeleteTableErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DeleteTableError::unhandled(e),
                 },
                 _ => crate::error::DeleteTableError::unhandled(generic),
@@ -1121,15 +1238,24 @@ impl DescribeBackup {
             };
             return Err(match error_code {
                 "BackupNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeBackupError::BackupNotFoundError(body),
+                    Ok(body) => crate::error::DescribeBackupError {
+                        kind: crate::error::DescribeBackupErrorKind::BackupNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeBackupError::unhandled(e),
                 },
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeBackupError::InternalServerError(body),
+                    Ok(body) => crate::error::DescribeBackupError {
+                        kind: crate::error::DescribeBackupErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeBackupError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeBackupError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::DescribeBackupError {
+                        kind: crate::error::DescribeBackupErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeBackupError::unhandled(e),
                 },
                 _ => crate::error::DescribeBackupError::unhandled(generic),
@@ -1203,21 +1329,31 @@ impl DescribeContinuousBackups {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeContinuousBackupsError::InternalServerError(body)
-                    }
+                    Ok(body) => crate::error::DescribeContinuousBackupsError {
+                        kind: crate::error::DescribeContinuousBackupsErrorKind::InternalServerError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeContinuousBackupsError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeContinuousBackupsError::InvalidEndpointError(body)
-                    }
+                    Ok(body) => crate::error::DescribeContinuousBackupsError {
+                        kind:
+                            crate::error::DescribeContinuousBackupsErrorKind::InvalidEndpointError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeContinuousBackupsError::unhandled(e),
                 },
                 "TableNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeContinuousBackupsError::TableNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::DescribeContinuousBackupsError {
+                        kind: crate::error::DescribeContinuousBackupsErrorKind::TableNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeContinuousBackupsError::unhandled(e),
                 },
                 _ => crate::error::DescribeContinuousBackupsError::unhandled(generic),
@@ -1284,18 +1420,14 @@ impl DescribeContributorInsights {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeContributorInsightsError::InternalServerError(body)
-                    }
-                    Err(e) => crate::error::DescribeContributorInsightsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DescribeContributorInsightsError { kind: crate::error::DescribeContributorInsightsErrorKind::InternalServerError(body), meta: generic },
+                    Err(e) => crate::error::DescribeContributorInsightsError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeContributorInsightsError::ResourceNotFoundError(body)
-                    }
-                    Err(e) => crate::error::DescribeContributorInsightsError::unhandled(e),
-                },
-                _ => crate::error::DescribeContributorInsightsError::unhandled(generic),
+                    Ok(body) => crate::error::DescribeContributorInsightsError { kind: crate::error::DescribeContributorInsightsErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::DescribeContributorInsightsError::unhandled(e)
+                }
+                _ => crate::error::DescribeContributorInsightsError::unhandled(generic)
             });
         }
         let body: DescribeContributorInsightsOutputBody =
@@ -1351,7 +1483,7 @@ impl DescribeEndpoints {
                 .unwrap_or_else(|_| ::serde_json::json!({}));
             let generic = crate::aws_json_errors::parse_generic_error(&response, &body);
 
-            return Err(crate::error::DescribeEndpointsError::unhandled(generic));
+            return Err(crate::error::DescribeEndpointsError::generic(generic));
         }
         let body: DescribeEndpointsOutputBody = ::serde_json::from_slice(response.body().as_ref())
             .map_err(crate::error::DescribeEndpointsError::unhandled)?;
@@ -1404,15 +1536,24 @@ impl DescribeExport {
             };
             return Err(match error_code {
                 "ExportNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeExportError::ExportNotFoundError(body),
+                    Ok(body) => crate::error::DescribeExportError {
+                        kind: crate::error::DescribeExportErrorKind::ExportNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeExportError::unhandled(e),
                 },
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeExportError::InternalServerError(body),
+                    Ok(body) => crate::error::DescribeExportError {
+                        kind: crate::error::DescribeExportErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeExportError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeExportError::LimitExceededError(body),
+                    Ok(body) => crate::error::DescribeExportError {
+                        kind: crate::error::DescribeExportErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeExportError::unhandled(e),
                 },
                 _ => crate::error::DescribeExportError::unhandled(generic),
@@ -1476,17 +1617,28 @@ impl DescribeGlobalTable {
             };
             return Err(match error_code {
                 "GlobalTableNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeGlobalTableError::GlobalTableNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::DescribeGlobalTableError {
+                        kind: crate::error::DescribeGlobalTableErrorKind::GlobalTableNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeGlobalTableError::unhandled(e),
                 },
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeGlobalTableError::InternalServerError(body),
+                    Ok(body) => crate::error::DescribeGlobalTableError {
+                        kind: crate::error::DescribeGlobalTableErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeGlobalTableError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeGlobalTableError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::DescribeGlobalTableError {
+                        kind: crate::error::DescribeGlobalTableErrorKind::InvalidEndpointError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeGlobalTableError::unhandled(e),
                 },
                 _ => crate::error::DescribeGlobalTableError::unhandled(generic),
@@ -1555,26 +1707,18 @@ impl DescribeGlobalTableSettings {
             };
             return Err(match error_code {
                 "GlobalTableNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeGlobalTableSettingsError::GlobalTableNotFoundError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DescribeGlobalTableSettingsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DescribeGlobalTableSettingsError { kind: crate::error::DescribeGlobalTableSettingsErrorKind::GlobalTableNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::DescribeGlobalTableSettingsError::unhandled(e)
+                }
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeGlobalTableSettingsError::InternalServerError(body)
-                    }
-                    Err(e) => crate::error::DescribeGlobalTableSettingsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DescribeGlobalTableSettingsError { kind: crate::error::DescribeGlobalTableSettingsErrorKind::InternalServerError(body), meta: generic },
+                    Err(e) => crate::error::DescribeGlobalTableSettingsError::unhandled(e)
+                }
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeGlobalTableSettingsError::InvalidEndpointError(body)
-                    }
-                    Err(e) => crate::error::DescribeGlobalTableSettingsError::unhandled(e),
-                },
-                _ => crate::error::DescribeGlobalTableSettingsError::unhandled(generic),
+                    Ok(body) => crate::error::DescribeGlobalTableSettingsError { kind: crate::error::DescribeGlobalTableSettingsErrorKind::InvalidEndpointError(body), meta: generic },
+                    Err(e) => crate::error::DescribeGlobalTableSettingsError::unhandled(e)
+                }
+                _ => crate::error::DescribeGlobalTableSettingsError::unhandled(generic)
             });
         }
         let body: DescribeGlobalTableSettingsOutputBody =
@@ -1642,15 +1786,15 @@ impl DescribeKinesisStreamingDestination {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeKinesisStreamingDestinationError::InternalServerError(body),
+                    Ok(body) => crate::error::DescribeKinesisStreamingDestinationError { kind: crate::error::DescribeKinesisStreamingDestinationErrorKind::InternalServerError(body), meta: generic },
                     Err(e) => crate::error::DescribeKinesisStreamingDestinationError::unhandled(e)
                 }
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeKinesisStreamingDestinationError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::DescribeKinesisStreamingDestinationError { kind: crate::error::DescribeKinesisStreamingDestinationErrorKind::InvalidEndpointError(body), meta: generic },
                     Err(e) => crate::error::DescribeKinesisStreamingDestinationError::unhandled(e)
                 }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeKinesisStreamingDestinationError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::DescribeKinesisStreamingDestinationError { kind: crate::error::DescribeKinesisStreamingDestinationErrorKind::ResourceNotFoundError(body), meta: generic },
                     Err(e) => crate::error::DescribeKinesisStreamingDestinationError::unhandled(e)
                 }
                 _ => crate::error::DescribeKinesisStreamingDestinationError::unhandled(generic)
@@ -1774,11 +1918,17 @@ impl DescribeLimits {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeLimitsError::InternalServerError(body),
+                    Ok(body) => crate::error::DescribeLimitsError {
+                        kind: crate::error::DescribeLimitsErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeLimitsError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeLimitsError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::DescribeLimitsError {
+                        kind: crate::error::DescribeLimitsErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeLimitsError::unhandled(e),
                 },
                 _ => crate::error::DescribeLimitsError::unhandled(generic),
@@ -1844,15 +1994,24 @@ impl DescribeTable {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeTableError::InternalServerError(body),
+                    Ok(body) => crate::error::DescribeTableError {
+                        kind: crate::error::DescribeTableErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeTableError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeTableError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::DescribeTableError {
+                        kind: crate::error::DescribeTableErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeTableError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeTableError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::DescribeTableError {
+                        kind: crate::error::DescribeTableErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeTableError::unhandled(e),
                 },
                 _ => crate::error::DescribeTableError::unhandled(generic),
@@ -1920,22 +2079,14 @@ impl DescribeTableReplicaAutoScaling {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeTableReplicaAutoScalingError::InternalServerError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DescribeTableReplicaAutoScalingError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DescribeTableReplicaAutoScalingError { kind: crate::error::DescribeTableReplicaAutoScalingErrorKind::InternalServerError(body), meta: generic },
+                    Err(e) => crate::error::DescribeTableReplicaAutoScalingError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DescribeTableReplicaAutoScalingError::ResourceNotFoundError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DescribeTableReplicaAutoScalingError::unhandled(e),
-                },
-                _ => crate::error::DescribeTableReplicaAutoScalingError::unhandled(generic),
+                    Ok(body) => crate::error::DescribeTableReplicaAutoScalingError { kind: crate::error::DescribeTableReplicaAutoScalingErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::DescribeTableReplicaAutoScalingError::unhandled(e)
+                }
+                _ => crate::error::DescribeTableReplicaAutoScalingError::unhandled(generic)
             });
         }
         let body: DescribeTableReplicaAutoScalingOutputBody =
@@ -1999,15 +2150,26 @@ impl DescribeTimeToLive {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeTimeToLiveError::InternalServerError(body),
+                    Ok(body) => crate::error::DescribeTimeToLiveError {
+                        kind: crate::error::DescribeTimeToLiveErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeTimeToLiveError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeTimeToLiveError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::DescribeTimeToLiveError {
+                        kind: crate::error::DescribeTimeToLiveErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeTimeToLiveError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::DescribeTimeToLiveError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::DescribeTimeToLiveError {
+                        kind: crate::error::DescribeTimeToLiveErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::DescribeTimeToLiveError::unhandled(e),
                 },
                 _ => crate::error::DescribeTimeToLiveError::unhandled(generic),
@@ -2075,46 +2237,26 @@ impl DisableKinesisStreamingDestination {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DisableKinesisStreamingDestinationError::InternalServerError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DisableKinesisStreamingDestinationError { kind: crate::error::DisableKinesisStreamingDestinationErrorKind::InternalServerError(body), meta: generic },
+                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e)
+                }
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DisableKinesisStreamingDestinationError::InvalidEndpointError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DisableKinesisStreamingDestinationError { kind: crate::error::DisableKinesisStreamingDestinationErrorKind::InvalidEndpointError(body), meta: generic },
+                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e)
+                }
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DisableKinesisStreamingDestinationError::LimitExceededError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DisableKinesisStreamingDestinationError { kind: crate::error::DisableKinesisStreamingDestinationErrorKind::LimitExceededError(body), meta: generic },
+                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e)
+                }
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DisableKinesisStreamingDestinationError::ResourceInUseError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e),
-                },
+                    Ok(body) => crate::error::DisableKinesisStreamingDestinationError { kind: crate::error::DisableKinesisStreamingDestinationErrorKind::ResourceInUseError(body), meta: generic },
+                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::DisableKinesisStreamingDestinationError::ResourceNotFoundError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e),
-                },
-                _ => crate::error::DisableKinesisStreamingDestinationError::unhandled(generic),
+                    Ok(body) => crate::error::DisableKinesisStreamingDestinationError { kind: crate::error::DisableKinesisStreamingDestinationErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::DisableKinesisStreamingDestinationError::unhandled(e)
+                }
+                _ => crate::error::DisableKinesisStreamingDestinationError::unhandled(generic)
             });
         }
         let body: DisableKinesisStreamingDestinationOutputBody =
@@ -2190,46 +2332,26 @@ impl EnableKinesisStreamingDestination {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::EnableKinesisStreamingDestinationError::InternalServerError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e),
-                },
+                    Ok(body) => crate::error::EnableKinesisStreamingDestinationError { kind: crate::error::EnableKinesisStreamingDestinationErrorKind::InternalServerError(body), meta: generic },
+                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e)
+                }
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::EnableKinesisStreamingDestinationError::InvalidEndpointError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e),
-                },
+                    Ok(body) => crate::error::EnableKinesisStreamingDestinationError { kind: crate::error::EnableKinesisStreamingDestinationErrorKind::InvalidEndpointError(body), meta: generic },
+                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e)
+                }
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::EnableKinesisStreamingDestinationError::LimitExceededError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e),
-                },
+                    Ok(body) => crate::error::EnableKinesisStreamingDestinationError { kind: crate::error::EnableKinesisStreamingDestinationErrorKind::LimitExceededError(body), meta: generic },
+                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e)
+                }
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::EnableKinesisStreamingDestinationError::ResourceInUseError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e),
-                },
+                    Ok(body) => crate::error::EnableKinesisStreamingDestinationError { kind: crate::error::EnableKinesisStreamingDestinationErrorKind::ResourceInUseError(body), meta: generic },
+                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::EnableKinesisStreamingDestinationError::ResourceNotFoundError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e),
-                },
-                _ => crate::error::EnableKinesisStreamingDestinationError::unhandled(generic),
+                    Ok(body) => crate::error::EnableKinesisStreamingDestinationError { kind: crate::error::EnableKinesisStreamingDestinationErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::EnableKinesisStreamingDestinationError::unhandled(e)
+                }
+                _ => crate::error::EnableKinesisStreamingDestinationError::unhandled(generic)
             });
         }
         let body: EnableKinesisStreamingDestinationOutputBody =
@@ -2294,48 +2416,38 @@ impl ExecuteStatement {
             };
             return Err(match error_code {
                 "ConditionalCheckFailedException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ExecuteStatementError::ConditionalCheckFailedError(body)
-                    }
-                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteStatementError { kind: crate::error::ExecuteStatementErrorKind::ConditionalCheckFailedError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e)
+                }
                 "DuplicateItemException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExecuteStatementError::DuplicateItemError(body),
-                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteStatementError { kind: crate::error::ExecuteStatementErrorKind::DuplicateItemError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e)
+                }
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExecuteStatementError::InternalServerError(body),
-                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteStatementError { kind: crate::error::ExecuteStatementErrorKind::InternalServerError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e)
+                }
                 "ItemCollectionSizeLimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ExecuteStatementError::ItemCollectionSizeLimitExceededError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteStatementError { kind: crate::error::ExecuteStatementErrorKind::ItemCollectionSizeLimitExceededError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e)
+                }
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ExecuteStatementError::ProvisionedThroughputExceededError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteStatementError { kind: crate::error::ExecuteStatementErrorKind::ProvisionedThroughputExceededError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e)
+                }
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExecuteStatementError::RequestLimitExceeded(body),
-                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteStatementError { kind: crate::error::ExecuteStatementErrorKind::RequestLimitExceeded(body), meta: generic },
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExecuteStatementError::ResourceNotFoundError(body),
-                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteStatementError { kind: crate::error::ExecuteStatementErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e)
+                }
                 "TransactionConflictException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExecuteStatementError::TransactionConflictError(body),
-                    Err(e) => crate::error::ExecuteStatementError::unhandled(e),
-                },
-                _ => crate::error::ExecuteStatementError::unhandled(generic),
+                    Ok(body) => crate::error::ExecuteStatementError { kind: crate::error::ExecuteStatementErrorKind::TransactionConflictError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteStatementError::unhandled(e)
+                }
+                _ => crate::error::ExecuteStatementError::unhandled(generic)
             });
         }
         let body: ExecuteStatementOutputBody =
@@ -2396,46 +2508,34 @@ impl ExecuteTransaction {
             };
             return Err(match error_code {
                 "IdempotentParameterMismatchException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ExecuteTransactionError::IdempotentParameterMismatchError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteTransactionError { kind: crate::error::ExecuteTransactionErrorKind::IdempotentParameterMismatchError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e)
+                }
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExecuteTransactionError::InternalServerError(body),
-                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteTransactionError { kind: crate::error::ExecuteTransactionErrorKind::InternalServerError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e)
+                }
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ExecuteTransactionError::ProvisionedThroughputExceededError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteTransactionError { kind: crate::error::ExecuteTransactionErrorKind::ProvisionedThroughputExceededError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e)
+                }
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExecuteTransactionError::RequestLimitExceeded(body),
-                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteTransactionError { kind: crate::error::ExecuteTransactionErrorKind::RequestLimitExceeded(body), meta: generic },
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExecuteTransactionError::ResourceNotFoundError(body),
-                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteTransactionError { kind: crate::error::ExecuteTransactionErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e)
+                }
                 "TransactionCanceledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ExecuteTransactionError::TransactionCanceledError(body)
-                    }
-                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
-                },
+                    Ok(body) => crate::error::ExecuteTransactionError { kind: crate::error::ExecuteTransactionErrorKind::TransactionCanceledError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e)
+                }
                 "TransactionInProgressException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ExecuteTransactionError::TransactionInProgressError(body)
-                    }
-                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e),
-                },
-                _ => crate::error::ExecuteTransactionError::unhandled(generic),
+                    Ok(body) => crate::error::ExecuteTransactionError { kind: crate::error::ExecuteTransactionErrorKind::TransactionInProgressError(body), meta: generic },
+                    Err(e) => crate::error::ExecuteTransactionError::unhandled(e)
+                }
+                _ => crate::error::ExecuteTransactionError::unhandled(generic)
             });
         }
         let body: ExecuteTransactionOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -2498,27 +2598,27 @@ impl ExportTableToPointInTime {
             };
             return Err(match error_code {
                 "ExportConflictException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExportTableToPointInTimeError::ExportConflictError(body),
+                    Ok(body) => crate::error::ExportTableToPointInTimeError { kind: crate::error::ExportTableToPointInTimeErrorKind::ExportConflictError(body), meta: generic },
                     Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
                 }
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExportTableToPointInTimeError::InternalServerError(body),
+                    Ok(body) => crate::error::ExportTableToPointInTimeError { kind: crate::error::ExportTableToPointInTimeErrorKind::InternalServerError(body), meta: generic },
                     Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
                 }
                 "InvalidExportTimeException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExportTableToPointInTimeError::InvalidExportTimeError(body),
+                    Ok(body) => crate::error::ExportTableToPointInTimeError { kind: crate::error::ExportTableToPointInTimeErrorKind::InvalidExportTimeError(body), meta: generic },
                     Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
                 }
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExportTableToPointInTimeError::LimitExceededError(body),
+                    Ok(body) => crate::error::ExportTableToPointInTimeError { kind: crate::error::ExportTableToPointInTimeErrorKind::LimitExceededError(body), meta: generic },
                     Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
                 }
                 "PointInTimeRecoveryUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExportTableToPointInTimeError::PointInTimeRecoveryUnavailableError(body),
+                    Ok(body) => crate::error::ExportTableToPointInTimeError { kind: crate::error::ExportTableToPointInTimeErrorKind::PointInTimeRecoveryUnavailableError(body), meta: generic },
                     Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
                 }
                 "TableNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ExportTableToPointInTimeError::TableNotFoundError(body),
+                    Ok(body) => crate::error::ExportTableToPointInTimeError { kind: crate::error::ExportTableToPointInTimeErrorKind::TableNotFoundError(body), meta: generic },
                     Err(e) => crate::error::ExportTableToPointInTimeError::unhandled(e)
                 }
                 _ => crate::error::ExportTableToPointInTimeError::unhandled(generic)
@@ -2583,25 +2683,40 @@ impl GetItem {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetItemError::InternalServerError(body),
+                    Ok(body) => crate::error::GetItemError {
+                        kind: crate::error::GetItemErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetItemError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetItemError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::GetItemError {
+                        kind: crate::error::GetItemErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetItemError::unhandled(e),
                 },
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::GetItemError::ProvisionedThroughputExceededError(body)
-                    }
+                    Ok(body) => crate::error::GetItemError {
+                        kind: crate::error::GetItemErrorKind::ProvisionedThroughputExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetItemError::unhandled(e),
                 },
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetItemError::RequestLimitExceeded(body),
+                    Ok(body) => crate::error::GetItemError {
+                        kind: crate::error::GetItemErrorKind::RequestLimitExceeded(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetItemError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::GetItemError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::GetItemError {
+                        kind: crate::error::GetItemErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::GetItemError::unhandled(e),
                 },
                 _ => crate::error::GetItemError::unhandled(generic),
@@ -2665,11 +2780,17 @@ impl ListBackups {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListBackupsError::InternalServerError(body),
+                    Ok(body) => crate::error::ListBackupsError {
+                        kind: crate::error::ListBackupsErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListBackupsError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListBackupsError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::ListBackupsError {
+                        kind: crate::error::ListBackupsErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListBackupsError::unhandled(e),
                 },
                 _ => crate::error::ListBackupsError::unhandled(generic),
@@ -2734,15 +2855,21 @@ impl ListContributorInsights {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ListContributorInsightsError::InternalServerError(body)
-                    }
+                    Ok(body) => crate::error::ListContributorInsightsError {
+                        kind: crate::error::ListContributorInsightsErrorKind::InternalServerError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListContributorInsightsError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::ListContributorInsightsError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::ListContributorInsightsError {
+                        kind: crate::error::ListContributorInsightsErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListContributorInsightsError::unhandled(e),
                 },
                 _ => crate::error::ListContributorInsightsError::unhandled(generic),
@@ -2801,11 +2928,17 @@ impl ListExports {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListExportsError::InternalServerError(body),
+                    Ok(body) => crate::error::ListExportsError {
+                        kind: crate::error::ListExportsErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListExportsError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListExportsError::LimitExceededError(body),
+                    Ok(body) => crate::error::ListExportsError {
+                        kind: crate::error::ListExportsErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListExportsError::unhandled(e),
                 },
                 _ => crate::error::ListExportsError::unhandled(generic),
@@ -2866,11 +2999,17 @@ impl ListGlobalTables {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListGlobalTablesError::InternalServerError(body),
+                    Ok(body) => crate::error::ListGlobalTablesError {
+                        kind: crate::error::ListGlobalTablesErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListGlobalTablesError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListGlobalTablesError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::ListGlobalTablesError {
+                        kind: crate::error::ListGlobalTablesErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListGlobalTablesError::unhandled(e),
                 },
                 _ => crate::error::ListGlobalTablesError::unhandled(generic),
@@ -2931,11 +3070,17 @@ impl ListTables {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListTablesError::InternalServerError(body),
+                    Ok(body) => crate::error::ListTablesError {
+                        kind: crate::error::ListTablesErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListTablesError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListTablesError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::ListTablesError {
+                        kind: crate::error::ListTablesErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListTablesError::unhandled(e),
                 },
                 _ => crate::error::ListTablesError::unhandled(generic),
@@ -2999,15 +3144,26 @@ impl ListTagsOfResource {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListTagsOfResourceError::InternalServerError(body),
+                    Ok(body) => crate::error::ListTagsOfResourceError {
+                        kind: crate::error::ListTagsOfResourceErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListTagsOfResourceError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListTagsOfResourceError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::ListTagsOfResourceError {
+                        kind: crate::error::ListTagsOfResourceErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListTagsOfResourceError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ListTagsOfResourceError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::ListTagsOfResourceError {
+                        kind: crate::error::ListTagsOfResourceErrorKind::ResourceNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ListTagsOfResourceError::unhandled(e),
                 },
                 _ => crate::error::ListTagsOfResourceError::unhandled(generic),
@@ -3131,41 +3287,66 @@ impl PutItem {
             };
             return Err(match error_code {
                 "ConditionalCheckFailedException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutItemError::ConditionalCheckFailedError(body),
+                    Ok(body) => crate::error::PutItemError {
+                        kind: crate::error::PutItemErrorKind::ConditionalCheckFailedError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutItemError::unhandled(e),
                 },
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutItemError::InternalServerError(body),
+                    Ok(body) => crate::error::PutItemError {
+                        kind: crate::error::PutItemErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutItemError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutItemError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::PutItemError {
+                        kind: crate::error::PutItemErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutItemError::unhandled(e),
                 },
                 "ItemCollectionSizeLimitExceededException" => {
                     match ::serde_json::from_value(body) {
-                        Ok(body) => {
-                            crate::error::PutItemError::ItemCollectionSizeLimitExceededError(body)
-                        }
+                        Ok(body) => crate::error::PutItemError {
+                            kind:
+                                crate::error::PutItemErrorKind::ItemCollectionSizeLimitExceededError(
+                                    body,
+                                ),
+                            meta: generic,
+                        },
                         Err(e) => crate::error::PutItemError::unhandled(e),
                     }
                 }
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::PutItemError::ProvisionedThroughputExceededError(body)
-                    }
+                    Ok(body) => crate::error::PutItemError {
+                        kind: crate::error::PutItemErrorKind::ProvisionedThroughputExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutItemError::unhandled(e),
                 },
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutItemError::RequestLimitExceeded(body),
+                    Ok(body) => crate::error::PutItemError {
+                        kind: crate::error::PutItemErrorKind::RequestLimitExceeded(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutItemError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutItemError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::PutItemError {
+                        kind: crate::error::PutItemErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutItemError::unhandled(e),
                 },
                 "TransactionConflictException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::PutItemError::TransactionConflictError(body),
+                    Ok(body) => crate::error::PutItemError {
+                        kind: crate::error::PutItemErrorKind::TransactionConflictError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::PutItemError::unhandled(e),
                 },
                 _ => crate::error::PutItemError::unhandled(generic),
@@ -3279,23 +3460,40 @@ impl Query {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::QueryError::InternalServerError(body),
+                    Ok(body) => crate::error::QueryError {
+                        kind: crate::error::QueryErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::QueryError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::QueryError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::QueryError {
+                        kind: crate::error::QueryErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::QueryError::unhandled(e),
                 },
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::QueryError::ProvisionedThroughputExceededError(body),
+                    Ok(body) => crate::error::QueryError {
+                        kind: crate::error::QueryErrorKind::ProvisionedThroughputExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::QueryError::unhandled(e),
                 },
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::QueryError::RequestLimitExceeded(body),
+                    Ok(body) => crate::error::QueryError {
+                        kind: crate::error::QueryErrorKind::RequestLimitExceeded(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::QueryError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::QueryError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::QueryError {
+                        kind: crate::error::QueryErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::QueryError::unhandled(e),
                 },
                 _ => crate::error::QueryError::unhandled(generic),
@@ -3387,39 +3585,63 @@ impl RestoreTableFromBackup {
             };
             return Err(match error_code {
                 "BackupInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreTableFromBackupError::BackupInUseError(body),
+                    Ok(body) => crate::error::RestoreTableFromBackupError {
+                        kind: crate::error::RestoreTableFromBackupErrorKind::BackupInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
                 },
                 "BackupNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::RestoreTableFromBackupError::BackupNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::RestoreTableFromBackupError {
+                        kind: crate::error::RestoreTableFromBackupErrorKind::BackupNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
                 },
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::RestoreTableFromBackupError::InternalServerError(body)
-                    }
+                    Ok(body) => crate::error::RestoreTableFromBackupError {
+                        kind: crate::error::RestoreTableFromBackupErrorKind::InternalServerError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::RestoreTableFromBackupError::InvalidEndpointError(body)
-                    }
+                    Ok(body) => crate::error::RestoreTableFromBackupError {
+                        kind: crate::error::RestoreTableFromBackupErrorKind::InvalidEndpointError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreTableFromBackupError::LimitExceededError(body),
+                    Ok(body) => crate::error::RestoreTableFromBackupError {
+                        kind: crate::error::RestoreTableFromBackupErrorKind::LimitExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
                 },
                 "TableAlreadyExistsException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::RestoreTableFromBackupError::TableAlreadyExistsError(body)
-                    }
+                    Ok(body) => crate::error::RestoreTableFromBackupError {
+                        kind:
+                            crate::error::RestoreTableFromBackupErrorKind::TableAlreadyExistsError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
                 },
                 "TableInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreTableFromBackupError::TableInUseError(body),
+                    Ok(body) => crate::error::RestoreTableFromBackupError {
+                        kind: crate::error::RestoreTableFromBackupErrorKind::TableInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::RestoreTableFromBackupError::unhandled(e),
                 },
                 _ => crate::error::RestoreTableFromBackupError::unhandled(generic),
@@ -3538,35 +3760,35 @@ impl RestoreTableToPointInTime {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreTableToPointInTimeError::InternalServerError(body),
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError { kind: crate::error::RestoreTableToPointInTimeErrorKind::InternalServerError(body), meta: generic },
                     Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
                 }
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreTableToPointInTimeError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError { kind: crate::error::RestoreTableToPointInTimeErrorKind::InvalidEndpointError(body), meta: generic },
                     Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
                 }
                 "InvalidRestoreTimeException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreTableToPointInTimeError::InvalidRestoreTimeError(body),
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError { kind: crate::error::RestoreTableToPointInTimeErrorKind::InvalidRestoreTimeError(body), meta: generic },
                     Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
                 }
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreTableToPointInTimeError::LimitExceededError(body),
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError { kind: crate::error::RestoreTableToPointInTimeErrorKind::LimitExceededError(body), meta: generic },
                     Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
                 }
                 "PointInTimeRecoveryUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreTableToPointInTimeError::PointInTimeRecoveryUnavailableError(body),
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError { kind: crate::error::RestoreTableToPointInTimeErrorKind::PointInTimeRecoveryUnavailableError(body), meta: generic },
                     Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
                 }
                 "TableAlreadyExistsException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreTableToPointInTimeError::TableAlreadyExistsError(body),
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError { kind: crate::error::RestoreTableToPointInTimeErrorKind::TableAlreadyExistsError(body), meta: generic },
                     Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
                 }
                 "TableInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreTableToPointInTimeError::TableInUseError(body),
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError { kind: crate::error::RestoreTableToPointInTimeErrorKind::TableInUseError(body), meta: generic },
                     Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
                 }
                 "TableNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::RestoreTableToPointInTimeError::TableNotFoundError(body),
+                    Ok(body) => crate::error::RestoreTableToPointInTimeError { kind: crate::error::RestoreTableToPointInTimeErrorKind::TableNotFoundError(body), meta: generic },
                     Err(e) => crate::error::RestoreTableToPointInTimeError::unhandled(e)
                 }
                 _ => crate::error::RestoreTableToPointInTimeError::unhandled(generic)
@@ -3649,23 +3871,38 @@ impl Scan {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ScanError::InternalServerError(body),
+                    Ok(body) => crate::error::ScanError {
+                        kind: crate::error::ScanErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ScanError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ScanError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::ScanError {
+                        kind: crate::error::ScanErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ScanError::unhandled(e),
                 },
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ScanError::ProvisionedThroughputExceededError(body),
+                    Ok(body) => crate::error::ScanError {
+                        kind: crate::error::ScanErrorKind::ProvisionedThroughputExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ScanError::unhandled(e),
                 },
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ScanError::RequestLimitExceeded(body),
+                    Ok(body) => crate::error::ScanError {
+                        kind: crate::error::ScanErrorKind::RequestLimitExceeded(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ScanError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::ScanError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::ScanError {
+                        kind: crate::error::ScanErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::ScanError::unhandled(e),
                 },
                 _ => crate::error::ScanError::unhandled(generic),
@@ -3732,23 +3969,38 @@ impl TagResource {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::InternalServerError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::LimitExceededError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::ResourceInUseError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TagResourceError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::TagResourceError {
+                        kind: crate::error::TagResourceErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::TagResourceError::unhandled(e),
                 },
                 _ => crate::error::TagResourceError::unhandled(generic),
@@ -3826,34 +4078,30 @@ impl TransactGetItems {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TransactGetItemsError::InternalServerError(body),
-                    Err(e) => crate::error::TransactGetItemsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::TransactGetItemsError { kind: crate::error::TransactGetItemsErrorKind::InternalServerError(body), meta: generic },
+                    Err(e) => crate::error::TransactGetItemsError::unhandled(e)
+                }
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TransactGetItemsError::InvalidEndpointError(body),
-                    Err(e) => crate::error::TransactGetItemsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::TransactGetItemsError { kind: crate::error::TransactGetItemsErrorKind::InvalidEndpointError(body), meta: generic },
+                    Err(e) => crate::error::TransactGetItemsError::unhandled(e)
+                }
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::TransactGetItemsError::ProvisionedThroughputExceededError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::TransactGetItemsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::TransactGetItemsError { kind: crate::error::TransactGetItemsErrorKind::ProvisionedThroughputExceededError(body), meta: generic },
+                    Err(e) => crate::error::TransactGetItemsError::unhandled(e)
+                }
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TransactGetItemsError::RequestLimitExceeded(body),
-                    Err(e) => crate::error::TransactGetItemsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::TransactGetItemsError { kind: crate::error::TransactGetItemsErrorKind::RequestLimitExceeded(body), meta: generic },
+                    Err(e) => crate::error::TransactGetItemsError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TransactGetItemsError::ResourceNotFoundError(body),
-                    Err(e) => crate::error::TransactGetItemsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::TransactGetItemsError { kind: crate::error::TransactGetItemsErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::TransactGetItemsError::unhandled(e)
+                }
                 "TransactionCanceledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TransactGetItemsError::TransactionCanceledError(body),
-                    Err(e) => crate::error::TransactGetItemsError::unhandled(e),
-                },
-                _ => crate::error::TransactGetItemsError::unhandled(generic),
+                    Ok(body) => crate::error::TransactGetItemsError { kind: crate::error::TransactGetItemsErrorKind::TransactionCanceledError(body), meta: generic },
+                    Err(e) => crate::error::TransactGetItemsError::unhandled(e)
+                }
+                _ => crate::error::TransactGetItemsError::unhandled(generic)
             });
         }
         let body: TransactGetItemsOutputBody =
@@ -3982,50 +4230,38 @@ impl TransactWriteItems {
             };
             return Err(match error_code {
                 "IdempotentParameterMismatchException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::TransactWriteItemsError::IdempotentParameterMismatchError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::TransactWriteItemsError { kind: crate::error::TransactWriteItemsErrorKind::IdempotentParameterMismatchError(body), meta: generic },
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e)
+                }
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TransactWriteItemsError::InternalServerError(body),
-                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::TransactWriteItemsError { kind: crate::error::TransactWriteItemsErrorKind::InternalServerError(body), meta: generic },
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e)
+                }
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TransactWriteItemsError::InvalidEndpointError(body),
-                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::TransactWriteItemsError { kind: crate::error::TransactWriteItemsErrorKind::InvalidEndpointError(body), meta: generic },
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e)
+                }
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::TransactWriteItemsError::ProvisionedThroughputExceededError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::TransactWriteItemsError { kind: crate::error::TransactWriteItemsErrorKind::ProvisionedThroughputExceededError(body), meta: generic },
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e)
+                }
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TransactWriteItemsError::RequestLimitExceeded(body),
-                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::TransactWriteItemsError { kind: crate::error::TransactWriteItemsErrorKind::RequestLimitExceeded(body), meta: generic },
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::TransactWriteItemsError::ResourceNotFoundError(body),
-                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::TransactWriteItemsError { kind: crate::error::TransactWriteItemsErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e)
+                }
                 "TransactionCanceledException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::TransactWriteItemsError::TransactionCanceledError(body)
-                    }
-                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::TransactWriteItemsError { kind: crate::error::TransactWriteItemsErrorKind::TransactionCanceledError(body), meta: generic },
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e)
+                }
                 "TransactionInProgressException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::TransactWriteItemsError::TransactionInProgressError(body)
-                    }
-                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e),
-                },
-                _ => crate::error::TransactWriteItemsError::unhandled(generic),
+                    Ok(body) => crate::error::TransactWriteItemsError { kind: crate::error::TransactWriteItemsErrorKind::TransactionInProgressError(body), meta: generic },
+                    Err(e) => crate::error::TransactWriteItemsError::unhandled(e)
+                }
+                _ => crate::error::TransactWriteItemsError::unhandled(generic)
             });
         }
         let body: TransactWriteItemsOutputBody = ::serde_json::from_slice(response.body().as_ref())
@@ -4084,23 +4320,38 @@ impl UntagResource {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::InternalServerError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::LimitExceededError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::ResourceInUseError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UntagResourceError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::UntagResourceError {
+                        kind: crate::error::UntagResourceErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UntagResourceError::unhandled(e),
                 },
                 _ => crate::error::UntagResourceError::unhandled(generic),
@@ -4171,19 +4422,19 @@ impl UpdateContinuousBackups {
             };
             return Err(match error_code {
                 "ContinuousBackupsUnavailableException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateContinuousBackupsError::ContinuousBackupsUnavailableError(body),
+                    Ok(body) => crate::error::UpdateContinuousBackupsError { kind: crate::error::UpdateContinuousBackupsErrorKind::ContinuousBackupsUnavailableError(body), meta: generic },
                     Err(e) => crate::error::UpdateContinuousBackupsError::unhandled(e)
                 }
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateContinuousBackupsError::InternalServerError(body),
+                    Ok(body) => crate::error::UpdateContinuousBackupsError { kind: crate::error::UpdateContinuousBackupsErrorKind::InternalServerError(body), meta: generic },
                     Err(e) => crate::error::UpdateContinuousBackupsError::unhandled(e)
                 }
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateContinuousBackupsError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::UpdateContinuousBackupsError { kind: crate::error::UpdateContinuousBackupsErrorKind::InvalidEndpointError(body), meta: generic },
                     Err(e) => crate::error::UpdateContinuousBackupsError::unhandled(e)
                 }
                 "TableNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateContinuousBackupsError::TableNotFoundError(body),
+                    Ok(body) => crate::error::UpdateContinuousBackupsError { kind: crate::error::UpdateContinuousBackupsErrorKind::TableNotFoundError(body), meta: generic },
                     Err(e) => crate::error::UpdateContinuousBackupsError::unhandled(e)
                 }
                 _ => crate::error::UpdateContinuousBackupsError::unhandled(generic)
@@ -4248,15 +4499,22 @@ impl UpdateContributorInsights {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateContributorInsightsError::InternalServerError(body)
-                    }
+                    Ok(body) => crate::error::UpdateContributorInsightsError {
+                        kind: crate::error::UpdateContributorInsightsErrorKind::InternalServerError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateContributorInsightsError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateContributorInsightsError::ResourceNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::UpdateContributorInsightsError {
+                        kind:
+                            crate::error::UpdateContributorInsightsErrorKind::ResourceNotFoundError(
+                                body,
+                            ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateContributorInsightsError::unhandled(e),
                 },
                 _ => crate::error::UpdateContributorInsightsError::unhandled(generic),
@@ -4345,31 +4603,49 @@ impl UpdateGlobalTable {
             };
             return Err(match error_code {
                 "GlobalTableNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateGlobalTableError::GlobalTableNotFoundError(body)
-                    }
+                    Ok(body) => crate::error::UpdateGlobalTableError {
+                        kind: crate::error::UpdateGlobalTableErrorKind::GlobalTableNotFoundError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
                 },
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateGlobalTableError::InternalServerError(body),
+                    Ok(body) => crate::error::UpdateGlobalTableError {
+                        kind: crate::error::UpdateGlobalTableErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateGlobalTableError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::UpdateGlobalTableError {
+                        kind: crate::error::UpdateGlobalTableErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
                 },
                 "ReplicaAlreadyExistsException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateGlobalTableError::ReplicaAlreadyExistsError(body)
-                    }
+                    Ok(body) => crate::error::UpdateGlobalTableError {
+                        kind: crate::error::UpdateGlobalTableErrorKind::ReplicaAlreadyExistsError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
                 },
                 "ReplicaNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateGlobalTableError::ReplicaNotFoundError(body),
+                    Ok(body) => crate::error::UpdateGlobalTableError {
+                        kind: crate::error::UpdateGlobalTableErrorKind::ReplicaNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
                 },
                 "TableNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateGlobalTableError::TableNotFoundError(body),
+                    Ok(body) => crate::error::UpdateGlobalTableError {
+                        kind: crate::error::UpdateGlobalTableErrorKind::TableNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateGlobalTableError::unhandled(e),
                 },
                 _ => crate::error::UpdateGlobalTableError::unhandled(generic),
@@ -4433,48 +4709,34 @@ impl UpdateGlobalTableSettings {
             };
             return Err(match error_code {
                 "GlobalTableNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateGlobalTableSettingsError::GlobalTableNotFoundError(body)
-                    }
-                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::UpdateGlobalTableSettingsError { kind: crate::error::UpdateGlobalTableSettingsErrorKind::GlobalTableNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e)
+                }
                 "IndexNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateGlobalTableSettingsError::IndexNotFoundError(body)
-                    }
-                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::UpdateGlobalTableSettingsError { kind: crate::error::UpdateGlobalTableSettingsErrorKind::IndexNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e)
+                }
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateGlobalTableSettingsError::InternalServerError(body)
-                    }
-                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::UpdateGlobalTableSettingsError { kind: crate::error::UpdateGlobalTableSettingsErrorKind::InternalServerError(body), meta: generic },
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e)
+                }
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateGlobalTableSettingsError::InvalidEndpointError(body)
-                    }
-                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::UpdateGlobalTableSettingsError { kind: crate::error::UpdateGlobalTableSettingsErrorKind::InvalidEndpointError(body), meta: generic },
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e)
+                }
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateGlobalTableSettingsError::LimitExceededError(body)
-                    }
-                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::UpdateGlobalTableSettingsError { kind: crate::error::UpdateGlobalTableSettingsErrorKind::LimitExceededError(body), meta: generic },
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e)
+                }
                 "ReplicaNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateGlobalTableSettingsError::ReplicaNotFoundError(body)
-                    }
-                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
-                },
+                    Ok(body) => crate::error::UpdateGlobalTableSettingsError { kind: crate::error::UpdateGlobalTableSettingsErrorKind::ReplicaNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e)
+                }
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateGlobalTableSettingsError::ResourceInUseError(body)
-                    }
-                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e),
-                },
-                _ => crate::error::UpdateGlobalTableSettingsError::unhandled(generic),
+                    Ok(body) => crate::error::UpdateGlobalTableSettingsError { kind: crate::error::UpdateGlobalTableSettingsErrorKind::ResourceInUseError(body), meta: generic },
+                    Err(e) => crate::error::UpdateGlobalTableSettingsError::unhandled(e)
+                }
+                _ => crate::error::UpdateGlobalTableSettingsError::unhandled(generic)
             });
         }
         let body: UpdateGlobalTableSettingsOutputBody =
@@ -4533,43 +4795,64 @@ impl UpdateItem {
             };
             return Err(match error_code {
                 "ConditionalCheckFailedException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateItemError::ConditionalCheckFailedError(body),
+                    Ok(body) => crate::error::UpdateItemError {
+                        kind: crate::error::UpdateItemErrorKind::ConditionalCheckFailedError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateItemError::unhandled(e),
                 },
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateItemError::InternalServerError(body),
+                    Ok(body) => crate::error::UpdateItemError {
+                        kind: crate::error::UpdateItemErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateItemError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateItemError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::UpdateItemError {
+                        kind: crate::error::UpdateItemErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateItemError::unhandled(e),
                 },
-                "ItemCollectionSizeLimitExceededException" => {
-                    match ::serde_json::from_value(body) {
-                        Ok(body) => {
-                            crate::error::UpdateItemError::ItemCollectionSizeLimitExceededError(
+                "ItemCollectionSizeLimitExceededException" => match ::serde_json::from_value(body) {
+                    Ok(body) => crate::error::UpdateItemError {
+                        kind:
+                            crate::error::UpdateItemErrorKind::ItemCollectionSizeLimitExceededError(
                                 body,
-                            )
-                        }
-                        Err(e) => crate::error::UpdateItemError::unhandled(e),
-                    }
-                }
+                            ),
+                        meta: generic,
+                    },
+                    Err(e) => crate::error::UpdateItemError::unhandled(e),
+                },
                 "ProvisionedThroughputExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateItemError::ProvisionedThroughputExceededError(body)
-                    }
+                    Ok(body) => crate::error::UpdateItemError {
+                        kind: crate::error::UpdateItemErrorKind::ProvisionedThroughputExceededError(
+                            body,
+                        ),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateItemError::unhandled(e),
                 },
                 "RequestLimitExceeded" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateItemError::RequestLimitExceeded(body),
+                    Ok(body) => crate::error::UpdateItemError {
+                        kind: crate::error::UpdateItemErrorKind::RequestLimitExceeded(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateItemError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateItemError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::UpdateItemError {
+                        kind: crate::error::UpdateItemErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateItemError::unhandled(e),
                 },
                 "TransactionConflictException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateItemError::TransactionConflictError(body),
+                    Ok(body) => crate::error::UpdateItemError {
+                        kind: crate::error::UpdateItemErrorKind::TransactionConflictError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateItemError::unhandled(e),
                 },
                 _ => crate::error::UpdateItemError::unhandled(generic),
@@ -4650,23 +4933,38 @@ impl UpdateTable {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateTableError::InternalServerError(body),
+                    Ok(body) => crate::error::UpdateTableError {
+                        kind: crate::error::UpdateTableErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateTableError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateTableError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::UpdateTableError {
+                        kind: crate::error::UpdateTableErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateTableError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateTableError::LimitExceededError(body),
+                    Ok(body) => crate::error::UpdateTableError {
+                        kind: crate::error::UpdateTableErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateTableError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateTableError::ResourceInUseError(body),
+                    Ok(body) => crate::error::UpdateTableError {
+                        kind: crate::error::UpdateTableErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateTableError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateTableError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::UpdateTableError {
+                        kind: crate::error::UpdateTableErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateTableError::unhandled(e),
                 },
                 _ => crate::error::UpdateTableError::unhandled(generic),
@@ -4734,32 +5032,22 @@ impl UpdateTableReplicaAutoScaling {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateTableReplicaAutoScalingError::InternalServerError(body)
-                    }
-                    Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e),
-                },
+                    Ok(body) => crate::error::UpdateTableReplicaAutoScalingError { kind: crate::error::UpdateTableReplicaAutoScalingErrorKind::InternalServerError(body), meta: generic },
+                    Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e)
+                }
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateTableReplicaAutoScalingError::LimitExceededError(body)
-                    }
-                    Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e),
-                },
+                    Ok(body) => crate::error::UpdateTableReplicaAutoScalingError { kind: crate::error::UpdateTableReplicaAutoScalingErrorKind::LimitExceededError(body), meta: generic },
+                    Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e)
+                }
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateTableReplicaAutoScalingError::ResourceInUseError(body)
-                    }
-                    Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e),
-                },
+                    Ok(body) => crate::error::UpdateTableReplicaAutoScalingError { kind: crate::error::UpdateTableReplicaAutoScalingErrorKind::ResourceInUseError(body), meta: generic },
+                    Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e)
+                }
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => {
-                        crate::error::UpdateTableReplicaAutoScalingError::ResourceNotFoundError(
-                            body,
-                        )
-                    }
-                    Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e),
-                },
-                _ => crate::error::UpdateTableReplicaAutoScalingError::unhandled(generic),
+                    Ok(body) => crate::error::UpdateTableReplicaAutoScalingError { kind: crate::error::UpdateTableReplicaAutoScalingErrorKind::ResourceNotFoundError(body), meta: generic },
+                    Err(e) => crate::error::UpdateTableReplicaAutoScalingError::unhandled(e)
+                }
+                _ => crate::error::UpdateTableReplicaAutoScalingError::unhandled(generic)
             });
         }
         let body: UpdateTableReplicaAutoScalingOutputBody =
@@ -4842,23 +5130,38 @@ impl UpdateTimeToLive {
             };
             return Err(match error_code {
                 "InternalServerError" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateTimeToLiveError::InternalServerError(body),
+                    Ok(body) => crate::error::UpdateTimeToLiveError {
+                        kind: crate::error::UpdateTimeToLiveErrorKind::InternalServerError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateTimeToLiveError::unhandled(e),
                 },
                 "InvalidEndpointException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateTimeToLiveError::InvalidEndpointError(body),
+                    Ok(body) => crate::error::UpdateTimeToLiveError {
+                        kind: crate::error::UpdateTimeToLiveErrorKind::InvalidEndpointError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateTimeToLiveError::unhandled(e),
                 },
                 "LimitExceededException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateTimeToLiveError::LimitExceededError(body),
+                    Ok(body) => crate::error::UpdateTimeToLiveError {
+                        kind: crate::error::UpdateTimeToLiveErrorKind::LimitExceededError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateTimeToLiveError::unhandled(e),
                 },
                 "ResourceInUseException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateTimeToLiveError::ResourceInUseError(body),
+                    Ok(body) => crate::error::UpdateTimeToLiveError {
+                        kind: crate::error::UpdateTimeToLiveErrorKind::ResourceInUseError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateTimeToLiveError::unhandled(e),
                 },
                 "ResourceNotFoundException" => match ::serde_json::from_value(body) {
-                    Ok(body) => crate::error::UpdateTimeToLiveError::ResourceNotFoundError(body),
+                    Ok(body) => crate::error::UpdateTimeToLiveError {
+                        kind: crate::error::UpdateTimeToLiveErrorKind::ResourceNotFoundError(body),
+                        meta: generic,
+                    },
                     Err(e) => crate::error::UpdateTimeToLiveError::unhandled(e),
                 },
                 _ => crate::error::UpdateTimeToLiveError::unhandled(generic),
