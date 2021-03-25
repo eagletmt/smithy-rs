@@ -1652,6 +1652,10 @@ pub mod resource_not_found_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`ResourceNotFoundError`](crate::error::ResourceNotFoundError)
         pub fn build(self) -> crate::error::ResourceNotFoundError {
             crate::error::ResourceNotFoundError {
@@ -1710,6 +1714,10 @@ pub mod malformed_policy_document_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`MalformedPolicyDocumentError`](crate::error::MalformedPolicyDocumentError)
@@ -1780,6 +1788,10 @@ pub mod invalid_request_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`InvalidRequestError`](crate::error::InvalidRequestError)
         pub fn build(self) -> crate::error::InvalidRequestError {
             crate::error::InvalidRequestError {
@@ -1835,6 +1847,10 @@ pub mod invalid_parameter_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`InvalidParameterError`](crate::error::InvalidParameterError)
@@ -1894,6 +1910,10 @@ pub mod internal_service_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`InternalServiceError`](crate::error::InternalServiceError)
         pub fn build(self) -> crate::error::InternalServiceError {
             crate::error::InternalServiceError {
@@ -1949,6 +1969,10 @@ pub mod limit_exceeded_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`LimitExceededError`](crate::error::LimitExceededError)
@@ -2008,6 +2032,10 @@ pub mod resource_exists_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`ResourceExistsError`](crate::error::ResourceExistsError)
         pub fn build(self) -> crate::error::ResourceExistsError {
             crate::error::ResourceExistsError {
@@ -2063,6 +2091,10 @@ pub mod precondition_not_met_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`PreconditionNotMetError`](crate::error::PreconditionNotMetError)
@@ -2125,6 +2157,10 @@ pub mod encryption_failure {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`EncryptionFailure`](crate::error::EncryptionFailure)
         pub fn build(self) -> crate::error::EncryptionFailure {
             crate::error::EncryptionFailure {
@@ -2180,6 +2216,10 @@ pub mod public_policy_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`PublicPolicyError`](crate::error::PublicPolicyError)
@@ -2239,6 +2279,10 @@ pub mod invalid_next_token_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`InvalidNextTokenError`](crate::error::InvalidNextTokenError)
         pub fn build(self) -> crate::error::InvalidNextTokenError {
             crate::error::InvalidNextTokenError {
@@ -2294,6 +2338,10 @@ pub mod decryption_failure {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`DecryptionFailure`](crate::error::DecryptionFailure)

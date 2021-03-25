@@ -4338,6 +4338,10 @@ pub mod resource_not_found_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`ResourceNotFoundError`](crate::error::ResourceNotFoundError)
         pub fn build(self) -> crate::error::ResourceNotFoundError {
             crate::error::ResourceNotFoundError {
@@ -4400,6 +4404,10 @@ pub mod resource_in_use_error {
         /// <p>The resource which is being attempted to be changed is in use.</p>
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`ResourceInUseError`](crate::error::ResourceInUseError)
@@ -4472,6 +4480,10 @@ pub mod limit_exceeded_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`LimitExceededError`](crate::error::LimitExceededError)
         pub fn build(self) -> crate::error::LimitExceededError {
             crate::error::LimitExceededError {
@@ -4526,6 +4538,10 @@ pub mod invalid_endpoint_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`InvalidEndpointError`](crate::error::InvalidEndpointError)
@@ -4590,6 +4606,10 @@ pub mod internal_server_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`InternalServerError`](crate::error::InternalServerError)
         pub fn build(self) -> crate::error::InternalServerError {
             crate::error::InternalServerError {
@@ -4650,6 +4670,10 @@ pub mod transaction_conflict_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`TransactionConflictError`](crate::error::TransactionConflictError)
         pub fn build(self) -> crate::error::TransactionConflictError {
             crate::error::TransactionConflictError {
@@ -4708,6 +4732,10 @@ pub mod request_limit_exceeded {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`RequestLimitExceeded`](crate::error::RequestLimitExceeded)
@@ -4779,6 +4807,10 @@ pub mod provisioned_throughput_exceeded_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`ProvisionedThroughputExceededError`](crate::error::ProvisionedThroughputExceededError)
         pub fn build(self) -> crate::error::ProvisionedThroughputExceededError {
             crate::error::ProvisionedThroughputExceededError {
@@ -4842,6 +4874,10 @@ pub mod item_collection_size_limit_exceeded_error {
         /// <p>The total size of an item collection has exceeded the maximum limit of 10 gigabytes.</p>
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`ItemCollectionSizeLimitExceededError`](crate::error::ItemCollectionSizeLimitExceededError)
@@ -4909,6 +4945,10 @@ pub mod conditional_check_failed_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`ConditionalCheckFailedError`](crate::error::ConditionalCheckFailedError)
         pub fn build(self) -> crate::error::ConditionalCheckFailedError {
             crate::error::ConditionalCheckFailedError {
@@ -4967,6 +5007,10 @@ pub mod replica_not_found_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`ReplicaNotFoundError`](crate::error::ReplicaNotFoundError)
@@ -5029,6 +5073,10 @@ pub mod index_not_found_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`IndexNotFoundError`](crate::error::IndexNotFoundError)
         pub fn build(self) -> crate::error::IndexNotFoundError {
             crate::error::IndexNotFoundError {
@@ -5089,6 +5137,10 @@ pub mod global_table_not_found_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`GlobalTableNotFoundError`](crate::error::GlobalTableNotFoundError)
         pub fn build(self) -> crate::error::GlobalTableNotFoundError {
             crate::error::GlobalTableNotFoundError {
@@ -5147,6 +5199,10 @@ pub mod table_not_found_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`TableNotFoundError`](crate::error::TableNotFoundError)
@@ -5212,6 +5268,10 @@ pub mod replica_already_exists_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`ReplicaAlreadyExistsError`](crate::error::ReplicaAlreadyExistsError)
         pub fn build(self) -> crate::error::ReplicaAlreadyExistsError {
             crate::error::ReplicaAlreadyExistsError {
@@ -5275,6 +5335,10 @@ pub mod continuous_backups_unavailable_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`ContinuousBackupsUnavailableError`](crate::error::ContinuousBackupsUnavailableError)
         pub fn build(self) -> crate::error::ContinuousBackupsUnavailableError {
             crate::error::ContinuousBackupsUnavailableError {
@@ -5333,6 +5397,10 @@ pub mod transaction_in_progress_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`TransactionInProgressError`](crate::error::TransactionInProgressError)
@@ -5596,12 +5664,23 @@ pub mod transaction_canceled_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// <p>A list of cancellation reasons.</p>
         pub fn cancellation_reasons(
             mut self,
             inp: std::vec::Vec<crate::model::CancellationReason>,
         ) -> Self {
             self.cancellation_reasons = Some(inp);
+            self
+        }
+        pub fn set_cancellation_reasons(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::CancellationReason>>,
+        ) -> Self {
+            self.cancellation_reasons = inp;
             self
         }
         /// Consumes the builder and constructs a [`TransactionCanceledError`](crate::error::TransactionCanceledError)
@@ -5666,6 +5745,10 @@ pub mod idempotent_parameter_mismatch_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`IdempotentParameterMismatchError`](crate::error::IdempotentParameterMismatchError)
         pub fn build(self) -> crate::error::IdempotentParameterMismatchError {
             crate::error::IdempotentParameterMismatchError {
@@ -5726,6 +5809,10 @@ pub mod table_in_use_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`TableInUseError`](crate::error::TableInUseError)
         pub fn build(self) -> crate::error::TableInUseError {
             crate::error::TableInUseError {
@@ -5784,6 +5871,10 @@ pub mod table_already_exists_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`TableAlreadyExistsError`](crate::error::TableAlreadyExistsError)
@@ -5849,6 +5940,10 @@ pub mod point_in_time_recovery_unavailable_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`PointInTimeRecoveryUnavailableError`](crate::error::PointInTimeRecoveryUnavailableError)
         pub fn build(self) -> crate::error::PointInTimeRecoveryUnavailableError {
             crate::error::PointInTimeRecoveryUnavailableError {
@@ -5907,6 +6002,10 @@ pub mod invalid_restore_time_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`InvalidRestoreTimeError`](crate::error::InvalidRestoreTimeError)
@@ -5969,6 +6068,10 @@ pub mod backup_not_found_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`BackupNotFoundError`](crate::error::BackupNotFoundError)
         pub fn build(self) -> crate::error::BackupNotFoundError {
             crate::error::BackupNotFoundError {
@@ -6027,6 +6130,10 @@ pub mod backup_in_use_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`BackupInUseError`](crate::error::BackupInUseError)
@@ -6090,6 +6197,10 @@ pub mod invalid_export_time_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`InvalidExportTimeError`](crate::error::InvalidExportTimeError)
         pub fn build(self) -> crate::error::InvalidExportTimeError {
             crate::error::InvalidExportTimeError {
@@ -6148,6 +6259,10 @@ pub mod export_conflict_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`ExportConflictError`](crate::error::ExportConflictError)
@@ -6212,6 +6327,10 @@ pub mod duplicate_item_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`DuplicateItemError`](crate::error::DuplicateItemError)
         pub fn build(self) -> crate::error::DuplicateItemError {
             crate::error::DuplicateItemError {
@@ -6270,6 +6389,10 @@ pub mod export_not_found_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`ExportNotFoundError`](crate::error::ExportNotFoundError)
@@ -6333,6 +6456,10 @@ pub mod global_table_already_exists_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`GlobalTableAlreadyExistsError`](crate::error::GlobalTableAlreadyExistsError)

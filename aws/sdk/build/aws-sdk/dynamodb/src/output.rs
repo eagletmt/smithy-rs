@@ -34,6 +34,13 @@ pub mod update_time_to_live_output {
             self.time_to_live_specification = Some(inp);
             self
         }
+        pub fn set_time_to_live_specification(
+            mut self,
+            inp: std::option::Option<crate::model::TimeToLiveSpecification>,
+        ) -> Self {
+            self.time_to_live_specification = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`UpdateTimeToLiveOutput`](crate::output::UpdateTimeToLiveOutput)
         pub fn build(self) -> crate::output::UpdateTimeToLiveOutput {
             crate::output::UpdateTimeToLiveOutput {
@@ -85,6 +92,13 @@ pub mod update_table_replica_auto_scaling_output {
             self.table_auto_scaling_description = Some(inp);
             self
         }
+        pub fn set_table_auto_scaling_description(
+            mut self,
+            inp: std::option::Option<crate::model::TableAutoScalingDescription>,
+        ) -> Self {
+            self.table_auto_scaling_description = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`UpdateTableReplicaAutoScalingOutput`](crate::output::UpdateTableReplicaAutoScalingOutput)
         pub fn build(self) -> crate::output::UpdateTableReplicaAutoScalingOutput {
             crate::output::UpdateTableReplicaAutoScalingOutput {
@@ -127,6 +141,13 @@ pub mod update_table_output {
         /// <p>Represents the properties of the table.</p>
         pub fn table_description(mut self, inp: crate::model::TableDescription) -> Self {
             self.table_description = Some(inp);
+            self
+        }
+        pub fn set_table_description(
+            mut self,
+            inp: std::option::Option<crate::model::TableDescription>,
+        ) -> Self {
+            self.table_description = inp;
             self
         }
         /// Consumes the builder and constructs a [`UpdateTableOutput`](crate::output::UpdateTableOutput)
@@ -224,6 +245,15 @@ pub mod update_item_output {
             self.attributes = Some(inp);
             self
         }
+        pub fn set_attributes(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.attributes = inp;
+            self
+        }
         /// <p>The capacity units consumed by the <code>UpdateItem</code> operation. The data returned includes the total
         /// provisioned throughput consumed, along with statistics for the table and any indexes involved
         /// in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified.
@@ -231,6 +261,13 @@ pub mod update_item_output {
         /// Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn consumed_capacity(mut self, inp: crate::model::ConsumedCapacity) -> Self {
             self.consumed_capacity = Some(inp);
+            self
+        }
+        pub fn set_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ConsumedCapacity>,
+        ) -> Self {
+            self.consumed_capacity = inp;
             self
         }
         /// <p>Information about item collections, if any, that were affected by the
@@ -260,6 +297,13 @@ pub mod update_item_output {
         /// </ul>
         pub fn item_collection_metrics(mut self, inp: crate::model::ItemCollectionMetrics) -> Self {
             self.item_collection_metrics = Some(inp);
+            self
+        }
+        pub fn set_item_collection_metrics(
+            mut self,
+            inp: std::option::Option<crate::model::ItemCollectionMetrics>,
+        ) -> Self {
+            self.item_collection_metrics = inp;
             self
         }
         /// Consumes the builder and constructs a [`UpdateItemOutput`](crate::output::UpdateItemOutput)
@@ -313,12 +357,26 @@ pub mod update_global_table_settings_output {
             self.global_table_name = Some(inp.into());
             self
         }
+        pub fn set_global_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.global_table_name = inp;
+            self
+        }
         /// <p>The Region-specific settings for the global table.</p>
         pub fn replica_settings(
             mut self,
             inp: std::vec::Vec<crate::model::ReplicaSettingsDescription>,
         ) -> Self {
             self.replica_settings = Some(inp);
+            self
+        }
+        pub fn set_replica_settings(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ReplicaSettingsDescription>>,
+        ) -> Self {
+            self.replica_settings = inp;
             self
         }
         /// Consumes the builder and constructs a [`UpdateGlobalTableSettingsOutput`](crate::output::UpdateGlobalTableSettingsOutput)
@@ -366,6 +424,13 @@ pub mod update_global_table_output {
             inp: crate::model::GlobalTableDescription,
         ) -> Self {
             self.global_table_description = Some(inp);
+            self
+        }
+        pub fn set_global_table_description(
+            mut self,
+            inp: std::option::Option<crate::model::GlobalTableDescription>,
+        ) -> Self {
+            self.global_table_description = inp;
             self
         }
         /// Consumes the builder and constructs a [`UpdateGlobalTableOutput`](crate::output::UpdateGlobalTableOutput)
@@ -422,9 +487,17 @@ pub mod update_contributor_insights_output {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>The name of the global secondary index, if applicable.</p>
         pub fn index_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.index_name = Some(inp.into());
+            self
+        }
+        pub fn set_index_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.index_name = inp;
             self
         }
         /// <p>The status of contributor insights</p>
@@ -433,6 +506,13 @@ pub mod update_contributor_insights_output {
             inp: crate::model::ContributorInsightsStatus,
         ) -> Self {
             self.contributor_insights_status = Some(inp);
+            self
+        }
+        pub fn set_contributor_insights_status(
+            mut self,
+            inp: std::option::Option<crate::model::ContributorInsightsStatus>,
+        ) -> Self {
+            self.contributor_insights_status = inp;
             self
         }
         /// Consumes the builder and constructs a [`UpdateContributorInsightsOutput`](crate::output::UpdateContributorInsightsOutput)
@@ -486,6 +566,13 @@ pub mod update_continuous_backups_output {
             inp: crate::model::ContinuousBackupsDescription,
         ) -> Self {
             self.continuous_backups_description = Some(inp);
+            self
+        }
+        pub fn set_continuous_backups_description(
+            mut self,
+            inp: std::option::Option<crate::model::ContinuousBackupsDescription>,
+        ) -> Self {
+            self.continuous_backups_description = inp;
             self
         }
         /// Consumes the builder and constructs a [`UpdateContinuousBackupsOutput`](crate::output::UpdateContinuousBackupsOutput)
@@ -587,6 +674,13 @@ pub mod transact_write_items_output {
             self.consumed_capacity = Some(inp);
             self
         }
+        pub fn set_consumed_capacity(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ConsumedCapacity>>,
+        ) -> Self {
+            self.consumed_capacity = inp;
+            self
+        }
         /// <p>A list of tables that were processed by <code>TransactWriteItems</code> and, for each
         /// table, information about any item collections that were affected by individual
         /// <code>UpdateItem</code>, <code>PutItem</code>, or <code>DeleteItem</code>
@@ -599,6 +693,18 @@ pub mod transact_write_items_output {
             >,
         ) -> Self {
             self.item_collection_metrics = Some(inp);
+            self
+        }
+        pub fn set_item_collection_metrics(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<
+                    std::string::String,
+                    std::vec::Vec<crate::model::ItemCollectionMetrics>,
+                >,
+            >,
+        ) -> Self {
+            self.item_collection_metrics = inp;
             self
         }
         /// Consumes the builder and constructs a [`TransactWriteItemsOutput`](crate::output::TransactWriteItemsOutput)
@@ -667,6 +773,13 @@ pub mod transact_get_items_output {
             self.consumed_capacity = Some(inp);
             self
         }
+        pub fn set_consumed_capacity(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ConsumedCapacity>>,
+        ) -> Self {
+            self.consumed_capacity = inp;
+            self
+        }
         /// <p>An ordered array of up to 25 <code>ItemResponse</code> objects, each of which corresponds
         /// to the <code>TransactGetItem</code> object in the same position in the
         /// <i>TransactItems</i> array. Each <code>ItemResponse</code> object
@@ -677,6 +790,13 @@ pub mod transact_get_items_output {
         /// <code>ItemResponse</code> object is an empty Map. </p>
         pub fn responses(mut self, inp: std::vec::Vec<crate::model::ItemResponse>) -> Self {
             self.responses = Some(inp);
+            self
+        }
+        pub fn set_responses(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ItemResponse>>,
+        ) -> Self {
+            self.responses = inp;
             self
         }
         /// Consumes the builder and constructs a [`TransactGetItemsOutput`](crate::output::TransactGetItemsOutput)
@@ -807,6 +927,17 @@ pub mod scan_output {
             self.items = Some(inp);
             self
         }
+        pub fn set_items(
+            mut self,
+            inp: std::option::Option<
+                std::vec::Vec<
+                    std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+                >,
+            >,
+        ) -> Self {
+            self.items = inp;
+            self
+        }
         /// <p>The number of items in the response.</p>
         /// <p>If you set <code>ScanFilter</code> in the request, then <code>Count</code> is the number of items
         /// returned after the filter was applied, and <code>ScannedCount</code> is the number of matching items
@@ -817,6 +948,10 @@ pub mod scan_output {
             self.count = Some(inp);
             self
         }
+        pub fn set_count(mut self, inp: i32) -> Self {
+            self.count = Some(inp);
+            self
+        }
         /// <p>The number of items evaluated, before any <code>ScanFilter</code> is applied. A high
         /// <code>ScannedCount</code> value with few, or no, <code>Count</code> results indicates an inefficient
         /// <code>Scan</code> operation. For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count">Count and ScannedCount</a> in the
@@ -824,6 +959,10 @@ pub mod scan_output {
         /// <p>If you did not use a filter in the request, then <code>ScannedCount</code> is the same as
         /// <code>Count</code>.</p>
         pub fn scanned_count(mut self, inp: i32) -> Self {
+            self.scanned_count = Some(inp);
+            self
+        }
+        pub fn set_scanned_count(mut self, inp: i32) -> Self {
             self.scanned_count = Some(inp);
             self
         }
@@ -843,6 +982,15 @@ pub mod scan_output {
             self.last_evaluated_key = Some(inp);
             self
         }
+        pub fn set_last_evaluated_key(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.last_evaluated_key = inp;
+            self
+        }
         /// <p>The capacity units consumed by the <code>Scan</code> operation. The data returned includes the total
         /// provisioned throughput consumed, along with statistics for the table and any indexes involved
         /// in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified.
@@ -850,6 +998,13 @@ pub mod scan_output {
         /// Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn consumed_capacity(mut self, inp: crate::model::ConsumedCapacity) -> Self {
             self.consumed_capacity = Some(inp);
+            self
+        }
+        pub fn set_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ConsumedCapacity>,
+        ) -> Self {
+            self.consumed_capacity = inp;
             self
         }
         /// Consumes the builder and constructs a [`ScanOutput`](crate::output::ScanOutput)
@@ -899,6 +1054,13 @@ pub mod restore_table_to_point_in_time_output {
             self.table_description = Some(inp);
             self
         }
+        pub fn set_table_description(
+            mut self,
+            inp: std::option::Option<crate::model::TableDescription>,
+        ) -> Self {
+            self.table_description = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`RestoreTableToPointInTimeOutput`](crate::output::RestoreTableToPointInTimeOutput)
         pub fn build(self) -> crate::output::RestoreTableToPointInTimeOutput {
             crate::output::RestoreTableToPointInTimeOutput {
@@ -940,6 +1102,13 @@ pub mod restore_table_from_backup_output {
         /// <p>The description of the table created from an existing backup.</p>
         pub fn table_description(mut self, inp: crate::model::TableDescription) -> Self {
             self.table_description = Some(inp);
+            self
+        }
+        pub fn set_table_description(
+            mut self,
+            inp: std::option::Option<crate::model::TableDescription>,
+        ) -> Self {
+            self.table_description = inp;
             self
         }
         /// Consumes the builder and constructs a [`RestoreTableFromBackupOutput`](crate::output::RestoreTableFromBackupOutput)
@@ -1034,6 +1203,17 @@ pub mod query_output {
             self.items = Some(inp);
             self
         }
+        pub fn set_items(
+            mut self,
+            inp: std::option::Option<
+                std::vec::Vec<
+                    std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+                >,
+            >,
+        ) -> Self {
+            self.items = inp;
+            self
+        }
         /// <p>The number of items in the response.</p>
         /// <p>If you used a <code>QueryFilter</code> in the request, then <code>Count</code> is the number of items
         /// returned after the filter was applied, and <code>ScannedCount</code> is the number of
@@ -1041,6 +1221,10 @@ pub mod query_output {
         /// <p>If you did not use a filter in the request, then <code>Count</code> and <code>ScannedCount</code> are the
         /// same.</p>
         pub fn count(mut self, inp: i32) -> Self {
+            self.count = Some(inp);
+            self
+        }
+        pub fn set_count(mut self, inp: i32) -> Self {
             self.count = Some(inp);
             self
         }
@@ -1054,6 +1238,10 @@ pub mod query_output {
             self.scanned_count = Some(inp);
             self
         }
+        pub fn set_scanned_count(mut self, inp: i32) -> Self {
+            self.scanned_count = Some(inp);
+            self
+        }
         /// <p>The primary key of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p>
         /// <p>If <code>LastEvaluatedKey</code> is empty, then the "last page" of results has been processed and there is no more data to be retrieved.</p>
         /// <p>If <code>LastEvaluatedKey</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedKey</code> is empty.</p>
@@ -1064,6 +1252,15 @@ pub mod query_output {
             self.last_evaluated_key = Some(inp);
             self
         }
+        pub fn set_last_evaluated_key(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.last_evaluated_key = inp;
+            self
+        }
         /// <p>The capacity units consumed by the <code>Query</code> operation. The data returned
         /// includes the total provisioned throughput consumed, along with statistics for the table
         /// and any indexes involved in the operation. <code>ConsumedCapacity</code> is only
@@ -1072,6 +1269,13 @@ pub mod query_output {
         /// Guide</i>.</p>
         pub fn consumed_capacity(mut self, inp: crate::model::ConsumedCapacity) -> Self {
             self.consumed_capacity = Some(inp);
+            self
+        }
+        pub fn set_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ConsumedCapacity>,
+        ) -> Self {
+            self.consumed_capacity = inp;
             self
         }
         /// Consumes the builder and constructs a [`QueryOutput`](crate::output::QueryOutput)
@@ -1169,6 +1373,15 @@ pub mod put_item_output {
             self.attributes = Some(inp);
             self
         }
+        pub fn set_attributes(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.attributes = inp;
+            self
+        }
         /// <p>The capacity units consumed by the <code>PutItem</code> operation. The data returned
         /// includes the total provisioned throughput consumed, along with statistics for the table
         /// and any indexes involved in the operation. <code>ConsumedCapacity</code> is only
@@ -1177,6 +1390,13 @@ pub mod put_item_output {
         /// Guide</i>.</p>
         pub fn consumed_capacity(mut self, inp: crate::model::ConsumedCapacity) -> Self {
             self.consumed_capacity = Some(inp);
+            self
+        }
+        pub fn set_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ConsumedCapacity>,
+        ) -> Self {
+            self.consumed_capacity = inp;
             self
         }
         /// <p>Information about item collections, if any, that were affected by the
@@ -1205,6 +1425,13 @@ pub mod put_item_output {
         /// </ul>
         pub fn item_collection_metrics(mut self, inp: crate::model::ItemCollectionMetrics) -> Self {
             self.item_collection_metrics = Some(inp);
+            self
+        }
+        pub fn set_item_collection_metrics(
+            mut self,
+            inp: std::option::Option<crate::model::ItemCollectionMetrics>,
+        ) -> Self {
+            self.item_collection_metrics = inp;
             self
         }
         /// Consumes the builder and constructs a [`PutItemOutput`](crate::output::PutItemOutput)
@@ -1257,10 +1484,21 @@ pub mod list_tags_of_resource_output {
             self.tags = Some(inp);
             self
         }
+        pub fn set_tags(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::Tag>>,
+        ) -> Self {
+            self.tags = inp;
+            self
+        }
         /// <p>If this value is returned, there are additional results to be displayed. To retrieve them,
         /// call ListTagsOfResource again, with NextToken set to this value.</p>
         pub fn next_token(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_token = Some(inp.into());
+            self
+        }
+        pub fn set_next_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_token = inp;
             self
         }
         /// Consumes the builder and constructs a [`ListTagsOfResourceOutput`](crate::output::ListTagsOfResourceOutput)
@@ -1322,6 +1560,13 @@ pub mod list_tables_output {
             self.table_names = Some(inp);
             self
         }
+        pub fn set_table_names(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.table_names = inp;
+            self
+        }
         /// <p>The name of the last table in the current page of results. Use this value as the
         /// <code>ExclusiveStartTableName</code> in a new request to obtain the next page of results, until
         /// all the table names are returned.</p>
@@ -1329,6 +1574,13 @@ pub mod list_tables_output {
         /// there are no more table names to be retrieved.</p>
         pub fn last_evaluated_table_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.last_evaluated_table_name = Some(inp.into());
+            self
+        }
+        pub fn set_last_evaluated_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.last_evaluated_table_name = inp;
             self
         }
         /// Consumes the builder and constructs a [`ListTablesOutput`](crate::output::ListTablesOutput)
@@ -1382,12 +1634,26 @@ pub mod list_global_tables_output {
             self.global_tables = Some(inp);
             self
         }
+        pub fn set_global_tables(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::GlobalTable>>,
+        ) -> Self {
+            self.global_tables = inp;
+            self
+        }
         /// <p>Last evaluated global table name.</p>
         pub fn last_evaluated_global_table_name(
             mut self,
             inp: impl Into<std::string::String>,
         ) -> Self {
             self.last_evaluated_global_table_name = Some(inp.into());
+            self
+        }
+        pub fn set_last_evaluated_global_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.last_evaluated_global_table_name = inp;
             self
         }
         /// Consumes the builder and constructs a [`ListGlobalTablesOutput`](crate::output::ListGlobalTablesOutput)
@@ -1440,11 +1706,22 @@ pub mod list_exports_output {
             self.export_summaries = Some(inp);
             self
         }
+        pub fn set_export_summaries(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ExportSummary>>,
+        ) -> Self {
+            self.export_summaries = inp;
+            self
+        }
         /// <p>If this value is returned, there are additional results to be displayed. To retrieve
         /// them, call <code>ListExports</code> again, with <code>NextToken</code> set to this
         /// value.</p>
         pub fn next_token(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_token = Some(inp.into());
+            self
+        }
+        pub fn set_next_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_token = inp;
             self
         }
         /// Consumes the builder and constructs a [`ListExportsOutput`](crate::output::ListExportsOutput)
@@ -1503,9 +1780,20 @@ pub mod list_contributor_insights_output {
             self.contributor_insights_summaries = Some(inp);
             self
         }
+        pub fn set_contributor_insights_summaries(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ContributorInsightsSummary>>,
+        ) -> Self {
+            self.contributor_insights_summaries = inp;
+            self
+        }
         /// <p>A token to go to the next page if there is one.</p>
         pub fn next_token(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_token = Some(inp.into());
+            self
+        }
+        pub fn set_next_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_token = inp;
             self
         }
         /// Consumes the builder and constructs a [`ListContributorInsightsOutput`](crate::output::ListContributorInsightsOutput)
@@ -1567,6 +1855,13 @@ pub mod list_backups_output {
             self.backup_summaries = Some(inp);
             self
         }
+        pub fn set_backup_summaries(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::BackupSummary>>,
+        ) -> Self {
+            self.backup_summaries = inp;
+            self
+        }
         /// <p>
         /// The ARN of the backup last evaluated when the current page of results was returned,
         /// inclusive of the current page of results. This value may be specified as the
@@ -1581,6 +1876,13 @@ pub mod list_backups_output {
         /// and only if no value for <code>LastEvaluatedBackupArn</code> is returned. </p>
         pub fn last_evaluated_backup_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.last_evaluated_backup_arn = Some(inp.into());
+            self
+        }
+        pub fn set_last_evaluated_backup_arn(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.last_evaluated_backup_arn = inp;
             self
         }
         /// Consumes the builder and constructs a [`ListBackupsOutput`](crate::output::ListBackupsOutput)
@@ -1646,6 +1948,15 @@ pub mod get_item_output {
             self.item = Some(inp);
             self
         }
+        pub fn set_item(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.item = inp;
+            self
+        }
         /// <p>The capacity units consumed by the <code>GetItem</code> operation. The data returned
         /// includes the total provisioned throughput consumed, along with statistics for the table
         /// and any indexes involved in the operation. <code>ConsumedCapacity</code> is only
@@ -1654,6 +1965,13 @@ pub mod get_item_output {
         /// Guide</i>.</p>
         pub fn consumed_capacity(mut self, inp: crate::model::ConsumedCapacity) -> Self {
             self.consumed_capacity = Some(inp);
+            self
+        }
+        pub fn set_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ConsumedCapacity>,
+        ) -> Self {
+            self.consumed_capacity = inp;
             self
         }
         /// Consumes the builder and constructs a [`GetItemOutput`](crate::output::GetItemOutput)
@@ -1698,6 +2016,13 @@ pub mod export_table_to_point_in_time_output {
         /// <p>Contains a description of the table export.</p>
         pub fn export_description(mut self, inp: crate::model::ExportDescription) -> Self {
             self.export_description = Some(inp);
+            self
+        }
+        pub fn set_export_description(
+            mut self,
+            inp: std::option::Option<crate::model::ExportDescription>,
+        ) -> Self {
+            self.export_description = inp;
             self
         }
         /// Consumes the builder and constructs a [`ExportTableToPointInTimeOutput`](crate::output::ExportTableToPointInTimeOutput)
@@ -1745,6 +2070,13 @@ pub mod execute_transaction_output {
         /// </p>
         pub fn responses(mut self, inp: std::vec::Vec<crate::model::ItemResponse>) -> Self {
             self.responses = Some(inp);
+            self
+        }
+        pub fn set_responses(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ItemResponse>>,
+        ) -> Self {
+            self.responses = inp;
             self
         }
         /// Consumes the builder and constructs a [`ExecuteTransactionOutput`](crate::output::ExecuteTransactionOutput)
@@ -1811,11 +2143,26 @@ pub mod execute_statement_output {
             self.items = Some(inp);
             self
         }
+        pub fn set_items(
+            mut self,
+            inp: std::option::Option<
+                std::vec::Vec<
+                    std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+                >,
+            >,
+        ) -> Self {
+            self.items = inp;
+            self
+        }
         /// <p>
         /// If the response of a read request exceeds the response payload limit DynamoDB will set this value in the response. If set, you can use that this value in the subsequent request to get the remaining results.
         /// </p>
         pub fn next_token(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_token = Some(inp.into());
+            self
+        }
+        pub fn set_next_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_token = inp;
             self
         }
         /// Consumes the builder and constructs a [`ExecuteStatementOutput`](crate::output::ExecuteStatementOutput)
@@ -1870,14 +2217,29 @@ pub mod enable_kinesis_streaming_destination_output {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>The ARN for the specific Kinesis data stream.</p>
         pub fn stream_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_arn = Some(inp.into());
             self
         }
+        pub fn set_stream_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_arn = inp;
+            self
+        }
         /// <p>The current status of the replication.</p>
         pub fn destination_status(mut self, inp: crate::model::DestinationStatus) -> Self {
             self.destination_status = Some(inp);
+            self
+        }
+        pub fn set_destination_status(
+            mut self,
+            inp: std::option::Option<crate::model::DestinationStatus>,
+        ) -> Self {
+            self.destination_status = inp;
             self
         }
         /// Consumes the builder and constructs a [`EnableKinesisStreamingDestinationOutput`](crate::output::EnableKinesisStreamingDestinationOutput)
@@ -1933,14 +2295,29 @@ pub mod disable_kinesis_streaming_destination_output {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>The ARN for the specific Kinesis data stream.</p>
         pub fn stream_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_arn = Some(inp.into());
             self
         }
+        pub fn set_stream_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_arn = inp;
+            self
+        }
         /// <p>The current status of the replication.</p>
         pub fn destination_status(mut self, inp: crate::model::DestinationStatus) -> Self {
             self.destination_status = Some(inp);
+            self
+        }
+        pub fn set_destination_status(
+            mut self,
+            inp: std::option::Option<crate::model::DestinationStatus>,
+        ) -> Self {
+            self.destination_status = inp;
             self
         }
         /// Consumes the builder and constructs a [`DisableKinesisStreamingDestinationOutput`](crate::output::DisableKinesisStreamingDestinationOutput)
@@ -1989,6 +2366,13 @@ pub mod describe_time_to_live_output {
             inp: crate::model::TimeToLiveDescription,
         ) -> Self {
             self.time_to_live_description = Some(inp);
+            self
+        }
+        pub fn set_time_to_live_description(
+            mut self,
+            inp: std::option::Option<crate::model::TimeToLiveDescription>,
+        ) -> Self {
+            self.time_to_live_description = inp;
             self
         }
         /// Consumes the builder and constructs a [`DescribeTimeToLiveOutput`](crate::output::DescribeTimeToLiveOutput)
@@ -2042,6 +2426,13 @@ pub mod describe_table_replica_auto_scaling_output {
             self.table_auto_scaling_description = Some(inp);
             self
         }
+        pub fn set_table_auto_scaling_description(
+            mut self,
+            inp: std::option::Option<crate::model::TableAutoScalingDescription>,
+        ) -> Self {
+            self.table_auto_scaling_description = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`DescribeTableReplicaAutoScalingOutput`](crate::output::DescribeTableReplicaAutoScalingOutput)
         pub fn build(self) -> crate::output::DescribeTableReplicaAutoScalingOutput {
             crate::output::DescribeTableReplicaAutoScalingOutput {
@@ -2084,6 +2475,13 @@ pub mod describe_table_output {
         /// <p>The properties of the table.</p>
         pub fn table(mut self, inp: crate::model::TableDescription) -> Self {
             self.table = Some(inp);
+            self
+        }
+        pub fn set_table(
+            mut self,
+            inp: std::option::Option<crate::model::TableDescription>,
+        ) -> Self {
+            self.table = inp;
             self
         }
         /// Consumes the builder and constructs a [`DescribeTableOutput`](crate::output::DescribeTableOutput)
@@ -2159,10 +2557,24 @@ pub mod describe_limits_output {
             self.account_max_read_capacity_units = Some(inp);
             self
         }
+        pub fn set_account_max_read_capacity_units(
+            mut self,
+            inp: std::option::Option<i64>,
+        ) -> Self {
+            self.account_max_read_capacity_units = inp;
+            self
+        }
         /// <p>The maximum total write capacity units that your account allows you to provision across
         /// all of your tables in this Region.</p>
         pub fn account_max_write_capacity_units(mut self, inp: i64) -> Self {
             self.account_max_write_capacity_units = Some(inp);
+            self
+        }
+        pub fn set_account_max_write_capacity_units(
+            mut self,
+            inp: std::option::Option<i64>,
+        ) -> Self {
+            self.account_max_write_capacity_units = inp;
             self
         }
         /// <p>The maximum read capacity units that your account allows you to provision for a new
@@ -2172,11 +2584,19 @@ pub mod describe_limits_output {
             self.table_max_read_capacity_units = Some(inp);
             self
         }
+        pub fn set_table_max_read_capacity_units(mut self, inp: std::option::Option<i64>) -> Self {
+            self.table_max_read_capacity_units = inp;
+            self
+        }
         /// <p>The maximum write capacity units that your account allows you to provision for a new
         /// table that you are creating in this Region, including the write capacity units
         /// provisioned for its global secondary indexes (GSIs).</p>
         pub fn table_max_write_capacity_units(mut self, inp: i64) -> Self {
             self.table_max_write_capacity_units = Some(inp);
+            self
+        }
+        pub fn set_table_max_write_capacity_units(mut self, inp: std::option::Option<i64>) -> Self {
+            self.table_max_write_capacity_units = inp;
             self
         }
         /// Consumes the builder and constructs a [`DescribeLimitsOutput`](crate::output::DescribeLimitsOutput)
@@ -2234,12 +2654,23 @@ pub mod describe_kinesis_streaming_destination_output {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>The list of replica structures for the table being described.</p>
         pub fn kinesis_data_stream_destinations(
             mut self,
             inp: std::vec::Vec<crate::model::KinesisDataStreamDestination>,
         ) -> Self {
             self.kinesis_data_stream_destinations = Some(inp);
+            self
+        }
+        pub fn set_kinesis_data_stream_destinations(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::KinesisDataStreamDestination>>,
+        ) -> Self {
+            self.kinesis_data_stream_destinations = inp;
             self
         }
         /// Consumes the builder and constructs a [`DescribeKinesisStreamingDestinationOutput`](crate::output::DescribeKinesisStreamingDestinationOutput)
@@ -2292,12 +2723,26 @@ pub mod describe_global_table_settings_output {
             self.global_table_name = Some(inp.into());
             self
         }
+        pub fn set_global_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.global_table_name = inp;
+            self
+        }
         /// <p>The Region-specific settings for the global table.</p>
         pub fn replica_settings(
             mut self,
             inp: std::vec::Vec<crate::model::ReplicaSettingsDescription>,
         ) -> Self {
             self.replica_settings = Some(inp);
+            self
+        }
+        pub fn set_replica_settings(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ReplicaSettingsDescription>>,
+        ) -> Self {
+            self.replica_settings = inp;
             self
         }
         /// Consumes the builder and constructs a [`DescribeGlobalTableSettingsOutput`](crate::output::DescribeGlobalTableSettingsOutput)
@@ -2347,6 +2792,13 @@ pub mod describe_global_table_output {
             self.global_table_description = Some(inp);
             self
         }
+        pub fn set_global_table_description(
+            mut self,
+            inp: std::option::Option<crate::model::GlobalTableDescription>,
+        ) -> Self {
+            self.global_table_description = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`DescribeGlobalTableOutput`](crate::output::DescribeGlobalTableOutput)
         pub fn build(self) -> crate::output::DescribeGlobalTableOutput {
             crate::output::DescribeGlobalTableOutput {
@@ -2390,6 +2842,13 @@ pub mod describe_export_output {
             self.export_description = Some(inp);
             self
         }
+        pub fn set_export_description(
+            mut self,
+            inp: std::option::Option<crate::model::ExportDescription>,
+        ) -> Self {
+            self.export_description = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`DescribeExportOutput`](crate::output::DescribeExportOutput)
         pub fn build(self) -> crate::output::DescribeExportOutput {
             crate::output::DescribeExportOutput {
@@ -2431,6 +2890,13 @@ pub mod describe_endpoints_output {
         /// <p>List of endpoints.</p>
         pub fn endpoints(mut self, inp: std::vec::Vec<crate::model::Endpoint>) -> Self {
             self.endpoints = Some(inp);
+            self
+        }
+        pub fn set_endpoints(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::Endpoint>>,
+        ) -> Self {
+            self.endpoints = inp;
             self
         }
         /// Consumes the builder and constructs a [`DescribeEndpointsOutput`](crate::output::DescribeEndpointsOutput)
@@ -2518,9 +2984,17 @@ pub mod describe_contributor_insights_output {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>The name of the global secondary index being described.</p>
         pub fn index_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.index_name = Some(inp.into());
+            self
+        }
+        pub fn set_index_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.index_name = inp;
             self
         }
         /// <p>List of names of the associated Alpine rules.</p>
@@ -2531,6 +3005,13 @@ pub mod describe_contributor_insights_output {
             self.contributor_insights_rule_list = Some(inp);
             self
         }
+        pub fn set_contributor_insights_rule_list(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.contributor_insights_rule_list = inp;
+            self
+        }
         /// <p>Current Status contributor insights.</p>
         pub fn contributor_insights_status(
             mut self,
@@ -2539,9 +3020,23 @@ pub mod describe_contributor_insights_output {
             self.contributor_insights_status = Some(inp);
             self
         }
+        pub fn set_contributor_insights_status(
+            mut self,
+            inp: std::option::Option<crate::model::ContributorInsightsStatus>,
+        ) -> Self {
+            self.contributor_insights_status = inp;
+            self
+        }
         /// <p>Timestamp of the last time the status was changed.</p>
         pub fn last_update_date_time(mut self, inp: smithy_types::Instant) -> Self {
             self.last_update_date_time = Some(inp);
+            self
+        }
+        pub fn set_last_update_date_time(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.last_update_date_time = inp;
             self
         }
         /// <p>Returns information about the last failure that encountered.</p>
@@ -2563,6 +3058,13 @@ pub mod describe_contributor_insights_output {
         /// </ul>
         pub fn failure_exception(mut self, inp: crate::model::FailureException) -> Self {
             self.failure_exception = Some(inp);
+            self
+        }
+        pub fn set_failure_exception(
+            mut self,
+            inp: std::option::Option<crate::model::FailureException>,
+        ) -> Self {
+            self.failure_exception = inp;
             self
         }
         /// Consumes the builder and constructs a [`DescribeContributorInsightsOutput`](crate::output::DescribeContributorInsightsOutput)
@@ -2621,6 +3123,13 @@ pub mod describe_continuous_backups_output {
             self.continuous_backups_description = Some(inp);
             self
         }
+        pub fn set_continuous_backups_description(
+            mut self,
+            inp: std::option::Option<crate::model::ContinuousBackupsDescription>,
+        ) -> Self {
+            self.continuous_backups_description = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`DescribeContinuousBackupsOutput`](crate::output::DescribeContinuousBackupsOutput)
         pub fn build(self) -> crate::output::DescribeContinuousBackupsOutput {
             crate::output::DescribeContinuousBackupsOutput {
@@ -2662,6 +3171,13 @@ pub mod describe_backup_output {
         /// <p>Contains the description of the backup created for the table.</p>
         pub fn backup_description(mut self, inp: crate::model::BackupDescription) -> Self {
             self.backup_description = Some(inp);
+            self
+        }
+        pub fn set_backup_description(
+            mut self,
+            inp: std::option::Option<crate::model::BackupDescription>,
+        ) -> Self {
+            self.backup_description = inp;
             self
         }
         /// Consumes the builder and constructs a [`DescribeBackupOutput`](crate::output::DescribeBackupOutput)
@@ -2706,6 +3222,13 @@ pub mod delete_table_output {
         /// <p>Represents the properties of a table.</p>
         pub fn table_description(mut self, inp: crate::model::TableDescription) -> Self {
             self.table_description = Some(inp);
+            self
+        }
+        pub fn set_table_description(
+            mut self,
+            inp: std::option::Option<crate::model::TableDescription>,
+        ) -> Self {
+            self.table_description = inp;
             self
         }
         /// Consumes the builder and constructs a [`DeleteTableOutput`](crate::output::DeleteTableOutput)
@@ -2801,6 +3324,15 @@ pub mod delete_item_output {
             self.attributes = Some(inp);
             self
         }
+        pub fn set_attributes(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.attributes = inp;
+            self
+        }
         /// <p>The capacity units consumed by the <code>DeleteItem</code> operation. The data
         /// returned includes the total provisioned throughput consumed, along with statistics for
         /// the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is
@@ -2809,6 +3341,13 @@ pub mod delete_item_output {
         /// Guide</i>.</p>
         pub fn consumed_capacity(mut self, inp: crate::model::ConsumedCapacity) -> Self {
             self.consumed_capacity = Some(inp);
+            self
+        }
+        pub fn set_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ConsumedCapacity>,
+        ) -> Self {
+            self.consumed_capacity = inp;
             self
         }
         /// <p>Information about item collections, if any, that were affected by the
@@ -2839,6 +3378,13 @@ pub mod delete_item_output {
         /// </ul>
         pub fn item_collection_metrics(mut self, inp: crate::model::ItemCollectionMetrics) -> Self {
             self.item_collection_metrics = Some(inp);
+            self
+        }
+        pub fn set_item_collection_metrics(
+            mut self,
+            inp: std::option::Option<crate::model::ItemCollectionMetrics>,
+        ) -> Self {
+            self.item_collection_metrics = inp;
             self
         }
         /// Consumes the builder and constructs a [`DeleteItemOutput`](crate::output::DeleteItemOutput)
@@ -2886,6 +3432,13 @@ pub mod delete_backup_output {
             self.backup_description = Some(inp);
             self
         }
+        pub fn set_backup_description(
+            mut self,
+            inp: std::option::Option<crate::model::BackupDescription>,
+        ) -> Self {
+            self.backup_description = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`DeleteBackupOutput`](crate::output::DeleteBackupOutput)
         pub fn build(self) -> crate::output::DeleteBackupOutput {
             crate::output::DeleteBackupOutput {
@@ -2928,6 +3481,13 @@ pub mod create_table_output {
         /// <p>Represents the properties of the table.</p>
         pub fn table_description(mut self, inp: crate::model::TableDescription) -> Self {
             self.table_description = Some(inp);
+            self
+        }
+        pub fn set_table_description(
+            mut self,
+            inp: std::option::Option<crate::model::TableDescription>,
+        ) -> Self {
+            self.table_description = inp;
             self
         }
         /// Consumes the builder and constructs a [`CreateTableOutput`](crate::output::CreateTableOutput)
@@ -2976,6 +3536,13 @@ pub mod create_global_table_output {
             self.global_table_description = Some(inp);
             self
         }
+        pub fn set_global_table_description(
+            mut self,
+            inp: std::option::Option<crate::model::GlobalTableDescription>,
+        ) -> Self {
+            self.global_table_description = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`CreateGlobalTableOutput`](crate::output::CreateGlobalTableOutput)
         pub fn build(self) -> crate::output::CreateGlobalTableOutput {
             crate::output::CreateGlobalTableOutput {
@@ -3017,6 +3584,13 @@ pub mod create_backup_output {
         /// <p>Contains the details of the backup created for the table.</p>
         pub fn backup_details(mut self, inp: crate::model::BackupDetails) -> Self {
             self.backup_details = Some(inp);
+            self
+        }
+        pub fn set_backup_details(
+            mut self,
+            inp: std::option::Option<crate::model::BackupDetails>,
+        ) -> Self {
+            self.backup_details = inp;
             self
         }
         /// Consumes the builder and constructs a [`CreateBackupOutput`](crate::output::CreateBackupOutput)
@@ -3198,6 +3772,18 @@ pub mod batch_write_item_output {
             self.unprocessed_items = Some(inp);
             self
         }
+        pub fn set_unprocessed_items(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<
+                    std::string::String,
+                    std::vec::Vec<crate::model::WriteRequest>,
+                >,
+            >,
+        ) -> Self {
+            self.unprocessed_items = inp;
+            self
+        }
         /// <p>A list of tables that were processed by <code>BatchWriteItem</code> and, for each table,
         /// information about any item collections that were affected by individual <code>DeleteItem</code> or
         /// <code>PutItem</code> operations.</p>
@@ -3228,6 +3814,18 @@ pub mod batch_write_item_output {
             self.item_collection_metrics = Some(inp);
             self
         }
+        pub fn set_item_collection_metrics(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<
+                    std::string::String,
+                    std::vec::Vec<crate::model::ItemCollectionMetrics>,
+                >,
+            >,
+        ) -> Self {
+            self.item_collection_metrics = inp;
+            self
+        }
         /// <p>The capacity units consumed by the entire <code>BatchWriteItem</code> operation.</p>
         /// <p>Each element consists of:</p>
         /// <ul>
@@ -3245,6 +3843,13 @@ pub mod batch_write_item_output {
             inp: std::vec::Vec<crate::model::ConsumedCapacity>,
         ) -> Self {
             self.consumed_capacity = Some(inp);
+            self
+        }
+        pub fn set_consumed_capacity(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ConsumedCapacity>>,
+        ) -> Self {
+            self.consumed_capacity = inp;
             self
         }
         /// Consumes the builder and constructs a [`BatchWriteItemOutput`](crate::output::BatchWriteItemOutput)
@@ -3365,6 +3970,23 @@ pub mod batch_get_item_output {
             self.responses = Some(inp);
             self
         }
+        pub fn set_responses(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<
+                    std::string::String,
+                    std::vec::Vec<
+                        std::collections::HashMap<
+                            std::string::String,
+                            crate::model::AttributeValue,
+                        >,
+                    >,
+                >,
+            >,
+        ) -> Self {
+            self.responses = inp;
+            self
+        }
         /// <p>A map of tables and their respective keys that were not processed with the current response.
         /// The <code>UnprocessedKeys</code> value is in the same form as <code>RequestItems</code>, so the value can
         /// be provided directly to a subsequent <code>BatchGetItem</code> operation. For more information, see
@@ -3398,6 +4020,15 @@ pub mod batch_get_item_output {
             self.unprocessed_keys = Some(inp);
             self
         }
+        pub fn set_unprocessed_keys(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::KeysAndAttributes>,
+            >,
+        ) -> Self {
+            self.unprocessed_keys = inp;
+            self
+        }
         /// <p>The read capacity units consumed by the entire <code>BatchGetItem</code> operation.</p>
         /// <p>Each element consists of:</p>
         /// <ul>
@@ -3415,6 +4046,13 @@ pub mod batch_get_item_output {
             inp: std::vec::Vec<crate::model::ConsumedCapacity>,
         ) -> Self {
             self.consumed_capacity = Some(inp);
+            self
+        }
+        pub fn set_consumed_capacity(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ConsumedCapacity>>,
+        ) -> Self {
+            self.consumed_capacity = inp;
             self
         }
         /// Consumes the builder and constructs a [`BatchGetItemOutput`](crate::output::BatchGetItemOutput)
@@ -3467,6 +4105,13 @@ pub mod batch_execute_statement_output {
             inp: std::vec::Vec<crate::model::BatchStatementResponse>,
         ) -> Self {
             self.responses = Some(inp);
+            self
+        }
+        pub fn set_responses(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::BatchStatementResponse>>,
+        ) -> Self {
+            self.responses = inp;
             self
         }
         /// Consumes the builder and constructs a [`BatchExecuteStatementOutput`](crate::output::BatchExecuteStatementOutput)

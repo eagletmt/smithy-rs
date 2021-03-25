@@ -2396,6 +2396,10 @@ pub mod resource_not_found_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`ResourceNotFoundError`](crate::error::ResourceNotFoundError)
         pub fn build(self) -> crate::error::ResourceNotFoundError {
             crate::error::ResourceNotFoundError {
@@ -2457,6 +2461,10 @@ pub mod resource_in_use_error {
         /// <p>A message that provides information about the error.</p>
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`ResourceInUseError`](crate::error::ResourceInUseError)
@@ -2522,6 +2530,10 @@ pub mod limit_exceeded_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`LimitExceededError`](crate::error::LimitExceededError)
         pub fn build(self) -> crate::error::LimitExceededError {
             crate::error::LimitExceededError {
@@ -2585,6 +2597,10 @@ pub mod invalid_argument_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`InvalidArgumentError`](crate::error::InvalidArgumentError)
         pub fn build(self) -> crate::error::InvalidArgumentError {
             crate::error::InvalidArgumentError {
@@ -2646,6 +2662,10 @@ pub mod kms_not_found_error {
         /// <p>A message that provides information about the error.</p>
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`KMSNotFoundError`](crate::error::KMSNotFoundError)
@@ -2713,6 +2733,10 @@ pub mod kms_invalid_state_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`KMSInvalidStateError`](crate::error::KMSInvalidStateError)
         pub fn build(self) -> crate::error::KMSInvalidStateError {
             crate::error::KMSInvalidStateError {
@@ -2774,6 +2798,10 @@ pub mod kms_access_denied_error {
         /// <p>A message that provides information about the error.</p>
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`KMSAccessDeniedError`](crate::error::KMSAccessDeniedError)
@@ -2839,6 +2867,10 @@ pub mod kms_disabled_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`KMSDisabledError`](crate::error::KMSDisabledError)
         pub fn build(self) -> crate::error::KMSDisabledError {
             crate::error::KMSDisabledError {
@@ -2901,6 +2933,10 @@ pub mod kms_opt_in_required {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`KMSOptInRequired`](crate::error::KMSOptInRequired)
         pub fn build(self) -> crate::error::KMSOptInRequired {
             crate::error::KMSOptInRequired {
@@ -2960,6 +2996,10 @@ pub mod internal_failure_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`InternalFailureError`](crate::error::InternalFailureError)
@@ -3024,6 +3064,10 @@ pub mod kms_throttling_error {
         /// <p>A message that provides information about the error.</p>
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`KMSThrottlingError`](crate::error::KMSThrottlingError)
@@ -3096,6 +3140,10 @@ pub mod provisioned_throughput_exceeded_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`ProvisionedThroughputExceededError`](crate::error::ProvisionedThroughputExceededError)
         pub fn build(self) -> crate::error::ProvisionedThroughputExceededError {
             crate::error::ProvisionedThroughputExceededError {
@@ -3154,6 +3202,10 @@ pub mod expired_next_token_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`ExpiredNextTokenError`](crate::error::ExpiredNextTokenError)
@@ -3216,6 +3268,10 @@ pub mod expired_iterator_error {
         /// <p>A message that provides information about the error.</p>
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`ExpiredIteratorError`](crate::error::ExpiredIteratorError)

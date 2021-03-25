@@ -40,6 +40,10 @@ pub mod verify_output {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>A Boolean value that indicates whether the signature was verified. A value of
         /// <code>True</code> indicates that the <code>Signature</code> was produced by signing the
         /// <code>Message</code> with the specified <code>KeyID</code> and
@@ -49,9 +53,20 @@ pub mod verify_output {
             self.signature_valid = Some(inp);
             self
         }
+        pub fn set_signature_valid(mut self, inp: bool) -> Self {
+            self.signature_valid = Some(inp);
+            self
+        }
         /// <p>The signing algorithm that was used to verify the signature.</p>
         pub fn signing_algorithm(mut self, inp: crate::model::SigningAlgorithmSpec) -> Self {
             self.signing_algorithm = Some(inp);
+            self
+        }
+        pub fn set_signing_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::SigningAlgorithmSpec>,
+        ) -> Self {
+            self.signing_algorithm = inp;
             self
         }
         /// Consumes the builder and constructs a [`VerifyOutput`](crate::output::VerifyOutput)
@@ -274,6 +289,10 @@ pub mod sign_output {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The cryptographic signature that was generated for the message. </p>
         /// <ul>
         /// <li>
@@ -294,9 +313,20 @@ pub mod sign_output {
             self.signature = Some(inp);
             self
         }
+        pub fn set_signature(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.signature = inp;
+            self
+        }
         /// <p>The signing algorithm that was used to sign the message.</p>
         pub fn signing_algorithm(mut self, inp: crate::model::SigningAlgorithmSpec) -> Self {
             self.signing_algorithm = Some(inp);
+            self
+        }
+        pub fn set_signing_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::SigningAlgorithmSpec>,
+        ) -> Self {
+            self.signing_algorithm = inp;
             self
         }
         /// Consumes the builder and constructs a [`SignOutput`](crate::output::SignOutput)
@@ -348,9 +378,20 @@ pub mod schedule_key_deletion_output {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The date and time after which AWS KMS deletes the customer master key (CMK).</p>
         pub fn deletion_date(mut self, inp: smithy_types::Instant) -> Self {
             self.deletion_date = Some(inp);
+            self
+        }
+        pub fn set_deletion_date(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.deletion_date = inp;
             self
         }
         /// Consumes the builder and constructs a [`ScheduleKeyDeletionOutput`](crate::output::ScheduleKeyDeletionOutput)
@@ -482,14 +523,26 @@ pub mod re_encrypt_output {
             self.ciphertext_blob = Some(inp);
             self
         }
+        pub fn set_ciphertext_blob(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.ciphertext_blob = inp;
+            self
+        }
         /// <p>Unique identifier of the CMK used to originally encrypt the data.</p>
         pub fn source_key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.source_key_id = Some(inp.into());
             self
         }
+        pub fn set_source_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.source_key_id = inp;
+            self
+        }
         /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK that was used to reencrypt the data.</p>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
+            self
+        }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
             self
         }
         /// <p>The encryption algorithm that was used to decrypt the ciphertext before it was
@@ -501,12 +554,26 @@ pub mod re_encrypt_output {
             self.source_encryption_algorithm = Some(inp);
             self
         }
+        pub fn set_source_encryption_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::EncryptionAlgorithmSpec>,
+        ) -> Self {
+            self.source_encryption_algorithm = inp;
+            self
+        }
         /// <p>The encryption algorithm that was used to reencrypt the data.</p>
         pub fn destination_encryption_algorithm(
             mut self,
             inp: crate::model::EncryptionAlgorithmSpec,
         ) -> Self {
             self.destination_encryption_algorithm = Some(inp);
+            self
+        }
+        pub fn set_destination_encryption_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::EncryptionAlgorithmSpec>,
+        ) -> Self {
+            self.destination_encryption_algorithm = inp;
             self
         }
         /// Consumes the builder and constructs a [`ReEncryptOutput`](crate::output::ReEncryptOutput)
@@ -598,10 +665,21 @@ pub mod list_retirable_grants_output {
             self.grants = Some(inp);
             self
         }
+        pub fn set_grants(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::GrantListEntry>>,
+        ) -> Self {
+            self.grants = inp;
+            self
+        }
         /// <p>When <code>Truncated</code> is true, this element is present and contains the
         /// value to use for the <code>Marker</code> parameter in a subsequent request.</p>
         pub fn next_marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_marker = Some(inp.into());
+            self
+        }
+        pub fn set_next_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_marker = inp;
             self
         }
         /// <p>A flag that indicates whether there are more items in the list. When this
@@ -609,6 +687,10 @@ pub mod list_retirable_grants_output {
         /// the <code>NextMarker</code> element in thisresponse to the <code>Marker</code> parameter in a
         /// subsequent request.</p>
         pub fn truncated(mut self, inp: bool) -> Self {
+            self.truncated = Some(inp);
+            self
+        }
+        pub fn set_truncated(mut self, inp: bool) -> Self {
             self.truncated = Some(inp);
             self
         }
@@ -670,6 +752,13 @@ pub mod list_resource_tags_output {
             self.tags = Some(inp);
             self
         }
+        pub fn set_tags(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::Tag>>,
+        ) -> Self {
+            self.tags = inp;
+            self
+        }
         /// <p>When <code>Truncated</code> is true, this element is present and contains the
         /// value to use for the <code>Marker</code> parameter in a subsequent request.</p>
         /// <p>Do not assume or infer any information from this value.</p>
@@ -677,11 +766,19 @@ pub mod list_resource_tags_output {
             self.next_marker = Some(inp.into());
             self
         }
+        pub fn set_next_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_marker = inp;
+            self
+        }
         /// <p>A flag that indicates whether there are more items in the list. When this
         /// value is true, the list in this response is truncated. To get more items, pass the value of
         /// the <code>NextMarker</code> element in thisresponse to the <code>Marker</code> parameter in a
         /// subsequent request.</p>
         pub fn truncated(mut self, inp: bool) -> Self {
+            self.truncated = Some(inp);
+            self
+        }
+        pub fn set_truncated(mut self, inp: bool) -> Self {
             self.truncated = Some(inp);
             self
         }
@@ -742,10 +839,21 @@ pub mod list_keys_output {
             self.keys = Some(inp);
             self
         }
+        pub fn set_keys(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::KeyListEntry>>,
+        ) -> Self {
+            self.keys = inp;
+            self
+        }
         /// <p>When <code>Truncated</code> is true, this element is present and contains the
         /// value to use for the <code>Marker</code> parameter in a subsequent request.</p>
         pub fn next_marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_marker = Some(inp.into());
+            self
+        }
+        pub fn set_next_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_marker = inp;
             self
         }
         /// <p>A flag that indicates whether there are more items in the list. When this
@@ -753,6 +861,10 @@ pub mod list_keys_output {
         /// the <code>NextMarker</code> element in thisresponse to the <code>Marker</code> parameter in a
         /// subsequent request.</p>
         pub fn truncated(mut self, inp: bool) -> Self {
+            self.truncated = Some(inp);
+            self
+        }
+        pub fn set_truncated(mut self, inp: bool) -> Self {
             self.truncated = Some(inp);
             self
         }
@@ -813,10 +925,21 @@ pub mod list_key_policies_output {
             self.policy_names = Some(inp);
             self
         }
+        pub fn set_policy_names(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.policy_names = inp;
+            self
+        }
         /// <p>When <code>Truncated</code> is true, this element is present and contains the
         /// value to use for the <code>Marker</code> parameter in a subsequent request.</p>
         pub fn next_marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_marker = Some(inp.into());
+            self
+        }
+        pub fn set_next_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_marker = inp;
             self
         }
         /// <p>A flag that indicates whether there are more items in the list. When this
@@ -824,6 +947,10 @@ pub mod list_key_policies_output {
         /// the <code>NextMarker</code> element in thisresponse to the <code>Marker</code> parameter in a
         /// subsequent request.</p>
         pub fn truncated(mut self, inp: bool) -> Self {
+            self.truncated = Some(inp);
+            self
+        }
+        pub fn set_truncated(mut self, inp: bool) -> Self {
             self.truncated = Some(inp);
             self
         }
@@ -884,10 +1011,21 @@ pub mod list_grants_output {
             self.grants = Some(inp);
             self
         }
+        pub fn set_grants(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::GrantListEntry>>,
+        ) -> Self {
+            self.grants = inp;
+            self
+        }
         /// <p>When <code>Truncated</code> is true, this element is present and contains the
         /// value to use for the <code>Marker</code> parameter in a subsequent request.</p>
         pub fn next_marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_marker = Some(inp.into());
+            self
+        }
+        pub fn set_next_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_marker = inp;
             self
         }
         /// <p>A flag that indicates whether there are more items in the list. When this
@@ -895,6 +1033,10 @@ pub mod list_grants_output {
         /// the <code>NextMarker</code> element in thisresponse to the <code>Marker</code> parameter in a
         /// subsequent request.</p>
         pub fn truncated(mut self, inp: bool) -> Self {
+            self.truncated = Some(inp);
+            self
+        }
+        pub fn set_truncated(mut self, inp: bool) -> Self {
             self.truncated = Some(inp);
             self
         }
@@ -955,10 +1097,21 @@ pub mod list_aliases_output {
             self.aliases = Some(inp);
             self
         }
+        pub fn set_aliases(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::AliasListEntry>>,
+        ) -> Self {
+            self.aliases = inp;
+            self
+        }
         /// <p>When <code>Truncated</code> is true, this element is present and contains the
         /// value to use for the <code>Marker</code> parameter in a subsequent request.</p>
         pub fn next_marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_marker = Some(inp.into());
+            self
+        }
+        pub fn set_next_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_marker = inp;
             self
         }
         /// <p>A flag that indicates whether there are more items in the list. When this
@@ -966,6 +1119,10 @@ pub mod list_aliases_output {
         /// the <code>NextMarker</code> element in thisresponse to the <code>Marker</code> parameter in a
         /// subsequent request.</p>
         pub fn truncated(mut self, inp: bool) -> Self {
+            self.truncated = Some(inp);
+            self
+        }
+        pub fn set_truncated(mut self, inp: bool) -> Self {
             self.truncated = Some(inp);
             self
         }
@@ -1078,12 +1235,20 @@ pub mod get_public_key_output {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The exported public key. </p>
         /// <p>The value is a DER-encoded X.509 public key, also known as
         /// <code>SubjectPublicKeyInfo</code> (SPKI), as defined in <a href="https://tools.ietf.org/html/rfc5280">RFC 5280</a>. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
         /// <p></p>
         pub fn public_key(mut self, inp: smithy_types::Blob) -> Self {
             self.public_key = Some(inp);
+            self
+        }
+        pub fn set_public_key(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.public_key = inp;
             self
         }
         /// <p>The type of the of the public key that was downloaded.</p>
@@ -1094,12 +1259,26 @@ pub mod get_public_key_output {
             self.customer_master_key_spec = Some(inp);
             self
         }
+        pub fn set_customer_master_key_spec(
+            mut self,
+            inp: std::option::Option<crate::model::CustomerMasterKeySpec>,
+        ) -> Self {
+            self.customer_master_key_spec = inp;
+            self
+        }
         /// <p>The permitted use of the public key. Valid values are <code>ENCRYPT_DECRYPT</code> or
         /// <code>SIGN_VERIFY</code>. </p>
         /// <p>This information is critical. If a public key with <code>SIGN_VERIFY</code> key usage
         /// encrypts data outside of AWS KMS, the ciphertext cannot be decrypted. </p>
         pub fn key_usage(mut self, inp: crate::model::KeyUsageType) -> Self {
             self.key_usage = Some(inp);
+            self
+        }
+        pub fn set_key_usage(
+            mut self,
+            inp: std::option::Option<crate::model::KeyUsageType>,
+        ) -> Self {
+            self.key_usage = inp;
             self
         }
         /// <p>The encryption algorithms that AWS KMS supports for this key. </p>
@@ -1114,6 +1293,13 @@ pub mod get_public_key_output {
             self.encryption_algorithms = Some(inp);
             self
         }
+        pub fn set_encryption_algorithms(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::EncryptionAlgorithmSpec>>,
+        ) -> Self {
+            self.encryption_algorithms = inp;
+            self
+        }
         /// <p>The signing algorithms that AWS KMS supports for this key.</p>
         /// <p>This field appears in the response only when the <code>KeyUsage</code> of the public key
         /// is <code>SIGN_VERIFY</code>.</p>
@@ -1122,6 +1308,13 @@ pub mod get_public_key_output {
             inp: std::vec::Vec<crate::model::SigningAlgorithmSpec>,
         ) -> Self {
             self.signing_algorithms = Some(inp);
+            self
+        }
+        pub fn set_signing_algorithms(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::SigningAlgorithmSpec>>,
+        ) -> Self {
+            self.signing_algorithms = inp;
             self
         }
         /// Consumes the builder and constructs a [`GetPublicKeyOutput`](crate::output::GetPublicKeyOutput)
@@ -1191,10 +1384,18 @@ pub mod get_parameters_for_import_output {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The import token to send in a subsequent <a>ImportKeyMaterial</a>
         /// request.</p>
         pub fn import_token(mut self, inp: smithy_types::Blob) -> Self {
             self.import_token = Some(inp);
+            self
+        }
+        pub fn set_import_token(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.import_token = inp;
             self
         }
         /// <p>The public key to use to encrypt the key material before importing it with <a>ImportKeyMaterial</a>.</p>
@@ -1202,11 +1403,22 @@ pub mod get_parameters_for_import_output {
             self.public_key = Some(inp);
             self
         }
+        pub fn set_public_key(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.public_key = inp;
+            self
+        }
         /// <p>The time at which the import token and public key are no longer valid. After this time,
         /// you cannot use them to make an <a>ImportKeyMaterial</a> request and you must send
         /// another <code>GetParametersForImport</code> request to get new ones.</p>
         pub fn parameters_valid_to(mut self, inp: smithy_types::Instant) -> Self {
             self.parameters_valid_to = Some(inp);
+            self
+        }
+        pub fn set_parameters_valid_to(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.parameters_valid_to = inp;
             self
         }
         /// Consumes the builder and constructs a [`GetParametersForImportOutput`](crate::output::GetParametersForImportOutput)
@@ -1255,6 +1467,10 @@ pub mod get_key_rotation_status_output {
             self.key_rotation_enabled = Some(inp);
             self
         }
+        pub fn set_key_rotation_enabled(mut self, inp: bool) -> Self {
+            self.key_rotation_enabled = Some(inp);
+            self
+        }
         /// Consumes the builder and constructs a [`GetKeyRotationStatusOutput`](crate::output::GetKeyRotationStatusOutput)
         pub fn build(self) -> crate::output::GetKeyRotationStatusOutput {
             crate::output::GetKeyRotationStatusOutput {
@@ -1298,6 +1514,10 @@ pub mod get_key_policy_output {
             self.policy = Some(inp.into());
             self
         }
+        pub fn set_policy(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.policy = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`GetKeyPolicyOutput`](crate::output::GetKeyPolicyOutput)
         pub fn build(self) -> crate::output::GetKeyPolicyOutput {
             crate::output::GetKeyPolicyOutput {
@@ -1339,6 +1559,10 @@ pub mod generate_random_output {
         /// <p>The random byte string. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
         pub fn plaintext(mut self, inp: smithy_types::Blob) -> Self {
             self.plaintext = Some(inp);
+            self
+        }
+        pub fn set_plaintext(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.plaintext = inp;
             self
         }
         /// Consumes the builder and constructs a [`GenerateRandomOutput`](crate::output::GenerateRandomOutput)
@@ -1388,9 +1612,17 @@ pub mod generate_data_key_without_plaintext_output {
             self.ciphertext_blob = Some(inp);
             self
         }
+        pub fn set_ciphertext_blob(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.ciphertext_blob = inp;
+            self
+        }
         /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK that encrypted the data key.</p>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
+            self
+        }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
             self
         }
         /// Consumes the builder and constructs a [`GenerateDataKeyWithoutPlaintextOutput`](crate::output::GenerateDataKeyWithoutPlaintextOutput)
@@ -1452,9 +1684,20 @@ pub mod generate_data_key_pair_without_plaintext_output {
             self.private_key_ciphertext_blob = Some(inp);
             self
         }
+        pub fn set_private_key_ciphertext_blob(
+            mut self,
+            inp: std::option::Option<smithy_types::Blob>,
+        ) -> Self {
+            self.private_key_ciphertext_blob = inp;
+            self
+        }
         /// <p>The public key (in plaintext).</p>
         pub fn public_key(mut self, inp: smithy_types::Blob) -> Self {
             self.public_key = Some(inp);
+            self
+        }
+        pub fn set_public_key(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.public_key = inp;
             self
         }
         /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK that encrypted the private key.</p>
@@ -1462,9 +1705,20 @@ pub mod generate_data_key_pair_without_plaintext_output {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The type of data key pair that was generated.</p>
         pub fn key_pair_spec(mut self, inp: crate::model::DataKeyPairSpec) -> Self {
             self.key_pair_spec = Some(inp);
+            self
+        }
+        pub fn set_key_pair_spec(
+            mut self,
+            inp: std::option::Option<crate::model::DataKeyPairSpec>,
+        ) -> Self {
+            self.key_pair_spec = inp;
             self
         }
         /// Consumes the builder and constructs a [`GenerateDataKeyPairWithoutPlaintextOutput`](crate::output::GenerateDataKeyPairWithoutPlaintextOutput)
@@ -1532,9 +1786,23 @@ pub mod generate_data_key_pair_output {
             self.private_key_ciphertext_blob = Some(inp);
             self
         }
+        pub fn set_private_key_ciphertext_blob(
+            mut self,
+            inp: std::option::Option<smithy_types::Blob>,
+        ) -> Self {
+            self.private_key_ciphertext_blob = inp;
+            self
+        }
         /// <p>The plaintext copy of the private key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
         pub fn private_key_plaintext(mut self, inp: smithy_types::Blob) -> Self {
             self.private_key_plaintext = Some(inp);
+            self
+        }
+        pub fn set_private_key_plaintext(
+            mut self,
+            inp: std::option::Option<smithy_types::Blob>,
+        ) -> Self {
+            self.private_key_plaintext = inp;
             self
         }
         /// <p>The public key (in plaintext).</p>
@@ -1542,14 +1810,29 @@ pub mod generate_data_key_pair_output {
             self.public_key = Some(inp);
             self
         }
+        pub fn set_public_key(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.public_key = inp;
+            self
+        }
         /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK that encrypted the private key.</p>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The type of data key pair that was generated.</p>
         pub fn key_pair_spec(mut self, inp: crate::model::DataKeyPairSpec) -> Self {
             self.key_pair_spec = Some(inp);
+            self
+        }
+        pub fn set_key_pair_spec(
+            mut self,
+            inp: std::option::Option<crate::model::DataKeyPairSpec>,
+        ) -> Self {
+            self.key_pair_spec = inp;
             self
         }
         /// Consumes the builder and constructs a [`GenerateDataKeyPairOutput`](crate::output::GenerateDataKeyPairOutput)
@@ -1608,15 +1891,27 @@ pub mod generate_data_key_output {
             self.ciphertext_blob = Some(inp);
             self
         }
+        pub fn set_ciphertext_blob(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.ciphertext_blob = inp;
+            self
+        }
         /// <p>The plaintext data key. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded. Use this data key to encrypt your data outside of
         /// KMS. Then, remove it from memory as soon as possible.</p>
         pub fn plaintext(mut self, inp: smithy_types::Blob) -> Self {
             self.plaintext = Some(inp);
             self
         }
+        pub fn set_plaintext(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.plaintext = inp;
+            self
+        }
         /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK that encrypted the data key.</p>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
+            self
+        }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
             self
         }
         /// Consumes the builder and constructs a [`GenerateDataKeyOutput`](crate::output::GenerateDataKeyOutput)
@@ -1672,14 +1967,29 @@ pub mod encrypt_output {
             self.ciphertext_blob = Some(inp);
             self
         }
+        pub fn set_ciphertext_blob(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.ciphertext_blob = inp;
+            self
+        }
         /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK that was used to encrypt the plaintext.</p>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The encryption algorithm that was used to encrypt the plaintext.</p>
         pub fn encryption_algorithm(mut self, inp: crate::model::EncryptionAlgorithmSpec) -> Self {
             self.encryption_algorithm = Some(inp);
+            self
+        }
+        pub fn set_encryption_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::EncryptionAlgorithmSpec>,
+        ) -> Self {
+            self.encryption_algorithm = inp;
             self
         }
         /// Consumes the builder and constructs a [`EncryptOutput`](crate::output::EncryptOutput)
@@ -1877,6 +2187,13 @@ pub mod describe_key_output {
             self.key_metadata = Some(inp);
             self
         }
+        pub fn set_key_metadata(
+            mut self,
+            inp: std::option::Option<crate::model::KeyMetadata>,
+        ) -> Self {
+            self.key_metadata = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`DescribeKeyOutput`](crate::output::DescribeKeyOutput)
         pub fn build(self) -> crate::output::DescribeKeyOutput {
             crate::output::DescribeKeyOutput {
@@ -1937,10 +2254,21 @@ pub mod describe_custom_key_stores_output {
             self.custom_key_stores = Some(inp);
             self
         }
+        pub fn set_custom_key_stores(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::CustomKeyStoresListEntry>>,
+        ) -> Self {
+            self.custom_key_stores = inp;
+            self
+        }
         /// <p>When <code>Truncated</code> is true, this element is present and contains the
         /// value to use for the <code>Marker</code> parameter in a subsequent request.</p>
         pub fn next_marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_marker = Some(inp.into());
+            self
+        }
+        pub fn set_next_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_marker = inp;
             self
         }
         /// <p>A flag that indicates whether there are more items in the list. When this
@@ -1948,6 +2276,10 @@ pub mod describe_custom_key_stores_output {
         /// the <code>NextMarker</code> element in thisresponse to the <code>Marker</code> parameter in a
         /// subsequent request.</p>
         pub fn truncated(mut self, inp: bool) -> Self {
+            self.truncated = Some(inp);
+            self
+        }
+        pub fn set_truncated(mut self, inp: bool) -> Self {
             self.truncated = Some(inp);
             self
         }
@@ -2094,14 +2426,29 @@ pub mod decrypt_output {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Decrypted plaintext data. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not Base64-encoded.</p>
         pub fn plaintext(mut self, inp: smithy_types::Blob) -> Self {
             self.plaintext = Some(inp);
             self
         }
+        pub fn set_plaintext(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.plaintext = inp;
+            self
+        }
         /// <p>The encryption algorithm that was used to decrypt the ciphertext.</p>
         pub fn encryption_algorithm(mut self, inp: crate::model::EncryptionAlgorithmSpec) -> Self {
             self.encryption_algorithm = Some(inp);
+            self
+        }
+        pub fn set_encryption_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::EncryptionAlgorithmSpec>,
+        ) -> Self {
+            self.encryption_algorithm = inp;
             self
         }
         /// Consumes the builder and constructs a [`DecryptOutput`](crate::output::DecryptOutput)
@@ -2147,6 +2494,13 @@ pub mod create_key_output {
         /// <p>Metadata associated with the CMK.</p>
         pub fn key_metadata(mut self, inp: crate::model::KeyMetadata) -> Self {
             self.key_metadata = Some(inp);
+            self
+        }
+        pub fn set_key_metadata(
+            mut self,
+            inp: std::option::Option<crate::model::KeyMetadata>,
+        ) -> Self {
+            self.key_metadata = inp;
             self
         }
         /// Consumes the builder and constructs a [`CreateKeyOutput`](crate::output::CreateKeyOutput)
@@ -2202,11 +2556,19 @@ pub mod create_grant_output {
             self.grant_token = Some(inp.into());
             self
         }
+        pub fn set_grant_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.grant_token = inp;
+            self
+        }
         /// <p>The unique identifier for the grant.</p>
         /// <p>You can use the <code>GrantId</code> in a subsequent <a>RetireGrant</a> or
         /// <a>RevokeGrant</a> operation.</p>
         pub fn grant_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.grant_id = Some(inp.into());
+            self
+        }
+        pub fn set_grant_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.grant_id = inp;
             self
         }
         /// Consumes the builder and constructs a [`CreateGrantOutput`](crate::output::CreateGrantOutput)
@@ -2251,6 +2613,13 @@ pub mod create_custom_key_store_output {
         /// <p>A unique identifier for the new custom key store.</p>
         pub fn custom_key_store_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.custom_key_store_id = Some(inp.into());
+            self
+        }
+        pub fn set_custom_key_store_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_id = inp;
             self
         }
         /// Consumes the builder and constructs a [`CreateCustomKeyStoreOutput`](crate::output::CreateCustomKeyStoreOutput)
@@ -2354,6 +2723,10 @@ pub mod cancel_key_deletion_output {
         /// <p>The Amazon Resource Name (<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key ARN</a>) of the CMK whose deletion is canceled.</p>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
+            self
+        }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
             self
         }
         /// Consumes the builder and constructs a [`CancelKeyDeletionOutput`](crate::output::CancelKeyDeletionOutput)

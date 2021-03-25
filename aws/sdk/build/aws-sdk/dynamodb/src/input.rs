@@ -20,6 +20,13 @@ pub mod batch_execute_statement_input {
             self.statements = Some(inp);
             self
         }
+        pub fn set_statements(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::BatchStatementRequest>>,
+        ) -> Self {
+            self.statements = inp;
+            self
+        }
         /// Consumes the builder and constructs an Operation<[`BatchExecuteStatement`](crate::operation::BatchExecuteStatement)>
         #[allow(clippy::let_and_return)]
         pub fn build(
@@ -216,6 +223,15 @@ pub mod batch_get_item_input {
             self.request_items = Some(inp);
             self
         }
+        pub fn set_request_items(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::KeysAndAttributes>,
+            >,
+        ) -> Self {
+            self.request_items = inp;
+            self
+        }
         /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
         /// <ul>
         /// <li>
@@ -237,6 +253,13 @@ pub mod batch_get_item_input {
             inp: crate::model::ReturnConsumedCapacity,
         ) -> Self {
             self.return_consumed_capacity = Some(inp);
+            self
+        }
+        pub fn set_return_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnConsumedCapacity>,
+        ) -> Self {
+            self.return_consumed_capacity = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`BatchGetItem`](crate::operation::BatchGetItem)>
@@ -402,6 +425,18 @@ pub mod batch_write_item_input {
             self.request_items = Some(inp);
             self
         }
+        pub fn set_request_items(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<
+                    std::string::String,
+                    std::vec::Vec<crate::model::WriteRequest>,
+                >,
+            >,
+        ) -> Self {
+            self.request_items = inp;
+            self
+        }
         /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
         /// <ul>
         /// <li>
@@ -425,6 +460,13 @@ pub mod batch_write_item_input {
             self.return_consumed_capacity = Some(inp);
             self
         }
+        pub fn set_return_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnConsumedCapacity>,
+        ) -> Self {
+            self.return_consumed_capacity = inp;
+            self
+        }
         /// <p>Determines whether item collection metrics are returned.  If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during
         /// the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
         pub fn return_item_collection_metrics(
@@ -432,6 +474,13 @@ pub mod batch_write_item_input {
             inp: crate::model::ReturnItemCollectionMetrics,
         ) -> Self {
             self.return_item_collection_metrics = Some(inp);
+            self
+        }
+        pub fn set_return_item_collection_metrics(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnItemCollectionMetrics>,
+        ) -> Self {
+            self.return_item_collection_metrics = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`BatchWriteItem`](crate::operation::BatchWriteItem)>
@@ -550,9 +599,17 @@ pub mod create_backup_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>Specified name for the backup.</p>
         pub fn backup_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.backup_name = Some(inp.into());
+            self
+        }
+        pub fn set_backup_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.backup_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`CreateBackup`](crate::operation::CreateBackup)>
@@ -669,9 +726,23 @@ pub mod create_global_table_input {
             self.global_table_name = Some(inp.into());
             self
         }
+        pub fn set_global_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.global_table_name = inp;
+            self
+        }
         /// <p>The Regions where the global table needs to be created.</p>
         pub fn replication_group(mut self, inp: std::vec::Vec<crate::model::Replica>) -> Self {
             self.replication_group = Some(inp);
+            self
+        }
+        pub fn set_replication_group(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::Replica>>,
+        ) -> Self {
+            self.replication_group = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`CreateGlobalTable`](crate::operation::CreateGlobalTable)>
@@ -804,9 +875,20 @@ pub mod create_table_input {
             self.attribute_definitions = Some(inp);
             self
         }
+        pub fn set_attribute_definitions(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::AttributeDefinition>>,
+        ) -> Self {
+            self.attribute_definitions = inp;
+            self
+        }
         /// <p>The name of the table to create.</p>
         pub fn table_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.table_name = Some(inp.into());
+            self
+        }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
             self
         }
         /// <p>Specifies the attributes that make up the primary key for a table or an index. The attributes
@@ -852,6 +934,13 @@ pub mod create_table_input {
         /// Guide</i>.</p>
         pub fn key_schema(mut self, inp: std::vec::Vec<crate::model::KeySchemaElement>) -> Self {
             self.key_schema = Some(inp);
+            self
+        }
+        pub fn set_key_schema(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::KeySchemaElement>>,
+        ) -> Self {
+            self.key_schema = inp;
             self
         }
         /// <p>One or more local secondary indexes (the maximum is 5) to be created on the table. Each index is scoped to a given partition key value. There is a 10 GB size limit per partition key value; otherwise, the size of a local secondary index is unconstrained.</p>
@@ -917,6 +1006,13 @@ pub mod create_table_input {
             self.local_secondary_indexes = Some(inp);
             self
         }
+        pub fn set_local_secondary_indexes(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::LocalSecondaryIndex>>,
+        ) -> Self {
+            self.local_secondary_indexes = inp;
+            self
+        }
         /// <p>One or more global secondary indexes (the maximum is 20) to be created on the table. Each global secondary index in the array includes the following:</p>
         /// <ul>
         /// <li>
@@ -979,6 +1075,13 @@ pub mod create_table_input {
             self.global_secondary_indexes = Some(inp);
             self
         }
+        pub fn set_global_secondary_indexes(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::GlobalSecondaryIndex>>,
+        ) -> Self {
+            self.global_secondary_indexes = inp;
+            self
+        }
         /// <p>Controls how you are charged for read and write throughput and how you manage capacity. This setting can be changed later.</p>
         /// <ul>
         /// <li>
@@ -995,6 +1098,13 @@ pub mod create_table_input {
             self.billing_mode = Some(inp);
             self
         }
+        pub fn set_billing_mode(
+            mut self,
+            inp: std::option::Option<crate::model::BillingMode>,
+        ) -> Self {
+            self.billing_mode = inp;
+            self
+        }
         /// <p>Represents the provisioned throughput settings for a specified table or index. The
         /// settings can be modified using the <code>UpdateTable</code> operation.</p>
         /// <p> If you set BillingMode as <code>PROVISIONED</code>, you must specify this property. If you
@@ -1005,6 +1115,13 @@ pub mod create_table_input {
         /// Guide</i>.</p>
         pub fn provisioned_throughput(mut self, inp: crate::model::ProvisionedThroughput) -> Self {
             self.provisioned_throughput = Some(inp);
+            self
+        }
+        pub fn set_provisioned_throughput(
+            mut self,
+            inp: std::option::Option<crate::model::ProvisionedThroughput>,
+        ) -> Self {
+            self.provisioned_throughput = inp;
             self
         }
         /// <p>The settings for DynamoDB Streams on the table. These settings consist of:</p>
@@ -1047,14 +1164,35 @@ pub mod create_table_input {
             self.stream_specification = Some(inp);
             self
         }
+        pub fn set_stream_specification(
+            mut self,
+            inp: std::option::Option<crate::model::StreamSpecification>,
+        ) -> Self {
+            self.stream_specification = inp;
+            self
+        }
         /// <p>Represents the settings used to enable server-side encryption.</p>
         pub fn sse_specification(mut self, inp: crate::model::SSESpecification) -> Self {
             self.sse_specification = Some(inp);
             self
         }
+        pub fn set_sse_specification(
+            mut self,
+            inp: std::option::Option<crate::model::SSESpecification>,
+        ) -> Self {
+            self.sse_specification = inp;
+            self
+        }
         /// <p>A list of key-value pairs to label the table. For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a>.</p>
         pub fn tags(mut self, inp: std::vec::Vec<crate::model::Tag>) -> Self {
             self.tags = Some(inp);
+            self
+        }
+        pub fn set_tags(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::Tag>>,
+        ) -> Self {
+            self.tags = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`CreateTable`](crate::operation::CreateTable)>
@@ -1186,6 +1324,10 @@ pub mod delete_backup_input {
             self.backup_arn = Some(inp.into());
             self
         }
+        pub fn set_backup_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.backup_arn = inp;
+            self
+        }
         /// Consumes the builder and constructs an Operation<[`DeleteBackup`](crate::operation::DeleteBackup)>
         #[allow(clippy::let_and_return)]
         pub fn build(
@@ -1315,6 +1457,10 @@ pub mod delete_item_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>A map of attribute names to <code>AttributeValue</code> objects, representing the primary key of
         /// the item to delete.</p>
         /// <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
@@ -1323,6 +1469,15 @@ pub mod delete_item_input {
             inp: std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
         ) -> Self {
             self.key = Some(inp);
+            self
+        }
+        pub fn set_key(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.key = inp;
             self
         }
         /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
@@ -1337,10 +1492,29 @@ pub mod delete_item_input {
             self.expected = Some(inp);
             self
         }
+        pub fn set_expected(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<
+                    std::string::String,
+                    crate::model::ExpectedAttributeValue,
+                >,
+            >,
+        ) -> Self {
+            self.expected = inp;
+            self
+        }
         /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn conditional_operator(mut self, inp: crate::model::ConditionalOperator) -> Self {
             self.conditional_operator = Some(inp);
+            self
+        }
+        pub fn set_conditional_operator(
+            mut self,
+            inp: std::option::Option<crate::model::ConditionalOperator>,
+        ) -> Self {
+            self.conditional_operator = inp;
             self
         }
         /// <p>Use <code>ReturnValues</code> if you want to get the item attributes as they appeared before they
@@ -1366,6 +1540,13 @@ pub mod delete_item_input {
             self.return_values = Some(inp);
             self
         }
+        pub fn set_return_values(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnValue>,
+        ) -> Self {
+            self.return_values = inp;
+            self
+        }
         /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
         /// <ul>
         /// <li>
@@ -1389,6 +1570,13 @@ pub mod delete_item_input {
             self.return_consumed_capacity = Some(inp);
             self
         }
+        pub fn set_return_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnConsumedCapacity>,
+        ) -> Self {
+            self.return_consumed_capacity = inp;
+            self
+        }
         /// <p>Determines whether item collection metrics are returned.  If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during
         /// the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
         pub fn return_item_collection_metrics(
@@ -1396,6 +1584,13 @@ pub mod delete_item_input {
             inp: crate::model::ReturnItemCollectionMetrics,
         ) -> Self {
             self.return_item_collection_metrics = Some(inp);
+            self
+        }
+        pub fn set_return_item_collection_metrics(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnItemCollectionMetrics>,
+        ) -> Self {
+            self.return_item_collection_metrics = inp;
             self
         }
         /// <p>A condition that must be satisfied in order for a conditional <code>DeleteItem</code> to
@@ -1422,6 +1617,13 @@ pub mod delete_item_input {
         /// Guide</i>.</p>
         pub fn condition_expression(mut self, inp: impl Into<std::string::String>) -> Self {
             self.condition_expression = Some(inp.into());
+            self
+        }
+        pub fn set_condition_expression(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.condition_expression = inp;
             self
         }
         /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
@@ -1472,6 +1674,15 @@ pub mod delete_item_input {
             self.expression_attribute_names = Some(inp);
             self
         }
+        pub fn set_expression_attribute_names(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.expression_attribute_names = inp;
+            self
+        }
         /// <p>One or more values that can be substituted in an expression.</p>
         /// <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the <i>ProductStatus</i> attribute was one of the following: </p>
         /// <p>
@@ -1492,6 +1703,15 @@ pub mod delete_item_input {
             inp: std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
         ) -> Self {
             self.expression_attribute_values = Some(inp);
+            self
+        }
+        pub fn set_expression_attribute_values(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.expression_attribute_values = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DeleteItem`](crate::operation::DeleteItem)>
@@ -1623,6 +1843,10 @@ pub mod delete_table_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// Consumes the builder and constructs an Operation<[`DeleteTable`](crate::operation::DeleteTable)>
         #[allow(clippy::let_and_return)]
         pub fn build(
@@ -1734,6 +1958,10 @@ pub mod describe_backup_input {
             self.backup_arn = Some(inp.into());
             self
         }
+        pub fn set_backup_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.backup_arn = inp;
+            self
+        }
         /// Consumes the builder and constructs an Operation<[`DescribeBackup`](crate::operation::DescribeBackup)>
         #[allow(clippy::let_and_return)]
         pub fn build(
@@ -1843,6 +2071,10 @@ pub mod describe_continuous_backups_input {
         /// <p>Name of the table for which the customer wants to check the continuous backups and point in time recovery settings.</p>
         pub fn table_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.table_name = Some(inp.into());
+            self
+        }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DescribeContinuousBackups`](crate::operation::DescribeContinuousBackups)>
@@ -1962,9 +2194,17 @@ pub mod describe_contributor_insights_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>The name of the global secondary index to describe, if applicable.</p>
         pub fn index_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.index_name = Some(inp.into());
+            self
+        }
+        pub fn set_index_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.index_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DescribeContributorInsights`](crate::operation::DescribeContributorInsights)>
@@ -2187,6 +2427,10 @@ pub mod describe_export_input {
             self.export_arn = Some(inp.into());
             self
         }
+        pub fn set_export_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.export_arn = inp;
+            self
+        }
         /// Consumes the builder and constructs an Operation<[`DescribeExport`](crate::operation::DescribeExport)>
         #[allow(clippy::let_and_return)]
         pub fn build(
@@ -2296,6 +2540,13 @@ pub mod describe_global_table_input {
         /// <p>The name of the global table.</p>
         pub fn global_table_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.global_table_name = Some(inp.into());
+            self
+        }
+        pub fn set_global_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.global_table_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DescribeGlobalTable`](crate::operation::DescribeGlobalTable)>
@@ -2409,6 +2660,13 @@ pub mod describe_global_table_settings_input {
         /// <p>The name of the global table to describe.</p>
         pub fn global_table_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.global_table_name = Some(inp.into());
+            self
+        }
+        pub fn set_global_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.global_table_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DescribeGlobalTableSettings`](crate::operation::DescribeGlobalTableSettings)>
@@ -2528,6 +2786,10 @@ pub mod describe_kinesis_streaming_destination_input {
         /// <p>The name of the table being described.</p>
         pub fn table_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.table_name = Some(inp.into());
+            self
+        }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DescribeKinesisStreamingDestination`](crate::operation::DescribeKinesisStreamingDestination)>
@@ -2747,6 +3009,10 @@ pub mod describe_table_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// Consumes the builder and constructs an Operation<[`DescribeTable`](crate::operation::DescribeTable)>
         #[allow(clippy::let_and_return)]
         pub fn build(
@@ -2856,6 +3122,10 @@ pub mod describe_table_replica_auto_scaling_input {
         /// <p>The name of the table.</p>
         pub fn table_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.table_name = Some(inp.into());
+            self
+        }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DescribeTableReplicaAutoScaling`](crate::operation::DescribeTableReplicaAutoScaling)>
@@ -2977,6 +3247,10 @@ pub mod describe_time_to_live_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// Consumes the builder and constructs an Operation<[`DescribeTimeToLive`](crate::operation::DescribeTimeToLive)>
         #[allow(clippy::let_and_return)]
         pub fn build(
@@ -3091,9 +3365,17 @@ pub mod disable_kinesis_streaming_destination_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>The ARN for a Kinesis data stream.</p>
         pub fn stream_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_arn = Some(inp.into());
+            self
+        }
+        pub fn set_stream_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_arn = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DisableKinesisStreamingDestination`](crate::operation::DisableKinesisStreamingDestination)>
@@ -3218,9 +3500,17 @@ pub mod enable_kinesis_streaming_destination_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>The ARN for a Kinesis data stream.</p>
         pub fn stream_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_arn = Some(inp.into());
+            self
+        }
+        pub fn set_stream_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_arn = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`EnableKinesisStreamingDestination`](crate::operation::EnableKinesisStreamingDestination)>
@@ -3349,11 +3639,22 @@ pub mod execute_statement_input {
             self.statement = Some(inp.into());
             self
         }
+        pub fn set_statement(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.statement = inp;
+            self
+        }
         /// <p>
         /// The parameters for the PartiQL statement, if any.
         /// </p>
         pub fn parameters(mut self, inp: std::vec::Vec<crate::model::AttributeValue>) -> Self {
             self.parameters = Some(inp);
+            self
+        }
+        pub fn set_parameters(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::AttributeValue>>,
+        ) -> Self {
+            self.parameters = inp;
             self
         }
         /// <p>
@@ -3363,11 +3664,19 @@ pub mod execute_statement_input {
             self.consistent_read = Some(inp);
             self
         }
+        pub fn set_consistent_read(mut self, inp: std::option::Option<bool>) -> Self {
+            self.consistent_read = inp;
+            self
+        }
         /// <p>
         /// Set this value to get remaining results, if <code>NextToken</code> was returned in the statement response.
         /// </p>
         pub fn next_token(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_token = Some(inp.into());
+            self
+        }
+        pub fn set_next_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_token = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ExecuteStatement`](crate::operation::ExecuteStatement)>
@@ -3495,11 +3804,25 @@ pub mod execute_transaction_input {
             self.transact_statements = Some(inp);
             self
         }
+        pub fn set_transact_statements(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ParameterizedStatement>>,
+        ) -> Self {
+            self.transact_statements = inp;
+            self
+        }
         /// <p>
         /// Set this value to get remaining results, if <code>NextToken</code> was returned in the statement response.
         /// </p>
         pub fn client_request_token(mut self, inp: impl Into<std::string::String>) -> Self {
             self.client_request_token = Some(inp.into());
+            self
+        }
+        pub fn set_client_request_token(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.client_request_token = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ExecuteTransaction`](crate::operation::ExecuteTransaction)>
@@ -3627,10 +3950,18 @@ pub mod export_table_to_point_in_time_input {
             self.table_arn = Some(inp.into());
             self
         }
+        pub fn set_table_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_arn = inp;
+            self
+        }
         /// <p>Time in the past from which to export table data. The table export will be a snapshot
         /// of the table's state at this point in time.</p>
         pub fn export_time(mut self, inp: smithy_types::Instant) -> Self {
             self.export_time = Some(inp);
+            self
+        }
+        pub fn set_export_time(mut self, inp: std::option::Option<smithy_types::Instant>) -> Self {
+            self.export_time = inp;
             self
         }
         /// <p>Providing a <code>ClientToken</code> makes the call to
@@ -3647,9 +3978,17 @@ pub mod export_table_to_point_in_time_input {
             self.client_token = Some(inp.into());
             self
         }
+        pub fn set_client_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.client_token = inp;
+            self
+        }
         /// <p>The name of the Amazon S3 bucket to export the snapshot to.</p>
         pub fn s3_bucket(mut self, inp: impl Into<std::string::String>) -> Self {
             self.s3_bucket = Some(inp.into());
+            self
+        }
+        pub fn set_s3_bucket(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.s3_bucket = inp;
             self
         }
         /// <p>The ID of the AWS account that owns the bucket the export will be stored in.</p>
@@ -3657,10 +3996,21 @@ pub mod export_table_to_point_in_time_input {
             self.s3_bucket_owner = Some(inp.into());
             self
         }
+        pub fn set_s3_bucket_owner(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.s3_bucket_owner = inp;
+            self
+        }
         /// <p>The Amazon S3 bucket prefix to use as the file name and path of the exported
         /// snapshot.</p>
         pub fn s3_prefix(mut self, inp: impl Into<std::string::String>) -> Self {
             self.s3_prefix = Some(inp.into());
+            self
+        }
+        pub fn set_s3_prefix(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.s3_prefix = inp;
             self
         }
         /// <p>Type of encryption used on the bucket where export data will be stored. Valid values
@@ -3679,16 +4029,37 @@ pub mod export_table_to_point_in_time_input {
             self.s3_sse_algorithm = Some(inp);
             self
         }
+        pub fn set_s3_sse_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::S3SseAlgorithm>,
+        ) -> Self {
+            self.s3_sse_algorithm = inp;
+            self
+        }
         /// <p>The ID of the AWS KMS managed key used to encrypt the S3 bucket where export data will
         /// be stored (if applicable).</p>
         pub fn s3_sse_kms_key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.s3_sse_kms_key_id = Some(inp.into());
             self
         }
+        pub fn set_s3_sse_kms_key_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.s3_sse_kms_key_id = inp;
+            self
+        }
         /// <p>The format for the exported data. Valid values for <code>ExportFormat</code> are
         /// <code>DYNAMODB_JSON</code> or <code>ION</code>.</p>
         pub fn export_format(mut self, inp: crate::model::ExportFormat) -> Self {
             self.export_format = Some(inp);
+            self
+        }
+        pub fn set_export_format(
+            mut self,
+            inp: std::option::Option<crate::model::ExportFormat>,
+        ) -> Self {
+            self.export_format = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ExportTableToPointInTime`](crate::operation::ExportTableToPointInTime)>
@@ -3832,6 +4203,10 @@ pub mod get_item_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>A map of attribute names to <code>AttributeValue</code> objects, representing the primary key of
         /// the item to retrieve.</p>
         /// <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
@@ -3842,15 +4217,35 @@ pub mod get_item_input {
             self.key = Some(inp);
             self
         }
+        pub fn set_key(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.key = inp;
+            self
+        }
         /// <p>This is a legacy parameter.  Use <code>ProjectionExpression</code> instead.  For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn attributes_to_get(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.attributes_to_get = Some(inp);
             self
         }
+        pub fn set_attributes_to_get(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.attributes_to_get = inp;
+            self
+        }
         /// <p>Determines the read consistency model:  If set to <code>true</code>, then the operation uses strongly consistent reads; otherwise, the operation uses eventually consistent reads.</p>
         pub fn consistent_read(mut self, inp: bool) -> Self {
             self.consistent_read = Some(inp);
+            self
+        }
+        pub fn set_consistent_read(mut self, inp: std::option::Option<bool>) -> Self {
+            self.consistent_read = inp;
             self
         }
         /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
@@ -3876,6 +4271,13 @@ pub mod get_item_input {
             self.return_consumed_capacity = Some(inp);
             self
         }
+        pub fn set_return_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnConsumedCapacity>,
+        ) -> Self {
+            self.return_consumed_capacity = inp;
+            self
+        }
         /// <p>A string that identifies one or more attributes to retrieve from the table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas.</p>
         /// <p>If no attribute names are specified, then all attributes are returned. If any of the
         /// requested attributes are not found, they do not appear in the result.</p>
@@ -3883,6 +4285,13 @@ pub mod get_item_input {
         /// Guide</i>.</p>
         pub fn projection_expression(mut self, inp: impl Into<std::string::String>) -> Self {
             self.projection_expression = Some(inp.into());
+            self
+        }
+        pub fn set_projection_expression(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.projection_expression = inp;
             self
         }
         /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
@@ -3931,6 +4340,15 @@ pub mod get_item_input {
             inp: std::collections::HashMap<std::string::String, std::string::String>,
         ) -> Self {
             self.expression_attribute_names = Some(inp);
+            self
+        }
+        pub fn set_expression_attribute_names(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.expression_attribute_names = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`GetItem`](crate::operation::GetItem)>
@@ -4060,9 +4478,17 @@ pub mod list_backups_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>Maximum number of backups to return at once.</p>
         pub fn limit(mut self, inp: i32) -> Self {
             self.limit = Some(inp);
+            self
+        }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
             self
         }
         /// <p>Only backups created after this time are listed. <code>TimeRangeLowerBound</code> is inclusive.</p>
@@ -4070,9 +4496,23 @@ pub mod list_backups_input {
             self.time_range_lower_bound = Some(inp);
             self
         }
+        pub fn set_time_range_lower_bound(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.time_range_lower_bound = inp;
+            self
+        }
         /// <p>Only backups created before this time are listed. <code>TimeRangeUpperBound</code> is exclusive. </p>
         pub fn time_range_upper_bound(mut self, inp: smithy_types::Instant) -> Self {
             self.time_range_upper_bound = Some(inp);
+            self
+        }
+        pub fn set_time_range_upper_bound(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.time_range_upper_bound = inp;
             self
         }
         /// <p>
@@ -4082,6 +4522,13 @@ pub mod list_backups_input {
         /// new <code>ListBackups</code> operation in order to fetch the next page of results. </p>
         pub fn exclusive_start_backup_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.exclusive_start_backup_arn = Some(inp.into());
+            self
+        }
+        pub fn set_exclusive_start_backup_arn(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.exclusive_start_backup_arn = inp;
             self
         }
         /// <p>The backups from the table specified by <code>BackupType</code> are listed.</p>
@@ -4103,6 +4550,13 @@ pub mod list_backups_input {
         /// </ul>
         pub fn backup_type(mut self, inp: crate::model::BackupTypeFilter) -> Self {
             self.backup_type = Some(inp);
+            self
+        }
+        pub fn set_backup_type(
+            mut self,
+            inp: std::option::Option<crate::model::BackupTypeFilter>,
+        ) -> Self {
+            self.backup_type = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListBackups`](crate::operation::ListBackups)>
@@ -4228,13 +4682,25 @@ pub mod list_contributor_insights_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>A token to for the desired page, if there is one.</p>
         pub fn next_token(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_token = Some(inp.into());
             self
         }
+        pub fn set_next_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_token = inp;
+            self
+        }
         /// <p>Maximum number of results to return per page.</p>
         pub fn max_results(mut self, inp: i32) -> Self {
+            self.max_results = Some(inp);
+            self
+        }
+        pub fn set_max_results(mut self, inp: i32) -> Self {
             self.max_results = Some(inp);
             self
         }
@@ -4357,9 +4823,17 @@ pub mod list_exports_input {
             self.table_arn = Some(inp.into());
             self
         }
+        pub fn set_table_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_arn = inp;
+            self
+        }
         /// <p>Maximum number of results to return per page.</p>
         pub fn max_results(mut self, inp: i32) -> Self {
             self.max_results = Some(inp);
+            self
+        }
+        pub fn set_max_results(mut self, inp: std::option::Option<i32>) -> Self {
+            self.max_results = inp;
             self
         }
         /// <p>An optional string that, if supplied, must be copied from the output of a previous
@@ -4367,6 +4841,10 @@ pub mod list_exports_input {
         /// page of results.</p>
         pub fn next_token(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_token = Some(inp.into());
+            self
+        }
+        pub fn set_next_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_token = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListExports`](crate::operation::ListExports)>
@@ -4489,6 +4967,13 @@ pub mod list_global_tables_input {
             self.exclusive_start_global_table_name = Some(inp.into());
             self
         }
+        pub fn set_exclusive_start_global_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.exclusive_start_global_table_name = inp;
+            self
+        }
         /// <p>The maximum number of table names to return, if the parameter is not specified DynamoDB defaults to 100.</p>
         /// <p>If the number of global tables DynamoDB finds reaches this limit, it stops the operation and returns the table names collected up to that point,
         /// with a table name in the <code>LastEvaluatedGlobalTableName</code> to apply in a subsequent operation to the <code>ExclusiveStartGlobalTableName</code> parameter.</p>
@@ -4496,9 +4981,17 @@ pub mod list_global_tables_input {
             self.limit = Some(inp);
             self
         }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
+            self
+        }
         /// <p>Lists the global tables in a specific Region.</p>
         pub fn region_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.region_name = Some(inp.into());
+            self
+        }
+        pub fn set_region_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.region_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListGlobalTables`](crate::operation::ListGlobalTables)>
@@ -4620,9 +5113,20 @@ pub mod list_tables_input {
             self.exclusive_start_table_name = Some(inp.into());
             self
         }
+        pub fn set_exclusive_start_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.exclusive_start_table_name = inp;
+            self
+        }
         /// <p>A maximum number of table names to return. If this parameter is not specified, the limit is 100.</p>
         pub fn limit(mut self, inp: i32) -> Self {
             self.limit = Some(inp);
+            self
+        }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListTables`](crate::operation::ListTables)>
@@ -4739,10 +5243,18 @@ pub mod list_tags_of_resource_input {
             self.resource_arn = Some(inp.into());
             self
         }
+        pub fn set_resource_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.resource_arn = inp;
+            self
+        }
         /// <p>An optional string that, if supplied, must be copied from the output of a previous
         /// call to ListTagOfResource. When provided in this manner, this API fetches the next page of results.</p>
         pub fn next_token(mut self, inp: impl Into<std::string::String>) -> Self {
             self.next_token = Some(inp.into());
+            self
+        }
+        pub fn set_next_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_token = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListTagsOfResource`](crate::operation::ListTagsOfResource)>
@@ -4878,6 +5390,10 @@ pub mod put_item_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>A map of attribute name/value pairs, one for each attribute. Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.</p>
         /// <p>You must provide all of the attributes for the primary key. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide both values for both the partition key and the sort key.</p>
         /// <p>If you specify any attributes that are part of an index key, then the data types for those attributes must match those of the schema in the table's attribute definition.</p>
@@ -4892,6 +5408,15 @@ pub mod put_item_input {
             self.item = Some(inp);
             self
         }
+        pub fn set_item(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.item = inp;
+            self
+        }
         /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html">Expected</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn expected(
@@ -4902,6 +5427,18 @@ pub mod put_item_input {
             >,
         ) -> Self {
             self.expected = Some(inp);
+            self
+        }
+        pub fn set_expected(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<
+                    std::string::String,
+                    crate::model::ExpectedAttributeValue,
+                >,
+            >,
+        ) -> Self {
+            self.expected = inp;
             self
         }
         /// <p>Use <code>ReturnValues</code> if you want to get the item attributes as they appeared before they
@@ -4928,6 +5465,13 @@ pub mod put_item_input {
             self.return_values = Some(inp);
             self
         }
+        pub fn set_return_values(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnValue>,
+        ) -> Self {
+            self.return_values = inp;
+            self
+        }
         /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
         /// <ul>
         /// <li>
@@ -4951,6 +5495,13 @@ pub mod put_item_input {
             self.return_consumed_capacity = Some(inp);
             self
         }
+        pub fn set_return_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnConsumedCapacity>,
+        ) -> Self {
+            self.return_consumed_capacity = inp;
+            self
+        }
         /// <p>Determines whether item collection metrics are returned.  If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during
         /// the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
         pub fn return_item_collection_metrics(
@@ -4960,10 +5511,24 @@ pub mod put_item_input {
             self.return_item_collection_metrics = Some(inp);
             self
         }
+        pub fn set_return_item_collection_metrics(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnItemCollectionMetrics>,
+        ) -> Self {
+            self.return_item_collection_metrics = inp;
+            self
+        }
         /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.  For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn conditional_operator(mut self, inp: crate::model::ConditionalOperator) -> Self {
             self.conditional_operator = Some(inp);
+            self
+        }
+        pub fn set_conditional_operator(
+            mut self,
+            inp: std::option::Option<crate::model::ConditionalOperator>,
+        ) -> Self {
+            self.conditional_operator = inp;
             self
         }
         /// <p>A condition that must be satisfied in order for a conditional <code>PutItem</code> operation to
@@ -4990,6 +5555,13 @@ pub mod put_item_input {
         /// Guide</i>.</p>
         pub fn condition_expression(mut self, inp: impl Into<std::string::String>) -> Self {
             self.condition_expression = Some(inp.into());
+            self
+        }
+        pub fn set_condition_expression(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.condition_expression = inp;
             self
         }
         /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
@@ -5040,6 +5612,15 @@ pub mod put_item_input {
             self.expression_attribute_names = Some(inp);
             self
         }
+        pub fn set_expression_attribute_names(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.expression_attribute_names = inp;
+            self
+        }
         /// <p>One or more values that can be substituted in an expression.</p>
         /// <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the <i>ProductStatus</i> attribute was one of the following: </p>
         /// <p>
@@ -5060,6 +5641,15 @@ pub mod put_item_input {
             inp: std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
         ) -> Self {
             self.expression_attribute_values = Some(inp);
+            self
+        }
+        pub fn set_expression_attribute_values(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.expression_attribute_values = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`PutItem`](crate::operation::PutItem)>
@@ -5216,11 +5806,19 @@ pub mod query_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>The name of an index to query. This index can be any local secondary index or global secondary index on the table. Note that
         /// if you use the <code>IndexName</code> parameter, you must also provide <code>TableName.</code>
         /// </p>
         pub fn index_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.index_name = Some(inp.into());
+            self
+        }
+        pub fn set_index_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.index_name = inp;
             self
         }
         /// <p>The attributes to be returned in the
@@ -5283,10 +5881,21 @@ pub mod query_input {
             self.select = Some(inp);
             self
         }
+        pub fn set_select(mut self, inp: std::option::Option<crate::model::Select>) -> Self {
+            self.select = inp;
+            self
+        }
         /// <p>This is a legacy parameter.  Use <code>ProjectionExpression</code> instead.  For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn attributes_to_get(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.attributes_to_get = Some(inp);
+            self
+        }
+        pub fn set_attributes_to_get(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.attributes_to_get = inp;
             self
         }
         /// <p>The maximum number of items to evaluate (not necessarily the number of matching items).
@@ -5302,12 +5911,20 @@ pub mod query_input {
             self.limit = Some(inp);
             self
         }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
+            self
+        }
         /// <p>Determines the read consistency model:  If set to <code>true</code>, then the operation uses strongly consistent reads; otherwise, the operation uses eventually consistent reads.</p>
         /// <p>Strongly consistent reads
         /// are not supported on global secondary indexes. If you query a global secondary index with <code>ConsistentRead</code> set to
         /// <code>true</code>, you will receive a <code>ValidationException</code>.</p>
         pub fn consistent_read(mut self, inp: bool) -> Self {
             self.consistent_read = Some(inp);
+            self
+        }
+        pub fn set_consistent_read(mut self, inp: std::option::Option<bool>) -> Self {
+            self.consistent_read = inp;
             self
         }
         /// <p>This is a legacy parameter.  Use <code>KeyConditionExpression</code> instead.   For more information, see
@@ -5319,6 +5936,15 @@ pub mod query_input {
             self.key_conditions = Some(inp);
             self
         }
+        pub fn set_key_conditions(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::Condition>,
+            >,
+        ) -> Self {
+            self.key_conditions = inp;
+            self
+        }
         /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.   For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.QueryFilter.html">QueryFilter</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn query_filter(
@@ -5328,10 +5954,26 @@ pub mod query_input {
             self.query_filter = Some(inp);
             self
         }
+        pub fn set_query_filter(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::Condition>,
+            >,
+        ) -> Self {
+            self.query_filter = inp;
+            self
+        }
         /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.  For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn conditional_operator(mut self, inp: crate::model::ConditionalOperator) -> Self {
             self.conditional_operator = Some(inp);
+            self
+        }
+        pub fn set_conditional_operator(
+            mut self,
+            inp: std::option::Option<crate::model::ConditionalOperator>,
+        ) -> Self {
+            self.conditional_operator = inp;
             self
         }
         /// <p>Specifies the order for index traversal: If <code>true</code> (default), the traversal is performed in ascending order; if <code>false</code>, the traversal is performed in descending order. </p>
@@ -5339,6 +5981,10 @@ pub mod query_input {
         /// <p>If <code>ScanIndexForward</code> is <code>true</code>, DynamoDB returns the results in the order in which they are stored (by sort key value). This is the default behavior. If <code>ScanIndexForward</code> is <code>false</code>, DynamoDB reads the results in reverse order by sort key value, and then returns the results to the client.</p>
         pub fn scan_index_forward(mut self, inp: bool) -> Self {
             self.scan_index_forward = Some(inp);
+            self
+        }
+        pub fn set_scan_index_forward(mut self, inp: std::option::Option<bool>) -> Self {
+            self.scan_index_forward = inp;
             self
         }
         /// <p>The primary key of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedKey</code> in the previous operation.</p>
@@ -5349,6 +5995,15 @@ pub mod query_input {
             inp: std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
         ) -> Self {
             self.exclusive_start_key = Some(inp);
+            self
+        }
+        pub fn set_exclusive_start_key(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.exclusive_start_key = inp;
             self
         }
         /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
@@ -5374,12 +6029,26 @@ pub mod query_input {
             self.return_consumed_capacity = Some(inp);
             self
         }
+        pub fn set_return_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnConsumedCapacity>,
+        ) -> Self {
+            self.return_consumed_capacity = inp;
+            self
+        }
         /// <p>A string that identifies one or more attributes to retrieve from the table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas.</p>
         /// <p>If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are not found, they will not appear in the result.</p>
         /// <p>For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn projection_expression(mut self, inp: impl Into<std::string::String>) -> Self {
             self.projection_expression = Some(inp.into());
+            self
+        }
+        pub fn set_projection_expression(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.projection_expression = inp;
             self
         }
         /// <p>A string that contains conditions that DynamoDB applies after the <code>Query</code> operation, but
@@ -5394,6 +6063,13 @@ pub mod query_input {
         /// Expressions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn filter_expression(mut self, inp: impl Into<std::string::String>) -> Self {
             self.filter_expression = Some(inp.into());
+            self
+        }
+        pub fn set_filter_expression(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.filter_expression = inp;
             self
         }
         /// <p>The condition that specifies the key values for items to be retrieved by the
@@ -5504,6 +6180,13 @@ pub mod query_input {
             self.key_condition_expression = Some(inp.into());
             self
         }
+        pub fn set_key_condition_expression(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.key_condition_expression = inp;
+            self
+        }
         /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
         /// <ul>
         /// <li>
@@ -5553,6 +6236,15 @@ pub mod query_input {
             self.expression_attribute_names = Some(inp);
             self
         }
+        pub fn set_expression_attribute_names(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.expression_attribute_names = inp;
+            self
+        }
         /// <p>One or more values that can be substituted in an expression.</p>
         /// <p>Use the <b>:</b> (colon) character in an expression to dereference an attribute value. For example, suppose that you wanted to check whether the value of the
         /// <i>ProductStatus</i> attribute was one of the following: </p>
@@ -5573,6 +6265,15 @@ pub mod query_input {
             inp: std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
         ) -> Self {
             self.expression_attribute_values = Some(inp);
+            self
+        }
+        pub fn set_expression_attribute_values(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.expression_attribute_values = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`Query`](crate::operation::Query)>
@@ -5725,14 +6426,32 @@ pub mod restore_table_from_backup_input {
             self.target_table_name = Some(inp.into());
             self
         }
+        pub fn set_target_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.target_table_name = inp;
+            self
+        }
         /// <p>The Amazon Resource Name (ARN) associated with the backup.</p>
         pub fn backup_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.backup_arn = Some(inp.into());
             self
         }
+        pub fn set_backup_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.backup_arn = inp;
+            self
+        }
         /// <p>The billing mode of the restored table.</p>
         pub fn billing_mode_override(mut self, inp: crate::model::BillingMode) -> Self {
             self.billing_mode_override = Some(inp);
+            self
+        }
+        pub fn set_billing_mode_override(
+            mut self,
+            inp: std::option::Option<crate::model::BillingMode>,
+        ) -> Self {
+            self.billing_mode_override = inp;
             self
         }
         /// <p>List of global secondary indexes for the restored table. The indexes
@@ -5745,6 +6464,13 @@ pub mod restore_table_from_backup_input {
             self.global_secondary_index_override = Some(inp);
             self
         }
+        pub fn set_global_secondary_index_override(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::GlobalSecondaryIndex>>,
+        ) -> Self {
+            self.global_secondary_index_override = inp;
+            self
+        }
         /// <p>List of local secondary indexes for the restored table. The indexes
         /// provided should match existing secondary indexes. You can choose to exclude
         /// some or all of the indexes at the time of restore.</p>
@@ -5755,6 +6481,13 @@ pub mod restore_table_from_backup_input {
             self.local_secondary_index_override = Some(inp);
             self
         }
+        pub fn set_local_secondary_index_override(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::LocalSecondaryIndex>>,
+        ) -> Self {
+            self.local_secondary_index_override = inp;
+            self
+        }
         /// <p>Provisioned throughput settings for the restored table.</p>
         pub fn provisioned_throughput_override(
             mut self,
@@ -5763,9 +6496,23 @@ pub mod restore_table_from_backup_input {
             self.provisioned_throughput_override = Some(inp);
             self
         }
+        pub fn set_provisioned_throughput_override(
+            mut self,
+            inp: std::option::Option<crate::model::ProvisionedThroughput>,
+        ) -> Self {
+            self.provisioned_throughput_override = inp;
+            self
+        }
         /// <p>The new server-side encryption settings for the restored table.</p>
         pub fn sse_specification_override(mut self, inp: crate::model::SSESpecification) -> Self {
             self.sse_specification_override = Some(inp);
+            self
+        }
+        pub fn set_sse_specification_override(
+            mut self,
+            inp: std::option::Option<crate::model::SSESpecification>,
+        ) -> Self {
+            self.sse_specification_override = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`RestoreTableFromBackup`](crate::operation::RestoreTableFromBackup)>
@@ -5905,14 +6652,35 @@ pub mod restore_table_to_point_in_time_input {
             self.source_table_arn = Some(inp.into());
             self
         }
+        pub fn set_source_table_arn(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.source_table_arn = inp;
+            self
+        }
         /// <p>Name of the source table that is being restored.</p>
         pub fn source_table_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.source_table_name = Some(inp.into());
             self
         }
+        pub fn set_source_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.source_table_name = inp;
+            self
+        }
         /// <p>The name of the new table to which it must be restored to.</p>
         pub fn target_table_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.target_table_name = Some(inp.into());
+            self
+        }
+        pub fn set_target_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.target_table_name = inp;
             self
         }
         /// <p>Restore the table to the latest possible time. <code>LatestRestorableDateTime</code>
@@ -5921,14 +6689,32 @@ pub mod restore_table_to_point_in_time_input {
             self.use_latest_restorable_time = Some(inp);
             self
         }
+        pub fn set_use_latest_restorable_time(mut self, inp: std::option::Option<bool>) -> Self {
+            self.use_latest_restorable_time = inp;
+            self
+        }
         /// <p>Time in the past to restore the table to.</p>
         pub fn restore_date_time(mut self, inp: smithy_types::Instant) -> Self {
             self.restore_date_time = Some(inp);
             self
         }
+        pub fn set_restore_date_time(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.restore_date_time = inp;
+            self
+        }
         /// <p>The billing mode of the restored table.</p>
         pub fn billing_mode_override(mut self, inp: crate::model::BillingMode) -> Self {
             self.billing_mode_override = Some(inp);
+            self
+        }
+        pub fn set_billing_mode_override(
+            mut self,
+            inp: std::option::Option<crate::model::BillingMode>,
+        ) -> Self {
+            self.billing_mode_override = inp;
             self
         }
         /// <p>List of global secondary indexes for the restored table. The indexes
@@ -5941,6 +6727,13 @@ pub mod restore_table_to_point_in_time_input {
             self.global_secondary_index_override = Some(inp);
             self
         }
+        pub fn set_global_secondary_index_override(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::GlobalSecondaryIndex>>,
+        ) -> Self {
+            self.global_secondary_index_override = inp;
+            self
+        }
         /// <p>List of local secondary indexes for the restored table. The indexes
         /// provided should match existing secondary indexes. You can choose to exclude
         /// some or all of the indexes at the time of restore.</p>
@@ -5951,6 +6744,13 @@ pub mod restore_table_to_point_in_time_input {
             self.local_secondary_index_override = Some(inp);
             self
         }
+        pub fn set_local_secondary_index_override(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::LocalSecondaryIndex>>,
+        ) -> Self {
+            self.local_secondary_index_override = inp;
+            self
+        }
         /// <p>Provisioned throughput settings for the restored table.</p>
         pub fn provisioned_throughput_override(
             mut self,
@@ -5959,9 +6759,23 @@ pub mod restore_table_to_point_in_time_input {
             self.provisioned_throughput_override = Some(inp);
             self
         }
+        pub fn set_provisioned_throughput_override(
+            mut self,
+            inp: std::option::Option<crate::model::ProvisionedThroughput>,
+        ) -> Self {
+            self.provisioned_throughput_override = inp;
+            self
+        }
         /// <p>The new server-side encryption settings for the restored table.</p>
         pub fn sse_specification_override(mut self, inp: crate::model::SSESpecification) -> Self {
             self.sse_specification_override = Some(inp);
+            self
+        }
+        pub fn set_sse_specification_override(
+            mut self,
+            inp: std::option::Option<crate::model::SSESpecification>,
+        ) -> Self {
+            self.sse_specification_override = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`RestoreTableToPointInTime`](crate::operation::RestoreTableToPointInTime)>
@@ -6122,15 +6936,30 @@ pub mod scan_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>The name of a secondary index to scan. This index can be any local secondary index or global secondary index.  Note that if you use the <code>IndexName</code> parameter, you must also provide <code>TableName</code>.</p>
         pub fn index_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.index_name = Some(inp.into());
+            self
+        }
+        pub fn set_index_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.index_name = inp;
             self
         }
         /// <p>This is a legacy parameter.  Use <code>ProjectionExpression</code> instead.  For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn attributes_to_get(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.attributes_to_get = Some(inp);
+            self
+        }
+        pub fn set_attributes_to_get(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.attributes_to_get = inp;
             self
         }
         /// <p>The maximum number of items to evaluate (not necessarily the number of matching items).
@@ -6144,6 +6973,10 @@ pub mod scan_input {
         /// Guide</i>.</p>
         pub fn limit(mut self, inp: i32) -> Self {
             self.limit = Some(inp);
+            self
+        }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
             self
         }
         /// <p>The attributes to be returned in the
@@ -6206,6 +7039,10 @@ pub mod scan_input {
             self.select = Some(inp);
             self
         }
+        pub fn set_select(mut self, inp: std::option::Option<crate::model::Select>) -> Self {
+            self.select = inp;
+            self
+        }
         /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.   For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ScanFilter.html">ScanFilter</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn scan_filter(
@@ -6215,10 +7052,26 @@ pub mod scan_input {
             self.scan_filter = Some(inp);
             self
         }
+        pub fn set_scan_filter(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::Condition>,
+            >,
+        ) -> Self {
+            self.scan_filter = inp;
+            self
+        }
         /// <p>This is a legacy parameter.  Use <code>FilterExpression</code> instead.   For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn conditional_operator(mut self, inp: crate::model::ConditionalOperator) -> Self {
             self.conditional_operator = Some(inp);
+            self
+        }
+        pub fn set_conditional_operator(
+            mut self,
+            inp: std::option::Option<crate::model::ConditionalOperator>,
+        ) -> Self {
+            self.conditional_operator = inp;
             self
         }
         /// <p>The primary key of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedKey</code> in the previous operation.</p>
@@ -6231,6 +7084,15 @@ pub mod scan_input {
             inp: std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
         ) -> Self {
             self.exclusive_start_key = Some(inp);
+            self
+        }
+        pub fn set_exclusive_start_key(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.exclusive_start_key = inp;
             self
         }
         /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
@@ -6256,6 +7118,13 @@ pub mod scan_input {
             self.return_consumed_capacity = Some(inp);
             self
         }
+        pub fn set_return_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnConsumedCapacity>,
+        ) -> Self {
+            self.return_consumed_capacity = inp;
+            self
+        }
         /// <p>For a parallel <code>Scan</code> request, <code>TotalSegments</code> represents the total number of
         /// segments into which the <code>Scan</code> operation will be divided. The value of
         /// <code>TotalSegments</code> corresponds to the number of application workers that will perform the
@@ -6267,6 +7136,10 @@ pub mod scan_input {
         /// <p>If you specify <code>TotalSegments</code>, you must also specify <code>Segment</code>.</p>
         pub fn total_segments(mut self, inp: i32) -> Self {
             self.total_segments = Some(inp);
+            self
+        }
+        pub fn set_total_segments(mut self, inp: std::option::Option<i32>) -> Self {
+            self.total_segments = inp;
             self
         }
         /// <p>For a parallel <code>Scan</code> request, <code>Segment</code> identifies an individual segment to be
@@ -6284,12 +7157,23 @@ pub mod scan_input {
             self.segment = Some(inp);
             self
         }
+        pub fn set_segment(mut self, inp: std::option::Option<i32>) -> Self {
+            self.segment = inp;
+            self
+        }
         /// <p>A string that identifies one or more attributes to retrieve from the specified table or index. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas.</p>
         /// <p>If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are not found, they will not appear in the result.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Specifying Item Attributes</a> in the <i>Amazon DynamoDB Developer
         /// Guide</i>.</p>
         pub fn projection_expression(mut self, inp: impl Into<std::string::String>) -> Self {
             self.projection_expression = Some(inp.into());
+            self
+        }
+        pub fn set_projection_expression(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.projection_expression = inp;
             self
         }
         /// <p>A string that contains conditions that DynamoDB applies after the <code>Scan</code> operation, but
@@ -6303,6 +7187,13 @@ pub mod scan_input {
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults">Filter Expressions</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn filter_expression(mut self, inp: impl Into<std::string::String>) -> Self {
             self.filter_expression = Some(inp.into());
+            self
+        }
+        pub fn set_filter_expression(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.filter_expression = inp;
             self
         }
         /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
@@ -6353,6 +7244,15 @@ pub mod scan_input {
             self.expression_attribute_names = Some(inp);
             self
         }
+        pub fn set_expression_attribute_names(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.expression_attribute_names = inp;
+            self
+        }
         /// <p>One or more values that can be substituted in an expression.</p>
         /// <p>Use the <b>:</b> (colon) character in an expression to
         /// dereference an attribute value. For example, suppose that you wanted to check whether
@@ -6377,6 +7277,15 @@ pub mod scan_input {
             self.expression_attribute_values = Some(inp);
             self
         }
+        pub fn set_expression_attribute_values(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.expression_attribute_values = inp;
+            self
+        }
         /// <p>A Boolean value that determines the read consistency model during the scan:</p>
         /// <ul>
         /// <li>
@@ -6393,6 +7302,10 @@ pub mod scan_input {
         /// <p>The <code>ConsistentRead</code> parameter is not supported on global secondary indexes. If you scan a global secondary index with <code>ConsistentRead</code> set to true, you will receive a <code>ValidationException</code>.</p>
         pub fn consistent_read(mut self, inp: bool) -> Self {
             self.consistent_read = Some(inp);
+            self
+        }
+        pub fn set_consistent_read(mut self, inp: std::option::Option<bool>) -> Self {
+            self.consistent_read = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`Scan`](crate::operation::Scan)>
@@ -6536,9 +7449,20 @@ pub mod tag_resource_input {
             self.resource_arn = Some(inp.into());
             self
         }
+        pub fn set_resource_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.resource_arn = inp;
+            self
+        }
         /// <p>The tags to be assigned to the Amazon DynamoDB resource.</p>
         pub fn tags(mut self, inp: std::vec::Vec<crate::model::Tag>) -> Self {
             self.tags = Some(inp);
+            self
+        }
+        pub fn set_tags(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::Tag>>,
+        ) -> Self {
+            self.tags = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`TagResource`](crate::operation::TagResource)>
@@ -6656,6 +7580,13 @@ pub mod transact_get_items_input {
             self.transact_items = Some(inp);
             self
         }
+        pub fn set_transact_items(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::TransactGetItem>>,
+        ) -> Self {
+            self.transact_items = inp;
+            self
+        }
         /// <p>A value of <code>TOTAL</code> causes consumed capacity information
         /// to be returned, and a value of <code>NONE</code> prevents that information
         /// from being returned. No other value is valid.</p>
@@ -6664,6 +7595,13 @@ pub mod transact_get_items_input {
             inp: crate::model::ReturnConsumedCapacity,
         ) -> Self {
             self.return_consumed_capacity = Some(inp);
+            self
+        }
+        pub fn set_return_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnConsumedCapacity>,
+        ) -> Self {
+            self.return_consumed_capacity = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`TransactGetItems`](crate::operation::TransactGetItems)>
@@ -6791,6 +7729,13 @@ pub mod transact_write_items_input {
             self.transact_items = Some(inp);
             self
         }
+        pub fn set_transact_items(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::TransactWriteItem>>,
+        ) -> Self {
+            self.transact_items = inp;
+            self
+        }
         /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
         /// <ul>
         /// <li>
@@ -6814,6 +7759,13 @@ pub mod transact_write_items_input {
             self.return_consumed_capacity = Some(inp);
             self
         }
+        pub fn set_return_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnConsumedCapacity>,
+        ) -> Self {
+            self.return_consumed_capacity = inp;
+            self
+        }
         /// <p>Determines whether item collection metrics are returned. If set to
         /// <code>SIZE</code>, the response includes statistics about item collections (if any), that
         /// were modified during the operation and are returned in the response.
@@ -6824,6 +7776,13 @@ pub mod transact_write_items_input {
             inp: crate::model::ReturnItemCollectionMetrics,
         ) -> Self {
             self.return_item_collection_metrics = Some(inp);
+            self
+        }
+        pub fn set_return_item_collection_metrics(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnItemCollectionMetrics>,
+        ) -> Self {
+            self.return_item_collection_metrics = inp;
             self
         }
         /// <p>Providing a <code>ClientRequestToken</code> makes the call to <code>TransactWriteItems</code>
@@ -6844,6 +7803,13 @@ pub mod transact_write_items_input {
         /// <code>IdempotentParameterMismatch</code> exception.</p>
         pub fn client_request_token(mut self, inp: impl Into<std::string::String>) -> Self {
             self.client_request_token = Some(inp.into());
+            self
+        }
+        pub fn set_client_request_token(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.client_request_token = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`TransactWriteItems`](crate::operation::TransactWriteItems)>
@@ -6969,10 +7935,21 @@ pub mod untag_resource_input {
             self.resource_arn = Some(inp.into());
             self
         }
+        pub fn set_resource_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.resource_arn = inp;
+            self
+        }
         /// <p>A list of tag keys. Existing tags of the resource whose keys are members of this list
         /// will be removed from the DynamoDB resource.</p>
         pub fn tag_keys(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.tag_keys = Some(inp);
+            self
+        }
+        pub fn set_tag_keys(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.tag_keys = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UntagResource`](crate::operation::UntagResource)>
@@ -7090,12 +8067,23 @@ pub mod update_continuous_backups_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>Represents the settings used to enable point in time recovery.</p>
         pub fn point_in_time_recovery_specification(
             mut self,
             inp: crate::model::PointInTimeRecoverySpecification,
         ) -> Self {
             self.point_in_time_recovery_specification = Some(inp);
+            self
+        }
+        pub fn set_point_in_time_recovery_specification(
+            mut self,
+            inp: std::option::Option<crate::model::PointInTimeRecoverySpecification>,
+        ) -> Self {
+            self.point_in_time_recovery_specification = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UpdateContinuousBackups`](crate::operation::UpdateContinuousBackups)>
@@ -7216,9 +8204,17 @@ pub mod update_contributor_insights_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>The global secondary index name, if applicable.</p>
         pub fn index_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.index_name = Some(inp.into());
+            self
+        }
+        pub fn set_index_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.index_name = inp;
             self
         }
         /// <p>Represents the contributor insights action.</p>
@@ -7227,6 +8223,13 @@ pub mod update_contributor_insights_input {
             inp: crate::model::ContributorInsightsAction,
         ) -> Self {
             self.contributor_insights_action = Some(inp);
+            self
+        }
+        pub fn set_contributor_insights_action(
+            mut self,
+            inp: std::option::Option<crate::model::ContributorInsightsAction>,
+        ) -> Self {
+            self.contributor_insights_action = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UpdateContributorInsights`](crate::operation::UpdateContributorInsights)>
@@ -7350,9 +8353,23 @@ pub mod update_global_table_input {
             self.global_table_name = Some(inp.into());
             self
         }
+        pub fn set_global_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.global_table_name = inp;
+            self
+        }
         /// <p>A list of Regions that should be added or removed from the global table.</p>
         pub fn replica_updates(mut self, inp: std::vec::Vec<crate::model::ReplicaUpdate>) -> Self {
             self.replica_updates = Some(inp);
+            self
+        }
+        pub fn set_replica_updates(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ReplicaUpdate>>,
+        ) -> Self {
+            self.replica_updates = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UpdateGlobalTable`](crate::operation::UpdateGlobalTable)>
@@ -7479,6 +8496,13 @@ pub mod update_global_table_settings_input {
             self.global_table_name = Some(inp.into());
             self
         }
+        pub fn set_global_table_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.global_table_name = inp;
+            self
+        }
         /// <p>The billing mode of the global table. If <code>GlobalTableBillingMode</code> is not specified, the global table defaults to <code>PROVISIONED</code> capacity billing mode.</p>
         /// <ul>
         /// <li>
@@ -7495,10 +8519,24 @@ pub mod update_global_table_settings_input {
             self.global_table_billing_mode = Some(inp);
             self
         }
+        pub fn set_global_table_billing_mode(
+            mut self,
+            inp: std::option::Option<crate::model::BillingMode>,
+        ) -> Self {
+            self.global_table_billing_mode = inp;
+            self
+        }
         /// <p>The maximum number of writes consumed per second before DynamoDB returns a <code>ThrottlingException.</code>
         /// </p>
         pub fn global_table_provisioned_write_capacity_units(mut self, inp: i64) -> Self {
             self.global_table_provisioned_write_capacity_units = Some(inp);
+            self
+        }
+        pub fn set_global_table_provisioned_write_capacity_units(
+            mut self,
+            inp: std::option::Option<i64>,
+        ) -> Self {
+            self.global_table_provisioned_write_capacity_units = inp;
             self
         }
         /// <p>Auto scaling settings for managing provisioned write capacity for the global
@@ -7510,6 +8548,13 @@ pub mod update_global_table_settings_input {
             self.global_table_provisioned_write_capacity_auto_scaling_settings_update = Some(inp);
             self
         }
+        pub fn set_global_table_provisioned_write_capacity_auto_scaling_settings_update(
+            mut self,
+            inp: std::option::Option<crate::model::AutoScalingSettingsUpdate>,
+        ) -> Self {
+            self.global_table_provisioned_write_capacity_auto_scaling_settings_update = inp;
+            self
+        }
         /// <p>Represents the settings of a global secondary index for a global table that will be modified.</p>
         pub fn global_table_global_secondary_index_settings_update(
             mut self,
@@ -7518,12 +8563,28 @@ pub mod update_global_table_settings_input {
             self.global_table_global_secondary_index_settings_update = Some(inp);
             self
         }
+        pub fn set_global_table_global_secondary_index_settings_update(
+            mut self,
+            inp: std::option::Option<
+                std::vec::Vec<crate::model::GlobalTableGlobalSecondaryIndexSettingsUpdate>,
+            >,
+        ) -> Self {
+            self.global_table_global_secondary_index_settings_update = inp;
+            self
+        }
         /// <p>Represents the settings for a global table in a Region that will be modified.</p>
         pub fn replica_settings_update(
             mut self,
             inp: std::vec::Vec<crate::model::ReplicaSettingsUpdate>,
         ) -> Self {
             self.replica_settings_update = Some(inp);
+            self
+        }
+        pub fn set_replica_settings_update(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ReplicaSettingsUpdate>>,
+        ) -> Self {
+            self.replica_settings_update = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UpdateGlobalTableSettings`](crate::operation::UpdateGlobalTableSettings)>
@@ -7680,6 +8741,10 @@ pub mod update_item_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>The primary key of the item to be updated. Each element consists of an attribute name and a value for that attribute.</p>
         /// <p>For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only need to provide a value for the partition key. For a composite primary key, you must provide values for both the partition key and the sort key.</p>
         pub fn key(
@@ -7689,6 +8754,15 @@ pub mod update_item_input {
             self.key = Some(inp);
             self
         }
+        pub fn set_key(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.key = inp;
+            self
+        }
         /// <p>This is a legacy parameter.  Use <code>UpdateExpression</code> instead.   For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html">AttributeUpdates</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn attribute_updates(
@@ -7696,6 +8770,15 @@ pub mod update_item_input {
             inp: std::collections::HashMap<std::string::String, crate::model::AttributeValueUpdate>,
         ) -> Self {
             self.attribute_updates = Some(inp);
+            self
+        }
+        pub fn set_attribute_updates(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValueUpdate>,
+            >,
+        ) -> Self {
+            self.attribute_updates = inp;
             self
         }
         /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.   For more information, see
@@ -7710,10 +8793,29 @@ pub mod update_item_input {
             self.expected = Some(inp);
             self
         }
+        pub fn set_expected(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<
+                    std::string::String,
+                    crate::model::ExpectedAttributeValue,
+                >,
+            >,
+        ) -> Self {
+            self.expected = inp;
+            self
+        }
         /// <p>This is a legacy parameter.  Use <code>ConditionExpression</code> instead.   For more information, see
         /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html">ConditionalOperator</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
         pub fn conditional_operator(mut self, inp: crate::model::ConditionalOperator) -> Self {
             self.conditional_operator = Some(inp);
+            self
+        }
+        pub fn set_conditional_operator(
+            mut self,
+            inp: std::option::Option<crate::model::ConditionalOperator>,
+        ) -> Self {
+            self.conditional_operator = inp;
             self
         }
         /// <p>Use <code>ReturnValues</code> if you want to get the item attributes as they appear
@@ -7751,6 +8853,13 @@ pub mod update_item_input {
             self.return_values = Some(inp);
             self
         }
+        pub fn set_return_values(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnValue>,
+        ) -> Self {
+            self.return_values = inp;
+            self
+        }
         /// <p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p>
         /// <ul>
         /// <li>
@@ -7774,6 +8883,13 @@ pub mod update_item_input {
             self.return_consumed_capacity = Some(inp);
             self
         }
+        pub fn set_return_consumed_capacity(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnConsumedCapacity>,
+        ) -> Self {
+            self.return_consumed_capacity = inp;
+            self
+        }
         /// <p>Determines whether item collection metrics are returned.  If set to <code>SIZE</code>, the response includes statistics about item collections, if any, that were modified during
         /// the operation are returned in the response. If set to <code>NONE</code> (the default), no statistics are returned.</p>
         pub fn return_item_collection_metrics(
@@ -7781,6 +8897,13 @@ pub mod update_item_input {
             inp: crate::model::ReturnItemCollectionMetrics,
         ) -> Self {
             self.return_item_collection_metrics = Some(inp);
+            self
+        }
+        pub fn set_return_item_collection_metrics(
+            mut self,
+            inp: std::option::Option<crate::model::ReturnItemCollectionMetrics>,
+        ) -> Self {
+            self.return_item_collection_metrics = inp;
             self
         }
         /// <p>An expression that defines one or more attributes to be updated, the action to be
@@ -7875,6 +8998,13 @@ pub mod update_item_input {
             self.update_expression = Some(inp.into());
             self
         }
+        pub fn set_update_expression(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.update_expression = inp;
+            self
+        }
         /// <p>A condition that must be satisfied in order for a conditional update to succeed.</p>
         /// <p>An expression can contain any of the following:</p>
         /// <ul>
@@ -7898,6 +9028,13 @@ pub mod update_item_input {
         /// Guide</i>.</p>
         pub fn condition_expression(mut self, inp: impl Into<std::string::String>) -> Self {
             self.condition_expression = Some(inp.into());
+            self
+        }
+        pub fn set_condition_expression(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.condition_expression = inp;
             self
         }
         /// <p>One or more substitution tokens for attribute names in an expression. The following are some use cases for using <code>ExpressionAttributeNames</code>:</p>
@@ -7951,6 +9088,15 @@ pub mod update_item_input {
             self.expression_attribute_names = Some(inp);
             self
         }
+        pub fn set_expression_attribute_names(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.expression_attribute_names = inp;
+            self
+        }
         /// <p>One or more values that can be substituted in an expression.</p>
         /// <p>Use the <b>:</b> (colon) character in an expression to
         /// dereference an attribute value. For example, suppose that you wanted to check whether
@@ -7973,6 +9119,15 @@ pub mod update_item_input {
             inp: std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
         ) -> Self {
             self.expression_attribute_values = Some(inp);
+            self
+        }
+        pub fn set_expression_attribute_values(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, crate::model::AttributeValue>,
+            >,
+        ) -> Self {
+            self.expression_attribute_values = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UpdateItem`](crate::operation::UpdateItem)>
@@ -8120,9 +9275,20 @@ pub mod update_table_input {
             self.attribute_definitions = Some(inp);
             self
         }
+        pub fn set_attribute_definitions(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::AttributeDefinition>>,
+        ) -> Self {
+            self.attribute_definitions = inp;
+            self
+        }
         /// <p>The name of the table to be updated.</p>
         pub fn table_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.table_name = Some(inp.into());
+            self
+        }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
             self
         }
         /// <p>Controls how you are charged for read and write throughput and how you manage capacity.
@@ -8144,9 +9310,23 @@ pub mod update_table_input {
             self.billing_mode = Some(inp);
             self
         }
+        pub fn set_billing_mode(
+            mut self,
+            inp: std::option::Option<crate::model::BillingMode>,
+        ) -> Self {
+            self.billing_mode = inp;
+            self
+        }
         /// <p>The new provisioned throughput settings for the specified table or index.</p>
         pub fn provisioned_throughput(mut self, inp: crate::model::ProvisionedThroughput) -> Self {
             self.provisioned_throughput = Some(inp);
+            self
+        }
+        pub fn set_provisioned_throughput(
+            mut self,
+            inp: std::option::Option<crate::model::ProvisionedThroughput>,
+        ) -> Self {
+            self.provisioned_throughput = inp;
             self
         }
         /// <p>An array of one or more global secondary indexes for the table. For each index in the array, you can request one action:</p>
@@ -8174,6 +9354,13 @@ pub mod update_table_input {
             self.global_secondary_index_updates = Some(inp);
             self
         }
+        pub fn set_global_secondary_index_updates(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::GlobalSecondaryIndexUpdate>>,
+        ) -> Self {
+            self.global_secondary_index_updates = inp;
+            self
+        }
         /// <p>Represents the DynamoDB Streams configuration for the table.</p>
         /// <note>
         /// <p>You receive a <code>ResourceInUseException</code> if you try to enable a stream on a
@@ -8184,9 +9371,23 @@ pub mod update_table_input {
             self.stream_specification = Some(inp);
             self
         }
+        pub fn set_stream_specification(
+            mut self,
+            inp: std::option::Option<crate::model::StreamSpecification>,
+        ) -> Self {
+            self.stream_specification = inp;
+            self
+        }
         /// <p>The new server-side encryption settings for the specified table.</p>
         pub fn sse_specification(mut self, inp: crate::model::SSESpecification) -> Self {
             self.sse_specification = Some(inp);
+            self
+        }
+        pub fn set_sse_specification(
+            mut self,
+            inp: std::option::Option<crate::model::SSESpecification>,
+        ) -> Self {
+            self.sse_specification = inp;
             self
         }
         /// <p>A list of replica update actions (create, delete, or update) for the table.</p>
@@ -8198,6 +9399,13 @@ pub mod update_table_input {
             inp: std::vec::Vec<crate::model::ReplicationGroupUpdate>,
         ) -> Self {
             self.replica_updates = Some(inp);
+            self
+        }
+        pub fn set_replica_updates(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ReplicationGroupUpdate>>,
+        ) -> Self {
+            self.replica_updates = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UpdateTable`](crate::operation::UpdateTable)>
@@ -8334,9 +9542,22 @@ pub mod update_table_replica_auto_scaling_input {
             self.global_secondary_index_updates = Some(inp);
             self
         }
+        pub fn set_global_secondary_index_updates(
+            mut self,
+            inp: std::option::Option<
+                std::vec::Vec<crate::model::GlobalSecondaryIndexAutoScalingUpdate>,
+            >,
+        ) -> Self {
+            self.global_secondary_index_updates = inp;
+            self
+        }
         /// <p>The name of the global table to be updated.</p>
         pub fn table_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.table_name = Some(inp.into());
+            self
+        }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
             self
         }
         /// <p>Represents the auto scaling settings to be modified for a global table or global
@@ -8348,6 +9569,13 @@ pub mod update_table_replica_auto_scaling_input {
             self.provisioned_write_capacity_auto_scaling_update = Some(inp);
             self
         }
+        pub fn set_provisioned_write_capacity_auto_scaling_update(
+            mut self,
+            inp: std::option::Option<crate::model::AutoScalingSettingsUpdate>,
+        ) -> Self {
+            self.provisioned_write_capacity_auto_scaling_update = inp;
+            self
+        }
         /// <p>Represents the auto scaling settings of replicas of the table that will be
         /// modified.</p>
         pub fn replica_updates(
@@ -8355,6 +9583,13 @@ pub mod update_table_replica_auto_scaling_input {
             inp: std::vec::Vec<crate::model::ReplicaAutoScalingUpdate>,
         ) -> Self {
             self.replica_updates = Some(inp);
+            self
+        }
+        pub fn set_replica_updates(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::ReplicaAutoScalingUpdate>>,
+        ) -> Self {
+            self.replica_updates = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UpdateTableReplicaAutoScaling`](crate::operation::UpdateTableReplicaAutoScaling)>
@@ -8485,12 +9720,23 @@ pub mod update_time_to_live_input {
             self.table_name = Some(inp.into());
             self
         }
+        pub fn set_table_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.table_name = inp;
+            self
+        }
         /// <p>Represents the settings used to enable or disable Time to Live for the specified table.</p>
         pub fn time_to_live_specification(
             mut self,
             inp: crate::model::TimeToLiveSpecification,
         ) -> Self {
             self.time_to_live_specification = Some(inp);
+            self
+        }
+        pub fn set_time_to_live_specification(
+            mut self,
+            inp: std::option::Option<crate::model::TimeToLiveSpecification>,
+        ) -> Self {
+            self.time_to_live_specification = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UpdateTimeToLive`](crate::operation::UpdateTimeToLive)>

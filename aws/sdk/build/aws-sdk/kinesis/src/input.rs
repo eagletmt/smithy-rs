@@ -21,9 +21,22 @@ pub mod add_tags_to_stream_input {
             self.tags = Some(inp);
             self
         }
+        pub fn set_tags(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.tags = inp;
+            self
+        }
         /// <p>The name of the stream.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`AddTagsToStream`](crate::operation::AddTagsToStream)>
@@ -144,11 +157,19 @@ pub mod create_stream_input {
             self.stream_name = Some(inp.into());
             self
         }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
+            self
+        }
         /// <p>The number of shards that the stream will use. The throughput of the stream is a
         /// function of the number of shards; more shards are required for greater provisioned
         /// throughput.</p>
         pub fn shard_count(mut self, inp: i32) -> Self {
             self.shard_count = Some(inp);
+            self
+        }
+        pub fn set_shard_count(mut self, inp: std::option::Option<i32>) -> Self {
+            self.shard_count = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`CreateStream`](crate::operation::CreateStream)>
@@ -266,9 +287,17 @@ pub mod decrease_stream_retention_period_input {
             self.retention_period_hours = Some(inp);
             self
         }
+        pub fn set_retention_period_hours(mut self, inp: std::option::Option<i32>) -> Self {
+            self.retention_period_hours = inp;
+            self
+        }
         /// <p>The name of the stream to modify.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DecreaseStreamRetentionPeriod`](crate::operation::DecreaseStreamRetentionPeriod)>
@@ -393,11 +422,19 @@ pub mod delete_stream_input {
             self.stream_name = Some(inp.into());
             self
         }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
+            self
+        }
         /// <p>If this parameter is unset (<code>null</code>) or if you set it to <code>false</code>,
         /// and the stream has registered consumers, the call to <code>DeleteStream</code> fails
         /// with a <code>ResourceInUseException</code>. </p>
         pub fn enforce_consumer_deletion(mut self, inp: bool) -> Self {
             self.enforce_consumer_deletion = Some(inp);
+            self
+        }
+        pub fn set_enforce_consumer_deletion(mut self, inp: std::option::Option<bool>) -> Self {
+            self.enforce_consumer_deletion = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DeleteStream`](crate::operation::DeleteStream)>
@@ -516,9 +553,17 @@ pub mod deregister_stream_consumer_input {
             self.stream_arn = Some(inp.into());
             self
         }
+        pub fn set_stream_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_arn = inp;
+            self
+        }
         /// <p>The name that you gave to the consumer.</p>
         pub fn consumer_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.consumer_name = Some(inp.into());
+            self
+        }
+        pub fn set_consumer_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.consumer_name = inp;
             self
         }
         /// <p>The ARN returned by Kinesis Data Streams when you registered the consumer. If you
@@ -528,6 +573,10 @@ pub mod deregister_stream_consumer_input {
         /// contains its ARN.</p>
         pub fn consumer_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.consumer_arn = Some(inp.into());
+            self
+        }
+        pub fn set_consumer_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.consumer_arn = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DeregisterStreamConsumer`](crate::operation::DeregisterStreamConsumer)>
@@ -747,15 +796,30 @@ pub mod describe_stream_input {
             self.stream_name = Some(inp.into());
             self
         }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
+            self
+        }
         /// <p>The shard ID of the shard to start with.</p>
         pub fn exclusive_start_shard_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.exclusive_start_shard_id = Some(inp.into());
+            self
+        }
+        pub fn set_exclusive_start_shard_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.exclusive_start_shard_id = inp;
             self
         }
         /// <p>The maximum number of shards to return in a single call. The default value is 100.
         /// If you specify a value greater than 100, at most 100 shards are returned.</p>
         pub fn limit(mut self, inp: i32) -> Self {
             self.limit = Some(inp);
+            self
+        }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DescribeStream`](crate::operation::DescribeStream)>
@@ -876,14 +940,26 @@ pub mod describe_stream_consumer_input {
             self.stream_arn = Some(inp.into());
             self
         }
+        pub fn set_stream_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_arn = inp;
+            self
+        }
         /// <p>The name that you gave to the consumer.</p>
         pub fn consumer_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.consumer_name = Some(inp.into());
             self
         }
+        pub fn set_consumer_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.consumer_name = inp;
+            self
+        }
         /// <p>The ARN returned by Kinesis Data Streams when you registered the consumer.</p>
         pub fn consumer_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.consumer_arn = Some(inp.into());
+            self
+        }
+        pub fn set_consumer_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.consumer_arn = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DescribeStreamConsumer`](crate::operation::DescribeStreamConsumer)>
@@ -1001,6 +1077,10 @@ pub mod describe_stream_summary_input {
         /// <p>The name of the stream to describe.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DescribeStreamSummary`](crate::operation::DescribeStreamSummary)>
@@ -1167,10 +1247,21 @@ pub mod disable_enhanced_monitoring_input {
             self.shard_level_metrics = Some(inp);
             self
         }
+        pub fn set_shard_level_metrics(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::MetricsName>>,
+        ) -> Self {
+            self.shard_level_metrics = inp;
+            self
+        }
         /// <p>The name of the Kinesis data stream for which to disable enhanced
         /// monitoring.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DisableEnhancedMonitoring`](crate::operation::DisableEnhancedMonitoring)>
@@ -1289,6 +1380,10 @@ pub mod enable_enhanced_monitoring_input {
             self.stream_name = Some(inp.into());
             self
         }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
+            self
+        }
         /// <p>List of shard-level metrics to enable.</p>
         /// <p>The following are the valid shard-level metrics. The value "<code>ALL</code>"
         /// enables every metric.</p>
@@ -1342,6 +1437,13 @@ pub mod enable_enhanced_monitoring_input {
             inp: std::vec::Vec<crate::model::MetricsName>,
         ) -> Self {
             self.shard_level_metrics = Some(inp);
+            self
+        }
+        pub fn set_shard_level_metrics(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::MetricsName>>,
+        ) -> Self {
+            self.shard_level_metrics = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`EnableEnhancedMonitoring`](crate::operation::EnableEnhancedMonitoring)>
@@ -1462,11 +1564,19 @@ pub mod get_records_input {
             self.shard_iterator = Some(inp.into());
             self
         }
+        pub fn set_shard_iterator(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.shard_iterator = inp;
+            self
+        }
         /// <p>The maximum number of records to return. Specify a value of up to 10,000. If you
         /// specify a value that is greater than 10,000, <a>GetRecords</a> throws
         /// <code>InvalidArgumentException</code>. The default value is 10,000.</p>
         pub fn limit(mut self, inp: i32) -> Self {
             self.limit = Some(inp);
+            self
+        }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`GetRecords`](crate::operation::GetRecords)>
@@ -1612,15 +1722,33 @@ pub mod get_shard_iterator_input {
             self.shard_iterator_type = Some(inp);
             self
         }
+        pub fn set_shard_iterator_type(
+            mut self,
+            inp: std::option::Option<crate::model::ShardIteratorType>,
+        ) -> Self {
+            self.shard_iterator_type = inp;
+            self
+        }
         /// <p>The shard ID of the Kinesis Data Streams shard to get the iterator for.</p>
         pub fn shard_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.shard_id = Some(inp.into());
+            self
+        }
+        pub fn set_shard_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.shard_id = inp;
             self
         }
         /// <p>The sequence number of the data record in the shard from which to start reading.
         /// Used with shard iterator type AT_SEQUENCE_NUMBER and AFTER_SEQUENCE_NUMBER.</p>
         pub fn starting_sequence_number(mut self, inp: impl Into<std::string::String>) -> Self {
             self.starting_sequence_number = Some(inp.into());
+            self
+        }
+        pub fn set_starting_sequence_number(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.starting_sequence_number = inp;
             self
         }
         /// <p>The time stamp of the data record from which to start reading. Used with shard
@@ -1634,9 +1762,17 @@ pub mod get_shard_iterator_input {
             self.timestamp = Some(inp);
             self
         }
+        pub fn set_timestamp(mut self, inp: std::option::Option<smithy_types::Instant>) -> Self {
+            self.timestamp = inp;
+            self
+        }
         /// <p>The name of the Amazon Kinesis data stream.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`GetShardIterator`](crate::operation::GetShardIterator)>
@@ -1761,9 +1897,17 @@ pub mod increase_stream_retention_period_input {
             self.retention_period_hours = Some(inp);
             self
         }
+        pub fn set_retention_period_hours(mut self, inp: std::option::Option<i32>) -> Self {
+            self.retention_period_hours = inp;
+            self
+        }
         /// <p>The name of the stream to modify.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`IncreaseStreamRetentionPeriod`](crate::operation::IncreaseStreamRetentionPeriod)>
@@ -1898,6 +2042,10 @@ pub mod list_shards_input {
             self.max_results = Some(inp);
             self
         }
+        pub fn set_max_results(mut self, inp: std::option::Option<i32>) -> Self {
+            self.max_results = inp;
+            self
+        }
         /// <p>Specify this input parameter to distinguish data streams that have the same name.
         /// For example, if you create a data stream and then delete it, and you later create
         /// another data stream with the same name, you can use this input parameter to specify
@@ -1906,6 +2054,13 @@ pub mod list_shards_input {
         /// parameter.</p>
         pub fn stream_creation_timestamp(mut self, inp: smithy_types::Instant) -> Self {
             self.stream_creation_timestamp = Some(inp);
+            self
+        }
+        pub fn set_stream_creation_timestamp(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.stream_creation_timestamp = inp;
             self
         }
         /// <p>When the number of shards in the data stream is greater than the default value for
@@ -1934,6 +2089,10 @@ pub mod list_shards_input {
             self.next_token = Some(inp.into());
             self
         }
+        pub fn set_next_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_token = inp;
+            self
+        }
         /// <p>Specify this parameter to indicate that you want to list the shards starting with
         /// the shard whose ID immediately follows <code>ExclusiveStartShardId</code>.</p>
         /// <p>If you don't specify this parameter, the default behavior is for
@@ -1944,8 +2103,22 @@ pub mod list_shards_input {
             self.exclusive_start_shard_id = Some(inp.into());
             self
         }
+        pub fn set_exclusive_start_shard_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.exclusive_start_shard_id = inp;
+            self
+        }
         pub fn shard_filter(mut self, inp: crate::model::ShardFilter) -> Self {
             self.shard_filter = Some(inp);
+            self
+        }
+        pub fn set_shard_filter(
+            mut self,
+            inp: std::option::Option<crate::model::ShardFilter>,
+        ) -> Self {
+            self.shard_filter = inp;
             self
         }
         /// <p>The name of the data stream whose shards you want to list. </p>
@@ -1953,6 +2126,10 @@ pub mod list_shards_input {
         /// parameter.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListShards`](crate::operation::ListShards)>
@@ -2101,6 +2278,10 @@ pub mod list_stream_consumers_input {
             self.next_token = Some(inp.into());
             self
         }
+        pub fn set_next_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.next_token = inp;
+            self
+        }
         /// <p>Specify this input parameter to distinguish data streams that have the same name. For
         /// example, if you create a data stream and then delete it, and you later create another
         /// data stream with the same name, you can use this input parameter to specify which of the
@@ -2110,16 +2291,31 @@ pub mod list_stream_consumers_input {
             self.stream_creation_timestamp = Some(inp);
             self
         }
+        pub fn set_stream_creation_timestamp(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.stream_creation_timestamp = inp;
+            self
+        }
         /// <p>The ARN of the Kinesis data stream for which you want to list the registered
         /// consumers. For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
         pub fn stream_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_arn = Some(inp.into());
             self
         }
+        pub fn set_stream_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_arn = inp;
+            self
+        }
         /// <p>The maximum number of consumers that you want a single call of
         /// <code>ListStreamConsumers</code> to return.</p>
         pub fn max_results(mut self, inp: i32) -> Self {
             self.max_results = Some(inp);
+            self
+        }
+        pub fn set_max_results(mut self, inp: std::option::Option<i32>) -> Self {
+            self.max_results = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListStreamConsumers`](crate::operation::ListStreamConsumers)>
@@ -2242,9 +2438,20 @@ pub mod list_streams_input {
             self.limit = Some(inp);
             self
         }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
+            self
+        }
         /// <p>The name of the stream to start the list with.</p>
         pub fn exclusive_start_stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.exclusive_start_stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_exclusive_start_stream_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.exclusive_start_stream_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListStreams`](crate::operation::ListStreams)>
@@ -2365,6 +2572,10 @@ pub mod list_tags_for_stream_input {
             self.limit = Some(inp);
             self
         }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
+            self
+        }
         /// <p>The key to use as the starting point for the list of tags. If this parameter is
         /// set, <code>ListTagsForStream</code> gets all tags that occur after
         /// <code>ExclusiveStartTagKey</code>. </p>
@@ -2372,9 +2583,20 @@ pub mod list_tags_for_stream_input {
             self.exclusive_start_tag_key = Some(inp.into());
             self
         }
+        pub fn set_exclusive_start_tag_key(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.exclusive_start_tag_key = inp;
+            self
+        }
         /// <p>The name of the stream.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListTagsForStream`](crate::operation::ListTagsForStream)>
@@ -2496,15 +2718,30 @@ pub mod merge_shards_input {
             self.adjacent_shard_to_merge = Some(inp.into());
             self
         }
+        pub fn set_adjacent_shard_to_merge(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.adjacent_shard_to_merge = inp;
+            self
+        }
         /// <p>The name of the stream for the merge.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// <p>The shard ID of the shard to combine with the adjacent shard for the
         /// merge.</p>
         pub fn shard_to_merge(mut self, inp: impl Into<std::string::String>) -> Self {
             self.shard_to_merge = Some(inp.into());
+            self
+        }
+        pub fn set_shard_to_merge(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.shard_to_merge = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`MergeShards`](crate::operation::MergeShards)>
@@ -2626,10 +2863,21 @@ pub mod put_record_input {
             self.stream_name = Some(inp.into());
             self
         }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
+            self
+        }
         /// <p>The hash value used to explicitly determine the shard the data record is assigned
         /// to by overriding the partition key hash.</p>
         pub fn explicit_hash_key(mut self, inp: impl Into<std::string::String>) -> Self {
             self.explicit_hash_key = Some(inp.into());
+            self
+        }
+        pub fn set_explicit_hash_key(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.explicit_hash_key = inp;
             self
         }
         /// <p>Guarantees strictly increasing sequence numbers, for puts from the same client and
@@ -2639,6 +2887,13 @@ pub mod put_record_input {
         /// parameter is not set, records are coarsely ordered based on arrival time.</p>
         pub fn sequence_number_for_ordering(mut self, inp: impl Into<std::string::String>) -> Self {
             self.sequence_number_for_ordering = Some(inp.into());
+            self
+        }
+        pub fn set_sequence_number_for_ordering(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.sequence_number_for_ordering = inp;
             self
         }
         /// <p>Determines which shard in the stream the data record is assigned to. Partition keys
@@ -2652,12 +2907,20 @@ pub mod put_record_input {
             self.partition_key = Some(inp.into());
             self
         }
+        pub fn set_partition_key(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.partition_key = inp;
+            self
+        }
         /// <p>The data blob to put into the record, which is base64-encoded when the blob is
         /// serialized. When the data blob (the payload before base64-encoding) is added to the
         /// partition key size, the total size must not exceed the maximum record size (1
         /// MiB).</p>
         pub fn data(mut self, inp: smithy_types::Blob) -> Self {
             self.data = Some(inp);
+            self
+        }
+        pub fn set_data(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.data = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`PutRecord`](crate::operation::PutRecord)>
@@ -2780,9 +3043,20 @@ pub mod put_records_input {
             self.records = Some(inp);
             self
         }
+        pub fn set_records(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::PutRecordsRequestEntry>>,
+        ) -> Self {
+            self.records = inp;
+            self
+        }
         /// <p>The stream name associated with the request.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`PutRecords`](crate::operation::PutRecords)>
@@ -2900,10 +3174,18 @@ pub mod register_stream_consumer_input {
             self.consumer_name = Some(inp.into());
             self
         }
+        pub fn set_consumer_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.consumer_name = inp;
+            self
+        }
         /// <p>The ARN of the Kinesis data stream that you want to register the consumer with. For
         /// more info, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
         pub fn stream_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_arn = Some(inp.into());
+            self
+        }
+        pub fn set_stream_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_arn = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`RegisterStreamConsumer`](crate::operation::RegisterStreamConsumer)>
@@ -3022,9 +3304,20 @@ pub mod remove_tags_from_stream_input {
             self.tag_keys = Some(inp);
             self
         }
+        pub fn set_tag_keys(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.tag_keys = inp;
+            self
+        }
         /// <p>The name of the stream.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`RemoveTagsFromStream`](crate::operation::RemoveTagsFromStream)>
@@ -3144,6 +3437,10 @@ pub mod split_shard_input {
             self.shard_to_split = Some(inp.into());
             self
         }
+        pub fn set_shard_to_split(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.shard_to_split = inp;
+            self
+        }
         /// <p>A hash key value for the starting hash key of one of the child shards created by
         /// the split. The hash key range for a given shard constitutes a set of ordered contiguous
         /// positive integers. The value for <code>NewStartingHashKey</code> must be in the range of
@@ -3155,9 +3452,20 @@ pub mod split_shard_input {
             self.new_starting_hash_key = Some(inp.into());
             self
         }
+        pub fn set_new_starting_hash_key(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.new_starting_hash_key = inp;
+            self
+        }
         /// <p>The name of the stream for the shard split.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`SplitShard`](crate::operation::SplitShard)>
@@ -3277,9 +3585,20 @@ pub mod start_stream_encryption_input {
             self.stream_name = Some(inp.into());
             self
         }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
+            self
+        }
         /// <p>The encryption type to use. The only valid value is <code>KMS</code>.</p>
         pub fn encryption_type(mut self, inp: crate::model::EncryptionType) -> Self {
             self.encryption_type = Some(inp);
+            self
+        }
+        pub fn set_encryption_type(
+            mut self,
+            inp: std::option::Option<crate::model::EncryptionType>,
+        ) -> Self {
+            self.encryption_type = inp;
             self
         }
         /// <p>The GUID for the customer-managed AWS KMS key to use for encryption. This value can
@@ -3315,6 +3634,10 @@ pub mod start_stream_encryption_input {
         /// </ul>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
+            self
+        }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`StartStreamEncryption`](crate::operation::StartStreamEncryption)>
@@ -3436,9 +3759,20 @@ pub mod stop_stream_encryption_input {
             self.stream_name = Some(inp.into());
             self
         }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
+            self
+        }
         /// <p>The encryption type. The only valid value is <code>KMS</code>.</p>
         pub fn encryption_type(mut self, inp: crate::model::EncryptionType) -> Self {
             self.encryption_type = Some(inp);
+            self
+        }
+        pub fn set_encryption_type(
+            mut self,
+            inp: std::option::Option<crate::model::EncryptionType>,
+        ) -> Self {
+            self.encryption_type = inp;
             self
         }
         /// <p>The GUID for the customer-managed AWS KMS key to use for encryption. This value can
@@ -3474,6 +3808,10 @@ pub mod stop_stream_encryption_input {
         /// </ul>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
+            self
+        }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`StopStreamEncryption`](crate::operation::StopStreamEncryption)>
@@ -3596,14 +3934,29 @@ pub mod subscribe_to_shard_input {
             self.shard_id = Some(inp.into());
             self
         }
+        pub fn set_shard_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.shard_id = inp;
+            self
+        }
         /// <p></p>
         pub fn starting_position(mut self, inp: crate::model::StartingPosition) -> Self {
             self.starting_position = Some(inp);
             self
         }
+        pub fn set_starting_position(
+            mut self,
+            inp: std::option::Option<crate::model::StartingPosition>,
+        ) -> Self {
+            self.starting_position = inp;
+            self
+        }
         /// <p>For this parameter, use the value you obtained when you called <a>RegisterStreamConsumer</a>.</p>
         pub fn consumer_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.consumer_arn = Some(inp.into());
+            self
+        }
+        pub fn set_consumer_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.consumer_arn = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`SubscribeToShard`](crate::operation::SubscribeToShard)>
@@ -3724,9 +4077,20 @@ pub mod update_shard_count_input {
             self.scaling_type = Some(inp);
             self
         }
+        pub fn set_scaling_type(
+            mut self,
+            inp: std::option::Option<crate::model::ScalingType>,
+        ) -> Self {
+            self.scaling_type = inp;
+            self
+        }
         /// <p>The name of the stream.</p>
         pub fn stream_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.stream_name = Some(inp.into());
+            self
+        }
+        pub fn set_stream_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.stream_name = inp;
             self
         }
         /// <p>The new number of shards. This value has the following default limits. By default,
@@ -3751,6 +4115,10 @@ pub mod update_shard_count_input {
         /// </ul>
         pub fn target_shard_count(mut self, inp: i32) -> Self {
             self.target_shard_count = Some(inp);
+            self
+        }
+        pub fn set_target_shard_count(mut self, inp: std::option::Option<i32>) -> Self {
+            self.target_shard_count = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UpdateShardCount`](crate::operation::UpdateShardCount)>

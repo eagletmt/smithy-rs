@@ -41,6 +41,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for SigningAlgorithmSpec {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(SigningAlgorithmSpec::from(s))
+    }
+}
+
 impl SigningAlgorithmSpec {
     pub fn as_str(&self) -> &str {
         match self {
@@ -107,6 +116,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for MessageType {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(MessageType::from(s))
+    }
+}
+
 impl MessageType {
     pub fn as_str(&self) -> &str {
         match self {
@@ -181,9 +199,17 @@ pub mod tag {
             self.tag_key = Some(inp.into());
             self
         }
+        pub fn set_tag_key(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.tag_key = inp;
+            self
+        }
         /// <p>The value of the tag.</p>
         pub fn tag_value(mut self, inp: impl Into<std::string::String>) -> Self {
             self.tag_value = Some(inp.into());
+            self
+        }
+        pub fn set_tag_value(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.tag_value = inp;
             self
         }
         /// Consumes the builder and constructs a [`Tag`](crate::model::Tag)
@@ -231,6 +257,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for EncryptionAlgorithmSpec {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(EncryptionAlgorithmSpec::from(s))
+    }
+}
+
 impl EncryptionAlgorithmSpec {
     pub fn as_str(&self) -> &str {
         match self {
@@ -364,9 +399,17 @@ pub mod grant_list_entry {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The unique identifier for the grant.</p>
         pub fn grant_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.grant_id = Some(inp.into());
+            self
+        }
+        pub fn set_grant_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.grant_id = inp;
             self
         }
         /// <p>The friendly name that identifies the grant. If a name was provided in the <a>CreateGrant</a> request, that name is returned. Otherwise this value is null.</p>
@@ -374,9 +417,20 @@ pub mod grant_list_entry {
             self.name = Some(inp.into());
             self
         }
+        pub fn set_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.name = inp;
+            self
+        }
         /// <p>The date and time when the grant was created.</p>
         pub fn creation_date(mut self, inp: smithy_types::Instant) -> Self {
             self.creation_date = Some(inp);
+            self
+        }
+        pub fn set_creation_date(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.creation_date = inp;
             self
         }
         /// <p>The identity that gets the permissions in the grant.</p>
@@ -389,9 +443,23 @@ pub mod grant_list_entry {
             self.grantee_principal = Some(inp.into());
             self
         }
+        pub fn set_grantee_principal(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.grantee_principal = inp;
+            self
+        }
         /// <p>The principal that can retire the grant.</p>
         pub fn retiring_principal(mut self, inp: impl Into<std::string::String>) -> Self {
             self.retiring_principal = Some(inp.into());
+            self
+        }
+        pub fn set_retiring_principal(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.retiring_principal = inp;
             self
         }
         /// <p>The AWS account under which the grant was issued.</p>
@@ -399,15 +467,36 @@ pub mod grant_list_entry {
             self.issuing_account = Some(inp.into());
             self
         }
+        pub fn set_issuing_account(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.issuing_account = inp;
+            self
+        }
         /// <p>The list of operations permitted by the grant.</p>
         pub fn operations(mut self, inp: std::vec::Vec<crate::model::GrantOperation>) -> Self {
             self.operations = Some(inp);
+            self
+        }
+        pub fn set_operations(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::GrantOperation>>,
+        ) -> Self {
+            self.operations = inp;
             self
         }
         /// <p>A list of key-value pairs that must be present in the encryption context of certain
         /// subsequent operations that the grant allows.</p>
         pub fn constraints(mut self, inp: crate::model::GrantConstraints) -> Self {
             self.constraints = Some(inp);
+            self
+        }
+        pub fn set_constraints(
+            mut self,
+            inp: std::option::Option<crate::model::GrantConstraints>,
+        ) -> Self {
+            self.constraints = inp;
             self
         }
         /// Consumes the builder and constructs a [`GrantListEntry`](crate::model::GrantListEntry)
@@ -506,6 +595,15 @@ pub mod grant_constraints {
             self.encryption_context_subset = Some(inp);
             self
         }
+        pub fn set_encryption_context_subset(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.encryption_context_subset = inp;
+            self
+        }
         /// <p>A list of key-value pairs that must match the encryption context in the <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations">cryptographic operation</a> request. The grant allows the operation only when the encryption context in the
         /// request is the same as the encryption context specified in this constraint.</p>
         pub fn encryption_context_equals(
@@ -513,6 +611,15 @@ pub mod grant_constraints {
             inp: std::collections::HashMap<std::string::String, std::string::String>,
         ) -> Self {
             self.encryption_context_equals = Some(inp);
+            self
+        }
+        pub fn set_encryption_context_equals(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.encryption_context_equals = inp;
             self
         }
         /// Consumes the builder and constructs a [`GrantConstraints`](crate::model::GrantConstraints)
@@ -584,6 +691,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for GrantOperation {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(GrantOperation::from(s))
+    }
+}
+
 impl GrantOperation {
     pub fn as_str(&self) -> &str {
         match self {
@@ -669,9 +785,17 @@ pub mod key_list_entry {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>ARN of the key.</p>
         pub fn key_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_arn = Some(inp.into());
+            self
+        }
+        pub fn set_key_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_arn = inp;
             self
         }
         /// Consumes the builder and constructs a [`KeyListEntry`](crate::model::KeyListEntry)
@@ -762,9 +886,17 @@ pub mod alias_list_entry {
             self.alias_name = Some(inp.into());
             self
         }
+        pub fn set_alias_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.alias_name = inp;
+            self
+        }
         /// <p>String that contains the key ARN.</p>
         pub fn alias_arn(mut self, inp: impl Into<std::string::String>) -> Self {
             self.alias_arn = Some(inp.into());
+            self
+        }
+        pub fn set_alias_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.alias_arn = inp;
             self
         }
         /// <p>String that contains the key identifier of the CMK associated with the alias.</p>
@@ -772,14 +904,32 @@ pub mod alias_list_entry {
             self.target_key_id = Some(inp.into());
             self
         }
+        pub fn set_target_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.target_key_id = inp;
+            self
+        }
         /// <p>Date and time that the alias was most recently created in the account and Region. Formatted as Unix time.</p>
         pub fn creation_date(mut self, inp: smithy_types::Instant) -> Self {
             self.creation_date = Some(inp);
             self
         }
+        pub fn set_creation_date(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.creation_date = inp;
+            self
+        }
         /// <p>Date and time that the alias was most recently associated with a CMK in the account and Region. Formatted as Unix time.</p>
         pub fn last_updated_date(mut self, inp: smithy_types::Instant) -> Self {
             self.last_updated_date = Some(inp);
+            self
+        }
+        pub fn set_last_updated_date(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.last_updated_date = inp;
             self
         }
         /// Consumes the builder and constructs a [`AliasListEntry`](crate::model::AliasListEntry)
@@ -828,6 +978,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for ExpirationModelType {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(ExpirationModelType::from(s))
+    }
+}
+
 impl ExpirationModelType {
     pub fn as_str(&self) -> &str {
         match self {
@@ -887,6 +1046,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for KeyUsageType {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(KeyUsageType::from(s))
+    }
+}
+
 impl KeyUsageType {
     pub fn as_str(&self) -> &str {
         match self {
@@ -958,6 +1126,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for CustomerMasterKeySpec {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(CustomerMasterKeySpec::from(s))
+    }
+}
+
 impl CustomerMasterKeySpec {
     pub fn as_str(&self) -> &str {
         match self {
@@ -1021,6 +1198,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for WrappingKeySpec {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(WrappingKeySpec::from(s))
+    }
+}
+
 impl WrappingKeySpec {
     pub fn as_str(&self) -> &str {
         match self {
@@ -1081,6 +1267,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for AlgorithmSpec {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(AlgorithmSpec::from(s))
+    }
+}
+
 impl AlgorithmSpec {
     pub fn as_str(&self) -> &str {
         match self {
@@ -1141,6 +1336,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for DataKeySpec {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(DataKeySpec::from(s))
+    }
+}
+
 impl DataKeySpec {
     pub fn as_str(&self) -> &str {
         match self {
@@ -1210,6 +1414,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for DataKeyPairSpec {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(DataKeyPairSpec::from(s))
+    }
+}
+
 impl DataKeyPairSpec {
     pub fn as_str(&self) -> &str {
         match self {
@@ -1442,9 +1655,17 @@ pub mod key_metadata {
             self.aws_account_id = Some(inp.into());
             self
         }
+        pub fn set_aws_account_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.aws_account_id = inp;
+            self
+        }
         /// <p>The globally unique identifier for the CMK.</p>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
+            self
+        }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
             self
         }
         /// <p>The Amazon Resource Name (ARN) of the CMK. For examples, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms">AWS Key Management Service
@@ -1454,9 +1675,20 @@ pub mod key_metadata {
             self.arn = Some(inp.into());
             self
         }
+        pub fn set_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.arn = inp;
+            self
+        }
         /// <p>The date and time when the CMK was created.</p>
         pub fn creation_date(mut self, inp: smithy_types::Instant) -> Self {
             self.creation_date = Some(inp);
+            self
+        }
+        pub fn set_creation_date(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.creation_date = inp;
             self
         }
         /// <p>Specifies whether the CMK is enabled. When <code>KeyState</code> is <code>Enabled</code>
@@ -1465,14 +1697,29 @@ pub mod key_metadata {
             self.enabled = Some(inp);
             self
         }
+        pub fn set_enabled(mut self, inp: bool) -> Self {
+            self.enabled = Some(inp);
+            self
+        }
         /// <p>The description of the CMK.</p>
         pub fn description(mut self, inp: impl Into<std::string::String>) -> Self {
             self.description = Some(inp.into());
             self
         }
+        pub fn set_description(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.description = inp;
+            self
+        }
         /// <p>The <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations">cryptographic operations</a> for which you can use the CMK.</p>
         pub fn key_usage(mut self, inp: crate::model::KeyUsageType) -> Self {
             self.key_usage = Some(inp);
+            self
+        }
+        pub fn set_key_usage(
+            mut self,
+            inp: std::option::Option<crate::model::KeyUsageType>,
+        ) -> Self {
+            self.key_usage = inp;
             self
         }
         /// <p>The current status of the CMK.</p>
@@ -1481,10 +1728,21 @@ pub mod key_metadata {
             self.key_state = Some(inp);
             self
         }
+        pub fn set_key_state(mut self, inp: std::option::Option<crate::model::KeyState>) -> Self {
+            self.key_state = inp;
+            self
+        }
         /// <p>The date and time after which AWS KMS deletes the CMK. This value is present only when
         /// <code>KeyState</code> is <code>PendingDeletion</code>.</p>
         pub fn deletion_date(mut self, inp: smithy_types::Instant) -> Self {
             self.deletion_date = Some(inp);
+            self
+        }
+        pub fn set_deletion_date(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.deletion_date = inp;
             self
         }
         /// <p>The time at which the imported key material expires. When the key material expires, AWS KMS
@@ -1493,6 +1751,10 @@ pub mod key_metadata {
         /// <code>KEY_MATERIAL_EXPIRES</code>, otherwise this value is omitted.</p>
         pub fn valid_to(mut self, inp: smithy_types::Instant) -> Self {
             self.valid_to = Some(inp);
+            self
+        }
+        pub fn set_valid_to(mut self, inp: std::option::Option<smithy_types::Instant>) -> Self {
+            self.valid_to = inp;
             self
         }
         /// <p>The source of the CMK's key material. When this value is <code>AWS_KMS</code>, AWS KMS
@@ -1504,10 +1766,21 @@ pub mod key_metadata {
             self.origin = Some(inp);
             self
         }
+        pub fn set_origin(mut self, inp: std::option::Option<crate::model::OriginType>) -> Self {
+            self.origin = inp;
+            self
+        }
         /// <p>A unique identifier for the <a href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a> that contains the CMK. This value is present
         /// only when the CMK is created in a custom key store.</p>
         pub fn custom_key_store_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.custom_key_store_id = Some(inp.into());
+            self
+        }
+        pub fn set_custom_key_store_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_id = inp;
             self
         }
         /// <p>The cluster ID of the AWS CloudHSM cluster that contains the key material for the CMK. When you
@@ -1518,10 +1791,24 @@ pub mod key_metadata {
             self.cloud_hsm_cluster_id = Some(inp.into());
             self
         }
+        pub fn set_cloud_hsm_cluster_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.cloud_hsm_cluster_id = inp;
+            self
+        }
         /// <p>Specifies whether the CMK's key material expires. This value is present only when
         /// <code>Origin</code> is <code>EXTERNAL</code>, otherwise this value is omitted.</p>
         pub fn expiration_model(mut self, inp: crate::model::ExpirationModelType) -> Self {
             self.expiration_model = Some(inp);
+            self
+        }
+        pub fn set_expiration_model(
+            mut self,
+            inp: std::option::Option<crate::model::ExpirationModelType>,
+        ) -> Self {
+            self.expiration_model = inp;
             self
         }
         /// <p>The manager of the CMK. CMKs in your AWS account are either customer managed or AWS
@@ -1531,12 +1818,26 @@ pub mod key_metadata {
             self.key_manager = Some(inp);
             self
         }
+        pub fn set_key_manager(
+            mut self,
+            inp: std::option::Option<crate::model::KeyManagerType>,
+        ) -> Self {
+            self.key_manager = inp;
+            self
+        }
         /// <p>Describes the type of key material in the CMK.</p>
         pub fn customer_master_key_spec(
             mut self,
             inp: crate::model::CustomerMasterKeySpec,
         ) -> Self {
             self.customer_master_key_spec = Some(inp);
+            self
+        }
+        pub fn set_customer_master_key_spec(
+            mut self,
+            inp: std::option::Option<crate::model::CustomerMasterKeySpec>,
+        ) -> Self {
+            self.customer_master_key_spec = inp;
             self
         }
         /// <p>The encryption algorithms that the CMK supports. You cannot use the CMK with other
@@ -1550,6 +1851,13 @@ pub mod key_metadata {
             self.encryption_algorithms = Some(inp);
             self
         }
+        pub fn set_encryption_algorithms(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::EncryptionAlgorithmSpec>>,
+        ) -> Self {
+            self.encryption_algorithms = inp;
+            self
+        }
         /// <p>The signing algorithms that the CMK supports. You cannot use the CMK with other
         /// signing algorithms within AWS KMS.</p>
         /// <p>This field appears only when the <code>KeyUsage</code> of the CMK is
@@ -1559,6 +1867,13 @@ pub mod key_metadata {
             inp: std::vec::Vec<crate::model::SigningAlgorithmSpec>,
         ) -> Self {
             self.signing_algorithms = Some(inp);
+            self
+        }
+        pub fn set_signing_algorithms(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::SigningAlgorithmSpec>>,
+        ) -> Self {
+            self.signing_algorithms = inp;
             self
         }
         /// Consumes the builder and constructs a [`KeyMetadata`](crate::model::KeyMetadata)
@@ -1620,6 +1935,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for KeyManagerType {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(KeyManagerType::from(s))
+    }
+}
+
 impl KeyManagerType {
     pub fn as_str(&self) -> &str {
         match self {
@@ -1681,6 +2005,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for OriginType {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(OriginType::from(s))
+    }
+}
+
 impl OriginType {
     pub fn as_str(&self) -> &str {
         match self {
@@ -1747,6 +2080,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for KeyState {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(KeyState::from(s))
+    }
+}
+
 impl KeyState {
     pub fn as_str(&self) -> &str {
         match self {
@@ -1933,9 +2275,23 @@ pub mod custom_key_stores_list_entry {
             self.custom_key_store_id = Some(inp.into());
             self
         }
+        pub fn set_custom_key_store_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_id = inp;
+            self
+        }
         /// <p>The user-specified friendly name for the custom key store.</p>
         pub fn custom_key_store_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.custom_key_store_name = Some(inp.into());
+            self
+        }
+        pub fn set_custom_key_store_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_name = inp;
             self
         }
         /// <p>A unique identifier for the AWS CloudHSM cluster that is associated with the custom key
@@ -1944,11 +2300,25 @@ pub mod custom_key_stores_list_entry {
             self.cloud_hsm_cluster_id = Some(inp.into());
             self
         }
+        pub fn set_cloud_hsm_cluster_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.cloud_hsm_cluster_id = inp;
+            self
+        }
         /// <p>The trust anchor certificate of the associated AWS CloudHSM cluster. When you <a href="https://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html#sign-csr">initialize the
         /// cluster</a>, you create this certificate and save it in the <code>customerCA.crt</code>
         /// file.</p>
         pub fn trust_anchor_certificate(mut self, inp: impl Into<std::string::String>) -> Self {
             self.trust_anchor_certificate = Some(inp.into());
+            self
+        }
+        pub fn set_trust_anchor_certificate(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.trust_anchor_certificate = inp;
             self
         }
         /// <p>Indicates whether the custom key store is connected to its AWS CloudHSM cluster.</p>
@@ -1963,6 +2333,13 @@ pub mod custom_key_stores_list_entry {
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn connection_state(mut self, inp: crate::model::ConnectionStateType) -> Self {
             self.connection_state = Some(inp);
+            self
+        }
+        pub fn set_connection_state(
+            mut self,
+            inp: std::option::Option<crate::model::ConnectionStateType>,
+        ) -> Self {
+            self.connection_state = inp;
             self
         }
         /// <p>Describes the connection error. This field appears in the response only when the <code>ConnectionState</code> is <code>FAILED</code>. For help resolving these errors, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-failed">How to Fix a Connection Failure</a> in <i>AWS Key Management Service Developer Guide</i>.</p>
@@ -2029,9 +2406,23 @@ pub mod custom_key_stores_list_entry {
             self.connection_error_code = Some(inp);
             self
         }
+        pub fn set_connection_error_code(
+            mut self,
+            inp: std::option::Option<crate::model::ConnectionErrorCodeType>,
+        ) -> Self {
+            self.connection_error_code = inp;
+            self
+        }
         /// <p>The date and time when the custom key store was created.</p>
         pub fn creation_date(mut self, inp: smithy_types::Instant) -> Self {
             self.creation_date = Some(inp);
+            self
+        }
+        pub fn set_creation_date(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.creation_date = inp;
             self
         }
         /// Consumes the builder and constructs a [`CustomKeyStoresListEntry`](crate::model::CustomKeyStoresListEntry)
@@ -2096,6 +2487,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for ConnectionErrorCodeType {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(ConnectionErrorCodeType::from(s))
+    }
+}
+
 impl ConnectionErrorCodeType {
     pub fn as_str(&self) -> &str {
         match self {
@@ -2168,6 +2568,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for ConnectionStateType {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(ConnectionStateType::from(s))
+    }
+}
+
 impl ConnectionStateType {
     pub fn as_str(&self) -> &str {
         match self {

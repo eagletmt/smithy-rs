@@ -39,9 +39,17 @@ pub mod validation_errors_entry {
             self.error_message = Some(inp.into());
             self
         }
+        pub fn set_error_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.error_message = inp;
+            self
+        }
         /// <p>Checks the name of the policy.</p>
         pub fn check_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.check_name = Some(inp.into());
+            self
+        }
+        pub fn set_check_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.check_name = inp;
             self
         }
         /// Consumes the builder and constructs a [`ValidationErrorsEntry`](crate::model::ValidationErrorsEntry)
@@ -99,9 +107,17 @@ pub mod tag {
             self.value = Some(inp.into());
             self
         }
+        pub fn set_value(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.value = inp;
+            self
+        }
         /// <p>The key identifier, or name, of the tag.</p>
         pub fn key(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key = Some(inp.into());
+            self
+        }
+        pub fn set_key(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key = inp;
             self
         }
         /// Consumes the builder and constructs a [`Tag`](crate::model::Tag)
@@ -160,6 +176,10 @@ pub mod rotation_rules_type {
         /// and influenced by a variety of factors that help distribute load.</p>
         pub fn automatically_after_days(mut self, inp: i64) -> Self {
             self.automatically_after_days = Some(inp);
+            self
+        }
+        pub fn set_automatically_after_days(mut self, inp: std::option::Option<i64>) -> Self {
+            self.automatically_after_days = inp;
             self
         }
         /// Consumes the builder and constructs a [`RotationRulesType`](crate::model::RotationRulesType)
@@ -245,9 +265,20 @@ pub mod secret_versions_list_entry {
             self.version_stages = Some(inp);
             self
         }
+        pub fn set_version_stages(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.version_stages = inp;
+            self
+        }
         /// <p>The date and time this version of the secret was created.</p>
         pub fn created_date(mut self, inp: smithy_types::Instant) -> Self {
             self.created_date = Some(inp);
+            self
+        }
+        pub fn set_created_date(mut self, inp: std::option::Option<smithy_types::Instant>) -> Self {
+            self.created_date = inp;
             self
         }
         /// <p>The unique version identifier of this version of the secret.</p>
@@ -255,10 +286,21 @@ pub mod secret_versions_list_entry {
             self.version_id = Some(inp.into());
             self
         }
+        pub fn set_version_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.version_id = inp;
+            self
+        }
         /// <p>The date that this version of the secret was last accessed. Note that the resolution of
         /// this field is at the date level and does not include the time.</p>
         pub fn last_accessed_date(mut self, inp: smithy_types::Instant) -> Self {
             self.last_accessed_date = Some(inp);
+            self
+        }
+        pub fn set_last_accessed_date(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.last_accessed_date = inp;
             self
         }
         /// Consumes the builder and constructs a [`SecretVersionsListEntry`](crate::model::SecretVersionsListEntry)
@@ -464,9 +506,20 @@ pub mod secret_list_entry {
             self.last_rotated_date = Some(inp);
             self
         }
+        pub fn set_last_rotated_date(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.last_rotated_date = inp;
+            self
+        }
         /// <p>The user-provided description of the secret.</p>
         pub fn description(mut self, inp: impl Into<std::string::String>) -> Self {
             self.description = Some(inp.into());
+            self
+        }
+        pub fn set_description(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.description = inp;
             self
         }
         /// <p>The ARN or alias of the AWS KMS customer master key (CMK) used to encrypt the
@@ -475,6 +528,10 @@ pub mod secret_list_entry {
         /// the default KMS CMK, the key named <code>awssecretsmanager</code>, for this account.</p>
         pub fn kms_key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.kms_key_id = Some(inp.into());
+            self
+        }
+        pub fn set_kms_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.kms_key_id = inp;
             self
         }
         /// <p>A list of all of the currently assigned <code>SecretVersionStage</code> staging labels and
@@ -491,9 +548,22 @@ pub mod secret_list_entry {
             self.secret_versions_to_stages = Some(inp);
             self
         }
+        pub fn set_secret_versions_to_stages(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::vec::Vec<std::string::String>>,
+            >,
+        ) -> Self {
+            self.secret_versions_to_stages = inp;
+            self
+        }
         /// <p>The date and time when a secret was created.</p>
         pub fn created_date(mut self, inp: smithy_types::Instant) -> Self {
             self.created_date = Some(inp);
+            self
+        }
+        pub fn set_created_date(mut self, inp: std::option::Option<smithy_types::Instant>) -> Self {
+            self.created_date = inp;
             self
         }
         /// <p>The date and time the deletion of the secret occurred. Not present on active secrets. The
@@ -503,6 +573,10 @@ pub mod secret_list_entry {
             self.deleted_date = Some(inp);
             self
         }
+        pub fn set_deleted_date(mut self, inp: std::option::Option<smithy_types::Instant>) -> Self {
+            self.deleted_date = inp;
+            self
+        }
         /// <p>The Amazon Resource Name (ARN) of the secret.</p>
         /// <p>For more information about ARNs in Secrets Manager, see <a href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#iam-resources">Policy Resources</a> in the
         /// <i>AWS Secrets Manager User Guide</i>.</p>
@@ -510,9 +584,17 @@ pub mod secret_list_entry {
             self.arn = Some(inp.into());
             self
         }
+        pub fn set_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.arn = inp;
+            self
+        }
         /// <p>Returns the name of the service that created the secret.</p>
         pub fn owning_service(mut self, inp: impl Into<std::string::String>) -> Self {
             self.owning_service = Some(inp.into());
+            self
+        }
+        pub fn set_owning_service(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.owning_service = inp;
             self
         }
         /// <p>The ARN of an AWS Lambda function invoked by Secrets Manager to rotate and expire the
@@ -521,15 +603,33 @@ pub mod secret_list_entry {
             self.rotation_lambda_arn = Some(inp.into());
             self
         }
+        pub fn set_rotation_lambda_arn(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.rotation_lambda_arn = inp;
+            self
+        }
         /// <p>The list of user-defined tags associated with the secret. To add tags to a
         /// secret, use <a>TagResource</a>. To remove tags, use <a>UntagResource</a>.</p>
         pub fn tags(mut self, inp: std::vec::Vec<crate::model::Tag>) -> Self {
             self.tags = Some(inp);
             self
         }
+        pub fn set_tags(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::Tag>>,
+        ) -> Self {
+            self.tags = inp;
+            self
+        }
         /// <p>Indicates whether automatic, scheduled rotation is enabled for this secret.</p>
         pub fn rotation_enabled(mut self, inp: bool) -> Self {
             self.rotation_enabled = Some(inp);
+            self
+        }
+        pub fn set_rotation_enabled(mut self, inp: std::option::Option<bool>) -> Self {
+            self.rotation_enabled = inp;
             self
         }
         /// <p>The last date that this secret was accessed. This value is truncated to midnight of the
@@ -538,14 +638,35 @@ pub mod secret_list_entry {
             self.last_accessed_date = Some(inp);
             self
         }
+        pub fn set_last_accessed_date(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.last_accessed_date = inp;
+            self
+        }
         /// <p>The last date and time that this secret was modified in any way.</p>
         pub fn last_changed_date(mut self, inp: smithy_types::Instant) -> Self {
             self.last_changed_date = Some(inp);
             self
         }
+        pub fn set_last_changed_date(
+            mut self,
+            inp: std::option::Option<smithy_types::Instant>,
+        ) -> Self {
+            self.last_changed_date = inp;
+            self
+        }
         /// <p>A structure that defines the rotation configuration for the secret.</p>
         pub fn rotation_rules(mut self, inp: crate::model::RotationRulesType) -> Self {
             self.rotation_rules = Some(inp);
+            self
+        }
+        pub fn set_rotation_rules(
+            mut self,
+            inp: std::option::Option<crate::model::RotationRulesType>,
+        ) -> Self {
+            self.rotation_rules = inp;
             self
         }
         /// <p>The friendly name of the secret. You can use forward slashes in the name to represent a
@@ -554,6 +675,10 @@ pub mod secret_list_entry {
         /// <code>prod</code>. </p>
         pub fn name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.name = Some(inp.into());
+            self
+        }
+        pub fn set_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.name = inp;
             self
         }
         /// Consumes the builder and constructs a [`SecretListEntry`](crate::model::SecretListEntry)
@@ -624,9 +749,23 @@ pub mod filter {
             self.key = Some(inp);
             self
         }
+        pub fn set_key(
+            mut self,
+            inp: std::option::Option<crate::model::FilterNameStringType>,
+        ) -> Self {
+            self.key = inp;
+            self
+        }
         /// <p>Filters your list of secrets by a specific value.</p>
         pub fn values(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.values = Some(inp);
+            self
+        }
+        pub fn set_values(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.values = inp;
             self
         }
         /// Consumes the builder and constructs a [`Filter`](crate::model::Filter)
@@ -722,6 +861,15 @@ where
         }
     }
 }
+
+impl std::str::FromStr for SortOrderType {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(SortOrderType::from(s))
+    }
+}
+
 impl SortOrderType {
     pub fn as_str(&self) -> &str {
         match self {

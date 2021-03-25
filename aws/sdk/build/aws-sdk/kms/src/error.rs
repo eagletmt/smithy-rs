@@ -4254,6 +4254,10 @@ pub mod not_found_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`NotFoundError`](crate::error::NotFoundError)
         pub fn build(self) -> crate::error::NotFoundError {
             crate::error::NotFoundError {
@@ -4319,6 +4323,10 @@ pub mod kms_invalid_state_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`KMSInvalidStateError`](crate::error::KMSInvalidStateError)
         pub fn build(self) -> crate::error::KMSInvalidStateError {
             crate::error::KMSInvalidStateError {
@@ -4379,6 +4387,10 @@ pub mod kms_invalid_signature_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`KMSInvalidSignatureError`](crate::error::KMSInvalidSignatureError)
@@ -4442,6 +4454,10 @@ pub mod kms_internal_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`KMSInternalError`](crate::error::KMSInternalError)
         pub fn build(self) -> crate::error::KMSInternalError {
             crate::error::KMSInternalError {
@@ -4501,6 +4517,10 @@ pub mod key_unavailable_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`KeyUnavailableError`](crate::error::KeyUnavailableError)
@@ -4579,6 +4599,10 @@ pub mod invalid_key_usage_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`InvalidKeyUsageError`](crate::error::InvalidKeyUsageError)
         pub fn build(self) -> crate::error::InvalidKeyUsageError {
             crate::error::InvalidKeyUsageError {
@@ -4639,6 +4663,10 @@ pub mod invalid_grant_token_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`InvalidGrantTokenError`](crate::error::InvalidGrantTokenError)
         pub fn build(self) -> crate::error::InvalidGrantTokenError {
             crate::error::InvalidGrantTokenError {
@@ -4697,6 +4725,10 @@ pub mod disabled_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`DisabledError`](crate::error::DisabledError)
@@ -4760,6 +4792,10 @@ pub mod dependency_timeout_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`DependencyTimeoutError`](crate::error::DependencyTimeoutError)
         pub fn build(self) -> crate::error::DependencyTimeoutError {
             crate::error::DependencyTimeoutError {
@@ -4819,6 +4855,10 @@ pub mod invalid_arn_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`InvalidArnError`](crate::error::InvalidArnError)
@@ -4885,6 +4925,10 @@ pub mod custom_key_store_not_found_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`CustomKeyStoreNotFoundError`](crate::error::CustomKeyStoreNotFoundError)
         pub fn build(self) -> crate::error::CustomKeyStoreNotFoundError {
             crate::error::CustomKeyStoreNotFoundError {
@@ -4948,6 +4992,10 @@ pub mod custom_key_store_name_in_use_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`CustomKeyStoreNameInUseError`](crate::error::CustomKeyStoreNameInUseError)
@@ -5033,6 +5081,10 @@ pub mod custom_key_store_invalid_state_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`CustomKeyStoreInvalidStateError`](crate::error::CustomKeyStoreInvalidStateError)
         pub fn build(self) -> crate::error::CustomKeyStoreInvalidStateError {
             crate::error::CustomKeyStoreInvalidStateError {
@@ -5103,6 +5155,10 @@ pub mod cloud_hsm_cluster_not_related_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`CloudHsmClusterNotRelatedError`](crate::error::CloudHsmClusterNotRelatedError)
         pub fn build(self) -> crate::error::CloudHsmClusterNotRelatedError {
             crate::error::CloudHsmClusterNotRelatedError {
@@ -5165,6 +5221,10 @@ pub mod cloud_hsm_cluster_not_found_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`CloudHsmClusterNotFoundError`](crate::error::CloudHsmClusterNotFoundError)
@@ -5230,6 +5290,10 @@ pub mod cloud_hsm_cluster_not_active_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`CloudHsmClusterNotActiveError`](crate::error::CloudHsmClusterNotActiveError)
@@ -5323,6 +5387,10 @@ pub mod cloud_hsm_cluster_invalid_configuration_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`CloudHsmClusterInvalidConfigurationError`](crate::error::CloudHsmClusterInvalidConfigurationError)
         pub fn build(self) -> crate::error::CloudHsmClusterInvalidConfigurationError {
             crate::error::CloudHsmClusterInvalidConfigurationError {
@@ -5382,6 +5450,10 @@ pub mod limit_exceeded_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`LimitExceededError`](crate::error::LimitExceededError)
@@ -5444,6 +5516,10 @@ pub mod tag_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`TagError`](crate::error::TagError)
         pub fn build(self) -> crate::error::TagError {
             crate::error::TagError {
@@ -5502,6 +5578,10 @@ pub mod invalid_grant_id_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`InvalidGrantIdError`](crate::error::InvalidGrantIdError)
@@ -5569,6 +5649,10 @@ pub mod invalid_ciphertext_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`InvalidCiphertextError`](crate::error::InvalidCiphertextError)
         pub fn build(self) -> crate::error::InvalidCiphertextError {
             crate::error::InvalidCiphertextError {
@@ -5630,6 +5714,10 @@ pub mod incorrect_key_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`IncorrectKeyError`](crate::error::IncorrectKeyError)
@@ -5696,6 +5784,10 @@ pub mod unsupported_operation_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`UnsupportedOperationError`](crate::error::UnsupportedOperationError)
         pub fn build(self) -> crate::error::UnsupportedOperationError {
             crate::error::UnsupportedOperationError {
@@ -5760,6 +5852,10 @@ pub mod malformed_policy_document_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`MalformedPolicyDocumentError`](crate::error::MalformedPolicyDocumentError)
         pub fn build(self) -> crate::error::MalformedPolicyDocumentError {
             crate::error::MalformedPolicyDocumentError {
@@ -5821,6 +5917,10 @@ pub mod invalid_marker_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`InvalidMarkerError`](crate::error::InvalidMarkerError)
         pub fn build(self) -> crate::error::InvalidMarkerError {
             crate::error::InvalidMarkerError {
@@ -5880,6 +5980,10 @@ pub mod invalid_import_token_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`InvalidImportTokenError`](crate::error::InvalidImportTokenError)
@@ -5947,6 +6051,10 @@ pub mod incorrect_key_material_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`IncorrectKeyMaterialError`](crate::error::IncorrectKeyMaterialError)
         pub fn build(self) -> crate::error::IncorrectKeyMaterialError {
             crate::error::IncorrectKeyMaterialError {
@@ -6006,6 +6114,10 @@ pub mod expired_import_token_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`ExpiredImportTokenError`](crate::error::ExpiredImportTokenError)
@@ -6073,6 +6185,10 @@ pub mod custom_key_store_has_cm_ks_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`CustomKeyStoreHasCMKsError`](crate::error::CustomKeyStoreHasCMKsError)
         pub fn build(self) -> crate::error::CustomKeyStoreHasCMKsError {
             crate::error::CustomKeyStoreHasCMKsError {
@@ -6137,6 +6253,10 @@ pub mod incorrect_trust_anchor_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`IncorrectTrustAnchorError`](crate::error::IncorrectTrustAnchorError)
@@ -6206,6 +6326,10 @@ pub mod cloud_hsm_cluster_in_use_error {
             self.message = Some(inp.into());
             self
         }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`CloudHsmClusterInUseError`](crate::error::CloudHsmClusterInUseError)
         pub fn build(self) -> crate::error::CloudHsmClusterInUseError {
             crate::error::CloudHsmClusterInUseError {
@@ -6264,6 +6388,10 @@ pub mod invalid_alias_name_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`InvalidAliasNameError`](crate::error::InvalidAliasNameError)
@@ -6325,6 +6453,10 @@ pub mod already_exists_error {
     impl Builder {
         pub fn message(mut self, inp: impl Into<std::string::String>) -> Self {
             self.message = Some(inp.into());
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.message = inp;
             self
         }
         /// Consumes the builder and constructs a [`AlreadyExistsError`](crate::error::AlreadyExistsError)

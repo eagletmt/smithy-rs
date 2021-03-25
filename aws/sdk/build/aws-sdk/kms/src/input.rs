@@ -29,6 +29,10 @@ pub mod cancel_key_deletion_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// Consumes the builder and constructs an Operation<[`CancelKeyDeletion`](crate::operation::CancelKeyDeletion)>
         #[allow(clippy::let_and_return)]
         pub fn build(
@@ -141,6 +145,13 @@ pub mod connect_custom_key_store_input {
         /// To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.</p>
         pub fn custom_key_store_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.custom_key_store_id = Some(inp.into());
+            self
+        }
+        pub fn set_custom_key_store_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ConnectCustomKeyStore`](crate::operation::ConnectCustomKeyStore)>
@@ -261,6 +272,10 @@ pub mod create_alias_input {
             self.alias_name = Some(inp.into());
             self
         }
+        pub fn set_alias_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.alias_name = inp;
+            self
+        }
         /// <p>Associates the alias with the specified <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk">customer managed CMK</a>. The CMK must be
         /// in the same AWS Region. </p>
         /// <p>A valid CMK ID is required. If you supply a null or empty string value, this operation
@@ -282,6 +297,10 @@ pub mod create_alias_input {
         /// <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
         pub fn target_key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.target_key_id = Some(inp.into());
+            self
+        }
+        pub fn set_target_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.target_key_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`CreateAlias`](crate::operation::CreateAlias)>
@@ -400,6 +419,13 @@ pub mod create_custom_key_store_input {
             self.custom_key_store_name = Some(inp.into());
             self
         }
+        pub fn set_custom_key_store_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_name = inp;
+            self
+        }
         /// <p>Identifies the AWS CloudHSM cluster for the custom key store. Enter the cluster ID of any active
         /// AWS CloudHSM cluster that is not already associated with a custom key store. To find the cluster ID,
         /// use the <a href="https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html">DescribeClusters</a> operation.</p>
@@ -407,10 +433,24 @@ pub mod create_custom_key_store_input {
             self.cloud_hsm_cluster_id = Some(inp.into());
             self
         }
+        pub fn set_cloud_hsm_cluster_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.cloud_hsm_cluster_id = inp;
+            self
+        }
         /// <p>Enter the content of the trust anchor certificate for the cluster. This is the content of
         /// the <code>customerCA.crt</code> file that you created when you <a href="https://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html">initialized the cluster</a>.</p>
         pub fn trust_anchor_certificate(mut self, inp: impl Into<std::string::String>) -> Self {
             self.trust_anchor_certificate = Some(inp.into());
+            self
+        }
+        pub fn set_trust_anchor_certificate(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.trust_anchor_certificate = inp;
             self
         }
         /// <p>Enter the password of the <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser">
@@ -422,6 +462,13 @@ pub mod create_custom_key_store_input {
         /// the password in the AWS CloudHSM cluster.</p>
         pub fn key_store_password(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_store_password = Some(inp.into());
+            self
+        }
+        pub fn set_key_store_password(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.key_store_password = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`CreateCustomKeyStore`](crate::operation::CreateCustomKeyStore)>
@@ -563,6 +610,10 @@ pub mod create_grant_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The principal that is given permission to perform the operations that the grant
         /// permits.</p>
         /// <p>To specify the principal, use the <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an AWS
@@ -575,6 +626,13 @@ pub mod create_grant_input {
             self.grantee_principal = Some(inp.into());
             self
         }
+        pub fn set_grantee_principal(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.grantee_principal = inp;
+            self
+        }
         /// <p>The principal that is given permission to retire the grant by using <a>RetireGrant</a> operation.</p>
         /// <p>To specify the principal, use the <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an AWS
         /// principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and
@@ -585,9 +643,23 @@ pub mod create_grant_input {
             self.retiring_principal = Some(inp.into());
             self
         }
+        pub fn set_retiring_principal(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.retiring_principal = inp;
+            self
+        }
         /// <p>A list of operations that the grant permits.</p>
         pub fn operations(mut self, inp: std::vec::Vec<crate::model::GrantOperation>) -> Self {
             self.operations = Some(inp);
+            self
+        }
+        pub fn set_operations(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::GrantOperation>>,
+        ) -> Self {
+            self.operations = inp;
             self
         }
         /// <p>Allows a <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations">cryptographic operation</a> only when the encryption context matches or includes the encryption
@@ -602,11 +674,25 @@ pub mod create_grant_input {
             self.constraints = Some(inp);
             self
         }
+        pub fn set_constraints(
+            mut self,
+            inp: std::option::Option<crate::model::GrantConstraints>,
+        ) -> Self {
+            self.constraints = inp;
+            self
+        }
         /// <p>A list of grant tokens.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn grant_tokens(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.grant_tokens = Some(inp);
+            self
+        }
+        pub fn set_grant_tokens(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.grant_tokens = inp;
             self
         }
         /// <p>A friendly name for the grant. Use this value to prevent the unintended
@@ -621,6 +707,10 @@ pub mod create_grant_input {
         /// All grant tokens for the same grant ID can be used interchangeably.</p>
         pub fn name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.name = Some(inp.into());
+            self
+        }
+        pub fn set_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`CreateGrant`](crate::operation::CreateGrant)>
@@ -778,10 +868,18 @@ pub mod create_key_input {
             self.policy = Some(inp.into());
             self
         }
+        pub fn set_policy(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.policy = inp;
+            self
+        }
         /// <p>A description of the CMK.</p>
         /// <p>Use a description that helps you decide whether the CMK is appropriate for a task.</p>
         pub fn description(mut self, inp: impl Into<std::string::String>) -> Self {
             self.description = Some(inp.into());
+            self
+        }
+        pub fn set_description(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.description = inp;
             self
         }
         /// <p>Determines the <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations">cryptographic operations</a> for which you can use the CMK. The default value
@@ -802,6 +900,13 @@ pub mod create_key_input {
         /// </ul>
         pub fn key_usage(mut self, inp: crate::model::KeyUsageType) -> Self {
             self.key_usage = Some(inp);
+            self
+        }
+        pub fn set_key_usage(
+            mut self,
+            inp: std::option::Option<crate::model::KeyUsageType>,
+        ) -> Self {
+            self.key_usage = inp;
             self
         }
         /// <p>Specifies the type of CMK to create. The default value, <code>SYMMETRIC_DEFAULT</code>,
@@ -890,6 +995,13 @@ pub mod create_key_input {
             self.customer_master_key_spec = Some(inp);
             self
         }
+        pub fn set_customer_master_key_spec(
+            mut self,
+            inp: std::option::Option<crate::model::CustomerMasterKeySpec>,
+        ) -> Self {
+            self.customer_master_key_spec = inp;
+            self
+        }
         /// <p>The source of the key material for the CMK. You cannot change the origin after you create
         /// the CMK. The default is <code>AWS_KMS</code>, which means AWS KMS creates the key
         /// material.</p>
@@ -903,6 +1015,10 @@ pub mod create_key_input {
         /// is valid only for symmetric CMKs.</p>
         pub fn origin(mut self, inp: crate::model::OriginType) -> Self {
             self.origin = Some(inp);
+            self
+        }
+        pub fn set_origin(mut self, inp: std::option::Option<crate::model::OriginType>) -> Self {
+            self.origin = inp;
             self
         }
         /// <p>Creates the CMK in the specified <a href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a> and the key material in its associated
@@ -921,6 +1037,13 @@ pub mod create_key_input {
             self.custom_key_store_id = Some(inp.into());
             self
         }
+        pub fn set_custom_key_store_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_id = inp;
+            self
+        }
         /// <p>A flag to indicate whether to bypass the key policy lockout safety check.</p>
         /// <important>
         /// <p>Setting this value to true increases the risk that the CMK becomes unmanageable. Do not
@@ -936,6 +1059,10 @@ pub mod create_key_input {
             self.bypass_policy_lockout_safety_check = Some(inp);
             self
         }
+        pub fn set_bypass_policy_lockout_safety_check(mut self, inp: bool) -> Self {
+            self.bypass_policy_lockout_safety_check = Some(inp);
+            self
+        }
         /// <p>One or more tags. Each tag consists of a tag key and a tag value. Both the tag key and the
         /// tag value are required, but the tag value can be an empty (null) string. </p>
         /// <p>When you add tags to an AWS resource, AWS generates a cost allocation
@@ -946,6 +1073,13 @@ pub mod create_key_input {
         /// <p>To use this parameter, you must have <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:TagResource</a> permission in an IAM policy.</p>
         pub fn tags(mut self, inp: std::vec::Vec<crate::model::Tag>) -> Self {
             self.tags = Some(inp);
+            self
+        }
+        pub fn set_tags(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::Tag>>,
+        ) -> Self {
+            self.tags = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`CreateKey`](crate::operation::CreateKey)>
@@ -1080,6 +1214,10 @@ pub mod decrypt_input {
             self.ciphertext_blob = Some(inp);
             self
         }
+        pub fn set_ciphertext_blob(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.ciphertext_blob = inp;
+            self
+        }
         /// <p>Specifies the encryption context to use when decrypting the data.
         /// An encryption context is valid only for <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations">cryptographic operations</a> with a symmetric CMK. The standard asymmetric encryption algorithms that AWS KMS uses do not support an encryption context.</p>
         /// <p>An <i>encryption context</i> is a collection of non-secret key-value pairs that represents additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is optional when encrypting with a symmetric CMK, but it is highly recommended.</p>
@@ -1093,11 +1231,27 @@ pub mod decrypt_input {
             self.encryption_context = Some(inp);
             self
         }
+        pub fn set_encryption_context(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.encryption_context = inp;
+            self
+        }
         /// <p>A list of grant tokens.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn grant_tokens(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.grant_tokens = Some(inp);
+            self
+        }
+        pub fn set_grant_tokens(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.grant_tokens = inp;
             self
         }
         /// <p>Specifies the customer master key (CMK) that AWS KMS uses to decrypt the ciphertext. Enter a
@@ -1131,6 +1285,10 @@ pub mod decrypt_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Specifies the encryption algorithm that will be used to decrypt the ciphertext. Specify
         /// the same algorithm that was used to encrypt the data. If you specify a different algorithm,
         /// the <code>Decrypt</code> operation fails.</p>
@@ -1139,6 +1297,13 @@ pub mod decrypt_input {
         /// that is valid for symmetric CMKs.</p>
         pub fn encryption_algorithm(mut self, inp: crate::model::EncryptionAlgorithmSpec) -> Self {
             self.encryption_algorithm = Some(inp);
+            self
+        }
+        pub fn set_encryption_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::EncryptionAlgorithmSpec>,
+        ) -> Self {
+            self.encryption_algorithm = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`Decrypt`](crate::operation::Decrypt)>
@@ -1260,6 +1425,10 @@ pub mod delete_alias_input {
             self.alias_name = Some(inp.into());
             self
         }
+        pub fn set_alias_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.alias_name = inp;
+            self
+        }
         /// Consumes the builder and constructs an Operation<[`DeleteAlias`](crate::operation::DeleteAlias)>
         #[allow(clippy::let_and_return)]
         pub fn build(
@@ -1368,6 +1537,13 @@ pub mod delete_custom_key_store_input {
         /// <p>Enter the ID of the custom key store you want to delete. To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.</p>
         pub fn custom_key_store_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.custom_key_store_id = Some(inp.into());
+            self
+        }
+        pub fn set_custom_key_store_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DeleteCustomKeyStore`](crate::operation::DeleteCustomKeyStore)>
@@ -1497,6 +1673,10 @@ pub mod delete_imported_key_material_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// Consumes the builder and constructs an Operation<[`DeleteImportedKeyMaterial`](crate::operation::DeleteImportedKeyMaterial)>
         #[allow(clippy::let_and_return)]
         pub fn build(
@@ -1617,6 +1797,13 @@ pub mod describe_custom_key_stores_input {
             self.custom_key_store_id = Some(inp.into());
             self
         }
+        pub fn set_custom_key_store_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_id = inp;
+            self
+        }
         /// <p>Gets only information about the specified custom key store. Enter the friendly name of the
         /// custom key store.</p>
         /// <p>By default, this operation gets information about all custom key stores in the account and
@@ -1627,6 +1814,13 @@ pub mod describe_custom_key_stores_input {
             self.custom_key_store_name = Some(inp.into());
             self
         }
+        pub fn set_custom_key_store_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_name = inp;
+            self
+        }
         /// <p>Use this parameter to specify the maximum number of items to return. When this
         /// value is present, AWS KMS does not return more than the specified number of items, but it might
         /// return fewer.</p>
@@ -1634,11 +1828,19 @@ pub mod describe_custom_key_stores_input {
             self.limit = Some(inp);
             self
         }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
+            self
+        }
         /// <p>Use this parameter in a subsequent request after you receive a response with
         /// truncated results. Set it to the value of <code>NextMarker</code> from the truncated response
         /// you just received.</p>
         pub fn marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.marker = Some(inp.into());
+            self
+        }
+        pub fn set_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.marker = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DescribeCustomKeyStores`](crate::operation::DescribeCustomKeyStores)>
@@ -1786,11 +1988,22 @@ pub mod describe_key_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>A list of grant tokens.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn grant_tokens(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.grant_tokens = Some(inp);
+            self
+        }
+        pub fn set_grant_tokens(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.grant_tokens = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DescribeKey`](crate::operation::DescribeKey)>
@@ -1916,6 +2129,10 @@ pub mod disable_key_input {
         /// <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
+            self
+        }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DisableKey`](crate::operation::DisableKey)>
@@ -2044,6 +2261,10 @@ pub mod disable_key_rotation_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// Consumes the builder and constructs an Operation<[`DisableKeyRotation`](crate::operation::DisableKeyRotation)>
         #[allow(clippy::let_and_return)]
         pub fn build(
@@ -2155,6 +2376,13 @@ pub mod disconnect_custom_key_store_input {
         /// <p>Enter the ID of the custom key store you want to disconnect. To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.</p>
         pub fn custom_key_store_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.custom_key_store_id = Some(inp.into());
+            self
+        }
+        pub fn set_custom_key_store_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`DisconnectCustomKeyStore`](crate::operation::DisconnectCustomKeyStore)>
@@ -2283,6 +2511,10 @@ pub mod enable_key_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// Consumes the builder and constructs an Operation<[`EnableKey`](crate::operation::EnableKey)>
         #[allow(clippy::let_and_return)]
         pub fn build(
@@ -2404,6 +2636,10 @@ pub mod enable_key_rotation_input {
         /// <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
+            self
+        }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`EnableKeyRotation`](crate::operation::EnableKeyRotation)>
@@ -2546,9 +2782,17 @@ pub mod encrypt_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Data to be encrypted.</p>
         pub fn plaintext(mut self, inp: smithy_types::Blob) -> Self {
             self.plaintext = Some(inp);
+            self
+        }
+        pub fn set_plaintext(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.plaintext = inp;
             self
         }
         /// <p>Specifies the encryption context that will be used to encrypt the data.
@@ -2564,11 +2808,27 @@ pub mod encrypt_input {
             self.encryption_context = Some(inp);
             self
         }
+        pub fn set_encryption_context(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.encryption_context = inp;
+            self
+        }
         /// <p>A list of grant tokens.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn grant_tokens(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.grant_tokens = Some(inp);
+            self
+        }
+        pub fn set_grant_tokens(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.grant_tokens = inp;
             self
         }
         /// <p>Specifies the encryption algorithm that AWS KMS will use to encrypt the plaintext message.
@@ -2578,6 +2838,13 @@ pub mod encrypt_input {
         /// an asymmetric CMK, we recommend RSAES_OAEP_SHA_256.</p>
         pub fn encryption_algorithm(mut self, inp: crate::model::EncryptionAlgorithmSpec) -> Self {
             self.encryption_algorithm = Some(inp);
+            self
+        }
+        pub fn set_encryption_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::EncryptionAlgorithmSpec>,
+        ) -> Self {
+            self.encryption_algorithm = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`Encrypt`](crate::operation::Encrypt)>
@@ -2725,6 +2992,10 @@ pub mod generate_data_key_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Specifies the encryption context that will be used when encrypting the data key.</p>
         /// <p>An <i>encryption context</i> is a collection of non-secret key-value pairs that represents additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is optional when encrypting with a symmetric CMK, but it is highly recommended.</p>
         /// <p>For more information, see
@@ -2737,6 +3008,15 @@ pub mod generate_data_key_input {
             self.encryption_context = Some(inp);
             self
         }
+        pub fn set_encryption_context(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.encryption_context = inp;
+            self
+        }
         /// <p>Specifies the length of the data key in bytes. For example, use the value 64 to generate a
         /// 512-bit data key (64 bytes is 512 bits). For 128-bit (16-byte) and 256-bit (32-byte) data
         /// keys, use the <code>KeySpec</code> parameter.</p>
@@ -2744,6 +3024,10 @@ pub mod generate_data_key_input {
         /// parameter (but not both) in every <code>GenerateDataKey</code> request.</p>
         pub fn number_of_bytes(mut self, inp: i32) -> Self {
             self.number_of_bytes = Some(inp);
+            self
+        }
+        pub fn set_number_of_bytes(mut self, inp: std::option::Option<i32>) -> Self {
+            self.number_of_bytes = inp;
             self
         }
         /// <p>Specifies the length of the data key. Use <code>AES_128</code> to generate a 128-bit
@@ -2754,11 +3038,22 @@ pub mod generate_data_key_input {
             self.key_spec = Some(inp);
             self
         }
+        pub fn set_key_spec(mut self, inp: std::option::Option<crate::model::DataKeySpec>) -> Self {
+            self.key_spec = inp;
+            self
+        }
         /// <p>A list of grant tokens.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn grant_tokens(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.grant_tokens = Some(inp);
+            self
+        }
+        pub fn set_grant_tokens(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.grant_tokens = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`GenerateDataKey`](crate::operation::GenerateDataKey)>
@@ -2894,6 +3189,15 @@ pub mod generate_data_key_pair_input {
             self.encryption_context = Some(inp);
             self
         }
+        pub fn set_encryption_context(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.encryption_context = inp;
+            self
+        }
         /// <p>Specifies the symmetric CMK that encrypts the private key in the data key pair. You cannot
         /// specify an asymmetric CMK or a CMK in a custom key store. To get the type and origin of your
         /// CMK, use the <a>DescribeKey</a> operation.</p>
@@ -2922,10 +3226,21 @@ pub mod generate_data_key_pair_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Determines the type of data key pair that is generated. </p>
         /// <p>The AWS KMS rule that restricts the use of asymmetric RSA CMKs to encrypt and decrypt or to sign and verify (but not both), and the rule that permits you to use ECC CMKs only to sign and verify, are not effective outside of AWS KMS.</p>
         pub fn key_pair_spec(mut self, inp: crate::model::DataKeyPairSpec) -> Self {
             self.key_pair_spec = Some(inp);
+            self
+        }
+        pub fn set_key_pair_spec(
+            mut self,
+            inp: std::option::Option<crate::model::DataKeyPairSpec>,
+        ) -> Self {
+            self.key_pair_spec = inp;
             self
         }
         /// <p>A list of grant tokens.</p>
@@ -2933,6 +3248,13 @@ pub mod generate_data_key_pair_input {
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn grant_tokens(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.grant_tokens = Some(inp);
+            self
+        }
+        pub fn set_grant_tokens(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.grant_tokens = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`GenerateDataKeyPair`](crate::operation::GenerateDataKeyPair)>
@@ -3067,6 +3389,15 @@ pub mod generate_data_key_pair_without_plaintext_input {
             self.encryption_context = Some(inp);
             self
         }
+        pub fn set_encryption_context(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.encryption_context = inp;
+            self
+        }
         /// <p>Specifies the CMK that encrypts the private key in the data key pair. You must specify a
         /// symmetric CMK. You cannot use an asymmetric CMK or a CMK in a custom key store. To get the
         /// type and origin of your CMK, use the <a>DescribeKey</a> operation. </p>
@@ -3095,10 +3426,21 @@ pub mod generate_data_key_pair_without_plaintext_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Determines the type of data key pair that is generated.</p>
         /// <p>The AWS KMS rule that restricts the use of asymmetric RSA CMKs to encrypt and decrypt or to sign and verify (but not both), and the rule that permits you to use ECC CMKs only to sign and verify, are not effective outside of AWS KMS.</p>
         pub fn key_pair_spec(mut self, inp: crate::model::DataKeyPairSpec) -> Self {
             self.key_pair_spec = Some(inp);
+            self
+        }
+        pub fn set_key_pair_spec(
+            mut self,
+            inp: std::option::Option<crate::model::DataKeyPairSpec>,
+        ) -> Self {
+            self.key_pair_spec = inp;
             self
         }
         /// <p>A list of grant tokens.</p>
@@ -3106,6 +3448,13 @@ pub mod generate_data_key_pair_without_plaintext_input {
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn grant_tokens(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.grant_tokens = Some(inp);
+            self
+        }
+        pub fn set_grant_tokens(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.grant_tokens = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`GenerateDataKeyPairWithoutPlaintext`](crate::operation::GenerateDataKeyPairWithoutPlaintext)>
@@ -3261,6 +3610,10 @@ pub mod generate_data_key_without_plaintext_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Specifies the encryption context that will be used when encrypting the data key.</p>
         /// <p>An <i>encryption context</i> is a collection of non-secret key-value pairs that represents additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is optional when encrypting with a symmetric CMK, but it is highly recommended.</p>
         /// <p>For more information, see
@@ -3273,10 +3626,23 @@ pub mod generate_data_key_without_plaintext_input {
             self.encryption_context = Some(inp);
             self
         }
+        pub fn set_encryption_context(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.encryption_context = inp;
+            self
+        }
         /// <p>The length of the data key. Use <code>AES_128</code> to generate a 128-bit symmetric key,
         /// or <code>AES_256</code> to generate a 256-bit symmetric key.</p>
         pub fn key_spec(mut self, inp: crate::model::DataKeySpec) -> Self {
             self.key_spec = Some(inp);
+            self
+        }
+        pub fn set_key_spec(mut self, inp: std::option::Option<crate::model::DataKeySpec>) -> Self {
+            self.key_spec = inp;
             self
         }
         /// <p>The length of the data key in bytes. For example, use the value 64 to generate a 512-bit
@@ -3286,11 +3652,22 @@ pub mod generate_data_key_without_plaintext_input {
             self.number_of_bytes = Some(inp);
             self
         }
+        pub fn set_number_of_bytes(mut self, inp: std::option::Option<i32>) -> Self {
+            self.number_of_bytes = inp;
+            self
+        }
         /// <p>A list of grant tokens.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn grant_tokens(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.grant_tokens = Some(inp);
+            self
+        }
+        pub fn set_grant_tokens(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.grant_tokens = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`GenerateDataKeyWithoutPlaintext`](crate::operation::GenerateDataKeyWithoutPlaintext)>
@@ -3418,10 +3795,21 @@ pub mod generate_random_input {
             self.number_of_bytes = Some(inp);
             self
         }
+        pub fn set_number_of_bytes(mut self, inp: std::option::Option<i32>) -> Self {
+            self.number_of_bytes = inp;
+            self
+        }
         /// <p>Generates the random byte string in the AWS CloudHSM cluster that is associated with the
         /// specified <a href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a>. To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.</p>
         pub fn custom_key_store_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.custom_key_store_id = Some(inp.into());
+            self
+        }
+        pub fn set_custom_key_store_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`GenerateRandom`](crate::operation::GenerateRandom)>
@@ -3551,10 +3939,18 @@ pub mod get_key_policy_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Specifies the name of the key policy. The only valid name is <code>default</code>. To get
         /// the names of key policies, use <a>ListKeyPolicies</a>.</p>
         pub fn policy_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.policy_name = Some(inp.into());
+            self
+        }
+        pub fn set_policy_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.policy_name = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`GetKeyPolicy`](crate::operation::GetKeyPolicy)>
@@ -3681,6 +4077,10 @@ pub mod get_key_rotation_status_input {
         /// <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
+            self
+        }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`GetKeyRotationStatus`](crate::operation::GetKeyRotationStatus)>
@@ -3812,16 +4212,34 @@ pub mod get_parameters_for_import_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The algorithm you will use to encrypt the key material before importing it with <a>ImportKeyMaterial</a>. For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html">Encrypt the Key Material</a>
         /// in the <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn wrapping_algorithm(mut self, inp: crate::model::AlgorithmSpec) -> Self {
             self.wrapping_algorithm = Some(inp);
             self
         }
+        pub fn set_wrapping_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::AlgorithmSpec>,
+        ) -> Self {
+            self.wrapping_algorithm = inp;
+            self
+        }
         /// <p>The type of wrapping key (public key) to return in the response. Only 2048-bit RSA public
         /// keys are supported.</p>
         pub fn wrapping_key_spec(mut self, inp: crate::model::WrappingKeySpec) -> Self {
             self.wrapping_key_spec = Some(inp);
+            self
+        }
+        pub fn set_wrapping_key_spec(
+            mut self,
+            inp: std::option::Option<crate::model::WrappingKeySpec>,
+        ) -> Self {
+            self.wrapping_key_spec = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`GetParametersForImport`](crate::operation::GetParametersForImport)>
@@ -3963,11 +4381,22 @@ pub mod get_public_key_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>A list of grant tokens.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn grant_tokens(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.grant_tokens = Some(inp);
+            self
+        }
+        pub fn set_grant_tokens(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.grant_tokens = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`GetPublicKey`](crate::operation::GetPublicKey)>
@@ -4102,10 +4531,18 @@ pub mod import_key_material_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The import token that you received in the response to a previous <a>GetParametersForImport</a> request. It must be from the same response that contained
         /// the public key that you used to encrypt the key material.</p>
         pub fn import_token(mut self, inp: smithy_types::Blob) -> Self {
             self.import_token = Some(inp);
+            self
+        }
+        pub fn set_import_token(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.import_token = inp;
             self
         }
         /// <p>The encrypted key material to import. The key material must be encrypted with the public
@@ -4113,6 +4550,13 @@ pub mod import_key_material_input {
         /// algorithm that you specified in the same <code>GetParametersForImport</code> request.</p>
         pub fn encrypted_key_material(mut self, inp: smithy_types::Blob) -> Self {
             self.encrypted_key_material = Some(inp);
+            self
+        }
+        pub fn set_encrypted_key_material(
+            mut self,
+            inp: std::option::Option<smithy_types::Blob>,
+        ) -> Self {
+            self.encrypted_key_material = inp;
             self
         }
         /// <p>The time at which the imported key material expires. When the key material expires, AWS KMS
@@ -4123,12 +4567,23 @@ pub mod import_key_material_input {
             self.valid_to = Some(inp);
             self
         }
+        pub fn set_valid_to(mut self, inp: std::option::Option<smithy_types::Instant>) -> Self {
+            self.valid_to = inp;
+            self
+        }
         /// <p>Specifies whether the key material expires. The default is
         /// <code>KEY_MATERIAL_EXPIRES</code>, in which case you must include the <code>ValidTo</code>
         /// parameter. When this parameter is set to <code>KEY_MATERIAL_DOES_NOT_EXPIRE</code>, you must
         /// omit the <code>ValidTo</code> parameter.</p>
         pub fn expiration_model(mut self, inp: crate::model::ExpirationModelType) -> Self {
             self.expiration_model = Some(inp);
+            self
+        }
+        pub fn set_expiration_model(
+            mut self,
+            inp: std::option::Option<crate::model::ExpirationModelType>,
+        ) -> Self {
+            self.expiration_model = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ImportKeyMaterial`](crate::operation::ImportKeyMaterial)>
@@ -4270,6 +4725,10 @@ pub mod list_aliases_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Use this parameter to specify the maximum number of items to return. When this
         /// value is present, AWS KMS does not return more than the specified number of items, but it might
         /// return fewer.</p>
@@ -4279,11 +4738,19 @@ pub mod list_aliases_input {
             self.limit = Some(inp);
             self
         }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
+            self
+        }
         /// <p>Use this parameter in a subsequent request after you receive a response with
         /// truncated results. Set it to the value of <code>NextMarker</code> from the truncated response
         /// you just received.</p>
         pub fn marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.marker = Some(inp.into());
+            self
+        }
+        pub fn set_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.marker = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListAliases`](crate::operation::ListAliases)>
@@ -4406,11 +4873,19 @@ pub mod list_grants_input {
             self.limit = Some(inp);
             self
         }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
+            self
+        }
         /// <p>Use this parameter in a subsequent request after you receive a response with
         /// truncated results. Set it to the value of <code>NextMarker</code> from the truncated response
         /// you just received.</p>
         pub fn marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.marker = Some(inp.into());
+            self
+        }
+        pub fn set_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.marker = inp;
             self
         }
         /// <p>A unique identifier for the customer master key (CMK).</p>
@@ -4430,6 +4905,10 @@ pub mod list_grants_input {
         /// <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
+            self
+        }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListGrants`](crate::operation::ListGrants)>
@@ -4561,6 +5040,10 @@ pub mod list_key_policies_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Use this parameter to specify the maximum number of items to return. When this
         /// value is present, AWS KMS does not return more than the specified number of items, but it might
         /// return fewer.</p>
@@ -4571,11 +5054,19 @@ pub mod list_key_policies_input {
             self.limit = Some(inp);
             self
         }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
+            self
+        }
         /// <p>Use this parameter in a subsequent request after you receive a response with
         /// truncated results. Set it to the value of <code>NextMarker</code> from the truncated response
         /// you just received.</p>
         pub fn marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.marker = Some(inp.into());
+            self
+        }
+        pub fn set_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.marker = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListKeyPolicies`](crate::operation::ListKeyPolicies)>
@@ -4699,11 +5190,19 @@ pub mod list_keys_input {
             self.limit = Some(inp);
             self
         }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
+            self
+        }
         /// <p>Use this parameter in a subsequent request after you receive a response with
         /// truncated results. Set it to the value of <code>NextMarker</code> from the truncated response
         /// you just received.</p>
         pub fn marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.marker = Some(inp.into());
+            self
+        }
+        pub fn set_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.marker = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListKeys`](crate::operation::ListKeys)>
@@ -4833,6 +5332,10 @@ pub mod list_resource_tags_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Use this parameter to specify the maximum number of items to return. When this
         /// value is present, AWS KMS does not return more than the specified number of items, but it might
         /// return fewer.</p>
@@ -4842,6 +5345,10 @@ pub mod list_resource_tags_input {
             self.limit = Some(inp);
             self
         }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
+            self
+        }
         /// <p>Use this parameter in a subsequent request after you receive a response with
         /// truncated results. Set it to the value of <code>NextMarker</code> from the truncated response
         /// you just received.</p>
@@ -4849,6 +5356,10 @@ pub mod list_resource_tags_input {
         /// the truncated response you just received.</p>
         pub fn marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.marker = Some(inp.into());
+            self
+        }
+        pub fn set_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.marker = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListResourceTags`](crate::operation::ListResourceTags)>
@@ -4973,11 +5484,19 @@ pub mod list_retirable_grants_input {
             self.limit = Some(inp);
             self
         }
+        pub fn set_limit(mut self, inp: std::option::Option<i32>) -> Self {
+            self.limit = inp;
+            self
+        }
         /// <p>Use this parameter in a subsequent request after you receive a response with
         /// truncated results. Set it to the value of <code>NextMarker</code> from the truncated response
         /// you just received.</p>
         pub fn marker(mut self, inp: impl Into<std::string::String>) -> Self {
             self.marker = Some(inp.into());
+            self
+        }
+        pub fn set_marker(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.marker = inp;
             self
         }
         /// <p>The retiring principal for which to list grants. Enter a principal in your AWS
@@ -4989,6 +5508,13 @@ pub mod list_retirable_grants_input {
         /// <i>Amazon Web Services General Reference</i>.</p>
         pub fn retiring_principal(mut self, inp: impl Into<std::string::String>) -> Self {
             self.retiring_principal = Some(inp.into());
+            self
+        }
+        pub fn set_retiring_principal(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.retiring_principal = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ListRetirableGrants`](crate::operation::ListRetirableGrants)>
@@ -5124,9 +5650,17 @@ pub mod put_key_policy_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The name of the key policy. The only valid value is <code>default</code>.</p>
         pub fn policy_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.policy_name = Some(inp.into());
+            self
+        }
+        pub fn set_policy_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.policy_name = inp;
             self
         }
         /// <p>The key policy to attach to the CMK.</p>
@@ -5152,6 +5686,10 @@ pub mod put_key_policy_input {
             self.policy = Some(inp.into());
             self
         }
+        pub fn set_policy(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.policy = inp;
+            self
+        }
         /// <p>A flag to indicate whether to bypass the key policy lockout safety check.</p>
         /// <important>
         /// <p>Setting this value to true increases the risk that the CMK becomes unmanageable. Do not
@@ -5162,6 +5700,10 @@ pub mod put_key_policy_input {
         /// request from making a subsequent <code>PutKeyPolicy</code> request on the CMK.</p>
         /// <p>The default value is false.</p>
         pub fn bypass_policy_lockout_safety_check(mut self, inp: bool) -> Self {
+            self.bypass_policy_lockout_safety_check = Some(inp);
+            self
+        }
+        pub fn set_bypass_policy_lockout_safety_check(mut self, inp: bool) -> Self {
             self.bypass_policy_lockout_safety_check = Some(inp);
             self
         }
@@ -5295,6 +5837,10 @@ pub mod re_encrypt_input {
             self.ciphertext_blob = Some(inp);
             self
         }
+        pub fn set_ciphertext_blob(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.ciphertext_blob = inp;
+            self
+        }
         /// <p>Specifies the encryption context to use to decrypt the ciphertext. Enter the same
         /// encryption context that was used to encrypt the ciphertext.</p>
         /// <p>An <i>encryption context</i> is a collection of non-secret key-value pairs that represents additional authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact case-sensitive match) encryption context to decrypt the data. An encryption context is optional when encrypting with a symmetric CMK, but it is highly recommended.</p>
@@ -5306,6 +5852,15 @@ pub mod re_encrypt_input {
             inp: std::collections::HashMap<std::string::String, std::string::String>,
         ) -> Self {
             self.source_encryption_context = Some(inp);
+            self
+        }
+        pub fn set_source_encryption_context(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.source_encryption_context = inp;
             self
         }
         /// <p>Specifies the customer master key (CMK) that
@@ -5340,6 +5895,10 @@ pub mod re_encrypt_input {
             self.source_key_id = Some(inp.into());
             self
         }
+        pub fn set_source_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.source_key_id = inp;
+            self
+        }
         /// <p>A unique identifier for the CMK that is used to reencrypt the data. Specify a symmetric or
         /// asymmetric CMK with a <code>KeyUsage</code> value of <code>ENCRYPT_DECRYPT</code>. To find the
         /// <code>KeyUsage</code> value of a CMK, use the <a>DescribeKey</a>
@@ -5369,6 +5928,13 @@ pub mod re_encrypt_input {
             self.destination_key_id = Some(inp.into());
             self
         }
+        pub fn set_destination_key_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.destination_key_id = inp;
+            self
+        }
         /// <p>Specifies that encryption context to use when the reencrypting the data.</p>
         /// <p>A destination encryption context is valid only when the destination CMK is a symmetric
         /// CMK. The standard ciphertext format for asymmetric CMKs does not include fields for
@@ -5382,6 +5948,15 @@ pub mod re_encrypt_input {
             inp: std::collections::HashMap<std::string::String, std::string::String>,
         ) -> Self {
             self.destination_encryption_context = Some(inp);
+            self
+        }
+        pub fn set_destination_encryption_context(
+            mut self,
+            inp: std::option::Option<
+                std::collections::HashMap<std::string::String, std::string::String>,
+            >,
+        ) -> Self {
+            self.destination_encryption_context = inp;
             self
         }
         /// <p>Specifies the encryption algorithm that AWS KMS will use to decrypt the ciphertext before it
@@ -5398,6 +5973,13 @@ pub mod re_encrypt_input {
             self.source_encryption_algorithm = Some(inp);
             self
         }
+        pub fn set_source_encryption_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::EncryptionAlgorithmSpec>,
+        ) -> Self {
+            self.source_encryption_algorithm = inp;
+            self
+        }
         /// <p>Specifies the encryption algorithm that AWS KMS will use to reecrypt the data after it has
         /// decrypted it. The default value, <code>SYMMETRIC_DEFAULT</code>, represents the encryption
         /// algorithm used for symmetric CMKs.</p>
@@ -5409,11 +5991,25 @@ pub mod re_encrypt_input {
             self.destination_encryption_algorithm = Some(inp);
             self
         }
+        pub fn set_destination_encryption_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::EncryptionAlgorithmSpec>,
+        ) -> Self {
+            self.destination_encryption_algorithm = inp;
+            self
+        }
         /// <p>A list of grant tokens.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn grant_tokens(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.grant_tokens = Some(inp);
+            self
+        }
+        pub fn set_grant_tokens(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.grant_tokens = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ReEncrypt`](crate::operation::ReEncrypt)>
@@ -5542,11 +6138,19 @@ pub mod retire_grant_input {
             self.grant_token = Some(inp.into());
             self
         }
+        pub fn set_grant_token(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.grant_token = inp;
+            self
+        }
         /// <p>The Amazon Resource Name (ARN) of the CMK associated with the grant. </p>
         /// <p>For example: <code>arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
         /// </p>
         pub fn key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_id = Some(inp.into());
+            self
+        }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
             self
         }
         /// <p>Unique identifier of the grant to retire. The grant ID is returned in the response to a
@@ -5559,6 +6163,10 @@ pub mod retire_grant_input {
         /// </ul>
         pub fn grant_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.grant_id = Some(inp.into());
+            self
+        }
+        pub fn set_grant_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.grant_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`RetireGrant`](crate::operation::RetireGrant)>
@@ -5690,9 +6298,17 @@ pub mod revoke_grant_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Identifier of the grant to be revoked.</p>
         pub fn grant_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.grant_id = Some(inp.into());
+            self
+        }
+        pub fn set_grant_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.grant_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`RevokeGrant`](crate::operation::RevokeGrant)>
@@ -5821,12 +6437,20 @@ pub mod schedule_key_deletion_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>The waiting period, specified in number of days. After the waiting period ends, AWS KMS
         /// deletes the customer master key (CMK).</p>
         /// <p>This value is optional. If you include a value, it must be between 7 and 30, inclusive. If
         /// you do not include a value, it defaults to 30.</p>
         pub fn pending_window_in_days(mut self, inp: i32) -> Self {
             self.pending_window_in_days = Some(inp);
+            self
+        }
+        pub fn set_pending_window_in_days(mut self, inp: std::option::Option<i32>) -> Self {
+            self.pending_window_in_days = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`ScheduleKeyDeletion`](crate::operation::ScheduleKeyDeletion)>
@@ -5971,12 +6595,20 @@ pub mod sign_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Specifies the message or message digest to sign. Messages can be 0-4096 bytes. To sign a
         /// larger message, provide the message digest.</p>
         /// <p>If you provide a message, AWS KMS generates a hash digest of the message and then signs
         /// it.</p>
         pub fn message(mut self, inp: smithy_types::Blob) -> Self {
             self.message = Some(inp);
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.message = inp;
             self
         }
         /// <p>Tells AWS KMS whether the value of the <code>Message</code> parameter is a message or
@@ -5986,6 +6618,13 @@ pub mod sign_input {
             self.message_type = Some(inp);
             self
         }
+        pub fn set_message_type(
+            mut self,
+            inp: std::option::Option<crate::model::MessageType>,
+        ) -> Self {
+            self.message_type = inp;
+            self
+        }
         /// <p>A list of grant tokens.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
@@ -5993,11 +6632,25 @@ pub mod sign_input {
             self.grant_tokens = Some(inp);
             self
         }
+        pub fn set_grant_tokens(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.grant_tokens = inp;
+            self
+        }
         /// <p>Specifies the signing algorithm to use when signing the message. </p>
         /// <p>Choose an algorithm that is compatible with the type and size of the specified asymmetric
         /// CMK.</p>
         pub fn signing_algorithm(mut self, inp: crate::model::SigningAlgorithmSpec) -> Self {
             self.signing_algorithm = Some(inp);
+            self
+        }
+        pub fn set_signing_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::SigningAlgorithmSpec>,
+        ) -> Self {
+            self.signing_algorithm = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`Sign`](crate::operation::Sign)>
@@ -6132,6 +6785,10 @@ pub mod tag_resource_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>One or more tags. </p>
         /// <p>Each tag consists of a tag key and a tag value. The tag value can be an empty (null)
         /// string. </p>
@@ -6140,6 +6797,13 @@ pub mod tag_resource_input {
         /// specified one.</p>
         pub fn tags(mut self, inp: std::vec::Vec<crate::model::Tag>) -> Self {
             self.tags = Some(inp);
+            self
+        }
+        pub fn set_tags(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<crate::model::Tag>>,
+        ) -> Self {
+            self.tags = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`TagResource`](crate::operation::TagResource)>
@@ -6268,9 +6932,20 @@ pub mod untag_resource_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>One or more tag keys. Specify only the tag keys, not the tag values.</p>
         pub fn tag_keys(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.tag_keys = Some(inp);
+            self
+        }
+        pub fn set_tag_keys(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.tag_keys = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UntagResource`](crate::operation::UntagResource)>
@@ -6389,6 +7064,10 @@ pub mod update_alias_input {
             self.alias_name = Some(inp.into());
             self
         }
+        pub fn set_alias_name(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.alias_name = inp;
+            self
+        }
         /// <p>Identifies the <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk">customer managed CMK</a> to associate with the alias. You don't have permission
         /// to associate an alias with an <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk">AWS managed CMK</a>.</p>
         /// <p>The CMK must be in the same AWS account and Region as the alias. Also, the new target CMK
@@ -6411,6 +7090,10 @@ pub mod update_alias_input {
         /// is mapped to the correct CMK, use <a>ListAliases</a>.</p>
         pub fn target_key_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.target_key_id = Some(inp.into());
+            self
+        }
+        pub fn set_target_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.target_key_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UpdateAlias`](crate::operation::UpdateAlias)>
@@ -6529,10 +7212,24 @@ pub mod update_custom_key_store_input {
             self.custom_key_store_id = Some(inp.into());
             self
         }
+        pub fn set_custom_key_store_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.custom_key_store_id = inp;
+            self
+        }
         /// <p>Changes the friendly name of the custom key store to the value that you specify. The
         /// custom key store name must be unique in the AWS account.</p>
         pub fn new_custom_key_store_name(mut self, inp: impl Into<std::string::String>) -> Self {
             self.new_custom_key_store_name = Some(inp.into());
+            self
+        }
+        pub fn set_new_custom_key_store_name(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.new_custom_key_store_name = inp;
             self
         }
         /// <p>Enter the current password of the <code>kmsuser</code> crypto user (CU) in the AWS CloudHSM
@@ -6541,6 +7238,13 @@ pub mod update_custom_key_store_input {
         /// (CU). It does not set or change the password of any users in the AWS CloudHSM cluster.</p>
         pub fn key_store_password(mut self, inp: impl Into<std::string::String>) -> Self {
             self.key_store_password = Some(inp.into());
+            self
+        }
+        pub fn set_key_store_password(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.key_store_password = inp;
             self
         }
         /// <p>Associates the custom key store with a related AWS CloudHSM cluster. </p>
@@ -6552,6 +7256,13 @@ pub mod update_custom_key_store_input {
         /// use the <a href="https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html">DescribeClusters</a> operation.</p>
         pub fn cloud_hsm_cluster_id(mut self, inp: impl Into<std::string::String>) -> Self {
             self.cloud_hsm_cluster_id = Some(inp.into());
+            self
+        }
+        pub fn set_cloud_hsm_cluster_id(
+            mut self,
+            inp: std::option::Option<std::string::String>,
+        ) -> Self {
+            self.cloud_hsm_cluster_id = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UpdateCustomKeyStore`](crate::operation::UpdateCustomKeyStore)>
@@ -6687,9 +7398,17 @@ pub mod update_key_description_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>New description for the CMK.</p>
         pub fn description(mut self, inp: impl Into<std::string::String>) -> Self {
             self.description = Some(inp.into());
+            self
+        }
+        pub fn set_description(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.description = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`UpdateKeyDescription`](crate::operation::UpdateKeyDescription)>
@@ -6835,6 +7554,10 @@ pub mod verify_input {
             self.key_id = Some(inp.into());
             self
         }
+        pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
+            self.key_id = inp;
+            self
+        }
         /// <p>Specifies the message that was signed. You can submit a raw message of up to 4096 bytes,
         /// or a hash digest of the message. If you submit a digest, use the <code>MessageType</code>
         /// parameter with a value of <code>DIGEST</code>.</p>
@@ -6843,6 +7566,10 @@ pub mod verify_input {
         /// message.</p>
         pub fn message(mut self, inp: smithy_types::Blob) -> Self {
             self.message = Some(inp);
+            self
+        }
+        pub fn set_message(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.message = inp;
             self
         }
         /// <p>Tells AWS KMS whether the value of the <code>Message</code> parameter is a message or
@@ -6857,9 +7584,20 @@ pub mod verify_input {
             self.message_type = Some(inp);
             self
         }
+        pub fn set_message_type(
+            mut self,
+            inp: std::option::Option<crate::model::MessageType>,
+        ) -> Self {
+            self.message_type = inp;
+            self
+        }
         /// <p>The signature that the <code>Sign</code> operation generated.</p>
         pub fn signature(mut self, inp: smithy_types::Blob) -> Self {
             self.signature = Some(inp);
+            self
+        }
+        pub fn set_signature(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.signature = inp;
             self
         }
         /// <p>The signing algorithm that was used to sign the message. If you submit a different
@@ -6868,11 +7606,25 @@ pub mod verify_input {
             self.signing_algorithm = Some(inp);
             self
         }
+        pub fn set_signing_algorithm(
+            mut self,
+            inp: std::option::Option<crate::model::SigningAlgorithmSpec>,
+        ) -> Self {
+            self.signing_algorithm = inp;
+            self
+        }
         /// <p>A list of grant tokens.</p>
         /// <p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant Tokens</a> in the
         /// <i>AWS Key Management Service Developer Guide</i>.</p>
         pub fn grant_tokens(mut self, inp: std::vec::Vec<std::string::String>) -> Self {
             self.grant_tokens = Some(inp);
+            self
+        }
+        pub fn set_grant_tokens(
+            mut self,
+            inp: std::option::Option<std::vec::Vec<std::string::String>>,
+        ) -> Self {
+            self.grant_tokens = inp;
             self
         }
         /// Consumes the builder and constructs an Operation<[`Verify`](crate::operation::Verify)>
