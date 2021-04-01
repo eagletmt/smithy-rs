@@ -139,6 +139,11 @@ pub mod create_api_key_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -388,6 +393,11 @@ pub mod create_authorizer_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -558,6 +568,11 @@ pub mod create_base_path_mapping_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -801,6 +816,11 @@ pub mod create_deployment_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -962,6 +982,11 @@ pub mod create_documentation_part_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -1130,6 +1155,11 @@ pub mod create_documentation_version_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -1431,6 +1461,11 @@ pub mod create_domain_name_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -1610,6 +1645,11 @@ pub mod create_model_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -1779,6 +1819,11 @@ pub mod create_request_validator_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -1930,6 +1975,11 @@ pub mod create_resource_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -2191,6 +2241,11 @@ pub mod create_rest_api_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -2468,6 +2523,11 @@ pub mod create_stage_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -2678,6 +2738,11 @@ pub mod create_usage_plan_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -2829,6 +2894,11 @@ pub mod create_usage_plan_key_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -3007,6 +3077,11 @@ pub mod create_vpc_link_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -3132,6 +3207,11 @@ pub mod delete_api_key_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -3268,6 +3348,11 @@ pub mod delete_authorizer_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -3409,6 +3494,11 @@ pub mod delete_base_path_mapping_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -3534,6 +3624,11 @@ pub mod delete_client_certificate_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -3673,6 +3768,11 @@ pub mod delete_deployment_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -3809,6 +3909,11 @@ pub mod delete_documentation_part_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -3950,6 +4055,11 @@ pub mod delete_documentation_version_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -4078,6 +4188,11 @@ pub mod delete_domain_name_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -4221,6 +4336,11 @@ pub mod delete_gateway_response_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -4370,6 +4490,11 @@ pub mod delete_integration_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -4533,6 +4658,11 @@ pub mod delete_integration_response_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -4675,6 +4805,11 @@ pub mod delete_method_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -4838,6 +4973,11 @@ pub mod delete_method_response_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -4966,6 +5106,11 @@ pub mod delete_model_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -5106,6 +5251,11 @@ pub mod delete_request_validator_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -5242,6 +5392,11 @@ pub mod delete_resource_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -5365,6 +5520,11 @@ pub mod delete_rest_api_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -5502,6 +5662,11 @@ pub mod delete_stage_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -5626,6 +5791,11 @@ pub mod delete_usage_plan_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -5765,6 +5935,11 @@ pub mod delete_usage_plan_key_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -5888,6 +6063,11 @@ pub mod delete_vpc_link_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -6025,6 +6205,11 @@ pub mod flush_stage_authorizers_cache_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -6165,6 +6350,11 @@ pub mod flush_stage_cache_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -6315,6 +6505,11 @@ pub mod generate_client_certificate_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -6428,6 +6623,11 @@ pub mod get_account_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -6558,6 +6758,11 @@ pub mod get_api_key_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -6735,6 +6940,11 @@ pub mod get_api_keys_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -6884,6 +7094,11 @@ pub mod get_authorizer_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -7031,6 +7246,11 @@ pub mod get_authorizers_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -7176,6 +7396,11 @@ pub mod get_base_path_mapping_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -7327,6 +7552,11 @@ pub mod get_base_path_mappings_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -7461,6 +7691,11 @@ pub mod get_client_certificate_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -7599,6 +7834,11 @@ pub mod get_client_certificates_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -7753,6 +7993,11 @@ pub mod get_deployment_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -7911,6 +8156,11 @@ pub mod get_deployments_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -8056,6 +8306,11 @@ pub mod get_documentation_part_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -8258,6 +8513,11 @@ pub mod get_documentation_parts_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -8417,6 +8677,11 @@ pub mod get_documentation_version_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -8567,6 +8832,11 @@ pub mod get_documentation_versions_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -8699,6 +8969,11 @@ pub mod get_domain_name_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -8834,6 +9109,11 @@ pub mod get_domain_names_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -9019,6 +9299,11 @@ pub mod get_export_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -9194,6 +9479,11 @@ pub mod get_gateway_response_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -9341,6 +9631,11 @@ pub mod get_gateway_responses_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -9497,6 +9792,11 @@ pub mod get_integration_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -9660,6 +9960,11 @@ pub mod get_integration_response_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -9799,6 +10104,11 @@ pub mod get_method_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -9962,6 +10272,11 @@ pub mod get_method_response_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -10101,6 +10416,11 @@ pub mod get_model_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -10257,6 +10577,11 @@ pub mod get_models_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -10403,6 +10728,11 @@ pub mod get_model_template_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -10539,6 +10869,11 @@ pub mod get_request_validator_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -10688,6 +11023,11 @@ pub mod get_request_validators_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -10847,6 +11187,11 @@ pub mod get_resource_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -11019,6 +11364,11 @@ pub mod get_resources_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -11158,6 +11508,11 @@ pub mod get_rest_api_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -11291,6 +11646,11 @@ pub mod get_rest_apis_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -11465,6 +11825,11 @@ pub mod get_sdk_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -11594,6 +11959,11 @@ pub mod get_sdk_type_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -11729,6 +12099,11 @@ pub mod get_sdk_types_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -11871,6 +12246,11 @@ pub mod get_stage_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -12005,6 +12385,11 @@ pub mod get_stages_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -12158,6 +12543,11 @@ pub mod get_tags_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -12349,6 +12739,11 @@ pub mod get_usage_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -12492,6 +12887,11 @@ pub mod get_usage_plan_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -12626,6 +13026,11 @@ pub mod get_usage_plan_key_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -12787,6 +13192,11 @@ pub mod get_usage_plan_keys_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -12946,6 +13356,11 @@ pub mod get_usage_plans_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -13076,6 +13491,11 @@ pub mod get_vpc_link_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -13211,6 +13631,11 @@ pub mod get_vpc_links_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -13351,6 +13776,11 @@ pub mod import_api_keys_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -13508,6 +13938,11 @@ pub mod import_documentation_parts_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -13674,6 +14109,11 @@ pub mod import_rest_api_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -13884,6 +14324,11 @@ pub mod put_gateway_response_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -14247,6 +14692,11 @@ pub mod put_integration_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -14500,6 +14950,11 @@ pub mod put_integration_response_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -14765,6 +15220,11 @@ pub mod put_method_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -14977,6 +15437,11 @@ pub mod put_method_response_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -15147,6 +15612,11 @@ pub mod put_rest_api_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -15308,6 +15778,11 @@ pub mod tag_resource_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -15557,6 +16032,11 @@ pub mod test_invoke_authorizer_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -15819,6 +16299,11 @@ pub mod test_invoke_method_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -15969,6 +16454,11 @@ pub mod untag_resource_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -16106,6 +16596,11 @@ pub mod update_account_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -16247,6 +16742,11 @@ pub mod update_api_key_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -16405,6 +16905,11 @@ pub mod update_authorizer_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -16568,6 +17073,11 @@ pub mod update_base_path_mapping_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -16715,6 +17225,11 @@ pub mod update_client_certificate_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -16876,6 +17391,11 @@ pub mod update_deployment_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -17034,6 +17554,11 @@ pub mod update_documentation_part_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -17197,6 +17722,11 @@ pub mod update_documentation_version_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -17347,6 +17877,11 @@ pub mod update_domain_name_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -17513,6 +18048,11 @@ pub mod update_gateway_response_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -17684,6 +18224,11 @@ pub mod update_integration_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -17869,6 +18414,11 @@ pub mod update_integration_response_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -18033,6 +18583,11 @@ pub mod update_method_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -18218,6 +18773,11 @@ pub mod update_method_response_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -18368,6 +18928,11 @@ pub mod update_model_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -18530,6 +19095,11 @@ pub mod update_request_validator_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -18688,6 +19258,11 @@ pub mod update_resource_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -18833,6 +19408,11 @@ pub mod update_rest_api_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -18990,6 +19570,11 @@ pub mod update_stage_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
@@ -19150,6 +19735,11 @@ pub mod update_usage_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -19298,6 +19888,11 @@ pub mod update_usage_plan_input {
                 );
 
                 request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
+
+                request
                     .config_mut()
                     .insert(aws_sig_auth::signer::OperationSigningConfig::default_config());
                 request
@@ -19442,6 +20037,11 @@ pub mod update_vpc_link_input {
                         crate::API_METADATA.clone(),
                     ),
                 );
+
+                request
+                    .request_mut()
+                    .headers_mut()
+                    .insert("Accept", http::HeaderValue::from_static("application/json"));
 
                 request
                     .config_mut()
