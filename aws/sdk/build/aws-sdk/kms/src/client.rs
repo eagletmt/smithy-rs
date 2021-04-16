@@ -10,11 +10,17 @@ pub struct Client {
 }
 
 impl Client {
+    #[cfg(any(feature = "rustls", feature = "native-tls"))]
     pub fn from_env() -> Self {
         Self::from_conf_conn(
             crate::Config::builder().build(),
             aws_hyper::conn::Standard::https(),
         )
+    }
+
+    #[cfg(any(feature = "rustls", feature = "native-tls"))]
+    pub fn from_conf(conf: crate::Config) -> Self {
+        Self::from_conf_conn(conf, aws_hyper::conn::Standard::https())
     }
 
     pub fn from_conf_conn(conf: crate::Config, conn: aws_hyper::conn::Standard) -> Self {
