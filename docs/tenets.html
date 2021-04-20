@@ -160,29 +160,29 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#rust-sdk-design-tenets" id="rust-sdk-design-tenets">Rust SDK Design Tenets</a></h1>
+<blockquote>
+<p>Unless you know better ones! These are our tenets today, but we'd love your thoughts! Do you wish we had different priorities? Let us know by opening and issue or starting a discussion.</p>
+</blockquote>
 <ol>
-<li><strong>Batteries included, but replaceable.</strong> The Rust SDK should provide a best-in-class experience for many use cases, <strong>but</strong>, we can’t foresee all the situations the customer will use our software. <strong>Meet customers where they are;</strong> strive to be compatible with their tools. Provide escape hatches to allow customers make different choices.</li>
-<li><strong>Dependencies must be a force multiplier for customers.</strong> Countless previous SDKs demonstrated risks of taking on third party dependencies. Using someone else’s code is high leverage for the SDK developers, but to be included, a dependency must also be high leverage for the customers.</li>
-<li><strong>Customer experience &gt; our experience.</strong> Our experience developing the SDK is important, but we have limited resources and need to prioritize what makes the best possible SDK for the customer. Although our productivity is important, we must only prioritize ourselves over the customer deliberately and carefully.</li>
-<li><strong>Make common problems easy to solve.</strong> Make uncommon problems solvable. Lead customers into <a href="https://blog.codinghorror.com/falling-into-the-pit-of-success/">the pit of success</a>.</li>
-<li><strong>Design for the Future.</strong> We can’t know how APIs will evolve, what protocols will gain adoption, and what new service will be created. Don’t simplify or unify code today that prevents evolution tomorrow.</li>
+<li><a href="#batteries-included-but-replaceable"><strong>Batteries included, but replaceable.</strong></a> The Rust SDK should provide a best-in-class experience for many use cases, <strong>but</strong>, we can’t foresee all the situations the customer will use our software. <strong>Meet customers where they are;</strong> strive to be compatible with their tools. Provide escape hatches to allow customers make different choices.</li>
+<li><a href="#make-common-problems-easy-to-solve"><strong>Make common problems easy to solve.</strong></a> Make uncommon problems solvable. Lead customers into <a href="https://blog.codinghorror.com/falling-into-the-pit-of-success/">the pit of success</a>.</li>
+<li><strong>Dependencies must be a force multiplier for customers.</strong> A large tree of transitive dependencies increases risk for our customers. Using someone else’s code is high leverage for authors of an SDK, but to be included, a dependency must also be high leverage for SDK customers.</li>
+<li><a href="#design-for-the-future"><strong>Design for the Future.</strong></a> We can’t know how APIs will evolve, what protocols will gain adoption, and what new service will be created. Don’t simplify or unify code today that prevents evolution tomorrow.</li>
+<li><strong>Customer experience &gt; our experience.</strong> Our experience developing the SDK is important, but we have limited resources and need to prioritize what makes the best possible SDK for the customer. Although our productivity is important, we must only prioritize the experience of an SDK author over an SDK customer deliberately and carefully.</li>
 </ol>
 <h2><a class="header" href="#details-justification-and-ramifications" id="details-justification-and-ramifications">Details, Justification, and Ramifications</a></h2>
 <h3><a class="header" href="#batteries-included-but-replaceable" id="batteries-included-but-replaceable">Batteries included, but replaceable.</a></h3>
 <p>Some customers will use the Rust SDK as their first experience with async Rust, potentially <strong>any</strong> Rust. They aren't familiar with Tokio or the concept of an async executor. They don’t know that the ecosystem is fragmented. We shouldn't be afraid to have an opinion about the best solution for most customers.</p>
 <p>Other customers will come to our SDK with specific requirements. Perhaps they’re integrating the SDK into a much larger project that uses <code>async_std</code>. Perhaps they need to set custom headers, modify the user agent, or audit every request. They should be able to use the Rust SDK without forking it to get what they need.</p>
-<h3><a class="header" href="#customer-experience--our-experience" id="customer-experience--our-experience"><strong>Customer experience &gt; our experience</strong></a></h3>
-<p>The choices that make the SDK easy to build may clash with decisions that make the best SDK for the customer. Although our productivity is important, we must only prioritize ourselves over the customer deliberately and carefully.</p>
-<p>Although <em><strong>we</strong></em> may struggle to compile all 260 services at once, most customers will only compile one or two at a time. We cannot confuse problems that are easy to measure over problems that deliver the most customer value.</p>
 <h3><a class="header" href="#make-common-problems-easy-to-solve" id="make-common-problems-easy-to-solve">Make common problems easy to solve</a></h3>
-<p>If solving a common problem isn’t obvious from the API, it should be obvious from the documentation. Don’t let customers shoot themselves in foot. Especially, with async Rust, there are a <a href="https://github.com/rusoto/rusoto/issues/1726">number of footguns</a>. The first priority is providing tools to solve common problems in an idiomatic way. If this isn’t possible, provide easy-to-find authoritative documentation with numerous examples following best practices.</p>
+<p>If solving a common problem isn’t obvious from the API, it should be obvious from the documentation. The SDK should guide users towards the best solutions for common tasks, <strong>first</strong> with well named methods, <strong>second</strong> with documentation, and <strong>third</strong> with real -world usage examples. Don't provide APIs that are easy to misuse. Async Rust exposes a <a href="https://github.com/rusoto/rusoto/issues/1726">number of footguns</a>; we should do our best to help customers avoid them.</p>
 <h3><a class="header" href="#design-for-the-future" id="design-for-the-future"><strong>Design for the Future</strong></a></h3>
 <p>We can’t consider every potential future API evolution, so it’s crucial that we can add new modes for new services without breaking existing clients. This means limiting the blast radius of changes:</p>
 <ul>
 <li>Keeping the shared core as small &amp; opaque as possible.</li>
 <li>Don’t leak our internal dependencies to customers</li>
 </ul>
-<p>This may fly in the face of DRY code, and that’s OK! Codegen is different than hand written code.</p>
+<p>This may not be DRY code, and that’s OK! Code that is auto generated has different goals and tradeoffs than code that has been written by hand.</p>
 
                     </main>
 

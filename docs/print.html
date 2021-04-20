@@ -165,7 +165,7 @@
 <p>The AWS Rust SDK aims to provide an official, high quality &amp; complete interface to AWS services. We plan to eventually use the CRT to provide signing &amp; credential management. The Rust SDK will provide first-class support for the CRT as well as <a href="https://tokio.rs/">Tokio </a> &amp; <a href="https://hyper.rs">Hyper</a>. The Rust SDK empowers advanced customers to bring their own HTTP/IO implementations.</p>
 <p>Our design choices are guided by our <a href="./tenets.html">Tenets</a>.</p>
 <h2><a class="header" href="#acknowledgments" id="acknowledgments">Acknowledgments</a></h2>
-<p>This design was vastly improved by countless hours of 1:1s with the members of the SDK org who generously gave their time to answer all my questions, sometimes multiple times. Outside the SDK org, David Barsky, iliana etaoin and Carl Lerche provided continuous feedback outside the scope of their day jobs that had a massive impact on the final design. And of course, the design builds on the learnings, ideas, and GitHub issues of the 142 Rusoto contributors who built this first and learned the hard way.</p>
+<p>The design builds on the learnings, ideas, hard work, and GitHub issues of the 142 Rusoto contributors &amp; thousands of users who built this first and learned the hard way.</p>
 <h2><a class="header" href="#external-api-overview" id="external-api-overview">External API Overview</a></h2>
 <p>The Rust SDK is &quot;modular&quot; meaning that each AWS service is its own crate. Each crate provides two layers to access the service:</p>
 <ol>
@@ -197,34 +197,34 @@ async fn main() {
 </code></pre></pre>
 <p>The Fluent API is implemented as a thin wrapper around the core API to improve ergonomics.</p>
 <h2><a class="header" href="#internals" id="internals">Internals</a></h2>
-<p>Internally, the Rust SDK is built on Tower Middleware, Tokio &amp; Hyper. We're continuing to iterate on the internals to enable running the AWS SDK in other environments. As an example, you can see a demo of adding <code>reqwest</code> as a custom HTTP stack to gain access to its HTTP Proxy support!</p>
+<p>The Rust SDK is built on Tower Middleware, Tokio &amp; Hyper. We're continuing to iterate on the internals to enable running the AWS SDK in other executors &amp; HTTP stacks. As an example, you can see a demo of adding <code>reqwest</code> as a custom HTTP stack to gain access to its HTTP Proxy support!</p>
 <p>For more details about the SDK internals see <a href="transport/operation.html">Operation Design</a></p>
 <h2><a class="header" href="#code-generation" id="code-generation">Code Generation</a></h2>
 <p>The Rust SDK is code generated from Smithy models, using Smithy codegeneration utilities. The Code generation is written in Kotlin. More details can be found in the <a href="./smithy/overview.html">Smithy</a> section.</p>
 <h1><a class="header" href="#rust-sdk-design-tenets" id="rust-sdk-design-tenets">Rust SDK Design Tenets</a></h1>
+<blockquote>
+<p>Unless you know better ones! These are our tenets today, but we'd love your thoughts! Do you wish we had different priorities? Let us know by opening and issue or starting a discussion.</p>
+</blockquote>
 <ol>
-<li><strong>Batteries included, but replaceable.</strong> The Rust SDK should provide a best-in-class experience for many use cases, <strong>but</strong>, we can’t foresee all the situations the customer will use our software. <strong>Meet customers where they are;</strong> strive to be compatible with their tools. Provide escape hatches to allow customers make different choices.</li>
-<li><strong>Dependencies must be a force multiplier for customers.</strong> Countless previous SDKs demonstrated risks of taking on third party dependencies. Using someone else’s code is high leverage for the SDK developers, but to be included, a dependency must also be high leverage for the customers.</li>
-<li><strong>Customer experience &gt; our experience.</strong> Our experience developing the SDK is important, but we have limited resources and need to prioritize what makes the best possible SDK for the customer. Although our productivity is important, we must only prioritize ourselves over the customer deliberately and carefully.</li>
-<li><strong>Make common problems easy to solve.</strong> Make uncommon problems solvable. Lead customers into <a href="https://blog.codinghorror.com/falling-into-the-pit-of-success/">the pit of success</a>.</li>
-<li><strong>Design for the Future.</strong> We can’t know how APIs will evolve, what protocols will gain adoption, and what new service will be created. Don’t simplify or unify code today that prevents evolution tomorrow.</li>
+<li><a href="tenets.html#batteries-included-but-replaceable"><strong>Batteries included, but replaceable.</strong></a> The Rust SDK should provide a best-in-class experience for many use cases, <strong>but</strong>, we can’t foresee all the situations the customer will use our software. <strong>Meet customers where they are;</strong> strive to be compatible with their tools. Provide escape hatches to allow customers make different choices.</li>
+<li><a href="tenets.html#make-common-problems-easy-to-solve"><strong>Make common problems easy to solve.</strong></a> Make uncommon problems solvable. Lead customers into <a href="https://blog.codinghorror.com/falling-into-the-pit-of-success/">the pit of success</a>.</li>
+<li><strong>Dependencies must be a force multiplier for customers.</strong> A large tree of transitive dependencies increases risk for our customers. Using someone else’s code is high leverage for authors of an SDK, but to be included, a dependency must also be high leverage for SDK customers.</li>
+<li><a href="tenets.html#design-for-the-future"><strong>Design for the Future.</strong></a> We can’t know how APIs will evolve, what protocols will gain adoption, and what new service will be created. Don’t simplify or unify code today that prevents evolution tomorrow.</li>
+<li><strong>Customer experience &gt; our experience.</strong> Our experience developing the SDK is important, but we have limited resources and need to prioritize what makes the best possible SDK for the customer. Although our productivity is important, we must only prioritize the experience of an SDK author over an SDK customer deliberately and carefully.</li>
 </ol>
 <h2><a class="header" href="#details-justification-and-ramifications" id="details-justification-and-ramifications">Details, Justification, and Ramifications</a></h2>
 <h3><a class="header" href="#batteries-included-but-replaceable" id="batteries-included-but-replaceable">Batteries included, but replaceable.</a></h3>
 <p>Some customers will use the Rust SDK as their first experience with async Rust, potentially <strong>any</strong> Rust. They aren't familiar with Tokio or the concept of an async executor. They don’t know that the ecosystem is fragmented. We shouldn't be afraid to have an opinion about the best solution for most customers.</p>
 <p>Other customers will come to our SDK with specific requirements. Perhaps they’re integrating the SDK into a much larger project that uses <code>async_std</code>. Perhaps they need to set custom headers, modify the user agent, or audit every request. They should be able to use the Rust SDK without forking it to get what they need.</p>
-<h3><a class="header" href="#customer-experience--our-experience" id="customer-experience--our-experience"><strong>Customer experience &gt; our experience</strong></a></h3>
-<p>The choices that make the SDK easy to build may clash with decisions that make the best SDK for the customer. Although our productivity is important, we must only prioritize ourselves over the customer deliberately and carefully.</p>
-<p>Although <em><strong>we</strong></em> may struggle to compile all 260 services at once, most customers will only compile one or two at a time. We cannot confuse problems that are easy to measure over problems that deliver the most customer value.</p>
 <h3><a class="header" href="#make-common-problems-easy-to-solve" id="make-common-problems-easy-to-solve">Make common problems easy to solve</a></h3>
-<p>If solving a common problem isn’t obvious from the API, it should be obvious from the documentation. Don’t let customers shoot themselves in foot. Especially, with async Rust, there are a <a href="https://github.com/rusoto/rusoto/issues/1726">number of footguns</a>. The first priority is providing tools to solve common problems in an idiomatic way. If this isn’t possible, provide easy-to-find authoritative documentation with numerous examples following best practices.</p>
+<p>If solving a common problem isn’t obvious from the API, it should be obvious from the documentation. The SDK should guide users towards the best solutions for common tasks, <strong>first</strong> with well named methods, <strong>second</strong> with documentation, and <strong>third</strong> with real -world usage examples. Don't provide APIs that are easy to misuse. Async Rust exposes a <a href="https://github.com/rusoto/rusoto/issues/1726">number of footguns</a>; we should do our best to help customers avoid them.</p>
 <h3><a class="header" href="#design-for-the-future" id="design-for-the-future"><strong>Design for the Future</strong></a></h3>
 <p>We can’t consider every potential future API evolution, so it’s crucial that we can add new modes for new services without breaking existing clients. This means limiting the blast radius of changes:</p>
 <ul>
 <li>Keeping the shared core as small &amp; opaque as possible.</li>
 <li>Don’t leak our internal dependencies to customers</li>
 </ul>
-<p>This may fly in the face of DRY code, and that’s OK! Codegen is different than hand written code.</p>
+<p>This may not be DRY code, and that’s OK! Code that is auto generated has different goals and tradeoffs than code that has been written by hand.</p>
 <h1><a class="header" href="#design-faq" id="design-faq">Design FAQ</a></h1>
 <h3><a class="header" href="#what-is-smithy" id="what-is-smithy">What is Smithy?</a></h3>
 <p>Smithy is the interface design language used by AWS services. <code>smithy-rs</code> allows users to generate a Rust client for any Smithy based service (pending protocol support), including those outside of AWS.</p>

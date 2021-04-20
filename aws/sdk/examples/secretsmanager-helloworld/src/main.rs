@@ -36,12 +36,12 @@ async fn main() {
         .await
     {
         Ok(secret) => secret,
-        Err(SdkError::ServiceError { err, .. }) => match err.kind {
-            secretsmanager::error::CreateSecretErrorKind::ResourceExistsError(_) => {
-                panic!("This secret already exists!")
-            }
-            _ => panic!("Secretsmanager Error: {}", err),
-        },
+        Err(SdkError::ServiceError { err, .. })
+            if matches!(err.kind, CreateSecretErrorKind::ResourceExistsError(_)) =>
+        {
+            panic!("This secret already exists!")
+        }
+
         Err(other) => panic!("Failed to create secret: {}", other),
     };
     println!(
