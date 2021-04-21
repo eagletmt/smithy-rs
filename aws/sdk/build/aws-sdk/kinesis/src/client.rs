@@ -142,10 +142,6 @@ impl Client {
         fluent_builders::StopStreamEncryption::new(self.handle.clone())
     }
 
-    pub fn subscribe_to_shard(&self) -> fluent_builders::SubscribeToShard {
-        fluent_builders::SubscribeToShard::new(self.handle.clone())
-    }
-
     pub fn update_shard_count(&self) -> fluent_builders::UpdateShardCount {
         fluent_builders::UpdateShardCount::new(self.handle.clone())
     }
@@ -1838,64 +1834,6 @@ pub mod fluent_builders {
         }
         pub fn set_key_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
             self.inner = self.inner.set_key_id(inp);
-            self
-        }
-    }
-
-    pub struct SubscribeToShard {
-        handle: std::sync::Arc<super::Handle>,
-        inner: crate::input::subscribe_to_shard_input::Builder,
-    }
-    impl SubscribeToShard {
-        pub(crate) fn new(handle: std::sync::Arc<super::Handle>) -> Self {
-            Self {
-                handle,
-                inner: Default::default(),
-            }
-        }
-
-        pub async fn send(
-            self,
-        ) -> Result<
-            crate::output::SubscribeToShardOutput,
-            smithy_http::result::SdkError<crate::error::SubscribeToShardError>,
-        > {
-            let op = self
-                .inner
-                .build(&self.handle.conf)
-                .map_err(|err| smithy_http::result::SdkError::ConstructionFailure(err.into()))?;
-            self.handle.client.call(op).await
-        }
-
-        /// <p>The ID of the shard you want to subscribe to. To see a list of all the shards for a
-        /// given stream, use <a>ListShards</a>.</p>
-        pub fn shard_id(mut self, inp: impl Into<std::string::String>) -> Self {
-            self.inner = self.inner.shard_id(inp);
-            self
-        }
-        pub fn set_shard_id(mut self, inp: std::option::Option<std::string::String>) -> Self {
-            self.inner = self.inner.set_shard_id(inp);
-            self
-        }
-        /// <p></p>
-        pub fn starting_position(mut self, inp: crate::model::StartingPosition) -> Self {
-            self.inner = self.inner.starting_position(inp);
-            self
-        }
-        pub fn set_starting_position(
-            mut self,
-            inp: std::option::Option<crate::model::StartingPosition>,
-        ) -> Self {
-            self.inner = self.inner.set_starting_position(inp);
-            self
-        }
-        /// <p>For this parameter, use the value you obtained when you called <a>RegisterStreamConsumer</a>.</p>
-        pub fn consumer_arn(mut self, inp: impl Into<std::string::String>) -> Self {
-            self.inner = self.inner.consumer_arn(inp);
-            self
-        }
-        pub fn set_consumer_arn(mut self, inp: std::option::Option<std::string::String>) -> Self {
-            self.inner = self.inner.set_consumer_arn(inp);
             self
         }
     }
