@@ -1,0 +1,4 @@
+[workspace]
+members = [
+    "secretsmanager","polly","apigateway","kms","kinesis","dynamodb","smithy-types","smithy-http","smithy-http-tower","protocol-test-helpers","aws-auth","aws-endpoint","aws-types","aws-hyper","aws-sig-auth","aws-http","examples/polly-generate-speech","examples/secretsmanager-get-secret-value","examples/polly-helloworld","examples/dynamo-movies","examples/kms-helloworld","examples/polly-describe-voices","examples/polly-synthesize-speech","examples/polly-put-lexicon","examples/secretsmanager-helloworld","examples/polly-list-lexicons","examples/dynamo-helloworld","examples/secretsmanager-list-secrets","examples/secretsmanager-create-secret"
+]
