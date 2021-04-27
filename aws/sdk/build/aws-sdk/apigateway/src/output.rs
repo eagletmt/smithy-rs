@@ -4,7 +4,7 @@
 /// <p><p>To enable access to a resource in an Amazon Virtual Private Cloud through Amazon API Gateway, you, as an API developer, create a <a>VpcLink</a> resource targeted for one or more network load balancers of the VPC and then integrate an API method with a private integration that uses the <a>VpcLink</a>. The private integration has an integration type of <code>HTTP</code> or <code>HTTP_PROXY</code> and has a connection type of <code>VPC_LINK</code>. The integration uses the <code>connectionId</code> property to identify the <a>VpcLink</a> used.</p></p>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateVpcLinkOutput {
     /// <p>The identifier of the  <a>VpcLink</a>. It is used in an <a>Integration</a> to reference this <a>VpcLink</a>.</p>
     pub id: std::option::Option<std::string::String>,
@@ -158,7 +158,7 @@ impl UpdateVpcLinkOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateUsagePlanOutput {
     /// <p>The identifier of a <a>UsagePlan</a> resource.</p>
     pub id: std::option::Option<std::string::String>,
@@ -328,7 +328,7 @@ impl UpdateUsagePlanOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage">Manage Usage in a Usage Plan</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateUsageOutput {
     /// <p>The plan Id associated with this usage data.</p>
     pub usage_plan_id: std::option::Option<std::string::String>,
@@ -448,7 +448,7 @@ impl UpdateUsageOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploy an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateStageOutput {
     /// <p>The identifier of the <a>Deployment</a> that the stage points to.</p>
     pub deployment_id: std::option::Option<std::string::String>,
@@ -784,7 +784,7 @@ impl UpdateStageOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateRestApiOutput {
     /// <p>The API's identifier. This identifier is unique across all of your APIs in API Gateway.</p>
     pub id: std::option::Option<std::string::String>,
@@ -1032,7 +1032,7 @@ impl UpdateRestApiOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateResourceOutput {
     /// <p>The resource's identifier.</p>
     pub id: std::option::Option<std::string::String>,
@@ -1304,7 +1304,7 @@ impl UpdateResourceOutput {
 /// </div>
 /// <div class="seeAlso"><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateRequestValidatorOutput {
     /// <p>The identifier of this <a>RequestValidator</a>.</p>
     pub id: std::option::Option<std::string::String>,
@@ -1403,7 +1403,7 @@ impl UpdateRequestValidatorOutput {
 /// <a>Method</a>, <a>MethodResponse</a>, <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateModelOutput {
     /// <p>The identifier for the model resource.</p>
     pub id: std::option::Option<std::string::String>,
@@ -1550,7 +1550,7 @@ impl UpdateModelOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateMethodResponseOutput {
     /// <p>The method response's status code.</p>
     pub status_code: std::option::Option<std::string::String>,
@@ -1811,7 +1811,7 @@ impl UpdateMethodResponseOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html">Set up an API's method</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateMethodOutput {
     /// <p>The method's HTTP verb.</p>
     pub http_method: std::option::Option<std::string::String>,
@@ -2275,7 +2275,7 @@ impl UpdateMethodOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateIntegrationResponseOutput {
     /// <p>Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
     pub status_code: std::option::Option<std::string::String>,
@@ -2425,7 +2425,7 @@ impl UpdateIntegrationResponseOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateIntegrationOutput {
     /// <p>Specifies an API method integration type. The valid value is one of the following:</p>
     /// <ul>
@@ -2907,7 +2907,7 @@ impl UpdateIntegrationOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/customize-gateway-responses.html">Customize Gateway Responses</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateGatewayResponseOutput {
     /// <p>The response type of the associated <a>GatewayResponse</a>. Valid values are <ul><li>ACCESS_DENIED</li><li>API_CONFIGURATION_ERROR</li><li>AUTHORIZER_FAILURE</li><li> AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUEST_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INTEGRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li> QUOTA_EXCEEDED</li><li>REQUEST_TOO_LARGE</li><li>RESOURCE_NOT_FOUND</li><li>THROTTLED</li><li>UNAUTHORIZED</li><li>UNSUPPORTED_MEDIA_TYPE</li></ul> </p>
     pub response_type: std::option::Option<crate::model::GatewayResponseType>,
@@ -3046,7 +3046,7 @@ impl UpdateGatewayResponseOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Set a Custom Host Name for an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateDomainNameOutput {
     /// <p>The custom domain name as an API host name, for example, <code>my-api.example.com</code>.</p>
     pub domain_name: std::option::Option<std::string::String>,
@@ -3371,7 +3371,7 @@ impl UpdateDomainNameOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersions</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateDocumentationVersionOutput {
     /// <p>The version identifier of the API documentation snapshot.</p>
     pub version: std::option::Option<std::string::String>,
@@ -3452,7 +3452,7 @@ impl UpdateDocumentationVersionOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationParts</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateDocumentationPartOutput {
     /// <p>The <a>DocumentationPart</a> identifier, generated by API Gateway when the <code>DocumentationPart</code> is created.</p>
     pub id: std::option::Option<std::string::String>,
@@ -3536,7 +3536,7 @@ impl UpdateDocumentationPartOutput {
 /// <a href="https://aws.amazon.com/tools/">AWS SDKs</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateDeploymentOutput {
     /// <p>The identifier for the deployment resource.</p>
     pub id: std::option::Option<std::string::String>,
@@ -3652,7 +3652,7 @@ impl UpdateDeploymentOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateClientCertificateOutput {
     /// <p>The identifier of the client certificate.</p>
     pub client_certificate_id: std::option::Option<std::string::String>,
@@ -3795,7 +3795,7 @@ impl UpdateClientCertificateOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateBasePathMappingOutput {
     /// <p>The base path name that callers of the API must provide as part of the URL after the domain name.</p>
     pub base_path: std::option::Option<std::string::String>,
@@ -3874,7 +3874,7 @@ impl UpdateBasePathMappingOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html">Use Cognito User Pool as Authorizer</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateAuthorizerOutput {
     /// <p>The identifier for the authorizer resource.</p>
     pub id: std::option::Option<std::string::String>,
@@ -4075,7 +4075,7 @@ impl UpdateAuthorizerOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateApiKeyOutput {
     /// <p>The identifier of the API Key.</p>
     pub id: std::option::Option<std::string::String>,
@@ -4316,7 +4316,7 @@ impl UpdateApiKeyOutput {
 /// <a href="https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html">AWS CLI</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UpdateAccountOutput {
     /// <p>The ARN of an Amazon CloudWatch role for the current <a>Account</a>. </p>
     pub cloudwatch_role_arn: std::option::Option<std::string::String>,
@@ -4417,7 +4417,7 @@ impl UpdateAccountOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct UntagResourceOutput {}
 impl std::fmt::Debug for UntagResourceOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -4450,7 +4450,7 @@ impl UntagResourceOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-test-method.html#how-to-test-method-console">Test API using the API Gateway console</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct TestInvokeMethodOutput {
     /// <p>The HTTP status code.</p>
     pub status: i32,
@@ -4594,7 +4594,7 @@ impl TestInvokeMethodOutput {
 
 /// <p>Represents the response of the test invoke request for a custom <a>Authorizer</a></p>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct TestInvokeAuthorizerOutput {
     /// <p>The HTTP status code that the client would have received. Value is 0 if the authorizer succeeded.</p>
     pub client_status: i32,
@@ -4750,7 +4750,7 @@ impl TestInvokeAuthorizerOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct TagResourceOutput {}
 impl std::fmt::Debug for TagResourceOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -4783,7 +4783,7 @@ impl TagResourceOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct PutRestApiOutput {
     /// <p>The API's identifier. This identifier is unique across all of your APIs in API Gateway.</p>
     pub id: std::option::Option<std::string::String>,
@@ -5072,7 +5072,7 @@ impl PutRestApiOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct PutMethodResponseOutput {
     /// <p>The method response's status code.</p>
     pub status_code: std::option::Option<std::string::String>,
@@ -5333,7 +5333,7 @@ impl PutMethodResponseOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html">Set up an API's method</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct PutMethodOutput {
     /// <p>The method's HTTP verb.</p>
     pub http_method: std::option::Option<std::string::String>,
@@ -5797,7 +5797,7 @@ impl PutMethodOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct PutIntegrationResponseOutput {
     /// <p>Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
     pub status_code: std::option::Option<std::string::String>,
@@ -5947,7 +5947,7 @@ impl PutIntegrationResponseOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct PutIntegrationOutput {
     /// <p>Specifies an API method integration type. The valid value is one of the following:</p>
     /// <ul>
@@ -6429,7 +6429,7 @@ impl PutIntegrationOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/customize-gateway-responses.html">Customize Gateway Responses</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct PutGatewayResponseOutput {
     /// <p>The response type of the associated <a>GatewayResponse</a>. Valid values are <ul><li>ACCESS_DENIED</li><li>API_CONFIGURATION_ERROR</li><li>AUTHORIZER_FAILURE</li><li> AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUEST_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INTEGRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li> QUOTA_EXCEEDED</li><li>REQUEST_TOO_LARGE</li><li>RESOURCE_NOT_FOUND</li><li>THROTTLED</li><li>UNAUTHORIZED</li><li>UNSUPPORTED_MEDIA_TYPE</li></ul> </p>
     pub response_type: std::option::Option<crate::model::GatewayResponseType>,
@@ -6564,7 +6564,7 @@ impl PutGatewayResponseOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct ImportRestApiOutput {
     /// <p>The API's identifier. This identifier is unique across all of your APIs in API Gateway.</p>
     pub id: std::option::Option<std::string::String>,
@@ -6813,7 +6813,7 @@ impl ImportRestApiOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a href="https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/">documentationpart:import</a>, <a>DocumentationPart</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct ImportDocumentationPartsOutput {
     /// <p>A list of the returned documentation part identifiers.</p>
     pub ids: std::option::Option<std::vec::Vec<std::string::String>>,
@@ -6882,7 +6882,7 @@ impl ImportDocumentationPartsOutput {
 
 /// <p>The identifier of an <a>ApiKey</a> used in a <a>UsagePlan</a>.</p>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct ImportApiKeysOutput {
     /// <p>A list of all the <a>ApiKey</a> identifiers.</p>
     pub ids: std::option::Option<std::vec::Vec<std::string::String>>,
@@ -6955,7 +6955,7 @@ impl ImportApiKeysOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html">Set up Private Integrations</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetVpcLinksOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::VpcLink>>,
@@ -7023,7 +7023,7 @@ impl GetVpcLinksOutput {
 /// <p><p>To enable access to a resource in an Amazon Virtual Private Cloud through Amazon API Gateway, you, as an API developer, create a <a>VpcLink</a> resource targeted for one or more network load balancers of the VPC and then integrate an API method with a private integration that uses the <a>VpcLink</a>. The private integration has an integration type of <code>HTTP</code> or <code>HTTP_PROXY</code> and has a connection type of <code>VPC_LINK</code>. The integration uses the <code>connectionId</code> property to identify the <a>VpcLink</a> used.</p></p>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetVpcLinkOutput {
     /// <p>The identifier of the  <a>VpcLink</a>. It is used in an <a>Integration</a> to reference this <a>VpcLink</a>.</p>
     pub id: std::option::Option<std::string::String>,
@@ -7174,7 +7174,7 @@ impl GetVpcLinkOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetUsagePlansOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::UsagePlan>>,
@@ -7242,7 +7242,7 @@ impl GetUsagePlansOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetUsagePlanKeysOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::UsagePlanKey>>,
@@ -7313,7 +7313,7 @@ impl GetUsagePlanKeysOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetUsagePlanKeyOutput {
     /// <p>The Id of a usage plan key.</p>
     pub id: std::option::Option<std::string::String>,
@@ -7408,7 +7408,7 @@ impl GetUsagePlanKeyOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetUsagePlanOutput {
     /// <p>The identifier of a <a>UsagePlan</a> resource.</p>
     pub id: std::option::Option<std::string::String>,
@@ -7578,7 +7578,7 @@ impl GetUsagePlanOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage">Manage Usage in a Usage Plan</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetUsageOutput {
     /// <p>The plan Id associated with this usage data.</p>
     pub usage_plan_id: std::option::Option<std::string::String>,
@@ -7695,7 +7695,7 @@ impl GetUsageOutput {
 
 /// <p>The collection of tags. Each tag element is associated with a given resource.</p>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetTagsOutput {
     /// <p>The collection of tags. Each tag element is associated with a given resource.</p>
     pub tags:
@@ -7754,7 +7754,7 @@ impl GetTagsOutput {
 /// <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p>
 /// <div class="seeAlso"><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html">Deploying API in Stages</a></div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetStagesOutput {
     /// <p>The current page of elements from this collection.</p>
     pub item: std::option::Option<std::vec::Vec<crate::model::Stage>>,
@@ -7806,7 +7806,7 @@ impl GetStagesOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploy an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetStageOutput {
     /// <p>The identifier of the <a>Deployment</a> that the stage points to.</p>
     pub deployment_id: std::option::Option<std::string::String>,
@@ -8139,7 +8139,7 @@ impl GetStageOutput {
 
 /// <p>The collection of <a>SdkType</a> instances.</p>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetSdkTypesOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::SdkType>>,
@@ -8188,7 +8188,7 @@ impl GetSdkTypesOutput {
 
 /// <p>A type of SDK that API Gateway can generate.</p>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetSdkTypeOutput {
     /// <p>The identifier of an <a>SdkType</a> instance.</p>
     pub id: std::option::Option<std::string::String>,
@@ -8286,7 +8286,7 @@ impl GetSdkTypeOutput {
 
 /// <p>The binary blob response to <a>GetSdk</a>, which contains the generated SDK.</p>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetSdkOutput {
     /// <p>The content-type header value in the HTTP response.</p>
     pub content_type: std::option::Option<std::string::String>,
@@ -8367,7 +8367,7 @@ impl GetSdkOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetRestApisOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::RestApi>>,
@@ -8435,7 +8435,7 @@ impl GetRestApisOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetRestApiOutput {
     /// <p>The API's identifier. This identifier is unique across all of your APIs in API Gateway.</p>
     pub id: std::option::Option<std::string::String>,
@@ -8683,7 +8683,7 @@ impl GetRestApiOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetResourcesOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::Resource>>,
@@ -8751,7 +8751,7 @@ impl GetResourcesOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetResourceOutput {
     /// <p>The resource's identifier.</p>
     pub id: std::option::Option<std::string::String>,
@@ -9023,7 +9023,7 @@ impl GetResourceOutput {
 /// </div>
 /// <div class="seeAlso"><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetRequestValidatorsOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::RequestValidator>>,
@@ -9092,7 +9092,7 @@ impl GetRequestValidatorsOutput {
 /// </div>
 /// <div class="seeAlso"><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetRequestValidatorOutput {
     /// <p>The identifier of this <a>RequestValidator</a>.</p>
     pub id: std::option::Option<std::string::String>,
@@ -9187,7 +9187,7 @@ impl GetRequestValidatorOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-mappings">Mapping Templates</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetModelTemplateOutput {
     /// <p>The Apache <a target="_blank" href="https://velocity.apache.org/engine/devel/vtl-reference.html">Velocity Template Language (VTL)</a> template content used for the template resource.</p>
     pub value: std::option::Option<std::string::String>,
@@ -9235,7 +9235,7 @@ impl GetModelTemplateOutput {
 /// <a>Method</a>, <a>MethodResponse</a>, <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetModelsOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::Model>>,
@@ -9307,7 +9307,7 @@ impl GetModelsOutput {
 /// <a>Method</a>, <a>MethodResponse</a>, <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetModelOutput {
     /// <p>The identifier for the model resource.</p>
     pub id: std::option::Option<std::string::String>,
@@ -9454,7 +9454,7 @@ impl GetModelOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetMethodResponseOutput {
     /// <p>The method response's status code.</p>
     pub status_code: std::option::Option<std::string::String>,
@@ -9715,7 +9715,7 @@ impl GetMethodResponseOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html">Set up an API's method</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetMethodOutput {
     /// <p>The method's HTTP verb.</p>
     pub http_method: std::option::Option<std::string::String>,
@@ -10179,7 +10179,7 @@ impl GetMethodOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetIntegrationResponseOutput {
     /// <p>Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
     pub status_code: std::option::Option<std::string::String>,
@@ -10329,7 +10329,7 @@ impl GetIntegrationResponseOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetIntegrationOutput {
     /// <p>Specifies an API method integration type. The valid value is one of the following:</p>
     /// <ul>
@@ -11280,7 +11280,7 @@ impl GetIntegrationOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/customize-gateway-responses.html">Customize Gateway Responses</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetGatewayResponsesOutput {
     /// <p>Returns the entire collection, because of no pagination support.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::GatewayResponse>>,
@@ -11402,7 +11402,7 @@ impl GetGatewayResponsesOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/customize-gateway-responses.html">Customize Gateway Responses</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetGatewayResponseOutput {
     /// <p>The response type of the associated <a>GatewayResponse</a>. Valid values are <ul><li>ACCESS_DENIED</li><li>API_CONFIGURATION_ERROR</li><li>AUTHORIZER_FAILURE</li><li> AUTHORIZER_CONFIGURATION_ERROR</li><li>BAD_REQUEST_PARAMETERS</li><li>BAD_REQUEST_BODY</li><li>DEFAULT_4XX</li><li>DEFAULT_5XX</li><li>EXPIRED_TOKEN</li><li>INVALID_SIGNATURE</li><li>INTEGRATION_FAILURE</li><li>INTEGRATION_TIMEOUT</li><li>INVALID_API_KEY</li><li>MISSING_AUTHENTICATION_TOKEN</li><li> QUOTA_EXCEEDED</li><li>REQUEST_TOO_LARGE</li><li>RESOURCE_NOT_FOUND</li><li>THROTTLED</li><li>UNAUTHORIZED</li><li>UNSUPPORTED_MEDIA_TYPE</li></ul> </p>
     pub response_type: std::option::Option<crate::model::GatewayResponseType>,
@@ -11534,7 +11534,7 @@ impl GetGatewayResponseOutput {
 
 /// <p>The binary blob response to <a>GetExport</a>, which contains the generated SDK.</p>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetExportOutput {
     /// <p>The content-type header value in the HTTP response. This will correspond to a valid 'accept' type in the request.</p>
     pub content_type: std::option::Option<std::string::String>,
@@ -11615,7 +11615,7 @@ impl GetExportOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Client-Side Certificate</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetDomainNamesOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::DomainName>>,
@@ -11687,7 +11687,7 @@ impl GetDomainNamesOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Set a Custom Host Name for an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetDomainNameOutput {
     /// <p>The custom domain name as an API host name, for example, <code>my-api.example.com</code>.</p>
     pub domain_name: std::option::Option<std::string::String>,
@@ -12012,7 +12012,7 @@ impl GetDomainNameOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersion</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetDocumentationVersionsOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::DocumentationVersion>>,
@@ -12081,7 +12081,7 @@ impl GetDocumentationVersionsOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersions</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetDocumentationVersionOutput {
     /// <p>The version identifier of the API documentation snapshot.</p>
     pub version: std::option::Option<std::string::String>,
@@ -12160,7 +12160,7 @@ impl GetDocumentationVersionOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetDocumentationPartsOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::DocumentationPart>>,
@@ -12231,7 +12231,7 @@ impl GetDocumentationPartsOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationParts</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetDocumentationPartOutput {
     /// <p>The <a>DocumentationPart</a> identifier, generated by API Gateway when the <code>DocumentationPart</code> is created.</p>
     pub id: std::option::Option<std::string::String>,
@@ -12316,7 +12316,7 @@ impl GetDocumentationPartOutput {
 /// <a href="https://aws.amazon.com/tools/">AWS SDKs</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetDeploymentsOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::Deployment>>,
@@ -12387,7 +12387,7 @@ impl GetDeploymentsOutput {
 /// <a href="https://aws.amazon.com/tools/">AWS SDKs</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetDeploymentOutput {
     /// <p>The identifier for the deployment resource.</p>
     pub id: std::option::Option<std::string::String>,
@@ -12502,7 +12502,7 @@ impl GetDeploymentOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetClientCertificatesOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::ClientCertificate>>,
@@ -12571,7 +12571,7 @@ impl GetClientCertificatesOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetClientCertificateOutput {
     /// <p>The identifier of the client certificate.</p>
     pub client_certificate_id: std::option::Option<std::string::String>,
@@ -12713,7 +12713,7 @@ impl GetClientCertificateOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetBasePathMappingsOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::BasePathMapping>>,
@@ -12782,7 +12782,7 @@ impl GetBasePathMappingsOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetBasePathMappingOutput {
     /// <p>The base path name that callers of the API must provide as part of the URL after the domain name.</p>
     pub base_path: std::option::Option<std::string::String>,
@@ -12861,7 +12861,7 @@ impl GetBasePathMappingOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html">Use Cognito User Pool as Authorizer</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetAuthorizersOutput {
     /// <p>The current page of elements from this collection.</p>
     pub items: std::option::Option<std::vec::Vec<crate::model::Authorizer>>,
@@ -12930,7 +12930,7 @@ impl GetAuthorizersOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html">Use Cognito User Pool as Authorizer</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetAuthorizerOutput {
     /// <p>The identifier for the authorizer resource.</p>
     pub id: std::option::Option<std::string::String>,
@@ -13131,7 +13131,7 @@ impl GetAuthorizerOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetApiKeysOutput {
     /// <p>A list of warning messages logged during the import of API keys when the <code>failOnWarnings</code> option is set to true.</p>
     pub warnings: std::option::Option<std::vec::Vec<std::string::String>>,
@@ -13217,7 +13217,7 @@ impl GetApiKeysOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetApiKeyOutput {
     /// <p>The identifier of the API Key.</p>
     pub id: std::option::Option<std::string::String>,
@@ -13458,7 +13458,7 @@ impl GetApiKeyOutput {
 /// <a href="https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html">AWS CLI</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GetAccountOutput {
     /// <p>The ARN of an Amazon CloudWatch role for the current <a>Account</a>. </p>
     pub cloudwatch_role_arn: std::option::Option<std::string::String>,
@@ -13564,7 +13564,7 @@ impl GetAccountOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct GenerateClientCertificateOutput {
     /// <p>The identifier of the client certificate.</p>
     pub client_certificate_id: std::option::Option<std::string::String>,
@@ -13702,7 +13702,7 @@ impl GenerateClientCertificateOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct FlushStageCacheOutput {}
 impl std::fmt::Debug for FlushStageCacheOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -13731,7 +13731,7 @@ impl FlushStageCacheOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct FlushStageAuthorizersCacheOutput {}
 impl std::fmt::Debug for FlushStageAuthorizersCacheOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -13760,7 +13760,7 @@ impl FlushStageAuthorizersCacheOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteVpcLinkOutput {}
 impl std::fmt::Debug for DeleteVpcLinkOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -13789,7 +13789,7 @@ impl DeleteVpcLinkOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteUsagePlanKeyOutput {}
 impl std::fmt::Debug for DeleteUsagePlanKeyOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -13818,7 +13818,7 @@ impl DeleteUsagePlanKeyOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteUsagePlanOutput {}
 impl std::fmt::Debug for DeleteUsagePlanOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -13847,7 +13847,7 @@ impl DeleteUsagePlanOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteStageOutput {}
 impl std::fmt::Debug for DeleteStageOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -13876,7 +13876,7 @@ impl DeleteStageOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteRestApiOutput {}
 impl std::fmt::Debug for DeleteRestApiOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -13905,7 +13905,7 @@ impl DeleteRestApiOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteResourceOutput {}
 impl std::fmt::Debug for DeleteResourceOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -13934,7 +13934,7 @@ impl DeleteResourceOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteRequestValidatorOutput {}
 impl std::fmt::Debug for DeleteRequestValidatorOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -13963,7 +13963,7 @@ impl DeleteRequestValidatorOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteModelOutput {}
 impl std::fmt::Debug for DeleteModelOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -13992,7 +13992,7 @@ impl DeleteModelOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteMethodResponseOutput {}
 impl std::fmt::Debug for DeleteMethodResponseOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14021,7 +14021,7 @@ impl DeleteMethodResponseOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteMethodOutput {}
 impl std::fmt::Debug for DeleteMethodOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14050,7 +14050,7 @@ impl DeleteMethodOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteIntegrationResponseOutput {}
 impl std::fmt::Debug for DeleteIntegrationResponseOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14079,7 +14079,7 @@ impl DeleteIntegrationResponseOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteIntegrationOutput {}
 impl std::fmt::Debug for DeleteIntegrationOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14108,7 +14108,7 @@ impl DeleteIntegrationOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteGatewayResponseOutput {}
 impl std::fmt::Debug for DeleteGatewayResponseOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14137,7 +14137,7 @@ impl DeleteGatewayResponseOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteDomainNameOutput {}
 impl std::fmt::Debug for DeleteDomainNameOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14166,7 +14166,7 @@ impl DeleteDomainNameOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteDocumentationVersionOutput {}
 impl std::fmt::Debug for DeleteDocumentationVersionOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14195,7 +14195,7 @@ impl DeleteDocumentationVersionOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteDocumentationPartOutput {}
 impl std::fmt::Debug for DeleteDocumentationPartOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14224,7 +14224,7 @@ impl DeleteDocumentationPartOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteDeploymentOutput {}
 impl std::fmt::Debug for DeleteDeploymentOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14253,7 +14253,7 @@ impl DeleteDeploymentOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteClientCertificateOutput {}
 impl std::fmt::Debug for DeleteClientCertificateOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14282,7 +14282,7 @@ impl DeleteClientCertificateOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteBasePathMappingOutput {}
 impl std::fmt::Debug for DeleteBasePathMappingOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14311,7 +14311,7 @@ impl DeleteBasePathMappingOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteAuthorizerOutput {}
 impl std::fmt::Debug for DeleteAuthorizerOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14340,7 +14340,7 @@ impl DeleteAuthorizerOutput {
 }
 
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct DeleteApiKeyOutput {}
 impl std::fmt::Debug for DeleteApiKeyOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -14373,7 +14373,7 @@ impl DeleteApiKeyOutput {
 /// <p><p>To enable access to a resource in an Amazon Virtual Private Cloud through Amazon API Gateway, you, as an API developer, create a <a>VpcLink</a> resource targeted for one or more network load balancers of the VPC and then integrate an API method with a private integration that uses the <a>VpcLink</a>. The private integration has an integration type of <code>HTTP</code> or <code>HTTP_PROXY</code> and has a connection type of <code>VPC_LINK</code>. The integration uses the <code>connectionId</code> property to identify the <a>VpcLink</a> used.</p></p>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateVpcLinkOutput {
     /// <p>The identifier of the  <a>VpcLink</a>. It is used in an <a>Integration</a> to reference this <a>VpcLink</a>.</p>
     pub id: std::option::Option<std::string::String>,
@@ -14527,7 +14527,7 @@ impl CreateVpcLinkOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateUsagePlanKeyOutput {
     /// <p>The Id of a usage plan key.</p>
     pub id: std::option::Option<std::string::String>,
@@ -14622,7 +14622,7 @@ impl CreateUsagePlanKeyOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateUsagePlanOutput {
     /// <p>The identifier of a <a>UsagePlan</a> resource.</p>
     pub id: std::option::Option<std::string::String>,
@@ -14790,7 +14790,7 @@ impl CreateUsagePlanOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploy an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateStageOutput {
     /// <p>The identifier of the <a>Deployment</a> that the stage points to.</p>
     pub deployment_id: std::option::Option<std::string::String>,
@@ -15126,7 +15126,7 @@ impl CreateStageOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateRestApiOutput {
     /// <p>The API's identifier. This identifier is unique across all of your APIs in API Gateway.</p>
     pub id: std::option::Option<std::string::String>,
@@ -15374,7 +15374,7 @@ impl CreateRestApiOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateResourceOutput {
     /// <p>The resource's identifier.</p>
     pub id: std::option::Option<std::string::String>,
@@ -15646,7 +15646,7 @@ impl CreateResourceOutput {
 /// </div>
 /// <div class="seeAlso"><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateRequestValidatorOutput {
     /// <p>The identifier of this <a>RequestValidator</a>.</p>
     pub id: std::option::Option<std::string::String>,
@@ -15745,7 +15745,7 @@ impl CreateRequestValidatorOutput {
 /// <a>Method</a>, <a>MethodResponse</a>, <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateModelOutput {
     /// <p>The identifier for the model resource.</p>
     pub id: std::option::Option<std::string::String>,
@@ -15855,7 +15855,7 @@ impl CreateModelOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Set a Custom Host Name for an API</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateDomainNameOutput {
     /// <p>The custom domain name as an API host name, for example, <code>my-api.example.com</code>.</p>
     pub domain_name: std::option::Option<std::string::String>,
@@ -16180,7 +16180,7 @@ impl CreateDomainNameOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersions</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateDocumentationVersionOutput {
     /// <p>The version identifier of the API documentation snapshot.</p>
     pub version: std::option::Option<std::string::String>,
@@ -16261,7 +16261,7 @@ impl CreateDocumentationVersionOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationParts</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateDocumentationPartOutput {
     /// <p>The <a>DocumentationPart</a> identifier, generated by API Gateway when the <code>DocumentationPart</code> is created.</p>
     pub id: std::option::Option<std::string::String>,
@@ -16345,7 +16345,7 @@ impl CreateDocumentationPartOutput {
 /// <a href="https://aws.amazon.com/tools/">AWS SDKs</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateDeploymentOutput {
     /// <p>The identifier for the deployment resource.</p>
     pub id: std::option::Option<std::string::String>,
@@ -16461,7 +16461,7 @@ impl CreateDeploymentOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateBasePathMappingOutput {
     /// <p>The base path name that callers of the API must provide as part of the URL after the domain name.</p>
     pub base_path: std::option::Option<std::string::String>,
@@ -16540,7 +16540,7 @@ impl CreateBasePathMappingOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html">Use Cognito User Pool as Authorizer</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateAuthorizerOutput {
     /// <p>The identifier for the authorizer resource.</p>
     pub id: std::option::Option<std::string::String>,
@@ -16741,7 +16741,7 @@ impl CreateAuthorizerOutput {
 /// <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a>
 /// </div>
 #[non_exhaustive]
-#[derive(std::clone::Clone, std::cmp::PartialEq)]
+#[derive(std::clone::Clone)]
 pub struct CreateApiKeyOutput {
     /// <p>The identifier of the API Key.</p>
     pub id: std::option::Option<std::string::String>,
