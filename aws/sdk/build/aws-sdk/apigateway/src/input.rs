@@ -9820,13 +9820,8 @@ impl GetExportInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    fn body(&self) -> crate::serializer::GetExportInputBody {
-        crate::serializer::GetExportInputBody {
-            parameters: &self.parameters,
-        }
-    }
     pub fn build_body(&self) -> std::vec::Vec<u8> {
-        serde_json::to_vec(&self.body()).expect("serialization should succeed")
+        vec![]
     }
     pub fn assemble(
         builder: http::request::Builder,
@@ -12438,13 +12433,8 @@ impl GetSdkInput {
         let builder = builder.header("Content-Type", "application/json");
         self.update_http_builder(builder)
     }
-    fn body(&self) -> crate::serializer::GetSdkInputBody {
-        crate::serializer::GetSdkInputBody {
-            parameters: &self.parameters,
-        }
-    }
     pub fn build_body(&self) -> std::vec::Vec<u8> {
-        serde_json::to_vec(&self.body()).expect("serialization should succeed")
+        vec![]
     }
     pub fn assemble(
         builder: http::request::Builder,
@@ -14358,10 +14348,20 @@ pub mod import_api_keys_input {
     #[non_exhaustive]
     #[derive(Debug, Clone, Default)]
     pub struct Builder {
+        body: std::option::Option<smithy_types::Blob>,
         format: std::option::Option<crate::model::ApiKeysFormat>,
         fail_on_warnings: std::option::Option<bool>,
     }
     impl Builder {
+        /// <p>The payload of the POST request to import API keys. For the payload format, see <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html">API Key File Format</a>.</p>
+        pub fn body(mut self, inp: smithy_types::Blob) -> Self {
+            self.body = Some(inp);
+            self
+        }
+        pub fn set_body(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.body = inp;
+            self
+        }
         /// <p>A query parameter to specify the input format to imported API keys. Currently, only the <code>csv</code> format is supported.</p>
         pub fn format(mut self, inp: crate::model::ApiKeysFormat) -> Self {
             self.format = Some(inp);
@@ -14385,6 +14385,7 @@ pub mod import_api_keys_input {
             self,
         ) -> Result<crate::input::ImportApiKeysInput, smithy_http::operation::BuildError> {
             Ok(crate::input::ImportApiKeysInput {
+                body: self.body,
                 format: self.format,
                 fail_on_warnings: self.fail_on_warnings.unwrap_or_default(),
             })
@@ -14488,11 +14489,17 @@ impl ImportApiKeysInput {
         &self,
     ) -> Result<http::request::Builder, smithy_http::operation::BuildError> {
         let builder = http::request::Builder::new();
-        let builder = builder.header("Content-Type", "application/json");
+        let builder = builder.header("Content-Type", "application/octet-stream");
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> std::vec::Vec<u8> {
-        vec![]
+        let var_62 = &self.body;
+
+        let var_62 = match var_62.as_ref() {
+            Some(t) => t,
+            None => return vec![],
+        };
+        var_62.as_ref().into()
     }
     pub fn assemble(
         builder: http::request::Builder,
@@ -14518,6 +14525,7 @@ pub mod import_documentation_parts_input {
         rest_api_id: std::option::Option<std::string::String>,
         mode: std::option::Option<crate::model::PutMode>,
         fail_on_warnings: std::option::Option<bool>,
+        body: std::option::Option<smithy_types::Blob>,
     }
     impl Builder {
         /// <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
@@ -14547,6 +14555,15 @@ pub mod import_documentation_parts_input {
             self.fail_on_warnings = Some(inp);
             self
         }
+        /// <p>[Required] Raw byte array representing the to-be-imported documentation parts. To import from an OpenAPI file, this is a JSON object.</p>
+        pub fn body(mut self, inp: smithy_types::Blob) -> Self {
+            self.body = Some(inp);
+            self
+        }
+        pub fn set_body(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.body = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`ImportDocumentationPartsInput`](crate::input::ImportDocumentationPartsInput)
         pub fn build(
             self,
@@ -14556,6 +14573,7 @@ pub mod import_documentation_parts_input {
                 rest_api_id: self.rest_api_id.unwrap_or_default(),
                 mode: self.mode,
                 fail_on_warnings: self.fail_on_warnings.unwrap_or_default(),
+                body: self.body,
             })
         }
     }
@@ -14637,8 +14655,8 @@ impl ImportDocumentationPartsInput {
     }
     fn uri_query(&self, mut output: &mut String) {
         let mut query = smithy_http::query::Writer::new(&mut output);
-        if let Some(inner_62) = &self.mode {
-            query.push_kv("mode", &smithy_http::query::fmt_string(&inner_62));
+        if let Some(inner_63) = &self.mode {
+            query.push_kv("mode", &smithy_http::query::fmt_string(&inner_63));
         }
         if self.fail_on_warnings {
             query.push_kv(
@@ -14661,11 +14679,17 @@ impl ImportDocumentationPartsInput {
         &self,
     ) -> Result<http::request::Builder, smithy_http::operation::BuildError> {
         let builder = http::request::Builder::new();
-        let builder = builder.header("Content-Type", "application/json");
+        let builder = builder.header("Content-Type", "application/octet-stream");
         self.update_http_builder(builder)
     }
     pub fn build_body(&self) -> std::vec::Vec<u8> {
-        vec![]
+        let var_64 = &self.body;
+
+        let var_64 = match var_64.as_ref() {
+            Some(t) => t,
+            None => return vec![],
+        };
+        var_64.as_ref().into()
     }
     pub fn assemble(
         builder: http::request::Builder,
@@ -14692,6 +14716,7 @@ pub mod import_rest_api_input {
         parameters: std::option::Option<
             std::collections::HashMap<std::string::String, std::string::String>,
         >,
+        body: std::option::Option<smithy_types::Blob>,
     }
     impl Builder {
         /// <p>A query parameter to indicate whether to rollback the API creation (<code>true</code>) or not (<code>false</code>)
@@ -14723,6 +14748,15 @@ pub mod import_rest_api_input {
             self.parameters = inp;
             self
         }
+        /// <p>[Required] The POST request body containing external API definitions. Currently, only OpenAPI definition JSON/YAML files are supported. The maximum size of the API definition file is 6MB.</p>
+        pub fn body(mut self, inp: smithy_types::Blob) -> Self {
+            self.body = Some(inp);
+            self
+        }
+        pub fn set_body(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.body = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`ImportRestApiInput`](crate::input::ImportRestApiInput)
         pub fn build(
             self,
@@ -14730,6 +14764,7 @@ pub mod import_rest_api_input {
             Ok(crate::input::ImportRestApiInput {
                 fail_on_warnings: self.fail_on_warnings.unwrap_or_default(),
                 parameters: self.parameters,
+                body: self.body,
             })
         }
     }
@@ -14807,6 +14842,11 @@ impl ImportRestApiInput {
     fn uri_query(&self, mut output: &mut String) {
         let mut query = smithy_http::query::Writer::new(&mut output);
         query.push_kv("mode", "import");
+        if let Some(inner_65) = &self.parameters {
+            for (k, v) in inner_65 {
+                query.push_kv(k, v);
+            }
+        }
         if self.fail_on_warnings {
             query.push_kv(
                 "failonwarnings",
@@ -14828,16 +14868,17 @@ impl ImportRestApiInput {
         &self,
     ) -> Result<http::request::Builder, smithy_http::operation::BuildError> {
         let builder = http::request::Builder::new();
-        let builder = builder.header("Content-Type", "application/json");
+        let builder = builder.header("Content-Type", "application/octet-stream");
         self.update_http_builder(builder)
     }
-    fn body(&self) -> crate::serializer::ImportRestApiInputBody {
-        crate::serializer::ImportRestApiInputBody {
-            parameters: &self.parameters,
-        }
-    }
     pub fn build_body(&self) -> std::vec::Vec<u8> {
-        serde_json::to_vec(&self.body()).expect("serialization should succeed")
+        let var_66 = &self.body;
+
+        let var_66 = match var_66.as_ref() {
+            Some(t) => t,
+            None => return vec![],
+        };
+        var_66.as_ref().into()
     }
     pub fn assemble(
         builder: http::request::Builder,
@@ -16240,6 +16281,7 @@ pub mod put_rest_api_input {
         parameters: std::option::Option<
             std::collections::HashMap<std::string::String, std::string::String>,
         >,
+        body: std::option::Option<smithy_types::Blob>,
     }
     impl Builder {
         /// <p>[Required] The string identifier of the associated <a>RestApi</a>.</p>
@@ -16290,6 +16332,15 @@ pub mod put_rest_api_input {
             self.parameters = inp;
             self
         }
+        /// <p>[Required] The PUT request body containing external API definitions. Currently, only OpenAPI definition JSON/YAML files are supported. The maximum size of the API definition file is 6MB.</p>
+        pub fn body(mut self, inp: smithy_types::Blob) -> Self {
+            self.body = Some(inp);
+            self
+        }
+        pub fn set_body(mut self, inp: std::option::Option<smithy_types::Blob>) -> Self {
+            self.body = inp;
+            self
+        }
         /// Consumes the builder and constructs a [`PutRestApiInput`](crate::input::PutRestApiInput)
         pub fn build(
             self,
@@ -16299,6 +16350,7 @@ pub mod put_rest_api_input {
                 mode: self.mode,
                 fail_on_warnings: self.fail_on_warnings.unwrap_or_default(),
                 parameters: self.parameters,
+                body: self.body,
             })
         }
     }
@@ -16380,8 +16432,13 @@ impl PutRestApiInput {
     }
     fn uri_query(&self, mut output: &mut String) {
         let mut query = smithy_http::query::Writer::new(&mut output);
-        if let Some(inner_63) = &self.mode {
-            query.push_kv("mode", &smithy_http::query::fmt_string(&inner_63));
+        if let Some(inner_67) = &self.parameters {
+            for (k, v) in inner_67 {
+                query.push_kv(k, v);
+            }
+        }
+        if let Some(inner_68) = &self.mode {
+            query.push_kv("mode", &smithy_http::query::fmt_string(&inner_68));
         }
         if self.fail_on_warnings {
             query.push_kv(
@@ -16404,16 +16461,17 @@ impl PutRestApiInput {
         &self,
     ) -> Result<http::request::Builder, smithy_http::operation::BuildError> {
         let builder = http::request::Builder::new();
-        let builder = builder.header("Content-Type", "application/json");
+        let builder = builder.header("Content-Type", "application/octet-stream");
         self.update_http_builder(builder)
     }
-    fn body(&self) -> crate::serializer::PutRestApiInputBody {
-        crate::serializer::PutRestApiInputBody {
-            parameters: &self.parameters,
-        }
-    }
     pub fn build_body(&self) -> std::vec::Vec<u8> {
-        serde_json::to_vec(&self.body()).expect("serialization should succeed")
+        let var_69 = &self.body;
+
+        let var_69 = match var_69.as_ref() {
+            Some(t) => t,
+            None => return vec![],
+        };
+        var_69.as_ref().into()
     }
     pub fn assemble(
         builder: http::request::Builder,
@@ -17270,9 +17328,9 @@ impl UntagResourceInput {
     }
     fn uri_query(&self, mut output: &mut String) {
         let mut query = smithy_http::query::Writer::new(&mut output);
-        if let Some(inner_64) = &self.tag_keys {
-            for inner_65 in inner_64 {
-                query.push_kv("tagKeys", &smithy_http::query::fmt_string(&inner_65));
+        if let Some(inner_70) = &self.tag_keys {
+            for inner_71 in inner_70 {
+                query.push_kv("tagKeys", &smithy_http::query::fmt_string(&inner_71));
             }
         }
     }
@@ -21604,6 +21662,8 @@ pub struct PutRestApiInput {
     /// <p>Custom header parameters as part of the request. For example, to exclude <a>DocumentationParts</a> from an imported API, set <code>ignore=documentation</code> as a <code>parameters</code> value, as in the AWS CLI command of <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'</code>.</p>
     pub parameters:
         std::option::Option<std::collections::HashMap<std::string::String, std::string::String>>,
+    /// <p>[Required] The PUT request body containing external API definitions. Currently, only OpenAPI definition JSON/YAML files are supported. The maximum size of the API definition file is 6MB.</p>
+    pub body: std::option::Option<smithy_types::Blob>,
 }
 impl std::fmt::Debug for PutRestApiInput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -21612,6 +21672,7 @@ impl std::fmt::Debug for PutRestApiInput {
         formatter.field("mode", &self.mode);
         formatter.field("fail_on_warnings", &self.fail_on_warnings);
         formatter.field("parameters", &self.parameters);
+        formatter.field("body", &self.body);
         formatter.finish()
     }
 }
@@ -21865,12 +21926,15 @@ pub struct ImportRestApiInput {
     /// <pre><code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'</code></pre>
     pub parameters:
         std::option::Option<std::collections::HashMap<std::string::String, std::string::String>>,
+    /// <p>[Required] The POST request body containing external API definitions. Currently, only OpenAPI definition JSON/YAML files are supported. The maximum size of the API definition file is 6MB.</p>
+    pub body: std::option::Option<smithy_types::Blob>,
 }
 impl std::fmt::Debug for ImportRestApiInput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let mut formatter = f.debug_struct("ImportRestApiInput");
         formatter.field("fail_on_warnings", &self.fail_on_warnings);
         formatter.field("parameters", &self.parameters);
+        formatter.field("body", &self.body);
         formatter.finish()
     }
 }
@@ -21885,6 +21949,8 @@ pub struct ImportDocumentationPartsInput {
     pub mode: std::option::Option<crate::model::PutMode>,
     /// <p>A query parameter to specify whether to rollback the documentation importation (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
     pub fail_on_warnings: bool,
+    /// <p>[Required] Raw byte array representing the to-be-imported documentation parts. To import from an OpenAPI file, this is a JSON object.</p>
+    pub body: std::option::Option<smithy_types::Blob>,
 }
 impl std::fmt::Debug for ImportDocumentationPartsInput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -21892,6 +21958,7 @@ impl std::fmt::Debug for ImportDocumentationPartsInput {
         formatter.field("rest_api_id", &self.rest_api_id);
         formatter.field("mode", &self.mode);
         formatter.field("fail_on_warnings", &self.fail_on_warnings);
+        formatter.field("body", &self.body);
         formatter.finish()
     }
 }
@@ -21900,6 +21967,8 @@ impl std::fmt::Debug for ImportDocumentationPartsInput {
 #[non_exhaustive]
 #[derive(std::clone::Clone, std::cmp::PartialEq)]
 pub struct ImportApiKeysInput {
+    /// <p>The payload of the POST request to import API keys. For the payload format, see <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html">API Key File Format</a>.</p>
+    pub body: std::option::Option<smithy_types::Blob>,
     /// <p>A query parameter to specify the input format to imported API keys. Currently, only the <code>csv</code> format is supported.</p>
     pub format: std::option::Option<crate::model::ApiKeysFormat>,
     /// <p>A query parameter to indicate whether to rollback <a>ApiKey</a> importation (<code>true</code>) or not (<code>false</code>) when error is encountered.</p>
@@ -21908,6 +21977,7 @@ pub struct ImportApiKeysInput {
 impl std::fmt::Debug for ImportApiKeysInput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let mut formatter = f.debug_struct("ImportApiKeysInput");
+        formatter.field("body", &self.body);
         formatter.field("format", &self.format);
         formatter.field("fail_on_warnings", &self.fail_on_warnings);
         formatter.finish()
