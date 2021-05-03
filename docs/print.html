@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Design Overview</a></li><li class="chapter-item expanded "><a href="tenets.html"><strong aria-hidden="true">2.</strong> Tenets</a></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">3.</strong> Design FAQ</a></li><li class="chapter-item expanded "><a href="transport/overview.html"><strong aria-hidden="true">4.</strong> Transport</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="transport/operation.html"><strong aria-hidden="true">4.1.</strong> Http Operations</a></li><li class="chapter-item expanded "><a href="transport/middleware.html"><strong aria-hidden="true">4.2.</strong> HTTP middleware</a></li></ol></li><li class="chapter-item expanded "><a href="smithy/overview.html"><strong aria-hidden="true">5.</strong> Smithy</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="smithy/simple_shapes.html"><strong aria-hidden="true">5.1.</strong> Simple Shapes</a></li><li class="chapter-item expanded "><a href="smithy/endpoint.html"><strong aria-hidden="true">5.2.</strong> Endpoint Resolution</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Design Overview</a></li><li class="chapter-item expanded "><a href="tenets.html"><strong aria-hidden="true">2.</strong> Tenets</a></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">3.</strong> Design FAQ</a></li><li class="chapter-item expanded "><a href="transport/overview.html"><strong aria-hidden="true">4.</strong> Transport</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="transport/operation.html"><strong aria-hidden="true">4.1.</strong> Http Operations</a></li><li class="chapter-item expanded "><a href="transport/middleware.html"><strong aria-hidden="true">4.2.</strong> HTTP middleware</a></li></ol></li><li class="chapter-item expanded "><a href="smithy/overview.html"><strong aria-hidden="true">5.</strong> Smithy</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="smithy/simple_shapes.html"><strong aria-hidden="true">5.1.</strong> Simple Shapes</a></li><li class="chapter-item expanded "><a href="smithy/recursive_shapes.html"><strong aria-hidden="true">5.2.</strong> Recursive Shapes</a></li><li class="chapter-item expanded "><a href="smithy/aggregate_shapes.html"><strong aria-hidden="true">5.3.</strong> Aggregate Shapes</a></li><li class="chapter-item expanded "><a href="smithy/endpoint.html"><strong aria-hidden="true">5.4.</strong> Endpoint Resolution</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -203,14 +203,12 @@ async fn main() {
 <p>The Rust SDK is code generated from Smithy models, using Smithy codegeneration utilities. The Code generation is written in Kotlin. More details can be found in the <a href="./smithy/overview.html">Smithy</a> section.</p>
 <h1><a class="header" href="#rust-sdk-design-tenets" id="rust-sdk-design-tenets">Rust SDK Design Tenets</a></h1>
 <blockquote>
-<p>Unless you know better ones! These are our tenets today, but we'd love your thoughts! Do you wish we had different priorities? Let us know by opening and issue or starting a discussion.</p>
+<p>Unless you know better ones! These are our tenets today, but we'd love your thoughts. Do you wish we had different priorities? Let us know by opening and issue or starting a discussion.</p>
 </blockquote>
 <ol>
 <li><a href="tenets.html#batteries-included-but-replaceable"><strong>Batteries included, but replaceable.</strong></a> The Rust SDK should provide a best-in-class experience for many use cases, <strong>but</strong>, we can’t foresee all the situations the customer will use our software. <strong>Meet customers where they are;</strong> strive to be compatible with their tools. Provide escape hatches to allow customers make different choices.</li>
 <li><a href="tenets.html#make-common-problems-easy-to-solve"><strong>Make common problems easy to solve.</strong></a> Make uncommon problems solvable. Lead customers into <a href="https://blog.codinghorror.com/falling-into-the-pit-of-success/">the pit of success</a>.</li>
-<li><strong>Dependencies must be a force multiplier for customers.</strong> A large tree of transitive dependencies increases risk for our customers. Using someone else’s code is high leverage for authors of an SDK, but to be included, a dependency must also be high leverage for SDK customers.</li>
 <li><a href="tenets.html#design-for-the-future"><strong>Design for the Future.</strong></a> We can’t know how APIs will evolve, what protocols will gain adoption, and what new service will be created. Don’t simplify or unify code today that prevents evolution tomorrow.</li>
-<li><strong>Customer experience &gt; our experience.</strong> Our experience developing the SDK is important, but we have limited resources and need to prioritize what makes the best possible SDK for the customer. Although our productivity is important, we must only prioritize the experience of an SDK author over an SDK customer deliberately and carefully.</li>
 </ol>
 <h2><a class="header" href="#details-justification-and-ramifications" id="details-justification-and-ramifications">Details, Justification, and Ramifications</a></h2>
 <h3><a class="header" href="#batteries-included-but-replaceable" id="batteries-included-but-replaceable">Batteries included, but replaceable.</a></h3>
@@ -219,12 +217,12 @@ async fn main() {
 <h3><a class="header" href="#make-common-problems-easy-to-solve" id="make-common-problems-easy-to-solve">Make common problems easy to solve</a></h3>
 <p>If solving a common problem isn’t obvious from the API, it should be obvious from the documentation. The SDK should guide users towards the best solutions for common tasks, <strong>first</strong> with well named methods, <strong>second</strong> with documentation, and <strong>third</strong> with real -world usage examples. Don't provide APIs that are easy to misuse. Async Rust exposes a <a href="https://github.com/rusoto/rusoto/issues/1726">number of footguns</a>; we should do our best to help customers avoid them.</p>
 <h3><a class="header" href="#design-for-the-future" id="design-for-the-future"><strong>Design for the Future</strong></a></h3>
-<p>We can’t consider every potential future API evolution, so it’s crucial that we can add new modes for new services without breaking existing clients. This means limiting the blast radius of changes:</p>
+<p>We can't consider every potential future API evolution, so it’s crucial that we can evolve the SDK without breaking existing clients. This means limiting the blast radius of changes:</p>
 <ul>
 <li>Keeping the shared core as small &amp; opaque as possible.</li>
 <li>Don’t leak our internal dependencies to customers</li>
 </ul>
-<p>This may not be DRY code, and that’s OK! Code that is auto generated has different goals and tradeoffs than code that has been written by hand.</p>
+<p>This may not result in DRY code, and that’s OK! Code that is auto generated has different goals and tradeoffs than code that has been written by hand.</p>
 <h1><a class="header" href="#design-faq" id="design-faq">Design FAQ</a></h1>
 <h3><a class="header" href="#what-is-smithy" id="what-is-smithy">What is Smithy?</a></h3>
 <p>Smithy is the interface design language used by AWS services. <code>smithy-rs</code> allows users to generate a Rust client for any Smithy based service (pending protocol support), including those outside of AWS.</p>
@@ -313,7 +311,7 @@ pub fn build(self, config: &amp;dynamodb::config::Config) -&gt; Operation&lt;Bat
 <p>Shape: The core Smithy primitive. A smithy model is composed of nested shapes defining an API.</p>
 </li>
 <li>
-<p><code>Symbol</code>: A Representation of a type including namespaces &amp; and any dependencies required to use a type. A shape can be converted into a symbol by a <code>SymbolVisitor</code>. A <code>SymbolVisitor</code> maps shapes to types in your programming language (eg. Rust). In the Rust SDK, see <a href="https://github.com/awslabs/smithy-rs/blob/c049a37f8cba5f9bec2e96c28db83e7efb2edc53/codegen/src/main/kotlin/software/amazon/smithy/rust/codegen/smithy/SymbolVisitor.kt">SymbolVisitor.kt</a>.</p>
+<p><code>Symbol</code>: A Representation of a type including namespaces &amp; and any dependencies required to use a type. A shape can be converted into a symbol by a <code>SymbolVisitor</code>. A <code>SymbolVisitor</code> maps shapes to types in your programming language (eg. Rust). In the Rust SDK, see <a href="https://github.com/awslabs/smithy-rs/blob/c049a37f8cba5f9bec2e96c28db83e7efb2edc53/codegen/src/main/kotlin/software/amazon/smithy/rust/codegen/smithy/SymbolVisitor.kt">SymbolVisitor.kt</a>. Symbol visitors are composable—many specific behaviors are mixed in via small &amp; focused symbol providers, eg. support for the streaming trait is mixed in separately.</p>
 </li>
 <li>
 <p><code>Writer</code>: Writers are code generation primitives that collect code prior to being written to a file. Writers enable language specific helpers to be added to simplify codegen for a given language. For example, <code>smithy-rs</code> adds <code>rustBlock</code> to <a href="https://github.com/awslabs/smithy-rs/blob/908dec558e26bbae6fe4b7d9d1c221dd81699b59/codegen/src/main/kotlin/software/amazon/smithy/rust/codegen/rustlang/RustWriter.kt"><code>RustWriter</code></a> to create a &quot;Rust block&quot; of code.</p>
@@ -426,6 +424,244 @@ pub enum Number {
 <span class="boring">}
 </span></code></pre></pre>
 <p>Individual protocols define their own document serialization behavior, typically by creating a newtype around <code>Document</code> that implements <code>serde::Serialize/serde::Deserialize</code>. See <a href="https://github.com/awslabs/smithy-rs/blob/138320e99e6c7aaf14217d07cf996ba07349dd5e/rust-runtime/inlineable/src/doc_json.rs">Document Json Serialization</a></p>
+<h1><a class="header" href="#recursive-shapes" id="recursive-shapes">Recursive Shapes</a></h1>
+<blockquote>
+<p>NB: Throughout this document, the word &quot;box&quot; always refers to a Rust <a href="https://doc.rust-lang.org/std/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a>, a heap allocated pointer to T, and not the Smithy concept of boxed vs. unboxed.</p>
+</blockquote>
+<p>Recursive shapes pose a problem for Rust, because the following Rust code will not compile:</p>
+<pre><pre class="playground"><code class="language-rust compile_fail">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct TopStructure {
+    intermediate: IntermediateStructure
+}
+
+struct IntermediateStructure {
+    top: Option&lt;TopStructure&gt;
+}
+<span class="boring">}
+</span></code></pre></pre>
+<pre><code class="language-rust ignore">  |
+3 | struct TopStructure {
+  | ^^^^^^^^^^^^^^^^^^^ recursive type has infinite size
+4 |     intermediate: IntermediateStructure
+  |     ----------------------------------- recursive without indirection
+  |
+  = help: insert indirection (e.g., a `Box`, `Rc`, or `&amp;`) at some point to make `main::TopStructure` representable
+</code></pre>
+<p>This occurs because Rust types must be a size known at compile time. The way around this, as the message suggests, is to Box the offending type. <code>smithy-rs</code> implements this design in <a href="https://github.com/awslabs/smithy-rs/blob/main/codegen/src/main/kotlin/software/amazon/smithy/rust/codegen/smithy/transformers/RecursiveShapeBoxer.kt">RecursiveShapeBoxer.kt</a></p>
+<p>To support this, as the message suggests, we must &quot;<code>Box</code>&quot; the offending type. There is a touch of trickiness—only one element in the cycle needs to be boxed, but we need to select it deterministically such that we always pick the same element between multiple codegen runs. To do this the Rust SDK will:</p>
+<ol>
+<li>Topologically sort the graph of shapes.</li>
+<li>Identify cycles that do not pass through an existing Box<T>, List, Set, or Map</li>
+<li>For each cycle, select the earliest shape alphabetically &amp; mark it as Box<T> in the Smithy model by attaching the custom <code>RustBoxTrait</code> to the member.</li>
+<li>Go back to step 1.</li>
+</ol>
+<p>This would produce valid Rust:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct TopStructure {
+    intermediate: IntermediateStructure
+}
+
+struct IntermediateStructure {
+    top: Box&lt;Option&lt;TopStructure&gt;&gt;
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><strong>Backwards Compatibility Note!</strong></p>
+<p>Box<T> is not generally compatible with T in Rust. There are several unlikely but valid model changes that will cause the SDK to produce code that may break customers. If these are problematic, all are avoidable with customizations.</p>
+<ol>
+<li>
+<p>A recursive link is added to an existing structure. This causes a member that was not boxed before to become Box<T>.</p>
+<blockquote>
+<p><strong>Workaround</strong>: Mark the new member as Box<T> in a customization.</p>
+</blockquote>
+</li>
+<li>
+<p>A field is removed from a structure that removes the recursive dependency. The SDK would generate T instead of Box<T>.</p>
+<blockquote>
+<p><strong>Workaround</strong>: Mark the member that used to be boxed as Box<T> in a customization. The Box will be unnecessary, but we will keep it for backwards compatibility.</p>
+</blockquote>
+</li>
+</ol>
+<h1><a class="header" href="#aggregate-shapes" id="aggregate-shapes">Aggregate Shapes</a></h1>
+<table><thead><tr><th>Smithy Type</th><th>Rust Type</th></tr></thead><tbody>
+<tr><td><a href="smithy/aggregate_shapes.html#list">List</a></td><td><code>Vec&lt;Member&gt;</code></td></tr>
+<tr><td><a href="smithy/aggregate_shapes.html#set">Set</a></td><td><code>Vec&lt;Member&gt;</code></td></tr>
+<tr><td><a href="smithy/aggregate_shapes.html#map">Map</a></td><td><code>HashMap&lt;String, Value&gt;</code></td></tr>
+<tr><td><a href="smithy/aggregate_shapes.html#structure">Structure</a></td><td><code>struct</code></td></tr>
+<tr><td><a href="smithy/aggregate_shapes.html#union">Union</a></td><td><code>enum</code></td></tr>
+</tbody></table>
+<p>Most generated types are controlled by <a href="https://github.com/awslabs/smithy-rs/blob/main/codegen/src/main/kotlin/software/amazon/smithy/rust/codegen/smithy/SymbolVisitor.kt">SymbolVisitor</a>.</p>
+<h2><a class="header" href="#list" id="list">List</a></h2>
+<p>List objects in Smithy are transformed into vectors in Rust. Based on the output of the <a href="https://awslabs.github.io/smithy/javadoc/1.5.1/software/amazon/smithy/model/knowledge/NullableIndex.html">NullableIndex</a>, the generated list may be <code>Vec&lt;T&gt;</code> or <code>Vec&lt;Option&lt;T&gt;&gt;</code>.</p>
+<h2><a class="header" href="#set" id="set">Set</a></h2>
+<p>Because floats are not Hashable in Rust, for simplicity smithy-rs translates all sets to into <code>Vec&lt;T&gt;</code> instead of <code>HashSet&lt;T&gt;</code>. In the future, a breaking change may be made to introduce a library-provided wrapper type for Sets.</p>
+<h2><a class="header" href="#map" id="map">Map</a></h2>
+<p>Because <code>key</code> MUST be a string in Smithy maps, we avoid the hashibility issue encountered with <code>Set</code>. There are optimizations that could be considered (eg. since these maps will probably never be modified), however, pending customer feedback, Smithy Maps become <code>HashMap&lt;String, V&gt;</code> in Rust.</p>
+<h2><a class="header" href="#structure" id="structure">Structure</a></h2>
+<blockquote>
+<p>See <code>StructureGenerator.kt</code> for more details</p>
+</blockquote>
+<p>Smithy <code>structure</code> becomes a <code>struct</code> in Rust. Backwards compatibility &amp; usability concerns lead to a few design choices:</p>
+<ol>
+<li>As specified by <code>NullableIndex</code>, fields are <code>Option&lt;T&gt;</code> when Smithy models them as nullable.</li>
+<li>All structs are marked <code>#[non_exhaustive]</code></li>
+<li>All structs derive <code>Debug</code> &amp; <code>PartialEq</code>. Structs <strong>do not</strong> derive <code>Eq</code> because a <code>float</code> member may be added in the future.</li>
+<li>Struct fields are public. Public struct fields allow for <a href="https://doc.rust-lang.org/nomicon/borrow-splitting.html">split borrows</a>. When working with output objects this significantly improves ergonomics, especially with optional fields.
+<code>rust,ignore let out = dynamo::ListTablesOutput::new(); out.some_field.unwrap(); // &lt;- partial move, impossible with an accessor </code></li>
+<li>Builders are generated for structs that provide ergonomic and backwards compatible constructors. A builder for a struct is always available via the convenience method <code>SomeStruct::builder()</code></li>
+<li>Structures manually implement debug: In order to support the <a href="https://awslabs.github.io/smithy/1.0/spec/core/documentation-traits.html#sensitive-trait">sensitive trait</a>, a <code>Debug</code> implementation for structures is manually generated.</li>
+</ol>
+<h3><a class="header" href="#example-structure-output" id="example-structure-output">Example Structure Output</a></h3>
+<p><strong>Smithy Input</strong>:</p>
+<pre><code class="language-java">@documentation(&quot;&lt;p&gt;Contains I/O usage metrics...&quot;)
+structure IOUsage {
+    @documentation(&quot;... elided&quot;)
+    ReadIOs: ReadIOs,
+    @documentation(&quot;... elided&quot;)
+    WriteIOs: WriteIOs
+}
+
+long ReadIOs
+
+long WriteIOs
+</code></pre>
+<p><strong>Rust Output</strong>:</p>
+<pre><code class="language-rust ignore">/// &lt;p&gt;Contains I/O usage metrics for a command that was invoked.&lt;/p&gt;
+#[non_exhaustive]
+#[derive(serde::Deserialize, serde::Serialize, std::clone::Clone, std::cmp::PartialEq)]
+pub struct IOUsage {
+    /// &lt;p&gt;The number of read I/O requests that the command made.&lt;/p&gt;
+    #[serde(rename = &quot;ReadIOs&quot;)]
+    pub read_i_os: i64,
+    /// &lt;p&gt;The number of write I/O requests that the command made.&lt;/p&gt;
+    #[serde(rename = &quot;WriteIOs&quot;)]
+    pub write_i_os: i64,
+}
+impl std::fmt::Debug for IOUsage {
+    fn fmt(&amp;self, f: &amp;mut std::fmt::Formatter&lt;'_&gt;) -&gt; std::fmt::Result {
+        let mut formatter = f.debug_struct(&quot;IOUsage&quot;);
+        formatter.field(&quot;read_i_os&quot;, &amp;self.read_i_os);
+        formatter.field(&quot;write_i_os&quot;, &amp;self.write_i_os);
+        formatter.finish()
+    }
+}
+/// See [`IOUsage`](crate::model::IOUsage)
+pub mod io_usage {
+    /// A builder for [`IOUsage`](crate::model::IOUsage)
+    #[non_exhaustive]
+    #[derive(Debug, Clone, Default)]
+    pub struct Builder {
+        read_i_os: std::option::Option&lt;i64&gt;,
+        write_i_os: std::option::Option&lt;i64&gt;,
+    }
+    impl Builder {
+        /// &lt;p&gt;The number of read I/O requests that the command made.&lt;/p&gt;
+        pub fn read_i_os(mut self, inp: i64) -&gt; Self {
+            self.read_i_os = Some(inp);
+            self
+        }
+        pub fn set_read_i_os(mut self, inp: i64) -&gt; Self {
+            self.read_i_os = Some(inp);
+            self
+        }
+        /// &lt;p&gt;The number of write I/O requests that the command made.&lt;/p&gt;
+        pub fn write_i_os(mut self, inp: i64) -&gt; Self {
+            self.write_i_os = Some(inp);
+            self
+        }
+        pub fn set_write_i_os(mut self, inp: i64) -&gt; Self {
+            self.write_i_os = Some(inp);
+            self
+        }
+        /// Consumes the builder and constructs a [`IOUsage`](crate::model::IOUsage)
+        pub fn build(self) -&gt; crate::model::IOUsage {
+            crate::model::IOUsage {
+                read_i_os: self.read_i_os.unwrap_or_default(),
+                write_i_os: self.write_i_os.unwrap_or_default(),
+            }
+        }
+    }
+}
+impl IOUsage {
+    /// Creates a new builder-style object to manufacture [`IOUsage`](crate::model::IOUsage)
+    pub fn builder() -&gt; crate::model::io_usage::Builder {
+        crate::model::io_usage::Builder::default()
+    }
+}
+</code></pre>
+<h2><a class="header" href="#union" id="union">Union</a></h2>
+<p>Smithy <code>Union</code> is modeled as <code>enum</code> in Rust.</p>
+<pre><code>1. Generated `enum`s must be marked `#[non_exhaustive]`.
+2. Generated `enum`s must provide an `Unknown` variant. If parsing receives an unknown input that doesn't match any of the given union variants, `Unknown` should be constructed. [Tracking Issue](https://github.com/awslabs/smithy-rs/issues/185).
+1. Union members (enum variants) are **not** nullable, because Smithy union members cannot contain null values.
+2. When union members contain references to other shapes, we generate a wrapping variant (see below).
+3. Union members do not require `#[non_exhaustive]`, because changing the shape targeted by a union member is not backwards compatible.
+4. `is_variant` and `as_variant` helper functions are generated to improve ergonomics.
+</code></pre>
+<h3><a class="header" href="#generated-union-example" id="generated-union-example">Generated Union Example</a></h3>
+<p>The union generated for a simplified <code>dynamodb::AttributeValue</code>
+<strong>Smithy</strong>:</p>
+<pre><code class="language-java">namespace test
+
+union AttributeValue {
+    @documentation(&quot;A string value&quot;)
+    string: String,
+    bool: Boolean,
+    bools: BoolList,
+    map: ValueMap
+}
+
+map ValueMap {
+    key: String,
+    value: AttributeValue
+}
+
+list BoolList {
+    member: Boolean
+}
+</code></pre>
+<p><strong>Rust</strong>:</p>
+<pre><code class="language-rust ignore">#[non_exhaustive]
+#[derive(std::clone::Clone, std::cmp::PartialEq, std::fmt::Debug)]
+pub enum AttributeValue {
+    /// a string value
+    String(std::string::String),
+    Bool(bool),
+    Bools(std::vec::Vec&lt;bool&gt;),
+    Map(std::collections::HashMap&lt;std::string::String, crate::model::AttributeValue&gt;),
+}
+
+impl AttributeValue {
+    pub fn as_bool(&amp;self) -&gt; Option&lt;&amp;bool&gt; {
+        if let AttributeValue::Bool(val) = &amp;self { Some(&amp;val) } else { None }
+    }
+    pub fn is_bool(&amp;self) -&gt; bool {
+        self.as_bool().is_some()
+    }
+    pub fn as_bools(&amp;self) -&gt; Option&lt;&amp;std::vec::Vec&lt;bool&gt;&gt; {
+        if let AttributeValue::Bools(val) = &amp;self { Some(&amp;val) } else { None }
+    }
+    pub fn is_bools(&amp;self) -&gt; bool {
+        self.as_bools().is_some()
+    }
+    pub fn as_map(&amp;self) -&gt; Option&lt;&amp;std::collections::HashMap&lt;std::string::String, crate::model::AttributeValue&gt;&gt; {
+        if let AttributeValue::Map(val) = &amp;self { Some(&amp;val) } else { None }
+    }
+    pub fn is_map(&amp;self) -&gt; bool {
+        self.as_map().is_some()
+    }
+    pub fn as_string(&amp;self) -&gt; Option&lt;&amp;std::string::String&gt; {
+        if let AttributeValue::String(val) = &amp;self { Some(&amp;val) } else { None }
+    }
+    pub fn is_string(&amp;self) -&gt; bool {
+        self.as_string().is_some()
+    }
+}
+</code></pre>
 <h1><a class="header" href="#endpoint-resolution" id="endpoint-resolution">Endpoint Resolution</a></h1>
 <h2><a class="header" href="#requirements" id="requirements">Requirements</a></h2>
 <p>The core codegen generates HTTP requests that do not contain an authority, scheme or post. These properties must be set later based on configuration. Existing AWS services have a number of requirements that increase the complexity:</p>

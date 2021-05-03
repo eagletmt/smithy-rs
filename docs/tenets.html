@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Design Overview</a></li><li class="chapter-item expanded "><a href="tenets.html" class="active"><strong aria-hidden="true">2.</strong> Tenets</a></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">3.</strong> Design FAQ</a></li><li class="chapter-item expanded "><a href="transport/overview.html"><strong aria-hidden="true">4.</strong> Transport</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="transport/operation.html"><strong aria-hidden="true">4.1.</strong> Http Operations</a></li><li class="chapter-item expanded "><a href="transport/middleware.html"><strong aria-hidden="true">4.2.</strong> HTTP middleware</a></li></ol></li><li class="chapter-item expanded "><a href="smithy/overview.html"><strong aria-hidden="true">5.</strong> Smithy</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="smithy/simple_shapes.html"><strong aria-hidden="true">5.1.</strong> Simple Shapes</a></li><li class="chapter-item expanded "><a href="smithy/endpoint.html"><strong aria-hidden="true">5.2.</strong> Endpoint Resolution</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Design Overview</a></li><li class="chapter-item expanded "><a href="tenets.html" class="active"><strong aria-hidden="true">2.</strong> Tenets</a></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">3.</strong> Design FAQ</a></li><li class="chapter-item expanded "><a href="transport/overview.html"><strong aria-hidden="true">4.</strong> Transport</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="transport/operation.html"><strong aria-hidden="true">4.1.</strong> Http Operations</a></li><li class="chapter-item expanded "><a href="transport/middleware.html"><strong aria-hidden="true">4.2.</strong> HTTP middleware</a></li></ol></li><li class="chapter-item expanded "><a href="smithy/overview.html"><strong aria-hidden="true">5.</strong> Smithy</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="smithy/simple_shapes.html"><strong aria-hidden="true">5.1.</strong> Simple Shapes</a></li><li class="chapter-item expanded "><a href="smithy/recursive_shapes.html"><strong aria-hidden="true">5.2.</strong> Recursive Shapes</a></li><li class="chapter-item expanded "><a href="smithy/aggregate_shapes.html"><strong aria-hidden="true">5.3.</strong> Aggregate Shapes</a></li><li class="chapter-item expanded "><a href="smithy/endpoint.html"><strong aria-hidden="true">5.4.</strong> Endpoint Resolution</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -161,14 +161,12 @@
                     <main>
                         <h1><a class="header" href="#rust-sdk-design-tenets" id="rust-sdk-design-tenets">Rust SDK Design Tenets</a></h1>
 <blockquote>
-<p>Unless you know better ones! These are our tenets today, but we'd love your thoughts! Do you wish we had different priorities? Let us know by opening and issue or starting a discussion.</p>
+<p>Unless you know better ones! These are our tenets today, but we'd love your thoughts. Do you wish we had different priorities? Let us know by opening and issue or starting a discussion.</p>
 </blockquote>
 <ol>
 <li><a href="#batteries-included-but-replaceable"><strong>Batteries included, but replaceable.</strong></a> The Rust SDK should provide a best-in-class experience for many use cases, <strong>but</strong>, we can’t foresee all the situations the customer will use our software. <strong>Meet customers where they are;</strong> strive to be compatible with their tools. Provide escape hatches to allow customers make different choices.</li>
 <li><a href="#make-common-problems-easy-to-solve"><strong>Make common problems easy to solve.</strong></a> Make uncommon problems solvable. Lead customers into <a href="https://blog.codinghorror.com/falling-into-the-pit-of-success/">the pit of success</a>.</li>
-<li><strong>Dependencies must be a force multiplier for customers.</strong> A large tree of transitive dependencies increases risk for our customers. Using someone else’s code is high leverage for authors of an SDK, but to be included, a dependency must also be high leverage for SDK customers.</li>
 <li><a href="#design-for-the-future"><strong>Design for the Future.</strong></a> We can’t know how APIs will evolve, what protocols will gain adoption, and what new service will be created. Don’t simplify or unify code today that prevents evolution tomorrow.</li>
-<li><strong>Customer experience &gt; our experience.</strong> Our experience developing the SDK is important, but we have limited resources and need to prioritize what makes the best possible SDK for the customer. Although our productivity is important, we must only prioritize the experience of an SDK author over an SDK customer deliberately and carefully.</li>
 </ol>
 <h2><a class="header" href="#details-justification-and-ramifications" id="details-justification-and-ramifications">Details, Justification, and Ramifications</a></h2>
 <h3><a class="header" href="#batteries-included-but-replaceable" id="batteries-included-but-replaceable">Batteries included, but replaceable.</a></h3>
@@ -177,12 +175,12 @@
 <h3><a class="header" href="#make-common-problems-easy-to-solve" id="make-common-problems-easy-to-solve">Make common problems easy to solve</a></h3>
 <p>If solving a common problem isn’t obvious from the API, it should be obvious from the documentation. The SDK should guide users towards the best solutions for common tasks, <strong>first</strong> with well named methods, <strong>second</strong> with documentation, and <strong>third</strong> with real -world usage examples. Don't provide APIs that are easy to misuse. Async Rust exposes a <a href="https://github.com/rusoto/rusoto/issues/1726">number of footguns</a>; we should do our best to help customers avoid them.</p>
 <h3><a class="header" href="#design-for-the-future" id="design-for-the-future"><strong>Design for the Future</strong></a></h3>
-<p>We can’t consider every potential future API evolution, so it’s crucial that we can add new modes for new services without breaking existing clients. This means limiting the blast radius of changes:</p>
+<p>We can't consider every potential future API evolution, so it’s crucial that we can evolve the SDK without breaking existing clients. This means limiting the blast radius of changes:</p>
 <ul>
 <li>Keeping the shared core as small &amp; opaque as possible.</li>
 <li>Don’t leak our internal dependencies to customers</li>
 </ul>
-<p>This may not be DRY code, and that’s OK! Code that is auto generated has different goals and tradeoffs than code that has been written by hand.</p>
+<p>This may not result in DRY code, and that’s OK! Code that is auto generated has different goals and tradeoffs than code that has been written by hand.</p>
 
                     </main>
 
