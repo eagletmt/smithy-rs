@@ -13,6 +13,7 @@ use std::fmt::Formatter;
 
 #[allow(unused)]
 pub fn json_to_doc(json: Value) -> Document {
+    println!("hey");
     match json {
         Value::Null => Document::Null,
         Value::Bool(b) => Document::Bool(b),
