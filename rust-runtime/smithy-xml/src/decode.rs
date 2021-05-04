@@ -40,6 +40,13 @@ impl<'a> StartEl<'a> {
             attributes: vec![],
         }
     }
+
+    pub fn attr<'b>(&'b self, key: &'b str) -> Option<&'b str> {
+        self.attributes
+            .iter()
+            .find(|attr| attr.name.local == key)
+            .map(|attr| attr.value.as_ref())
+    }
 }
 
 impl StartEl<'_> {
@@ -96,21 +103,12 @@ impl Drop for ScopedDecoder<'_, '_> {
     }
 }
 
-impl<'inp, 'a> ScopedDecoder<'inp, 'a> {
-    fn from_tokenizer(start_el: StartEl<'inp>, tokenizer: &'a mut Tokenizer<'inp>) -> Self {
-        Self {
-            tokenizer,
-            start_el,
-            depth: 0,
-            terminated: false,
-        }
-    }
-
-    pub fn start_el<'b>(&'b self) -> &'b StartEl<'inp> {
+impl<'inp> ScopedDecoder<'inp, '_> {
+    pub fn start_el<'a>(&'a self) -> &'a StartEl<'inp> {
         &self.start_el
     }
 
-    pub fn scoped_to<'c>(&'c mut self, start_el: StartEl<'inp>) -> ScopedDecoder<'inp, 'c> {
+    pub fn scoped_to<'a>(&'a mut self, start_el: StartEl<'inp>) -> ScopedDecoder<'inp, 'a> {
         ScopedDecoder {
             tokenizer: &mut self.tokenizer,
             start_el,

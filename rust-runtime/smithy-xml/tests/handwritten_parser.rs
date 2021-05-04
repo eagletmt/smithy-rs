@@ -27,6 +27,30 @@ struct XmlMap {
     values: HashMap<String, FooEnum>,
 }
 
+#[derive(Eq, PartialEq, Debug)]
+struct XmlAttribute {
+    foo: String,
+    bar: String,
+}
+
+fn deserialize_xml_attribute(inp: &str) -> Result<XmlAttribute, XmlError> {
+    let mut doc = Document::new(inp);
+    let mut root = doc.scoped()?;
+    #[allow(unused_assignments)]
+    let mut foo: Option<String> = None;
+    let mut bar: Option<String> = None;
+    foo = root.start_el().attr("foo").map(|attr| attr.to_string());
+    while let Some(start_el) = next_start_element(&mut root) {
+        if start_el.name.local == "bar" {
+            bar = Some(expect_data(&mut root)?.to_string());
+        }
+    }
+    Ok(XmlAttribute {
+        foo: foo.ok_or(XmlError::Other { msg: "missing foo" })?,
+        bar: bar.ok_or(XmlError::Other { msg: "missing bar" })?,
+    })
+}
+
 fn deserialize_flat_xml_map(inp: &str) -> Result<FlatXmlMap, XmlError> {
     let mut doc = Document::new(inp);
     let mut root = doc.scoped()?;
@@ -141,4 +165,18 @@ fn deserialize_flat_map_test() {
         deserialize_flat_xml_map(xml),
         Ok(FlatXmlMap { my_map: out })
     )
+}
+
+#[test]
+fn test_deserialize_xml_attribute() {
+    let xml = r#"<MyStructure foo="example">
+    <bar>examplebar</bar>
+</MyStructure>"#;
+    assert_eq!(
+        deserialize_xml_attribute(xml).expect("valid"),
+        XmlAttribute {
+            foo: "example".to_string(),
+            bar: "examplebar".to_string()
+        }
+    );
 }
