@@ -8,6 +8,8 @@ package software.amazon.smithy.rust.codegen.smithy.protocols
 import software.amazon.smithy.model.knowledge.HttpBinding
 import software.amazon.smithy.model.knowledge.HttpBindingIndex
 import software.amazon.smithy.model.shapes.BooleanShape
+import software.amazon.smithy.model.shapes.CollectionShape
+import software.amazon.smithy.model.shapes.ListShape
 import software.amazon.smithy.model.shapes.MapShape
 import software.amazon.smithy.model.shapes.MemberShape
 import software.amazon.smithy.model.shapes.NumberShape
@@ -16,6 +18,7 @@ import software.amazon.smithy.model.shapes.Shape
 import software.amazon.smithy.model.shapes.StringShape
 import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.model.shapes.TimestampShape
+import software.amazon.smithy.model.shapes.UnionShape
 import software.amazon.smithy.model.traits.EnumTrait
 import software.amazon.smithy.model.traits.TimestampFormatTrait
 import software.amazon.smithy.model.traits.XmlAttributeTrait
@@ -44,6 +47,7 @@ import software.amazon.smithy.rust.codegen.util.dq
 import software.amazon.smithy.rust.codegen.util.expectMember
 import software.amazon.smithy.rust.codegen.util.orNull
 import software.amazon.smithy.rust.codegen.util.outputShape
+import software.amazon.smithy.rust.codegen.util.toPascalCase
 import software.amazon.smithy.rust.codegen.util.toSnakeCase
 
 class RestXmlParserGenerator(private val operationShape: OperationShape, protocolConfig: ProtocolConfig) {
@@ -146,16 +150,60 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
         conditionalBlock("Some(", ")", symbol.isOptional()) {
             conditionalBlock("Box::new(", ")", symbol.isBoxed()) {
                 when (target) {
-                    is StringShape -> parseString(target, ctx)
+                    is StringShape, is BooleanShape, is NumberShape, is TimestampShape -> parsePrimitiveInner(
+                        memberShape
+                    ) {
+                        rustTemplate("#{expect_data}(&mut ${ctx.tag})?", *codegenScope)
+                    }
                     is MapShape -> if (memberShape.isFlattened()) {
                         parseFlatMap(target, ctx)
                     } else {
                         parseMap(target, ctx)
                     }
+                    is ListShape -> if (memberShape.isFlattened()) {
+                        parseFlatList(target, ctx)
+                    } else {
+                        parseList(target, ctx)
+                    }
                     is StructureShape -> parseStructure(target, ctx)
-                    else -> rust("todo!()")
+                    is UnionShape -> parseUnion(target, ctx)
+                    else -> rust("todo!(${escape(target.toString()).dq()})")
                 }
             }
+        }
+    }
+
+    private fun RustWriter.parseList(target: ListShape, ctx: Ctx) {
+        val fnName = "deserialize_${target.member.id.name.toSnakeCase()}"
+        val member = target.member
+        val listParser = RuntimeType.forInlineFun(fnName, "xml_deser") {
+            it.rustBlockT(
+                "pub fn $fnName(mut decoder: &mut #{ScopedDecoder}) -> Result<#{List}, #{XmlError}>",
+                *codegenScope,
+                "List" to symbolProvider.toSymbol(target)
+            ) {
+                rust("let mut out = std::vec::Vec::new();")
+                parseLoop(Ctx(tag = "decoder", currentTarget = null)) { ctx ->
+                    rustBlock("s if ${member.xmlName().compareTo("s")} => ") {
+                        withBlock("out.push(", ");") {
+                            parseMember(member, ctx)
+                        }
+                    }
+                }
+                rust("Ok(out)")
+            }
+        }
+        rust("#T(&mut ${ctx.tag})?", listParser)
+    }
+
+    private fun RustWriter.parseFlatList(target: CollectionShape, ctx: Ctx) {
+        val list = safeName("list")
+        rustBlock("") {
+            rust("let mut $list = ${ctx.currentTarget!!}.unwrap_or_default();")
+            withBlock("$list.push(", ");") {
+                parseMember(target.member, ctx)
+            }
+            rust(list)
         }
     }
 
@@ -207,15 +255,12 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
             ) {
                 rust("let mut k: Option<String> = None;")
                 rust("let mut v: Option<#T> = None;", symbolProvider.toSymbol(model.expectShape(target.value.target)))
-                rustBlockT("while let Some(mut tag) = decoder.next_tag()") {
-                    rustBlock("match tag.start_el()") {
-                        withBlock("s if ${target.key.xmlName().compareTo("s")} => k = Some(", "),") {
-                            parseMember(target.key, ctx = ctx.copy(currentTarget = null))
-                        }
-                        withBlock("s if ${target.value.xmlName().compareTo("s")} => v = Some(", "),") {
-                            parseMember(target.value, ctx = ctx.copy(currentTarget = "v"))
-                        }
-                        rust("_ => {}")
+                parseLoop(Ctx("decoder", currentTarget = null)) {
+                    withBlock("s if ${target.key.xmlName().compareTo("s")} => k = Some(", "),") {
+                        parseMember(target.key, ctx = ctx.copy(currentTarget = null))
+                    }
+                    withBlock("s if ${target.value.xmlName().compareTo("s")} => v = Some(", "),") {
+                        parseMember(target.value, ctx = ctx.copy(currentTarget = "v"))
                     }
                 }
 
@@ -343,7 +388,30 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
                 }
             }
         }
-        // }
+    }
+
+    private fun RustWriter.parseUnion(shape: UnionShape, ctx: Ctx) {
+        val fnName = shape.id.name.toString().toSnakeCase() + "_inner"
+        val symbol = symbolProvider.toSymbol(shape)
+        val nestedParser = RuntimeType.forInlineFun(fnName, "xml_deser") {
+            it.rustBlockT(
+                "pub fn $fnName(mut decoder: &mut #{ScopedDecoder}) -> Result<#{Shape}, #{XmlError}>",
+                *codegenScope, "Shape" to symbol
+            ) {
+                val members = shape.members()
+                parseLoop(Ctx(tag = "decoder", currentTarget = null)) { ctx ->
+                    members.forEach { member ->
+                        rustBlock("s if ${member.xmlName().compareTo("s")} => ") {
+                            withBlock("return Ok(#T::${member.memberName.toPascalCase()}(", "))", symbol) {
+                                parseMember(member, ctx)
+                            }
+                        }
+                    }
+                }
+                rustTemplate("""Err(#{XmlError}::Other { msg: "expected union, got nothing..."})""", *codegenScope)
+            }
+        }
+        rust("#T(&mut ${ctx.tag})?", nestedParser)
     }
 
     private fun RustWriter.parseStructure(shape: StructureShape, ctx: Ctx) {
