@@ -3,7 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-use smithy_xml::decode::{expect_data, next_start_element, Document, ScopedDecoder, XmlError};
+use smithy_xml::decode::{
+    expect_data, next_start_element, Document, Name, ScopedDecoder, StartEl, XmlError,
+};
+use std::borrow::Cow;
 use std::collections::HashMap;
 
 #[derive(Eq, PartialEq, Debug)]
@@ -105,10 +108,10 @@ fn deserialize_foo_enum_map_entry(
 ) -> Result<(), XmlError> {
     let mut k: Option<String> = None;
     let mut v: Option<FooEnum> = None;
-    while let Some(start_el) = next_start_element(&mut decoder) {
-        match start_el.name.local.as_ref() {
-            "key" => k = Some(expect_data(&mut decoder)?.to_string()),
-            "value" => v = Some(FooEnum::from(expect_data(&mut decoder)?)),
+    while let Some(mut tag) = decoder.next_tag() {
+        match tag.start_el() {
+            s if s.matches("key") => k = Some(expect_data(&mut tag)?.to_string()),
+            s if s.matches("value") => v = Some(FooEnum::from(expect_data(&mut tag)?)),
             _ => {}
         }
     }
@@ -131,6 +134,7 @@ fn deserialize_map_test() {
     <values>
         <entry>
             <key>example-key1</key>
+            <ignore><this><key>hello</key></this></ignore>
             <value>example1</value>
         </entry>
         <entry>

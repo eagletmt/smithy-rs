@@ -407,6 +407,7 @@ class HttpProtocolTestGenerator(
         val JsonRpc10 = "aws.protocoltests.json10#JsonRpc10"
         val AwsJson11 = "aws.protocoltests.json#JsonProtocol"
         val RestJson = "aws.protocoltests.restjson#RestJson"
+        val RestXml = "aws.protocoltests.restxml#RestXml"
         private val ExpectFail = setOf(
             // Endpoint trait https://github.com/awslabs/smithy-rs/issues/197
             // This will also require running operations through the endpoint middleware (or moving endpoint middleware
@@ -417,6 +418,7 @@ class HttpProtocolTestGenerator(
             FailingTest(AwsJson11, "AwsJson11EndpointTraitWithHostLabel", Action.Request),
             FailingTest(RestJson, "RestJsonEndpointTrait", Action.Request),
             FailingTest(RestJson, "RestJsonEndpointTraitWithHostLabel", Action.Request),
+            FailingTest(RestXml, "IgnoreQueryParamsInResponse", Action.Response)
         )
         private val RunOnly: Set<String>? = null
 

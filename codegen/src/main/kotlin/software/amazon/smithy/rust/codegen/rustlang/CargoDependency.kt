@@ -58,7 +58,7 @@ class InlineDependency(
     val renderer: (RustWriter) -> Unit
 ) : RustDependency(name) {
     override fun version(): String {
-        return renderer(RustWriter.forModule("_")).hashCode().toString()
+        return renderer.hashCode().toString()
     }
 
     override fun dependencies(): List<RustDependency> {

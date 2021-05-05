@@ -11,12 +11,27 @@ use xmlparser::{ElementEnd, Token, Tokenizer};
 pub enum XmlError {
     InvalidXml(xmlparser::Error),
     Other { msg: &'static str },
+    Custom(String),
 }
 
 #[derive(PartialEq, Debug)]
 pub struct Name<'a> {
     pub prefix: Cow<'a, str>,
     pub local: Cow<'a, str>,
+}
+
+impl Name<'_> {
+    pub fn matches(&self, tag_name: &str) -> bool {
+        let split = tag_name.find(':');
+        match split {
+            None => tag_name == self.local.as_ref(),
+            Some(idx) => {
+                let (prefix, local) = tag_name.split_at(idx);
+                let local = &local[1..];
+                self.local.as_ref() == local && self.prefix.as_ref() == prefix
+            }
+        }
+    }
 }
 
 #[derive(Debug, PartialEq)]
@@ -45,8 +60,19 @@ impl<'a> StartEl<'a> {
     pub fn attr<'b>(&'b self, key: &'b str) -> Option<&'b str> {
         self.attributes
             .iter()
-            .find(|attr| attr.name.local == key)
+            .find(|attr| attr.name.matches(key))
             .map(|attr| attr.value.as_ref())
+    }
+
+    pub fn matches(&self, pat: &str) -> bool {
+        self.name.matches(pat)
+    }
+
+    pub fn local(&self) -> &str {
+        self.name.local.as_ref()
+    }
+    pub fn prefix(&self) -> &str {
+        self.name.local.as_ref()
     }
 }
 
@@ -123,6 +149,11 @@ impl Drop for ScopedDecoder<'_, '_> {
 impl<'inp> ScopedDecoder<'inp, '_> {
     pub fn start_el<'a>(&'a self) -> &'a StartEl<'inp> {
         &self.start_el
+    }
+
+    pub fn next_tag<'a>(&'a mut self) -> Option<ScopedDecoder<'inp, 'a>> {
+        let next_tag = next_start_element(self)?;
+        Some(self.scoped_to(next_tag))
     }
 
     pub fn scoped_to<'a>(&'a mut self, start_el: StartEl<'inp>) -> ScopedDecoder<'inp, 'a> {

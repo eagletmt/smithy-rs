@@ -14,6 +14,7 @@ import software.amazon.smithy.model.shapes.Shape
 import software.amazon.smithy.model.shapes.StringShape
 import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.model.traits.EnumTrait
+import software.amazon.smithy.model.traits.XmlAttributeTrait
 import software.amazon.smithy.model.traits.XmlFlattenedTrait
 import software.amazon.smithy.model.traits.XmlNameTrait
 import software.amazon.smithy.rust.codegen.rustlang.CargoDependency
@@ -28,8 +29,11 @@ import software.amazon.smithy.rust.codegen.rustlang.rustTemplate
 import software.amazon.smithy.rust.codegen.rustlang.withBlock
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
 import software.amazon.smithy.rust.codegen.smithy.generators.ProtocolConfig
+import software.amazon.smithy.rust.codegen.smithy.generators.StructureGenerator
 import software.amazon.smithy.rust.codegen.smithy.generators.builderSymbol
 import software.amazon.smithy.rust.codegen.smithy.generators.setterName
+import software.amazon.smithy.rust.codegen.smithy.isBoxed
+import software.amazon.smithy.rust.codegen.smithy.isOptional
 import software.amazon.smithy.rust.codegen.smithy.traits.SyntheticOutputTrait
 import software.amazon.smithy.rust.codegen.util.dq
 import software.amazon.smithy.rust.codegen.util.expectMember
@@ -39,7 +43,11 @@ import software.amazon.smithy.rust.codegen.util.toSnakeCase
 
 class RestXmlParserGenerator(private val operationShape: OperationShape, protocolConfig: ProtocolConfig) {
 
-    data class XmlName(val local: String, val prefix: String? = null)
+    data class XmlName(val local: String, val prefix: String? = null) {
+        override fun toString(): String {
+            return prefix?.let { "$it:" }.orEmpty() + local
+        }
+    }
 
     private val symbolProvider = protocolConfig.symbolProvider
     private val smithyXml = CargoDependency.smithyXml(protocolConfig.runtimeConfig).asType()
@@ -56,6 +64,19 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
     private val model = protocolConfig.model
     private val index = HttpBindingIndex.of(model)
     private val shape = operationShape.outputShape(model)
+
+    data class Ctx(val tag: String, val currentTarget: String?)
+
+    fun RustWriter.parseLoop(ctx: Ctx, ignoreUnexpected: Boolean = true, inner: RustWriter.(Ctx) -> Unit) {
+        rustBlock("while let Some(mut tag) = ${ctx.tag}.next_tag()") {
+            rustBlock("match tag.start_el()") {
+                inner(ctx.copy(tag = "tag"))
+                if (ignoreUnexpected) {
+                    rust("_ => {}")
+                }
+            }
+        }
+    }
 
     fun operationParser(): RuntimeType {
         val fnName = shape.id.name.toString().toSnakeCase()
@@ -74,23 +95,33 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
                     use std::convert::TryFrom;
                     let mut doc = #{Document}::try_from(inp)?;
                     let mut decoder = doc.scoped()?;
-                    if !(${shapeName.compareTo("decoder.start_el()")}) {
-                        println!("{:?}", decoder.start_el());
-                        return Err(#{XmlError}::Other { msg: "invalid root shape; expected $shapeName / ${operationShape.xmlName()}" })
+                    let start_el = decoder.start_el();
+                    if !(${shapeName.compareTo("start_el")}) {
+                        return Err(#{XmlError}::Custom(format!("invalid root, expected $shapeName got {:?}", start_el)))
                     }
                     """,
-                    *codegenScope, "parse" to structureParser(shape)
+                    *codegenScope
                 )
-                rustBlockT("while let Some(start_el) = #{next_start_element}(&mut decoder)", *codegenScope) {
-                    operationShape.xmlMembers().forEach { member ->
+                val members = operationShape.operationXmlMembers()
+                members.attributeMembers.forEach { member ->
+                    val temp = safeName("attrib")
+                    withBlock("let $temp = ", ";") {
+                        parseAttributeMember(member, Ctx("decoder", null))
+                    }
+                    rust("builder = builder.${member.setterName()}($temp);")
+                }
+                parseLoop(Ctx(tag = "decoder", currentTarget = null)) { ctx ->
+                    members.dataMembers.forEach { member ->
                         val memberName = member.xmlName()
-                        rustBlock("if ${memberName.compareTo("start_el")}") {
+                        withBlock("s if ${memberName.compareTo("s")} => {", "},") {
                             val temp = safeName()
                             withBlock("let $temp = ", ";") {
-                                parseMember(member, "builder.${symbolProvider.toMemberName(member)}.take()")
+                                parseMember(
+                                    member,
+                                    ctx.copy(currentTarget = "builder.${symbolProvider.toMemberName(member)}.take()")
+                                )
                             }
                             rust("builder = builder.${member.setterName()}($temp);")
-                            rust("continue")
                         }
                     }
                 }
@@ -103,49 +134,52 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
         return getMemberTrait(model, XmlFlattenedTrait::class.java).isPresent
     }
 
-    private fun RustWriter.parseMember(memberShape: MemberShape, current: String) {
+    private fun RustWriter.parseMember(memberShape: MemberShape, ctx: Ctx) {
         val target = model.expectShape(memberShape.target)
-        conditionalBlock("Some(", ")", memberShape.isOptional) {
-            when (target) {
-                is StringShape -> parseString(target)
-                is MapShape -> if (memberShape.isFlattened()) {
-                    parseFlatMap(target, current)
-                } else {
-                    parseMap(target, current)
+        val symbol = symbolProvider.toSymbol(memberShape)
+        conditionalBlock("Some(", ")", symbol.isOptional()) {
+            conditionalBlock("Box::new(", ")", symbol.isBoxed()) {
+                when (target) {
+                    is StringShape -> parseString(target)
+                    is MapShape -> if (memberShape.isFlattened()) {
+                        parseFlatMap(target, ctx)
+                    } else {
+                        parseMap(target, ctx)
+                    }
+                    is StructureShape -> parseStructure(target, ctx)
+                    else -> rust("todo!()")
                 }
-                else -> rust("todo!()")
             }
         }
     }
 
-    private fun RustWriter.parseMap(target: MapShape, current: String) {
+    private fun RustWriter.parseMap(target: MapShape, ctx: Ctx) {
         val fnName = "deserialize_${target.value.id.name.toSnakeCase()}"
-        val mapParser = RuntimeType.forInlineFun(fnName, "inerineriner") {
+        val mapParser = RuntimeType.forInlineFun(fnName, "xml_deser") {
             it.rustBlockT(
                 "pub fn $fnName(mut decoder: &mut #{ScopedDecoder}) -> Result<#{Map}, #{XmlError}>",
                 *codegenScope,
                 "Map" to symbolProvider.toSymbol(target)
             ) {
                 rust("let mut out = #T::new();", RustType.HashMap.RuntimeType)
-                rustBlockT("while let Some(start_el) = #{next_start_element}(&mut decoder)") {
-                    rustBlock("if ${XmlName(local = "entry").compareTo("start_el")}") {
-                        rust("#T(&mut decoder.scoped_to(start_el), &mut out)?;", mapEntryParser(target))
+                parseLoop(Ctx(tag = "decoder", currentTarget = null)) { ctx ->
+                    rustBlock("s if ${XmlName(local = "entry").compareTo("s")} => ") {
+                        rust("#T(&mut ${ctx.tag}, &mut out)?;", mapEntryParser(target, ctx))
                     }
                 }
                 rust("Ok(out)")
             }
         }
-        rust("#T(&mut decoder.scoped_to(start_el))?", mapParser)
+        rust("#T(&mut ${ctx.tag})?", mapParser)
     }
 
-    private fun RustWriter.parseFlatMap(target: MapShape, current: String) {
+    private fun RustWriter.parseFlatMap(target: MapShape, ctx: Ctx) {
         val map = safeName("map")
-        val entryDecoder = mapEntryParser(target)
+        val entryDecoder = mapEntryParser(target, ctx)
         rust(
             """{
-            let mut $map = $current.unwrap_or_default();
-            let mut entry_decoder = decoder.scoped_to(start_el);
-            #T(&mut entry_decoder, &mut $map)?;
+            let mut $map = ${ctx.currentTarget!!}.unwrap_or_default();
+            #T(&mut tag, &mut $map)?;
             $map
             }
             """,
@@ -154,11 +188,12 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
     }
 
     private fun mapEntryParser(
-        target: MapShape
+        target: MapShape,
+        ctx: Ctx
     ): RuntimeType {
 
         val fnName = target.value.id.name.toSnakeCase() + "_entry"
-        return RuntimeType.forInlineFun(fnName, "xml_inner_innerer_ser") {
+        return RuntimeType.forInlineFun(fnName, "xml_deser") {
             it.rustBlockT(
                 "pub fn $fnName(mut decoder: &mut #{ScopedDecoder}, out: &mut #{Map}) -> Result<(), #{XmlError}>",
                 *codegenScope,
@@ -166,16 +201,15 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
             ) {
                 rust("let mut k: Option<String> = None;")
                 rust("let mut v: Option<#T> = None;", symbolProvider.toSymbol(model.expectShape(target.value.target)))
-                rustBlockT("while let Some(start_el) = #{next_start_element}(&mut decoder)") {
-                    rustBlock("if ${target.key.xmlName().compareTo("start_el")}") {
-                        withBlock("k = ", ";") {
-                            parseMember(target.key, "ERROR")
+                rustBlockT("while let Some(mut tag) = decoder.next_tag()") {
+                    rustBlock("match tag.start_el()") {
+                        withBlock("s if ${target.key.xmlName().compareTo("s")} => k = Some(", "),") {
+                            parseMember(target.key, ctx = ctx.copy(currentTarget = null))
                         }
-                    }
-                    rustBlock("if ${target.value.xmlName().compareTo("start_el")}") {
-                        withBlock("v = ", ";") {
-                            parseMember(target.value, "v")
+                        withBlock("s if ${target.value.xmlName().compareTo("s")} => v = Some(", "),") {
+                            parseMember(target.value, ctx = ctx.copy(currentTarget = "v"))
                         }
+                        rust("_ => {}")
                     }
                 }
 
@@ -195,10 +229,10 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
     private fun RustWriter.parseString(shape: StringShape) {
         val enumTrait = shape.getTrait(EnumTrait::class.java).orElse(null)
         if (enumTrait == null) {
-            rustTemplate("#{expect_data}(&mut(decoder))?.to_string()", *codegenScope)
+            rustTemplate("#{expect_data}(&mut tag)?.to_string()", *codegenScope)
         } else {
             val enumSymbol = symbolProvider.toSymbol(shape)
-            rustTemplate("#{Enum}::from(#{expect_data}(&mut(decoder))?)", *codegenScope, "Enum" to enumSymbol)
+            rustTemplate("#{Enum}::from(#{expect_data}(&mut tag)?)", *codegenScope, "Enum" to enumSymbol)
         }
     }
 
@@ -214,48 +248,91 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
         } ?: XmlName(local = this.asMemberShape().map { it.memberName }.orElse(this.id.name), prefix = null)
     }
 
-    fun XmlName.compareTo(v: String) =
-        "&$v.name.local == &${local.dq()} && &$v.name.prefix == &${prefix.orEmpty().dq()}"
+    fun XmlName.compareTo(start_el: String) =
+        "$start_el.matches(${this.toString().dq()})"
 
-    private fun OperationShape.xmlMembers(): List<MemberShape> {
-        val docMembers =
-            index.getResponseBindings(operationShape).filter { it.value.location == HttpBinding.Location.DOCUMENT }
-        val outputShape = this.outputShape(model)
-        return docMembers.keys.map { outputShape.expectMember(it) }
+    data class XmlIndex(val dataMembers: List<MemberShape>, val attributeMembers: List<MemberShape>) {
+        companion object {
+            fun fromMembers(members: List<MemberShape>): XmlIndex {
+                val (attribute, data) = members.partition { it.hasTrait(XmlAttributeTrait::class.java) }
+                return XmlIndex(data, attribute)
+            }
+        }
     }
 
-    fun structureParser(shape: StructureShape): RuntimeType {
+    private fun OperationShape.operationXmlMembers(): XmlIndex {
+        val outputShape = this.outputShape(model)
+        val documentMembers =
+            index.getResponseBindings(operationShape).filter { it.value.location == HttpBinding.Location.DOCUMENT }
+                .keys.map { outputShape.expectMember(it) }
+        return XmlIndex.fromMembers(documentMembers)
+    }
+
+    private fun StructureShape.xmlMembers(): XmlIndex {
+        return XmlIndex.fromMembers(this.members().toList())
+    }
+
+    private fun RustWriter.parseAttributeMember(memberShape: MemberShape, ctx: Ctx) {
+        val target = model.expectShape(memberShape.target)
+        val symbol = symbolProvider.toSymbol(memberShape)
+        conditionalBlock("Some({", "})", symbol.isOptional()) {
+            rustTemplate(
+                """let s = ${ctx.tag}
+                    .start_el()
+                    .attr(${memberShape.xmlName().toString().dq()})
+                    .ok_or(#{XmlError}::Other { msg: "attribute missing"})?;""",
+                *codegenScope
+            )
+            when (target) {
+                is StringShape -> rust("s.to_string()")
+                else -> rust("todo!()")
+            }
+        }
+    }
+
+    private fun RustWriter.parseStructure(shape: StructureShape, ctx: Ctx) {
         val fnName = shape.id.name.toString().toSnakeCase() + "_inner"
-        val scopedDecoder = smithyXml.member("decode::ScopedDecoder")
-        return RuntimeType.forInlineFun(fnName, "xml_deser_inner") {
-            it.rustBlock(
-                "pub fn $fnName(mut decoder: &mut #1T) -> Result<#2T, #3T>",
-                scopedDecoder,
-                shape.builderSymbol(symbolProvider),
-                xmlError
+        val symbol = symbolProvider.toSymbol(shape)
+        val nestedParser = RuntimeType.forInlineFun(fnName, "xml_deser") {
+            it.rustBlockT(
+                "pub fn $fnName(mut decoder: &mut #{ScopedDecoder}) -> Result<#{Shape}, #{XmlError}>",
+                *codegenScope, "Shape" to symbol
             ) {
-                val shapeName = shape.xmlName()
                 rustTemplate(
                     """
-                    let mut builder = builder;
-                    let start_el = decoder.start_el();
-                    if !(${shapeName.compareTo("start_el")}) {
-                        return Err(#{XmlError}::Other { msg: "invalid root shape" })
-                    }
+                    let mut builder = #{Shape}::builder();
                 """,
-                    *codegenScope
+                    *codegenScope, "Shape" to symbol
                 )
-                rustBlockT("while let Some(start_el) = #{next_start_element}(&mut decoder)", *codegenScope) {
-                    shape.members().forEach { member ->
-                        println("$member, ${member.xmlName()}")
-                        val memberName = member.xmlName()
-                        rustBlock("if ${memberName.compareTo("start_el")}") {
-                            rust("todo!()")
+                val members = shape.xmlMembers()
+                members.attributeMembers.forEach { member ->
+                    val temp = safeName("attrib")
+                    withBlock("let $temp = ", ";") {
+                        parseAttributeMember(member, Ctx("decoder", null))
+                    }
+                    rust("builder = builder.${member.setterName()}($temp)")
+                }
+                parseLoop(Ctx("decoder", null)) { ctx: Ctx ->
+                    members.dataMembers.forEach { member ->
+                        val temp = safeName()
+                        rustBlock("s if ${member.xmlName().compareTo("s")} => ") {
+                            withBlock("let $temp = ", ";") {
+                                parseMember(
+                                    member,
+                                    ctx.copy(currentTarget = "builder.${symbolProvider.toMemberName(member)}.take()")
+                                )
+                            }
+                            rust("builder = builder.${member.setterName()}($temp);")
                         }
                     }
                 }
-                rust("builder.build().unwrap()")
+                withBlock("Ok(builder.build()", ")") {
+                    if (StructureGenerator.fallibleBuilder(shape, symbolProvider)) {
+                        rust(""".map_err(|_|{XmlError}::Other { msg: "missing field"})?""")
+                    }
+                }
             }
         }
+        rust("#T(&mut ${ctx.tag})?", nestedParser)
     }
 }
