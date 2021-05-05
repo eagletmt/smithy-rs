@@ -22,6 +22,7 @@ import software.amazon.smithy.rust.codegen.rustlang.RustType
 import software.amazon.smithy.rust.codegen.rustlang.RustWriter
 import software.amazon.smithy.rust.codegen.rustlang.asType
 import software.amazon.smithy.rust.codegen.rustlang.conditionalBlock
+import software.amazon.smithy.rust.codegen.rustlang.escape
 import software.amazon.smithy.rust.codegen.rustlang.rust
 import software.amazon.smithy.rust.codegen.rustlang.rustBlock
 import software.amazon.smithy.rust.codegen.rustlang.rustBlockT
@@ -67,7 +68,7 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
 
     data class Ctx(val tag: String, val currentTarget: String?)
 
-    fun RustWriter.parseLoop(ctx: Ctx, ignoreUnexpected: Boolean = true, inner: RustWriter.(Ctx) -> Unit) {
+    private fun RustWriter.parseLoop(ctx: Ctx, ignoreUnexpected: Boolean = true, inner: RustWriter.(Ctx) -> Unit) {
         rustBlock("while let Some(mut tag) = ${ctx.tag}.next_tag()") {
             rustBlock("match tag.start_el()") {
                 inner(ctx.copy(tag = "tag"))
@@ -140,7 +141,7 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
         conditionalBlock("Some(", ")", symbol.isOptional()) {
             conditionalBlock("Box::new(", ")", symbol.isBoxed()) {
                 when (target) {
-                    is StringShape -> parseString(target)
+                    is StringShape -> parseString(target, ctx)
                     is MapShape -> if (memberShape.isFlattened()) {
                         parseFlatMap(target, ctx)
                     } else {
@@ -226,13 +227,22 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
         }
     }
 
-    private fun RustWriter.parseString(shape: StringShape) {
+    private fun RustWriter.parseStringInner(shape: StringShape, provider: RustWriter.() -> Unit) {
         val enumTrait = shape.getTrait(EnumTrait::class.java).orElse(null)
         if (enumTrait == null) {
-            rustTemplate("#{expect_data}(&mut tag)?.to_string()", *codegenScope)
+            provider()
+            rust(".to_string()")
         } else {
             val enumSymbol = symbolProvider.toSymbol(shape)
-            rustTemplate("#{Enum}::from(#{expect_data}(&mut tag)?)", *codegenScope, "Enum" to enumSymbol)
+            withBlock("#T::from(", ")", enumSymbol) {
+                provider()
+            }
+        }
+    }
+
+    private fun RustWriter.parseString(shape: StringShape, ctx: Ctx) {
+        parseStringInner(shape) {
+            rustTemplate("#{expect_data}(&mut ${ctx.tag})?", *codegenScope)
         }
     }
 
@@ -275,17 +285,21 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
     private fun RustWriter.parseAttributeMember(memberShape: MemberShape, ctx: Ctx) {
         val target = model.expectShape(memberShape.target)
         val symbol = symbolProvider.toSymbol(memberShape)
-        conditionalBlock("Some({", "})", symbol.isOptional()) {
-            rustTemplate(
-                """let s = ${ctx.tag}
+        conditionalBlock("Some(", ")", symbol.isOptional()) {
+            rustBlock("") {
+                rustTemplate(
+                    """let s = ${ctx.tag}
                     .start_el()
                     .attr(${memberShape.xmlName().toString().dq()})
                     .ok_or(#{XmlError}::Other { msg: "attribute missing"})?;""",
-                *codegenScope
-            )
-            when (target) {
-                is StringShape -> rust("s.to_string()")
-                else -> rust("todo!()")
+                    *codegenScope
+                )
+                when (target) {
+                    is StringShape -> parseStringInner(target) {
+                        rust("s")
+                    }
+                    else -> rust("todo!(${escape(target.toString()).dq()})")
+                }
             }
         }
     }

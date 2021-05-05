@@ -45,6 +45,10 @@ val CodegenTests = listOf(
         "rest_xml"
     ),
     CodegenTest(
+        "aws.protocoltests.restxml#RestXmlExtras",
+        "rest_xml_extras"
+    ),
+    CodegenTest(
         "crate#Config",
         "naming_test", """
             , "codegen": { "renameErrors": false }
