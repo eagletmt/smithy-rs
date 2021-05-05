@@ -7,13 +7,17 @@ package software.amazon.smithy.rust.codegen.smithy.protocols
 
 import software.amazon.smithy.model.knowledge.HttpBinding
 import software.amazon.smithy.model.knowledge.HttpBindingIndex
+import software.amazon.smithy.model.shapes.BooleanShape
 import software.amazon.smithy.model.shapes.MapShape
 import software.amazon.smithy.model.shapes.MemberShape
+import software.amazon.smithy.model.shapes.NumberShape
 import software.amazon.smithy.model.shapes.OperationShape
 import software.amazon.smithy.model.shapes.Shape
 import software.amazon.smithy.model.shapes.StringShape
 import software.amazon.smithy.model.shapes.StructureShape
+import software.amazon.smithy.model.shapes.TimestampShape
 import software.amazon.smithy.model.traits.EnumTrait
+import software.amazon.smithy.model.traits.TimestampFormatTrait
 import software.amazon.smithy.model.traits.XmlAttributeTrait
 import software.amazon.smithy.model.traits.XmlFlattenedTrait
 import software.amazon.smithy.model.traits.XmlNameTrait
@@ -55,6 +59,7 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
     private val xmlError = smithyXml.member("decode::XmlError")
 
     private val scopedDecoder = smithyXml.member("decode::ScopedDecoder")
+    private val runtimeConfig = protocolConfig.runtimeConfig
     private val codegenScope = arrayOf(
         "Document" to smithyXml.member("decode::Document"),
         "XmlError" to xmlError,
@@ -109,7 +114,7 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
                     withBlock("let $temp = ", ";") {
                         parseAttributeMember(member, Ctx("decoder", null))
                     }
-                    rust("builder = builder.${member.setterName()}($temp);")
+                    rust("builder.${symbolProvider.toMemberName(member)} = $temp;")
                 }
                 parseLoop(Ctx(tag = "decoder", currentTarget = null)) { ctx ->
                     members.dataMembers.forEach { member ->
@@ -227,6 +232,43 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
         }
     }
 
+    private fun RustWriter.parsePrimitiveInner(member: MemberShape, provider: RustWriter.() -> Unit) {
+        rustBlock("") {
+
+            when (val shape = model.expectShape(member.target)) {
+                is StringShape -> parseStringInner(shape, provider)
+                is NumberShape, is BooleanShape -> {
+                    rust("use std::str::FromStr;")
+                    withBlock("#T::from_str(", ")", symbolProvider.toSymbol(shape)) {
+                        provider()
+                    }
+                    rustTemplate(
+                        """.map_err(|_|#{XmlError}::Other { msg: "expected ${escape(shape.toString())}"})?""",
+                        *codegenScope
+                    )
+                }
+                is TimestampShape -> {
+                    val timestampFormat =
+                        index.determineTimestampFormat(
+                            member,
+                            HttpBinding.Location.DOCUMENT,
+                            TimestampFormatTrait.Format.DATE_TIME
+                        )
+                    val timestampFormatType = RuntimeType.TimestampFormat(runtimeConfig, timestampFormat)
+                    withBlock("#T::from_str(", ")", RuntimeType.Instant(runtimeConfig)) {
+                        provider()
+                        rust(", #T", timestampFormatType)
+                    }
+                    rustTemplate(
+                        """.map_err(|_|#{XmlError}::Other { msg: "expected ${escape(shape.toString())}"})?""",
+                        *codegenScope
+                    )
+                }
+                else -> TODO(shape.toString())
+            }
+        }
+    }
+
     private fun RustWriter.parseStringInner(shape: StringShape, provider: RustWriter.() -> Unit) {
         val enumTrait = shape.getTrait(EnumTrait::class.java).orElse(null)
         if (enumTrait == null) {
@@ -283,25 +325,25 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
     }
 
     private fun RustWriter.parseAttributeMember(memberShape: MemberShape, ctx: Ctx) {
-        val target = model.expectShape(memberShape.target)
         val symbol = symbolProvider.toSymbol(memberShape)
-        conditionalBlock("Some(", ")", symbol.isOptional()) {
-            rustBlock("") {
-                rustTemplate(
-                    """let s = ${ctx.tag}
+        // conditionalBlock("Some(", ")", symbol.isOptional()) {
+        rustBlock("") {
+            rustTemplate(
+                """let s = ${ctx.tag}
                     .start_el()
-                    .attr(${memberShape.xmlName().toString().dq()})
-                    .ok_or(#{XmlError}::Other { msg: "attribute missing"})?;""",
-                    *codegenScope
-                )
-                when (target) {
-                    is StringShape -> parseStringInner(target) {
+                    .attr(${memberShape.xmlName().toString().dq()});""",
+                *codegenScope
+            )
+            rustBlock("match s") {
+                rust("None => None,")
+                withBlock("Some(s) => Some(", ")") {
+                    parsePrimitiveInner(memberShape) {
                         rust("s")
                     }
-                    else -> rust("todo!(${escape(target.toString()).dq()})")
                 }
             }
         }
+        // }
     }
 
     private fun RustWriter.parseStructure(shape: StructureShape, ctx: Ctx) {
@@ -324,7 +366,7 @@ class RestXmlParserGenerator(private val operationShape: OperationShape, protoco
                     withBlock("let $temp = ", ";") {
                         parseAttributeMember(member, Ctx("decoder", null))
                     }
-                    rust("builder = builder.${member.setterName()}($temp)")
+                    rust("builder.${symbolProvider.toMemberName(member)} = $temp)")
                 }
                 parseLoop(Ctx("decoder", null)) { ctx: Ctx ->
                     members.dataMembers.forEach { member ->

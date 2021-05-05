@@ -24,12 +24,29 @@ structure AttributePartyInputOutput {
     enum: StringEnum,
 
     @xmlAttribute
+    @xmlName("prefix:anumber")
     number: PrimitiveInt,
 
     @xmlAttribute
-    ts: Timestamp
+    ts: Timestamp,
+
+    @xmlAttribute
+    bool: Boolean
 }
 
+@httpResponseTests([{
+        id: "DeserAttributes",
+        code: 200,
+        body: "<AttributePartyInputOutput enum=\"enumvalue\" prefix:anumber=\"5\" ts=\"1985-04-12T23:20:50.00Z\" bool=\"true\"/>",
+        params: {
+            enum: "enumvalue",
+            number: 5,
+            ts: 482196050,
+            bool: true
+        },
+        protocol: "aws.protocols#restXml"
+
+}])
 @http(uri: "/AttributeParty", method: "POST")
 operation AttributeParty {
     output: AttributePartyInputOutput
