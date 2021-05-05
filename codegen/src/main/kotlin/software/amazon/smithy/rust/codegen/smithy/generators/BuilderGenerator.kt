@@ -113,7 +113,7 @@ class BuilderGenerator(
                 // All fields in the builder are optional
                 val memberSymbol = symbolProvider.toSymbol(member).makeOptional()
                 // TODO: should the builder members be public?
-                write("$memberName: #T,", memberSymbol)
+                write("pub(crate) $memberName: #T,", memberSymbol)
             }
         }
 

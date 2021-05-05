@@ -70,7 +70,12 @@ data class SymbolVisitorConfig(
 
 // TODO: consider if this is better handled as a wrapper
 val DefaultConfig =
-    SymbolVisitorConfig(runtimeConfig = RuntimeConfig(), handleOptionality = true, handleRustBoxing = true, codegenConfig = CodegenConfig())
+    SymbolVisitorConfig(
+        runtimeConfig = RuntimeConfig(),
+        handleOptionality = true,
+        handleRustBoxing = true,
+        codegenConfig = CodegenConfig()
+    )
 
 data class SymbolLocation(val namespace: String) {
     val filename = "$namespace.rs"
@@ -247,6 +252,12 @@ class SymbolVisitor(
             // TODO: Do we want to do this?
             // https://github.com/awslabs/smithy-rs/issues/77
             it.replace("Exception", "Error")
+        }.letIf(isOutput) {
+            val output = shape.expectTrait(SyntheticOutputTrait::class.java)
+            output.operation.name + "Output"
+        }.letIf(isInput) {
+            val input = shape.expectTrait(SyntheticInputTrait::class.java)
+            input.operation.name + "Input"
         }
         val builder = symbolBuilder(shape, RustType.Opaque(name))
         return when {

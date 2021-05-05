@@ -51,6 +51,10 @@ fn deserialize_xml_attribute(inp: &str) -> Result<XmlAttribute, XmlError> {
     })
 }
 
+struct Mappy {
+    map: Option<HashMap<String, String>>,
+}
+
 fn deserialize_flat_xml_map(inp: &str) -> Result<FlatXmlMap, XmlError> {
     let mut doc = Document::new(inp);
     let mut root = doc.scoped()?;

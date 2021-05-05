@@ -100,6 +100,9 @@ class InlineDependency(
             CargoDependency.Serde,
             CargoDependency.SmithyHttp(runtimeConfig)
         )
+
+        fun wrappedXmlErrors(runtimeConfig: RuntimeConfig): InlineDependency = forRustFile("rest_xml_wrapped_errors", CargoDependency.smithyXml(runtimeConfig))
+        fun unwrappedXmlErrors(runtimeConfig: RuntimeConfig): InlineDependency = forRustFile("rest_xml_unwrapped_errors", CargoDependency.smithyXml(runtimeConfig))
     }
 }
 
@@ -180,6 +183,9 @@ data class CargoDependency(
         fun ProtocolTestHelpers(runtimeConfig: RuntimeConfig) = CargoDependency(
             "protocol-test-helpers", Local(runtimeConfig.relativePath), scope = DependencyScope.Dev
         )
+
+        fun smithyXml(runtimeConfig: RuntimeConfig): CargoDependency =
+            CargoDependency("${runtimeConfig.cratePrefix}-xml", Local(runtimeConfig.relativePath))
 
         val SerdeJson: CargoDependency =
             CargoDependency("serde_json", CratesIo("1"), features = listOf("float_roundtrip"))

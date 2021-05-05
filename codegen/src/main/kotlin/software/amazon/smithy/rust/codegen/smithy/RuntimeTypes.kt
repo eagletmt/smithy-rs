@@ -150,6 +150,9 @@ data class RuntimeType(val name: String?, val dependency: RustDependency?, val n
         fun awsJsonErrors(runtimeConfig: RuntimeConfig) =
             forInlineDependency(InlineDependency.awsJsonErrors(runtimeConfig))
 
+        fun wrappedXmlErrors(runtimeConfig: RuntimeConfig) = forInlineDependency(InlineDependency.wrappedXmlErrors(runtimeConfig))
+        fun unwrappedXmlErrors(runtimeConfig: RuntimeConfig) = forInlineDependency(InlineDependency.unwrappedXmlErrors(runtimeConfig))
+
         val DocJson = forInlineDependency(InlineDependency.docJson())
 
         val InstantEpoch = forInlineDependency(InlineDependency.instantEpoch())

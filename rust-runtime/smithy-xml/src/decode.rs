@@ -4,6 +4,7 @@
  */
 
 use std::borrow::Cow;
+use std::convert::TryFrom;
 use xmlparser::{ElementEnd, Token, Tokenizer};
 
 #[derive(Eq, PartialEq, Debug)]
@@ -63,9 +64,25 @@ impl StartEl<'_> {
 
 pub struct Document<'a>(Tokenizer<'a>);
 
+impl<'a> TryFrom<&'a [u8]> for Document<'a> {
+    type Error = XmlError;
+
+    fn try_from(value: &'a [u8]) -> Result<Self, Self::Error> {
+        Ok(Document::new(std::str::from_utf8(value).map_err(|_| {
+            XmlError::Other {
+                msg: "invalid utf8",
+            }
+        })?))
+    }
+}
+
 impl<'inp> Document<'inp> {
     pub fn new(doc: &'inp str) -> Self {
         Document(Tokenizer::from(doc))
+    }
+
+    pub fn next_start_el(&mut self) -> Option<StartEl<'inp>> {
+        next_start_element(&mut self.0)
     }
 
     pub fn scoped<'a>(&'a mut self) -> Result<ScopedDecoder<'inp, 'a>, XmlError> {
@@ -126,7 +143,7 @@ impl<'inp, 'a> Iterator for ScopedDecoder<'inp, 'a> {
             return None;
         }
         let tok = self.tokenizer.next()?.ok()?;
-        match dbg!(tok) {
+        match tok {
             Token::ElementStart { prefix, local, .. }
                 if prefix.as_str() == self.start_el.name.prefix
                     && local.as_str() == self.start_el.name.local =>
@@ -193,7 +210,7 @@ pub fn expect_data<'a, 'inp>(
     loop {
         match dbg!(tokens.next()) {
             None => return Ok(""),
-            Some(Ok(Token::Text { text })) => return Ok(text.as_str()),
+            Some(Ok(Token::Text { text })) => return Ok(text.as_str().trim()),
             Some(Ok(Token::ElementStart { .. })) => {
                 return Err(XmlError::Other {
                     msg: "expected data found element start ",

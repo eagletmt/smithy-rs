@@ -67,7 +67,7 @@ internal class OperationNormalizerTest {
         val operation = modified.expectShape(operationId, OperationShape::class.java)
         operation.input.isPresent shouldBe true
         val inputId = operation.input.get()
-        inputId.name shouldBe "MyOpInput"
+        inputId.name shouldBe "RenameMe"
         val inputShape = modified.expectShape(inputId, StructureShape::class.java)
         testSymbolProvider(modified).toSymbol(inputShape).name shouldBe "MyOpInput"
         inputShape.memberNames shouldBe listOf("v")
@@ -91,7 +91,7 @@ internal class OperationNormalizerTest {
         val operation = modified.expectShape(operationId, OperationShape::class.java)
         operation.output.isPresent shouldBe true
         val outputId = operation.output.get()
-        outputId.name shouldBe "MyOpOutput"
+        outputId.name shouldBe "RenameMe"
         val outputShape = modified.expectShape(outputId, StructureShape::class.java)
         testSymbolProvider(modified).toSymbol(outputShape).name shouldBe "MyOpOutput"
         outputShape.memberNames shouldBe listOf("v")
@@ -120,7 +120,7 @@ internal class OperationNormalizerTest {
         val operation = modified.lookup<OperationShape>("smithy.test#MyOp")
         operation.input.isPresent shouldBe true
         val inputId = operation.input.get()
-        inputId.name shouldBe "MyOpInput"
+        inputId.name shouldBe "RenameMe"
         val inputShape = modified.expectShape(inputId, StructureShape::class.java)
         val input = inputShape.expectTrait(SyntheticInputTrait::class.java)
         input.body shouldBe ShapeId.from("smithy.test#MyOpInputBody")
