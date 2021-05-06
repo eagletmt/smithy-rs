@@ -126,7 +126,7 @@ class RestXmlParserGenerator(protocolConfig: ProtocolConfig) {
                     """
                     use std::convert::TryFrom;
                     let mut doc = #{Document}::try_from(inp)?;
-                    let mut decoder = doc.scoped()?;
+                    let mut decoder = doc.root_element()?;
                     let start_el = decoder.start_el();
                     if !(${shapeName.compareTo("start_el")}) {
                         return Err(#{XmlError}::Custom(format!("invalid root, expected $shapeName got {:?}", start_el)))
@@ -172,7 +172,7 @@ class RestXmlParserGenerator(protocolConfig: ProtocolConfig) {
                     """
                     use std::convert::TryFrom;
                     let mut doc = #{Document}::try_from(inp)?;
-                    let mut decoder = doc.scoped()?;
+                    let mut decoder = doc.root_element()?;
                     let start_el = decoder.start_el();
                     if !(${shapeName.compareTo("start_el")}) {
                         return Err(#{XmlError}::Custom(format!("invalid root, expected $shapeName got {:?}", start_el)))

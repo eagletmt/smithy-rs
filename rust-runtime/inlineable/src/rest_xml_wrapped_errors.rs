@@ -12,14 +12,14 @@ pub fn is_error<B>(response: &http::Response<B>) -> bool {
 
 pub fn body_is_error(body: &[u8]) -> Result<bool, XmlError> {
     let mut doc = Document::try_from(body)?;
-    let scoped = doc.scoped()?;
+    let scoped = doc.root_element()?;
     let root_el = scoped.start_el().name.local.as_ref();
     Ok(root_el == "ErrorResponse")
 }
 
 pub fn parse_generic_error(body: &[u8]) -> Result<smithy_types::Error, XmlError> {
     let mut doc = Document::try_from(body)?;
-    let mut root = doc.scoped()?;
+    let mut root = doc.root_element()?;
     let mut err = smithy_types::Error::default();
     while let Some(mut tag) = root.next_tag() {
         match tag.start_el().local() {
@@ -44,7 +44,7 @@ pub fn parse_generic_error(body: &[u8]) -> Result<smithy_types::Error, XmlError>
 #[allow(unused)]
 pub fn error_scope<'a, 'b>(doc: &'a mut Document<'b>) -> Result<ScopedDecoder<'b, 'a>, XmlError> {
     let root = doc
-        .next_start_el()
+        .next_start_element()
         .ok_or(XmlError::Other { msg: "no root" })?;
     if root.name.local.as_ref() != "ErrorResponse" {
         return Err(XmlError::Other {
@@ -52,7 +52,7 @@ pub fn error_scope<'a, 'b>(doc: &'a mut Document<'b>) -> Result<ScopedDecoder<'b
         });
     }
 
-    while let Some(el) = doc.next_start_el() {
+    while let Some(el) = doc.next_start_element() {
         match el.name.local.as_ref() {
             "Error" => {
                 return Ok(doc.scoped_to(el));

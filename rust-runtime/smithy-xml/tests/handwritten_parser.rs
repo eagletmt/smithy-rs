@@ -3,10 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-use smithy_xml::decode::{
-    expect_data, next_start_element, Document, Name, ScopedDecoder, StartEl, XmlError,
-};
-use std::borrow::Cow;
+use smithy_xml::decode::{expect_data, Document, ScopedDecoder, XmlError};
 use std::collections::HashMap;
 
 #[derive(Eq, PartialEq, Debug)]
@@ -38,14 +35,14 @@ struct XmlAttribute {
 
 fn deserialize_xml_attribute(inp: &str) -> Result<XmlAttribute, XmlError> {
     let mut doc = Document::new(inp);
-    let mut root = doc.scoped()?;
+    let mut root = doc.root_element()?;
     #[allow(unused_assignments)]
     let mut foo: Option<String> = None;
     let mut bar: Option<String> = None;
     foo = root.start_el().attr("foo").map(|attr| attr.to_string());
-    while let Some(start_el) = next_start_element(&mut root) {
-        if start_el.name.local == "bar" {
-            bar = Some(expect_data(&mut root)?.to_string());
+    while let Some(mut tag) = root.next_tag() {
+        if tag.start_el().matches("bar") {
+            bar = Some(expect_data(&mut tag)?.to_string());
         }
     }
     Ok(XmlAttribute {
@@ -54,19 +51,14 @@ fn deserialize_xml_attribute(inp: &str) -> Result<XmlAttribute, XmlError> {
     })
 }
 
-struct Mappy {
-    map: Option<HashMap<String, String>>,
-}
-
 fn deserialize_flat_xml_map(inp: &str) -> Result<FlatXmlMap, XmlError> {
     let mut doc = Document::new(inp);
-    let mut root = doc.scoped()?;
+    let mut root = doc.root_element()?;
     let mut my_map: Option<HashMap<String, FooEnum>> = None;
-    while let Some(start_el) = next_start_element(&mut root) {
-        if start_el.name.local == "myMap" {
-            let mut entry_decoder = root.scoped_to(start_el);
+    while let Some(mut tag) = root.next_tag() {
+        if tag.start_el().matches("myMap") {
             let mut _my_map = my_map.unwrap_or_default();
-            deserialize_foo_enum_map_entry(&mut entry_decoder, &mut _my_map)?;
+            deserialize_foo_enum_map_entry(&mut tag, &mut _my_map)?;
             my_map = Some(_my_map);
         }
     }
@@ -77,12 +69,11 @@ fn deserialize_flat_xml_map(inp: &str) -> Result<FlatXmlMap, XmlError> {
 
 fn deserialize_xml_map(inp: &str) -> Result<XmlMap, XmlError> {
     let mut doc = Document::new(inp);
-    let mut root = doc.scoped()?;
+    let mut root = doc.root_element()?;
     let mut my_map: Option<HashMap<String, FooEnum>> = None;
-    while let Some(start_el) = next_start_element(&mut root) {
-        if start_el.name.local == "values" {
-            let mut map_decoder = root.scoped_to(start_el);
-            my_map = Some(deserialize_foo_enum_map(&mut map_decoder)?);
+    while let Some(mut tag) = root.next_tag() {
+        if tag.start_el().matches("values") {
+            my_map = Some(deserialize_foo_enum_map(&mut tag)?);
         }
     }
     Ok(XmlMap {
@@ -91,19 +82,19 @@ fn deserialize_xml_map(inp: &str) -> Result<XmlMap, XmlError> {
 }
 
 fn deserialize_foo_enum_map(
-    mut decoder: &mut ScopedDecoder,
+    decoder: &mut ScopedDecoder,
 ) -> Result<HashMap<String, FooEnum>, XmlError> {
     let mut out: HashMap<String, FooEnum> = HashMap::new();
-    while let Some(start_el) = next_start_element(&mut decoder) {
-        if start_el.name.local == "entry" {
-            deserialize_foo_enum_map_entry(&mut decoder.scoped_to(start_el), &mut out)?;
+    while let Some(mut tag) = decoder.next_tag() {
+        if tag.start_el().matches("entry") {
+            deserialize_foo_enum_map_entry(&mut tag, &mut out)?;
         }
     }
     Ok(out)
 }
 
 fn deserialize_foo_enum_map_entry(
-    mut decoder: &mut ScopedDecoder,
+    decoder: &mut ScopedDecoder,
     out: &mut HashMap<String, FooEnum>,
 ) -> Result<(), XmlError> {
     let mut k: Option<String> = None;
@@ -154,7 +145,7 @@ fn deserialize_map_test() {
 }
 
 pub fn deserialize_nested_string_list(
-    mut decoder: &mut ScopedDecoder,
+    decoder: &mut ScopedDecoder,
 ) -> Result<std::vec::Vec<std::vec::Vec<std::string::String>>, XmlError> {
     let mut out = std::vec::Vec::new();
     while let Some(mut tag) = decoder.next_tag() {
@@ -169,7 +160,7 @@ pub fn deserialize_nested_string_list(
 }
 
 pub fn deserialize_string_list(
-    mut decoder: &mut ScopedDecoder,
+    decoder: &mut ScopedDecoder,
 ) -> Result<std::vec::Vec<std::string::String>, XmlError> {
     let mut out = std::vec::Vec::new();
     while let Some(mut tag) = decoder.next_tag() {
@@ -201,7 +192,7 @@ fn test_nested_string_list() {
             </nestedStringList>
    "#;
     let mut doc = Document::new(xml);
-    let mut root = doc.scoped().unwrap();
+    let mut root = doc.root_element().unwrap();
     assert_eq!(
         deserialize_nested_string_list(&mut root).unwrap(),
         vec![vec!["foo", "bar"], vec!["baz", "qux"]]
