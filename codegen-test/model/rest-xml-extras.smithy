@@ -6,7 +6,7 @@ use aws.api#service
 use smithy.test#httpResponseTests
 
 
-/// A REST JSON service that sends JSON requests and responses.
+/// A REST XML service that sends XML requests and responses.
 @service(sdkId: "Rest Json Protocol")
 @restXml
 service RestXmlExtras {

@@ -137,7 +137,10 @@ class RestXmlParserGenerator(protocolConfig: ProtocolConfig) {
                 val ctx = Ctx("decoder", currentTarget = null)
                 withBlock("Ok(", ")") {
                     when (shape) {
-                        is StructureShape -> parseStructure(shape, ctx)
+                        is StructureShape -> {
+                            parseStructure(shape, ctx)
+                            rust("?")
+                        }
                         is UnionShape -> parseUnion(shape, ctx)
                     }
                 }
@@ -182,6 +185,30 @@ class RestXmlParserGenerator(protocolConfig: ProtocolConfig) {
                 )
                 val members = operationShape.operationXmlMembers()
                 parseStructureInner(members, builder = "builder", Ctx(tag = "decoder", currentTarget = null))
+                rust("Ok(builder)")
+            }
+        }
+    }
+
+    fun errorParser(errorShape: StructureShape, xmlErrors: RuntimeType): RuntimeType {
+        val fnName = errorShape.id.name.toString().toSnakeCase()
+        return RuntimeType.forInlineFun(fnName, "xml_deser") {
+            it.rustBlock(
+                "pub fn $fnName(inp: &[u8], mut builder: #1T) -> Result<#1T, #2T>",
+                errorShape.builderSymbol(symbolProvider),
+                xmlError
+            ) {
+                rustTemplate(
+                    """
+                    use std::convert::TryFrom;
+                    let mut document = #{Document}::try_from(inp)?;
+                    let mut error_decoder = #{xml_errors}::error_scope(&mut document)?;
+                    """,
+                    *codegenScope,
+                    "xml_errors" to xmlErrors
+                )
+                val members = errorShape.errorXmlMembers()
+                parseStructureInner(members, builder = "builder", Ctx(tag = "error_decoder", currentTarget = null))
                 rust("Ok(builder)")
             }
         }
@@ -254,7 +281,10 @@ class RestXmlParserGenerator(protocolConfig: ProtocolConfig) {
                     } else {
                         parseList(target, ctx)
                     }
-                    is StructureShape -> parseStructure(target, ctx)
+                    is StructureShape -> {
+                        parseStructure(target, ctx)
+                        rust("?")
+                    }
                     is UnionShape -> parseUnion(target, ctx)
                     else -> rust("todo!(${escape(target.toString()).dq()})")
                 }
@@ -315,7 +345,7 @@ class RestXmlParserGenerator(protocolConfig: ProtocolConfig) {
         rust(",")
     }
 
-    private fun RustWriter.parseStructure(shape: StructureShape, ctx: Ctx) {
+    fun RustWriter.parseStructure(shape: StructureShape, ctx: Ctx) {
         val fnName = shape.id.name.toString().toSnakeCase() + "_inner"
         val symbol = symbolProvider.toSymbol(shape)
         val nestedParser = RuntimeType.forInlineFun(fnName, "xml_deser") {
@@ -338,7 +368,7 @@ class RestXmlParserGenerator(protocolConfig: ProtocolConfig) {
                 }
             }
         }
-        rust("#T(&mut ${ctx.tag})?", nestedParser)
+        rust("#T(&mut ${ctx.tag})", nestedParser)
     }
 
     private fun RustWriter.parseList(target: CollectionShape, ctx: Ctx) {
@@ -537,6 +567,13 @@ class RestXmlParserGenerator(protocolConfig: ProtocolConfig) {
         val documentMembers =
             index.getResponseBindings(this).filter { it.value.location == HttpBinding.Location.DOCUMENT }
                 .keys.map { outputShape.expectMember(it) }
+        return XmlMemberIndex.fromMembers(documentMembers)
+    }
+
+    private fun StructureShape.errorXmlMembers(): XmlMemberIndex {
+        val documentMembers =
+            index.getResponseBindings(this).filter { it.value.location == HttpBinding.Location.DOCUMENT }
+                .keys.map { this.expectMember(it) }
         return XmlMemberIndex.fromMembers(documentMembers)
     }
 

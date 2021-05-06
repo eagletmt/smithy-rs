@@ -277,9 +277,7 @@ impl<'inp, 'a> Iterator for ScopedDecoder<'inp, 'a> {
                 self.terminated = true;
                 return None;
             }
-            other => {
-                dbg!(other);
-            }
+            _ => {}
         }
         Some(Ok((tok, depth)))
     }

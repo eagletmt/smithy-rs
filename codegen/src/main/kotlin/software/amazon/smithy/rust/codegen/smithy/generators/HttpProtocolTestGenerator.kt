@@ -404,10 +404,10 @@ class HttpProtocolTestGenerator(
         // These could be configured via runtime configuration, but since this won't be long-lasting,
         // it makes sense to do the simplest thing for now.
         // The test will _fail_ if these pass, so we will discover & remove if we fix them by accident
-        val JsonRpc10 = "aws.protocoltests.json10#JsonRpc10"
-        val AwsJson11 = "aws.protocoltests.json#JsonProtocol"
-        val RestJson = "aws.protocoltests.restjson#RestJson"
-        val RestXml = "aws.protocoltests.restxml#RestXml"
+        private val JsonRpc10 = "aws.protocoltests.json10#JsonRpc10"
+        private val AwsJson11 = "aws.protocoltests.json#JsonProtocol"
+        private val RestJson = "aws.protocoltests.restjson#RestJson"
+        private val RestXml = "aws.protocoltests.restxml#RestXml"
         private val ExpectFail = setOf(
             // Endpoint trait https://github.com/awslabs/smithy-rs/issues/197
             // This will also require running operations through the endpoint middleware (or moving endpoint middleware

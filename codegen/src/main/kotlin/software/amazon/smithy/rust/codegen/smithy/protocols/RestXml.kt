@@ -12,10 +12,13 @@ import software.amazon.smithy.model.knowledge.HttpBinding
 import software.amazon.smithy.model.knowledge.HttpBindingIndex
 import software.amazon.smithy.model.shapes.OperationShape
 import software.amazon.smithy.model.shapes.StructureShape
+import software.amazon.smithy.model.traits.ErrorTrait
 import software.amazon.smithy.model.traits.HttpTrait
 import software.amazon.smithy.rust.codegen.rustlang.Attribute
+import software.amazon.smithy.rust.codegen.rustlang.CargoDependency
 import software.amazon.smithy.rust.codegen.rustlang.RustWriter
 import software.amazon.smithy.rust.codegen.rustlang.Writable
+import software.amazon.smithy.rust.codegen.rustlang.asType
 import software.amazon.smithy.rust.codegen.rustlang.rust
 import software.amazon.smithy.rust.codegen.rustlang.rustBlock
 import software.amazon.smithy.rust.codegen.rustlang.rustTemplate
@@ -35,6 +38,7 @@ import software.amazon.smithy.rust.codegen.smithy.generators.setterName
 import software.amazon.smithy.rust.codegen.smithy.traits.SyntheticOutputTrait
 import software.amazon.smithy.rust.codegen.smithy.transformers.OperationNormalizer
 import software.amazon.smithy.rust.codegen.smithy.transformers.RemoveEventStreamOperations
+import software.amazon.smithy.rust.codegen.util.dq
 import software.amazon.smithy.rust.codegen.util.hasStreamingMember
 import software.amazon.smithy.rust.codegen.util.isStreaming
 import software.amazon.smithy.rust.codegen.util.outputShape
@@ -55,7 +59,7 @@ class RestXmlFactory : ProtocolGeneratorFactory<RestXmlGenerator> {
         return ProtocolSupport(
             requestBodySerialization = false,
             responseDeserialization = true,
-            errorDeserialization = false
+            errorDeserialization = true
         )
     }
 }
@@ -180,47 +184,56 @@ class RestXmlGenerator(
         operationShape: OperationShape,
         errorSymbol: RuntimeType
     ) {
+        val smithyXml = CargoDependency.smithyXml(protocolConfig.runtimeConfig).asType()
         rustBlock(
-            "fn parse_error(&self, _response: &http::Response<#T>) -> Result<#T, #T>",
+            "fn parse_error(&self, response: &http::Response<#T>) -> Result<#T, #T>",
             RuntimeType.Bytes,
             symbolProvider.toSymbol(operationShape.outputShape(model)),
             errorSymbol
         ) {
-            rust("todo!()")
-            /*
             rustTemplate(
                 """
-                        let body = #{sj}::from_slice(response.body().as_ref())
-                            .unwrap_or_else(|_|#{sj}::json!({}));
-                        let generic = #{aws_json_errors}::parse_generic_error(&response, &body);
-                        """,
-                "aws_json_errors" to jsonErrors, "sj" to RuntimeType.SJ
+                let generic = #{xml_errors}::parse_generic_error(response.body().as_ref()).map_err(#{error}::unhandled)?;
+            """,
+                "Document" to smithyXml.member("decode::Document"),
+                "error" to errorSymbol,
+                "xml_errors" to restXmlErrors
             )
+            val parserGenerator = RestXmlParserGenerator(protocolConfig)
             if (operationShape.errors.isNotEmpty()) {
                 rustTemplate(
                     """
-
                         let error_code = match generic.code() {
                             Some(code) => code,
                             None => return Err(#{error_symbol}::unhandled(generic))
                         };""",
-                    "error_symbol" to errorSymbol
+                    "error_symbol" to errorSymbol,
+                    "Document" to smithyXml.member("decode::Document"),
+                    "error" to errorSymbol,
+                    "xml_errors" to restXmlErrors
                 )
                 withBlock("Err(match error_code {", "})") {
-                    // approx:
-                    /*
-                            match error_code {
-                                "Code1" => deserialize<Code1>(body),
-                                "Code2" => deserialize<Code2>(body)
-                            }
-                         */
-                    parseErrorVariants(operationShape, errorSymbol)
+                    operationShape.errors.forEach { error ->
+                        val errorShape = model.expectShape(error, StructureShape::class.java)
+                        val variantName = symbolProvider.toSymbol(model.expectShape(error)).name
+                        withBlock(
+                            "${error.name.dq()} => #1T { meta: generic, kind: #1TKind::$variantName({",
+                            "})},",
+                            errorSymbol
+                        ) {
+                            renderShapeParser(
+                                operationShape,
+                                errorShape,
+                                httpIndex.getResponseBindings(errorShape),
+                                errorSymbol
+                            )
+                        }
+                    }
+                    rust("_ => #T::generic(generic)", errorSymbol)
                 }
             } else {
                 rust("Err(#T::generic(generic))", errorSymbol)
             }
-        }
-    */
         }
     }
 
@@ -295,8 +308,18 @@ class RestXmlGenerator(
                 }
             }
         }
+        val parsingSymbol = when {
+            outputShape.hasTrait(ErrorTrait::class.java) -> RestXmlParserGenerator(protocolConfig).errorParser(
+                outputShape,
+                restXmlErrors
+            )
+            else -> RestXmlParserGenerator(protocolConfig).operationParser(operationShape)
+        }
         if (bindings.values.find { it.location == HttpBinding.Location.DOCUMENT } != null) {
-            rust("output = #T(response.body().as_ref(), output).unwrap();", RestXmlParserGenerator(protocolConfig).operationParser(operationShape))
+            rust(
+                "output = #T(response.body().as_ref(), output).unwrap();",
+                parsingSymbol
+            )
         }
 
         val err = if (StructureGenerator.fallibleBuilder(outputShape, symbolProvider)) {
