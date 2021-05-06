@@ -142,6 +142,21 @@ impl<'inp> Document<'inp> {
         Document(Tokenizer::from(doc), 0)
     }
 
+    /// "Depth first" iterator
+    ///
+    /// Unlike [`next_tag()`](ScopedDecoder::next_tag), this method returns the next
+    /// start element regardless of depth. This is useful to give a pointer into the middle
+    /// of a document to start reading.
+    ///
+    /// ```xml
+    /// <Response> <-- first call returns this:
+    ///    <A> <-- next call
+    ///      <Nested /> <-- next call returns this
+    ///      <MoreNested>hello</MoreNested> <-- then this:
+    ///    </A>
+    ///    <B/> <-- second call to next_tag returns this
+    /// </Response>
+    /// ```
     pub fn next_start_element<'a>(&'a mut self) -> Option<StartEl<'inp>> {
         next_start_element(self)
     }
@@ -170,6 +185,7 @@ impl<'inp> Document<'inp> {
     }
 }
 
+/// Depth tracking iterator
 impl<'inp> Iterator for Document<'inp> {
     type Item = Result<(Token<'inp>, u8), xmlparser::Error>;
     fn next<'a>(&'a mut self) -> Option<Result<(Token<'inp>, u8), xmlparser::Error>> {
@@ -202,8 +218,8 @@ pub struct ScopedDecoder<'inp, 'a> {
     terminated: bool,
 }
 
-/// When a scoped decoder is dropped, its entire scope is read
-/// to avoid accidental reads of previous tags
+/// When a scoped decoder is dropped, its entire scope is consumed so that the
+/// next read begins at the next tag at the same depth.
 impl Drop for ScopedDecoder<'_, '_> {
     fn drop(&mut self) {
         for _ in self {}
@@ -211,16 +227,31 @@ impl Drop for ScopedDecoder<'_, '_> {
 }
 
 impl<'inp> ScopedDecoder<'inp, '_> {
+    /// The start element for this scope
     pub fn start_el<'a>(&'a self) -> &'a StartEl<'inp> {
         &self.start_el
     }
 
+    /// Returns the next top-level tag in this scope
+    /// The returned reader will fully read the tag during its lifetime. If it is dropped without
+    /// the data being read, the reader will be advanced until the matching close tag. If you read
+    /// an element with `next_tag()` and you want to ignore it, simply drop the resulting `ScopeDecoder`.
+    ///
+    /// ```xml
+    /// <Response> <-- scoped reader on this tag
+    ///    <A> <-- first call to next_tag returns this
+    ///      <Nested /> <-- to get inner data, call `next_tag` on the returned decoder for `A`
+    ///      <MoreNested>hello</MoreNested>
+    ///    </A>
+    ///    <B/> <-- second call to next_tag returns this
+    /// </Response>
+    /// ```
     pub fn next_tag<'a>(&'a mut self) -> Option<ScopedDecoder<'inp, 'a>> {
         let next_tag = next_start_element(self)?;
-        Some(self.scoped_to(next_tag))
+        Some(self.nested_decoder(next_tag))
     }
 
-    pub fn scoped_to<'a>(&'a mut self, start_el: StartEl<'inp>) -> ScopedDecoder<'inp, 'a> {
+    fn nested_decoder<'a>(&'a mut self, start_el: StartEl<'inp>) -> ScopedDecoder<'inp, 'a> {
         ScopedDecoder {
             doc: &mut self.doc,
             start_el,
