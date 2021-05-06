@@ -77,7 +77,7 @@ apply InvalidGreetingUnwrapped @httpResponseTests([
         body: """
                  <Error>
                     <Type>Sender</Type>
-                    <Code>InvalidGreeting</Code>
+                    <Code>InvalidGreetingUnwrapped</Code>
                     <Message>Hi</Message>
                     <AnotherSetting>setting</AnotherSetting>
                     <RequestId>foo-id</RequestId>
@@ -119,7 +119,7 @@ apply ComplexErrorUnwrapped @httpResponseTests([
         body: """
                  <Error>
                     <Type>Sender</Type>
-                    <Code>ComplexError</Code>
+                    <Code>ComplexErrorUnwrapped</Code>
                     <Message>Hi</Message>
                     <TopLevel>Top level</TopLevel>
                     <Nested>
