@@ -296,7 +296,7 @@ class RestXmlGenerator(
             }
         }
         if (bindings.values.find { it.location == HttpBinding.Location.DOCUMENT } != null) {
-            rust("output = #T(response.body().as_ref(), output).unwrap();", RestXmlParserGenerator(operationShape, protocolConfig).operationParser())
+            rust("output = #T(response.body().as_ref(), output).unwrap();", RestXmlParserGenerator(protocolConfig).operationParser(operationShape))
         }
 
         val err = if (StructureGenerator.fallibleBuilder(outputShape, symbolProvider)) {
@@ -331,8 +331,8 @@ class RestXmlGenerator(
                     TODO("document types unsupported in restXML")
                 }
                 val structureShapeHandler: RustWriter.(String) -> Unit = { body ->
-                    val parser = RestXmlParserGenerator(operationShape, protocolConfig).operationParser()
-                    rust("output")
+                    val generator = RestXmlParserGenerator(protocolConfig)
+                    rust("#T($body).map_err(#T::unhandled)", generator.payloadParser(member), errorSymbol)
                 }
                 val deserializer = httpBindingGenerator.generateDeserializePayloadFn(
                     binding,
@@ -340,7 +340,6 @@ class RestXmlGenerator(
                     docHandler = docShapeHandler,
                     structuredHandler = structureShapeHandler
                 )
-                return null
                 return if (binding.member.isStreaming(model)) {
                     writable { rust("#T(response.body_mut())?", deserializer) }
                 } else {

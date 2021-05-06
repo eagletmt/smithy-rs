@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-use smithy_xml::decode::{expect_data, next_start_element, Document, ScopedDecoder, XmlError};
+use smithy_xml::decode::{expect_data, Document, ScopedDecoder, XmlError};
 use std::convert::TryFrom;
 
 pub fn is_error<B>(response: &http::Response<B>) -> bool {
@@ -21,21 +21,20 @@ pub fn parse_generic_error(body: &[u8]) -> Result<smithy_types::Error, XmlError>
     let mut doc = Document::try_from(body)?;
     let mut root = doc.scoped()?;
     let mut err = smithy_types::Error::default();
-    while let Some(el) = next_start_element(&mut root) {
-        match el.name.local.as_ref() {
+    while let Some(mut tag) = root.next_tag() {
+        match tag.start_el().local() {
             "Error" => {
-                let mut internal_error = root.scoped_to(el);
-                while let Some(el) = next_start_element(&mut internal_error) {
-                    match el.name.local.as_ref() {
-                        "Code" => err.code = Some(String::from(expect_data(&mut internal_error)?)),
+                while let Some(mut error_field) = tag.next_tag() {
+                    match error_field.start_el().local() {
+                        "Code" => err.code = Some(String::from(expect_data(&mut error_field)?)),
                         "Message" => {
-                            err.message = Some(String::from(expect_data(&mut internal_error)?))
+                            err.message = Some(String::from(expect_data(&mut error_field)?))
                         }
                         _ => {}
                     }
                 }
             }
-            "RequestId" => err.request_id = Some(String::from(expect_data(&mut root)?)),
+            "RequestId" => err.request_id = Some(String::from(expect_data(&mut tag)?)),
             _ => {}
         }
     }
@@ -71,7 +70,6 @@ mod test {
     use super::{body_is_error, parse_generic_error};
     use crate::rest_xml_wrapped_errors::error_scope;
     use smithy_types::Document;
-    use smithy_xml::decode::next_start_element;
     use std::convert::TryFrom;
 
     #[test]
@@ -110,10 +108,9 @@ mod test {
         let mut doc = smithy_xml::decode::Document::try_from(xml).expect("valid");
         let mut error = error_scope(&mut doc).expect("contains error");
         let mut keys = vec![];
-        while let Some(start_el) = next_start_element(&mut error) {
-            keys.push(start_el.name.local.as_ref().to_owned());
+        while let Some(tag) = error.next_tag() {
+            keys.push(tag.start_el().local().to_owned());
             // read this the full contents of this element
-            drop(error.scoped_to(start_el));
         }
         assert_eq!(
             keys,

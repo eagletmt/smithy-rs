@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-use smithy_xml::decode::{expect_data, next_start_element, Document, ScopedDecoder, XmlError};
+use smithy_xml::decode::{expect_data, Document, ScopedDecoder, XmlError};
 use std::convert::TryFrom;
 
 pub fn is_error<B>(response: &http::Response<B>) -> bool {
@@ -31,11 +31,11 @@ pub fn parse_generic_error(body: &[u8]) -> Result<smithy_types::Error, XmlError>
     let mut doc = Document::try_from(body)?;
     let mut root = doc.scoped()?;
     let mut err = smithy_types::Error::default();
-    while let Some(el) = next_start_element(&mut root) {
-        match el.name.local.as_ref() {
-            "Code" => err.code = Some(String::from(expect_data(&mut root)?)),
-            "Message" => err.message = Some(String::from(expect_data(&mut root)?)),
-            "RequestId" => err.request_id = Some(String::from(expect_data(&mut root)?)),
+    while let Some(mut tag) = root.next_tag() {
+        match tag.start_el().local() {
+            "Code" => err.code = Some(String::from(expect_data(&mut tag)?)),
+            "Message" => err.message = Some(String::from(expect_data(&mut tag)?)),
+            "RequestId" => err.request_id = Some(String::from(expect_data(&mut tag)?)),
             _ => {}
         }
     }

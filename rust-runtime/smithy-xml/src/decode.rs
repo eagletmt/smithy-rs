@@ -5,6 +5,7 @@
 
 use std::borrow::Cow;
 use std::convert::TryFrom;
+use std::fmt::{Display, Error, Formatter};
 use xmlparser::{ElementEnd, Token, Tokenizer};
 
 #[derive(Eq, PartialEq, Debug)]
@@ -13,6 +14,14 @@ pub enum XmlError {
     Other { msg: &'static str },
     Custom(String),
 }
+
+impl Display for XmlError {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        todo!()
+    }
+}
+
+impl std::error::Error for XmlError {}
 
 #[derive(PartialEq, Debug)]
 pub struct Name<'a> {
@@ -44,9 +53,15 @@ pub struct Attr<'a> {
 pub struct StartEl<'a> {
     pub name: Name<'a>,
     pub attributes: Vec<Attr<'a>>,
+    pub closed: bool,
 }
 
 impl<'a> StartEl<'a> {
+    pub fn closed(local: &'a str, prefix: &'a str) -> Self {
+        let mut s = Self::new(local, prefix);
+        s.closed = true;
+        s
+    }
     pub fn new(local: &'a str, prefix: &'a str) -> Self {
         Self {
             name: Name {
@@ -54,6 +69,7 @@ impl<'a> StartEl<'a> {
                 prefix: prefix.into(),
             },
             attributes: vec![],
+            closed: false,
         }
     }
 
@@ -118,7 +134,6 @@ impl<'inp> Document<'inp> {
         Ok(ScopedDecoder {
             tokenizer: &mut self.0,
             start_el,
-            depth: 0,
             terminated: false,
         })
     }
@@ -128,7 +143,6 @@ impl<'inp> Document<'inp> {
             tokenizer: &mut self.0,
             start_el,
             terminated: false,
-            depth: 0,
         }
     }
 }
@@ -136,7 +150,6 @@ impl<'inp> Document<'inp> {
 pub struct ScopedDecoder<'inp, 'a> {
     tokenizer: &'a mut Tokenizer<'inp>,
     start_el: StartEl<'inp>,
-    depth: u8,
     terminated: bool,
 }
 
@@ -160,7 +173,6 @@ impl<'inp> ScopedDecoder<'inp, '_> {
         ScopedDecoder {
             tokenizer: &mut self.tokenizer,
             start_el,
-            depth: 0,
             terminated: false,
         }
     }
@@ -170,25 +182,21 @@ impl<'inp, 'a> Iterator for ScopedDecoder<'inp, 'a> {
     type Item = Result<Token<'inp>, xmlparser::Error>;
 
     fn next(&mut self) -> Option<Self::Item> {
+        if self.start_el.closed {
+            self.terminated = true;
+        }
         if self.terminated {
             return None;
         }
         let tok = self.tokenizer.next()?.ok()?;
         match tok {
-            Token::ElementStart { prefix, local, .. }
-                if prefix.as_str() == self.start_el.name.prefix
-                    && local.as_str() == self.start_el.name.local =>
-            {
-                self.depth += 1
-            }
-            Token::ElementEnd { end, .. } if self.start_el.end_el(end) && self.depth == 0 => {
+            Token::ElementEnd { end, .. } if self.start_el.end_el(end) => {
                 self.terminated = true;
                 return None;
             }
-            Token::ElementEnd { end, .. } if self.start_el.end_el(end) => {
-                self.depth -= 1;
+            other => {
+                dbg!(other);
             }
-            _ => {}
         }
         Some(Ok(tok))
     }
@@ -198,7 +206,7 @@ fn unescape(s: &str) -> Cow<str> {
     s.into()
 }
 
-pub fn next_start_element<'a, 'inp>(
+fn next_start_element<'a, 'inp>(
     scoped: &'a mut impl Iterator<Item = Result<Token<'inp>, xmlparser::Error>>,
 ) -> Option<StartEl<'inp>> {
     let mut out = StartEl::new("", "");
@@ -228,7 +236,10 @@ pub fn next_start_element<'a, 'inp>(
             Some(Ok(Token::ElementEnd {
                 end: ElementEnd::Empty,
                 ..
-            })) => break,
+            })) => {
+                out.closed = true;
+                break;
+            }
             _ => {}
         }
     }
@@ -239,9 +250,11 @@ pub fn expect_data<'a, 'inp>(
     tokens: &'a mut impl Iterator<Item = Result<Token<'inp>, xmlparser::Error>>,
 ) -> Result<&'inp str, XmlError> {
     loop {
-        match dbg!(tokens.next()) {
+        match tokens.next() {
             None => return Ok(""),
-            Some(Ok(Token::Text { text })) => return Ok(text.as_str().trim()),
+            Some(Ok(Token::Text { text })) if !text.as_str().trim().is_empty() => {
+                return Ok(text.as_str().trim())
+            }
             Some(Ok(Token::ElementStart { .. })) => {
                 return Err(XmlError::Other {
                     msg: "expected data found element start ",
@@ -275,11 +288,13 @@ mod test {
         let mut doc = Document::new(xml);
         let mut scoped = doc.scoped().expect("valid document");
         assert_eq!(
-            next_start_element(&mut scoped),
-            Some(StartEl::new("Response", ""))
+            scoped.next_tag().unwrap().start_el(),
+            &StartEl::new("Response", "")
         );
-        assert_eq!(next_start_element(&mut scoped), Some(StartEl::new("A", "")));
-        assert_eq!(next_start_element(&mut scoped), None)
+        let mut closed_a = StartEl::new("A", "");
+        closed_a.closed = true;
+        assert_eq!(scoped.next_tag().unwrap().start_el(), &closed_a);
+        assert!(scoped.next_tag().is_none())
     }
 
     #[test]
@@ -287,13 +302,13 @@ mod test {
         let xml = r#"<Response/>"#;
         let mut doc = Document::new(xml);
         let mut scoped = doc.scoped().expect("valid doc");
-        assert_eq!(scoped.start_el, StartEl::new("Response", ""));
+        assert_eq!(scoped.start_el.closed, true);
         assert_eq!(next_start_element(&mut scoped), None)
     }
 
     #[test]
     fn terminate_scope() {
-        let xml = r#"<Response><Struct><A/><Also/></Struct><More/></Response>"#;
+        let xml = r#"<Response><Struct><A></A><Also/></Struct><More/></Response>"#;
         let mut doc = Document::new(xml);
         let mut response_iter = doc.scoped().expect("valid doc");
         let struct_el = next_start_element(&mut response_iter).unwrap();
@@ -307,35 +322,34 @@ mod test {
         drop(struct_iter);
         assert_eq!(
             next_start_element(&mut response_iter),
-            Some(StartEl::new("More", ""))
+            Some(StartEl::closed("More", ""))
         );
     }
 
     #[test]
     fn read_data_invalid() {
         let xml = r#"<Response><A></A></Response>"#;
-        let mut tokenizer = Tokenizer::from(xml);
-        let root = next_start_element(&mut tokenizer).unwrap();
-        let mut scoped = ScopedDecoder::from_tokenizer(root, &mut tokenizer);
-        expect_data(&mut scoped).expect_err("no data");
+        let mut doc = Document::new(xml);
+        let mut resp = doc.scoped().unwrap();
+        expect_data(&mut resp).expect_err("no data");
     }
 
     #[test]
     fn read_data() {
         let xml = r#"<Response>hello</Response>"#;
-        let mut tokenizer = Tokenizer::from(xml);
-        let root = next_start_element(&mut tokenizer).unwrap();
-        let mut scoped = ScopedDecoder::from_tokenizer(root, &mut tokenizer);
+        let mut doc = Document::new(xml);
+        let mut scoped = doc.scoped().unwrap();
         assert_eq!(expect_data(&mut scoped), Ok("hello"));
     }
 
     #[test]
     fn read_attributes() {
         let xml = r#"<Response xsi:type="CanonicalUser">hello</Response>"#;
-        let mut tokenizer = Tokenizer::from(xml);
-        let root = next_start_element(&mut tokenizer).unwrap();
+        let mut tokenizer = Document::new(xml);
+        let root = tokenizer.scoped().unwrap();
+
         assert_eq!(
-            root.attributes,
+            root.start_el().attributes,
             vec![Attr {
                 name: Name {
                     prefix: "xsi".into(),
@@ -349,9 +363,26 @@ mod test {
     #[test]
     fn escape_data() {
         let xml = r#"<Response>&gt;</Response>"#;
-        let mut tokenizer = Tokenizer::from(xml);
-        let root = next_start_element(&mut tokenizer).unwrap();
-        let mut scoped = ScopedDecoder::from_tokenizer(root, &mut tokenizer);
-        assert_eq!(expect_data(&mut scoped), Ok(">"));
+        let mut doc = Document::new(xml);
+        let mut root = doc.scoped().unwrap();
+        assert_eq!(expect_data(&mut root), Ok(">"));
+    }
+
+    #[test]
+    fn nested_self_closer() {
+        let xml = r#"<XmlListsInputOutput>
+                <stringList/>
+                <stringSet></stringSet>
+        </XmlListsInputOutput>"#;
+        let mut doc = Document::new(xml);
+        let mut root = doc.scoped().unwrap();
+        let mut string_list = root.next_tag().unwrap();
+        assert_eq!(string_list.start_el(), &StartEl::closed("stringList", ""));
+        assert!(string_list.next_tag().is_none());
+        drop(string_list);
+        assert_eq!(
+            root.next_tag().unwrap().start_el(),
+            &StartEl::new("stringSet", "")
+        );
     }
 }

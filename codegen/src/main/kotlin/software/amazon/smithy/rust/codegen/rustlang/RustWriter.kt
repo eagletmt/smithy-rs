@@ -116,7 +116,7 @@ fun <T : CodeWriter> T.rustBlock(
     return this
 }
 
-fun <T : CodeWriter> T.rustBlockT(
+fun <T : CodeWriter> T.rustBlockTemplate(
     @Language("Rust", prefix = "macro_rules! foo { () =>  {{ ", suffix = "}}}") contents: String,
     vararg ctx: Pair<String, Any>,
     block: T.() -> Unit

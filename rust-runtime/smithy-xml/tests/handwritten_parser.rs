@@ -153,6 +153,61 @@ fn deserialize_map_test() {
     )
 }
 
+pub fn deserialize_nested_string_list(
+    mut decoder: &mut ScopedDecoder,
+) -> Result<std::vec::Vec<std::vec::Vec<std::string::String>>, XmlError> {
+    let mut out = std::vec::Vec::new();
+    while let Some(mut tag) = decoder.next_tag() {
+        match tag.start_el() {
+            s if s.matches("member") => {
+                out.push(deserialize_string_list(&mut tag)?);
+            }
+            _ => {}
+        }
+    }
+    Ok(out)
+}
+
+pub fn deserialize_string_list(
+    mut decoder: &mut ScopedDecoder,
+) -> Result<std::vec::Vec<std::string::String>, XmlError> {
+    let mut out = std::vec::Vec::new();
+    while let Some(mut tag) = decoder.next_tag() {
+        match dbg!(tag.start_el()) {
+            s if s.matches("member") => {
+                out.push(dbg!({
+                    smithy_xml::decode::expect_data(&mut tag)?.to_string()
+                }));
+            }
+            _ => {}
+        };
+    }
+    println!("done");
+    Ok(out)
+}
+
+#[test]
+fn test_nested_string_list() {
+    let xml = r#"
+            <nestedStringList>
+                <member>
+                    <member>foo</member>
+                    <member>bar</member>
+                </member>
+                <member>
+                    <member>baz</member>
+                    <member>qux</member>
+                </member>
+            </nestedStringList>
+   "#;
+    let mut doc = Document::new(xml);
+    let mut root = doc.scoped().unwrap();
+    assert_eq!(
+        deserialize_nested_string_list(&mut root).unwrap(),
+        vec![vec!["foo", "bar"], vec!["baz", "qux"]]
+    );
+}
+
 #[test]
 fn deserialize_flat_map_test() {
     let xml = r#"<FlattenedXmlMapInputOutput>
