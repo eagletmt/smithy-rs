@@ -11,6 +11,7 @@ import software.amazon.smithy.model.shapes.StructureShape
 import software.amazon.smithy.rust.codegen.rustlang.RustModule
 import software.amazon.smithy.rust.codegen.smithy.generators.UnionGenerator
 import software.amazon.smithy.rust.codegen.smithy.transformers.OperationNormalizer
+import software.amazon.smithy.rust.codegen.smithy.transformers.RecursiveShapeBoxer
 import software.amazon.smithy.rust.codegen.testutil.TestWorkspace
 import software.amazon.smithy.rust.codegen.testutil.asSmithyModel
 import software.amazon.smithy.rust.codegen.testutil.compileAndTest
@@ -42,6 +43,8 @@ internal class RestXmlParserGeneratorTest {
             date: Timestamp,
 
             number: Double,
+
+            top: Top
         }
 
         map MyMap {
@@ -57,7 +60,13 @@ internal class RestXmlParserGeneratorTest {
         }
 
         structure Top {
-            choice: Choice
+            choice: Choice,
+
+            @xmlAttribute
+            extra: Long,
+
+            @xmlName("prefix:local")
+            renamedWithPrefix: String
         }
 
         @http(uri: "/top", method: "POST")
@@ -69,7 +78,7 @@ internal class RestXmlParserGeneratorTest {
 
     @Test
     fun `generates valid parsers`() {
-        val model = OperationNormalizer(baseModel).transformModel(OperationNormalizer.NoBody, OperationNormalizer.NoBody)
+        val model = RecursiveShapeBoxer.transform(OperationNormalizer(baseModel).transformModel(OperationNormalizer.NoBody, OperationNormalizer.NoBody))
         val symbolProvider = testSymbolProvider(model)
         val parserGenerator = RestXmlParserGenerator(testProtocolConfig(model))
         val operationParser = parserGenerator.operationParser(model.lookup("test#Op"))
@@ -87,12 +96,14 @@ internal class RestXmlParserGeneratorTest {
                             </Setting>
                         </Hi>
                     </choice>
+                    <prefix:local>hey</prefix:local>
                 </Top>
                 "#;
                 let output = ${it.format(operationParser)}(xml, output::op_output::Builder::default()).unwrap().build();
                 let mut map = std::collections::HashMap::new();
                 map.insert("some key".to_string(), model::Choice::S("hello".to_string()));
                 assert_eq!(output.choice, Some(model::Choice::FlatMap(map)));
+                assert_eq!(output.renamed_with_prefix.as_deref(), Some("hey"));
             """
             )
 

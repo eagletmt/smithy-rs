@@ -359,7 +359,7 @@ class RestXmlParserGenerator(protocolConfig: ProtocolConfig) {
         rust(",")
     }
 
-    fun RustWriter.parseStructure(shape: StructureShape, ctx: Ctx) {
+    private fun RustWriter.parseStructure(shape: StructureShape, ctx: Ctx) {
         val fnName = shape.id.name.toString().toSnakeCase() + "_inner"
         val symbol = symbolProvider.toSymbol(shape)
         val nestedParser = RuntimeType.forInlineFun(fnName, "xml_deser") {
