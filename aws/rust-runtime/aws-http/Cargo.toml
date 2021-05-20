@@ -16,3 +16,5 @@ smithy-types = { path = "../../../rust-runtime/smithy-types" }
 http = "0.2.3"
 thiserror = "1"
 lazy_static = "1"
+sha2 = "0.9.5"
+hex = "0.4.3"

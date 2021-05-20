@@ -4,9 +4,12 @@
  */
 
 use aws_auth::Credentials;
-use aws_sigv4_poc::{SigningSettings, UriEncoding};
+use aws_sigv4_poc::{SignatureKey, SigningSettings, UriEncoding};
 use aws_types::region::SigningRegion;
 use aws_types::SigningService;
+use http::header::HeaderName;
+use http::HeaderValue;
+use std::convert::TryFrom;
 use std::error::Error;
 use std::time::SystemTime;
 
@@ -119,10 +122,41 @@ impl SigV4Signer {
                 },
             },
         };
+        // hack hack hack
+        let amz_date = aws_sigv4_poc::sign_core(request, sigv4_config)
+            .find(|(header, _value)| matches!(header, SignatureKey::AmzDate))
+            .expect("date must be present");
+        request.headers_mut().append(
+            HeaderName::from_static("x-amz-date"),
+            HeaderValue::try_from(amz_date.1).expect("valid"),
+        );
+        if let Some(security_token) = credentials.session_token() {
+            request.headers_mut().append(
+                HeaderName::from_static("x-amz-security-token"),
+                HeaderValue::from_str(security_token).expect("valid"),
+            );
+        }
+        let sigv4_config = aws_sigv4_poc::Config {
+            access_key: credentials.access_key_id(),
+            secret_key: credentials.secret_access_key(),
+            security_token: credentials.session_token(),
+            region: request_config.region.as_ref(),
+            svc: request_config.service.as_ref(),
+            date: request_config.request_ts,
+            settings: SigningSettings {
+                uri_encoding: if operation_config.signing_options.double_uri_encode {
+                    UriEncoding::Double
+                } else {
+                    UriEncoding::Single
+                },
+            },
+        };
         for (key, value) in aws_sigv4_poc::sign_core(request, sigv4_config) {
-            request
-                .headers_mut()
-                .append(key.header_name(), value.parse()?);
+            if matches!(key, SignatureKey::Authorization) {
+                request
+                    .headers_mut()
+                    .append(key.header_name(), value.parse()?);
+            }
         }
 
         Ok(())

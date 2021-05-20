@@ -271,6 +271,10 @@ class XmlBindingTraitSerializerGenerator(protocolConfig: ProtocolConfig) : Struc
                 "Shape" to structureSymbol,
                 *codegenScope
             ) {
+                if (!members.isNotEmpty()) {
+                    // removed unused warning if there are no fields we're going to read
+                    rust("let _ = input;")
+                }
                 structureInner(members, Ctx.Element("writer", "&input"))
             }
         }

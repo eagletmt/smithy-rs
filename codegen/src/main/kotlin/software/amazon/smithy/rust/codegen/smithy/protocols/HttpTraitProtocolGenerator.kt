@@ -471,7 +471,7 @@ class HttpTraitProtocolGenerator(
                 rust(
                     """
                         #T(response.headers())
-                            .map_err(|_|#T::unhandled("Failed to parse ${member.memberName} from header `${binding.locationName}"))?
+                            .map_err(|err|#T::unhandled(format!("Failed to parse ${member.memberName} from header `${binding.locationName}: {}", err)))?
                         """,
                     fnName, errorSymbol
                 )

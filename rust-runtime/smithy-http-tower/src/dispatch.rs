@@ -16,6 +16,7 @@ use tower::{BoxError, Layer, Service};
 pub struct DispatchFuture<F> {
     #[pin]
     f: F,
+    traced: bool,
 }
 
 /// Connects Operation driven middleware to an HTTP implementation.
@@ -36,6 +37,9 @@ where
 
     fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
         let this = self.project();
+        if !self.traced {
+            tracing::debug!(request: ?)
+        }
         this.f
             .poll(cx)
             .map_err(|e| SendOperationError::RequestDispatchError(e.into()))
@@ -59,8 +63,9 @@ where
 
     fn call(&mut self, req: operation::Request) -> Self::Future {
         let (req, _property_bag) = req.into_parts();
+        let inner_future = self.inner.call(req);
         DispatchFuture {
-            f: self.inner.call(req),
+            f: async move { inner_future.await },
         }
     }
 }

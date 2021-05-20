@@ -30,7 +30,10 @@ import software.amazon.smithy.rust.codegen.rustlang.rustBlock
 import software.amazon.smithy.rust.codegen.rustlang.rustTemplate
 import software.amazon.smithy.rust.codegen.rustlang.stripOuter
 import software.amazon.smithy.rust.codegen.rustlang.withBlock
+import software.amazon.smithy.rust.codegen.rustlang.writable
+import software.amazon.smithy.rust.codegen.smithy.Default
 import software.amazon.smithy.rust.codegen.smithy.RuntimeType
+import software.amazon.smithy.rust.codegen.smithy.defaultValue
 import software.amazon.smithy.rust.codegen.smithy.generators.ProtocolConfig
 import software.amazon.smithy.rust.codegen.smithy.rustType
 import software.amazon.smithy.rust.codegen.util.dq
@@ -285,17 +288,29 @@ class ResponseBindingGenerator(protocolConfig: ProtocolConfig, private val opera
                         "header_util" to headerUtil
                     )
                 } else {
+                    val default = symbolProvider.toSymbol(memberShape).defaultValue()
+                    val fallback = writable {
+                        when (default) {
+                            is Default.RustDefault -> rust(".unwrap_or_default()")
+                            is Default.Custom -> default.render(this)
+                            is Default.NoDefault -> rust(
+                                "ok_or(#{header_util}::ParseError)?",
+                                "header_util" to headerUtil
+                            )
+                        }
+                    }
                     rustTemplate(
                         """
                     if $parsedValue.len() > 1 {
-                        Err(#{header_util}::ParseError)
-                    } else {
-                        let mut $parsedValue = $parsedValue;
-                        $parsedValue.pop().ok_or(#{header_util}::ParseError)
+                        return Err(#{header_util}::ParseError)
                     }
+                    let mut $parsedValue = $parsedValue;
+                    let value = $parsedValue.pop()
                 """,
                         "header_util" to headerUtil
                     )
+                    fallback(this)
+                    rust("; Ok(value)")
                 }
         }
     }
@@ -304,5 +319,6 @@ class ResponseBindingGenerator(protocolConfig: ProtocolConfig, private val opera
      * Generate a unique name for the deserializer function for a given operationShape -> member pair
      */
     // rename here technically not required, operations and members cannot be renamed
-    private fun fnName(operationShape: OperationShape, binding: HttpBinding) = "${operationShape.id.getName(service).toSnakeCase()}_${binding.memberName.toSnakeCase()}"
+    private fun fnName(operationShape: OperationShape, binding: HttpBinding) =
+        "${operationShape.id.getName(service).toSnakeCase()}_${binding.memberName.toSnakeCase()}"
 }
