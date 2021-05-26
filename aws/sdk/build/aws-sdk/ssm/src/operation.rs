@@ -14,7 +14,7 @@
 /// to and are interpreted strictly as a string of characters. </p>
 /// <p>For more information about using tags with EC2 instances, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging your Amazon EC2 resources</a> in the
 /// <i>Amazon EC2 User Guide</i>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct AddTagsToResource {
     _private: (),
 }
@@ -97,7 +97,7 @@ impl smithy_http::response::ParseStrictResponse for AddTagsToResource {
 /// <p>Associates a related resource to a Systems Manager OpsCenter OpsItem. For example, you can
 /// associate an Incident Manager incident or analysis with an OpsItem. Incident Manager is a
 /// capability of AWS Systems Manager.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct AssociateOpsItemRelatedItem {
     _private: (),
 }
@@ -178,7 +178,7 @@ impl smithy_http::response::ParseStrictResponse for AssociateOpsItemRelatedItem 
 
 /// <p>Attempts to cancel the command specified by the Command ID. There is no guarantee that the
 /// command will be terminated and the underlying process stopped.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CancelCommand {
     _private: (),
 }
@@ -253,7 +253,7 @@ impl smithy_http::response::ParseStrictResponse for CancelCommand {
 /// <p>Stops a maintenance window execution that is already in progress and cancels any tasks in
 /// the window that have not already starting running. (Tasks already in progress will continue to
 /// completion.)</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CancelMaintenanceWindowExecution {
     _private: (),
 }
@@ -331,7 +331,7 @@ impl smithy_http::response::ParseStrictResponse for CancelMaintenanceWindowExecu
 /// <p>On-premises servers or VMs that are registered with Systems Manager and EC2 instances that you manage
 /// with Systems Manager are all called <i>managed instances</i>.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateActivation {
     _private: (),
 }
@@ -396,7 +396,7 @@ impl smithy_http::response::ParseStrictResponse for CreateActivation {
 /// the software is not installed, then State Manager installs it. If the software is installed, but
 /// the service is not running, then the association might instruct State Manager to start the
 /// service. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateAssociation {
     _private: (),
 }
@@ -537,7 +537,7 @@ impl smithy_http::response::ParseStrictResponse for CreateAssociation {
 /// specified.</p>
 /// <p>If you associate a document with an instance that already has an associated document, the
 /// system returns the AssociationAlreadyExists exception.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateAssociationBatch {
     _private: (),
 }
@@ -695,7 +695,7 @@ impl smithy_http::response::ParseStrictResponse for CreateAssociationBatch {
 /// your managed instances. For more information about SSM documents, including information about
 /// supported schemas, features, and syntax, see <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html">AWS Systems Manager Documents</a> in the
 /// <i>AWS Systems Manager User Guide</i>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateDocument {
     _private: (),
 }
@@ -795,7 +795,7 @@ impl smithy_http::response::ParseStrictResponse for CreateDocument {
 /// value you specify for <code>Cutoff</code> is one hour, no maintenance window tasks can start
 /// after 5 PM.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateMaintenanceWindow {
     _private: (),
 }
@@ -873,7 +873,7 @@ impl smithy_http::response::ParseStrictResponse for CreateMaintenanceWindow {
 /// operational issues impacting the performance and health of their AWS resources. For more
 /// information, see <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager OpsCenter</a> in the
 /// <i>AWS Systems Manager User Guide</i>. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateOpsItem {
     _private: (),
 }
@@ -952,7 +952,7 @@ impl smithy_http::response::ParseStrictResponse for CreateOpsItem {
 
 /// <p>If you create a new application in Application Manager, Systems Manager calls this API action to specify
 /// information about the new application, including the application type.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateOpsMetadata {
     _private: (),
 }
@@ -1027,7 +1027,7 @@ impl smithy_http::response::ParseStrictResponse for CreateOpsMetadata {
 /// <p>For information about valid key and value pairs in <code>PatchFilters</code> for each
 /// supported operating system type, see <a href="http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html">PatchFilter</a>.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreatePatchBaseline {
     _private: (),
 }
@@ -1125,7 +1125,7 @@ impl smithy_http::response::ParseStrictResponse for CreatePatchBaseline {
 /// in Amazon S3 to ensure secure data storage. We also recommend that you secure access to the Amazon S3
 /// bucket by creating a restrictive bucket policy. </p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateResourceDataSync {
     _private: (),
 }
@@ -1199,7 +1199,7 @@ impl smithy_http::response::ParseStrictResponse for CreateResourceDataSync {
 /// activation, you can no longer use it to register additional managed instances. Deleting an
 /// activation does not de-register managed instances. You must manually de-register managed
 /// instances.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteActivation {
     _private: (),
 }
@@ -1277,7 +1277,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteActivation {
 /// the instance. To change the configuration state of an instance after you disassociate a document,
 /// you must create a new document with the desired configuration and associate it with the
 /// instance.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteAssociation {
     _private: (),
 }
@@ -1361,7 +1361,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteAssociation {
 
 /// <p>Deletes the Systems Manager document and all instance associations to the document.</p>
 /// <p>Before you delete the document, we recommend that you use <a>DeleteAssociation</a> to disassociate all instances that are associated with the document.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteDocument {
     _private: (),
 }
@@ -1435,7 +1435,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteDocument {
 
 /// <p>Delete a custom inventory type or the data associated with a custom Inventory type. Deleting
 /// a custom inventory type is also referred to as deleting a custom inventory schema.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteInventory {
     _private: (),
 }
@@ -1503,7 +1503,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteInventory {
 }
 
 /// <p>Deletes a maintenance window.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteMaintenanceWindow {
     _private: (),
 }
@@ -1572,7 +1572,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteMaintenanceWindow {
 }
 
 /// <p>Delete OpsMetadata related to an application.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteOpsMetadata {
     _private: (),
 }
@@ -1630,7 +1630,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteOpsMetadata {
 }
 
 /// <p>Delete a parameter from the system.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteParameter {
     _private: (),
 }
@@ -1689,7 +1689,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteParameter {
 }
 
 /// <p>Delete a list of parameters.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteParameters {
     _private: (),
 }
@@ -1745,7 +1745,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteParameters {
 }
 
 /// <p>Deletes a patch baseline.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeletePatchBaseline {
     _private: (),
 }
@@ -1813,7 +1813,7 @@ impl smithy_http::response::ParseStrictResponse for DeletePatchBaseline {
 /// <p>Deletes a Resource Data Sync configuration. After the configuration is deleted, changes to
 /// data on managed instances are no longer synced to or from the target. Deleting a sync
 /// configuration does not delete data.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteResourceDataSync {
     _private: (),
 }
@@ -1882,7 +1882,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteResourceDataSync {
 /// <p>Removes the server or virtual machine from the list of registered servers. You can
 /// reregister the instance again at any time. If you don't plan to use Run Command on the server, we
 /// suggest uninstalling SSM Agent first.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeregisterManagedInstance {
     _private: (),
 }
@@ -1955,7 +1955,7 @@ impl smithy_http::response::ParseStrictResponse for DeregisterManagedInstance {
 }
 
 /// <p>Removes a patch group from a patch baseline.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeregisterPatchBaselineForPatchGroup {
     _private: (),
 }
@@ -2024,7 +2024,7 @@ impl smithy_http::response::ParseStrictResponse for DeregisterPatchBaselineForPa
 }
 
 /// <p>Removes a target from a maintenance window.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeregisterTargetFromMaintenanceWindow {
     _private: (),
 }
@@ -2099,7 +2099,7 @@ impl smithy_http::response::ParseStrictResponse for DeregisterTargetFromMaintena
 }
 
 /// <p>Removes a task from a maintenance window.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeregisterTaskFromMaintenanceWindow {
     _private: (),
 }
@@ -2170,7 +2170,7 @@ impl smithy_http::response::ParseStrictResponse for DeregisterTaskFromMaintenanc
 /// <p>Describes details about the activation, such as the date and time the activation was
 /// created, its expiration date, the IAM role assigned to the instances in the activation, and the
 /// number of instances registered by using this activation.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeActivations {
     _private: (),
 }
@@ -2247,7 +2247,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeActivations {
 /// by using the association ID. If you created the association by specifying an instance ID and a
 /// Systems Manager document, then you retrieve the association by specifying the document name and the
 /// instance ID. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeAssociation {
     _private: (),
 }
@@ -2338,7 +2338,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeAssociation {
 }
 
 /// <p>Use this API action to view all executions for a specific association ID. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeAssociationExecutions {
     _private: (),
 }
@@ -2411,7 +2411,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeAssociationExecution
 
 /// <p>Use this API action to view information about a specific execution of a specific
 /// association.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeAssociationExecutionTargets {
     _private: (),
 }
@@ -2488,7 +2488,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeAssociationExecution
 }
 
 /// <p>Provides details about all active and terminated Automation executions.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeAutomationExecutions {
     _private: (),
 }
@@ -2587,7 +2587,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeAutomationExecutions
 
 /// <p>Information about all active and terminated step executions in an Automation
 /// workflow.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeAutomationStepExecutions {
     _private: (),
 }
@@ -2668,7 +2668,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeAutomationStepExecut
 }
 
 /// <p>Lists all patches eligible to be included in a patch baseline.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeAvailablePatches {
     _private: (),
 }
@@ -2737,7 +2737,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeAvailablePatches {
 }
 
 /// <p>Describes the specified Systems Manager document.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeDocument {
     _private: (),
 }
@@ -2809,7 +2809,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeDocument {
 /// <p>Describes the permissions for a Systems Manager document. If you created the document, you are the
 /// owner. If a document is shared, it can either be shared privately (by specifying a user's AWS
 /// account ID) or publicly (<i>All</i>). </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeDocumentPermission {
     _private: (),
 }
@@ -2889,7 +2889,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeDocumentPermission {
 }
 
 /// <p>All associations for the instance(s).</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeEffectiveInstanceAssociations {
     _private: (),
 }
@@ -2965,7 +2965,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeEffectiveInstanceAss
 
 /// <p>Retrieves the current effective patches (the patch and the approval state) for the specified
 /// patch baseline. Note that this API applies only to Windows patch baselines.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeEffectivePatchesForPatchBaseline {
     _private: (),
 }
@@ -3044,7 +3044,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeEffectivePatchesForP
 }
 
 /// <p>The status of the associations for the instance(s).</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeInstanceAssociationsStatus {
     _private: (),
 }
@@ -3126,7 +3126,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeInstanceAssociations
 /// role assigned to on-premises instances. This call does not return the IAM role for EC2
 /// instances.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeInstanceInformation {
     _private: (),
 }
@@ -3207,7 +3207,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeInstanceInformation 
 
 /// <p>Retrieves information about the patches on the specified instance and their state relative
 /// to the patch baseline being used for the instance.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeInstancePatches {
     _private: (),
 }
@@ -3301,7 +3301,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeInstancePatches {
 }
 
 /// <p>Retrieves the high-level patch state of one or more instances.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeInstancePatchStates {
     _private: (),
 }
@@ -3380,7 +3380,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeInstancePatchStates 
 }
 
 /// <p>Retrieves the high-level patch state for the instances in the specified patch group.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeInstancePatchStatesForPatchGroup {
     _private: (),
 }
@@ -3458,7 +3458,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeInstancePatchStatesF
 }
 
 /// <p>Describes a specific delete inventory operation.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeInventoryDeletions {
     _private: (),
 }
@@ -3532,7 +3532,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeInventoryDeletions {
 /// <p>Lists the executions of a maintenance window. This includes information about when the
 /// maintenance window was scheduled to be active, and information about tasks registered and run
 /// with the maintenance window.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeMaintenanceWindowExecutions {
     _private: (),
 }
@@ -3598,7 +3598,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeMaintenanceWindowExe
 
 /// <p>Retrieves the individual task executions (one per target) for a particular task run as part
 /// of a maintenance window execution.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeMaintenanceWindowExecutionTaskInvocations {
     _private: (),
 }
@@ -3665,7 +3665,7 @@ impl smithy_http::response::ParseStrictResponse
 }
 
 /// <p>For a given maintenance window execution, lists the tasks that were run.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeMaintenanceWindowExecutionTasks {
     _private: (),
 }
@@ -3736,7 +3736,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeMaintenanceWindowExe
 }
 
 /// <p>Retrieves the maintenance windows in an AWS account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeMaintenanceWindows {
     _private: (),
 }
@@ -3806,7 +3806,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeMaintenanceWindows {
 }
 
 /// <p>Retrieves information about upcoming executions of a maintenance window.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeMaintenanceWindowSchedule {
     _private: (),
 }
@@ -3876,7 +3876,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeMaintenanceWindowSch
 
 /// <p>Retrieves information about the maintenance window targets or tasks that an instance is
 /// associated with.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeMaintenanceWindowsForTarget {
     _private: (),
 }
@@ -3941,7 +3941,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeMaintenanceWindowsFo
 }
 
 /// <p>Lists the targets registered with the maintenance window.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeMaintenanceWindowTargets {
     _private: (),
 }
@@ -4016,7 +4016,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeMaintenanceWindowTar
 /// placeholder value of <code>1</code>, which may be reported in the response to this command.
 /// These values do not affect the running of your task and can be ignored.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeMaintenanceWindowTasks {
     _private: (),
 }
@@ -4091,7 +4091,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeMaintenanceWindowTas
 /// operational issues impacting the performance and health of their AWS resources. For more
 /// information, see <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager OpsCenter</a> in the
 /// <i>AWS Systems Manager User Guide</i>. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeOpsItems {
     _private: (),
 }
@@ -4157,7 +4157,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeOpsItems {
 /// matching values up to that point and a <code>NextToken</code>. You can specify the
 /// <code>NextToken</code> in a subsequent call to get the next set of results.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeParameters {
     _private: (),
 }
@@ -4244,7 +4244,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeParameters {
 }
 
 /// <p>Lists the patch baselines in your AWS account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribePatchBaselines {
     _private: (),
 }
@@ -4313,7 +4313,7 @@ impl smithy_http::response::ParseStrictResponse for DescribePatchBaselines {
 }
 
 /// <p>Lists all patch groups that have been registered with patch baselines.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribePatchGroups {
     _private: (),
 }
@@ -4372,7 +4372,7 @@ impl smithy_http::response::ParseStrictResponse for DescribePatchGroups {
 }
 
 /// <p>Returns high-level aggregated patch compliance state for a patch group.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribePatchGroupState {
     _private: (),
 }
@@ -4496,7 +4496,7 @@ impl smithy_http::response::ParseStrictResponse for DescribePatchGroupState {
 /// <p>Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY</p>
 /// </dd>
 /// </dl>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribePatchProperties {
     _private: (),
 }
@@ -4566,7 +4566,7 @@ impl smithy_http::response::ParseStrictResponse for DescribePatchProperties {
 
 /// <p>Retrieves a list of all active sessions (both connected and disconnected) or terminated
 /// sessions from the past 30 days.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeSessions {
     _private: (),
 }
@@ -4638,7 +4638,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeSessions {
 /// <p>Deletes the association between an OpsItem and a related resource. For example, this API
 /// action can delete an Incident Manager incident from an OpsItem. Incident Manager is a capability
 /// of AWS Systems Manager.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DisassociateOpsItemRelatedItem {
     _private: (),
 }
@@ -4710,7 +4710,7 @@ impl smithy_http::response::ParseStrictResponse for DisassociateOpsItemRelatedIt
 }
 
 /// <p>Get detailed information about a particular Automation execution.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetAutomationExecution {
     _private: (),
 }
@@ -4787,7 +4787,7 @@ impl smithy_http::response::ParseStrictResponse for GetAutomationExecution {
 /// request are closed, the status returned is <code>CLOSED</code>.</p>
 /// <p>For more information about Systems Manager Change Calendar, see <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html">AWS Systems Manager Change
 /// Calendar</a> in the <i>AWS Systems Manager User Guide</i>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetCalendarState {
     _private: (),
 }
@@ -4872,7 +4872,7 @@ impl smithy_http::response::ParseStrictResponse for GetCalendarState {
 /// <code>GetCommandInvocation</code> only gives the execution status of a plugin in a document.
 /// To get the command execution status on a specific instance, use <a>ListCommandInvocations</a>. To get the command execution status across instances, use
 /// <a>ListCommands</a>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetCommandInvocation {
     _private: (),
 }
@@ -4964,7 +4964,7 @@ impl smithy_http::response::ParseStrictResponse for GetCommandInvocation {
 
 /// <p>Retrieves the Session Manager connection status for an instance to determine whether it is running and
 /// ready to receive Session Manager connections.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetConnectionStatus {
     _private: (),
 }
@@ -5027,7 +5027,7 @@ impl smithy_http::response::ParseStrictResponse for GetConnectionStatus {
 /// system.</p>
 /// <p>If you do not specify an operating system value, the default patch baseline for Windows is
 /// returned.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetDefaultPatchBaseline {
     _private: (),
 }
@@ -5097,7 +5097,7 @@ impl smithy_http::response::ParseStrictResponse for GetDefaultPatchBaseline {
 
 /// <p>Retrieves the current snapshot for the patch baseline the instance uses. This API is
 /// primarily used by the AWS-RunPatchBaseline Systems Manager document. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetDeployablePatchSnapshotForInstance {
     _private: (),
 }
@@ -5172,7 +5172,7 @@ impl smithy_http::response::ParseStrictResponse for GetDeployablePatchSnapshotFo
 }
 
 /// <p>Gets the contents of the specified Systems Manager document.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetDocument {
     _private: (),
 }
@@ -5241,7 +5241,7 @@ impl smithy_http::response::ParseStrictResponse for GetDocument {
 }
 
 /// <p>Query inventory information.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetInventory {
     _private: (),
 }
@@ -5341,7 +5341,7 @@ impl smithy_http::response::ParseStrictResponse for GetInventory {
 
 /// <p>Return a list of inventory type names for the account, or return a list of attribute names
 /// for a specific Inventory item type.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetInventorySchema {
     _private: (),
 }
@@ -5414,7 +5414,7 @@ impl smithy_http::response::ParseStrictResponse for GetInventorySchema {
 }
 
 /// <p>Retrieves a maintenance window.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetMaintenanceWindow {
     _private: (),
 }
@@ -5482,7 +5482,7 @@ impl smithy_http::response::ParseStrictResponse for GetMaintenanceWindow {
 }
 
 /// <p>Retrieves details about a specific a maintenance window execution.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetMaintenanceWindowExecution {
     _private: (),
 }
@@ -5552,7 +5552,7 @@ impl smithy_http::response::ParseStrictResponse for GetMaintenanceWindowExecutio
 
 /// <p>Retrieves the details about a specific task run as part of a maintenance window
 /// execution.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetMaintenanceWindowExecutionTask {
     _private: (),
 }
@@ -5621,7 +5621,7 @@ impl smithy_http::response::ParseStrictResponse for GetMaintenanceWindowExecutio
 }
 
 /// <p>Retrieves information about a specific task running on a specific target.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetMaintenanceWindowExecutionTaskInvocation {
     _private: (),
 }
@@ -5697,7 +5697,7 @@ impl smithy_http::response::ParseStrictResponse for GetMaintenanceWindowExecutio
 /// placeholder value of <code>1</code>, which may be reported in the response to this command.
 /// These values do not affect the running of your task and can be ignored.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetMaintenanceWindowTask {
     _private: (),
 }
@@ -5782,7 +5782,7 @@ impl smithy_http::response::ParseStrictResponse for GetMaintenanceWindowTask {
 /// operational issues impacting the performance and health of their AWS resources. For more
 /// information, see <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager OpsCenter</a> in the
 /// <i>AWS Systems Manager User Guide</i>. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetOpsItem {
     _private: (),
 }
@@ -5844,7 +5844,7 @@ impl smithy_http::response::ParseStrictResponse for GetOpsItem {
 }
 
 /// <p>View operational metadata related to an application in Application Manager.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetOpsMetadata {
     _private: (),
 }
@@ -5916,7 +5916,7 @@ impl smithy_http::response::ParseStrictResponse for GetOpsMetadata {
 }
 
 /// <p>View a summary of OpsItems based on specified filters and aggregators.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetOpsSummary {
     _private: (),
 }
@@ -6009,7 +6009,7 @@ impl smithy_http::response::ParseStrictResponse for GetOpsSummary {
 
 /// <p>Get information about a parameter by using the parameter name. Don't confuse this API action
 /// with the <a>GetParameters</a> API action.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetParameter {
     _private: (),
 }
@@ -6085,7 +6085,7 @@ impl smithy_http::response::ParseStrictResponse for GetParameter {
 }
 
 /// <p>Retrieves the history of all changes to a parameter.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetParameterHistory {
     _private: (),
 }
@@ -6165,7 +6165,7 @@ impl smithy_http::response::ParseStrictResponse for GetParameterHistory {
 }
 
 /// <p>Get details of a parameter. Don't confuse this API action with the <a>GetParameter</a> API action.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetParameters {
     _private: (),
 }
@@ -6235,7 +6235,7 @@ impl smithy_http::response::ParseStrictResponse for GetParameters {
 /// matching values up to that point and a <code>NextToken</code>. You can specify the
 /// <code>NextToken</code> in a subsequent call to get the next set of results.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetParametersByPath {
     _private: (),
 }
@@ -6329,7 +6329,7 @@ impl smithy_http::response::ParseStrictResponse for GetParametersByPath {
 }
 
 /// <p>Retrieves information about a patch baseline.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetPatchBaseline {
     _private: (),
 }
@@ -6401,7 +6401,7 @@ impl smithy_http::response::ParseStrictResponse for GetPatchBaseline {
 }
 
 /// <p>Retrieves the patch baseline that should be used for the specified patch group.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetPatchBaselineForPatchGroup {
     _private: (),
 }
@@ -6478,7 +6478,7 @@ impl smithy_http::response::ParseStrictResponse for GetPatchBaselineForPatchGrou
 /// the default setting. Or use the <a>ResetServiceSetting</a> to change the value back to
 /// the original value defined by the AWS service team.</p>
 /// <p>Query the current service setting for the account. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetServiceSetting {
     _private: (),
 }
@@ -6581,7 +6581,7 @@ impl smithy_http::response::ParseStrictResponse for GetServiceSetting {
 /// displays it in the list of InvalidLabels.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct LabelParameterVersion {
     _private: (),
 }
@@ -6657,7 +6657,7 @@ impl smithy_http::response::ParseStrictResponse for LabelParameterVersion {
 /// <p>Returns all State Manager associations in the current AWS account and Region. You can limit
 /// the results to a specific State Manager association document or instance by specifying a
 /// filter.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListAssociations {
     _private: (),
 }
@@ -6720,7 +6720,7 @@ impl smithy_http::response::ParseStrictResponse for ListAssociations {
 }
 
 /// <p>Retrieves all versions of an association for a specific association ID.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListAssociationVersions {
     _private: (),
 }
@@ -6811,7 +6811,7 @@ impl smithy_http::response::ParseStrictResponse for ListAssociationVersions {
 /// or more instances. A command invocation applies to one instance. For example, if a user runs
 /// SendCommand against three instances, then a command invocation is created for each requested
 /// instance ID. ListCommandInvocations provide status about command execution.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListCommandInvocations {
     _private: (),
 }
@@ -6910,7 +6910,7 @@ impl smithy_http::response::ParseStrictResponse for ListCommandInvocations {
 }
 
 /// <p>Lists the commands requested by users of the AWS account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListCommands {
     _private: (),
 }
@@ -6995,7 +6995,7 @@ impl smithy_http::response::ParseStrictResponse for ListCommands {
 /// <p>For a specified resource ID, this API action returns a list of compliance statuses for
 /// different resource types. Currently, you can only specify one resource ID per call. List results
 /// depend on the criteria specified in the filter.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListComplianceItems {
     _private: (),
 }
@@ -7084,7 +7084,7 @@ impl smithy_http::response::ParseStrictResponse for ListComplianceItems {
 /// <p>Returns a summary count of compliant and non-compliant resources for a compliance type. For
 /// example, this call can return State Manager associations, patches, or custom compliance types
 /// according to the filter criteria that you specify.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListComplianceSummaries {
     _private: (),
 }
@@ -7169,7 +7169,7 @@ impl smithy_http::response::ParseStrictResponse for ListComplianceSummaries {
 }
 
 /// <p>Information about approval reviews for a version of an SSM document.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListDocumentMetadataHistory {
     _private: (),
 }
@@ -7246,7 +7246,7 @@ impl smithy_http::response::ParseStrictResponse for ListDocumentMetadataHistory 
 
 /// <p>Returns all Systems Manager (SSM) documents in the current AWS account and Region. You can limit the
 /// results of this request by using a filter.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListDocuments {
     _private: (),
 }
@@ -7315,7 +7315,7 @@ impl smithy_http::response::ParseStrictResponse for ListDocuments {
 }
 
 /// <p>List all versions for a document.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListDocumentVersions {
     _private: (),
 }
@@ -7390,7 +7390,7 @@ impl smithy_http::response::ParseStrictResponse for ListDocumentVersions {
 }
 
 /// <p>A list of inventory items returned by the request.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListInventoryEntries {
     _private: (),
 }
@@ -7482,7 +7482,7 @@ impl smithy_http::response::ParseStrictResponse for ListInventoryEntries {
 
 /// <p>Returns a list of all OpsItem events in the current AWS account and Region. You can limit
 /// the results to events associated with specific OpsItems by specifying a filter.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListOpsItemEvents {
     _private: (),
 }
@@ -7566,7 +7566,7 @@ impl smithy_http::response::ParseStrictResponse for ListOpsItemEvents {
 }
 
 /// <p>Lists all related-item resources associated with an OpsItem.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListOpsItemRelatedItems {
     _private: (),
 }
@@ -7635,7 +7635,7 @@ impl smithy_http::response::ParseStrictResponse for ListOpsItemRelatedItems {
 
 /// <p>Systems Manager calls this API action when displaying all Application Manager OpsMetadata objects or
 /// blobs.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListOpsMetadata {
     _private: (),
 }
@@ -7702,7 +7702,7 @@ impl smithy_http::response::ParseStrictResponse for ListOpsMetadata {
 /// <p>Returns a resource-level summary count. The summary includes information about compliant and
 /// non-compliant statuses and detailed compliance-item severity counts, according to the filter
 /// criteria you specify.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListResourceComplianceSummaries {
     _private: (),
 }
@@ -7783,7 +7783,7 @@ impl smithy_http::response::ParseStrictResponse for ListResourceComplianceSummar
 /// configurations to list, check the value of <code>NextToken</code> in the output. If there are
 /// more sync configurations to list, you can request them by specifying the <code>NextToken</code>
 /// returned in the call to the parameter of a subsequent call. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListResourceDataSync {
     _private: (),
 }
@@ -7847,7 +7847,7 @@ impl smithy_http::response::ParseStrictResponse for ListResourceDataSync {
 }
 
 /// <p>Returns a list of the tags assigned to the specified resource.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListTagsForResource {
     _private: (),
 }
@@ -7922,7 +7922,7 @@ impl smithy_http::response::ParseStrictResponse for ListTagsForResource {
 /// <p>Shares a Systems Manager document publicly or privately. If you share a document privately, you must
 /// specify the AWS user account IDs for those people who can use the document. If you share a
 /// document publicly, you must specify <i>All</i> as the account ID.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ModifyDocumentPermission {
     _private: (),
 }
@@ -8080,7 +8080,7 @@ impl smithy_http::response::ParseStrictResponse for ModifyDocumentPermission {
 /// the resource. Specify the time by using the following format: yyyy-MM-dd'T'HH:mm:ss'Z'</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutComplianceItems {
     _private: (),
 }
@@ -8156,7 +8156,7 @@ impl smithy_http::response::ParseStrictResponse for PutComplianceItems {
 
 /// <p>Bulk update custom inventory items on one more instance. The request adds an inventory item,
 /// if it doesn't already exist, or updates an inventory item, if it does exist.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutInventory {
     _private: (),
 }
@@ -8252,7 +8252,7 @@ impl smithy_http::response::ParseStrictResponse for PutInventory {
 }
 
 /// <p>Add a parameter to the system.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutParameter {
     _private: (),
 }
@@ -8417,7 +8417,7 @@ impl smithy_http::response::ParseStrictResponse for PutParameter {
 /// ARN as the baseline ID value. For example, for CentOS, specify
 /// <code>arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed</code> instead of
 /// <code>pb-0574b43a65ea646ed</code>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct RegisterDefaultPatchBaseline {
     _private: (),
 }
@@ -8507,7 +8507,7 @@ impl smithy_http::response::ParseStrictResponse for RegisterDefaultPatchBaseline
 }
 
 /// <p>Registers a patch baseline for a patch group.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct RegisterPatchBaselineForPatchGroup {
     _private: (),
 }
@@ -8588,7 +8588,7 @@ impl smithy_http::response::ParseStrictResponse for RegisterPatchBaselineForPatc
 }
 
 /// <p>Registers a target with a maintenance window.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct RegisterTargetWithMaintenanceWindow {
     _private: (),
 }
@@ -8665,7 +8665,7 @@ impl smithy_http::response::ParseStrictResponse for RegisterTargetWithMaintenanc
 }
 
 /// <p>Adds a new task to a maintenance window.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct RegisterTaskWithMaintenanceWindow {
     _private: (),
 }
@@ -8746,7 +8746,7 @@ impl smithy_http::response::ParseStrictResponse for RegisterTaskWithMaintenanceW
 }
 
 /// <p>Removes tag keys from the specified resource.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct RemoveTagsFromResource {
     _private: (),
 }
@@ -8848,7 +8848,7 @@ impl smithy_http::response::ParseStrictResponse for RemoveTagsFromResource {
 /// setting. </p>
 /// <p>Reset the service setting for the account to the default value as provisioned by the AWS
 /// service team. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ResetServiceSetting {
     _private: (),
 }
@@ -8928,7 +8928,7 @@ impl smithy_http::response::ParseStrictResponse for ResetServiceSetting {
 /// <p>This command is primarily for use by client machines to automatically reconnect during
 /// intermittent network issues. It is not intended for any other use.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ResumeSession {
     _private: (),
 }
@@ -8991,7 +8991,7 @@ impl smithy_http::response::ParseStrictResponse for ResumeSession {
 
 /// <p>Sends a signal to an Automation execution to change the current behavior or status of the
 /// execution. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct SendAutomationSignal {
     _private: (),
 }
@@ -9054,7 +9054,7 @@ impl smithy_http::response::ParseStrictResponse for SendAutomationSignal {
 }
 
 /// <p>Runs commands on one or more managed instances.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct SendCommand {
     _private: (),
 }
@@ -9180,7 +9180,7 @@ impl smithy_http::response::ParseStrictResponse for SendCommand {
 
 /// <p>Use this API action to run an association immediately and only one time. This action can be
 /// helpful when troubleshooting associations.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct StartAssociationsOnce {
     _private: (),
 }
@@ -9247,7 +9247,7 @@ impl smithy_http::response::ParseStrictResponse for StartAssociationsOnce {
 }
 
 /// <p>Initiates execution of an Automation document.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct StartAutomationExecution {
     _private: (),
 }
@@ -9337,7 +9337,7 @@ impl smithy_http::response::ParseStrictResponse for StartAutomationExecution {
 /// <p>Creates a change request for Change Manager. The runbooks (Automation documents) specified in the
 /// change request run only after all required approvals for the change request have been
 /// received.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct StartChangeRequestExecution {
     _private: (),
 }
@@ -9434,7 +9434,7 @@ impl smithy_http::response::ParseStrictResponse for StartChangeRequestExecution 
 /// <p>AWS Tools for PowerShell usage: Start-SSMSession is not currently supported by AWS Tools
 /// for PowerShell on Windows local machines.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct StartSession {
     _private: (),
 }
@@ -9503,7 +9503,7 @@ impl smithy_http::response::ParseStrictResponse for StartSession {
 }
 
 /// <p>Stop an Automation that is currently running.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct StopAutomationExecution {
     _private: (),
 }
@@ -9571,7 +9571,7 @@ impl smithy_http::response::ParseStrictResponse for StopAutomationExecution {
 
 /// <p>Permanently ends a session and closes the data connection between the Session Manager client and
 /// SSM Agent on the instance. A terminated session cannot be resumed.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct TerminateSession {
     _private: (),
 }
@@ -9634,7 +9634,7 @@ impl smithy_http::response::ParseStrictResponse for TerminateSession {
 }
 
 /// <p>Remove a label or labels from a parameter.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UnlabelParameterVersion {
     _private: (),
 }
@@ -9741,7 +9741,7 @@ impl smithy_http::response::ParseStrictResponse for UnlabelParameterVersion {
 /// <p>When you update an association, the association immediately runs against the specified
 /// targets.</p>
 /// </important>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateAssociation {
     _private: (),
 }
@@ -9840,7 +9840,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateAssociation {
 }
 
 /// <p>Updates the status of the Systems Manager document associated with the specified instance.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateAssociationStatus {
     _private: (),
 }
@@ -9949,7 +9949,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateAssociationStatus {
 }
 
 /// <p>Updates one or more values for an SSM document.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateDocument {
     _private: (),
 }
@@ -10073,7 +10073,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateDocument {
 }
 
 /// <p>Set the default version of a document. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateDocumentDefaultVersion {
     _private: (),
 }
@@ -10149,7 +10149,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateDocumentDefaultVersion
 }
 
 /// <p>Updates information related to approval reviews for a specific version of a document.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateDocumentMetadata {
     _private: (),
 }
@@ -10247,7 +10247,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateDocumentMetadata {
 /// value you specify for <code>Cutoff</code> is one hour, no maintenance window tasks can start
 /// after 5 PM.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateMaintenanceWindow {
     _private: (),
 }
@@ -10350,7 +10350,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateMaintenanceWindow {
 /// <note>
 /// <p>If a parameter is null, then the corresponding field is not modified.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateMaintenanceWindowTarget {
     _private: (),
 }
@@ -10463,7 +10463,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateMaintenanceWindowTarge
 /// maintenance window task and specify only a different <code>OutputS3BucketName</code> value, the
 /// values for <code>Comment</code> and <code>NotificationConfig</code> are removed.</p>
 /// </important>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateMaintenanceWindowTask {
     _private: (),
 }
@@ -10544,7 +10544,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateMaintenanceWindowTask 
 /// <p>Changes the Amazon Identity and Access Management (IAM) role that is assigned to the
 /// on-premises instance or virtual machines (VM). IAM roles are first assigned to these hybrid
 /// instances during the activation process. For more information, see <a>CreateActivation</a>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateManagedInstanceRole {
     _private: (),
 }
@@ -10623,7 +10623,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateManagedInstanceRole {
 /// operational issues impacting the performance and health of their AWS resources. For more
 /// information, see <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager OpsCenter</a> in the
 /// <i>AWS Systems Manager User Guide</i>. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateOpsItem {
     _private: (),
 }
@@ -10705,7 +10705,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateOpsItem {
 }
 
 /// <p>Systems Manager calls this API action when you edit OpsMetadata in Application Manager.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateOpsMetadata {
     _private: (),
 }
@@ -10781,7 +10781,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateOpsMetadata {
 /// <p>For information about valid key and value pairs in <code>PatchFilters</code> for each
 /// supported operating system type, see <a href="http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html">PatchFilter</a>.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdatePatchBaseline {
     _private: (),
 }
@@ -10855,7 +10855,7 @@ impl smithy_http::response::ParseStrictResponse for UpdatePatchBaseline {
 /// <p>This API action only supports a resource data sync that was created with a SyncFromSource
 /// <code>SyncType</code>.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateResourceDataSync {
     _private: (),
 }
@@ -10938,7 +10938,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateResourceDataSync {
 /// current value. Or, use the <a>ResetServiceSetting</a> to change the value back to the
 /// original value defined by the AWS service team.</p>
 /// <p>Update the service setting for the account. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateServiceSetting {
     _private: (),
 }

@@ -2,7 +2,7 @@
 /// <p>
 /// This operation allows you to perform batch reads and writes on data stored in DynamoDB, using PartiQL.
 /// </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct BatchExecuteStatement {
     _private: (),
 }
@@ -119,7 +119,7 @@ impl smithy_http::response::ParseStrictResponse for BatchExecuteStatement {
 /// nonexistent items consume the minimum read capacity units according to the type of read.
 /// For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations">Working with Tables</a> in the <i>Amazon DynamoDB Developer
 /// Guide</i>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct BatchGetItem {
     _private: (),
 }
@@ -278,7 +278,7 @@ impl smithy_http::response::ParseStrictResponse for BatchGetItem {
 /// <p>The total request size exceeds 16 MB.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct BatchWriteItem {
     _private: (),
 }
@@ -379,7 +379,7 @@ impl smithy_http::response::ParseStrictResponse for BatchWriteItem {
 /// <p>Provisioned read and write capacity</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateBackup {
     _private: (),
 }
@@ -544,7 +544,7 @@ impl smithy_http::response::ParseStrictResponse for CreateBackup {
 /// your global table.
 /// </p>
 /// </important>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateGlobalTable {
     _private: (),
 }
@@ -645,7 +645,7 @@ impl smithy_http::response::ParseStrictResponse for CreateGlobalTable {
 /// tables sequentially. Only one table with secondary indexes can be in the <code>CREATING</code> state at
 /// any given time.</p>
 /// <p>You can use the <code>DescribeTable</code> action to check the table status.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateTable {
     _private: (),
 }
@@ -722,7 +722,7 @@ impl smithy_http::response::ParseStrictResponse for CreateTable {
 
 /// <p>Deletes an existing backup of a table.</p>
 /// <p>You can call <code>DeleteBackup</code> at a maximum rate of 10 times per second.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBackup {
     _private: (),
 }
@@ -810,7 +810,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBackup {
 /// <p>Unless you specify conditions, the <code>DeleteItem</code> is an idempotent operation; running it
 /// multiple times on the same item or attribute does <i>not</i> result in an error response.</p>
 /// <p>Conditional deletes are useful for deleting items only if specific conditions are met. If those conditions are met, DynamoDB performs the delete. Otherwise, the item is not deleted.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteItem {
     _private: (),
 }
@@ -933,7 +933,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteItem {
 /// <p>If you have DynamoDB Streams enabled on the table, then the corresponding stream on that table goes
 /// into the <code>DISABLED</code> state, and the stream is automatically deleted after 24 hours.</p>
 /// <p>Use the <code>DescribeTable</code> action to check the status of the table. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteTable {
     _private: (),
 }
@@ -1017,7 +1017,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteTable {
 
 /// <p>Describes an existing backup of a table.</p>
 /// <p>You can call <code>DescribeBackup</code> at a maximum rate of 10 times per second.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeBackup {
     _private: (),
 }
@@ -1096,7 +1096,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeBackup {
 /// in time during the last 35 days.
 /// </p>
 /// <p>You can call <code>DescribeContinuousBackups</code> at a maximum rate of 10 times per second.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeContinuousBackups {
     _private: (),
 }
@@ -1184,7 +1184,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeContinuousBackups {
 }
 
 /// <p>Returns information about contributor insights, for a given table or global secondary index.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeContributorInsights {
     _private: (),
 }
@@ -1252,7 +1252,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeContributorInsights 
 }
 
 /// <p>Returns the regional endpoint information.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeEndpoints {
     _private: (),
 }
@@ -1297,7 +1297,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeEndpoints {
 }
 
 /// <p>Describes an existing table export.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeExport {
     _private: (),
 }
@@ -1370,7 +1370,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeExport {
 /// <p>This operation only applies to <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version 2017.11.29</a> of global tables.
 /// If you are using global tables <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version 2019.11.21</a> you can use <a href="https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_DescribeTable.html">DescribeTable</a> instead.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeGlobalTable {
     _private: (),
 }
@@ -1450,7 +1450,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeGlobalTable {
 /// <note>
 /// <p>This operation only applies to <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version 2017.11.29</a> of global tables.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeGlobalTableSettings {
     _private: (),
 }
@@ -1522,7 +1522,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeGlobalTableSettings 
 }
 
 /// <p>Returns information about the status of Kinesis streaming.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeKinesisStreamingDestination {
     _private: (),
 }
@@ -1654,7 +1654,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeKinesisStreamingDest
 /// errors if you call it more than once in a minute.</p>
 /// </note>
 /// <p>The <code>DescribeLimits</code> Request element has no content.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeLimits {
     _private: (),
 }
@@ -1722,7 +1722,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeLimits {
 /// consistent query, and the metadata for your table might not be available at that moment.
 /// Wait for a few seconds, and then try the <code>DescribeTable</code> request again.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeTable {
     _private: (),
 }
@@ -1794,7 +1794,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeTable {
 /// <note>
 /// <p>This operation only applies to <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version 2019.11.21</a> of global tables.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeTableReplicaAutoScaling {
     _private: (),
 }
@@ -1863,7 +1863,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeTableReplicaAutoScal
 }
 
 /// <p>Gives a description of the Time to Live (TTL) status on the specified table. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeTimeToLive {
     _private: (),
 }
@@ -1939,7 +1939,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeTimeToLive {
 
 /// <p>Stops replication from the DynamoDB table to the Kinesis data stream. This is done
 /// without deleting either of the resources.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DisableKinesisStreamingDestination {
     _private: (),
 }
@@ -2023,7 +2023,7 @@ impl smithy_http::response::ParseStrictResponse for DisableKinesisStreamingDesti
 /// during the enable workflow. If this operation doesn't return results immediately, use
 /// DescribeKinesisStreamingDestination to check if streaming to the Kinesis data stream is
 /// ACTIVE.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct EnableKinesisStreamingDestination {
     _private: (),
 }
@@ -2106,7 +2106,7 @@ impl smithy_http::response::ParseStrictResponse for EnableKinesisStreamingDestin
 /// <p>
 /// This operation allows you to perform reads and singleton writes on data stored in DynamoDB, using PartiQL.
 /// </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ExecuteStatement {
     _private: (),
 }
@@ -2189,7 +2189,7 @@ impl smithy_http::response::ParseStrictResponse for ExecuteStatement {
 /// <p>
 /// This operation allows you to perform transactional reads or writes on data stored in DynamoDB, using PartiQL.
 /// </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ExecuteTransaction {
     _private: (),
 }
@@ -2271,7 +2271,7 @@ impl smithy_http::response::ParseStrictResponse for ExecuteTransaction {
 /// <p>Exports table data to an S3 bucket. The table must have point in time recovery
 /// enabled, and you can export data from any time within the point in time recovery
 /// window.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ExportTableToPointInTime {
     _private: (),
 }
@@ -2361,7 +2361,7 @@ impl smithy_http::response::ParseStrictResponse for ExportTableToPointInTime {
 /// requires a strongly consistent read, set <code>ConsistentRead</code> to <code>true</code>. Although
 /// a strongly consistent read might take more time than an eventually consistent read, it always
 /// returns the last updated value.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetItem {
     _private: (),
 }
@@ -2451,7 +2451,7 @@ impl smithy_http::response::ParseStrictResponse for GetItem {
 /// <p>In the request, start time is inclusive, but end time is exclusive. Note that these
 /// boundaries are for the time at which the original backup was requested.</p>
 /// <p>You can call <code>ListBackups</code> a maximum of five times per second.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListBackups {
     _private: (),
 }
@@ -2513,7 +2513,7 @@ impl smithy_http::response::ParseStrictResponse for ListBackups {
 }
 
 /// <p>Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListContributorInsights {
     _private: (),
 }
@@ -2591,7 +2591,7 @@ impl smithy_http::response::ParseStrictResponse for ListContributorInsights {
 }
 
 /// <p>Lists completed exports within the past 90 days.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListExports {
     _private: (),
 }
@@ -2656,7 +2656,7 @@ impl smithy_http::response::ParseStrictResponse for ListExports {
 /// <note>
 /// <p>This operation only applies to <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version 2017.11.29</a> of global tables.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListGlobalTables {
     _private: (),
 }
@@ -2723,7 +2723,7 @@ impl smithy_http::response::ParseStrictResponse for ListGlobalTables {
 /// <p>Returns an array of table names associated with the current account and endpoint. The output
 /// from <code>ListTables</code> is paginated, with each page returning a maximum of 100 table
 /// names.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListTables {
     _private: (),
 }
@@ -2787,7 +2787,7 @@ impl smithy_http::response::ParseStrictResponse for ListTables {
 /// <p>For an overview on tagging DynamoDB resources, see
 /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a>
 /// in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListTagsOfResource {
     _private: (),
 }
@@ -2928,7 +2928,7 @@ impl smithy_http::response::ParseStrictResponse for ListTagsOfResource {
 /// no matching item exists.</p>
 /// </note>
 /// <p>For more information about <code>PutItem</code>, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html">Working with Items</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutItem {
     _private: (),
 }
@@ -3090,7 +3090,7 @@ impl smithy_http::response::ParseStrictResponse for PutItem {
 /// strongly consistent result. Global secondary indexes support eventually consistent reads
 /// only, so do not specify <code>ConsistentRead</code> when querying a global
 /// secondary index.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct Query {
     _private: (),
 }
@@ -3198,7 +3198,7 @@ impl smithy_http::response::ParseStrictResponse for Query {
 /// <p>Time to Live (TTL) settings</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct RestoreTableFromBackup {
     _private: (),
 }
@@ -3372,7 +3372,7 @@ impl smithy_http::response::ParseStrictResponse for RestoreTableFromBackup {
 /// <p>Point in time recovery settings</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct RestoreTableToPointInTime {
     _private: (),
 }
@@ -3488,7 +3488,7 @@ impl smithy_http::response::ParseStrictResponse for RestoreTableToPointInTime {
 /// immediately before the operation began. If you need a consistent copy of the data, as of
 /// the time that the <code>Scan</code> begins, you can set the <code>ConsistentRead</code>
 /// parameter to <code>true</code>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct Scan {
     _private: (),
 }
@@ -3576,7 +3576,7 @@ impl smithy_http::response::ParseStrictResponse for Scan {
 /// <p>For an overview on tagging DynamoDB resources, see
 /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a>
 /// in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct TagResource {
     _private: (),
 }
@@ -3681,7 +3681,7 @@ impl smithy_http::response::ParseStrictResponse for TagResource {
 /// <p>The aggregate size of the items in the transaction cannot exceed 4 MB.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct TransactGetItems {
     _private: (),
 }
@@ -3826,7 +3826,7 @@ impl smithy_http::response::ParseStrictResponse for TransactGetItems {
 /// <p>There  is a user error, such as an invalid data format.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct TransactWriteItems {
     _private: (),
 }
@@ -3914,7 +3914,7 @@ impl smithy_http::response::ParseStrictResponse for TransactWriteItems {
 /// <p>For an overview on tagging DynamoDB resources, see
 /// <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a>
 /// in the <i>Amazon DynamoDB Developer Guide</i>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UntagResource {
     _private: (),
 }
@@ -4005,7 +4005,7 @@ impl smithy_http::response::ParseStrictResponse for UntagResource {
 /// <p>
 /// <code>LatestRestorableDateTime</code> is typically 5 minutes before the current time.
 /// You can restore your table to any point in time during the last 35 days. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateContinuousBackups {
     _private: (),
 }
@@ -4081,7 +4081,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateContinuousBackups {
 }
 
 /// <p>Updates the status for contributor insights for a specific table or index.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateContributorInsights {
     _private: (),
 }
@@ -4188,7 +4188,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateContributorInsights {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateGlobalTable {
     _private: (),
 }
@@ -4285,7 +4285,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateGlobalTable {
 }
 
 /// <p>Updates settings for a global table.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateGlobalTableSettings {
     _private: (),
 }
@@ -4375,7 +4375,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateGlobalTableSettings {
 /// <p>Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put, delete, or add attribute values. You can also perform a conditional update on an existing item (insert a new attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected attribute values).</p>
 /// <p>You can also return the item's attribute values in the same <code>UpdateItem</code>
 /// operation using the <code>ReturnValues</code> parameter.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateItem {
     _private: (),
 }
@@ -4505,7 +4505,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateItem {
 /// changes from <code>ACTIVE</code> to <code>UPDATING</code>. While it is <code>UPDATING</code>,
 /// you cannot issue another <code>UpdateTable</code> request. When the table returns to the
 /// <code>ACTIVE</code> state, the <code>UpdateTable</code> operation is complete.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateTable {
     _private: (),
 }
@@ -4591,7 +4591,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateTable {
 /// <note>
 /// <p>This operation only applies to <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version 2019.11.21</a> of global tables.</p>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateTableReplicaAutoScaling {
     _private: (),
 }
@@ -4692,7 +4692,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateTableReplicaAutoScalin
 /// secondary index immediately in the same eventually consistent way as a standard delete
 /// operation.</p>
 /// <p>For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html">Time To Live</a> in the Amazon DynamoDB Developer Guide. </p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateTimeToLive {
     _private: (),
 }

@@ -4,7 +4,7 @@
 /// <p>You can't restart a stream after you cancel it. Canceled QLDB stream resources are
 /// subject to a 7-day retention period, so they are automatically deleted after this limit
 /// expires.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CancelJournalKinesisStream {
     _private: (),
 }
@@ -33,7 +33,7 @@ impl smithy_http::response::ParseStrictResponse for CancelJournalKinesisStream {
 }
 
 /// <p>Creates a new ledger in your AWS account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateLedger {
     _private: (),
 }
@@ -63,7 +63,7 @@ impl smithy_http::response::ParseStrictResponse for CreateLedger {
 /// ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the
 /// <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB
 /// console disables deletion protection for you when you use it to delete a ledger.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteLedger {
     _private: (),
 }
@@ -91,7 +91,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteLedger {
 /// <p>Returns detailed information about a given Amazon QLDB journal stream. The output
 /// includes the Amazon Resource Name (ARN), stream name, current status, creation time, and
 /// the parameters of your original stream creation request.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeJournalKinesisStream {
     _private: (),
 }
@@ -127,7 +127,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeJournalKinesisStream
 /// <code>ResourceNotFoundException</code>.</p>
 /// <p>If the ledger with the given <code>Name</code> doesn't exist, then throws
 /// <code>ResourceNotFoundException</code>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeJournalS3Export {
     _private: (),
 }
@@ -156,7 +156,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeJournalS3Export {
 }
 
 /// <p>Returns information about a ledger, including its state and when it was created.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeLedger {
     _private: (),
 }
@@ -189,7 +189,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeLedger {
 /// throws <code>ResourcePreconditionNotMetException</code>.</p>
 /// <p>You can initiate up to two concurrent journal export requests for each ledger. Beyond
 /// this limit, journal export requests throw <code>LimitExceededException</code>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ExportJournalToS3 {
     _private: (),
 }
@@ -225,7 +225,7 @@ impl smithy_http::response::ParseStrictResponse for ExportJournalToS3 {
 /// <code>ResourcePreconditionNotMetException</code>.</p>
 /// <p>If no block exists with the specified address, then throws
 /// <code>InvalidParameterException</code>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBlock {
     _private: (),
 }
@@ -252,7 +252,7 @@ impl smithy_http::response::ParseStrictResponse for GetBlock {
 
 /// <p>Returns the digest of a ledger at the latest committed block in the journal. The
 /// response includes a 256-bit hash value and a block address.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetDigest {
     _private: (),
 }
@@ -280,7 +280,7 @@ impl smithy_http::response::ParseStrictResponse for GetDigest {
 /// <p>Returns a revision data object for a specified document ID and block address. Also
 /// returns a proof of the specified revision for verification if <code>DigestTipAddress</code>
 /// is provided.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetRevision {
     _private: (),
 }
@@ -311,7 +311,7 @@ impl smithy_http::response::ParseStrictResponse for GetRevision {
 /// <p>This action returns a maximum of <code>MaxResults</code> items. It is paginated so that
 /// you can retrieve all the items by calling <code>ListJournalKinesisStreamsForLedger</code>
 /// multiple times.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListJournalKinesisStreamsForLedger {
     _private: (),
 }
@@ -346,7 +346,7 @@ impl smithy_http::response::ParseStrictResponse for ListJournalKinesisStreamsFor
 /// times.</p>
 /// <p>This action does not return any expired export jobs. For more information, see <a href="https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration">Export Job Expiration</a> in the <i>Amazon QLDB Developer
 /// Guide</i>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListJournalS3Exports {
     _private: (),
 }
@@ -378,7 +378,7 @@ impl smithy_http::response::ParseStrictResponse for ListJournalS3Exports {
 /// multiple times.</p>
 /// <p>This action does not return any expired export jobs. For more information, see <a href="https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration">Export Job Expiration</a> in the <i>Amazon QLDB Developer
 /// Guide</i>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListJournalS3ExportsForLedger {
     _private: (),
 }
@@ -410,7 +410,7 @@ impl smithy_http::response::ParseStrictResponse for ListJournalS3ExportsForLedge
 /// and Region.</p>
 /// <p>This action returns a maximum of 100 items and is paginated so that you can
 /// retrieve all the items by calling <code>ListLedgers</code> multiple times.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListLedgers {
     _private: (),
 }
@@ -436,7 +436,7 @@ impl smithy_http::response::ParseStrictResponse for ListLedgers {
 }
 
 /// <p>Returns all tags for a specified Amazon QLDB resource.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListTagsForResource {
     _private: (),
 }
@@ -465,7 +465,7 @@ impl smithy_http::response::ParseStrictResponse for ListTagsForResource {
 /// <p>Creates a journal stream for a given Amazon QLDB ledger. The stream captures every
 /// document revision that is committed to the ledger's journal and delivers the data to a
 /// specified Amazon Kinesis Data Streams resource.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct StreamJournalToKinesis {
     _private: (),
 }
@@ -496,7 +496,7 @@ impl smithy_http::response::ParseStrictResponse for StreamJournalToKinesis {
 /// <p>Adds one or more tags to a specified Amazon QLDB resource.</p>
 /// <p>A resource can have up to 50 tags. If you try to create more than 50 tags for a
 /// resource, your request fails and returns an error.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct TagResource {
     _private: (),
 }
@@ -523,7 +523,7 @@ impl smithy_http::response::ParseStrictResponse for TagResource {
 
 /// <p>Removes one or more tags from a specified Amazon QLDB resource. You can specify up to 50
 /// tag keys to remove.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UntagResource {
     _private: (),
 }
@@ -549,7 +549,7 @@ impl smithy_http::response::ParseStrictResponse for UntagResource {
 }
 
 /// <p>Updates properties on a ledger.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateLedger {
     _private: (),
 }

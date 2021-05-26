@@ -38,7 +38,7 @@
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct AbortMultipartUpload {
     _private: (),
 }
@@ -171,7 +171,7 @@ impl smithy_http::response::ParseStrictResponse for AbortMultipartUpload {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CompleteMultipartUpload {
     _private: (),
 }
@@ -366,7 +366,7 @@ impl smithy_http::response::ParseStrictResponse for CompleteMultipartUpload {
 /// </ul>
 /// <p>For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjectsExamples.html">Copying
 /// Objects</a>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CopyObject {
     _private: (),
 }
@@ -500,7 +500,7 @@ impl smithy_http::response::ParseStrictResponse for CopyObject {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateBucket {
     _private: (),
 }
@@ -775,7 +775,7 @@ impl smithy_http::response::ParseStrictResponse for CreateBucket {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateMultipartUpload {
     _private: (),
 }
@@ -820,7 +820,7 @@ impl smithy_http::response::ParseStrictResponse for CreateMultipartUpload {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucket {
     _private: (),
 }
@@ -873,7 +873,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucket {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucketAnalyticsConfiguration {
     _private: (),
 }
@@ -922,7 +922,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucketAnalyticsConfigu
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucketCors {
     _private: (),
 }
@@ -971,7 +971,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucketCors {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucketEncryption {
     _private: (),
 }
@@ -1022,7 +1022,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucketEncryption {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucketIntelligentTieringConfiguration {
     _private: (),
 }
@@ -1081,7 +1081,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucketIntelligentTieri
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucketInventoryConfiguration {
     _private: (),
 }
@@ -1133,7 +1133,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucketInventoryConfigu
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucketLifecycle {
     _private: (),
 }
@@ -1195,7 +1195,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucketLifecycle {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucketMetricsConfiguration {
     _private: (),
 }
@@ -1242,7 +1242,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucketMetricsConfigura
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucketOwnershipControls {
     _private: (),
 }
@@ -1300,7 +1300,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucketOwnershipControl
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucketPolicy {
     _private: (),
 }
@@ -1350,7 +1350,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucketPolicy {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucketReplication {
     _private: (),
 }
@@ -1395,7 +1395,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucketReplication {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucketTagging {
     _private: (),
 }
@@ -1445,7 +1445,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucketTagging {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteBucketWebsite {
     _private: (),
 }
@@ -1497,7 +1497,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteBucketWebsite {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteObject {
     _private: (),
 }
@@ -1574,7 +1574,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteObject {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteObjects {
     _private: (),
 }
@@ -1621,7 +1621,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteObjects {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteObjectTagging {
     _private: (),
 }
@@ -1675,7 +1675,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteObjectTagging {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeletePublicAccessBlock {
     _private: (),
 }
@@ -1729,7 +1729,7 @@ impl smithy_http::response::ParseStrictResponse for DeletePublicAccessBlock {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketAccelerateConfiguration {
     _private: (),
 }
@@ -1772,7 +1772,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketAccelerateConfigura
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketAcl {
     _private: (),
 }
@@ -1826,7 +1826,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketAcl {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketAnalyticsConfiguration {
     _private: (),
 }
@@ -1872,7 +1872,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketAnalyticsConfigurat
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketCors {
     _private: (),
 }
@@ -1919,7 +1919,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketCors {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketEncryption {
     _private: (),
 }
@@ -1968,7 +1968,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketEncryption {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketIntelligentTieringConfiguration {
     _private: (),
 }
@@ -2027,7 +2027,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketIntelligentTieringC
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketInventoryConfiguration {
     _private: (),
 }
@@ -2109,7 +2109,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketInventoryConfigurat
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketLifecycleConfiguration {
     _private: (),
 }
@@ -2154,7 +2154,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketLifecycleConfigurat
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketLocation {
     _private: (),
 }
@@ -2195,7 +2195,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketLocation {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketLogging {
     _private: (),
 }
@@ -2255,7 +2255,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketLogging {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketMetricsConfiguration {
     _private: (),
 }
@@ -2301,7 +2301,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketMetricsConfiguratio
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketNotificationConfiguration {
     _private: (),
 }
@@ -2347,7 +2347,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketNotificationConfigu
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketOwnershipControls {
     _private: (),
 }
@@ -2398,7 +2398,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketOwnershipControls {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketPolicy {
     _private: (),
 }
@@ -2452,7 +2452,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketPolicy {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketPolicyStatus {
     _private: (),
 }
@@ -2510,7 +2510,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketPolicyStatus {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketReplication {
     _private: (),
 }
@@ -2546,7 +2546,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketReplication {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketRequestPayment {
     _private: (),
 }
@@ -2604,7 +2604,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketRequestPayment {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketTagging {
     _private: (),
 }
@@ -2653,7 +2653,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketTagging {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketVersioning {
     _private: (),
 }
@@ -2700,7 +2700,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketVersioning {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetBucketWebsite {
     _private: (),
 }
@@ -2880,7 +2880,7 @@ impl smithy_http::response::ParseStrictResponse for GetBucketWebsite {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetObject {
     _private: (),
 }
@@ -2938,7 +2938,7 @@ impl smithy_http::response::ParseHttpResponse<smithy_http::body::SdkBody> for Ge
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetObjectAcl {
     _private: (),
 }
@@ -2965,7 +2965,7 @@ impl smithy_http::response::ParseStrictResponse for GetObjectAcl {
 
 /// <p>Gets an object's current Legal Hold status. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">Locking Objects</a>.</p>
 /// <p>This action is not supported by Amazon S3 on Outposts.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetObjectLegalHold {
     _private: (),
 }
@@ -2995,7 +2995,7 @@ impl smithy_http::response::ParseStrictResponse for GetObjectLegalHold {
 /// configuration will be applied by default to every new object placed in the specified
 /// bucket. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">Locking
 /// Objects</a>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetObjectLockConfiguration {
     _private: (),
 }
@@ -3025,7 +3025,7 @@ impl smithy_http::response::ParseStrictResponse for GetObjectLockConfiguration {
 
 /// <p>Retrieves an object's retention settings. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">Locking Objects</a>.</p>
 /// <p>This action is not supported by Amazon S3 on Outposts.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetObjectRetention {
     _private: (),
 }
@@ -3075,7 +3075,7 @@ impl smithy_http::response::ParseStrictResponse for GetObjectRetention {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetObjectTagging {
     _private: (),
 }
@@ -3118,7 +3118,7 @@ impl smithy_http::response::ParseStrictResponse for GetObjectTagging {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetObjectTorrent {
     _private: (),
 }
@@ -3188,7 +3188,7 @@ impl smithy_http::response::ParseHttpResponse<smithy_http::body::SdkBody> for Ge
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetPublicAccessBlock {
     _private: (),
 }
@@ -3224,7 +3224,7 @@ impl smithy_http::response::ParseStrictResponse for GetPublicAccessBlock {
 /// <code>s3:ListBucket</code> action. The bucket owner has this permission by default and
 /// can grant this permission to others. For more information about permissions, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources">Permissions Related to Bucket Subresource Operations</a> and <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html">Managing Access Permissions to Your Amazon S3
 /// Resources</a>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct HeadBucket {
     _private: (),
 }
@@ -3354,7 +3354,7 @@ impl smithy_http::response::ParseStrictResponse for HeadBucket {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct HeadObject {
     _private: (),
 }
@@ -3415,7 +3415,7 @@ impl smithy_http::response::ParseStrictResponse for HeadObject {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListBucketAnalyticsConfigurations {
     _private: (),
 }
@@ -3466,7 +3466,7 @@ impl smithy_http::response::ParseStrictResponse for ListBucketAnalyticsConfigura
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListBucketIntelligentTieringConfigurations {
     _private: (),
 }
@@ -3534,7 +3534,7 @@ impl smithy_http::response::ParseStrictResponse for ListBucketIntelligentTiering
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListBucketInventoryConfigurations {
     _private: (),
 }
@@ -3599,7 +3599,7 @@ impl smithy_http::response::ParseStrictResponse for ListBucketInventoryConfigura
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListBucketMetricsConfigurations {
     _private: (),
 }
@@ -3628,7 +3628,7 @@ impl smithy_http::response::ParseStrictResponse for ListBucketMetricsConfigurati
 }
 
 /// <p>Returns a list of all buckets owned by the authenticated sender of the request.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListBuckets {
     _private: (),
 }
@@ -3699,7 +3699,7 @@ impl smithy_http::response::ParseStrictResponse for ListBuckets {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListMultipartUploads {
     _private: (),
 }
@@ -3761,7 +3761,7 @@ impl smithy_http::response::ParseStrictResponse for ListMultipartUploads {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListObjects {
     _private: (),
 }
@@ -3824,7 +3824,7 @@ impl smithy_http::response::ParseStrictResponse for ListObjects {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListObjectsV2 {
     _private: (),
 }
@@ -3888,7 +3888,7 @@ impl smithy_http::response::ParseStrictResponse for ListObjectsV2 {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListObjectVersions {
     _private: (),
 }
@@ -3956,7 +3956,7 @@ impl smithy_http::response::ParseStrictResponse for ListObjectVersions {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListParts {
     _private: (),
 }
@@ -4019,7 +4019,7 @@ impl smithy_http::response::ParseStrictResponse for ListParts {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketAccelerateConfiguration {
     _private: (),
 }
@@ -4230,7 +4230,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketAccelerateConfigura
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketAcl {
     _private: (),
 }
@@ -4360,7 +4360,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketAcl {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketAnalyticsConfiguration {
     _private: (),
 }
@@ -4444,7 +4444,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketAnalyticsConfigurat
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketCors {
     _private: (),
 }
@@ -4501,7 +4501,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketCors {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketEncryption {
     _private: (),
 }
@@ -4609,7 +4609,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketEncryption {
 /// </ul>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketIntelligentTieringConfiguration {
     _private: (),
 }
@@ -4740,7 +4740,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketIntelligentTieringC
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketInventoryConfiguration {
     _private: (),
 }
@@ -4847,7 +4847,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketInventoryConfigurat
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketLifecycleConfiguration {
     _private: (),
 }
@@ -4946,7 +4946,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketLifecycleConfigurat
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketLogging {
     _private: (),
 }
@@ -5019,7 +5019,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketLogging {
 /// </ul>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketMetricsConfiguration {
     _private: (),
 }
@@ -5100,7 +5100,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketMetricsConfiguratio
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketNotificationConfiguration {
     _private: (),
 }
@@ -5145,7 +5145,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketNotificationConfigu
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketOwnershipControls {
     _private: (),
 }
@@ -5201,7 +5201,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketOwnershipControls {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketPolicy {
     _private: (),
 }
@@ -5282,7 +5282,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketPolicy {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketReplication {
     _private: (),
 }
@@ -5326,7 +5326,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketReplication {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketRequestPayment {
     _private: (),
 }
@@ -5428,7 +5428,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketRequestPayment {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketTagging {
     _private: (),
 }
@@ -5497,7 +5497,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketTagging {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketVersioning {
     _private: (),
 }
@@ -5645,7 +5645,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketVersioning {
 /// <p>Amazon S3 has a limitation of 50 routing rules per website configuration. If you require more
 /// than 50 routing rules, you can use object redirect. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html">Configuring an
 /// Object Redirect</a> in the <i>Amazon S3 User Guide</i>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutBucketWebsite {
     _private: (),
 }
@@ -5744,7 +5744,7 @@ impl smithy_http::response::ParseStrictResponse for PutBucketWebsite {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutObject {
     _private: (),
 }
@@ -5942,7 +5942,7 @@ impl smithy_http::response::ParseStrictResponse for PutObject {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutObjectAcl {
     _private: (),
 }
@@ -5971,7 +5971,7 @@ impl smithy_http::response::ParseStrictResponse for PutObjectAcl {
 /// <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">Locking
 /// Objects</a>.</p>
 /// <p>This action is not supported by Amazon S3 on Outposts.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutObjectLegalHold {
     _private: (),
 }
@@ -6018,7 +6018,7 @@ impl smithy_http::response::ParseStrictResponse for PutObjectLegalHold {
 /// </li>
 /// </ul>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutObjectLockConfiguration {
     _private: (),
 }
@@ -6049,7 +6049,7 @@ impl smithy_http::response::ParseStrictResponse for PutObjectLockConfiguration {
 /// <p>Places an Object Retention configuration on an object. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">Locking Objects</a>.
 /// </p>
 /// <p>This action is not supported by Amazon S3 on Outposts.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutObjectRetention {
     _private: (),
 }
@@ -6167,7 +6167,7 @@ impl smithy_http::response::ParseStrictResponse for PutObjectRetention {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutObjectTagging {
     _private: (),
 }
@@ -6232,7 +6232,7 @@ impl smithy_http::response::ParseStrictResponse for PutObjectTagging {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutPublicAccessBlock {
     _private: (),
 }
@@ -6549,7 +6549,7 @@ impl smithy_http::response::ParseStrictResponse for PutPublicAccessBlock {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct RestoreObject {
     _private: (),
 }
@@ -6694,7 +6694,7 @@ impl smithy_http::response::ParseStrictResponse for RestoreObject {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UploadPart {
     _private: (),
 }
@@ -6888,7 +6888,7 @@ impl smithy_http::response::ParseStrictResponse for UploadPart {
 /// </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UploadPartCopy {
     _private: (),
 }
@@ -6933,7 +6933,7 @@ impl smithy_http::response::ParseStrictResponse for UploadPartCopy {
 /// <p>Example 2: PII Redaction - This Lambda function uses Amazon Comprehend, a natural language processing (NLP) service using machine learning to find insights and relationships in text. It automatically redacts personally identifiable information (PII) such as names, addresses, dates, credit card numbers, and social security numbers from documents in your Amazon S3 bucket. </p>
 /// <p>Example 3: Decompression - The Lambda function S3ObjectLambdaDecompression, is equipped to decompress objects stored in S3 in one of six compressed file formats including bzip2, gzip, snappy, zlib, zstandard and ZIP. </p>
 /// <p>For information on how to view and use these functions, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/olap-examples.html">Using AWS built Lambda functions</a> in the <i>Amazon S3 User Guide</i>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct WriteGetObjectResponse {
     _private: (),
 }

@@ -51,7 +51,7 @@
 /// <p>To list all of the versions currently associated with a secret, use <a>ListSecretVersionIds</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CancelRotateSecret {
     _private: (),
 }
@@ -222,7 +222,7 @@ impl smithy_http::response::ParseStrictResponse for CancelRotateSecret {
 /// value.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateSecret {
     _private: (),
 }
@@ -358,7 +358,7 @@ impl smithy_http::response::ParseStrictResponse for CreateSecret {
 /// <p>To list all of the currently available secrets, use <a>ListSecrets</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteResourcePolicy {
     _private: (),
 }
@@ -482,7 +482,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteResourcePolicy {
 /// use <a>RestoreSecret</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteSecret {
     _private: (),
 }
@@ -585,7 +585,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteSecret {
 /// <p>To list all of the secrets in the AWS account, use <a>ListSecrets</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeSecret {
     _private: (),
 }
@@ -659,7 +659,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeSecret {
 /// <p>secretsmanager:GetRandomPassword</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetRandomPassword {
     _private: (),
 }
@@ -757,7 +757,7 @@ impl smithy_http::response::ParseStrictResponse for GetRandomPassword {
 /// <p>To list all of the currently available secrets, use <a>ListSecrets</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetResourcePolicy {
     _private: (),
 }
@@ -856,7 +856,7 @@ impl smithy_http::response::ParseStrictResponse for GetResourcePolicy {
 /// <p>To retrieve the non-encrypted details for the secret, use <a>DescribeSecret</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetSecretValue {
     _private: (),
 }
@@ -968,7 +968,7 @@ impl smithy_http::response::ParseStrictResponse for GetSecretValue {
 /// <p>To list the versions attached to a secret, use <a>ListSecretVersionIds</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListSecrets {
     _private: (),
 }
@@ -1065,7 +1065,7 @@ impl smithy_http::response::ParseStrictResponse for ListSecrets {
 /// <p>To list the secrets in an account, use <a>ListSecrets</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListSecretVersionIds {
     _private: (),
 }
@@ -1175,7 +1175,7 @@ impl smithy_http::response::ParseStrictResponse for ListSecretVersionIds {
 /// <p>To list all of the currently available secrets, use <a>ListSecrets</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutResourcePolicy {
     _private: (),
 }
@@ -1360,7 +1360,7 @@ impl smithy_http::response::ParseStrictResponse for PutResourcePolicy {
 /// <p>To list the versions attached to a secret, use <a>ListSecretVersionIds</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutSecretValue {
     _private: (),
 }
@@ -1475,7 +1475,7 @@ impl smithy_http::response::ParseStrictResponse for PutSecretValue {
 /// <p>To delete a secret, use <a>DeleteSecret</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct RestoreSecret {
     _private: (),
 }
@@ -1612,7 +1612,7 @@ impl smithy_http::response::ParseStrictResponse for RestoreSecret {
 /// <a>UpdateSecretVersionStage</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct RotateSecret {
     _private: (),
 }
@@ -1743,7 +1743,7 @@ impl smithy_http::response::ParseStrictResponse for RotateSecret {
 /// <p>To view the list of tags attached to a secret, use <a>DescribeSecret</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct TagResource {
     _private: (),
 }
@@ -1844,7 +1844,7 @@ impl smithy_http::response::ParseStrictResponse for TagResource {
 /// <p>To view the list of tags attached to a secret, use <a>DescribeSecret</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UntagResource {
     _private: (),
 }
@@ -2001,7 +2001,7 @@ impl smithy_http::response::ParseStrictResponse for UntagResource {
 /// <p>To list the versions contained in a secret, use <a>ListSecretVersionIds</a>.</p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateSecret {
     _private: (),
 }
@@ -2150,7 +2150,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateSecret {
 /// <code>SecretVersionsToStages</code> response value. </p>
 /// </li>
 /// </ul>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateSecretVersionStage {
     _private: (),
 }
@@ -2261,7 +2261,7 @@ impl smithy_http::response::ParseStrictResponse for UpdateSecretVersionStage {
 /// with white space and line breaks for better readability. Submit your input as a single line
 /// JSON string. A resource-based
 /// policy is optional.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ValidateResourcePolicy {
     _private: (),
 }

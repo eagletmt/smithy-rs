@@ -8,7 +8,7 @@
 /// <p>
 /// <a>AddTagsToStream</a> has a limit of five transactions per second per
 /// account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct AddTagsToStream {
     _private: (),
 }
@@ -119,7 +119,7 @@ impl smithy_http::response::ParseStrictResponse for AddTagsToStream {
 /// <p>
 /// <a>CreateStream</a> has a limit of five transactions per second per
 /// account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct CreateStream {
     _private: (),
 }
@@ -190,7 +190,7 @@ impl smithy_http::response::ParseStrictResponse for CreateStream {
 /// <p>This operation may result in lost data. For example, if the stream's retention
 /// period is 48 hours and is decreased to 24 hours, any data already in the stream that is
 /// older than 24 hours is inaccessible.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DecreaseStreamRetentionPeriod {
     _private: (),
 }
@@ -280,7 +280,7 @@ impl smithy_http::response::ParseStrictResponse for DecreaseStreamRetentionPerio
 /// <p>
 /// <a>DeleteStream</a> has a limit of five transactions per second per
 /// account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeleteStream {
     _private: (),
 }
@@ -353,7 +353,7 @@ impl smithy_http::response::ParseStrictResponse for DeleteStream {
 /// all the consumers that are currently registered with a given data stream. The
 /// description of a consumer contains its name and ARN.</p>
 /// <p>This operation has a limit of five transactions per second per stream.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DeregisterStreamConsumer {
     _private: (),
 }
@@ -439,7 +439,7 @@ impl smithy_http::response::ParseStrictResponse for DeregisterStreamConsumer {
 /// <p>If you update your account limits, the old limits might be returned for a few
 /// minutes.</p>
 /// <p>This operation has a limit of one transaction per second per account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeLimits {
     _private: (),
 }
@@ -508,7 +508,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeLimits {
 /// shards in chronological order, use the ID of the parent shard to track the lineage to
 /// the oldest shard.</p>
 /// <p>This operation has a limit of 10 transactions per second per account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeStream {
     _private: (),
 }
@@ -577,7 +577,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeStream {
 /// operation to get a list of the descriptions of all the consumers that are currently
 /// registered with a given data stream.</p>
 /// <p>This operation has a limit of 20 transactions per second per stream.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeStreamConsumer {
     _private: (),
 }
@@ -671,7 +671,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeStreamConsumer {
 /// <p>
 /// <a>DescribeStreamSummary</a> has a limit of 20 transactions per second
 /// per account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DescribeStreamSummary {
     _private: (),
 }
@@ -743,7 +743,7 @@ impl smithy_http::response::ParseStrictResponse for DescribeStreamSummary {
 }
 
 /// <p>Disables enhanced monitoring.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct DisableEnhancedMonitoring {
     _private: (),
 }
@@ -841,7 +841,7 @@ impl smithy_http::response::ParseStrictResponse for DisableEnhancedMonitoring {
 }
 
 /// <p>Enables enhanced Kinesis data stream monitoring for shard-level metrics.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct EnableEnhancedMonitoring {
     _private: (),
 }
@@ -983,7 +983,7 @@ impl smithy_http::response::ParseStrictResponse for EnableEnhancedMonitoring {
 /// increasing. For example, records in a shard or across a stream might have time stamps
 /// that are out of order.</p>
 /// <p>This operation has a limit of five transactions per second per shard.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetRecords {
     _private: (),
 }
@@ -1135,7 +1135,7 @@ impl smithy_http::response::ParseStrictResponse for GetRecords {
 /// <p>
 /// <a>GetShardIterator</a> has a limit of five transactions per second per
 /// account per open shard.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct GetShardIterator {
     _private: (),
 }
@@ -1206,7 +1206,7 @@ impl smithy_http::response::ParseStrictResponse for GetShardIterator {
 /// accessible after the operation has been called. For example, if a stream's retention
 /// period is set to 24 hours and is increased to 168 hours, any data that is older than 24
 /// hours remains inaccessible to consumer applications.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct IncreaseStreamRetentionPeriod {
     _private: (),
 }
@@ -1286,7 +1286,7 @@ impl smithy_http::response::ParseStrictResponse for IncreaseStreamRetentionPerio
 /// <a href="https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html">Controlling Access to Amazon Kinesis Data Streams Resources Using
 /// IAM</a>.</p>
 /// </important>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListShards {
     _private: (),
 }
@@ -1370,7 +1370,7 @@ impl smithy_http::response::ParseStrictResponse for ListShards {
 /// <p>Lists the consumers registered to receive data from a stream using enhanced fan-out,
 /// and provides information about each consumer.</p>
 /// <p>This operation has a limit of 5 transactions per second per stream.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListStreamConsumers {
     _private: (),
 }
@@ -1478,7 +1478,7 @@ impl smithy_http::response::ParseStrictResponse for ListStreamConsumers {
 /// <p>
 /// <a>ListStreams</a> has a limit of five transactions per second per
 /// account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListStreams {
     _private: (),
 }
@@ -1534,7 +1534,7 @@ impl smithy_http::response::ParseStrictResponse for ListStreams {
 
 /// <p>Lists the tags for the specified Kinesis data stream. This operation has a limit of
 /// five transactions per second per account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct ListTagsForStream {
     _private: (),
 }
@@ -1641,7 +1641,7 @@ impl smithy_http::response::ParseStrictResponse for ListTagsForStream {
 /// <p>
 /// <code>MergeShards</code> has a limit of five transactions per second per
 /// account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct MergeShards {
     _private: (),
 }
@@ -1749,7 +1749,7 @@ impl smithy_http::response::ParseStrictResponse for MergeShards {
 /// throws <code>ProvisionedThroughputExceededException</code>. </p>
 /// <p>By default, data records are accessible for 24 hours from the time that they are
 /// added to a stream. You can use <a>IncreaseStreamRetentionPeriod</a> or <a>DecreaseStreamRetentionPeriod</a> to modify this retention period.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutRecord {
     _private: (),
 }
@@ -1916,7 +1916,7 @@ impl smithy_http::response::ParseStrictResponse for PutRecord {
 /// </important>
 /// <p>By default, data records are accessible for 24 hours from the time that they are
 /// added to a stream. You can use <a>IncreaseStreamRetentionPeriod</a> or <a>DecreaseStreamRetentionPeriod</a> to modify this retention period.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct PutRecords {
     _private: (),
 }
@@ -2041,7 +2041,7 @@ impl smithy_http::response::ParseStrictResponse for PutRecords {
 /// more than 5 consumers in a <code>CREATING</code> status at the same time. Registering a
 /// 6th consumer while there are 5 in a <code>CREATING</code> status results in a
 /// <code>LimitExceededException</code>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct RegisterStreamConsumer {
     _private: (),
 }
@@ -2142,7 +2142,7 @@ impl smithy_http::response::ParseStrictResponse for RegisterStreamConsumer {
 /// <p>
 /// <a>RemoveTagsFromStream</a> has a limit of five transactions per second per
 /// account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct RemoveTagsFromStream {
     _private: (),
 }
@@ -2262,7 +2262,7 @@ impl smithy_http::response::ParseStrictResponse for RemoveTagsFromStream {
 /// <p>
 /// <code>SplitShard</code> has a limit of five transactions per second per
 /// account.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct SplitShard {
     _private: (),
 }
@@ -2350,7 +2350,7 @@ impl smithy_http::response::ParseStrictResponse for SplitShard {
 /// status before all records written to the stream are encrypted. After you enable
 /// encryption, you can verify that encryption is applied by inspecting the API response
 /// from <code>PutRecord</code> or <code>PutRecords</code>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct StartStreamEncryption {
     _private: (),
 }
@@ -2498,7 +2498,7 @@ impl smithy_http::response::ParseStrictResponse for StartStreamEncryption {
 /// After you disabled encryption, you can verify that encryption is not applied by
 /// inspecting the API response from <code>PutRecord</code> or
 /// <code>PutRecords</code>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct StopStreamEncryption {
     _private: (),
 }
@@ -2620,7 +2620,7 @@ impl smithy_http::response::ParseStrictResponse for StopStreamEncryption {
 /// <i>Amazon Kinesis Data Streams Developer Guide</i>. To request an
 /// increase in the call rate limit, the shard limit for this API, or your overall shard
 /// limit, use the <a href="https://console.aws.amazon.com/support/v1#/case/create?issueType=service-limit-increase&limitType=service-code-kinesis">limits form</a>.</p>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct UpdateShardCount {
     _private: (),
 }

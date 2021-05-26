@@ -25002,6 +25002,29 @@ impl WriteGetObjectResponseInput {
             let mut request =
                 smithy_http::operation::Request::new(request.map(smithy_http::body::SdkBody::from));
 
+            let endpoint_prefix = {
+                let request_route = self.request_route.as_deref().unwrap_or_default();
+
+                if request_route.is_empty() {
+                    return Err(smithy_http::operation::BuildError::InvalidField { field: "request_route", details: "request_route was unset or empty but must be set as part of the endpoint prefix".to_string() }.into());
+                }
+
+                smithy_http::endpoint::EndpointPrefix::new(format!(
+                    "{RequestRoute}.",
+                    RequestRoute = request_route
+                ))
+            };
+            match endpoint_prefix {
+                Ok(prefix) => {
+                    request.config_mut().insert(prefix);
+                }
+                Err(err) => {
+                    return Err(smithy_http::operation::BuildError::SerializationError(
+                        err.into(),
+                    ))
+                }
+            }
+
             request
                 .config_mut()
                 .insert(aws_http::user_agent::AwsUserAgent::new_from_environment(

@@ -20,7 +20,7 @@
 /// </li>
 /// </ul>
 /// </note>
-#[derive(std::default::Default, std::clone::Clone)]
+#[derive(std::default::Default, std::clone::Clone, std::fmt::Debug)]
 pub struct SendCommand {
     _private: (),
 }
