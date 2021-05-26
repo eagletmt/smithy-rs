@@ -25,43 +25,7 @@ dependencies {
 data class CodegenTest(val service: String, val module: String, val extraConfig: String? = null)
 
 val CodegenTests = listOf(
-    CodegenTest("com.amazonaws.dynamodb#DynamoDB_20120810", "dynamo"),
-    CodegenTest("com.amazonaws.ebs#Ebs", "ebs"),
-    CodegenTest("aws.protocoltests.json10#JsonRpc10", "json_rpc10"),
-    CodegenTest(
-        "aws.protocoltests.json#JsonProtocol",
-        "json_rpc11"
-    ),
-    CodegenTest(
-        "aws.protocoltests.restjson#RestJson",
-        "rest_json"
-    ),
-    CodegenTest(
-        "aws.protocoltests.restjson#RestJsonExtras",
-        "rest_json_extas"
-    ),
-    CodegenTest(
-        "aws.protocoltests.restxml#RestXml",
-        "rest_xml"
-    ),
-    CodegenTest(
-        "aws.protocoltests.restxml.xmlns#RestXmlWithNamespace",
-        "rest_xml_namespace"
-    ),
-    CodegenTest(
-        "aws.protocoltests.restxml#RestXmlExtras",
-        "rest_xml_extras"
-    ),
-    CodegenTest(
-        "aws.protocoltests.restxmlunwrapped#RestXmlExtrasUnwrappedErrors",
-        "rest_xml_extras_unwrapped"
-    ),
-    CodegenTest(
-        "crate#Config",
-        "naming_test", """
-            , "codegen": { "renameErrors": false }
-        """.trimIndent()
-    )
+    CodegenTest("com.amazonaws.ffi#FFIService", "ffi")
 )
 
 fun generateSmithyBuild(tests: List<CodegenTest>): String {
