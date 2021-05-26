@@ -71,7 +71,7 @@ fun generateSmithyBuild(tests: List<CodegenTest>): String {
                 "plugins": {
                     "rust-codegen": {
                       "runtimeConfig": {
-                        "relativePath": "${rootProject.projectDir.absolutePath}/rust-runtime"
+                        "version": "1.0"
                       },
                       "service": "${it.service}",
                       "module": "${it.module}",

@@ -8,4 +8,5 @@
 //! In the future, additional signature algorithms can be enabled as Cargo Features.
 
 pub mod middleware;
+mod query_writer;
 pub mod signer;

@@ -4,6 +4,7 @@
  */
 
 pub mod conn;
+mod presign;
 mod retry;
 #[cfg(feature = "test-util")]
 pub mod test_connection;
@@ -120,7 +121,7 @@ where
         Retry: ClassifyResponse<SdkSuccess<R>, SdkError<E>>,
     {
         let signer = MapRequestLayer::for_mapper(SigV4SigningStage::new(SigV4Signer::new()));
-        let endpoint_resolver = MapRequestLayer::for_mapper(AwsEndpointStage);
+        let endpoint_resolver = MapRequestLayer::for_mapper(AwsEndpointStage::new());
         let user_agent = MapRequestLayer::for_mapper(UserAgentStage::new());
         let inner = self.inner.clone();
         let mut svc = ServiceBuilder::new()
@@ -134,6 +135,13 @@ where
             .layer(DispatchLayer::new())
             .service(inner);
         svc.ready().await?.call(input).await
+    }
+
+    pub async fn presign<O, Retry>(
+        &self,
+        input: Operation<O, Retry>,
+    ) -> Result<http::Uri, BoxError> {
+        let ep = AwsEndpointStage;
     }
 }
 

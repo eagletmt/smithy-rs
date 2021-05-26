@@ -134,7 +134,7 @@ mod test {
             })
             .expect("succeeds");
 
-        let endpoint = AwsEndpointStage;
+        let endpoint = AwsEndpointStage::new();
         let signer = SigV4SigningStage::new(SigV4Signer::new());
         let mut req = endpoint.apply(req).expect("add endpoint should succeed");
         let mut errs = vec![];

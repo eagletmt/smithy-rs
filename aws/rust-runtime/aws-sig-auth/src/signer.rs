@@ -3,11 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
+use crate::query_writer::QueryWriter;
 use aws_auth::Credentials;
 use aws_sigv4_poc::{SignableBody, SignedBodyHeaderType, SigningSettings, UriEncoding};
 use aws_types::region::SigningRegion;
 use aws_types::SigningService;
 use http::header::HeaderName;
+use http::HeaderValue;
 use smithy_http::body::SdkBody;
 use std::error::Error;
 use std::time::SystemTime;
@@ -93,6 +95,27 @@ impl SigV4Signer {
         SigV4Signer { _private: () }
     }
 
+    pub fn presigned_url(
+        &self,
+        operation_config: &OperationSigningConfig,
+        request_config: &RequestConfig<'_>,
+        credentials: &Credentials,
+        request: &http::Request<SdkBody>,
+    ) -> Result<http::Uri, SigningError> {
+        let mut query_writer = QueryWriter::new(request.uri());
+        for (key, value) in
+            Self::signature_components(operation_config, request_config, credentials, request)?
+        {
+            query_writer.insert(
+                key,
+                value
+                    .to_str()
+                    .expect("signer should produce headers that are strings"),
+            )
+        }
+        Ok(query_writer.build())
+    }
+
     /// Sign a request using the SigV4 Protocol
     ///
     /// Although the direct signing implementation MAY be used directly. End users will not typically
@@ -104,6 +127,28 @@ impl SigV4Signer {
         credentials: &Credentials,
         request: &mut http::Request<SdkBody>,
     ) -> Result<(), SigningError> {
+        // A body that is already in memory can be signed directly. A  body that is not in memory
+        // (any sort of streaming body) will be signed via UNSIGNED-PAYLOAD.
+        // The final enhancement that will come a bit later is writing a `SignableBody::Precomputed`
+        // into the property bag when we have a sha 256 middleware that can compute a streaming checksum
+        // for replayable streams but currently even replayable streams will result in `UNSIGNED-PAYLOAD`
+        for (key, value) in
+            Self::signature_components(operation_config, request_config, credentials, request)?
+        {
+            request
+                .headers_mut()
+                .append(HeaderName::from_static(key), value);
+        }
+
+        Ok(())
+    }
+
+    fn signature_components(
+        operation_config: &OperationSigningConfig,
+        request_config: &RequestConfig<'_>,
+        credentials: &Credentials,
+        request: &http::Request<SdkBody>,
+    ) -> Result<impl Iterator<Item = (&'static str, HeaderValue)>, SigningError> {
         let mut settings = SigningSettings::default();
         settings.uri_encoding = if operation_config.signing_options.double_uri_encode {
             UriEncoding::Double
@@ -124,23 +169,50 @@ impl SigV4Signer {
             date: request_config.request_ts,
             settings,
         };
-
-        // A body that is already in memory can be signed directly. A  body that is not in memory
-        // (any sort of streaming body) will be signed via UNSIGNED-PAYLOAD.
-        // The final enhancement that will come a bit later is writing a `SignableBody::Precomputed`
-        // into the property bag when we have a sha 256 middleware that can compute a streaming checksum
-        // for replayable streams but currently even replayable streams will result in `UNSIGNED-PAYLOAD`
         let signable_body = request
             .body()
             .bytes()
             .map(SignableBody::Bytes)
             .unwrap_or(SignableBody::UnsignedPayload);
-        for (key, value) in aws_sigv4_poc::sign_core(request, signable_body, &sigv4_config)? {
-            request
-                .headers_mut()
-                .append(HeaderName::from_static(key), value);
-        }
+        aws_sigv4_poc::sign_core(request, signable_body, &sigv4_config)
+    }
+}
 
-        Ok(())
+#[cfg(test)]
+mod test {
+    use crate::signer::{OperationSigningConfig, RequestConfig, SigV4Signer};
+    use aws_auth::Credentials;
+    use aws_types::region::{Region, SigningRegion};
+    use aws_types::SigningService;
+    use http::header::HOST;
+    use http::{Method, Uri};
+    use smithy_http::body::SdkBody;
+    use std::time::{Duration, UNIX_EPOCH};
+
+    #[test]
+    fn presign_url() {
+        let operation_config = OperationSigningConfig::default_config();
+        let signing_region = SigningRegion::from(Region::new("us-east-2"));
+        let signing_service = SigningService::from_static("s3");
+        let request_config = RequestConfig {
+            request_ts: UNIX_EPOCH + Duration::from_secs(123456),
+            region: &signing_region,
+            service: &signing_service,
+        };
+
+        let signer = SigV4Signer::new();
+        let creds = Credentials::from_keys("AKIDEXAMPLE", "aasdfadsfSECRET", None);
+        let request = http::Request::builder()
+            .method(Method::GET)
+            .uri(Uri::from_static(
+                "https://iam.amazonaws.com/?Action=ListUsers&Version=2010-05-08",
+            ))
+            .header(HOST, "iam.amazonaws.com")
+            .body(SdkBody::empty())
+            .unwrap();
+        let presigned_uri = signer
+            .presigned_url(&operation_config, &request_config, &creds, &request)
+            .expect("failed to generate presigned uri");
+        assert_eq!(presigned_uri, Uri::from_static("https://iam.amazonaws.com?Action=ListUsers&Version=2010-05-08&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIDEXAMPLE%2F20150830%2Fus-east-1%2Fiam%2Faws4_request&X-Amz-Date=20150830T123600Z&X-Amz-Expires=60&X-Amz-SignedHeaders=content-type%3Bhost&X-Amz-Signature=37ac2f4fde00b0ac9bd9eadeb459b1bbee224158d66e7ae5fcadb70b2d181d02"))
     }
 }
