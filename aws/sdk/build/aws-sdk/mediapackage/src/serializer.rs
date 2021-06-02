@@ -417,6 +417,7 @@ pub struct CreateOriginEndpointOutputBody {
     /// Maximum duration (seconds) of content to retain for startover playback.
     /// If not specified, startover playback will be disabled for the OriginEndpoint.
     #[serde(rename = "startoverWindowSeconds")]
+    #[serde(default)]
     pub startover_window_seconds: i32,
     /// A collection of tags associated with a resource
     #[serde(rename = "tags")]
@@ -426,6 +427,7 @@ pub struct CreateOriginEndpointOutputBody {
     /// Amount of delay (seconds) to enforce on the playback of live content.
     /// If not specified, there will be no time delay in effect for the OriginEndpoint.
     #[serde(rename = "timeDelaySeconds")]
+    #[serde(default)]
     pub time_delay_seconds: i32,
     /// The URL of the packaged OriginEndpoint for consumption.
     #[serde(rename = "url")]
@@ -618,6 +620,7 @@ pub struct DescribeOriginEndpointOutputBody {
     /// Maximum duration (seconds) of content to retain for startover playback.
     /// If not specified, startover playback will be disabled for the OriginEndpoint.
     #[serde(rename = "startoverWindowSeconds")]
+    #[serde(default)]
     pub startover_window_seconds: i32,
     /// A collection of tags associated with a resource
     #[serde(rename = "tags")]
@@ -627,6 +630,7 @@ pub struct DescribeOriginEndpointOutputBody {
     /// Amount of delay (seconds) to enforce on the playback of live content.
     /// If not specified, there will be no time delay in effect for the OriginEndpoint.
     #[serde(rename = "timeDelaySeconds")]
+    #[serde(default)]
     pub time_delay_seconds: i32,
     /// The URL of the packaged OriginEndpoint for consumption.
     #[serde(rename = "url")]
@@ -932,6 +936,7 @@ pub struct UpdateOriginEndpointOutputBody {
     /// Maximum duration (seconds) of content to retain for startover playback.
     /// If not specified, startover playback will be disabled for the OriginEndpoint.
     #[serde(rename = "startoverWindowSeconds")]
+    #[serde(default)]
     pub startover_window_seconds: i32,
     /// A collection of tags associated with a resource
     #[serde(rename = "tags")]
@@ -941,6 +946,7 @@ pub struct UpdateOriginEndpointOutputBody {
     /// Amount of delay (seconds) to enforce on the playback of live content.
     /// If not specified, there will be no time delay in effect for the OriginEndpoint.
     #[serde(rename = "timeDelaySeconds")]
+    #[serde(default)]
     pub time_delay_seconds: i32,
     /// The URL of the packaged OriginEndpoint for consumption.
     #[serde(rename = "url")]

@@ -9,6 +9,7 @@ pub struct Reservation {
     pub arn: std::option::Option<std::string::String>,
     /// Number of reserved resources
     #[serde(rename = "count")]
+    #[serde(default)]
     pub count: i32,
     /// Currency code for usagePrice and fixedPrice in ISO-4217 format, e.g. 'USD'
     #[serde(rename = "currencyCode")]
@@ -16,6 +17,7 @@ pub struct Reservation {
     pub currency_code: std::option::Option<std::string::String>,
     /// Lease duration, e.g. '12'
     #[serde(rename = "duration")]
+    #[serde(default)]
     pub duration: i32,
     /// Units for duration, e.g. 'MONTHS'
     #[serde(rename = "durationUnits")]
@@ -27,6 +29,7 @@ pub struct Reservation {
     pub end: std::option::Option<std::string::String>,
     /// One-time charge for each reserved resource, e.g. '0.0' for a NO_UPFRONT offering
     #[serde(rename = "fixedPrice")]
+    #[serde(default)]
     pub fixed_price: f64,
     /// User specified reservation name
     #[serde(rename = "name")]
@@ -71,6 +74,7 @@ pub struct Reservation {
         std::option::Option<std::collections::HashMap<std::string::String, std::string::String>>,
     /// Recurring usage charge for each reserved resource, e.g. '157.0'
     #[serde(rename = "usagePrice")]
+    #[serde(default)]
     pub usage_price: f64,
 }
 impl std::fmt::Debug for Reservation {
@@ -1464,12 +1468,15 @@ pub struct MultiplexProgramPacketIdentifiersMap {
     pub dvb_sub_pids: std::option::Option<std::vec::Vec<i32>>,
     /// Placeholder documentation for __integer
     #[serde(rename = "dvbTeletextPid")]
+    #[serde(default)]
     pub dvb_teletext_pid: i32,
     /// Placeholder documentation for __integer
     #[serde(rename = "etvPlatformPid")]
+    #[serde(default)]
     pub etv_platform_pid: i32,
     /// Placeholder documentation for __integer
     #[serde(rename = "etvSignalPid")]
+    #[serde(default)]
     pub etv_signal_pid: i32,
     /// Placeholder documentation for __listOf__integer
     #[serde(rename = "klvDataPids")]
@@ -1477,12 +1484,15 @@ pub struct MultiplexProgramPacketIdentifiersMap {
     pub klv_data_pids: std::option::Option<std::vec::Vec<i32>>,
     /// Placeholder documentation for __integer
     #[serde(rename = "pcrPid")]
+    #[serde(default)]
     pub pcr_pid: i32,
     /// Placeholder documentation for __integer
     #[serde(rename = "pmtPid")]
+    #[serde(default)]
     pub pmt_pid: i32,
     /// Placeholder documentation for __integer
     #[serde(rename = "privateMetadataPid")]
+    #[serde(default)]
     pub private_metadata_pid: i32,
     /// Placeholder documentation for __listOf__integer
     #[serde(rename = "scte27Pids")]
@@ -1490,12 +1500,15 @@ pub struct MultiplexProgramPacketIdentifiersMap {
     pub scte27_pids: std::option::Option<std::vec::Vec<i32>>,
     /// Placeholder documentation for __integer
     #[serde(rename = "scte35Pid")]
+    #[serde(default)]
     pub scte35_pid: i32,
     /// Placeholder documentation for __integer
     #[serde(rename = "timedMetadataPid")]
+    #[serde(default)]
     pub timed_metadata_pid: i32,
     /// Placeholder documentation for __integer
     #[serde(rename = "videoPid")]
+    #[serde(default)]
     pub video_pid: i32,
 }
 impl std::fmt::Debug for MultiplexProgramPacketIdentifiersMap {
@@ -1696,6 +1709,7 @@ pub struct MultiplexProgramSettings {
     pub preferred_channel_pipeline: std::option::Option<crate::model::PreferredChannelPipeline>,
     /// Unique program number.
     #[serde(rename = "programNumber")]
+    #[serde(default)]
     pub program_number: i32,
     /// Transport stream service descriptor configuration for the Multiplex program.
     #[serde(rename = "serviceDescriptor")]
@@ -1809,6 +1823,7 @@ pub struct MultiplexVideoSettings {
     /// The constant bitrate configuration for the video encode.
     /// When this field is defined, StatmuxSettings must be undefined.
     #[serde(rename = "constantBitrate")]
+    #[serde(default)]
     pub constant_bitrate: i32,
     /// Statmux rate control settings.
     /// When this field is defined, ConstantBitrate must be undefined.
@@ -1883,12 +1898,15 @@ impl MultiplexVideoSettings {
 pub struct MultiplexStatmuxVideoSettings {
     /// Maximum statmux bitrate.
     #[serde(rename = "maximumBitrate")]
+    #[serde(default)]
     pub maximum_bitrate: i32,
     /// Minimum statmux bitrate.
     #[serde(rename = "minimumBitrate")]
+    #[serde(default)]
     pub minimum_bitrate: i32,
     /// The purpose of the priority is to use a combination of the\nmultiplex rate control algorithm and the QVBR capability of the\nencoder to prioritize the video quality of some channels in a\nmultiplex over others.  Channels that have a higher priority will\nget higher video quality at the expense of the video quality of\nother channels in the multiplex with lower priority.
     #[serde(rename = "priority")]
+    #[serde(default)]
     pub priority: i32,
 }
 impl std::fmt::Debug for MultiplexStatmuxVideoSettings {
@@ -2113,9 +2131,11 @@ pub struct Multiplex {
     pub name: std::option::Option<std::string::String>,
     /// The number of currently healthy pipelines.
     #[serde(rename = "pipelinesRunningCount")]
+    #[serde(default)]
     pub pipelines_running_count: i32,
     /// The number of programs in the multiplex.
     #[serde(rename = "programCount")]
+    #[serde(default)]
     pub program_count: i32,
     /// The current state of the multiplex.
     #[serde(rename = "state")]
@@ -2385,15 +2405,19 @@ impl<'de> serde::Deserialize<'de> for MultiplexState {
 pub struct MultiplexSettings {
     /// Maximum video buffer delay in milliseconds.
     #[serde(rename = "maximumVideoBufferDelayMilliseconds")]
+    #[serde(default)]
     pub maximum_video_buffer_delay_milliseconds: i32,
     /// Transport stream bit rate.
     #[serde(rename = "transportStreamBitrate")]
+    #[serde(default)]
     pub transport_stream_bitrate: i32,
     /// Transport stream ID.
     #[serde(rename = "transportStreamId")]
+    #[serde(default)]
     pub transport_stream_id: i32,
     /// Transport stream reserved bit rate.
     #[serde(rename = "transportStreamReservedBitrate")]
+    #[serde(default)]
     pub transport_stream_reserved_bitrate: i32,
 }
 impl std::fmt::Debug for MultiplexSettings {
@@ -2919,12 +2943,15 @@ pub struct InputDeviceUhdSettings {
     pub device_state: std::option::Option<crate::model::InputDeviceState>,
     /// The frame rate of the video source.
     #[serde(rename = "framerate")]
+    #[serde(default)]
     pub framerate: f64,
     /// The height of the video source, in pixels.
     #[serde(rename = "height")]
+    #[serde(default)]
     pub height: i32,
     /// The current maximum bitrate for ingesting this source, in bits per second. You can specify this maximum.
     #[serde(rename = "maxBitrate")]
+    #[serde(default)]
     pub max_bitrate: i32,
     /// The scan type of the video source.
     #[serde(rename = "scanType")]
@@ -2932,6 +2959,7 @@ pub struct InputDeviceUhdSettings {
     pub scan_type: std::option::Option<crate::model::InputDeviceScanType>,
     /// The width of the video source, in pixels.
     #[serde(rename = "width")]
+    #[serde(default)]
     pub width: i32,
 }
 impl std::fmt::Debug for InputDeviceUhdSettings {
@@ -3544,12 +3572,15 @@ pub struct InputDeviceHdSettings {
     pub device_state: std::option::Option<crate::model::InputDeviceState>,
     /// The frame rate of the video source.
     #[serde(rename = "framerate")]
+    #[serde(default)]
     pub framerate: f64,
     /// The height of the video source, in pixels.
     #[serde(rename = "height")]
+    #[serde(default)]
     pub height: i32,
     /// The current maximum bitrate for ingesting this source, in bits per second. You can specify this maximum.
     #[serde(rename = "maxBitrate")]
+    #[serde(default)]
     pub max_bitrate: i32,
     /// The scan type of the video source.
     #[serde(rename = "scanType")]
@@ -3557,6 +3588,7 @@ pub struct InputDeviceHdSettings {
     pub scan_type: std::option::Option<crate::model::InputDeviceScanType>,
     /// The width of the video source, in pixels.
     #[serde(rename = "width")]
+    #[serde(default)]
     pub width: i32,
 }
 impl std::fmt::Debug for InputDeviceHdSettings {
@@ -3873,6 +3905,7 @@ pub struct InputDeviceConfigurableSettings {
     pub configured_input: std::option::Option<crate::model::InputDeviceConfiguredInput>,
     /// The maximum bitrate in bits per second. Set a value here to throttle the bitrate of the source video.
     #[serde(rename = "maxBitrate")]
+    #[serde(default)]
     pub max_bitrate: i32,
 }
 impl std::fmt::Debug for InputDeviceConfigurableSettings {
@@ -5171,6 +5204,7 @@ pub struct Channel {
     pub pipeline_details: std::option::Option<std::vec::Vec<crate::model::PipelineDetail>>,
     /// The number of currently healthy pipelines.
     #[serde(rename = "pipelinesRunningCount")]
+    #[serde(default)]
     pub pipelines_running_count: i32,
     /// The Amazon Resource Name (ARN) of the role assumed when running the Channel.
     #[serde(rename = "roleArn")]
@@ -6280,6 +6314,7 @@ pub struct InputSettings {
     pub denoise_filter: std::option::Option<crate::model::InputDenoiseFilter>,
     /// Adjusts the magnitude of filtering from 1 (minimal) to 5 (strongest).
     #[serde(rename = "filterStrength")]
+    #[serde(default)]
     pub filter_strength: i32,
     /// Turns on the filter for this input. MPEG-2 inputs have the deblocking filter enabled by default.
     /// 1) auto - filtering will be applied depending on input type/quality
@@ -6692,6 +6727,7 @@ impl VideoSelectorSettings {
 pub struct VideoSelectorProgramId {
     /// Selects a specific program from within a multi-program transport stream. If the program doesn't exist, the first program within the transport stream will be selected by default.
     #[serde(rename = "programId")]
+    #[serde(default)]
     pub program_id: i32,
 }
 impl std::fmt::Debug for VideoSelectorProgramId {
@@ -6740,6 +6776,7 @@ impl VideoSelectorProgramId {
 pub struct VideoSelectorPid {
     /// Selects a specific PID from within a video source.
     #[serde(rename = "pid")]
+    #[serde(default)]
     pub pid: i32,
 }
 impl std::fmt::Debug for VideoSelectorPid {
@@ -6898,11 +6935,13 @@ pub struct Hdr10Settings {
     /// An integer metadata value defining the maximum light level, in nits,
     /// of any single pixel within an encoded HDR video stream or file.
     #[serde(rename = "maxCll")]
+    #[serde(default)]
     pub max_cll: i32,
     /// Maximum Frame Average Light Level
     /// An integer metadata value defining the maximum average light level, in nits,
     /// for any single frame within an encoded HDR video stream or file.
     #[serde(rename = "maxFall")]
+    #[serde(default)]
     pub max_fall: i32,
 }
 impl std::fmt::Debug for Hdr10Settings {
@@ -7279,15 +7318,19 @@ impl<'de> serde::Deserialize<'de> for NetworkInputServerValidation {
 pub struct HlsInputSettings {
     /// When specified the HLS stream with the m3u8 BANDWIDTH that most closely matches this value will be chosen, otherwise the highest bandwidth stream in the m3u8 will be chosen.  The bitrate is specified in bits per second, as in an HLS manifest.
     #[serde(rename = "bandwidth")]
+    #[serde(default)]
     pub bandwidth: i32,
     /// When specified, reading of the HLS input will begin this many buffer segments from the end (most recently written segment).  When not specified, the HLS input will begin with the first segment specified in the m3u8.
     #[serde(rename = "bufferSegments")]
+    #[serde(default)]
     pub buffer_segments: i32,
     /// The number of consecutive times that attempts to read a manifest or segment must fail before the input is considered unavailable.
     #[serde(rename = "retries")]
+    #[serde(default)]
     pub retries: i32,
     /// The number of seconds between retries when an attempt to read a manifest or segment fails.
     #[serde(rename = "retryInterval")]
+    #[serde(default)]
     pub retry_interval: i32,
 }
 impl std::fmt::Debug for HlsInputSettings {
@@ -7875,22 +7918,26 @@ pub struct CaptionRectangle {
     /// For height, specify the entire height of the rectangle as a percentage of the underlying frame height. For example, \"80\" means the rectangle height is 80% of the underlying frame height. The topOffset and rectangleHeight must add up to 100% or less.
     /// This field corresponds to tts:extent - Y in the TTML standard.
     #[serde(rename = "height")]
+    #[serde(default)]
     pub height: f64,
     /// Applies only if you plan to convert these source captions to EBU-TT-D or TTML in an output. (Make sure to leave the default if you don't have either of these formats in the output.) You can define a display rectangle for the captions that is smaller than the underlying video frame. You define the rectangle by specifying the position of the left edge, top edge, bottom edge, and right edge of the rectangle, all within the underlying video frame. The units for the measurements are percentages.
     /// If you specify a value for one of these fields, you must specify a value for all of them.
     /// For leftOffset, specify the position of the left edge of the rectangle, as a percentage of the underlying frame width, and relative to the left edge of the frame. For example, \"10\" means the measurement is 10% of the underlying frame width. The rectangle left edge starts at that position from the left edge of the frame.
     /// This field corresponds to tts:origin - X in the TTML standard.
     #[serde(rename = "leftOffset")]
+    #[serde(default)]
     pub left_offset: f64,
     /// See the description in leftOffset.
     /// For topOffset, specify the position of the top edge of the rectangle, as a percentage of the underlying frame height, and relative to the top edge of the frame. For example, \"10\" means the measurement is 10% of the underlying frame height. The rectangle top edge starts at that position from the top edge of the frame.
     /// This field corresponds to tts:origin - Y in the TTML standard.
     #[serde(rename = "topOffset")]
+    #[serde(default)]
     pub top_offset: f64,
     /// See the description in leftOffset.
     /// For width, specify the entire width of the rectangle as a percentage of the underlying frame width. For example, \"80\" means the rectangle width is 80% of the underlying frame width. The leftOffset and rectangleWidth must add up to 100% or less.
     /// This field corresponds to tts:extent - X in the TTML standard.
     #[serde(rename = "width")]
+    #[serde(default)]
     pub width: f64,
 }
 impl std::fmt::Debug for CaptionRectangle {
@@ -7988,6 +8035,7 @@ pub struct Scte27SourceSettings {
     /// - Omit PID and specify Language: Extracts the specified language, whichever PID that happens to be.
     /// - Omit PID and omit Language: Valid only if source is DVB-Sub that is being passed through; all languages will be passed through.
     #[serde(rename = "pid")]
+    #[serde(default)]
     pub pid: i32,
 }
 impl std::fmt::Debug for Scte27SourceSettings {
@@ -8044,6 +8092,7 @@ pub struct Scte20SourceSettings {
     pub convert608_to708: std::option::Option<crate::model::Scte20Convert608To708>,
     /// Specifies the 608/708 channel number within the video track from which to extract captions. Unused for passthrough.
     #[serde(rename = "source608ChannelNumber")]
+    #[serde(default)]
     pub source608_channel_number: i32,
 }
 impl std::fmt::Debug for Scte20SourceSettings {
@@ -8171,9 +8220,11 @@ pub struct EmbeddedSourceSettings {
     pub scte20_detection: std::option::Option<crate::model::EmbeddedScte20Detection>,
     /// Specifies the 608/708 channel number within the video track from which to extract captions. Unused for passthrough.
     #[serde(rename = "source608ChannelNumber")]
+    #[serde(default)]
     pub source608_channel_number: i32,
     /// This field is unused and deprecated.
     #[serde(rename = "source608TrackNumber")]
+    #[serde(default)]
     pub source608_track_number: i32,
 }
 impl std::fmt::Debug for EmbeddedSourceSettings {
@@ -8376,6 +8427,7 @@ impl<'de> serde::Deserialize<'de> for EmbeddedConvert608To708 {
 pub struct DvbSubSourceSettings {
     /// When using DVB-Sub with Burn-In or SMPTE-TT, use this PID for the source content. Unused for DVB-Sub passthrough. All DVB-Sub content is passed through, regardless of selectors.
     #[serde(rename = "pid")]
+    #[serde(default)]
     pub pid: i32,
 }
 impl std::fmt::Debug for DvbSubSourceSettings {
@@ -8454,6 +8506,7 @@ impl AribSourceSettings {
 pub struct AncillarySourceSettings {
     /// Specifies the number (1 to 4) of the captions channel you want to extract from the ancillary captions. If you plan to convert the ancillary captions to another format, complete this field. If you plan to choose Embedded as the captions destination in the output (to pass through all the channels in the ancillary captions), leave this field blank because MediaLive ignores the field.
     #[serde(rename = "sourceAncillaryChannelNumber")]
+    #[serde(default)]
     pub source_ancillary_channel_number: i32,
 }
 impl std::fmt::Debug for AncillarySourceSettings {
@@ -8722,6 +8775,7 @@ impl AudioTrackSelection {
 pub struct AudioTrack {
     /// 1-based integer value that maps to a specific audio track
     #[serde(rename = "track")]
+    #[serde(default)]
     pub track: i32,
 }
 impl std::fmt::Debug for AudioTrack {
@@ -8770,6 +8824,7 @@ impl AudioTrack {
 pub struct AudioPidSelection {
     /// Selects a specific PID from within a source.
     #[serde(rename = "pid")]
+    #[serde(default)]
     pub pid: i32,
 }
 impl std::fmt::Debug for AudioPidSelection {
@@ -8946,6 +9001,7 @@ impl<'de> serde::Deserialize<'de> for AudioLanguageSelectionPolicy {
 pub struct AutomaticInputFailoverSettings {
     /// This clear time defines the requirement a recovered input must meet to be considered healthy. The input must have no failover conditions for this length of time. Enter a time in milliseconds. This value is particularly important if the input_preference for the failover pair is set to PRIMARY_INPUT_PREFERRED, because after this time, MediaLive will switch back to the primary input.
     #[serde(rename = "errorClearTimeMsec")]
+    #[serde(default)]
     pub error_clear_time_msec: i32,
     /// A list of failover conditions. If any of these conditions occur, MediaLive will perform a failover to the other input.
     #[serde(rename = "failoverConditions")]
@@ -9272,9 +9328,11 @@ impl FailoverConditionSettings {
 pub struct VideoBlackFailoverSettings {
     /// A value used in calculating the threshold below which MediaLive considers a pixel to be 'black'. For the input to be considered black, every pixel in a frame must be below this threshold. The threshold is calculated as a percentage (expressed as a decimal) of white. Therefore .1 means 10% white (or 90% black). Note how the formula works for any color depth. For example, if you set this field to 0.1 in 10-bit color depth: (1023*0.1=102.3), which means a pixel value of 102 or less is 'black'. If you set this field to .1 in an 8-bit color depth: (255*0.1=25.5), which means a pixel value of 25 or less is 'black'. The range is 0.0 to 1.0, with any number of decimal places.
     #[serde(rename = "blackDetectThreshold")]
+    #[serde(default)]
     pub black_detect_threshold: f64,
     /// The amount of time (in milliseconds) that the active input must be black before automatic input failover occurs.
     #[serde(rename = "videoBlackThresholdMsec")]
+    #[serde(default)]
     pub video_black_threshold_msec: i32,
 }
 impl std::fmt::Debug for VideoBlackFailoverSettings {
@@ -9338,6 +9396,7 @@ impl VideoBlackFailoverSettings {
 pub struct InputLossFailoverSettings {
     /// The amount of time (in milliseconds) that no input is detected. After that time, an input failover will occur.
     #[serde(rename = "inputLossThresholdMsec")]
+    #[serde(default)]
     pub input_loss_threshold_msec: i32,
 }
 impl std::fmt::Debug for InputLossFailoverSettings {
@@ -9390,6 +9449,7 @@ pub struct AudioSilenceFailoverSettings {
     pub audio_selector_name: std::option::Option<std::string::String>,
     /// The amount of time (in milliseconds) that the active input must be silent before automatic input failover occurs. Silence is defined as audio loss or audio quieter than -50 dBFS.
     #[serde(rename = "audioSilenceThresholdMsec")]
+    #[serde(default)]
     pub audio_silence_threshold_msec: i32,
 }
 impl std::fmt::Debug for AudioSilenceFailoverSettings {
@@ -9745,6 +9805,7 @@ pub struct VideoDescription {
     pub codec_settings: std::option::Option<crate::model::VideoCodecSettings>,
     /// Output video height, in pixels. Must be an even number. For most codecs, you can leave this field and width blank in order to use the height and width (resolution) from the source. Note, however, that leaving blank is not recommended. For the Frame Capture codec, height and width are required.
     #[serde(rename = "height")]
+    #[serde(default)]
     pub height: i32,
     /// The name of this VideoDescription. Outputs will use this name to uniquely identify this Description.  Description names should be unique within this Live Event.
     #[serde(rename = "name")]
@@ -9763,9 +9824,11 @@ pub struct VideoDescription {
     pub scaling_behavior: std::option::Option<crate::model::VideoDescriptionScalingBehavior>,
     /// Changes the strength of the anti-alias filter used for scaling. 0 is the softest setting, 100 is the sharpest. A setting of 50 is recommended for most content.
     #[serde(rename = "sharpness")]
+    #[serde(default)]
     pub sharpness: i32,
     /// Output video width, in pixels. Must be an even number. For most codecs, you can leave this field and height blank in order to use the height and width (resolution) from the source. Note, however, that leaving blank is not recommended. For the Frame Capture codec, height and width are required.
     #[serde(rename = "width")]
+    #[serde(default)]
     pub width: i32,
 }
 impl std::fmt::Debug for VideoDescription {
@@ -10161,20 +10224,25 @@ pub struct Mpeg2Settings {
     pub fixed_afd: std::option::Option<crate::model::FixedAfd>,
     /// description": "The framerate denominator. For example, 1001. The framerate is the numerator divided by the denominator. For example, 24000 / 1001 = 23.976 FPS.
     #[serde(rename = "framerateDenominator")]
+    #[serde(default)]
     pub framerate_denominator: i32,
     /// The framerate numerator. For example, 24000. The framerate is the numerator divided by the denominator. For example, 24000 / 1001 = 23.976 FPS.
     #[serde(rename = "framerateNumerator")]
+    #[serde(default)]
     pub framerate_numerator: i32,
     /// MPEG2: default is open GOP.
     #[serde(rename = "gopClosedCadence")]
+    #[serde(default)]
     pub gop_closed_cadence: i32,
     /// Relates to the GOP structure. The number of B-frames between reference frames. If you do not know what a B-frame is, use the default.
     #[serde(rename = "gopNumBFrames")]
+    #[serde(default)]
     pub gop_num_b_frames: i32,
     /// Relates to the GOP structure. The GOP size (keyframe interval) in the units specified in gopSizeUnits. If you do not know what GOP is, use the default.
     /// If gopSizeUnits is frames, then the gopSize must be an integer and must be greater than or equal to 1.
     /// If gopSizeUnits is seconds, the gopSize must be greater than 0, but does not need to be an integer.
     #[serde(rename = "gopSize")]
+    #[serde(default)]
     pub gop_size: f64,
     /// Relates to the GOP structure. Specifies whether the gopSize is specified in frames or seconds. If you do not plan to change the default gopSize, leave the default. If you specify SECONDS, MediaLive will internally convert the gop size to a frame count.
     #[serde(rename = "gopSizeUnits")]
@@ -11382,9 +11450,11 @@ pub struct H265Settings {
         std::option::Option<crate::model::H265AlternativeTransferFunction>,
     /// Average bitrate in bits/second. Required when the rate control mode is VBR or CBR. Not used for QVBR. In an MS Smooth output group, each output must have a unique value when its bitrate is rounded down to the nearest multiple of 1000.
     #[serde(rename = "bitrate")]
+    #[serde(default)]
     pub bitrate: i32,
     /// Size of buffer (HRD buffer model) in bits.
     #[serde(rename = "bufSize")]
+    #[serde(default)]
     pub buf_size: i32,
     /// Includes colorspace metadata in the output.
     #[serde(rename = "colorMetadata")]
@@ -11408,17 +11478,21 @@ pub struct H265Settings {
     pub flicker_aq: std::option::Option<crate::model::H265FlickerAq>,
     /// Framerate denominator.
     #[serde(rename = "framerateDenominator")]
+    #[serde(default)]
     pub framerate_denominator: i32,
     /// Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 = 23.976 fps.
     #[serde(rename = "framerateNumerator")]
+    #[serde(default)]
     pub framerate_numerator: i32,
     /// Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0 will break output segmenting.
     #[serde(rename = "gopClosedCadence")]
+    #[serde(default)]
     pub gop_closed_cadence: i32,
     /// GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits.
     /// If gopSizeUnits is frames, gopSize must be an integer and must be greater than or equal to 1.
     /// If gopSizeUnits is seconds, gopSize must be greater than 0, but need not be an integer.
     #[serde(rename = "gopSize")]
+    #[serde(default)]
     pub gop_size: f64,
     /// Indicates if the gopSize is specified in frames or seconds. If seconds the system will convert the gopSize into a frame count at run time.
     #[serde(rename = "gopSizeUnits")]
@@ -11434,15 +11508,19 @@ pub struct H265Settings {
     pub look_ahead_rate_control: std::option::Option<crate::model::H265LookAheadRateControl>,
     /// For QVBR: See the tooltip for Quality level
     #[serde(rename = "maxBitrate")]
+    #[serde(default)]
     pub max_bitrate: i32,
     /// Only meaningful if sceneChangeDetect is set to enabled.  Defaults to 5 if multiplex rate control is used.  Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
     #[serde(rename = "minIInterval")]
+    #[serde(default)]
     pub min_i_interval: i32,
     /// Pixel Aspect Ratio denominator.
     #[serde(rename = "parDenominator")]
+    #[serde(default)]
     pub par_denominator: i32,
     /// Pixel Aspect Ratio numerator.
     #[serde(rename = "parNumerator")]
+    #[serde(default)]
     pub par_numerator: i32,
     /// H.265 Profile.
     #[serde(rename = "profile")]
@@ -11453,6 +11531,7 @@ pub struct H265Settings {
     /// - PC or tablet: Quality level: 7. Max bitrate: 1.5M to 3M
     /// - Smartphone: Quality level: 6. Max bitrate: 1M to 1.5M
     #[serde(rename = "qvbrQualityLevel")]
+    #[serde(default)]
     pub qvbr_quality_level: i32,
     /// Rate control mode.
     /// QVBR: Quality will match the specified quality level except when it is constrained by the
@@ -11476,6 +11555,7 @@ pub struct H265Settings {
     /// Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures.
     /// This field is optional; when no value is specified the encoder will choose the number of slices based on encode resolution.
     #[serde(rename = "slices")]
+    #[serde(default)]
     pub slices: i32,
     /// H.265 Tier.
     #[serde(rename = "tier")]
@@ -12996,12 +13076,15 @@ pub struct H264Settings {
     pub afd_signaling: std::option::Option<crate::model::AfdSignaling>,
     /// Average bitrate in bits/second. Required when the rate control mode is VBR or CBR. Not used for QVBR. In an MS Smooth output group, each output must have a unique value when its bitrate is rounded down to the nearest multiple of 1000.
     #[serde(rename = "bitrate")]
+    #[serde(default)]
     pub bitrate: i32,
     /// Percentage of the buffer that should initially be filled (HRD buffer model).
     #[serde(rename = "bufFillPct")]
+    #[serde(default)]
     pub buf_fill_pct: i32,
     /// Size of buffer (HRD buffer model) in bits.
     #[serde(rename = "bufSize")]
+    #[serde(default)]
     pub buf_size: i32,
     /// Includes colorspace metadata in the output.
     #[serde(rename = "colorMetadata")]
@@ -13039,9 +13122,11 @@ pub struct H264Settings {
     pub framerate_control: std::option::Option<crate::model::H264FramerateControl>,
     /// Framerate denominator.
     #[serde(rename = "framerateDenominator")]
+    #[serde(default)]
     pub framerate_denominator: i32,
     /// Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 = 23.976 fps.
     #[serde(rename = "framerateNumerator")]
+    #[serde(default)]
     pub framerate_numerator: i32,
     /// Documentation update needed
     #[serde(rename = "gopBReference")]
@@ -13049,14 +13134,17 @@ pub struct H264Settings {
     pub gop_b_reference: std::option::Option<crate::model::H264GopBReference>,
     /// Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0 will break output segmenting.
     #[serde(rename = "gopClosedCadence")]
+    #[serde(default)]
     pub gop_closed_cadence: i32,
     /// Number of B-frames between reference frames.
     #[serde(rename = "gopNumBFrames")]
+    #[serde(default)]
     pub gop_num_b_frames: i32,
     /// GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits.
     /// If gopSizeUnits is frames, gopSize must be an integer and must be greater than or equal to 1.
     /// If gopSizeUnits is seconds, gopSize must be greater than 0, but need not be an integer.
     #[serde(rename = "gopSize")]
+    #[serde(default)]
     pub gop_size: f64,
     /// Indicates if the gopSize is specified in frames or seconds. If seconds the system will convert the gopSize into a frame count at run time.
     #[serde(rename = "gopSizeUnits")]
@@ -13073,12 +13161,15 @@ pub struct H264Settings {
     /// For QVBR: See the tooltip for Quality level
     /// For VBR: Set the maximum bitrate in order to accommodate expected spikes in the complexity of the video.
     #[serde(rename = "maxBitrate")]
+    #[serde(default)]
     pub max_bitrate: i32,
     /// Only meaningful if sceneChangeDetect is set to enabled.  Defaults to 5 if multiplex rate control is used.  Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
     #[serde(rename = "minIInterval")]
+    #[serde(default)]
     pub min_i_interval: i32,
     /// Number of reference frames to use. The encoder may use more than requested if using B-frames and/or interlaced encoding.
     #[serde(rename = "numRefFrames")]
+    #[serde(default)]
     pub num_ref_frames: i32,
     /// This field indicates how the output pixel aspect ratio is specified.  If "specified" is selected then the output video pixel aspect ratio is determined by parNumerator and parDenominator, else if "initializeFromSource" is selected then the output pixsel aspect ratio will be set equal to the input video pixel aspect ratio of the first input.
     #[serde(rename = "parControl")]
@@ -13086,9 +13177,11 @@ pub struct H264Settings {
     pub par_control: std::option::Option<crate::model::H264ParControl>,
     /// Pixel Aspect Ratio denominator.
     #[serde(rename = "parDenominator")]
+    #[serde(default)]
     pub par_denominator: i32,
     /// Pixel Aspect Ratio numerator.
     #[serde(rename = "parNumerator")]
+    #[serde(default)]
     pub par_numerator: i32,
     /// H.264 Profile.
     #[serde(rename = "profile")]
@@ -13105,6 +13198,7 @@ pub struct H264Settings {
     /// - PC or tablet: Quality level: 7. Max bitrate: 1.5M to 3M
     /// - Smartphone: Quality level: 6. Max bitrate: 1M to 1.5M
     #[serde(rename = "qvbrQualityLevel")]
+    #[serde(default)]
     pub qvbr_quality_level: i32,
     /// Rate control mode.
     /// QVBR: Quality will match the specified quality level except when it is constrained by the
@@ -13132,9 +13226,11 @@ pub struct H264Settings {
     /// Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures.
     /// This field is optional; when no value is specified the encoder will choose the number of slices based on encode resolution.
     #[serde(rename = "slices")]
+    #[serde(default)]
     pub slices: i32,
     /// Softness. Selects quantizer matrix, larger values reduce high-frequency content in the encoded image.  If not set to zero, must be greater than 15.
     #[serde(rename = "softness")]
+    #[serde(default)]
     pub softness: i32,
     /// If set to enabled, adjust quantization within each frame based on spatial variation of content complexity.
     #[serde(rename = "spatialAq")]
@@ -15192,6 +15288,7 @@ impl<'de> serde::Deserialize<'de> for H264AdaptiveQuantization {
 pub struct FrameCaptureSettings {
     /// The frequency at which to capture frames for inclusion in the output. May be specified in either seconds or milliseconds, as specified by captureIntervalUnits.
     #[serde(rename = "captureInterval")]
+    #[serde(default)]
     pub capture_interval: i32,
     /// Unit for the frame capture interval.
     #[serde(rename = "captureIntervalUnits")]
@@ -15326,6 +15423,7 @@ pub struct TimecodeConfig {
     pub source: std::option::Option<crate::model::TimecodeConfigSource>,
     /// Threshold in frames beyond which output timecode is resynchronized to the input timecode. Discrepancies below this threshold are permitted to avoid unnecessary discontinuities in the output timecode. No timecode sync when this is not specified.
     #[serde(rename = "syncThreshold")]
+    #[serde(default)]
     pub sync_threshold: i32,
 }
 impl std::fmt::Debug for TimecodeConfig {
@@ -15877,6 +15975,7 @@ impl OutputSettings {
 pub struct UdpOutputSettings {
     /// UDP output buffering in milliseconds. Larger values increase latency through the transcoder but simultaneously assist the transcoder in maintaining a constant, low-jitter UDP/RTP output while accommodating clock recovery, input switching, input disruptions, picture reordering, etc.
     #[serde(rename = "bufferMsec")]
+    #[serde(default)]
     pub buffer_msec: i32,
     /// Udp Container Settings
     #[serde(rename = "containerSettings")]
@@ -15982,6 +16081,7 @@ impl UdpOutputSettings {
 pub struct FecOutputSettings {
     /// Parameter D from SMPTE 2022-1. The height of the FEC protection matrix.  The number of transport stream packets per column error correction packet. Must be between 4 and 20, inclusive.
     #[serde(rename = "columnDepth")]
+    #[serde(default)]
     pub column_depth: i32,
     /// Enables column only or column and row based FEC
     #[serde(rename = "includeFec")]
@@ -15989,6 +16089,7 @@ pub struct FecOutputSettings {
     pub include_fec: std::option::Option<crate::model::FecOutputIncludeFec>,
     /// Parameter L from SMPTE 2022-1. The width of the FEC protection matrix.  Must be between 1 and 20, inclusive. If only Column FEC is used, then larger values increase robustness.  If Row FEC is used, then this is the number of transport stream packets per row error correction packet, and the value must be between 4 and 20, inclusive, if includeFec is columnAndRow. If includeFec is column, this value must be 1 to 20, inclusive.
     #[serde(rename = "rowLength")]
+    #[serde(default)]
     pub row_length: i32,
 }
 impl std::fmt::Debug for FecOutputSettings {
@@ -16245,6 +16346,7 @@ pub struct M2tsSettings {
     pub audio_buffer_model: std::option::Option<crate::model::M2tsAudioBufferModel>,
     /// The number of audio frames to insert for each PES packet.
     #[serde(rename = "audioFramesPerPes")]
+    #[serde(default)]
     pub audio_frames_per_pes: i32,
     /// Packet Identifier (PID) of the elementary audio stream(s) in the transport stream. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values. Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
     #[serde(rename = "audioPids")]
@@ -16256,6 +16358,7 @@ pub struct M2tsSettings {
     pub audio_stream_type: std::option::Option<crate::model::M2tsAudioStreamType>,
     /// The output bitrate of the transport stream in bits per second. Setting to 0 lets the muxer automatically determine the appropriate bitrate.
     #[serde(rename = "bitrate")]
+    #[serde(default)]
     pub bitrate: i32,
     /// Controls the timing accuracy for output network traffic. Leave as MULTIPLEX to ensure accurate network packet timing. Or set to NONE, which might result in lower latency but will result in more variability in output network packet timing. This variability might cause interruptions, jitter, or bursty behavior in your playback or receiving devices.
     #[serde(rename = "bufferModel")]
@@ -16295,6 +16398,7 @@ pub struct M2tsSettings {
     pub ebp_audio_interval: std::option::Option<crate::model::M2tsAudioInterval>,
     /// When set, enforces that Encoder Boundary Points do not come within the specified time interval of each other by looking ahead at input video. If another EBP is going to come in within the specified time interval, the current EBP is not emitted, and the segment is "stretched" to the next marker.  The lookahead value does not add latency to the system. The Live Event must be configured elsewhere to create sufficient latency to make the lookahead accurate.
     #[serde(rename = "ebpLookaheadMs")]
+    #[serde(default)]
     pub ebp_lookahead_ms: i32,
     /// Controls placement of EBP on Audio PIDs. If set to videoAndAudioPids, EBP markers will be placed on the video PID and all audio PIDs.  If set to videoPid, EBP markers will be placed on only the video PID.
     #[serde(rename = "ebpPlacement")]
@@ -16318,6 +16422,7 @@ pub struct M2tsSettings {
     pub etv_signal_pid: std::option::Option<std::string::String>,
     /// The length in seconds of each fragment. Only used with EBP markers.
     #[serde(rename = "fragmentTime")]
+    #[serde(default)]
     pub fragment_time: f64,
     /// If set to passthrough, passes any KLV data from the input source to this output.
     #[serde(rename = "klv")]
@@ -16333,9 +16438,11 @@ pub struct M2tsSettings {
     pub nielsen_id3_behavior: std::option::Option<crate::model::M2tsNielsenId3Behavior>,
     /// Value in bits per second of extra null packets to insert into the transport stream. This can be used if a downstream encryption system requires periodic null packets.
     #[serde(rename = "nullPacketBitrate")]
+    #[serde(default)]
     pub null_packet_bitrate: f64,
     /// The number of milliseconds between instances of this table in the output transport stream.  Valid values are 0, 10..1000.
     #[serde(rename = "patInterval")]
+    #[serde(default)]
     pub pat_interval: i32,
     /// When set to pcrEveryPesPacket, a Program Clock Reference value is inserted for every Packetized Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio elementary stream.
     #[serde(rename = "pcrControl")]
@@ -16343,6 +16450,7 @@ pub struct M2tsSettings {
     pub pcr_control: std::option::Option<crate::model::M2tsPcrControl>,
     /// Maximum time in milliseconds between Program Clock Reference (PCRs) inserted into the transport stream.
     #[serde(rename = "pcrPeriod")]
+    #[serde(default)]
     pub pcr_period: i32,
     /// Packet Identifier (PID) of the Program Clock Reference (PCR) in the transport stream. When no value is given, the encoder will assign the same value as the Video PID. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
     #[serde(rename = "pcrPid")]
@@ -16350,6 +16458,7 @@ pub struct M2tsSettings {
     pub pcr_pid: std::option::Option<std::string::String>,
     /// The number of milliseconds between instances of this table in the output transport stream. Valid values are 0, 10..1000.
     #[serde(rename = "pmtInterval")]
+    #[serde(default)]
     pub pmt_interval: i32,
     /// Packet Identifier (PID) for the Program Map Table (PMT) in the transport stream. Can be entered as a decimal or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
     #[serde(rename = "pmtPid")]
@@ -16357,6 +16466,7 @@ pub struct M2tsSettings {
     pub pmt_pid: std::option::Option<std::string::String>,
     /// The value of the program number field in the Program Map Table.
     #[serde(rename = "programNum")]
+    #[serde(default)]
     pub program_num: i32,
     /// When vbr, does not insert null packets into transport stream to fill specified bitrate. The bitrate setting acts as the maximum bitrate when vbr is set.
     #[serde(rename = "rateMode")]
@@ -16386,6 +16496,7 @@ pub struct M2tsSettings {
     pub segmentation_style: std::option::Option<crate::model::M2tsSegmentationStyle>,
     /// The length in seconds of each segment. Required unless markers is set to _none_.
     #[serde(rename = "segmentationTime")]
+    #[serde(default)]
     pub segmentation_time: f64,
     /// When set to passthrough, timed metadata will be passed through from input to output.
     #[serde(rename = "timedMetadataBehavior")]
@@ -16397,6 +16508,7 @@ pub struct M2tsSettings {
     pub timed_metadata_pid: std::option::Option<std::string::String>,
     /// The value of the transport stream ID field in the Program Map Table.
     #[serde(rename = "transportStreamId")]
+    #[serde(default)]
     pub transport_stream_id: i32,
     /// Packet Identifier (PID) of the elementary video stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
     #[serde(rename = "videoPid")]
@@ -17771,6 +17883,7 @@ impl<'de> serde::Deserialize<'de> for M2tsEbifControl {
 pub struct DvbTdtSettings {
     /// The number of milliseconds between instances of this table in the output transport stream.
     #[serde(rename = "repInterval")]
+    #[serde(default)]
     pub rep_interval: i32,
 }
 impl std::fmt::Debug for DvbTdtSettings {
@@ -17823,6 +17936,7 @@ pub struct DvbSdtSettings {
     pub output_sdt: std::option::Option<crate::model::DvbSdtOutputSdt>,
     /// The number of milliseconds between instances of this table in the output transport stream.
     #[serde(rename = "repInterval")]
+    #[serde(default)]
     pub rep_interval: i32,
     /// The service name placed in the serviceDescriptor in the Service Description Table. Maximum length is 256 characters.
     #[serde(rename = "serviceName")]
@@ -17983,6 +18097,7 @@ impl<'de> serde::Deserialize<'de> for DvbSdtOutputSdt {
 pub struct DvbNitSettings {
     /// The numeric value placed in the Network Information Table (NIT).
     #[serde(rename = "networkId")]
+    #[serde(default)]
     pub network_id: i32,
     /// The network name text placed in the networkNameDescriptor inside the Network Information Table. Maximum length is 256 characters.
     #[serde(rename = "networkName")]
@@ -17990,6 +18105,7 @@ pub struct DvbNitSettings {
     pub network_name: std::option::Option<std::string::String>,
     /// The number of milliseconds between instances of this table in the output transport stream.
     #[serde(rename = "repInterval")]
+    #[serde(default)]
     pub rep_interval: i32,
 }
 impl std::fmt::Debug for DvbNitSettings {
@@ -18458,6 +18574,7 @@ pub struct RtmpOutputSettings {
     pub certificate_mode: std::option::Option<crate::model::RtmpOutputCertificateMode>,
     /// Number of seconds to wait before retrying a connection to the Flash Media server if the connection is lost.
     #[serde(rename = "connectionRetryInterval")]
+    #[serde(default)]
     pub connection_retry_interval: i32,
     /// The RTMP endpoint excluding the stream name (eg. rtmp://host/appname). For connection to Akamai, a username and password must be supplied. URI fields accept format identifiers.
     #[serde(rename = "destination")]
@@ -18465,6 +18582,7 @@ pub struct RtmpOutputSettings {
     pub destination: std::option::Option<crate::model::OutputLocationRef>,
     /// Number of retry attempts.
     #[serde(rename = "numRetries")]
+    #[serde(default)]
     pub num_retries: i32,
 }
 impl std::fmt::Debug for RtmpOutputSettings {
@@ -19115,6 +19233,7 @@ impl StandardHlsSettings {
 pub struct M3u8Settings {
     /// The number of audio frames to insert for each PES packet.
     #[serde(rename = "audioFramesPerPes")]
+    #[serde(default)]
     pub audio_frames_per_pes: i32,
     /// Packet Identifier (PID) of the elementary audio stream(s) in the transport stream. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.
     #[serde(rename = "audioPids")]
@@ -19130,6 +19249,7 @@ pub struct M3u8Settings {
     pub nielsen_id3_behavior: std::option::Option<crate::model::M3u8NielsenId3Behavior>,
     /// The number of milliseconds between instances of this table in the output transport stream. A value of \"0\" writes out the PMT once per segment file.
     #[serde(rename = "patInterval")]
+    #[serde(default)]
     pub pat_interval: i32,
     /// When set to pcrEveryPesPacket, a Program Clock Reference value is inserted for every Packetized Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio elementary stream.
     #[serde(rename = "pcrControl")]
@@ -19137,6 +19257,7 @@ pub struct M3u8Settings {
     pub pcr_control: std::option::Option<crate::model::M3u8PcrControl>,
     /// Maximum time in milliseconds between Program Clock References (PCRs) inserted into the transport stream.
     #[serde(rename = "pcrPeriod")]
+    #[serde(default)]
     pub pcr_period: i32,
     /// Packet Identifier (PID) of the Program Clock Reference (PCR) in the transport stream. When no value is given, the encoder will assign the same value as the Video PID. Can be entered as a decimal or hexadecimal value.
     #[serde(rename = "pcrPid")]
@@ -19144,6 +19265,7 @@ pub struct M3u8Settings {
     pub pcr_pid: std::option::Option<std::string::String>,
     /// The number of milliseconds between instances of this table in the output transport stream. A value of \"0\" writes out the PMT once per segment file.
     #[serde(rename = "pmtInterval")]
+    #[serde(default)]
     pub pmt_interval: i32,
     /// Packet Identifier (PID) for the Program Map Table (PMT) in the transport stream. Can be entered as a decimal or hexadecimal value.
     #[serde(rename = "pmtPid")]
@@ -19151,6 +19273,7 @@ pub struct M3u8Settings {
     pub pmt_pid: std::option::Option<std::string::String>,
     /// The value of the program number field in the Program Map Table.
     #[serde(rename = "programNum")]
+    #[serde(default)]
     pub program_num: i32,
     /// If set to passthrough, passes any SCTE-35 signals from the input source to this output.
     #[serde(rename = "scte35Behavior")]
@@ -19170,6 +19293,7 @@ pub struct M3u8Settings {
     pub timed_metadata_pid: std::option::Option<std::string::String>,
     /// The value of the transport stream ID field in the Program Map Table.
     #[serde(rename = "transportStreamId")]
+    #[serde(default)]
     pub transport_stream_id: i32,
     /// Packet Identifier (PID) of the elementary video stream in the transport stream. Can be entered as a decimal or hexadecimal value.
     #[serde(rename = "videoPid")]
@@ -20725,6 +20849,7 @@ pub struct UdpGroupSettings {
     pub timed_metadata_id3_frame: std::option::Option<crate::model::UdpTimedMetadataId3Frame>,
     /// Timed Metadata interval in seconds.
     #[serde(rename = "timedMetadataId3Period")]
+    #[serde(default)]
     pub timed_metadata_id3_period: i32,
 }
 impl std::fmt::Debug for UdpGroupSettings {
@@ -20937,6 +21062,7 @@ pub struct RtmpGroupSettings {
     pub cache_full_behavior: std::option::Option<crate::model::RtmpCacheFullBehavior>,
     /// Cache length, in seconds, is used to calculate buffer size.
     #[serde(rename = "cacheLength")]
+    #[serde(default)]
     pub cache_length: i32,
     /// Controls the types of data that passes to onCaptionInfo outputs.  If set to 'all' then 608 and 708 carried DTVCC data will be passed.  If set to 'field1AndField2608' then DTVCC data will be stripped out, but 608 data from both fields will be passed. If set to 'field1608' then only the data carried in 608 from field 1 video will be passed.
     #[serde(rename = "captionData")]
@@ -20950,6 +21076,7 @@ pub struct RtmpGroupSettings {
     pub input_loss_action: std::option::Option<crate::model::InputLossActionForRtmpOut>,
     /// If a streaming output fails, number of seconds to wait until a restart is initiated. A value of 0 means never restart.
     #[serde(rename = "restartDelay")]
+    #[serde(default)]
     pub restart_delay: i32,
 }
 impl std::fmt::Debug for RtmpGroupSettings {
@@ -21411,6 +21538,7 @@ pub struct MsSmoothGroupSettings {
     pub certificate_mode: std::option::Option<crate::model::SmoothGroupCertificateMode>,
     /// Number of seconds to wait before retrying connection to the IIS server if the connection is lost. Content will be cached during this time and the cache will be be delivered to the IIS server once the connection is re-established.
     #[serde(rename = "connectionRetryInterval")]
+    #[serde(default)]
     pub connection_retry_interval: i32,
     /// Smooth Streaming publish point on an IIS server. Elemental Live acts as a "Push" encoder to IIS.
     #[serde(rename = "destination")]
@@ -21435,9 +21563,11 @@ pub struct MsSmoothGroupSettings {
     pub event_stop_behavior: std::option::Option<crate::model::SmoothGroupEventStopBehavior>,
     /// Size in seconds of file cache for streaming outputs.
     #[serde(rename = "filecacheDuration")]
+    #[serde(default)]
     pub filecache_duration: i32,
     /// Length of mp4 fragments to generate (in seconds). Fragment length must be compatible with GOP size and framerate.
     #[serde(rename = "fragmentLength")]
+    #[serde(default)]
     pub fragment_length: i32,
     /// Parameter that control output group behavior on input loss.
     #[serde(rename = "inputLossAction")]
@@ -21445,9 +21575,11 @@ pub struct MsSmoothGroupSettings {
     pub input_loss_action: std::option::Option<crate::model::InputLossActionForMsSmoothOut>,
     /// Number of retry attempts.
     #[serde(rename = "numRetries")]
+    #[serde(default)]
     pub num_retries: i32,
     /// Number of seconds before initiating a restart due to output failure, due to exhausting the numRetries on one segment, or exceeding filecacheDuration.
     #[serde(rename = "restartDelay")]
+    #[serde(default)]
     pub restart_delay: i32,
     /// useInputSegmentation has been deprecated. The configured segment size is always used.
     #[serde(rename = "segmentationMode")]
@@ -21455,6 +21587,7 @@ pub struct MsSmoothGroupSettings {
     pub segmentation_mode: std::option::Option<crate::model::SmoothGroupSegmentationMode>,
     /// Number of milliseconds to delay the output from the second pipeline.
     #[serde(rename = "sendDelayMs")]
+    #[serde(default)]
     pub send_delay_ms: i32,
     /// Identifies the type of data to place in the sparse track:
     /// - SCTE35: Insert SCTE-35 messages from the source content. With each message, insert an IDR frame to start a new segment.
@@ -22458,6 +22591,7 @@ pub struct HlsGroupSettings {
     /// Applies only if Mode field is LIVE.
     /// Specifies the maximum number of segments in the media manifest file. After this maximum, older segments are removed from the media manifest. This number must be smaller than the number in the Keep Segments field.
     #[serde(rename = "indexNSegments")]
+    #[serde(default)]
     pub index_n_segments: i32,
     /// Parameter that control output group behavior on input loss.
     #[serde(rename = "inputLossAction")]
@@ -22475,6 +22609,7 @@ pub struct HlsGroupSettings {
     /// Specifies the number of media segments to retain in the destination directory. This number should be bigger than indexNSegments (Num segments). We recommend (value = (2 x indexNsegments) + 1).
     /// If this "keep segments" number is too low, the following might happen: the player is still reading a media manifest file that lists this segment, but that segment has been removed from the destination directory (as directed by indexNSegments). This situation would result in a 404 HTTP error on the player.
     #[serde(rename = "keepSegments")]
+    #[serde(default)]
     pub keep_segments: i32,
     /// The value specifies how the key is represented in the resource identified by the URI.  If parameter is absent, an implicit value of "identity" is used.  A reverse DNS string can also be given.
     #[serde(rename = "keyFormat")]
@@ -22498,6 +22633,7 @@ pub struct HlsGroupSettings {
     pub manifest_duration_format: std::option::Option<crate::model::HlsManifestDurationFormat>,
     /// When set, minimumSegmentLength is enforced by looking ahead and back within the specified range for a nearby avail and extending the segment size if needed.
     #[serde(rename = "minSegmentLength")]
+    #[serde(default)]
     pub min_segment_length: i32,
     /// If "vod", all segments are indexed and kept permanently in the destination and manifest. If "live", only the number segments specified in keepSegments and indexNSegments are kept; newer segments replace older segments, which may prevent players from rewinding all the way to the beginning of the event.
     /// VOD mode uses HLS EXT-X-PLAYLIST-TYPE of EVENT while the channel is running, converting it to a "VOD" type manifest on completion of the stream.
@@ -22516,6 +22652,7 @@ pub struct HlsGroupSettings {
     pub program_date_time: std::option::Option<crate::model::HlsProgramDateTime>,
     /// Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds.
     #[serde(rename = "programDateTimePeriod")]
+    #[serde(default)]
     pub program_date_time_period: i32,
     /// ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines: first its own media files, then the media files of the other pipeline. This feature allows playout device that support stale manifest detection to switch from one manifest to the other, when the current manifest seems to be stale. There are still two destinations and two master manifests, but both master manifests reference the media files from both pipelines.
     /// DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline only.
@@ -22525,6 +22662,7 @@ pub struct HlsGroupSettings {
     pub redundant_manifest: std::option::Option<crate::model::HlsRedundantManifest>,
     /// Length of MPEG-2 Transport Stream segments to create (in seconds). Note that segments will end on the next keyframe after this number of seconds, so actual segment length may be longer.
     #[serde(rename = "segmentLength")]
+    #[serde(default)]
     pub segment_length: i32,
     /// useInputSegmentation has been deprecated. The configured segment size is always used.
     #[serde(rename = "segmentationMode")]
@@ -22532,6 +22670,7 @@ pub struct HlsGroupSettings {
     pub segmentation_mode: std::option::Option<crate::model::HlsSegmentationMode>,
     /// Number of segments to write to a subdirectory before starting a new one. directoryStructure must be subdirectoryPerStream for this setting to have an effect.
     #[serde(rename = "segmentsPerSubdirectory")]
+    #[serde(default)]
     pub segments_per_subdirectory: i32,
     /// Include or exclude RESOLUTION attribute for video in EXT-X-STREAM-INF tag of variant manifest.
     #[serde(rename = "streamInfResolution")]
@@ -22543,9 +22682,11 @@ pub struct HlsGroupSettings {
     pub timed_metadata_id3_frame: std::option::Option<crate::model::HlsTimedMetadataId3Frame>,
     /// Timed Metadata interval in seconds.
     #[serde(rename = "timedMetadataId3Period")]
+    #[serde(default)]
     pub timed_metadata_id3_period: i32,
     /// Provides an extra millisecond delta offset to fine tune the timestamps.
     #[serde(rename = "timestampDeltaMilliseconds")]
+    #[serde(default)]
     pub timestamp_delta_milliseconds: i32,
     /// SEGMENTED_FILES: Emit the program as segments - multiple .ts media files.
     /// SINGLE_FILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media manifest includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is when sending the output to AWS Elemental MediaConvert, which can accept only a single media file. Playback while the channel is running is not guaranteed due to HTTP server caching.
@@ -24393,9 +24534,11 @@ impl HlsCdnSettings {
 pub struct HlsWebdavSettings {
     /// Number of seconds to wait before retrying connection to the CDN if the connection is lost.
     #[serde(rename = "connectionRetryInterval")]
+    #[serde(default)]
     pub connection_retry_interval: i32,
     /// Size in seconds of file cache for streaming outputs.
     #[serde(rename = "filecacheDuration")]
+    #[serde(default)]
     pub filecache_duration: i32,
     /// Specify whether or not to use chunked transfer encoding to WebDAV.
     #[serde(rename = "httpTransferMode")]
@@ -24403,9 +24546,11 @@ pub struct HlsWebdavSettings {
     pub http_transfer_mode: std::option::Option<crate::model::HlsWebdavHttpTransferMode>,
     /// Number of retry attempts that will be made before the Live Event is put into an error state.
     #[serde(rename = "numRetries")]
+    #[serde(default)]
     pub num_retries: i32,
     /// If a streaming output fails, number of seconds to wait until a restart is initiated. A value of 0 means never restart.
     #[serde(rename = "restartDelay")]
+    #[serde(default)]
     pub restart_delay: i32,
 }
 impl std::fmt::Debug for HlsWebdavSettings {
@@ -24675,9 +24820,11 @@ impl<'de> serde::Deserialize<'de> for S3CannedAcl {
 pub struct HlsMediaStoreSettings {
     /// Number of seconds to wait before retrying connection to the CDN if the connection is lost.
     #[serde(rename = "connectionRetryInterval")]
+    #[serde(default)]
     pub connection_retry_interval: i32,
     /// Size in seconds of file cache for streaming outputs.
     #[serde(rename = "filecacheDuration")]
+    #[serde(default)]
     pub filecache_duration: i32,
     /// When set to temporal, output files are stored in non-persistent memory for faster reading and writing.
     #[serde(rename = "mediaStoreStorageClass")]
@@ -24685,9 +24832,11 @@ pub struct HlsMediaStoreSettings {
     pub media_store_storage_class: std::option::Option<crate::model::HlsMediaStoreStorageClass>,
     /// Number of retry attempts that will be made before the Live Event is put into an error state.
     #[serde(rename = "numRetries")]
+    #[serde(default)]
     pub num_retries: i32,
     /// If a streaming output fails, number of seconds to wait until a restart is initiated. A value of 0 means never restart.
     #[serde(rename = "restartDelay")]
+    #[serde(default)]
     pub restart_delay: i32,
 }
 impl std::fmt::Debug for HlsMediaStoreSettings {
@@ -24844,15 +24993,19 @@ impl<'de> serde::Deserialize<'de> for HlsMediaStoreStorageClass {
 pub struct HlsBasicPutSettings {
     /// Number of seconds to wait before retrying connection to the CDN if the connection is lost.
     #[serde(rename = "connectionRetryInterval")]
+    #[serde(default)]
     pub connection_retry_interval: i32,
     /// Size in seconds of file cache for streaming outputs.
     #[serde(rename = "filecacheDuration")]
+    #[serde(default)]
     pub filecache_duration: i32,
     /// Number of retry attempts that will be made before the Live Event is put into an error state.
     #[serde(rename = "numRetries")]
+    #[serde(default)]
     pub num_retries: i32,
     /// If a streaming output fails, number of seconds to wait until a restart is initiated. A value of 0 means never restart.
     #[serde(rename = "restartDelay")]
+    #[serde(default)]
     pub restart_delay: i32,
 }
 impl std::fmt::Debug for HlsBasicPutSettings {
@@ -24937,9 +25090,11 @@ impl HlsBasicPutSettings {
 pub struct HlsAkamaiSettings {
     /// Number of seconds to wait before retrying connection to the CDN if the connection is lost.
     #[serde(rename = "connectionRetryInterval")]
+    #[serde(default)]
     pub connection_retry_interval: i32,
     /// Size in seconds of file cache for streaming outputs.
     #[serde(rename = "filecacheDuration")]
+    #[serde(default)]
     pub filecache_duration: i32,
     /// Specify whether or not to use chunked transfer encoding to Akamai. User should contact Akamai to enable this feature.
     #[serde(rename = "httpTransferMode")]
@@ -24947,9 +25102,11 @@ pub struct HlsAkamaiSettings {
     pub http_transfer_mode: std::option::Option<crate::model::HlsAkamaiHttpTransferMode>,
     /// Number of retry attempts that will be made before the Live Event is put into an error state.
     #[serde(rename = "numRetries")]
+    #[serde(default)]
     pub num_retries: i32,
     /// If a streaming output fails, number of seconds to wait until a restart is initiated. A value of 0 means never restart.
     #[serde(rename = "restartDelay")]
+    #[serde(default)]
     pub restart_delay: i32,
     /// Salt for authenticated Akamai.
     #[serde(rename = "salt")]
@@ -25476,6 +25633,7 @@ impl<'de> serde::Deserialize<'de> for HlsCaptionLanguageSetting {
 pub struct CaptionLanguageMapping {
     /// The closed caption channel being described by this CaptionLanguageMapping.  Each channel mapping must have a unique channel number (maximum of 4)
     #[serde(rename = "captionChannel")]
+    #[serde(default)]
     pub caption_channel: i32,
     /// Three character ISO 639-2 language code (see http://www.loc.gov/standards/iso639-2)
     #[serde(rename = "languageCode")]
@@ -25812,6 +25970,7 @@ pub struct ArchiveGroupSettings {
     pub destination: std::option::Option<crate::model::OutputLocationRef>,
     /// Number of seconds to write to archive file before closing and starting a new one.
     #[serde(rename = "rolloverInterval")]
+    #[serde(default)]
     pub rollover_interval: i32,
 }
 impl std::fmt::Debug for ArchiveGroupSettings {
@@ -26350,6 +26509,7 @@ impl<'de> serde::Deserialize<'de> for MotionGraphicsInsertion {
 pub struct GlobalConfiguration {
     /// Value to set the initial audio gain for the Live Event.
     #[serde(rename = "initialAudioGain")]
+    #[serde(default)]
     pub initial_audio_gain: i32,
     /// Indicates the action to take when the current input completes (e.g. end-of-file). When switchAndLoopInputs is configured the encoder will restart at the beginning of the first input.  When "none" is configured the encoder will transcode either black, a solid color, or a user specified slate images per the "Input Loss Behavior" configuration until the next input switch occurs (which is controlled through the Channel Schedule API).
     #[serde(rename = "inputEndAction")]
@@ -26687,6 +26847,7 @@ impl<'de> serde::Deserialize<'de> for GlobalConfigurationOutputLockingMode {
 pub struct InputLossBehavior {
     /// Documentation update needed
     #[serde(rename = "blackFrameMsec")]
+    #[serde(default)]
     pub black_frame_msec: i32,
     /// When input loss image type is "color" this field specifies the color to use. Value: 6 hex characters representing the values of RGB.
     #[serde(rename = "inputLossImageColor")]
@@ -26702,6 +26863,7 @@ pub struct InputLossBehavior {
     pub input_loss_image_type: std::option::Option<crate::model::InputLossImageType>,
     /// Documentation update needed
     #[serde(rename = "repeatFrameMsec")]
+    #[serde(default)]
     pub repeat_frame_msec: i32,
 }
 impl std::fmt::Debug for InputLossBehavior {
@@ -28124,6 +28286,7 @@ pub struct DvbSubDestinationSettings {
     pub background_color: std::option::Option<crate::model::DvbSubDestinationBackgroundColor>,
     /// Specifies the opacity of the background rectangle. 255 is opaque; 0 is transparent. Leaving this parameter blank is equivalent to setting it to 0 (transparent).  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "backgroundOpacity")]
+    #[serde(default)]
     pub background_opacity: i32,
     /// External font file used for caption burn-in. File extension must be 'ttf' or 'tte'.  Although the user can select output fonts for many different types of input captions, embedded, STL and teletext sources use a strict grid system. Using external fonts with these caption sources could cause unexpected display of proportional fonts.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "font")]
@@ -28135,9 +28298,11 @@ pub struct DvbSubDestinationSettings {
     pub font_color: std::option::Option<crate::model::DvbSubDestinationFontColor>,
     /// Specifies the opacity of the burned-in captions. 255 is opaque; 0 is transparent.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "fontOpacity")]
+    #[serde(default)]
     pub font_opacity: i32,
     /// Font resolution in DPI (dots per inch); default is 96 dpi.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "fontResolution")]
+    #[serde(default)]
     pub font_resolution: i32,
     /// When set to auto fontSize will scale depending on the size of the output.  Giving a positive integer will specify the exact font size in points.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "fontSize")]
@@ -28149,6 +28314,7 @@ pub struct DvbSubDestinationSettings {
     pub outline_color: std::option::Option<crate::model::DvbSubDestinationOutlineColor>,
     /// Specifies font outline size in pixels. This option is not valid for source captions that are either 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "outlineSize")]
+    #[serde(default)]
     pub outline_size: i32,
     /// Specifies the color of the shadow cast by the captions.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "shadowColor")]
@@ -28156,12 +28322,15 @@ pub struct DvbSubDestinationSettings {
     pub shadow_color: std::option::Option<crate::model::DvbSubDestinationShadowColor>,
     /// Specifies the opacity of the shadow. 255 is opaque; 0 is transparent. Leaving this parameter blank is equivalent to setting it to 0 (transparent).  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "shadowOpacity")]
+    #[serde(default)]
     pub shadow_opacity: i32,
     /// Specifies the horizontal offset of the shadow relative to the captions in pixels. A value of -2 would result in a shadow offset 2 pixels to the left.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "shadowXOffset")]
+    #[serde(default)]
     pub shadow_x_offset: i32,
     /// Specifies the vertical offset of the shadow relative to the captions in pixels. A value of -2 would result in a shadow offset 2 pixels above the text.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "shadowYOffset")]
+    #[serde(default)]
     pub shadow_y_offset: i32,
     /// Controls whether a fixed grid size will be used to generate the output subtitles bitmap. Only applicable for Teletext inputs and DVB-Sub/Burn-in outputs.
     #[serde(rename = "teletextGridControl")]
@@ -28170,9 +28339,11 @@ pub struct DvbSubDestinationSettings {
         std::option::Option<crate::model::DvbSubDestinationTeletextGridControl>,
     /// Specifies the horizontal position of the caption relative to the left side of the output in pixels. A value of 10 would result in the captions starting 10 pixels from the left of the output. If no explicit xPosition is provided, the horizontal caption position will be determined by the alignment parameter.  This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "xPosition")]
+    #[serde(default)]
     pub x_position: i32,
     /// Specifies the vertical position of the caption relative to the top of the output in pixels. A value of 10 would result in the captions starting 10 pixels from the top of the output. If no explicit yPosition is provided, the caption will be positioned towards the bottom of the output.  This option is not valid for source captions that are STL, 608/embedded or teletext.  These source settings are already pre-defined by the caption stream.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "yPosition")]
+    #[serde(default)]
     pub y_position: i32,
 }
 impl std::fmt::Debug for DvbSubDestinationSettings {
@@ -28816,6 +28987,7 @@ pub struct BurnInDestinationSettings {
     pub background_color: std::option::Option<crate::model::BurnInBackgroundColor>,
     /// Specifies the opacity of the background rectangle. 255 is opaque; 0 is transparent. Leaving this parameter out is equivalent to setting it to 0 (transparent).  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "backgroundOpacity")]
+    #[serde(default)]
     pub background_opacity: i32,
     /// External font file used for caption burn-in. File extension must be 'ttf' or 'tte'.  Although the user can select output fonts for many different types of input captions,  embedded, STL and teletext sources use a strict grid system. Using external fonts with these caption sources could cause unexpected display of proportional fonts.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "font")]
@@ -28827,9 +28999,11 @@ pub struct BurnInDestinationSettings {
     pub font_color: std::option::Option<crate::model::BurnInFontColor>,
     /// Specifies the opacity of the burned-in captions. 255 is opaque; 0 is transparent.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "fontOpacity")]
+    #[serde(default)]
     pub font_opacity: i32,
     /// Font resolution in DPI (dots per inch); default is 96 dpi.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "fontResolution")]
+    #[serde(default)]
     pub font_resolution: i32,
     /// When set to 'auto' fontSize will scale depending on the size of the output.  Giving a positive integer will specify the exact font size in points.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "fontSize")]
@@ -28841,6 +29015,7 @@ pub struct BurnInDestinationSettings {
     pub outline_color: std::option::Option<crate::model::BurnInOutlineColor>,
     /// Specifies font outline size in pixels. This option is not valid for source captions that are either 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "outlineSize")]
+    #[serde(default)]
     pub outline_size: i32,
     /// Specifies the color of the shadow cast by the captions.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "shadowColor")]
@@ -28848,12 +29023,15 @@ pub struct BurnInDestinationSettings {
     pub shadow_color: std::option::Option<crate::model::BurnInShadowColor>,
     /// Specifies the opacity of the shadow. 255 is opaque; 0 is transparent. Leaving this parameter out is equivalent to setting it to 0 (transparent).  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "shadowOpacity")]
+    #[serde(default)]
     pub shadow_opacity: i32,
     /// Specifies the horizontal offset of the shadow relative to the captions in pixels. A value of -2 would result in a shadow offset 2 pixels to the left.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "shadowXOffset")]
+    #[serde(default)]
     pub shadow_x_offset: i32,
     /// Specifies the vertical offset of the shadow relative to the captions in pixels. A value of -2 would result in a shadow offset 2 pixels above the text.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "shadowYOffset")]
+    #[serde(default)]
     pub shadow_y_offset: i32,
     /// Controls whether a fixed grid size will be used to generate the output subtitles bitmap. Only applicable for Teletext inputs and DVB-Sub/Burn-in outputs.
     #[serde(rename = "teletextGridControl")]
@@ -28861,9 +29039,11 @@ pub struct BurnInDestinationSettings {
     pub teletext_grid_control: std::option::Option<crate::model::BurnInTeletextGridControl>,
     /// Specifies the horizontal position of the caption relative to the left side of the output in pixels. A value of 10 would result in the captions starting 10 pixels from the left of the output. If no explicit xPosition is provided, the horizontal caption position will be determined by the alignment parameter.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "xPosition")]
+    #[serde(default)]
     pub x_position: i32,
     /// Specifies the vertical position of the caption relative to the top of the output in pixels. A value of 10 would result in the captions starting 10 pixels from the top of the output. If no explicit yPosition is provided, the caption will be positioned towards the bottom of the output.  All burn-in and DVB-Sub font settings must match.
     #[serde(rename = "yPosition")]
+    #[serde(default)]
     pub y_position: i32,
 }
 impl std::fmt::Debug for BurnInDestinationSettings {
@@ -29892,6 +30072,7 @@ impl AvailSettings {
 pub struct Scte35TimeSignalApos {
     /// When specified, this offset (in milliseconds) is added to the input Ad Avail PTS time. This only applies to embedded SCTE 104/35 messages and does not apply to OOB messages.
     #[serde(rename = "adAvailOffset")]
+    #[serde(default)]
     pub ad_avail_offset: i32,
     /// When set to ignore, Segment Descriptors with noRegionalBlackoutFlag set to 0 will no longer trigger blackouts or Ad Avail slates
     #[serde(rename = "noRegionalBlackoutFlag")]
@@ -30100,6 +30281,7 @@ impl<'de> serde::Deserialize<'de> for Scte35AposNoRegionalBlackoutBehavior {
 pub struct Scte35SpliceInsert {
     /// When specified, this offset (in milliseconds) is added to the input Ad Avail PTS time. This only applies to embedded SCTE 104/35 messages and does not apply to OOB messages.
     #[serde(rename = "adAvailOffset")]
+    #[serde(default)]
     pub ad_avail_offset: i32,
     /// When set to ignore, Segment Descriptors with noRegionalBlackoutFlag set to 0 will no longer trigger blackouts or Ad Avail slates
     #[serde(rename = "noRegionalBlackoutFlag")]
@@ -30672,10 +30854,12 @@ pub struct RemixSettings {
     pub channel_mappings: std::option::Option<std::vec::Vec<crate::model::AudioChannelMapping>>,
     /// Number of input channels to be used.
     #[serde(rename = "channelsIn")]
+    #[serde(default)]
     pub channels_in: i32,
     /// Number of output channels to be produced.
     /// Valid values: 1, 2, 4, 6, 8
     #[serde(rename = "channelsOut")]
+    #[serde(default)]
     pub channels_out: i32,
 }
 impl std::fmt::Debug for RemixSettings {
@@ -30761,6 +30945,7 @@ pub struct AudioChannelMapping {
     pub input_channel_levels: std::option::Option<std::vec::Vec<crate::model::InputChannelLevel>>,
     /// The index of the output channel being produced.
     #[serde(rename = "outputChannel")]
+    #[serde(default)]
     pub output_channel: i32,
 }
 impl std::fmt::Debug for AudioChannelMapping {
@@ -30829,9 +31014,11 @@ impl AudioChannelMapping {
 pub struct InputChannelLevel {
     /// Remixing value. Units are in dB and acceptable values are within the range from -60 (mute) and 6 dB.
     #[serde(rename = "gain")]
+    #[serde(default)]
     pub gain: i32,
     /// The index of the input channel used as a source.
     #[serde(rename = "inputChannel")]
+    #[serde(default)]
     pub input_channel: i32,
 }
 impl std::fmt::Debug for InputChannelLevel {
@@ -31095,6 +31282,7 @@ impl AudioCodecSettings {
 pub struct WavSettings {
     /// Bits per sample.
     #[serde(rename = "bitDepth")]
+    #[serde(default)]
     pub bit_depth: f64,
     /// The audio coding mode for the WAV audio. The mode determines the number of channels in the audio.
     #[serde(rename = "codingMode")]
@@ -31102,6 +31290,7 @@ pub struct WavSettings {
     pub coding_mode: std::option::Option<crate::model::WavCodingMode>,
     /// Sample rate in Hz.
     #[serde(rename = "sampleRate")]
+    #[serde(default)]
     pub sample_rate: f64,
 }
 impl std::fmt::Debug for WavSettings {
@@ -31269,6 +31458,7 @@ impl PassThroughSettings {
 pub struct Mp2Settings {
     /// Average bitrate in bits/second.
     #[serde(rename = "bitrate")]
+    #[serde(default)]
     pub bitrate: f64,
     /// The MPEG2 Audio coding mode.  Valid values are codingMode10 (for mono) or codingMode20 (for stereo).
     #[serde(rename = "codingMode")]
@@ -31276,6 +31466,7 @@ pub struct Mp2Settings {
     pub coding_mode: std::option::Option<crate::model::Mp2CodingMode>,
     /// Sample rate in Hz.
     #[serde(rename = "sampleRate")]
+    #[serde(default)]
     pub sample_rate: f64,
 }
 impl std::fmt::Debug for Mp2Settings {
@@ -31411,6 +31602,7 @@ pub struct Eac3Settings {
     pub attenuation_control: std::option::Option<crate::model::Eac3AttenuationControl>,
     /// Average bitrate in bits/second. Valid bitrates depend on the coding mode.
     #[serde(rename = "bitrate")]
+    #[serde(default)]
     pub bitrate: f64,
     /// Specifies the bitstream mode (bsmod) for the emitted E-AC-3 stream. See ATSC A/52-2012 (Annex E) for background on these values.
     #[serde(rename = "bitstreamMode")]
@@ -31426,6 +31618,7 @@ pub struct Eac3Settings {
     pub dc_filter: std::option::Option<crate::model::Eac3DcFilter>,
     /// Sets the dialnorm for the output. If blank and input audio is Dolby Digital Plus, dialnorm will be passed through.
     #[serde(rename = "dialnorm")]
+    #[serde(default)]
     pub dialnorm: i32,
     /// Sets the Dolby dynamic range compression profile.
     #[serde(rename = "drcLine")]
@@ -31445,15 +31638,19 @@ pub struct Eac3Settings {
     pub lfe_filter: std::option::Option<crate::model::Eac3LfeFilter>,
     /// Left only/Right only center mix level. Only used for 3/2 coding mode.
     #[serde(rename = "loRoCenterMixLevel")]
+    #[serde(default)]
     pub lo_ro_center_mix_level: f64,
     /// Left only/Right only surround mix level. Only used for 3/2 coding mode.
     #[serde(rename = "loRoSurroundMixLevel")]
+    #[serde(default)]
     pub lo_ro_surround_mix_level: f64,
     /// Left total/Right total center mix level. Only used for 3/2 coding mode.
     #[serde(rename = "ltRtCenterMixLevel")]
+    #[serde(default)]
     pub lt_rt_center_mix_level: f64,
     /// Left total/Right total surround mix level. Only used for 3/2 coding mode.
     #[serde(rename = "ltRtSurroundMixLevel")]
+    #[serde(default)]
     pub lt_rt_surround_mix_level: f64,
     /// When set to followInput, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that supplied this audio data. If audio was not supplied from one of these streams, then the static metadata settings will be used.
     #[serde(rename = "metadataControl")]
@@ -32622,6 +32819,7 @@ impl<'de> serde::Deserialize<'de> for Eac3AttenuationControl {
 pub struct Ac3Settings {
     /// Average bitrate in bits/second. Valid bitrates depend on the coding mode.
     #[serde(rename = "bitrate")]
+    #[serde(default)]
     pub bitrate: f64,
     /// Specifies the bitstream mode (bsmod) for the emitted AC-3 stream. See ATSC A/52-2012 for background on these values.
     #[serde(rename = "bitstreamMode")]
@@ -32633,6 +32831,7 @@ pub struct Ac3Settings {
     pub coding_mode: std::option::Option<crate::model::Ac3CodingMode>,
     /// Sets the dialnorm for the output. If excluded and input audio is Dolby Digital, dialnorm will be passed through.
     #[serde(rename = "dialnorm")]
+    #[serde(default)]
     pub dialnorm: i32,
     /// If set to filmStandard, adds dynamic range compression signaling to the output bitstream as defined in the Dolby Digital specification.
     #[serde(rename = "drcProfile")]
@@ -33084,6 +33283,7 @@ impl<'de> serde::Deserialize<'de> for Ac3BitstreamMode {
 pub struct AacSettings {
     /// Average bitrate in bits/second. Valid values depend on rate control mode and profile.
     #[serde(rename = "bitrate")]
+    #[serde(default)]
     pub bitrate: f64,
     /// Mono, Stereo, or 5.1 channel layout. Valid values depend on rate control mode and profile. The adReceiverMix setting receives a stereo description plus control track and emits a mono AAC encode of the description track, with control data emitted in the PES header as per ETSI TS 101 154 Annex E.
     #[serde(rename = "codingMode")]
@@ -33108,6 +33308,7 @@ pub struct AacSettings {
     pub raw_format: std::option::Option<crate::model::AacRawFormat>,
     /// Sample rate in Hz. Valid values depend on rate control mode and profile.
     #[serde(rename = "sampleRate")]
+    #[serde(default)]
     pub sample_rate: f64,
     /// Use MPEG-2 AAC audio instead of MPEG-4 AAC audio for raw or MPEG-2 Transport Stream containers.
     #[serde(rename = "spec")]
@@ -33812,6 +34013,7 @@ pub struct AudioNormalizationSettings {
     pub algorithm_control: std::option::Option<crate::model::AudioNormalizationAlgorithmControl>,
     /// Target LKFS(loudness) to adjust volume to. If no value is entered, a default value will be used according to the chosen algorithm.  The CALM Act (1770-1) recommends a target of -24 LKFS. The EBU R-128 specification (1770-2) recommends a target of -23 LKFS.
     #[serde(rename = "targetLkfs")]
+    #[serde(default)]
     pub target_lkfs: f64,
 }
 impl std::fmt::Debug for AudioNormalizationSettings {
@@ -34508,6 +34710,7 @@ pub struct Offering {
     pub currency_code: std::option::Option<std::string::String>,
     /// Lease duration, e.g. '12'
     #[serde(rename = "duration")]
+    #[serde(default)]
     pub duration: i32,
     /// Units for duration, e.g. 'MONTHS'
     #[serde(rename = "durationUnits")]
@@ -34515,6 +34718,7 @@ pub struct Offering {
     pub duration_units: std::option::Option<crate::model::OfferingDurationUnits>,
     /// One-time charge for each reserved resource, e.g. '0.0' for a NO_UPFRONT offering
     #[serde(rename = "fixedPrice")]
+    #[serde(default)]
     pub fixed_price: f64,
     /// Offering description, e.g. 'HD AVC output at 10-20 Mbps, 30 fps, and standard VQ in US West (Oregon)'
     #[serde(rename = "offeringDescription")]
@@ -34538,6 +34742,7 @@ pub struct Offering {
     pub resource_specification: std::option::Option<crate::model::ReservationResourceSpecification>,
     /// Recurring usage charge for each reserved resource, e.g. '157.0'
     #[serde(rename = "usagePrice")]
+    #[serde(default)]
     pub usage_price: f64,
 }
 impl std::fmt::Debug for Offering {
@@ -34807,9 +35012,11 @@ pub struct MultiplexSummary {
     pub name: std::option::Option<std::string::String>,
     /// The number of currently healthy pipelines.
     #[serde(rename = "pipelinesRunningCount")]
+    #[serde(default)]
     pub pipelines_running_count: i32,
     /// The number of programs in the multiplex.
     #[serde(rename = "programCount")]
+    #[serde(default)]
     pub program_count: i32,
     /// The current state of the multiplex.
     #[serde(rename = "state")]
@@ -34982,6 +35189,7 @@ impl MultiplexSummary {
 pub struct MultiplexSettingsSummary {
     /// Transport stream bit rate.
     #[serde(rename = "transportStreamBitrate")]
+    #[serde(default)]
     pub transport_stream_bitrate: i32,
 }
 impl std::fmt::Debug for MultiplexSettingsSummary {
@@ -35481,6 +35689,7 @@ pub struct ChannelSummary {
     pub name: std::option::Option<std::string::String>,
     /// The number of currently healthy pipelines.
     #[serde(rename = "pipelinesRunningCount")]
+    #[serde(default)]
     pub pipelines_running_count: i32,
     /// The Amazon Resource Name (ARN) of the role assumed when running the Channel.
     #[serde(rename = "roleArn")]
@@ -36525,9 +36734,11 @@ impl ScheduleActionSettings {
 pub struct StaticImageDeactivateScheduleActionSettings {
     /// The time in milliseconds for the image to fade out. Default is 0 (no fade-out).
     #[serde(rename = "fadeOut")]
+    #[serde(default)]
     pub fade_out: i32,
     /// The image overlay layer to deactivate, 0 to 7. Default is 0.
     #[serde(rename = "layer")]
+    #[serde(default)]
     pub layer: i32,
 }
 impl std::fmt::Debug for StaticImageDeactivateScheduleActionSettings {
@@ -36588,15 +36799,19 @@ impl StaticImageDeactivateScheduleActionSettings {
 pub struct StaticImageActivateScheduleActionSettings {
     /// The duration in milliseconds for the image to remain on the video. If omitted or set to 0 the duration is unlimited and the image will remain until it is explicitly deactivated.
     #[serde(rename = "duration")]
+    #[serde(default)]
     pub duration: i32,
     /// The time in milliseconds for the image to fade in. The fade-in starts at the start time of the overlay. Default is 0 (no fade-in).
     #[serde(rename = "fadeIn")]
+    #[serde(default)]
     pub fade_in: i32,
     /// Applies only if a duration is specified. The time in milliseconds for the image to fade out. The fade-out starts when the duration time is hit, so it effectively extends the duration. Default is 0 (no fade-out).
     #[serde(rename = "fadeOut")]
+    #[serde(default)]
     pub fade_out: i32,
     /// The height of the image when inserted into the video, in pixels. The overlay will be scaled up or down to the specified height. Leave blank to use the native height of the overlay.
     #[serde(rename = "height")]
+    #[serde(default)]
     pub height: i32,
     /// The location and filename of the image file to overlay on the video. The file must be a 32-bit BMP, PNG, or TGA file, and must not be larger (in pixels) than the input video.
     #[serde(rename = "image")]
@@ -36604,18 +36819,23 @@ pub struct StaticImageActivateScheduleActionSettings {
     pub image: std::option::Option<crate::model::InputLocation>,
     /// Placement of the left edge of the overlay relative to the left edge of the video frame, in pixels. 0 (the default) is the left edge of the frame. If the placement causes the overlay to extend beyond the right edge of the underlying video, then the overlay is cropped on the right.
     #[serde(rename = "imageX")]
+    #[serde(default)]
     pub image_x: i32,
     /// Placement of the top edge of the overlay relative to the top edge of the video frame, in pixels. 0 (the default) is the top edge of the frame. If the placement causes the overlay to extend beyond the bottom edge of the underlying video, then the overlay is cropped on the bottom.
     #[serde(rename = "imageY")]
+    #[serde(default)]
     pub image_y: i32,
     /// The number of the layer, 0 to 7. There are 8 layers that can be overlaid on the video, each layer with a different image. The layers are in Z order, which means that overlays with higher values of layer are inserted on top of overlays with lower values of layer. Default is 0.
     #[serde(rename = "layer")]
+    #[serde(default)]
     pub layer: i32,
     /// Opacity of image where 0 is transparent and 100 is fully opaque. Default is 100.
     #[serde(rename = "opacity")]
+    #[serde(default)]
     pub opacity: i32,
     /// The width of the image when inserted into the video, in pixels. The overlay will be scaled up or down to the specified width. Leave blank to use the native width of the overlay.
     #[serde(rename = "width")]
+    #[serde(default)]
     pub width: i32,
 }
 impl std::fmt::Debug for StaticImageActivateScheduleActionSettings {
@@ -36953,6 +37173,7 @@ pub struct Scte35SegmentationDescriptor {
     pub delivery_restrictions: std::option::Option<crate::model::Scte35DeliveryRestrictions>,
     /// Corresponds to SCTE-35 segment_num. A value that is valid for the specified segmentation_type_id.
     #[serde(rename = "segmentNum")]
+    #[serde(default)]
     pub segment_num: i32,
     /// Corresponds to SCTE-35 segmentation_event_cancel_indicator.
     #[serde(rename = "segmentationCancelIndicator")]
@@ -36961,12 +37182,15 @@ pub struct Scte35SegmentationDescriptor {
         std::option::Option<crate::model::Scte35SegmentationCancelIndicator>,
     /// Corresponds to SCTE-35 segmentation_duration. Optional. The duration for the time_signal, in 90 KHz ticks. To convert seconds to ticks, multiple the seconds by 90,000. Enter time in 90 KHz clock ticks. If you do not enter a duration, the time_signal will continue until you insert a cancellation message.
     #[serde(rename = "segmentationDuration")]
+    #[serde(default)]
     pub segmentation_duration: i64,
     /// Corresponds to SCTE-35 segmentation_event_id.
     #[serde(rename = "segmentationEventId")]
+    #[serde(default)]
     pub segmentation_event_id: i64,
     /// Corresponds to SCTE-35 segmentation_type_id. One of the segmentation_type_id values listed in the SCTE-35 specification. On the console, enter the ID in decimal (for example, "52"). In the CLI, API, or an SDK, enter the ID in hex (for example, "0x34") or decimal (for example, "52").
     #[serde(rename = "segmentationTypeId")]
+    #[serde(default)]
     pub segmentation_type_id: i32,
     /// Corresponds to SCTE-35 segmentation_upid. Enter a string containing the hexadecimal representation of the characters that make up the SCTE-35 segmentation_upid value. Must contain an even number of hex characters. Do not include spaces between each hex pair. For example, the ASCII "ADS Information" becomes hex "41445320496e666f726d6174696f6e.
     #[serde(rename = "segmentationUpid")]
@@ -36974,15 +37198,19 @@ pub struct Scte35SegmentationDescriptor {
     pub segmentation_upid: std::option::Option<std::string::String>,
     /// Corresponds to SCTE-35 segmentation_upid_type. On the console, enter one of the types listed in the SCTE-35 specification, converted to a decimal. For example, "0x0C" hex from the specification is "12" in decimal. In the CLI, API, or an SDK, enter one of the types listed in the SCTE-35 specification, in either hex (for example, "0x0C" ) or in decimal (for example, "12").
     #[serde(rename = "segmentationUpidType")]
+    #[serde(default)]
     pub segmentation_upid_type: i32,
     /// Corresponds to SCTE-35 segments_expected. A value that is valid for the specified segmentation_type_id.
     #[serde(rename = "segmentsExpected")]
+    #[serde(default)]
     pub segments_expected: i32,
     /// Corresponds to SCTE-35 sub_segment_num. A value that is valid for the specified segmentation_type_id.
     #[serde(rename = "subSegmentNum")]
+    #[serde(default)]
     pub sub_segment_num: i32,
     /// Corresponds to SCTE-35 sub_segments_expected. A value that is valid for the specified segmentation_type_id.
     #[serde(rename = "subSegmentsExpected")]
+    #[serde(default)]
     pub sub_segments_expected: i32,
 }
 impl std::fmt::Debug for Scte35SegmentationDescriptor {
@@ -37583,9 +37811,11 @@ impl<'de> serde::Deserialize<'de> for Scte35ArchiveAllowedFlag {
 pub struct Scte35SpliceInsertScheduleActionSettings {
     /// Optional, the duration for the splice_insert, in 90 KHz ticks. To convert seconds to ticks, multiple the seconds by 90,000. If you enter a duration, there is an expectation that the downstream system can read the duration and cue in at that time. If you do not enter a duration, the splice_insert will continue indefinitely and there is an expectation that you will enter a return_to_network to end the splice_insert at the appropriate time.
     #[serde(rename = "duration")]
+    #[serde(default)]
     pub duration: i64,
     /// The splice_event_id for the SCTE-35 splice_insert, as defined in SCTE-35.
     #[serde(rename = "spliceEventId")]
+    #[serde(default)]
     pub splice_event_id: i64,
 }
 impl std::fmt::Debug for Scte35SpliceInsertScheduleActionSettings {
@@ -37646,6 +37876,7 @@ impl Scte35SpliceInsertScheduleActionSettings {
 pub struct Scte35ReturnToNetworkScheduleActionSettings {
     /// The splice_event_id for the SCTE-35 splice_insert, as defined in SCTE-35.
     #[serde(rename = "spliceEventId")]
+    #[serde(default)]
     pub splice_event_id: i64,
 }
 impl std::fmt::Debug for Scte35ReturnToNetworkScheduleActionSettings {
@@ -37889,6 +38120,7 @@ impl MotionGraphicsDeactivateScheduleActionSettings {
 pub struct MotionGraphicsActivateScheduleActionSettings {
     /// Duration (in milliseconds) that motion graphics should render on to the video stream. Leaving out this property or setting to 0 will result in rendering continuing until a deactivate action is processed.
     #[serde(rename = "duration")]
+    #[serde(default)]
     pub duration: i64,
     /// Key used to extract the password from EC2 Parameter store
     #[serde(rename = "passwordParam")]

@@ -1808,9 +1808,11 @@ pub struct TableDescription {
     pub provisioned_throughput: std::option::Option<crate::model::ProvisionedThroughputDescription>,
     /// <p>The total size of the specified table, in bytes. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p>
     #[serde(rename = "TableSizeBytes")]
+    #[serde(default)]
     pub table_size_bytes: i64,
     /// <p>The number of items in the specified table. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p>
     #[serde(rename = "ItemCount")]
+    #[serde(default)]
     pub item_count: i64,
     /// <p>The Amazon Resource Name (ARN) that uniquely identifies the table.</p>
     #[serde(rename = "TableArn")]
@@ -3620,9 +3622,11 @@ pub struct GlobalSecondaryIndexDescription {
     pub provisioned_throughput: std::option::Option<crate::model::ProvisionedThroughputDescription>,
     /// <p>The total size of the specified index, in bytes. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p>
     #[serde(rename = "IndexSizeBytes")]
+    #[serde(default)]
     pub index_size_bytes: i64,
     /// <p>The number of items in the specified index. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p>
     #[serde(rename = "ItemCount")]
+    #[serde(default)]
     pub item_count: i64,
     /// <p>The Amazon Resource Name (ARN) that uniquely identifies the index.</p>
     #[serde(rename = "IndexArn")]
@@ -4311,9 +4315,11 @@ pub struct LocalSecondaryIndexDescription {
     pub projection: std::option::Option<crate::model::Projection>,
     /// <p>The total size of the specified index, in bytes. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p>
     #[serde(rename = "IndexSizeBytes")]
+    #[serde(default)]
     pub index_size_bytes: i64,
     /// <p>The number of items in the specified index. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p>
     #[serde(rename = "ItemCount")]
+    #[serde(default)]
     pub item_count: i64,
     /// <p>The Amazon Resource Name (ARN) that uniquely identifies the index.</p>
     #[serde(rename = "IndexArn")]
@@ -12955,6 +12961,7 @@ pub struct Endpoint {
     pub address: std::option::Option<std::string::String>,
     /// <p>Endpoint cache time to live (TTL) value.</p>
     #[serde(rename = "CachePeriodInMinutes")]
+    #[serde(default)]
     pub cache_period_in_minutes: i64,
 }
 impl std::fmt::Debug for Endpoint {
@@ -13577,6 +13584,7 @@ pub struct SourceTableDetails {
     pub table_arn: std::option::Option<std::string::String>,
     /// <p>Size of the table in bytes. Note that this is an approximate value.</p>
     #[serde(rename = "TableSizeBytes")]
+    #[serde(default)]
     pub table_size_bytes: i64,
     /// <p>Schema of the table. </p>
     #[serde(rename = "KeySchema")]

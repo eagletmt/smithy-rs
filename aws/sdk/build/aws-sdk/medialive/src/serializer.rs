@@ -782,6 +782,7 @@ pub struct DeleteChannelOutputBody {
     pub pipeline_details: std::option::Option<std::vec::Vec<crate::model::PipelineDetail>>,
     /// The number of currently healthy pipelines.
     #[serde(rename = "pipelinesRunningCount")]
+    #[serde(default)]
     pub pipelines_running_count: i32,
     /// The Amazon Resource Name (ARN) of the role assumed when running the Channel.
     #[serde(rename = "roleArn")]
@@ -855,9 +856,11 @@ pub struct DeleteMultiplexOutputBody {
     pub name: std::option::Option<std::string::String>,
     /// The number of currently healthy pipelines.
     #[serde(rename = "pipelinesRunningCount")]
+    #[serde(default)]
     pub pipelines_running_count: i32,
     /// The number of programs in the multiplex.
     #[serde(rename = "programCount")]
+    #[serde(default)]
     pub program_count: i32,
     /// The current state of the multiplex.
     #[serde(rename = "state")]
@@ -938,6 +941,7 @@ pub struct DeleteReservationOutputBody {
     pub arn: std::option::Option<std::string::String>,
     /// Number of reserved resources
     #[serde(rename = "count")]
+    #[serde(default)]
     pub count: i32,
     /// Currency code for usagePrice and fixedPrice in ISO-4217 format, e.g. 'USD'
     #[serde(rename = "currencyCode")]
@@ -945,6 +949,7 @@ pub struct DeleteReservationOutputBody {
     pub currency_code: std::option::Option<std::string::String>,
     /// Lease duration, e.g. '12'
     #[serde(rename = "duration")]
+    #[serde(default)]
     pub duration: i32,
     /// Units for duration, e.g. 'MONTHS'
     #[serde(rename = "durationUnits")]
@@ -956,6 +961,7 @@ pub struct DeleteReservationOutputBody {
     pub end: std::option::Option<std::string::String>,
     /// One-time charge for each reserved resource, e.g. '0.0' for a NO_UPFRONT offering
     #[serde(rename = "fixedPrice")]
+    #[serde(default)]
     pub fixed_price: f64,
     /// User specified reservation name
     #[serde(rename = "name")]
@@ -1000,6 +1006,7 @@ pub struct DeleteReservationOutputBody {
         std::option::Option<std::collections::HashMap<std::string::String, std::string::String>>,
     /// Recurring usage charge for each reserved resource, e.g. '157.0'
     #[serde(rename = "usagePrice")]
+    #[serde(default)]
     pub usage_price: f64,
 }
 impl std::fmt::Debug for DeleteReservationOutputBody {
@@ -1083,6 +1090,7 @@ pub struct DescribeChannelOutputBody {
     pub pipeline_details: std::option::Option<std::vec::Vec<crate::model::PipelineDetail>>,
     /// The number of currently healthy pipelines.
     #[serde(rename = "pipelinesRunningCount")]
+    #[serde(default)]
     pub pipelines_running_count: i32,
     /// The Amazon Resource Name (ARN) of the role assumed when running the Channel.
     #[serde(rename = "roleArn")]
@@ -1369,9 +1377,11 @@ pub struct DescribeMultiplexOutputBody {
     pub name: std::option::Option<std::string::String>,
     /// The number of currently healthy pipelines.
     #[serde(rename = "pipelinesRunningCount")]
+    #[serde(default)]
     pub pipelines_running_count: i32,
     /// The number of programs in the multiplex.
     #[serde(rename = "programCount")]
+    #[serde(default)]
     pub program_count: i32,
     /// The current state of the multiplex.
     #[serde(rename = "state")]
@@ -1456,6 +1466,7 @@ pub struct DescribeOfferingOutputBody {
     pub currency_code: std::option::Option<std::string::String>,
     /// Lease duration, e.g. '12'
     #[serde(rename = "duration")]
+    #[serde(default)]
     pub duration: i32,
     /// Units for duration, e.g. 'MONTHS'
     #[serde(rename = "durationUnits")]
@@ -1463,6 +1474,7 @@ pub struct DescribeOfferingOutputBody {
     pub duration_units: std::option::Option<crate::model::OfferingDurationUnits>,
     /// One-time charge for each reserved resource, e.g. '0.0' for a NO_UPFRONT offering
     #[serde(rename = "fixedPrice")]
+    #[serde(default)]
     pub fixed_price: f64,
     /// Offering description, e.g. 'HD AVC output at 10-20 Mbps, 30 fps, and standard VQ in US West (Oregon)'
     #[serde(rename = "offeringDescription")]
@@ -1486,6 +1498,7 @@ pub struct DescribeOfferingOutputBody {
     pub resource_specification: std::option::Option<crate::model::ReservationResourceSpecification>,
     /// Recurring usage charge for each reserved resource, e.g. '157.0'
     #[serde(rename = "usagePrice")]
+    #[serde(default)]
     pub usage_price: f64,
 }
 impl std::fmt::Debug for DescribeOfferingOutputBody {
@@ -1516,6 +1529,7 @@ pub struct DescribeReservationOutputBody {
     pub arn: std::option::Option<std::string::String>,
     /// Number of reserved resources
     #[serde(rename = "count")]
+    #[serde(default)]
     pub count: i32,
     /// Currency code for usagePrice and fixedPrice in ISO-4217 format, e.g. 'USD'
     #[serde(rename = "currencyCode")]
@@ -1523,6 +1537,7 @@ pub struct DescribeReservationOutputBody {
     pub currency_code: std::option::Option<std::string::String>,
     /// Lease duration, e.g. '12'
     #[serde(rename = "duration")]
+    #[serde(default)]
     pub duration: i32,
     /// Units for duration, e.g. 'MONTHS'
     #[serde(rename = "durationUnits")]
@@ -1534,6 +1549,7 @@ pub struct DescribeReservationOutputBody {
     pub end: std::option::Option<std::string::String>,
     /// One-time charge for each reserved resource, e.g. '0.0' for a NO_UPFRONT offering
     #[serde(rename = "fixedPrice")]
+    #[serde(default)]
     pub fixed_price: f64,
     /// User specified reservation name
     #[serde(rename = "name")]
@@ -1578,6 +1594,7 @@ pub struct DescribeReservationOutputBody {
         std::option::Option<std::collections::HashMap<std::string::String, std::string::String>>,
     /// Recurring usage charge for each reserved resource, e.g. '157.0'
     #[serde(rename = "usagePrice")]
+    #[serde(default)]
     pub usage_price: f64,
 }
 impl std::fmt::Debug for DescribeReservationOutputBody {
@@ -1918,6 +1935,7 @@ pub struct StartChannelOutputBody {
     pub pipeline_details: std::option::Option<std::vec::Vec<crate::model::PipelineDetail>>,
     /// The number of currently healthy pipelines.
     #[serde(rename = "pipelinesRunningCount")]
+    #[serde(default)]
     pub pipelines_running_count: i32,
     /// The Amazon Resource Name (ARN) of the role assumed when running the Channel.
     #[serde(rename = "roleArn")]
@@ -1991,9 +2009,11 @@ pub struct StartMultiplexOutputBody {
     pub name: std::option::Option<std::string::String>,
     /// The number of currently healthy pipelines.
     #[serde(rename = "pipelinesRunningCount")]
+    #[serde(default)]
     pub pipelines_running_count: i32,
     /// The number of programs in the multiplex.
     #[serde(rename = "programCount")]
+    #[serde(default)]
     pub program_count: i32,
     /// The current state of the multiplex.
     #[serde(rename = "state")]
@@ -2078,6 +2098,7 @@ pub struct StopChannelOutputBody {
     pub pipeline_details: std::option::Option<std::vec::Vec<crate::model::PipelineDetail>>,
     /// The number of currently healthy pipelines.
     #[serde(rename = "pipelinesRunningCount")]
+    #[serde(default)]
     pub pipelines_running_count: i32,
     /// The Amazon Resource Name (ARN) of the role assumed when running the Channel.
     #[serde(rename = "roleArn")]
@@ -2151,9 +2172,11 @@ pub struct StopMultiplexOutputBody {
     pub name: std::option::Option<std::string::String>,
     /// The number of currently healthy pipelines.
     #[serde(rename = "pipelinesRunningCount")]
+    #[serde(default)]
     pub pipelines_running_count: i32,
     /// The number of programs in the multiplex.
     #[serde(rename = "programCount")]
+    #[serde(default)]
     pub program_count: i32,
     /// The current state of the multiplex.
     #[serde(rename = "state")]

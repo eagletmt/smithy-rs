@@ -64,9 +64,11 @@ pub struct MssPackage {
     pub encryption: std::option::Option<crate::model::MssEncryption>,
     /// The time window (in seconds) contained in each manifest.
     #[serde(rename = "manifestWindowSeconds")]
+    #[serde(default)]
     pub manifest_window_seconds: i32,
     /// The duration (in seconds) of each segment.
     #[serde(rename = "segmentDurationSeconds")]
+    #[serde(default)]
     pub segment_duration_seconds: i32,
     /// A StreamSelection configuration.
     #[serde(rename = "streamSelection")]
@@ -161,9 +163,11 @@ impl MssPackage {
 pub struct StreamSelection {
     /// The maximum video bitrate (bps) to include in output.
     #[serde(rename = "maxVideoBitsPerSecond")]
+    #[serde(default)]
     pub max_video_bits_per_second: i32,
     /// The minimum video bitrate (bps) to include in output.
     #[serde(rename = "minVideoBitsPerSecond")]
+    #[serde(default)]
     pub min_video_bits_per_second: i32,
     /// A directive that determines the order of streams in the output.
     #[serde(rename = "streamOrder")]
@@ -729,6 +733,7 @@ pub struct HlsPackage {
     pub encryption: std::option::Option<crate::model::HlsEncryption>,
     /// When enabled, an I-Frame only stream will be included in the output.
     #[serde(rename = "includeIframeOnlyStream")]
+    #[serde(default)]
     pub include_iframe_only_stream: bool,
     /// The HTTP Live Streaming (HLS) playlist type.
     /// When either "EVENT" or "VOD" is specified, a corresponding EXT-X-PLAYLIST-TYPE
@@ -738,6 +743,7 @@ pub struct HlsPackage {
     pub playlist_type: std::option::Option<crate::model::PlaylistType>,
     /// Time window (in seconds) contained in each parent manifest.
     #[serde(rename = "playlistWindowSeconds")]
+    #[serde(default)]
     pub playlist_window_seconds: i32,
     /// The interval (in seconds) between each EXT-X-PROGRAM-DATE-TIME tag
     /// inserted into manifests. Additionally, when an interval is specified
@@ -749,10 +755,12 @@ pub struct HlsPackage {
     /// of this parameter, if any ID3 Timed Metadata is found in HTTP Live Streaming (HLS) input,
     /// it will be passed through to HLS output.
     #[serde(rename = "programDateTimeIntervalSeconds")]
+    #[serde(default)]
     pub program_date_time_interval_seconds: i32,
     /// Duration (in seconds) of each fragment. Actual fragments will be
     /// rounded to the nearest multiple of the source fragment duration.
     #[serde(rename = "segmentDurationSeconds")]
+    #[serde(default)]
     pub segment_duration_seconds: i32,
     /// A StreamSelection configuration.
     #[serde(rename = "streamSelection")]
@@ -760,6 +768,7 @@ pub struct HlsPackage {
     pub stream_selection: std::option::Option<crate::model::StreamSelection>,
     /// When enabled, audio streams will be placed in rendition groups in the output.
     #[serde(rename = "useAudioRenditionGroup")]
+    #[serde(default)]
     pub use_audio_rendition_group: bool,
 }
 impl std::fmt::Debug for HlsPackage {
@@ -1053,9 +1062,11 @@ pub struct HlsEncryption {
     pub encryption_method: std::option::Option<crate::model::EncryptionMethod>,
     /// Interval (in seconds) between each encryption key rotation.
     #[serde(rename = "keyRotationIntervalSeconds")]
+    #[serde(default)]
     pub key_rotation_interval_seconds: i32,
     /// When enabled, the EXT-X-KEY tag will be repeated in output manifests.
     #[serde(rename = "repeatExtXKey")]
+    #[serde(default)]
     pub repeat_ext_x_key: bool,
     /// A configuration for accessing an external Secure Packager and Encoder Key Exchange (SPEKE) service that will provide encryption keys.
     #[serde(rename = "spekeKeyProvider")]
@@ -1472,12 +1483,15 @@ pub struct DashPackage {
     pub manifest_layout: std::option::Option<crate::model::ManifestLayout>,
     /// Time window (in seconds) contained in each manifest.
     #[serde(rename = "manifestWindowSeconds")]
+    #[serde(default)]
     pub manifest_window_seconds: i32,
     /// Minimum duration (in seconds) that a player will buffer media before starting the presentation.
     #[serde(rename = "minBufferTimeSeconds")]
+    #[serde(default)]
     pub min_buffer_time_seconds: i32,
     /// Minimum duration (in seconds) between potential changes to the Dynamic Adaptive Streaming over HTTP (DASH) Media Presentation Description (MPD).
     #[serde(rename = "minUpdatePeriodSeconds")]
+    #[serde(default)]
     pub min_update_period_seconds: i32,
     /// A list of triggers that controls when the outgoing Dynamic Adaptive Streaming over HTTP (DASH)
     /// Media Presentation Description (MPD) will be partitioned into multiple periods. If empty, the content will not
@@ -1493,6 +1507,7 @@ pub struct DashPackage {
     /// Duration (in seconds) of each segment. Actual segments will be
     /// rounded to the nearest multiple of the source segment duration.
     #[serde(rename = "segmentDurationSeconds")]
+    #[serde(default)]
     pub segment_duration_seconds: i32,
     /// Determines the type of SegmentTemplate included in the Media Presentation Description (MPD).  When set to NUMBER_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Number$ media URLs.  When set to TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs. When set to NUMBER_WITH_DURATION, only a duration is included in each SegmentTemplate, with $Number$ media URLs.
     #[serde(rename = "segmentTemplateFormat")]
@@ -1504,6 +1519,7 @@ pub struct DashPackage {
     pub stream_selection: std::option::Option<crate::model::StreamSelection>,
     /// Duration (in seconds) to delay live content before presentation.
     #[serde(rename = "suggestedPresentationDelaySeconds")]
+    #[serde(default)]
     pub suggested_presentation_delay_seconds: i32,
     /// Determines the type of UTCTiming included in the Media Presentation Description (MPD)
     #[serde(rename = "utcTiming")]
@@ -2055,6 +2071,7 @@ impl<'de> serde::Deserialize<'de> for ManifestLayout {
 pub struct DashEncryption {
     /// Time (in seconds) between each encryption key rotation.
     #[serde(rename = "keyRotationIntervalSeconds")]
+    #[serde(default)]
     pub key_rotation_interval_seconds: i32,
     /// A configuration for accessing an external Secure Packager and Encoder Key Exchange (SPEKE) service that will provide encryption keys.
     #[serde(rename = "spekeKeyProvider")]
@@ -2136,6 +2153,7 @@ pub struct CmafPackage {
     /// Duration (in seconds) of each segment. Actual segments will be
     /// rounded to the nearest multiple of the source segment duration.
     #[serde(rename = "segmentDurationSeconds")]
+    #[serde(default)]
     pub segment_duration_seconds: i32,
     /// An optional custom string that is prepended to the name of each segment. If not specified, it defaults to the ChannelId.
     #[serde(rename = "segmentPrefix")]
@@ -2267,6 +2285,7 @@ pub struct HlsManifest {
     pub id: std::option::Option<std::string::String>,
     /// When enabled, an I-Frame only stream will be included in the output.
     #[serde(rename = "includeIframeOnlyStream")]
+    #[serde(default)]
     pub include_iframe_only_stream: bool,
     /// An optional short string appended to the end of the OriginEndpoint URL. If not specified, defaults to the manifestName for the OriginEndpoint.
     #[serde(rename = "manifestName")]
@@ -2280,6 +2299,7 @@ pub struct HlsManifest {
     pub playlist_type: std::option::Option<crate::model::PlaylistType>,
     /// Time window (in seconds) contained in each parent manifest.
     #[serde(rename = "playlistWindowSeconds")]
+    #[serde(default)]
     pub playlist_window_seconds: i32,
     /// The interval (in seconds) between each EXT-X-PROGRAM-DATE-TIME tag
     /// inserted into manifests. Additionally, when an interval is specified
@@ -2291,6 +2311,7 @@ pub struct HlsManifest {
     /// of this parameter, if any ID3 Timed Metadata is found in HTTP Live Streaming (HLS) input,
     /// it will be passed through to HLS output.
     #[serde(rename = "programDateTimeIntervalSeconds")]
+    #[serde(default)]
     pub program_date_time_interval_seconds: i32,
     /// The URL of the packaged OriginEndpoint for consumption.
     #[serde(rename = "url")]
@@ -2460,6 +2481,7 @@ pub struct CmafEncryption {
     pub constant_initialization_vector: std::option::Option<std::string::String>,
     /// Time (in seconds) between each encryption key rotation.
     #[serde(rename = "keyRotationIntervalSeconds")]
+    #[serde(default)]
     pub key_rotation_interval_seconds: i32,
     /// A configuration for accessing an external Secure Packager and Encoder Key Exchange (SPEKE) service that will provide encryption keys.
     #[serde(rename = "spekeKeyProvider")]
@@ -2634,6 +2656,7 @@ pub struct CmafPackageCreateOrUpdateParameters {
     /// Duration (in seconds) of each segment. Actual segments will be
     /// rounded to the nearest multiple of the source segment duration.
     #[serde(rename = "segmentDurationSeconds")]
+    #[serde(default)]
     pub segment_duration_seconds: i32,
     /// An optional custom string that is prepended to the name of each segment. If not specified, it defaults to the ChannelId.
     #[serde(rename = "segmentPrefix")]
@@ -2788,6 +2811,7 @@ pub struct HlsManifestCreateOrUpdateParameters {
     pub id: std::option::Option<std::string::String>,
     /// When enabled, an I-Frame only stream will be included in the output.
     #[serde(rename = "includeIframeOnlyStream")]
+    #[serde(default)]
     pub include_iframe_only_stream: bool,
     /// An optional short string appended to the end of the OriginEndpoint URL. If not specified, defaults to the manifestName for the OriginEndpoint.
     #[serde(rename = "manifestName")]
@@ -2801,6 +2825,7 @@ pub struct HlsManifestCreateOrUpdateParameters {
     pub playlist_type: std::option::Option<crate::model::PlaylistType>,
     /// Time window (in seconds) contained in each parent manifest.
     #[serde(rename = "playlistWindowSeconds")]
+    #[serde(default)]
     pub playlist_window_seconds: i32,
     /// The interval (in seconds) between each EXT-X-PROGRAM-DATE-TIME tag
     /// inserted into manifests. Additionally, when an interval is specified
@@ -2812,6 +2837,7 @@ pub struct HlsManifestCreateOrUpdateParameters {
     /// of this parameter, if any ID3 Timed Metadata is found in HTTP Live Streaming (HLS) input,
     /// it will be passed through to HLS output.
     #[serde(rename = "programDateTimeIntervalSeconds")]
+    #[serde(default)]
     pub program_date_time_interval_seconds: i32,
 }
 impl std::fmt::Debug for HlsManifestCreateOrUpdateParameters {
@@ -3303,6 +3329,7 @@ pub struct OriginEndpoint {
     /// Maximum duration (seconds) of content to retain for startover playback.
     /// If not specified, startover playback will be disabled for the OriginEndpoint.
     #[serde(rename = "startoverWindowSeconds")]
+    #[serde(default)]
     pub startover_window_seconds: i32,
     /// A collection of tags associated with a resource
     #[serde(rename = "tags")]
@@ -3312,6 +3339,7 @@ pub struct OriginEndpoint {
     /// Amount of delay (seconds) to enforce on the playback of live content.
     /// If not specified, there will be no time delay in effect for the OriginEndpoint.
     #[serde(rename = "timeDelaySeconds")]
+    #[serde(default)]
     pub time_delay_seconds: i32,
     /// The URL of the packaged OriginEndpoint for consumption.
     #[serde(rename = "url")]
