@@ -2,8 +2,17 @@
 pub fn parse_generic_error(
     response: &http::Response<bytes::Bytes>,
 ) -> Result<smithy_types::Error, smithy_xml::decode::XmlError> {
-    let base_err = crate::rest_xml_unwrapped_errors::parse_generic_error(response.body().as_ref())?;
-    Ok(crate::s3_errors::parse_extended_error(base_err, &response))
+    if response.body().is_empty() {
+        let mut err = smithy_types::Error::builder();
+        if response.status().as_u16() == 404 {
+            err.code("NotFound");
+        }
+        Ok(err.build())
+    } else {
+        let base_err =
+            crate::rest_xml_unwrapped_errors::parse_generic_error(response.body().as_ref())?;
+        Ok(crate::s3_errors::parse_extended_error(base_err, &response))
+    }
 }
 
 #[allow(unused_mut)]
