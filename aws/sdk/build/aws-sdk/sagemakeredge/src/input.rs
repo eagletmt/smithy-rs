@@ -43,6 +43,8 @@ pub mod get_device_registration_input {
         }
     }
 }
+pub type GetDeviceRegistrationInputOperationOutputAlias = crate::operation::GetDeviceRegistration;
+pub type GetDeviceRegistrationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetDeviceRegistrationInput {
     /// Consumes the builder and constructs an Operation<[`GetDeviceRegistration`](crate::operation::GetDeviceRegistration)>
     #[allow(clippy::let_and_return)]
@@ -220,6 +222,8 @@ pub mod send_heartbeat_input {
         }
     }
 }
+pub type SendHeartbeatInputOperationOutputAlias = crate::operation::SendHeartbeat;
+pub type SendHeartbeatInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SendHeartbeatInput {
     /// Consumes the builder and constructs an Operation<[`SendHeartbeat`](crate::operation::SendHeartbeat)>
     #[allow(clippy::let_and_return)]

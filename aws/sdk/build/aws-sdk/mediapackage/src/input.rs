@@ -56,6 +56,8 @@ pub mod configure_logs_input {
         }
     }
 }
+pub type ConfigureLogsInputOperationOutputAlias = crate::operation::ConfigureLogs;
+pub type ConfigureLogsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ConfigureLogsInput {
     /// Consumes the builder and constructs an Operation<[`ConfigureLogs`](crate::operation::ConfigureLogs)>
     #[allow(clippy::let_and_return)]
@@ -218,6 +220,8 @@ pub mod create_channel_input {
         }
     }
 }
+pub type CreateChannelInputOperationOutputAlias = crate::operation::CreateChannel;
+pub type CreateChannelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateChannelInput {
     /// Consumes the builder and constructs an Operation<[`CreateChannel`](crate::operation::CreateChannel)>
     #[allow(clippy::let_and_return)]
@@ -393,6 +397,8 @@ pub mod create_harvest_job_input {
         }
     }
 }
+pub type CreateHarvestJobInputOperationOutputAlias = crate::operation::CreateHarvestJob;
+pub type CreateHarvestJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateHarvestJobInput {
     /// Consumes the builder and constructs an Operation<[`CreateHarvestJob`](crate::operation::CreateHarvestJob)>
     #[allow(clippy::let_and_return)]
@@ -703,6 +709,8 @@ pub mod create_origin_endpoint_input {
         }
     }
 }
+pub type CreateOriginEndpointInputOperationOutputAlias = crate::operation::CreateOriginEndpoint;
+pub type CreateOriginEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateOriginEndpointInput {
     /// Consumes the builder and constructs an Operation<[`CreateOriginEndpoint`](crate::operation::CreateOriginEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -825,6 +833,8 @@ pub mod delete_channel_input {
         }
     }
 }
+pub type DeleteChannelInputOperationOutputAlias = crate::operation::DeleteChannel;
+pub type DeleteChannelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteChannelInput {
     /// Consumes the builder and constructs an Operation<[`DeleteChannel`](crate::operation::DeleteChannel)>
     #[allow(clippy::let_and_return)]
@@ -950,6 +960,8 @@ pub mod delete_origin_endpoint_input {
         }
     }
 }
+pub type DeleteOriginEndpointInputOperationOutputAlias = crate::operation::DeleteOriginEndpoint;
+pub type DeleteOriginEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteOriginEndpointInput {
     /// Consumes the builder and constructs an Operation<[`DeleteOriginEndpoint`](crate::operation::DeleteOriginEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -1075,6 +1087,8 @@ pub mod describe_channel_input {
         }
     }
 }
+pub type DescribeChannelInputOperationOutputAlias = crate::operation::DescribeChannel;
+pub type DescribeChannelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeChannelInput {
     /// Consumes the builder and constructs an Operation<[`DescribeChannel`](crate::operation::DescribeChannel)>
     #[allow(clippy::let_and_return)]
@@ -1200,6 +1214,8 @@ pub mod describe_harvest_job_input {
         }
     }
 }
+pub type DescribeHarvestJobInputOperationOutputAlias = crate::operation::DescribeHarvestJob;
+pub type DescribeHarvestJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeHarvestJobInput {
     /// Consumes the builder and constructs an Operation<[`DescribeHarvestJob`](crate::operation::DescribeHarvestJob)>
     #[allow(clippy::let_and_return)]
@@ -1325,6 +1341,8 @@ pub mod describe_origin_endpoint_input {
         }
     }
 }
+pub type DescribeOriginEndpointInputOperationOutputAlias = crate::operation::DescribeOriginEndpoint;
+pub type DescribeOriginEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeOriginEndpointInput {
     /// Consumes the builder and constructs an Operation<[`DescribeOriginEndpoint`](crate::operation::DescribeOriginEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -1460,6 +1478,8 @@ pub mod list_channels_input {
         }
     }
 }
+pub type ListChannelsInputOperationOutputAlias = crate::operation::ListChannels;
+pub type ListChannelsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListChannelsInput {
     /// Consumes the builder and constructs an Operation<[`ListChannels`](crate::operation::ListChannels)>
     #[allow(clippy::let_and_return)]
@@ -1629,6 +1649,8 @@ pub mod list_harvest_jobs_input {
         }
     }
 }
+pub type ListHarvestJobsInputOperationOutputAlias = crate::operation::ListHarvestJobs;
+pub type ListHarvestJobsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListHarvestJobsInput {
     /// Consumes the builder and constructs an Operation<[`ListHarvestJobs`](crate::operation::ListHarvestJobs)>
     #[allow(clippy::let_and_return)]
@@ -1793,6 +1815,8 @@ pub mod list_origin_endpoints_input {
         }
     }
 }
+pub type ListOriginEndpointsInputOperationOutputAlias = crate::operation::ListOriginEndpoints;
+pub type ListOriginEndpointsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListOriginEndpointsInput {
     /// Consumes the builder and constructs an Operation<[`ListOriginEndpoints`](crate::operation::ListOriginEndpoints)>
     #[allow(clippy::let_and_return)]
@@ -1928,6 +1952,8 @@ pub mod list_tags_for_resource_input {
         }
     }
 }
+pub type ListTagsForResourceInputOperationOutputAlias = crate::operation::ListTagsForResource;
+pub type ListTagsForResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTagsForResourceInput {
     /// Consumes the builder and constructs an Operation<[`ListTagsForResource`](crate::operation::ListTagsForResource)>
     #[allow(clippy::let_and_return)]
@@ -2053,6 +2079,9 @@ pub mod rotate_channel_credentials_input {
         }
     }
 }
+pub type RotateChannelCredentialsInputOperationOutputAlias =
+    crate::operation::RotateChannelCredentials;
+pub type RotateChannelCredentialsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RotateChannelCredentialsInput {
     /// Consumes the builder and constructs an Operation<[`RotateChannelCredentials`](crate::operation::RotateChannelCredentials)>
     #[allow(clippy::let_and_return)]
@@ -2191,6 +2220,9 @@ pub mod rotate_ingest_endpoint_credentials_input {
         }
     }
 }
+pub type RotateIngestEndpointCredentialsInputOperationOutputAlias =
+    crate::operation::RotateIngestEndpointCredentials;
+pub type RotateIngestEndpointCredentialsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RotateIngestEndpointCredentialsInput {
     /// Consumes the builder and constructs an Operation<[`RotateIngestEndpointCredentials`](crate::operation::RotateIngestEndpointCredentials)>
     #[allow(clippy::let_and_return)]
@@ -2338,6 +2370,8 @@ pub mod tag_resource_input {
         }
     }
 }
+pub type TagResourceInputOperationOutputAlias = crate::operation::TagResource;
+pub type TagResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagResourceInput {
     /// Consumes the builder and constructs an Operation<[`TagResource`](crate::operation::TagResource)>
     #[allow(clippy::let_and_return)]
@@ -2479,6 +2513,8 @@ pub mod untag_resource_input {
         }
     }
 }
+pub type UntagResourceInputOperationOutputAlias = crate::operation::UntagResource;
+pub type UntagResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagResourceInput {
     /// Consumes the builder and constructs an Operation<[`UntagResource`](crate::operation::UntagResource)>
     #[allow(clippy::let_and_return)]
@@ -2623,6 +2659,8 @@ pub mod update_channel_input {
         }
     }
 }
+pub type UpdateChannelInputOperationOutputAlias = crate::operation::UpdateChannel;
+pub type UpdateChannelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateChannelInput {
     /// Consumes the builder and constructs an Operation<[`UpdateChannel`](crate::operation::UpdateChannel)>
     #[allow(clippy::let_and_return)]
@@ -2902,6 +2940,8 @@ pub mod update_origin_endpoint_input {
         }
     }
 }
+pub type UpdateOriginEndpointInputOperationOutputAlias = crate::operation::UpdateOriginEndpoint;
+pub type UpdateOriginEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateOriginEndpointInput {
     /// Consumes the builder and constructs an Operation<[`UpdateOriginEndpoint`](crate::operation::UpdateOriginEndpoint)>
     #[allow(clippy::let_and_return)]

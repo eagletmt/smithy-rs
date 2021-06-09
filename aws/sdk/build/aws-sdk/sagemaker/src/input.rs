@@ -75,6 +75,8 @@ pub mod add_association_input {
         }
     }
 }
+pub type AddAssociationInputOperationOutputAlias = crate::operation::AddAssociation;
+pub type AddAssociationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AddAssociationInput {
     /// Consumes the builder and constructs an Operation<[`AddAssociation`](crate::operation::AddAssociation)>
     #[allow(clippy::let_and_return)]
@@ -201,6 +203,8 @@ pub mod add_tags_input {
         }
     }
 }
+pub type AddTagsInputOperationOutputAlias = crate::operation::AddTags;
+pub type AddTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AddTagsInput {
     /// Consumes the builder and constructs an Operation<[`AddTags`](crate::operation::AddTags)>
     #[allow(clippy::let_and_return)]
@@ -323,6 +327,9 @@ pub mod associate_trial_component_input {
         }
     }
 }
+pub type AssociateTrialComponentInputOperationOutputAlias =
+    crate::operation::AssociateTrialComponent;
+pub type AssociateTrialComponentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AssociateTrialComponentInput {
     /// Consumes the builder and constructs an Operation<[`AssociateTrialComponent`](crate::operation::AssociateTrialComponent)>
     #[allow(clippy::let_and_return)]
@@ -531,6 +538,8 @@ pub mod create_action_input {
         }
     }
 }
+pub type CreateActionInputOperationOutputAlias = crate::operation::CreateAction;
+pub type CreateActionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateActionInput {
     /// Consumes the builder and constructs an Operation<[`CreateAction`](crate::operation::CreateAction)>
     #[allow(clippy::let_and_return)]
@@ -779,6 +788,8 @@ pub mod create_algorithm_input {
         }
     }
 }
+pub type CreateAlgorithmInputOperationOutputAlias = crate::operation::CreateAlgorithm;
+pub type CreateAlgorithmInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateAlgorithmInput {
     /// Consumes the builder and constructs an Operation<[`CreateAlgorithm`](crate::operation::CreateAlgorithm)>
     #[allow(clippy::let_and_return)]
@@ -956,6 +967,8 @@ pub mod create_app_input {
         }
     }
 }
+pub type CreateAppInputOperationOutputAlias = crate::operation::CreateApp;
+pub type CreateAppInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateAppInput {
     /// Consumes the builder and constructs an Operation<[`CreateApp`](crate::operation::CreateApp)>
     #[allow(clippy::let_and_return)]
@@ -1103,6 +1116,8 @@ pub mod create_app_image_config_input {
         }
     }
 }
+pub type CreateAppImageConfigInputOperationOutputAlias = crate::operation::CreateAppImageConfig;
+pub type CreateAppImageConfigInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateAppImageConfigInput {
     /// Consumes the builder and constructs an Operation<[`CreateAppImageConfig`](crate::operation::CreateAppImageConfig)>
     #[allow(clippy::let_and_return)]
@@ -1292,6 +1307,8 @@ pub mod create_artifact_input {
         }
     }
 }
+pub type CreateArtifactInputOperationOutputAlias = crate::operation::CreateArtifact;
+pub type CreateArtifactInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateArtifactInput {
     /// Consumes the builder and constructs an Operation<[`CreateArtifact`](crate::operation::CreateArtifact)>
     #[allow(clippy::let_and_return)]
@@ -1546,6 +1563,8 @@ pub mod create_auto_ml_job_input {
         }
     }
 }
+pub type CreateAutoMLJobInputOperationOutputAlias = crate::operation::CreateAutoMLJob;
+pub type CreateAutoMLJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateAutoMLJobInput {
     /// Consumes the builder and constructs an Operation<[`CreateAutoMLJob`](crate::operation::CreateAutoMLJob)>
     #[allow(clippy::let_and_return)]
@@ -1690,6 +1709,8 @@ pub mod create_code_repository_input {
         }
     }
 }
+pub type CreateCodeRepositoryInputOperationOutputAlias = crate::operation::CreateCodeRepository;
+pub type CreateCodeRepositoryInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateCodeRepositoryInput {
     /// Consumes the builder and constructs an Operation<[`CreateCodeRepository`](crate::operation::CreateCodeRepository)>
     #[allow(clippy::let_and_return)]
@@ -1900,6 +1921,8 @@ pub mod create_compilation_job_input {
         }
     }
 }
+pub type CreateCompilationJobInputOperationOutputAlias = crate::operation::CreateCompilationJob;
+pub type CreateCompilationJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateCompilationJobInput {
     /// Consumes the builder and constructs an Operation<[`CreateCompilationJob`](crate::operation::CreateCompilationJob)>
     #[allow(clippy::let_and_return)]
@@ -2083,6 +2106,8 @@ pub mod create_context_input {
         }
     }
 }
+pub type CreateContextInputOperationOutputAlias = crate::operation::CreateContext;
+pub type CreateContextInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateContextInput {
     /// Consumes the builder and constructs an Operation<[`CreateContext`](crate::operation::CreateContext)>
     #[allow(clippy::let_and_return)]
@@ -2343,6 +2368,9 @@ pub mod create_data_quality_job_definition_input {
         }
     }
 }
+pub type CreateDataQualityJobDefinitionInputOperationOutputAlias =
+    crate::operation::CreateDataQualityJobDefinition;
+pub type CreateDataQualityJobDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDataQualityJobDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`CreateDataQualityJobDefinition`](crate::operation::CreateDataQualityJobDefinition)>
     #[allow(clippy::let_and_return)]
@@ -2511,6 +2539,8 @@ pub mod create_device_fleet_input {
         }
     }
 }
+pub type CreateDeviceFleetInputOperationOutputAlias = crate::operation::CreateDeviceFleet;
+pub type CreateDeviceFleetInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDeviceFleetInput {
     /// Consumes the builder and constructs an Operation<[`CreateDeviceFleet`](crate::operation::CreateDeviceFleet)>
     #[allow(clippy::let_and_return)]
@@ -2749,6 +2779,8 @@ pub mod create_domain_input {
         }
     }
 }
+pub type CreateDomainInputOperationOutputAlias = crate::operation::CreateDomain;
+pub type CreateDomainInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDomainInput {
     /// Consumes the builder and constructs an Operation<[`CreateDomain`](crate::operation::CreateDomain)>
     #[allow(clippy::let_and_return)]
@@ -2952,6 +2984,8 @@ pub mod create_edge_packaging_job_input {
         }
     }
 }
+pub type CreateEdgePackagingJobInputOperationOutputAlias = crate::operation::CreateEdgePackagingJob;
+pub type CreateEdgePackagingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateEdgePackagingJobInput {
     /// Consumes the builder and constructs an Operation<[`CreateEdgePackagingJob`](crate::operation::CreateEdgePackagingJob)>
     #[allow(clippy::let_and_return)]
@@ -3095,6 +3129,8 @@ pub mod create_endpoint_input {
         }
     }
 }
+pub type CreateEndpointInputOperationOutputAlias = crate::operation::CreateEndpoint;
+pub type CreateEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateEndpointInput {
     /// Consumes the builder and constructs an Operation<[`CreateEndpoint`](crate::operation::CreateEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -3309,6 +3345,8 @@ pub mod create_endpoint_config_input {
         }
     }
 }
+pub type CreateEndpointConfigInputOperationOutputAlias = crate::operation::CreateEndpointConfig;
+pub type CreateEndpointConfigInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateEndpointConfigInput {
     /// Consumes the builder and constructs an Operation<[`CreateEndpointConfig`](crate::operation::CreateEndpointConfig)>
     #[allow(clippy::let_and_return)]
@@ -3465,6 +3503,8 @@ pub mod create_experiment_input {
         }
     }
 }
+pub type CreateExperimentInputOperationOutputAlias = crate::operation::CreateExperiment;
+pub type CreateExperimentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateExperimentInput {
     /// Consumes the builder and constructs an Operation<[`CreateExperiment`](crate::operation::CreateExperiment)>
     #[allow(clippy::let_and_return)]
@@ -3764,6 +3804,8 @@ pub mod create_feature_group_input {
         }
     }
 }
+pub type CreateFeatureGroupInputOperationOutputAlias = crate::operation::CreateFeatureGroup;
+pub type CreateFeatureGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateFeatureGroupInput {
     /// Consumes the builder and constructs an Operation<[`CreateFeatureGroup`](crate::operation::CreateFeatureGroup)>
     #[allow(clippy::let_and_return)]
@@ -3971,6 +4013,8 @@ pub mod create_flow_definition_input {
         }
     }
 }
+pub type CreateFlowDefinitionInputOperationOutputAlias = crate::operation::CreateFlowDefinition;
+pub type CreateFlowDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateFlowDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`CreateFlowDefinition`](crate::operation::CreateFlowDefinition)>
     #[allow(clippy::let_and_return)]
@@ -4116,6 +4160,8 @@ pub mod create_human_task_ui_input {
         }
     }
 }
+pub type CreateHumanTaskUiInputOperationOutputAlias = crate::operation::CreateHumanTaskUi;
+pub type CreateHumanTaskUiInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateHumanTaskUiInput {
     /// Consumes the builder and constructs an Operation<[`CreateHumanTaskUi`](crate::operation::CreateHumanTaskUi)>
     #[allow(clippy::let_and_return)]
@@ -4352,6 +4398,9 @@ pub mod create_hyper_parameter_tuning_job_input {
         }
     }
 }
+pub type CreateHyperParameterTuningJobInputOperationOutputAlias =
+    crate::operation::CreateHyperParameterTuningJob;
+pub type CreateHyperParameterTuningJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateHyperParameterTuningJobInput {
     /// Consumes the builder and constructs an Operation<[`CreateHyperParameterTuningJob`](crate::operation::CreateHyperParameterTuningJob)>
     #[allow(clippy::let_and_return)]
@@ -4513,6 +4562,8 @@ pub mod create_image_input {
         }
     }
 }
+pub type CreateImageInputOperationOutputAlias = crate::operation::CreateImage;
+pub type CreateImageInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateImageInput {
     /// Consumes the builder and constructs an Operation<[`CreateImage`](crate::operation::CreateImage)>
     #[allow(clippy::let_and_return)]
@@ -4653,6 +4704,8 @@ pub mod create_image_version_input {
         }
     }
 }
+pub type CreateImageVersionInputOperationOutputAlias = crate::operation::CreateImageVersion;
+pub type CreateImageVersionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateImageVersionInput {
     /// Consumes the builder and constructs an Operation<[`CreateImageVersion`](crate::operation::CreateImageVersion)>
     #[allow(clippy::let_and_return)]
@@ -5029,6 +5082,8 @@ pub mod create_labeling_job_input {
         }
     }
 }
+pub type CreateLabelingJobInputOperationOutputAlias = crate::operation::CreateLabelingJob;
+pub type CreateLabelingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateLabelingJobInput {
     /// Consumes the builder and constructs an Operation<[`CreateLabelingJob`](crate::operation::CreateLabelingJob)>
     #[allow(clippy::let_and_return)]
@@ -5255,6 +5310,8 @@ pub mod create_model_input {
         }
     }
 }
+pub type CreateModelInputOperationOutputAlias = crate::operation::CreateModel;
+pub type CreateModelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateModelInput {
     /// Consumes the builder and constructs an Operation<[`CreateModel`](crate::operation::CreateModel)>
     #[allow(clippy::let_and_return)]
@@ -5515,6 +5572,9 @@ pub mod create_model_bias_job_definition_input {
         }
     }
 }
+pub type CreateModelBiasJobDefinitionInputOperationOutputAlias =
+    crate::operation::CreateModelBiasJobDefinition;
+pub type CreateModelBiasJobDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateModelBiasJobDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`CreateModelBiasJobDefinition`](crate::operation::CreateModelBiasJobDefinition)>
     #[allow(clippy::let_and_return)]
@@ -5781,6 +5841,10 @@ pub mod create_model_explainability_job_definition_input {
         }
     }
 }
+pub type CreateModelExplainabilityJobDefinitionInputOperationOutputAlias =
+    crate::operation::CreateModelExplainabilityJobDefinition;
+pub type CreateModelExplainabilityJobDefinitionInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl CreateModelExplainabilityJobDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`CreateModelExplainabilityJobDefinition`](crate::operation::CreateModelExplainabilityJobDefinition)>
     #[allow(clippy::let_and_return)]
@@ -6087,6 +6151,8 @@ pub mod create_model_package_input {
         }
     }
 }
+pub type CreateModelPackageInputOperationOutputAlias = crate::operation::CreateModelPackage;
+pub type CreateModelPackageInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateModelPackageInput {
     /// Consumes the builder and constructs an Operation<[`CreateModelPackage`](crate::operation::CreateModelPackage)>
     #[allow(clippy::let_and_return)]
@@ -6238,6 +6304,9 @@ pub mod create_model_package_group_input {
         }
     }
 }
+pub type CreateModelPackageGroupInputOperationOutputAlias =
+    crate::operation::CreateModelPackageGroup;
+pub type CreateModelPackageGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateModelPackageGroupInput {
     /// Consumes the builder and constructs an Operation<[`CreateModelPackageGroup`](crate::operation::CreateModelPackageGroup)>
     #[allow(clippy::let_and_return)]
@@ -6497,6 +6566,9 @@ pub mod create_model_quality_job_definition_input {
         }
     }
 }
+pub type CreateModelQualityJobDefinitionInputOperationOutputAlias =
+    crate::operation::CreateModelQualityJobDefinition;
+pub type CreateModelQualityJobDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateModelQualityJobDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`CreateModelQualityJobDefinition`](crate::operation::CreateModelQualityJobDefinition)>
     #[allow(clippy::let_and_return)]
@@ -6651,6 +6723,9 @@ pub mod create_monitoring_schedule_input {
         }
     }
 }
+pub type CreateMonitoringScheduleInputOperationOutputAlias =
+    crate::operation::CreateMonitoringSchedule;
+pub type CreateMonitoringScheduleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateMonitoringScheduleInput {
     /// Consumes the builder and constructs an Operation<[`CreateMonitoringSchedule`](crate::operation::CreateMonitoringSchedule)>
     #[allow(clippy::let_and_return)]
@@ -6979,6 +7054,8 @@ pub mod create_notebook_instance_input {
         }
     }
 }
+pub type CreateNotebookInstanceInputOperationOutputAlias = crate::operation::CreateNotebookInstance;
+pub type CreateNotebookInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateNotebookInstanceInput {
     /// Consumes the builder and constructs an Operation<[`CreateNotebookInstance`](crate::operation::CreateNotebookInstance)>
     #[allow(clippy::let_and_return)]
@@ -7140,6 +7217,10 @@ pub mod create_notebook_instance_lifecycle_config_input {
         }
     }
 }
+pub type CreateNotebookInstanceLifecycleConfigInputOperationOutputAlias =
+    crate::operation::CreateNotebookInstanceLifecycleConfig;
+pub type CreateNotebookInstanceLifecycleConfigInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl CreateNotebookInstanceLifecycleConfigInput {
     /// Consumes the builder and constructs an Operation<[`CreateNotebookInstanceLifecycleConfig`](crate::operation::CreateNotebookInstanceLifecycleConfig)>
     #[allow(clippy::let_and_return)]
@@ -7337,6 +7418,8 @@ pub mod create_pipeline_input {
         }
     }
 }
+pub type CreatePipelineInputOperationOutputAlias = crate::operation::CreatePipeline;
+pub type CreatePipelineInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreatePipelineInput {
     /// Consumes the builder and constructs an Operation<[`CreatePipeline`](crate::operation::CreatePipeline)>
     #[allow(clippy::let_and_return)]
@@ -7492,6 +7575,9 @@ pub mod create_presigned_domain_url_input {
         }
     }
 }
+pub type CreatePresignedDomainUrlInputOperationOutputAlias =
+    crate::operation::CreatePresignedDomainUrl;
+pub type CreatePresignedDomainUrlInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreatePresignedDomainUrlInput {
     /// Consumes the builder and constructs an Operation<[`CreatePresignedDomainUrl`](crate::operation::CreatePresignedDomainUrl)>
     #[allow(clippy::let_and_return)]
@@ -7624,6 +7710,9 @@ pub mod create_presigned_notebook_instance_url_input {
         }
     }
 }
+pub type CreatePresignedNotebookInstanceUrlInputOperationOutputAlias =
+    crate::operation::CreatePresignedNotebookInstanceUrl;
+pub type CreatePresignedNotebookInstanceUrlInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreatePresignedNotebookInstanceUrlInput {
     /// Consumes the builder and constructs an Operation<[`CreatePresignedNotebookInstanceUrl`](crate::operation::CreatePresignedNotebookInstanceUrl)>
     #[allow(clippy::let_and_return)]
@@ -7926,6 +8015,8 @@ pub mod create_processing_job_input {
         }
     }
 }
+pub type CreateProcessingJobInputOperationOutputAlias = crate::operation::CreateProcessingJob;
+pub type CreateProcessingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateProcessingJobInput {
     /// Consumes the builder and constructs an Operation<[`CreateProcessingJob`](crate::operation::CreateProcessingJob)>
     #[allow(clippy::let_and_return)]
@@ -8087,6 +8178,8 @@ pub mod create_project_input {
         }
     }
 }
+pub type CreateProjectInputOperationOutputAlias = crate::operation::CreateProject;
+pub type CreateProjectInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateProjectInput {
     /// Consumes the builder and constructs an Operation<[`CreateProject`](crate::operation::CreateProject)>
     #[allow(clippy::let_and_return)]
@@ -8593,6 +8686,8 @@ pub mod create_training_job_input {
         }
     }
 }
+pub type CreateTrainingJobInputOperationOutputAlias = crate::operation::CreateTrainingJob;
+pub type CreateTrainingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateTrainingJobInput {
     /// Consumes the builder and constructs an Operation<[`CreateTrainingJob`](crate::operation::CreateTrainingJob)>
     #[allow(clippy::let_and_return)]
@@ -8938,6 +9033,8 @@ pub mod create_transform_job_input {
         }
     }
 }
+pub type CreateTransformJobInputOperationOutputAlias = crate::operation::CreateTransformJob;
+pub type CreateTransformJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateTransformJobInput {
     /// Consumes the builder and constructs an Operation<[`CreateTransformJob`](crate::operation::CreateTransformJob)>
     #[allow(clippy::let_and_return)]
@@ -9106,6 +9203,8 @@ pub mod create_trial_input {
         }
     }
 }
+pub type CreateTrialInputOperationOutputAlias = crate::operation::CreateTrial;
+pub type CreateTrialInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateTrialInput {
     /// Consumes the builder and constructs an Operation<[`CreateTrial`](crate::operation::CreateTrial)>
     #[allow(clippy::let_and_return)]
@@ -9393,6 +9492,8 @@ pub mod create_trial_component_input {
         }
     }
 }
+pub type CreateTrialComponentInputOperationOutputAlias = crate::operation::CreateTrialComponent;
+pub type CreateTrialComponentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateTrialComponentInput {
     /// Consumes the builder and constructs an Operation<[`CreateTrialComponent`](crate::operation::CreateTrialComponent)>
     #[allow(clippy::let_and_return)]
@@ -9584,6 +9685,8 @@ pub mod create_user_profile_input {
         }
     }
 }
+pub type CreateUserProfileInputOperationOutputAlias = crate::operation::CreateUserProfile;
+pub type CreateUserProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateUserProfileInput {
     /// Consumes the builder and constructs an Operation<[`CreateUserProfile`](crate::operation::CreateUserProfile)>
     #[allow(clippy::let_and_return)]
@@ -9763,6 +9866,8 @@ pub mod create_workforce_input {
         }
     }
 }
+pub type CreateWorkforceInputOperationOutputAlias = crate::operation::CreateWorkforce;
+pub type CreateWorkforceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateWorkforceInput {
     /// Consumes the builder and constructs an Operation<[`CreateWorkforce`](crate::operation::CreateWorkforce)>
     #[allow(clippy::let_and_return)]
@@ -9948,6 +10053,8 @@ pub mod create_workteam_input {
         }
     }
 }
+pub type CreateWorkteamInputOperationOutputAlias = crate::operation::CreateWorkteam;
+pub type CreateWorkteamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateWorkteamInput {
     /// Consumes the builder and constructs an Operation<[`CreateWorkteam`](crate::operation::CreateWorkteam)>
     #[allow(clippy::let_and_return)]
@@ -10059,6 +10166,8 @@ pub mod delete_action_input {
         }
     }
 }
+pub type DeleteActionInputOperationOutputAlias = crate::operation::DeleteAction;
+pub type DeleteActionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteActionInput {
     /// Consumes the builder and constructs an Operation<[`DeleteAction`](crate::operation::DeleteAction)>
     #[allow(clippy::let_and_return)]
@@ -10172,6 +10281,8 @@ pub mod delete_algorithm_input {
         }
     }
 }
+pub type DeleteAlgorithmInputOperationOutputAlias = crate::operation::DeleteAlgorithm;
+pub type DeleteAlgorithmInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteAlgorithmInput {
     /// Consumes the builder and constructs an Operation<[`DeleteAlgorithm`](crate::operation::DeleteAlgorithm)>
     #[allow(clippy::let_and_return)]
@@ -10319,6 +10430,8 @@ pub mod delete_app_input {
         }
     }
 }
+pub type DeleteAppInputOperationOutputAlias = crate::operation::DeleteApp;
+pub type DeleteAppInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteAppInput {
     /// Consumes the builder and constructs an Operation<[`DeleteApp`](crate::operation::DeleteApp)>
     #[allow(clippy::let_and_return)]
@@ -10433,6 +10546,8 @@ pub mod delete_app_image_config_input {
         }
     }
 }
+pub type DeleteAppImageConfigInputOperationOutputAlias = crate::operation::DeleteAppImageConfig;
+pub type DeleteAppImageConfigInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteAppImageConfigInput {
     /// Consumes the builder and constructs an Operation<[`DeleteAppImageConfig`](crate::operation::DeleteAppImageConfig)>
     #[allow(clippy::let_and_return)]
@@ -10559,6 +10674,8 @@ pub mod delete_artifact_input {
         }
     }
 }
+pub type DeleteArtifactInputOperationOutputAlias = crate::operation::DeleteArtifact;
+pub type DeleteArtifactInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteArtifactInput {
     /// Consumes the builder and constructs an Operation<[`DeleteArtifact`](crate::operation::DeleteArtifact)>
     #[allow(clippy::let_and_return)]
@@ -10685,6 +10802,8 @@ pub mod delete_association_input {
         }
     }
 }
+pub type DeleteAssociationInputOperationOutputAlias = crate::operation::DeleteAssociation;
+pub type DeleteAssociationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteAssociationInput {
     /// Consumes the builder and constructs an Operation<[`DeleteAssociation`](crate::operation::DeleteAssociation)>
     #[allow(clippy::let_and_return)]
@@ -10801,6 +10920,8 @@ pub mod delete_code_repository_input {
         }
     }
 }
+pub type DeleteCodeRepositoryInputOperationOutputAlias = crate::operation::DeleteCodeRepository;
+pub type DeleteCodeRepositoryInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteCodeRepositoryInput {
     /// Consumes the builder and constructs an Operation<[`DeleteCodeRepository`](crate::operation::DeleteCodeRepository)>
     #[allow(clippy::let_and_return)]
@@ -10913,6 +11034,8 @@ pub mod delete_context_input {
         }
     }
 }
+pub type DeleteContextInputOperationOutputAlias = crate::operation::DeleteContext;
+pub type DeleteContextInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteContextInput {
     /// Consumes the builder and constructs an Operation<[`DeleteContext`](crate::operation::DeleteContext)>
     #[allow(clippy::let_and_return)]
@@ -11031,6 +11154,9 @@ pub mod delete_data_quality_job_definition_input {
         }
     }
 }
+pub type DeleteDataQualityJobDefinitionInputOperationOutputAlias =
+    crate::operation::DeleteDataQualityJobDefinition;
+pub type DeleteDataQualityJobDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDataQualityJobDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDataQualityJobDefinition`](crate::operation::DeleteDataQualityJobDefinition)>
     #[allow(clippy::let_and_return)]
@@ -11148,6 +11274,8 @@ pub mod delete_device_fleet_input {
         }
     }
 }
+pub type DeleteDeviceFleetInputOperationOutputAlias = crate::operation::DeleteDeviceFleet;
+pub type DeleteDeviceFleetInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDeviceFleetInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDeviceFleet`](crate::operation::DeleteDeviceFleet)>
     #[allow(clippy::let_and_return)]
@@ -11276,6 +11404,8 @@ pub mod delete_domain_input {
         }
     }
 }
+pub type DeleteDomainInputOperationOutputAlias = crate::operation::DeleteDomain;
+pub type DeleteDomainInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDomainInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDomain`](crate::operation::DeleteDomain)>
     #[allow(clippy::let_and_return)]
@@ -11388,6 +11518,8 @@ pub mod delete_endpoint_input {
         }
     }
 }
+pub type DeleteEndpointInputOperationOutputAlias = crate::operation::DeleteEndpoint;
+pub type DeleteEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteEndpointInput {
     /// Consumes the builder and constructs an Operation<[`DeleteEndpoint`](crate::operation::DeleteEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -11503,6 +11635,8 @@ pub mod delete_endpoint_config_input {
         }
     }
 }
+pub type DeleteEndpointConfigInputOperationOutputAlias = crate::operation::DeleteEndpointConfig;
+pub type DeleteEndpointConfigInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteEndpointConfigInput {
     /// Consumes the builder and constructs an Operation<[`DeleteEndpointConfig`](crate::operation::DeleteEndpointConfig)>
     #[allow(clippy::let_and_return)]
@@ -11619,6 +11753,8 @@ pub mod delete_experiment_input {
         }
     }
 }
+pub type DeleteExperimentInputOperationOutputAlias = crate::operation::DeleteExperiment;
+pub type DeleteExperimentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteExperimentInput {
     /// Consumes the builder and constructs an Operation<[`DeleteExperiment`](crate::operation::DeleteExperiment)>
     #[allow(clippy::let_and_return)]
@@ -11735,6 +11871,8 @@ pub mod delete_feature_group_input {
         }
     }
 }
+pub type DeleteFeatureGroupInputOperationOutputAlias = crate::operation::DeleteFeatureGroup;
+pub type DeleteFeatureGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteFeatureGroupInput {
     /// Consumes the builder and constructs an Operation<[`DeleteFeatureGroup`](crate::operation::DeleteFeatureGroup)>
     #[allow(clippy::let_and_return)]
@@ -11851,6 +11989,8 @@ pub mod delete_flow_definition_input {
         }
     }
 }
+pub type DeleteFlowDefinitionInputOperationOutputAlias = crate::operation::DeleteFlowDefinition;
+pub type DeleteFlowDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteFlowDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`DeleteFlowDefinition`](crate::operation::DeleteFlowDefinition)>
     #[allow(clippy::let_and_return)]
@@ -11967,6 +12107,8 @@ pub mod delete_human_task_ui_input {
         }
     }
 }
+pub type DeleteHumanTaskUiInputOperationOutputAlias = crate::operation::DeleteHumanTaskUi;
+pub type DeleteHumanTaskUiInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteHumanTaskUiInput {
     /// Consumes the builder and constructs an Operation<[`DeleteHumanTaskUi`](crate::operation::DeleteHumanTaskUi)>
     #[allow(clippy::let_and_return)]
@@ -12079,6 +12221,8 @@ pub mod delete_image_input {
         }
     }
 }
+pub type DeleteImageInputOperationOutputAlias = crate::operation::DeleteImage;
+pub type DeleteImageInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteImageInput {
     /// Consumes the builder and constructs an Operation<[`DeleteImage`](crate::operation::DeleteImage)>
     #[allow(clippy::let_and_return)]
@@ -12203,6 +12347,8 @@ pub mod delete_image_version_input {
         }
     }
 }
+pub type DeleteImageVersionInputOperationOutputAlias = crate::operation::DeleteImageVersion;
+pub type DeleteImageVersionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteImageVersionInput {
     /// Consumes the builder and constructs an Operation<[`DeleteImageVersion`](crate::operation::DeleteImageVersion)>
     #[allow(clippy::let_and_return)]
@@ -12315,6 +12461,8 @@ pub mod delete_model_input {
         }
     }
 }
+pub type DeleteModelInputOperationOutputAlias = crate::operation::DeleteModel;
+pub type DeleteModelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteModelInput {
     /// Consumes the builder and constructs an Operation<[`DeleteModel`](crate::operation::DeleteModel)>
     #[allow(clippy::let_and_return)]
@@ -12433,6 +12581,9 @@ pub mod delete_model_bias_job_definition_input {
         }
     }
 }
+pub type DeleteModelBiasJobDefinitionInputOperationOutputAlias =
+    crate::operation::DeleteModelBiasJobDefinition;
+pub type DeleteModelBiasJobDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteModelBiasJobDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`DeleteModelBiasJobDefinition`](crate::operation::DeleteModelBiasJobDefinition)>
     #[allow(clippy::let_and_return)]
@@ -12552,6 +12703,10 @@ pub mod delete_model_explainability_job_definition_input {
         }
     }
 }
+pub type DeleteModelExplainabilityJobDefinitionInputOperationOutputAlias =
+    crate::operation::DeleteModelExplainabilityJobDefinition;
+pub type DeleteModelExplainabilityJobDefinitionInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl DeleteModelExplainabilityJobDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`DeleteModelExplainabilityJobDefinition`](crate::operation::DeleteModelExplainabilityJobDefinition)>
     #[allow(clippy::let_and_return)]
@@ -12671,6 +12826,8 @@ pub mod delete_model_package_input {
         }
     }
 }
+pub type DeleteModelPackageInputOperationOutputAlias = crate::operation::DeleteModelPackage;
+pub type DeleteModelPackageInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteModelPackageInput {
     /// Consumes the builder and constructs an Operation<[`DeleteModelPackage`](crate::operation::DeleteModelPackage)>
     #[allow(clippy::let_and_return)]
@@ -12787,6 +12944,9 @@ pub mod delete_model_package_group_input {
         }
     }
 }
+pub type DeleteModelPackageGroupInputOperationOutputAlias =
+    crate::operation::DeleteModelPackageGroup;
+pub type DeleteModelPackageGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteModelPackageGroupInput {
     /// Consumes the builder and constructs an Operation<[`DeleteModelPackageGroup`](crate::operation::DeleteModelPackageGroup)>
     #[allow(clippy::let_and_return)]
@@ -12905,6 +13065,9 @@ pub mod delete_model_package_group_policy_input {
         }
     }
 }
+pub type DeleteModelPackageGroupPolicyInputOperationOutputAlias =
+    crate::operation::DeleteModelPackageGroupPolicy;
+pub type DeleteModelPackageGroupPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteModelPackageGroupPolicyInput {
     /// Consumes the builder and constructs an Operation<[`DeleteModelPackageGroupPolicy`](crate::operation::DeleteModelPackageGroupPolicy)>
     #[allow(clippy::let_and_return)]
@@ -13024,6 +13187,9 @@ pub mod delete_model_quality_job_definition_input {
         }
     }
 }
+pub type DeleteModelQualityJobDefinitionInputOperationOutputAlias =
+    crate::operation::DeleteModelQualityJobDefinition;
+pub type DeleteModelQualityJobDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteModelQualityJobDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`DeleteModelQualityJobDefinition`](crate::operation::DeleteModelQualityJobDefinition)>
     #[allow(clippy::let_and_return)]
@@ -13143,6 +13309,9 @@ pub mod delete_monitoring_schedule_input {
         }
     }
 }
+pub type DeleteMonitoringScheduleInputOperationOutputAlias =
+    crate::operation::DeleteMonitoringSchedule;
+pub type DeleteMonitoringScheduleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteMonitoringScheduleInput {
     /// Consumes the builder and constructs an Operation<[`DeleteMonitoringSchedule`](crate::operation::DeleteMonitoringSchedule)>
     #[allow(clippy::let_and_return)]
@@ -13259,6 +13428,8 @@ pub mod delete_notebook_instance_input {
         }
     }
 }
+pub type DeleteNotebookInstanceInputOperationOutputAlias = crate::operation::DeleteNotebookInstance;
+pub type DeleteNotebookInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteNotebookInstanceInput {
     /// Consumes the builder and constructs an Operation<[`DeleteNotebookInstance`](crate::operation::DeleteNotebookInstance)>
     #[allow(clippy::let_and_return)]
@@ -13382,6 +13553,10 @@ pub mod delete_notebook_instance_lifecycle_config_input {
         }
     }
 }
+pub type DeleteNotebookInstanceLifecycleConfigInputOperationOutputAlias =
+    crate::operation::DeleteNotebookInstanceLifecycleConfig;
+pub type DeleteNotebookInstanceLifecycleConfigInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl DeleteNotebookInstanceLifecycleConfigInput {
     /// Consumes the builder and constructs an Operation<[`DeleteNotebookInstanceLifecycleConfig`](crate::operation::DeleteNotebookInstanceLifecycleConfig)>
     #[allow(clippy::let_and_return)]
@@ -13511,6 +13686,8 @@ pub mod delete_pipeline_input {
         }
     }
 }
+pub type DeletePipelineInputOperationOutputAlias = crate::operation::DeletePipeline;
+pub type DeletePipelineInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeletePipelineInput {
     /// Consumes the builder and constructs an Operation<[`DeletePipeline`](crate::operation::DeletePipeline)>
     #[allow(clippy::let_and_return)]
@@ -13625,6 +13802,8 @@ pub mod delete_project_input {
         }
     }
 }
+pub type DeleteProjectInputOperationOutputAlias = crate::operation::DeleteProject;
+pub type DeleteProjectInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteProjectInput {
     /// Consumes the builder and constructs an Operation<[`DeleteProject`](crate::operation::DeleteProject)>
     #[allow(clippy::let_and_return)]
@@ -13753,6 +13932,8 @@ pub mod delete_tags_input {
         }
     }
 }
+pub type DeleteTagsInputOperationOutputAlias = crate::operation::DeleteTags;
+pub type DeleteTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteTagsInput {
     /// Consumes the builder and constructs an Operation<[`DeleteTags`](crate::operation::DeleteTags)>
     #[allow(clippy::let_and_return)]
@@ -13865,6 +14046,8 @@ pub mod delete_trial_input {
         }
     }
 }
+pub type DeleteTrialInputOperationOutputAlias = crate::operation::DeleteTrial;
+pub type DeleteTrialInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteTrialInput {
     /// Consumes the builder and constructs an Operation<[`DeleteTrial`](crate::operation::DeleteTrial)>
     #[allow(clippy::let_and_return)]
@@ -13981,6 +14164,8 @@ pub mod delete_trial_component_input {
         }
     }
 }
+pub type DeleteTrialComponentInputOperationOutputAlias = crate::operation::DeleteTrialComponent;
+pub type DeleteTrialComponentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteTrialComponentInput {
     /// Consumes the builder and constructs an Operation<[`DeleteTrialComponent`](crate::operation::DeleteTrialComponent)>
     #[allow(clippy::let_and_return)]
@@ -14108,6 +14293,8 @@ pub mod delete_user_profile_input {
         }
     }
 }
+pub type DeleteUserProfileInputOperationOutputAlias = crate::operation::DeleteUserProfile;
+pub type DeleteUserProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteUserProfileInput {
     /// Consumes the builder and constructs an Operation<[`DeleteUserProfile`](crate::operation::DeleteUserProfile)>
     #[allow(clippy::let_and_return)]
@@ -14221,6 +14408,8 @@ pub mod delete_workforce_input {
         }
     }
 }
+pub type DeleteWorkforceInputOperationOutputAlias = crate::operation::DeleteWorkforce;
+pub type DeleteWorkforceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteWorkforceInput {
     /// Consumes the builder and constructs an Operation<[`DeleteWorkforce`](crate::operation::DeleteWorkforce)>
     #[allow(clippy::let_and_return)]
@@ -14332,6 +14521,8 @@ pub mod delete_workteam_input {
         }
     }
 }
+pub type DeleteWorkteamInputOperationOutputAlias = crate::operation::DeleteWorkteam;
+pub type DeleteWorkteamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteWorkteamInput {
     /// Consumes the builder and constructs an Operation<[`DeleteWorkteam`](crate::operation::DeleteWorkteam)>
     #[allow(clippy::let_and_return)]
@@ -14462,6 +14653,8 @@ pub mod deregister_devices_input {
         }
     }
 }
+pub type DeregisterDevicesInputOperationOutputAlias = crate::operation::DeregisterDevices;
+pub type DeregisterDevicesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeregisterDevicesInput {
     /// Consumes the builder and constructs an Operation<[`DeregisterDevices`](crate::operation::DeregisterDevices)>
     #[allow(clippy::let_and_return)]
@@ -14574,6 +14767,8 @@ pub mod describe_action_input {
         }
     }
 }
+pub type DescribeActionInputOperationOutputAlias = crate::operation::DescribeAction;
+pub type DescribeActionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeActionInput {
     /// Consumes the builder and constructs an Operation<[`DescribeAction`](crate::operation::DescribeAction)>
     #[allow(clippy::let_and_return)]
@@ -14686,6 +14881,8 @@ pub mod describe_algorithm_input {
         }
     }
 }
+pub type DescribeAlgorithmInputOperationOutputAlias = crate::operation::DescribeAlgorithm;
+pub type DescribeAlgorithmInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeAlgorithmInput {
     /// Consumes the builder and constructs an Operation<[`DescribeAlgorithm`](crate::operation::DescribeAlgorithm)>
     #[allow(clippy::let_and_return)]
@@ -14834,6 +15031,8 @@ pub mod describe_app_input {
         }
     }
 }
+pub type DescribeAppInputOperationOutputAlias = crate::operation::DescribeApp;
+pub type DescribeAppInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeAppInput {
     /// Consumes the builder and constructs an Operation<[`DescribeApp`](crate::operation::DescribeApp)>
     #[allow(clippy::let_and_return)]
@@ -14950,6 +15149,8 @@ pub mod describe_app_image_config_input {
         }
     }
 }
+pub type DescribeAppImageConfigInputOperationOutputAlias = crate::operation::DescribeAppImageConfig;
+pub type DescribeAppImageConfigInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeAppImageConfigInput {
     /// Consumes the builder and constructs an Operation<[`DescribeAppImageConfig`](crate::operation::DescribeAppImageConfig)>
     #[allow(clippy::let_and_return)]
@@ -15063,6 +15264,8 @@ pub mod describe_artifact_input {
         }
     }
 }
+pub type DescribeArtifactInputOperationOutputAlias = crate::operation::DescribeArtifact;
+pub type DescribeArtifactInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeArtifactInput {
     /// Consumes the builder and constructs an Operation<[`DescribeArtifact`](crate::operation::DescribeArtifact)>
     #[allow(clippy::let_and_return)]
@@ -15178,6 +15381,8 @@ pub mod describe_auto_ml_job_input {
         }
     }
 }
+pub type DescribeAutoMLJobInputOperationOutputAlias = crate::operation::DescribeAutoMLJob;
+pub type DescribeAutoMLJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeAutoMLJobInput {
     /// Consumes the builder and constructs an Operation<[`DescribeAutoMLJob`](crate::operation::DescribeAutoMLJob)>
     #[allow(clippy::let_and_return)]
@@ -15294,6 +15499,8 @@ pub mod describe_code_repository_input {
         }
     }
 }
+pub type DescribeCodeRepositoryInputOperationOutputAlias = crate::operation::DescribeCodeRepository;
+pub type DescribeCodeRepositoryInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeCodeRepositoryInput {
     /// Consumes the builder and constructs an Operation<[`DescribeCodeRepository`](crate::operation::DescribeCodeRepository)>
     #[allow(clippy::let_and_return)]
@@ -15410,6 +15617,8 @@ pub mod describe_compilation_job_input {
         }
     }
 }
+pub type DescribeCompilationJobInputOperationOutputAlias = crate::operation::DescribeCompilationJob;
+pub type DescribeCompilationJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeCompilationJobInput {
     /// Consumes the builder and constructs an Operation<[`DescribeCompilationJob`](crate::operation::DescribeCompilationJob)>
     #[allow(clippy::let_and_return)]
@@ -15523,6 +15732,8 @@ pub mod describe_context_input {
         }
     }
 }
+pub type DescribeContextInputOperationOutputAlias = crate::operation::DescribeContext;
+pub type DescribeContextInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeContextInput {
     /// Consumes the builder and constructs an Operation<[`DescribeContext`](crate::operation::DescribeContext)>
     #[allow(clippy::let_and_return)]
@@ -15640,6 +15851,9 @@ pub mod describe_data_quality_job_definition_input {
         }
     }
 }
+pub type DescribeDataQualityJobDefinitionInputOperationOutputAlias =
+    crate::operation::DescribeDataQualityJobDefinition;
+pub type DescribeDataQualityJobDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDataQualityJobDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDataQualityJobDefinition`](crate::operation::DescribeDataQualityJobDefinition)>
     #[allow(clippy::let_and_return)]
@@ -15780,6 +15994,8 @@ pub mod describe_device_input {
         }
     }
 }
+pub type DescribeDeviceInputOperationOutputAlias = crate::operation::DescribeDevice;
+pub type DescribeDeviceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDeviceInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDevice`](crate::operation::DescribeDevice)>
     #[allow(clippy::let_and_return)]
@@ -15895,6 +16111,8 @@ pub mod describe_device_fleet_input {
         }
     }
 }
+pub type DescribeDeviceFleetInputOperationOutputAlias = crate::operation::DescribeDeviceFleet;
+pub type DescribeDeviceFleetInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDeviceFleetInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDeviceFleet`](crate::operation::DescribeDeviceFleet)>
     #[allow(clippy::let_and_return)]
@@ -16007,6 +16225,8 @@ pub mod describe_domain_input {
         }
     }
 }
+pub type DescribeDomainInputOperationOutputAlias = crate::operation::DescribeDomain;
+pub type DescribeDomainInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDomainInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDomain`](crate::operation::DescribeDomain)>
     #[allow(clippy::let_and_return)]
@@ -16122,6 +16342,9 @@ pub mod describe_edge_packaging_job_input {
         }
     }
 }
+pub type DescribeEdgePackagingJobInputOperationOutputAlias =
+    crate::operation::DescribeEdgePackagingJob;
+pub type DescribeEdgePackagingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeEdgePackagingJobInput {
     /// Consumes the builder and constructs an Operation<[`DescribeEdgePackagingJob`](crate::operation::DescribeEdgePackagingJob)>
     #[allow(clippy::let_and_return)]
@@ -16235,6 +16458,8 @@ pub mod describe_endpoint_input {
         }
     }
 }
+pub type DescribeEndpointInputOperationOutputAlias = crate::operation::DescribeEndpoint;
+pub type DescribeEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeEndpointInput {
     /// Consumes the builder and constructs an Operation<[`DescribeEndpoint`](crate::operation::DescribeEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -16350,6 +16575,8 @@ pub mod describe_endpoint_config_input {
         }
     }
 }
+pub type DescribeEndpointConfigInputOperationOutputAlias = crate::operation::DescribeEndpointConfig;
+pub type DescribeEndpointConfigInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeEndpointConfigInput {
     /// Consumes the builder and constructs an Operation<[`DescribeEndpointConfig`](crate::operation::DescribeEndpointConfig)>
     #[allow(clippy::let_and_return)]
@@ -16466,6 +16693,8 @@ pub mod describe_experiment_input {
         }
     }
 }
+pub type DescribeExperimentInputOperationOutputAlias = crate::operation::DescribeExperiment;
+pub type DescribeExperimentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeExperimentInput {
     /// Consumes the builder and constructs an Operation<[`DescribeExperiment`](crate::operation::DescribeExperiment)>
     #[allow(clippy::let_and_return)]
@@ -16595,6 +16824,8 @@ pub mod describe_feature_group_input {
         }
     }
 }
+pub type DescribeFeatureGroupInputOperationOutputAlias = crate::operation::DescribeFeatureGroup;
+pub type DescribeFeatureGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeFeatureGroupInput {
     /// Consumes the builder and constructs an Operation<[`DescribeFeatureGroup`](crate::operation::DescribeFeatureGroup)>
     #[allow(clippy::let_and_return)]
@@ -16711,6 +16942,8 @@ pub mod describe_flow_definition_input {
         }
     }
 }
+pub type DescribeFlowDefinitionInputOperationOutputAlias = crate::operation::DescribeFlowDefinition;
+pub type DescribeFlowDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeFlowDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`DescribeFlowDefinition`](crate::operation::DescribeFlowDefinition)>
     #[allow(clippy::let_and_return)]
@@ -16828,6 +17061,8 @@ pub mod describe_human_task_ui_input {
         }
     }
 }
+pub type DescribeHumanTaskUiInputOperationOutputAlias = crate::operation::DescribeHumanTaskUi;
+pub type DescribeHumanTaskUiInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeHumanTaskUiInput {
     /// Consumes the builder and constructs an Operation<[`DescribeHumanTaskUi`](crate::operation::DescribeHumanTaskUi)>
     #[allow(clippy::let_and_return)]
@@ -16949,6 +17184,9 @@ pub mod describe_hyper_parameter_tuning_job_input {
         }
     }
 }
+pub type DescribeHyperParameterTuningJobInputOperationOutputAlias =
+    crate::operation::DescribeHyperParameterTuningJob;
+pub type DescribeHyperParameterTuningJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeHyperParameterTuningJobInput {
     /// Consumes the builder and constructs an Operation<[`DescribeHyperParameterTuningJob`](crate::operation::DescribeHyperParameterTuningJob)>
     #[allow(clippy::let_and_return)]
@@ -17064,6 +17302,8 @@ pub mod describe_image_input {
         }
     }
 }
+pub type DescribeImageInputOperationOutputAlias = crate::operation::DescribeImage;
+pub type DescribeImageInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeImageInput {
     /// Consumes the builder and constructs an Operation<[`DescribeImage`](crate::operation::DescribeImage)>
     #[allow(clippy::let_and_return)]
@@ -17188,6 +17428,8 @@ pub mod describe_image_version_input {
         }
     }
 }
+pub type DescribeImageVersionInputOperationOutputAlias = crate::operation::DescribeImageVersion;
+pub type DescribeImageVersionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeImageVersionInput {
     /// Consumes the builder and constructs an Operation<[`DescribeImageVersion`](crate::operation::DescribeImageVersion)>
     #[allow(clippy::let_and_return)]
@@ -17304,6 +17546,8 @@ pub mod describe_labeling_job_input {
         }
     }
 }
+pub type DescribeLabelingJobInputOperationOutputAlias = crate::operation::DescribeLabelingJob;
+pub type DescribeLabelingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeLabelingJobInput {
     /// Consumes the builder and constructs an Operation<[`DescribeLabelingJob`](crate::operation::DescribeLabelingJob)>
     #[allow(clippy::let_and_return)]
@@ -17416,6 +17660,8 @@ pub mod describe_model_input {
         }
     }
 }
+pub type DescribeModelInputOperationOutputAlias = crate::operation::DescribeModel;
+pub type DescribeModelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeModelInput {
     /// Consumes the builder and constructs an Operation<[`DescribeModel`](crate::operation::DescribeModel)>
     #[allow(clippy::let_and_return)]
@@ -17535,6 +17781,9 @@ pub mod describe_model_bias_job_definition_input {
         }
     }
 }
+pub type DescribeModelBiasJobDefinitionInputOperationOutputAlias =
+    crate::operation::DescribeModelBiasJobDefinition;
+pub type DescribeModelBiasJobDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeModelBiasJobDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`DescribeModelBiasJobDefinition`](crate::operation::DescribeModelBiasJobDefinition)>
     #[allow(clippy::let_and_return)]
@@ -17657,6 +17906,10 @@ pub mod describe_model_explainability_job_definition_input {
         }
     }
 }
+pub type DescribeModelExplainabilityJobDefinitionInputOperationOutputAlias =
+    crate::operation::DescribeModelExplainabilityJobDefinition;
+pub type DescribeModelExplainabilityJobDefinitionInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl DescribeModelExplainabilityJobDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`DescribeModelExplainabilityJobDefinition`](crate::operation::DescribeModelExplainabilityJobDefinition)>
     #[allow(clippy::let_and_return)]
@@ -17775,6 +18028,8 @@ pub mod describe_model_package_input {
         }
     }
 }
+pub type DescribeModelPackageInputOperationOutputAlias = crate::operation::DescribeModelPackage;
+pub type DescribeModelPackageInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeModelPackageInput {
     /// Consumes the builder and constructs an Operation<[`DescribeModelPackage`](crate::operation::DescribeModelPackage)>
     #[allow(clippy::let_and_return)]
@@ -17891,6 +18146,9 @@ pub mod describe_model_package_group_input {
         }
     }
 }
+pub type DescribeModelPackageGroupInputOperationOutputAlias =
+    crate::operation::DescribeModelPackageGroup;
+pub type DescribeModelPackageGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeModelPackageGroupInput {
     /// Consumes the builder and constructs an Operation<[`DescribeModelPackageGroup`](crate::operation::DescribeModelPackageGroup)>
     #[allow(clippy::let_and_return)]
@@ -18011,6 +18269,9 @@ pub mod describe_model_quality_job_definition_input {
         }
     }
 }
+pub type DescribeModelQualityJobDefinitionInputOperationOutputAlias =
+    crate::operation::DescribeModelQualityJobDefinition;
+pub type DescribeModelQualityJobDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeModelQualityJobDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`DescribeModelQualityJobDefinition`](crate::operation::DescribeModelQualityJobDefinition)>
     #[allow(clippy::let_and_return)]
@@ -18133,6 +18394,9 @@ pub mod describe_monitoring_schedule_input {
         }
     }
 }
+pub type DescribeMonitoringScheduleInputOperationOutputAlias =
+    crate::operation::DescribeMonitoringSchedule;
+pub type DescribeMonitoringScheduleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeMonitoringScheduleInput {
     /// Consumes the builder and constructs an Operation<[`DescribeMonitoringSchedule`](crate::operation::DescribeMonitoringSchedule)>
     #[allow(clippy::let_and_return)]
@@ -18250,6 +18514,9 @@ pub mod describe_notebook_instance_input {
         }
     }
 }
+pub type DescribeNotebookInstanceInputOperationOutputAlias =
+    crate::operation::DescribeNotebookInstance;
+pub type DescribeNotebookInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeNotebookInstanceInput {
     /// Consumes the builder and constructs an Operation<[`DescribeNotebookInstance`](crate::operation::DescribeNotebookInstance)>
     #[allow(clippy::let_and_return)]
@@ -18373,6 +18640,10 @@ pub mod describe_notebook_instance_lifecycle_config_input {
         }
     }
 }
+pub type DescribeNotebookInstanceLifecycleConfigInputOperationOutputAlias =
+    crate::operation::DescribeNotebookInstanceLifecycleConfig;
+pub type DescribeNotebookInstanceLifecycleConfigInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl DescribeNotebookInstanceLifecycleConfigInput {
     /// Consumes the builder and constructs an Operation<[`DescribeNotebookInstanceLifecycleConfig`](crate::operation::DescribeNotebookInstanceLifecycleConfig)>
     #[allow(clippy::let_and_return)]
@@ -18488,6 +18759,8 @@ pub mod describe_pipeline_input {
         }
     }
 }
+pub type DescribePipelineInputOperationOutputAlias = crate::operation::DescribePipeline;
+pub type DescribePipelineInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribePipelineInput {
     /// Consumes the builder and constructs an Operation<[`DescribePipeline`](crate::operation::DescribePipeline)>
     #[allow(clippy::let_and_return)]
@@ -18605,6 +18878,10 @@ pub mod describe_pipeline_definition_for_execution_input {
         }
     }
 }
+pub type DescribePipelineDefinitionForExecutionInputOperationOutputAlias =
+    crate::operation::DescribePipelineDefinitionForExecution;
+pub type DescribePipelineDefinitionForExecutionInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl DescribePipelineDefinitionForExecutionInput {
     /// Consumes the builder and constructs an Operation<[`DescribePipelineDefinitionForExecution`](crate::operation::DescribePipelineDefinitionForExecution)>
     #[allow(clippy::let_and_return)]
@@ -18723,6 +19000,9 @@ pub mod describe_pipeline_execution_input {
         }
     }
 }
+pub type DescribePipelineExecutionInputOperationOutputAlias =
+    crate::operation::DescribePipelineExecution;
+pub type DescribePipelineExecutionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribePipelineExecutionInput {
     /// Consumes the builder and constructs an Operation<[`DescribePipelineExecution`](crate::operation::DescribePipelineExecution)>
     #[allow(clippy::let_and_return)]
@@ -18840,6 +19120,8 @@ pub mod describe_processing_job_input {
         }
     }
 }
+pub type DescribeProcessingJobInputOperationOutputAlias = crate::operation::DescribeProcessingJob;
+pub type DescribeProcessingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeProcessingJobInput {
     /// Consumes the builder and constructs an Operation<[`DescribeProcessingJob`](crate::operation::DescribeProcessingJob)>
     #[allow(clippy::let_and_return)]
@@ -18953,6 +19235,8 @@ pub mod describe_project_input {
         }
     }
 }
+pub type DescribeProjectInputOperationOutputAlias = crate::operation::DescribeProject;
+pub type DescribeProjectInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeProjectInput {
     /// Consumes the builder and constructs an Operation<[`DescribeProject`](crate::operation::DescribeProject)>
     #[allow(clippy::let_and_return)]
@@ -19065,6 +19349,9 @@ pub mod describe_subscribed_workteam_input {
         }
     }
 }
+pub type DescribeSubscribedWorkteamInputOperationOutputAlias =
+    crate::operation::DescribeSubscribedWorkteam;
+pub type DescribeSubscribedWorkteamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeSubscribedWorkteamInput {
     /// Consumes the builder and constructs an Operation<[`DescribeSubscribedWorkteam`](crate::operation::DescribeSubscribedWorkteam)>
     #[allow(clippy::let_and_return)]
@@ -19182,6 +19469,8 @@ pub mod describe_training_job_input {
         }
     }
 }
+pub type DescribeTrainingJobInputOperationOutputAlias = crate::operation::DescribeTrainingJob;
+pub type DescribeTrainingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeTrainingJobInput {
     /// Consumes the builder and constructs an Operation<[`DescribeTrainingJob`](crate::operation::DescribeTrainingJob)>
     #[allow(clippy::let_and_return)]
@@ -19298,6 +19587,8 @@ pub mod describe_transform_job_input {
         }
     }
 }
+pub type DescribeTransformJobInputOperationOutputAlias = crate::operation::DescribeTransformJob;
+pub type DescribeTransformJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeTransformJobInput {
     /// Consumes the builder and constructs an Operation<[`DescribeTransformJob`](crate::operation::DescribeTransformJob)>
     #[allow(clippy::let_and_return)]
@@ -19410,6 +19701,8 @@ pub mod describe_trial_input {
         }
     }
 }
+pub type DescribeTrialInputOperationOutputAlias = crate::operation::DescribeTrial;
+pub type DescribeTrialInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeTrialInput {
     /// Consumes the builder and constructs an Operation<[`DescribeTrial`](crate::operation::DescribeTrial)>
     #[allow(clippy::let_and_return)]
@@ -19526,6 +19819,8 @@ pub mod describe_trial_component_input {
         }
     }
 }
+pub type DescribeTrialComponentInputOperationOutputAlias = crate::operation::DescribeTrialComponent;
+pub type DescribeTrialComponentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeTrialComponentInput {
     /// Consumes the builder and constructs an Operation<[`DescribeTrialComponent`](crate::operation::DescribeTrialComponent)>
     #[allow(clippy::let_and_return)]
@@ -19653,6 +19948,8 @@ pub mod describe_user_profile_input {
         }
     }
 }
+pub type DescribeUserProfileInputOperationOutputAlias = crate::operation::DescribeUserProfile;
+pub type DescribeUserProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeUserProfileInput {
     /// Consumes the builder and constructs an Operation<[`DescribeUserProfile`](crate::operation::DescribeUserProfile)>
     #[allow(clippy::let_and_return)]
@@ -19768,6 +20065,8 @@ pub mod describe_workforce_input {
         }
     }
 }
+pub type DescribeWorkforceInputOperationOutputAlias = crate::operation::DescribeWorkforce;
+pub type DescribeWorkforceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeWorkforceInput {
     /// Consumes the builder and constructs an Operation<[`DescribeWorkforce`](crate::operation::DescribeWorkforce)>
     #[allow(clippy::let_and_return)]
@@ -19881,6 +20180,8 @@ pub mod describe_workteam_input {
         }
     }
 }
+pub type DescribeWorkteamInputOperationOutputAlias = crate::operation::DescribeWorkteam;
+pub type DescribeWorkteamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeWorkteamInput {
     /// Consumes the builder and constructs an Operation<[`DescribeWorkteam`](crate::operation::DescribeWorkteam)>
     #[allow(clippy::let_and_return)]
@@ -19982,6 +20283,10 @@ pub mod disable_sagemaker_servicecatalog_portfolio_input {
         }
     }
 }
+pub type DisableSagemakerServicecatalogPortfolioInputOperationOutputAlias =
+    crate::operation::DisableSagemakerServicecatalogPortfolio;
+pub type DisableSagemakerServicecatalogPortfolioInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl DisableSagemakerServicecatalogPortfolioInput {
     /// Consumes the builder and constructs an Operation<[`DisableSagemakerServicecatalogPortfolio`](crate::operation::DisableSagemakerServicecatalogPortfolio)>
     #[allow(clippy::let_and_return)]
@@ -20109,6 +20414,9 @@ pub mod disassociate_trial_component_input {
         }
     }
 }
+pub type DisassociateTrialComponentInputOperationOutputAlias =
+    crate::operation::DisassociateTrialComponent;
+pub type DisassociateTrialComponentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DisassociateTrialComponentInput {
     /// Consumes the builder and constructs an Operation<[`DisassociateTrialComponent`](crate::operation::DisassociateTrialComponent)>
     #[allow(clippy::let_and_return)]
@@ -20212,6 +20520,10 @@ pub mod enable_sagemaker_servicecatalog_portfolio_input {
         }
     }
 }
+pub type EnableSagemakerServicecatalogPortfolioInputOperationOutputAlias =
+    crate::operation::EnableSagemakerServicecatalogPortfolio;
+pub type EnableSagemakerServicecatalogPortfolioInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl EnableSagemakerServicecatalogPortfolioInput {
     /// Consumes the builder and constructs an Operation<[`EnableSagemakerServicecatalogPortfolio`](crate::operation::EnableSagemakerServicecatalogPortfolio)>
     #[allow(clippy::let_and_return)]
@@ -20328,6 +20640,8 @@ pub mod get_device_fleet_report_input {
         }
     }
 }
+pub type GetDeviceFleetReportInputOperationOutputAlias = crate::operation::GetDeviceFleetReport;
+pub type GetDeviceFleetReportInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetDeviceFleetReportInput {
     /// Consumes the builder and constructs an Operation<[`GetDeviceFleetReport`](crate::operation::GetDeviceFleetReport)>
     #[allow(clippy::let_and_return)]
@@ -20444,6 +20758,9 @@ pub mod get_model_package_group_policy_input {
         }
     }
 }
+pub type GetModelPackageGroupPolicyInputOperationOutputAlias =
+    crate::operation::GetModelPackageGroupPolicy;
+pub type GetModelPackageGroupPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetModelPackageGroupPolicyInput {
     /// Consumes the builder and constructs an Operation<[`GetModelPackageGroupPolicy`](crate::operation::GetModelPackageGroupPolicy)>
     #[allow(clippy::let_and_return)]
@@ -20547,6 +20864,10 @@ pub mod get_sagemaker_servicecatalog_portfolio_status_input {
         }
     }
 }
+pub type GetSagemakerServicecatalogPortfolioStatusInputOperationOutputAlias =
+    crate::operation::GetSagemakerServicecatalogPortfolioStatus;
+pub type GetSagemakerServicecatalogPortfolioStatusInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl GetSagemakerServicecatalogPortfolioStatusInput {
     /// Consumes the builder and constructs an Operation<[`GetSagemakerServicecatalogPortfolioStatus`](crate::operation::GetSagemakerServicecatalogPortfolioStatus)>
     #[allow(clippy::let_and_return)]
@@ -20677,6 +20998,8 @@ pub mod get_search_suggestions_input {
         }
     }
 }
+pub type GetSearchSuggestionsInputOperationOutputAlias = crate::operation::GetSearchSuggestions;
+pub type GetSearchSuggestionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetSearchSuggestionsInput {
     /// Consumes the builder and constructs an Operation<[`GetSearchSuggestions`](crate::operation::GetSearchSuggestions)>
     #[allow(clippy::let_and_return)]
@@ -20876,6 +21199,8 @@ pub mod list_actions_input {
         }
     }
 }
+pub type ListActionsInputOperationOutputAlias = crate::operation::ListActions;
+pub type ListActionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListActionsInput {
     /// Consumes the builder and constructs an Operation<[`ListActions`](crate::operation::ListActions)>
     #[allow(clippy::let_and_return)]
@@ -21069,6 +21394,8 @@ pub mod list_algorithms_input {
         }
     }
 }
+pub type ListAlgorithmsInputOperationOutputAlias = crate::operation::ListAlgorithms;
+pub type ListAlgorithmsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListAlgorithmsInput {
     /// Consumes the builder and constructs an Operation<[`ListAlgorithms`](crate::operation::ListAlgorithms)>
     #[allow(clippy::let_and_return)]
@@ -21286,6 +21613,8 @@ pub mod list_app_image_configs_input {
         }
     }
 }
+pub type ListAppImageConfigsInputOperationOutputAlias = crate::operation::ListAppImageConfigs;
+pub type ListAppImageConfigsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListAppImageConfigsInput {
     /// Consumes the builder and constructs an Operation<[`ListAppImageConfigs`](crate::operation::ListAppImageConfigs)>
     #[allow(clippy::let_and_return)]
@@ -21460,6 +21789,8 @@ pub mod list_apps_input {
         }
     }
 }
+pub type ListAppsInputOperationOutputAlias = crate::operation::ListApps;
+pub type ListAppsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListAppsInput {
     /// Consumes the builder and constructs an Operation<[`ListApps`](crate::operation::ListApps)>
     #[allow(clippy::let_and_return)]
@@ -21657,6 +21988,8 @@ pub mod list_artifacts_input {
         }
     }
 }
+pub type ListArtifactsInputOperationOutputAlias = crate::operation::ListArtifacts;
+pub type ListArtifactsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListArtifactsInput {
     /// Consumes the builder and constructs an Operation<[`ListArtifacts`](crate::operation::ListArtifacts)>
     #[allow(clippy::let_and_return)]
@@ -21899,6 +22232,8 @@ pub mod list_associations_input {
         }
     }
 }
+pub type ListAssociationsInputOperationOutputAlias = crate::operation::ListAssociations;
+pub type ListAssociationsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListAssociationsInput {
     /// Consumes the builder and constructs an Operation<[`ListAssociations`](crate::operation::ListAssociations)>
     #[allow(clippy::let_and_return)]
@@ -22128,6 +22463,8 @@ pub mod list_auto_ml_jobs_input {
         }
     }
 }
+pub type ListAutoMLJobsInputOperationOutputAlias = crate::operation::ListAutoMLJobs;
+pub type ListAutoMLJobsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListAutoMLJobsInput {
     /// Consumes the builder and constructs an Operation<[`ListAutoMLJobs`](crate::operation::ListAutoMLJobs)>
     #[allow(clippy::let_and_return)]
@@ -22323,6 +22660,9 @@ pub mod list_candidates_for_auto_ml_job_input {
         }
     }
 }
+pub type ListCandidatesForAutoMLJobInputOperationOutputAlias =
+    crate::operation::ListCandidatesForAutoMLJob;
+pub type ListCandidatesForAutoMLJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListCandidatesForAutoMLJobInput {
     /// Consumes the builder and constructs an Operation<[`ListCandidatesForAutoMLJob`](crate::operation::ListCandidatesForAutoMLJob)>
     #[allow(clippy::let_and_return)]
@@ -22550,6 +22890,8 @@ pub mod list_code_repositories_input {
         }
     }
 }
+pub type ListCodeRepositoriesInputOperationOutputAlias = crate::operation::ListCodeRepositories;
+pub type ListCodeRepositoriesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListCodeRepositoriesInput {
     /// Consumes the builder and constructs an Operation<[`ListCodeRepositories`](crate::operation::ListCodeRepositories)>
     #[allow(clippy::let_and_return)]
@@ -22787,6 +23129,8 @@ pub mod list_compilation_jobs_input {
         }
     }
 }
+pub type ListCompilationJobsInputOperationOutputAlias = crate::operation::ListCompilationJobs;
+pub type ListCompilationJobsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListCompilationJobsInput {
     /// Consumes the builder and constructs an Operation<[`ListCompilationJobs`](crate::operation::ListCompilationJobs)>
     #[allow(clippy::let_and_return)]
@@ -22986,6 +23330,8 @@ pub mod list_contexts_input {
         }
     }
 }
+pub type ListContextsInputOperationOutputAlias = crate::operation::ListContexts;
+pub type ListContextsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListContextsInput {
     /// Consumes the builder and constructs an Operation<[`ListContexts`](crate::operation::ListContexts)>
     #[allow(clippy::let_and_return)]
@@ -23194,6 +23540,9 @@ pub mod list_data_quality_job_definitions_input {
         }
     }
 }
+pub type ListDataQualityJobDefinitionsInputOperationOutputAlias =
+    crate::operation::ListDataQualityJobDefinitions;
+pub type ListDataQualityJobDefinitionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListDataQualityJobDefinitionsInput {
     /// Consumes the builder and constructs an Operation<[`ListDataQualityJobDefinitions`](crate::operation::ListDataQualityJobDefinitions)>
     #[allow(clippy::let_and_return)]
@@ -23411,6 +23760,8 @@ pub mod list_device_fleets_input {
         }
     }
 }
+pub type ListDeviceFleetsInputOperationOutputAlias = crate::operation::ListDeviceFleets;
+pub type ListDeviceFleetsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListDeviceFleetsInput {
     /// Consumes the builder and constructs an Operation<[`ListDeviceFleets`](crate::operation::ListDeviceFleets)>
     #[allow(clippy::let_and_return)]
@@ -23573,6 +23924,8 @@ pub mod list_devices_input {
         }
     }
 }
+pub type ListDevicesInputOperationOutputAlias = crate::operation::ListDevices;
+pub type ListDevicesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListDevicesInput {
     /// Consumes the builder and constructs an Operation<[`ListDevices`](crate::operation::ListDevices)>
     #[allow(clippy::let_and_return)]
@@ -23697,6 +24050,8 @@ pub mod list_domains_input {
         }
     }
 }
+pub type ListDomainsInputOperationOutputAlias = crate::operation::ListDomains;
+pub type ListDomainsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListDomainsInput {
     /// Consumes the builder and constructs an Operation<[`ListDomains`](crate::operation::ListDomains)>
     #[allow(clippy::let_and_return)]
@@ -23941,6 +24296,8 @@ pub mod list_edge_packaging_jobs_input {
         }
     }
 }
+pub type ListEdgePackagingJobsInputOperationOutputAlias = crate::operation::ListEdgePackagingJobs;
+pub type ListEdgePackagingJobsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListEdgePackagingJobsInput {
     /// Consumes the builder and constructs an Operation<[`ListEdgePackagingJobs`](crate::operation::ListEdgePackagingJobs)>
     #[allow(clippy::let_and_return)]
@@ -24134,6 +24491,8 @@ pub mod list_endpoint_configs_input {
         }
     }
 }
+pub type ListEndpointConfigsInputOperationOutputAlias = crate::operation::ListEndpointConfigs;
+pub type ListEndpointConfigsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListEndpointConfigsInput {
     /// Consumes the builder and constructs an Operation<[`ListEndpointConfigs`](crate::operation::ListEndpointConfigs)>
     #[allow(clippy::let_and_return)]
@@ -24370,6 +24729,8 @@ pub mod list_endpoints_input {
         }
     }
 }
+pub type ListEndpointsInputOperationOutputAlias = crate::operation::ListEndpoints;
+pub type ListEndpointsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListEndpointsInput {
     /// Consumes the builder and constructs an Operation<[`ListEndpoints`](crate::operation::ListEndpoints)>
     #[allow(clippy::let_and_return)]
@@ -24549,6 +24910,8 @@ pub mod list_experiments_input {
         }
     }
 }
+pub type ListExperimentsInputOperationOutputAlias = crate::operation::ListExperiments;
+pub type ListExperimentsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListExperimentsInput {
     /// Consumes the builder and constructs an Operation<[`ListExperiments`](crate::operation::ListExperiments)>
     #[allow(clippy::let_and_return)]
@@ -24778,6 +25141,8 @@ pub mod list_feature_groups_input {
         }
     }
 }
+pub type ListFeatureGroupsInputOperationOutputAlias = crate::operation::ListFeatureGroups;
+pub type ListFeatureGroupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListFeatureGroupsInput {
     /// Consumes the builder and constructs an Operation<[`ListFeatureGroups`](crate::operation::ListFeatureGroups)>
     #[allow(clippy::let_and_return)]
@@ -24941,6 +25306,8 @@ pub mod list_flow_definitions_input {
         }
     }
 }
+pub type ListFlowDefinitionsInputOperationOutputAlias = crate::operation::ListFlowDefinitions;
+pub type ListFlowDefinitionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListFlowDefinitionsInput {
     /// Consumes the builder and constructs an Operation<[`ListFlowDefinitions`](crate::operation::ListFlowDefinitions)>
     #[allow(clippy::let_and_return)]
@@ -25104,6 +25471,8 @@ pub mod list_human_task_uis_input {
         }
     }
 }
+pub type ListHumanTaskUisInputOperationOutputAlias = crate::operation::ListHumanTaskUis;
+pub type ListHumanTaskUisInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListHumanTaskUisInput {
     /// Consumes the builder and constructs an Operation<[`ListHumanTaskUis`](crate::operation::ListHumanTaskUis)>
     #[allow(clippy::let_and_return)]
@@ -25353,6 +25722,9 @@ pub mod list_hyper_parameter_tuning_jobs_input {
         }
     }
 }
+pub type ListHyperParameterTuningJobsInputOperationOutputAlias =
+    crate::operation::ListHyperParameterTuningJobs;
+pub type ListHyperParameterTuningJobsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListHyperParameterTuningJobsInput {
     /// Consumes the builder and constructs an Operation<[`ListHyperParameterTuningJobs`](crate::operation::ListHyperParameterTuningJobs)>
     #[allow(clippy::let_and_return)]
@@ -25570,6 +25942,8 @@ pub mod list_images_input {
         }
     }
 }
+pub type ListImagesInputOperationOutputAlias = crate::operation::ListImages;
+pub type ListImagesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListImagesInput {
     /// Consumes the builder and constructs an Operation<[`ListImages`](crate::operation::ListImages)>
     #[allow(clippy::let_and_return)]
@@ -25790,6 +26164,8 @@ pub mod list_image_versions_input {
         }
     }
 }
+pub type ListImageVersionsInputOperationOutputAlias = crate::operation::ListImageVersions;
+pub type ListImageVersionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListImageVersionsInput {
     /// Consumes the builder and constructs an Operation<[`ListImageVersions`](crate::operation::ListImageVersions)>
     #[allow(clippy::let_and_return)]
@@ -26024,6 +26400,8 @@ pub mod list_labeling_jobs_input {
         }
     }
 }
+pub type ListLabelingJobsInputOperationOutputAlias = crate::operation::ListLabelingJobs;
+pub type ListLabelingJobsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListLabelingJobsInput {
     /// Consumes the builder and constructs an Operation<[`ListLabelingJobs`](crate::operation::ListLabelingJobs)>
     #[allow(clippy::let_and_return)]
@@ -26238,6 +26616,9 @@ pub mod list_labeling_jobs_for_workteam_input {
         }
     }
 }
+pub type ListLabelingJobsForWorkteamInputOperationOutputAlias =
+    crate::operation::ListLabelingJobsForWorkteam;
+pub type ListLabelingJobsForWorkteamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListLabelingJobsForWorkteamInput {
     /// Consumes the builder and constructs an Operation<[`ListLabelingJobsForWorkteam`](crate::operation::ListLabelingJobsForWorkteam)>
     #[allow(clippy::let_and_return)]
@@ -26444,6 +26825,9 @@ pub mod list_model_bias_job_definitions_input {
         }
     }
 }
+pub type ListModelBiasJobDefinitionsInputOperationOutputAlias =
+    crate::operation::ListModelBiasJobDefinitions;
+pub type ListModelBiasJobDefinitionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListModelBiasJobDefinitionsInput {
     /// Consumes the builder and constructs an Operation<[`ListModelBiasJobDefinitions`](crate::operation::ListModelBiasJobDefinitions)>
     #[allow(clippy::let_and_return)]
@@ -26651,6 +27035,10 @@ pub mod list_model_explainability_job_definitions_input {
         }
     }
 }
+pub type ListModelExplainabilityJobDefinitionsInputOperationOutputAlias =
+    crate::operation::ListModelExplainabilityJobDefinitions;
+pub type ListModelExplainabilityJobDefinitionsInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl ListModelExplainabilityJobDefinitionsInput {
     /// Consumes the builder and constructs an Operation<[`ListModelExplainabilityJobDefinitions`](crate::operation::ListModelExplainabilityJobDefinitions)>
     #[allow(clippy::let_and_return)]
@@ -26844,6 +27232,8 @@ pub mod list_model_package_groups_input {
         }
     }
 }
+pub type ListModelPackageGroupsInputOperationOutputAlias = crate::operation::ListModelPackageGroups;
+pub type ListModelPackageGroupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListModelPackageGroupsInput {
     /// Consumes the builder and constructs an Operation<[`ListModelPackageGroups`](crate::operation::ListModelPackageGroups)>
     #[allow(clippy::let_and_return)]
@@ -27096,6 +27486,8 @@ pub mod list_model_packages_input {
         }
     }
 }
+pub type ListModelPackagesInputOperationOutputAlias = crate::operation::ListModelPackages;
+pub type ListModelPackagesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListModelPackagesInput {
     /// Consumes the builder and constructs an Operation<[`ListModelPackages`](crate::operation::ListModelPackages)>
     #[allow(clippy::let_and_return)]
@@ -27304,6 +27696,9 @@ pub mod list_model_quality_job_definitions_input {
         }
     }
 }
+pub type ListModelQualityJobDefinitionsInputOperationOutputAlias =
+    crate::operation::ListModelQualityJobDefinitions;
+pub type ListModelQualityJobDefinitionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListModelQualityJobDefinitionsInput {
     /// Consumes the builder and constructs an Operation<[`ListModelQualityJobDefinitions`](crate::operation::ListModelQualityJobDefinitions)>
     #[allow(clippy::let_and_return)]
@@ -27494,6 +27889,8 @@ pub mod list_models_input {
         }
     }
 }
+pub type ListModelsInputOperationOutputAlias = crate::operation::ListModels;
+pub type ListModelsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListModelsInput {
     /// Consumes the builder and constructs an Operation<[`ListModels`](crate::operation::ListModels)>
     #[allow(clippy::let_and_return)]
@@ -27802,6 +28199,9 @@ pub mod list_monitoring_executions_input {
         }
     }
 }
+pub type ListMonitoringExecutionsInputOperationOutputAlias =
+    crate::operation::ListMonitoringExecutions;
+pub type ListMonitoringExecutionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListMonitoringExecutionsInput {
     /// Consumes the builder and constructs an Operation<[`ListMonitoringExecutions`](crate::operation::ListMonitoringExecutions)>
     #[allow(clippy::let_and_return)]
@@ -28079,6 +28479,9 @@ pub mod list_monitoring_schedules_input {
         }
     }
 }
+pub type ListMonitoringSchedulesInputOperationOutputAlias =
+    crate::operation::ListMonitoringSchedules;
+pub type ListMonitoringSchedulesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListMonitoringSchedulesInput {
     /// Consumes the builder and constructs an Operation<[`ListMonitoringSchedules`](crate::operation::ListMonitoringSchedules)>
     #[allow(clippy::let_and_return)]
@@ -28315,6 +28718,10 @@ pub mod list_notebook_instance_lifecycle_configs_input {
         }
     }
 }
+pub type ListNotebookInstanceLifecycleConfigsInputOperationOutputAlias =
+    crate::operation::ListNotebookInstanceLifecycleConfigs;
+pub type ListNotebookInstanceLifecycleConfigsInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl ListNotebookInstanceLifecycleConfigsInput {
     /// Consumes the builder and constructs an Operation<[`ListNotebookInstanceLifecycleConfigs`](crate::operation::ListNotebookInstanceLifecycleConfigs)>
     #[allow(clippy::let_and_return)]
@@ -28625,6 +29032,8 @@ pub mod list_notebook_instances_input {
         }
     }
 }
+pub type ListNotebookInstancesInputOperationOutputAlias = crate::operation::ListNotebookInstances;
+pub type ListNotebookInstancesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListNotebookInstancesInput {
     /// Consumes the builder and constructs an Operation<[`ListNotebookInstances`](crate::operation::ListNotebookInstances)>
     #[allow(clippy::let_and_return)]
@@ -28816,6 +29225,8 @@ pub mod list_pipeline_executions_input {
         }
     }
 }
+pub type ListPipelineExecutionsInputOperationOutputAlias = crate::operation::ListPipelineExecutions;
+pub type ListPipelineExecutionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListPipelineExecutionsInput {
     /// Consumes the builder and constructs an Operation<[`ListPipelineExecutions`](crate::operation::ListPipelineExecutions)>
     #[allow(clippy::let_and_return)]
@@ -28966,6 +29377,9 @@ pub mod list_pipeline_execution_steps_input {
         }
     }
 }
+pub type ListPipelineExecutionStepsInputOperationOutputAlias =
+    crate::operation::ListPipelineExecutionSteps;
+pub type ListPipelineExecutionStepsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListPipelineExecutionStepsInput {
     /// Consumes the builder and constructs an Operation<[`ListPipelineExecutionSteps`](crate::operation::ListPipelineExecutionSteps)>
     #[allow(clippy::let_and_return)]
@@ -29108,6 +29522,9 @@ pub mod list_pipeline_parameters_for_execution_input {
         }
     }
 }
+pub type ListPipelineParametersForExecutionInputOperationOutputAlias =
+    crate::operation::ListPipelineParametersForExecution;
+pub type ListPipelineParametersForExecutionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListPipelineParametersForExecutionInput {
     /// Consumes the builder and constructs an Operation<[`ListPipelineParametersForExecution`](crate::operation::ListPipelineParametersForExecution)>
     #[allow(clippy::let_and_return)]
@@ -29307,6 +29724,8 @@ pub mod list_pipelines_input {
         }
     }
 }
+pub type ListPipelinesInputOperationOutputAlias = crate::operation::ListPipelines;
+pub type ListPipelinesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListPipelinesInput {
     /// Consumes the builder and constructs an Operation<[`ListPipelines`](crate::operation::ListPipelines)>
     #[allow(clippy::let_and_return)]
@@ -29537,6 +29956,8 @@ pub mod list_processing_jobs_input {
         }
     }
 }
+pub type ListProcessingJobsInputOperationOutputAlias = crate::operation::ListProcessingJobs;
+pub type ListProcessingJobsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListProcessingJobsInput {
     /// Consumes the builder and constructs an Operation<[`ListProcessingJobs`](crate::operation::ListProcessingJobs)>
     #[allow(clippy::let_and_return)]
@@ -29731,6 +30152,8 @@ pub mod list_projects_input {
         }
     }
 }
+pub type ListProjectsInputOperationOutputAlias = crate::operation::ListProjects;
+pub type ListProjectsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListProjectsInput {
     /// Consumes the builder and constructs an Operation<[`ListProjects`](crate::operation::ListProjects)>
     #[allow(clippy::let_and_return)]
@@ -29869,6 +30292,9 @@ pub mod list_subscribed_workteams_input {
         }
     }
 }
+pub type ListSubscribedWorkteamsInputOperationOutputAlias =
+    crate::operation::ListSubscribedWorkteams;
+pub type ListSubscribedWorkteamsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListSubscribedWorkteamsInput {
     /// Consumes the builder and constructs an Operation<[`ListSubscribedWorkteams`](crate::operation::ListSubscribedWorkteams)>
     #[allow(clippy::let_and_return)]
@@ -30006,6 +30432,8 @@ pub mod list_tags_input {
         }
     }
 }
+pub type ListTagsInputOperationOutputAlias = crate::operation::ListTags;
+pub type ListTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTagsInput {
     /// Consumes the builder and constructs an Operation<[`ListTags`](crate::operation::ListTags)>
     #[allow(clippy::let_and_return)]
@@ -30238,6 +30666,8 @@ pub mod list_training_jobs_input {
         }
     }
 }
+pub type ListTrainingJobsInputOperationOutputAlias = crate::operation::ListTrainingJobs;
+pub type ListTrainingJobsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTrainingJobsInput {
     /// Consumes the builder and constructs an Operation<[`ListTrainingJobs`](crate::operation::ListTrainingJobs)>
     #[allow(clippy::let_and_return)]
@@ -30432,6 +30862,10 @@ pub mod list_training_jobs_for_hyper_parameter_tuning_job_input {
         }
     }
 }
+pub type ListTrainingJobsForHyperParameterTuningJobInputOperationOutputAlias =
+    crate::operation::ListTrainingJobsForHyperParameterTuningJob;
+pub type ListTrainingJobsForHyperParameterTuningJobInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl ListTrainingJobsForHyperParameterTuningJobInput {
     /// Consumes the builder and constructs an Operation<[`ListTrainingJobsForHyperParameterTuningJob`](crate::operation::ListTrainingJobsForHyperParameterTuningJob)>
     #[allow(clippy::let_and_return)]
@@ -30665,6 +31099,8 @@ pub mod list_transform_jobs_input {
         }
     }
 }
+pub type ListTransformJobsInputOperationOutputAlias = crate::operation::ListTransformJobs;
+pub type ListTransformJobsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTransformJobsInput {
     /// Consumes the builder and constructs an Operation<[`ListTransformJobs`](crate::operation::ListTransformJobs)>
     #[allow(clippy::let_and_return)]
@@ -30886,6 +31322,8 @@ pub mod list_trial_components_input {
         }
     }
 }
+pub type ListTrialComponentsInputOperationOutputAlias = crate::operation::ListTrialComponents;
+pub type ListTrialComponentsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTrialComponentsInput {
     /// Consumes the builder and constructs an Operation<[`ListTrialComponents`](crate::operation::ListTrialComponents)>
     #[allow(clippy::let_and_return)]
@@ -31089,6 +31527,8 @@ pub mod list_trials_input {
         }
     }
 }
+pub type ListTrialsInputOperationOutputAlias = crate::operation::ListTrials;
+pub type ListTrialsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTrialsInput {
     /// Consumes the builder and constructs an Operation<[`ListTrials`](crate::operation::ListTrials)>
     #[allow(clippy::let_and_return)]
@@ -31267,6 +31707,8 @@ pub mod list_user_profiles_input {
         }
     }
 }
+pub type ListUserProfilesInputOperationOutputAlias = crate::operation::ListUserProfiles;
+pub type ListUserProfilesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListUserProfilesInput {
     /// Consumes the builder and constructs an Operation<[`ListUserProfiles`](crate::operation::ListUserProfiles)>
     #[allow(clippy::let_and_return)]
@@ -31426,6 +31868,8 @@ pub mod list_workforces_input {
         }
     }
 }
+pub type ListWorkforcesInputOperationOutputAlias = crate::operation::ListWorkforces;
+pub type ListWorkforcesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListWorkforcesInput {
     /// Consumes the builder and constructs an Operation<[`ListWorkforces`](crate::operation::ListWorkforces)>
     #[allow(clippy::let_and_return)]
@@ -31587,6 +32031,8 @@ pub mod list_workteams_input {
         }
     }
 }
+pub type ListWorkteamsInputOperationOutputAlias = crate::operation::ListWorkteams;
+pub type ListWorkteamsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListWorkteamsInput {
     /// Consumes the builder and constructs an Operation<[`ListWorkteams`](crate::operation::ListWorkteams)>
     #[allow(clippy::let_and_return)]
@@ -31717,6 +32163,9 @@ pub mod put_model_package_group_policy_input {
         }
     }
 }
+pub type PutModelPackageGroupPolicyInputOperationOutputAlias =
+    crate::operation::PutModelPackageGroupPolicy;
+pub type PutModelPackageGroupPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutModelPackageGroupPolicyInput {
     /// Consumes the builder and constructs an Operation<[`PutModelPackageGroupPolicy`](crate::operation::PutModelPackageGroupPolicy)>
     #[allow(clippy::let_and_return)]
@@ -31864,6 +32313,8 @@ pub mod register_devices_input {
         }
     }
 }
+pub type RegisterDevicesInputOperationOutputAlias = crate::operation::RegisterDevices;
+pub type RegisterDevicesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RegisterDevicesInput {
     /// Consumes the builder and constructs an Operation<[`RegisterDevices`](crate::operation::RegisterDevices)>
     #[allow(clippy::let_and_return)]
@@ -32020,6 +32471,8 @@ pub mod render_ui_template_input {
         }
     }
 }
+pub type RenderUiTemplateInputOperationOutputAlias = crate::operation::RenderUiTemplate;
+pub type RenderUiTemplateInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RenderUiTemplateInput {
     /// Consumes the builder and constructs an Operation<[`RenderUiTemplate`](crate::operation::RenderUiTemplate)>
     #[allow(clippy::let_and_return)]
@@ -32205,6 +32658,8 @@ pub mod search_input {
         }
     }
 }
+pub type SearchInputOperationOutputAlias = crate::operation::Search;
+pub type SearchInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SearchInput {
     /// Consumes the builder and constructs an Operation<[`Search`](crate::operation::Search)>
     #[allow(clippy::let_and_return)]
@@ -32312,6 +32767,9 @@ pub mod start_monitoring_schedule_input {
         }
     }
 }
+pub type StartMonitoringScheduleInputOperationOutputAlias =
+    crate::operation::StartMonitoringSchedule;
+pub type StartMonitoringScheduleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartMonitoringScheduleInput {
     /// Consumes the builder and constructs an Operation<[`StartMonitoringSchedule`](crate::operation::StartMonitoringSchedule)>
     #[allow(clippy::let_and_return)]
@@ -32428,6 +32886,8 @@ pub mod start_notebook_instance_input {
         }
     }
 }
+pub type StartNotebookInstanceInputOperationOutputAlias = crate::operation::StartNotebookInstance;
+pub type StartNotebookInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartNotebookInstanceInput {
     /// Consumes the builder and constructs an Operation<[`StartNotebookInstance`](crate::operation::StartNotebookInstance)>
     #[allow(clippy::let_and_return)]
@@ -32605,6 +33065,8 @@ pub mod start_pipeline_execution_input {
         }
     }
 }
+pub type StartPipelineExecutionInputOperationOutputAlias = crate::operation::StartPipelineExecution;
+pub type StartPipelineExecutionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartPipelineExecutionInput {
     /// Consumes the builder and constructs an Operation<[`StartPipelineExecution`](crate::operation::StartPipelineExecution)>
     #[allow(clippy::let_and_return)]
@@ -32723,6 +33185,8 @@ pub mod stop_auto_ml_job_input {
         }
     }
 }
+pub type StopAutoMLJobInputOperationOutputAlias = crate::operation::StopAutoMLJob;
+pub type StopAutoMLJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopAutoMLJobInput {
     /// Consumes the builder and constructs an Operation<[`StopAutoMLJob`](crate::operation::StopAutoMLJob)>
     #[allow(clippy::let_and_return)]
@@ -32838,6 +33302,8 @@ pub mod stop_compilation_job_input {
         }
     }
 }
+pub type StopCompilationJobInputOperationOutputAlias = crate::operation::StopCompilationJob;
+pub type StopCompilationJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopCompilationJobInput {
     /// Consumes the builder and constructs an Operation<[`StopCompilationJob`](crate::operation::StopCompilationJob)>
     #[allow(clippy::let_and_return)]
@@ -32954,6 +33420,8 @@ pub mod stop_edge_packaging_job_input {
         }
     }
 }
+pub type StopEdgePackagingJobInputOperationOutputAlias = crate::operation::StopEdgePackagingJob;
+pub type StopEdgePackagingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopEdgePackagingJobInput {
     /// Consumes the builder and constructs an Operation<[`StopEdgePackagingJob`](crate::operation::StopEdgePackagingJob)>
     #[allow(clippy::let_and_return)]
@@ -33075,6 +33543,9 @@ pub mod stop_hyper_parameter_tuning_job_input {
         }
     }
 }
+pub type StopHyperParameterTuningJobInputOperationOutputAlias =
+    crate::operation::StopHyperParameterTuningJob;
+pub type StopHyperParameterTuningJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopHyperParameterTuningJobInput {
     /// Consumes the builder and constructs an Operation<[`StopHyperParameterTuningJob`](crate::operation::StopHyperParameterTuningJob)>
     #[allow(clippy::let_and_return)]
@@ -33192,6 +33663,8 @@ pub mod stop_labeling_job_input {
         }
     }
 }
+pub type StopLabelingJobInputOperationOutputAlias = crate::operation::StopLabelingJob;
+pub type StopLabelingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopLabelingJobInput {
     /// Consumes the builder and constructs an Operation<[`StopLabelingJob`](crate::operation::StopLabelingJob)>
     #[allow(clippy::let_and_return)]
@@ -33307,6 +33780,8 @@ pub mod stop_monitoring_schedule_input {
         }
     }
 }
+pub type StopMonitoringScheduleInputOperationOutputAlias = crate::operation::StopMonitoringSchedule;
+pub type StopMonitoringScheduleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopMonitoringScheduleInput {
     /// Consumes the builder and constructs an Operation<[`StopMonitoringSchedule`](crate::operation::StopMonitoringSchedule)>
     #[allow(clippy::let_and_return)]
@@ -33423,6 +33898,8 @@ pub mod stop_notebook_instance_input {
         }
     }
 }
+pub type StopNotebookInstanceInputOperationOutputAlias = crate::operation::StopNotebookInstance;
+pub type StopNotebookInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopNotebookInstanceInput {
     /// Consumes the builder and constructs an Operation<[`StopNotebookInstance`](crate::operation::StopNotebookInstance)>
     #[allow(clippy::let_and_return)]
@@ -33554,6 +34031,8 @@ pub mod stop_pipeline_execution_input {
         }
     }
 }
+pub type StopPipelineExecutionInputOperationOutputAlias = crate::operation::StopPipelineExecution;
+pub type StopPipelineExecutionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopPipelineExecutionInput {
     /// Consumes the builder and constructs an Operation<[`StopPipelineExecution`](crate::operation::StopPipelineExecution)>
     #[allow(clippy::let_and_return)]
@@ -33673,6 +34152,8 @@ pub mod stop_processing_job_input {
         }
     }
 }
+pub type StopProcessingJobInputOperationOutputAlias = crate::operation::StopProcessingJob;
+pub type StopProcessingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopProcessingJobInput {
     /// Consumes the builder and constructs an Operation<[`StopProcessingJob`](crate::operation::StopProcessingJob)>
     #[allow(clippy::let_and_return)]
@@ -33789,6 +34270,8 @@ pub mod stop_training_job_input {
         }
     }
 }
+pub type StopTrainingJobInputOperationOutputAlias = crate::operation::StopTrainingJob;
+pub type StopTrainingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopTrainingJobInput {
     /// Consumes the builder and constructs an Operation<[`StopTrainingJob`](crate::operation::StopTrainingJob)>
     #[allow(clippy::let_and_return)]
@@ -33904,6 +34387,8 @@ pub mod stop_transform_job_input {
         }
     }
 }
+pub type StopTransformJobInputOperationOutputAlias = crate::operation::StopTransformJob;
+pub type StopTransformJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopTransformJobInput {
     /// Consumes the builder and constructs an Operation<[`StopTransformJob`](crate::operation::StopTransformJob)>
     #[allow(clippy::let_and_return)]
@@ -34076,6 +34561,8 @@ pub mod update_action_input {
         }
     }
 }
+pub type UpdateActionInputOperationOutputAlias = crate::operation::UpdateAction;
+pub type UpdateActionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateActionInput {
     /// Consumes the builder and constructs an Operation<[`UpdateAction`](crate::operation::UpdateAction)>
     #[allow(clippy::let_and_return)]
@@ -34210,6 +34697,8 @@ pub mod update_app_image_config_input {
         }
     }
 }
+pub type UpdateAppImageConfigInputOperationOutputAlias = crate::operation::UpdateAppImageConfig;
+pub type UpdateAppImageConfigInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateAppImageConfigInput {
     /// Consumes the builder and constructs an Operation<[`UpdateAppImageConfig`](crate::operation::UpdateAppImageConfig)>
     #[allow(clippy::let_and_return)]
@@ -34371,6 +34860,8 @@ pub mod update_artifact_input {
         }
     }
 }
+pub type UpdateArtifactInputOperationOutputAlias = crate::operation::UpdateArtifact;
+pub type UpdateArtifactInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateArtifactInput {
     /// Consumes the builder and constructs an Operation<[`UpdateArtifact`](crate::operation::UpdateArtifact)>
     #[allow(clippy::let_and_return)]
@@ -34507,6 +34998,8 @@ pub mod update_code_repository_input {
         }
     }
 }
+pub type UpdateCodeRepositoryInputOperationOutputAlias = crate::operation::UpdateCodeRepository;
+pub type UpdateCodeRepositoryInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateCodeRepositoryInput {
     /// Consumes the builder and constructs an Operation<[`UpdateCodeRepository`](crate::operation::UpdateCodeRepository)>
     #[allow(clippy::let_and_return)]
@@ -34668,6 +35161,8 @@ pub mod update_context_input {
         }
     }
 }
+pub type UpdateContextInputOperationOutputAlias = crate::operation::UpdateContext;
+pub type UpdateContextInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateContextInput {
     /// Consumes the builder and constructs an Operation<[`UpdateContext`](crate::operation::UpdateContext)>
     #[allow(clippy::let_and_return)]
@@ -34820,6 +35315,8 @@ pub mod update_device_fleet_input {
         }
     }
 }
+pub type UpdateDeviceFleetInputOperationOutputAlias = crate::operation::UpdateDeviceFleet;
+pub type UpdateDeviceFleetInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateDeviceFleetInput {
     /// Consumes the builder and constructs an Operation<[`UpdateDeviceFleet`](crate::operation::UpdateDeviceFleet)>
     #[allow(clippy::let_and_return)]
@@ -34950,6 +35447,8 @@ pub mod update_devices_input {
         }
     }
 }
+pub type UpdateDevicesInputOperationOutputAlias = crate::operation::UpdateDevices;
+pub type UpdateDevicesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateDevicesInput {
     /// Consumes the builder and constructs an Operation<[`UpdateDevices`](crate::operation::UpdateDevices)>
     #[allow(clippy::let_and_return)]
@@ -35076,6 +35575,8 @@ pub mod update_domain_input {
         }
     }
 }
+pub type UpdateDomainInputOperationOutputAlias = crate::operation::UpdateDomain;
+pub type UpdateDomainInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateDomainInput {
     /// Consumes the builder and constructs an Operation<[`UpdateDomain`](crate::operation::UpdateDomain)>
     #[allow(clippy::let_and_return)]
@@ -35253,6 +35754,8 @@ pub mod update_endpoint_input {
         }
     }
 }
+pub type UpdateEndpointInputOperationOutputAlias = crate::operation::UpdateEndpoint;
+pub type UpdateEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateEndpointInput {
     /// Consumes the builder and constructs an Operation<[`UpdateEndpoint`](crate::operation::UpdateEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -35386,6 +35889,9 @@ pub mod update_endpoint_weights_and_capacities_input {
         }
     }
 }
+pub type UpdateEndpointWeightsAndCapacitiesInputOperationOutputAlias =
+    crate::operation::UpdateEndpointWeightsAndCapacities;
+pub type UpdateEndpointWeightsAndCapacitiesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateEndpointWeightsAndCapacitiesInput {
     /// Consumes the builder and constructs an Operation<[`UpdateEndpointWeightsAndCapacities`](crate::operation::UpdateEndpointWeightsAndCapacities)>
     #[allow(clippy::let_and_return)]
@@ -35531,6 +36037,8 @@ pub mod update_experiment_input {
         }
     }
 }
+pub type UpdateExperimentInputOperationOutputAlias = crate::operation::UpdateExperiment;
+pub type UpdateExperimentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateExperimentInput {
     /// Consumes the builder and constructs an Operation<[`UpdateExperiment`](crate::operation::UpdateExperiment)>
     #[allow(clippy::let_and_return)]
@@ -35690,6 +36198,8 @@ pub mod update_image_input {
         }
     }
 }
+pub type UpdateImageInputOperationOutputAlias = crate::operation::UpdateImage;
+pub type UpdateImageInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateImageInput {
     /// Consumes the builder and constructs an Operation<[`UpdateImage`](crate::operation::UpdateImage)>
     #[allow(clippy::let_and_return)]
@@ -35834,6 +36344,8 @@ pub mod update_model_package_input {
         }
     }
 }
+pub type UpdateModelPackageInputOperationOutputAlias = crate::operation::UpdateModelPackage;
+pub type UpdateModelPackageInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateModelPackageInput {
     /// Consumes the builder and constructs an Operation<[`UpdateModelPackage`](crate::operation::UpdateModelPackage)>
     #[allow(clippy::let_and_return)]
@@ -35970,6 +36482,9 @@ pub mod update_monitoring_schedule_input {
         }
     }
 }
+pub type UpdateMonitoringScheduleInputOperationOutputAlias =
+    crate::operation::UpdateMonitoringSchedule;
+pub type UpdateMonitoringScheduleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateMonitoringScheduleInput {
     /// Consumes the builder and constructs an Operation<[`UpdateMonitoringSchedule`](crate::operation::UpdateMonitoringSchedule)>
     #[allow(clippy::let_and_return)]
@@ -36285,6 +36800,8 @@ pub mod update_notebook_instance_input {
         }
     }
 }
+pub type UpdateNotebookInstanceInputOperationOutputAlias = crate::operation::UpdateNotebookInstance;
+pub type UpdateNotebookInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateNotebookInstanceInput {
     /// Consumes the builder and constructs an Operation<[`UpdateNotebookInstance`](crate::operation::UpdateNotebookInstance)>
     #[allow(clippy::let_and_return)]
@@ -36446,6 +36963,10 @@ pub mod update_notebook_instance_lifecycle_config_input {
         }
     }
 }
+pub type UpdateNotebookInstanceLifecycleConfigInputOperationOutputAlias =
+    crate::operation::UpdateNotebookInstanceLifecycleConfig;
+pub type UpdateNotebookInstanceLifecycleConfigInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl UpdateNotebookInstanceLifecycleConfigInput {
     /// Consumes the builder and constructs an Operation<[`UpdateNotebookInstanceLifecycleConfig`](crate::operation::UpdateNotebookInstanceLifecycleConfig)>
     #[allow(clippy::let_and_return)]
@@ -36613,6 +37134,8 @@ pub mod update_pipeline_input {
         }
     }
 }
+pub type UpdatePipelineInputOperationOutputAlias = crate::operation::UpdatePipeline;
+pub type UpdatePipelineInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdatePipelineInput {
     /// Consumes the builder and constructs an Operation<[`UpdatePipeline`](crate::operation::UpdatePipeline)>
     #[allow(clippy::let_and_return)]
@@ -36762,6 +37285,9 @@ pub mod update_pipeline_execution_input {
         }
     }
 }
+pub type UpdatePipelineExecutionInputOperationOutputAlias =
+    crate::operation::UpdatePipelineExecution;
+pub type UpdatePipelineExecutionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdatePipelineExecutionInput {
     /// Consumes the builder and constructs an Operation<[`UpdatePipelineExecution`](crate::operation::UpdatePipelineExecution)>
     #[allow(clippy::let_and_return)]
@@ -36912,6 +37438,8 @@ pub mod update_training_job_input {
         }
     }
 }
+pub type UpdateTrainingJobInputOperationOutputAlias = crate::operation::UpdateTrainingJob;
+pub type UpdateTrainingJobInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateTrainingJobInput {
     /// Consumes the builder and constructs an Operation<[`UpdateTrainingJob`](crate::operation::UpdateTrainingJob)>
     #[allow(clippy::let_and_return)]
@@ -37036,6 +37564,8 @@ pub mod update_trial_input {
         }
     }
 }
+pub type UpdateTrialInputOperationOutputAlias = crate::operation::UpdateTrial;
+pub type UpdateTrialInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateTrialInput {
     /// Consumes the builder and constructs an Operation<[`UpdateTrial`](crate::operation::UpdateTrial)>
     #[allow(clippy::let_and_return)]
@@ -37329,6 +37859,8 @@ pub mod update_trial_component_input {
         }
     }
 }
+pub type UpdateTrialComponentInputOperationOutputAlias = crate::operation::UpdateTrialComponent;
+pub type UpdateTrialComponentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateTrialComponentInput {
     /// Consumes the builder and constructs an Operation<[`UpdateTrialComponent`](crate::operation::UpdateTrialComponent)>
     #[allow(clippy::let_and_return)]
@@ -37470,6 +38002,8 @@ pub mod update_user_profile_input {
         }
     }
 }
+pub type UpdateUserProfileInputOperationOutputAlias = crate::operation::UpdateUserProfile;
+pub type UpdateUserProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateUserProfileInput {
     /// Consumes the builder and constructs an Operation<[`UpdateUserProfile`](crate::operation::UpdateUserProfile)>
     #[allow(clippy::let_and_return)]
@@ -37615,6 +38149,8 @@ pub mod update_workforce_input {
         }
     }
 }
+pub type UpdateWorkforceInputOperationOutputAlias = crate::operation::UpdateWorkforce;
+pub type UpdateWorkforceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateWorkforceInput {
     /// Consumes the builder and constructs an Operation<[`UpdateWorkforce`](crate::operation::UpdateWorkforce)>
     #[allow(clippy::let_and_return)]
@@ -37774,6 +38310,8 @@ pub mod update_workteam_input {
         }
     }
 }
+pub type UpdateWorkteamInputOperationOutputAlias = crate::operation::UpdateWorkteam;
+pub type UpdateWorkteamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateWorkteamInput {
     /// Consumes the builder and constructs an Operation<[`UpdateWorkteam`](crate::operation::UpdateWorkteam)>
     #[allow(clippy::let_and_return)]

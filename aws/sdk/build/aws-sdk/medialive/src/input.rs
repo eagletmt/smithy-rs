@@ -29,6 +29,9 @@ pub mod accept_input_device_transfer_input {
         }
     }
 }
+pub type AcceptInputDeviceTransferInputOperationOutputAlias =
+    crate::operation::AcceptInputDeviceTransfer;
+pub type AcceptInputDeviceTransferInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AcceptInputDeviceTransferInput {
     /// Consumes the builder and constructs an Operation<[`AcceptInputDeviceTransfer`](crate::operation::AcceptInputDeviceTransfer)>
     #[allow(clippy::let_and_return)]
@@ -203,6 +206,8 @@ pub mod batch_delete_input {
         }
     }
 }
+pub type BatchDeleteInputOperationOutputAlias = crate::operation::BatchDelete;
+pub type BatchDeleteInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl BatchDeleteInput {
     /// Consumes the builder and constructs an Operation<[`BatchDelete`](crate::operation::BatchDelete)>
     #[allow(clippy::let_and_return)]
@@ -344,6 +349,8 @@ pub mod batch_start_input {
         }
     }
 }
+pub type BatchStartInputOperationOutputAlias = crate::operation::BatchStart;
+pub type BatchStartInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl BatchStartInput {
     /// Consumes the builder and constructs an Operation<[`BatchStart`](crate::operation::BatchStart)>
     #[allow(clippy::let_and_return)]
@@ -485,6 +492,8 @@ pub mod batch_stop_input {
         }
     }
 }
+pub type BatchStopInputOperationOutputAlias = crate::operation::BatchStop;
+pub type BatchStopInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl BatchStopInput {
     /// Consumes the builder and constructs an Operation<[`BatchStop`](crate::operation::BatchStop)>
     #[allow(clippy::let_and_return)]
@@ -634,6 +643,8 @@ pub mod batch_update_schedule_input {
         }
     }
 }
+pub type BatchUpdateScheduleInputOperationOutputAlias = crate::operation::BatchUpdateSchedule;
+pub type BatchUpdateScheduleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl BatchUpdateScheduleInput {
     /// Consumes the builder and constructs an Operation<[`BatchUpdateSchedule`](crate::operation::BatchUpdateSchedule)>
     #[allow(clippy::let_and_return)]
@@ -762,6 +773,9 @@ pub mod cancel_input_device_transfer_input {
         }
     }
 }
+pub type CancelInputDeviceTransferInputOperationOutputAlias =
+    crate::operation::CancelInputDeviceTransfer;
+pub type CancelInputDeviceTransferInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CancelInputDeviceTransferInput {
     /// Consumes the builder and constructs an Operation<[`CancelInputDeviceTransfer`](crate::operation::CancelInputDeviceTransfer)>
     #[allow(clippy::let_and_return)]
@@ -1057,6 +1071,8 @@ pub mod create_channel_input {
         }
     }
 }
+pub type CreateChannelInputOperationOutputAlias = crate::operation::CreateChannel;
+pub type CreateChannelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateChannelInput {
     /// Consumes the builder and constructs an Operation<[`CreateChannel`](crate::operation::CreateChannel)>
     #[allow(clippy::let_and_return)]
@@ -1337,6 +1353,8 @@ pub mod create_input_input {
         }
     }
 }
+pub type CreateInputInputOperationOutputAlias = crate::operation::CreateInput;
+pub type CreateInputInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateInputInput {
     /// Consumes the builder and constructs an Operation<[`CreateInput`](crate::operation::CreateInput)>
     #[allow(clippy::let_and_return)]
@@ -1494,6 +1512,9 @@ pub mod create_input_security_group_input {
         }
     }
 }
+pub type CreateInputSecurityGroupInputOperationOutputAlias =
+    crate::operation::CreateInputSecurityGroup;
+pub type CreateInputSecurityGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateInputSecurityGroupInput {
     /// Consumes the builder and constructs an Operation<[`CreateInputSecurityGroup`](crate::operation::CreateInputSecurityGroup)>
     #[allow(clippy::let_and_return)]
@@ -1681,6 +1702,8 @@ pub mod create_multiplex_input {
         }
     }
 }
+pub type CreateMultiplexInputOperationOutputAlias = crate::operation::CreateMultiplex;
+pub type CreateMultiplexInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateMultiplexInput {
     /// Consumes the builder and constructs an Operation<[`CreateMultiplex`](crate::operation::CreateMultiplex)>
     #[allow(clippy::let_and_return)]
@@ -1847,6 +1870,8 @@ pub mod create_multiplex_program_input {
         }
     }
 }
+pub type CreateMultiplexProgramInputOperationOutputAlias = crate::operation::CreateMultiplexProgram;
+pub type CreateMultiplexProgramInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateMultiplexProgramInput {
     /// Consumes the builder and constructs an Operation<[`CreateMultiplexProgram`](crate::operation::CreateMultiplexProgram)>
     #[allow(clippy::let_and_return)]
@@ -2013,6 +2038,8 @@ pub mod create_partner_input_input {
         }
     }
 }
+pub type CreatePartnerInputInputOperationOutputAlias = crate::operation::CreatePartnerInput;
+pub type CreatePartnerInputInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreatePartnerInputInput {
     /// Consumes the builder and constructs an Operation<[`CreatePartnerInput`](crate::operation::CreatePartnerInput)>
     #[allow(clippy::let_and_return)]
@@ -2166,6 +2193,8 @@ pub mod create_tags_input {
         }
     }
 }
+pub type CreateTagsInputOperationOutputAlias = crate::operation::CreateTags;
+pub type CreateTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateTagsInput {
     /// Consumes the builder and constructs an Operation<[`CreateTags`](crate::operation::CreateTags)>
     #[allow(clippy::let_and_return)]
@@ -2293,6 +2322,8 @@ pub mod delete_channel_input {
         }
     }
 }
+pub type DeleteChannelInputOperationOutputAlias = crate::operation::DeleteChannel;
+pub type DeleteChannelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteChannelInput {
     /// Consumes the builder and constructs an Operation<[`DeleteChannel`](crate::operation::DeleteChannel)>
     #[allow(clippy::let_and_return)]
@@ -2417,6 +2448,8 @@ pub mod delete_input_input {
         }
     }
 }
+pub type DeleteInputInputOperationOutputAlias = crate::operation::DeleteInput;
+pub type DeleteInputInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteInputInput {
     /// Consumes the builder and constructs an Operation<[`DeleteInput`](crate::operation::DeleteInput)>
     #[allow(clippy::let_and_return)]
@@ -2542,6 +2575,9 @@ pub mod delete_input_security_group_input {
         }
     }
 }
+pub type DeleteInputSecurityGroupInputOperationOutputAlias =
+    crate::operation::DeleteInputSecurityGroup;
+pub type DeleteInputSecurityGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteInputSecurityGroupInput {
     /// Consumes the builder and constructs an Operation<[`DeleteInputSecurityGroup`](crate::operation::DeleteInputSecurityGroup)>
     #[allow(clippy::let_and_return)]
@@ -2668,6 +2704,8 @@ pub mod delete_multiplex_input {
         }
     }
 }
+pub type DeleteMultiplexInputOperationOutputAlias = crate::operation::DeleteMultiplex;
+pub type DeleteMultiplexInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteMultiplexInput {
     /// Consumes the builder and constructs an Operation<[`DeleteMultiplex`](crate::operation::DeleteMultiplex)>
     #[allow(clippy::let_and_return)]
@@ -2804,6 +2842,8 @@ pub mod delete_multiplex_program_input {
         }
     }
 }
+pub type DeleteMultiplexProgramInputOperationOutputAlias = crate::operation::DeleteMultiplexProgram;
+pub type DeleteMultiplexProgramInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteMultiplexProgramInput {
     /// Consumes the builder and constructs an Operation<[`DeleteMultiplexProgram`](crate::operation::DeleteMultiplexProgram)>
     #[allow(clippy::let_and_return)]
@@ -2930,6 +2970,8 @@ pub mod delete_reservation_input {
         }
     }
 }
+pub type DeleteReservationInputOperationOutputAlias = crate::operation::DeleteReservation;
+pub type DeleteReservationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteReservationInput {
     /// Consumes the builder and constructs an Operation<[`DeleteReservation`](crate::operation::DeleteReservation)>
     #[allow(clippy::let_and_return)]
@@ -3054,6 +3096,8 @@ pub mod delete_schedule_input {
         }
     }
 }
+pub type DeleteScheduleInputOperationOutputAlias = crate::operation::DeleteSchedule;
+pub type DeleteScheduleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteScheduleInput {
     /// Consumes the builder and constructs an Operation<[`DeleteSchedule`](crate::operation::DeleteSchedule)>
     #[allow(clippy::let_and_return)]
@@ -3193,6 +3237,8 @@ pub mod delete_tags_input {
         }
     }
 }
+pub type DeleteTagsInputOperationOutputAlias = crate::operation::DeleteTags;
+pub type DeleteTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteTagsInput {
     /// Consumes the builder and constructs an Operation<[`DeleteTags`](crate::operation::DeleteTags)>
     #[allow(clippy::let_and_return)]
@@ -3327,6 +3373,8 @@ pub mod describe_channel_input {
         }
     }
 }
+pub type DescribeChannelInputOperationOutputAlias = crate::operation::DescribeChannel;
+pub type DescribeChannelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeChannelInput {
     /// Consumes the builder and constructs an Operation<[`DescribeChannel`](crate::operation::DescribeChannel)>
     #[allow(clippy::let_and_return)]
@@ -3451,6 +3499,8 @@ pub mod describe_input_input {
         }
     }
 }
+pub type DescribeInputInputOperationOutputAlias = crate::operation::DescribeInput;
+pub type DescribeInputInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeInputInput {
     /// Consumes the builder and constructs an Operation<[`DescribeInput`](crate::operation::DescribeInput)>
     #[allow(clippy::let_and_return)]
@@ -3576,6 +3626,8 @@ pub mod describe_input_device_input {
         }
     }
 }
+pub type DescribeInputDeviceInputOperationOutputAlias = crate::operation::DescribeInputDevice;
+pub type DescribeInputDeviceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeInputDeviceInput {
     /// Consumes the builder and constructs an Operation<[`DescribeInputDevice`](crate::operation::DescribeInputDevice)>
     #[allow(clippy::let_and_return)]
@@ -3714,6 +3766,9 @@ pub mod describe_input_device_thumbnail_input {
         }
     }
 }
+pub type DescribeInputDeviceThumbnailInputOperationOutputAlias =
+    crate::operation::DescribeInputDeviceThumbnail;
+pub type DescribeInputDeviceThumbnailInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeInputDeviceThumbnailInput {
     /// Consumes the builder and constructs an Operation<[`DescribeInputDeviceThumbnail`](crate::operation::DescribeInputDeviceThumbnail)>
     #[allow(clippy::let_and_return)]
@@ -3864,6 +3919,9 @@ pub mod describe_input_security_group_input {
         }
     }
 }
+pub type DescribeInputSecurityGroupInputOperationOutputAlias =
+    crate::operation::DescribeInputSecurityGroup;
+pub type DescribeInputSecurityGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeInputSecurityGroupInput {
     /// Consumes the builder and constructs an Operation<[`DescribeInputSecurityGroup`](crate::operation::DescribeInputSecurityGroup)>
     #[allow(clippy::let_and_return)]
@@ -3990,6 +4048,8 @@ pub mod describe_multiplex_input {
         }
     }
 }
+pub type DescribeMultiplexInputOperationOutputAlias = crate::operation::DescribeMultiplex;
+pub type DescribeMultiplexInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeMultiplexInput {
     /// Consumes the builder and constructs an Operation<[`DescribeMultiplex`](crate::operation::DescribeMultiplex)>
     #[allow(clippy::let_and_return)]
@@ -4126,6 +4186,9 @@ pub mod describe_multiplex_program_input {
         }
     }
 }
+pub type DescribeMultiplexProgramInputOperationOutputAlias =
+    crate::operation::DescribeMultiplexProgram;
+pub type DescribeMultiplexProgramInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeMultiplexProgramInput {
     /// Consumes the builder and constructs an Operation<[`DescribeMultiplexProgram`](crate::operation::DescribeMultiplexProgram)>
     #[allow(clippy::let_and_return)]
@@ -4252,6 +4315,8 @@ pub mod describe_offering_input {
         }
     }
 }
+pub type DescribeOfferingInputOperationOutputAlias = crate::operation::DescribeOffering;
+pub type DescribeOfferingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeOfferingInput {
     /// Consumes the builder and constructs an Operation<[`DescribeOffering`](crate::operation::DescribeOffering)>
     #[allow(clippy::let_and_return)]
@@ -4377,6 +4442,8 @@ pub mod describe_reservation_input {
         }
     }
 }
+pub type DescribeReservationInputOperationOutputAlias = crate::operation::DescribeReservation;
+pub type DescribeReservationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeReservationInput {
     /// Consumes the builder and constructs an Operation<[`DescribeReservation`](crate::operation::DescribeReservation)>
     #[allow(clippy::let_and_return)]
@@ -4524,6 +4591,8 @@ pub mod describe_schedule_input {
         }
     }
 }
+pub type DescribeScheduleInputOperationOutputAlias = crate::operation::DescribeSchedule;
+pub type DescribeScheduleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeScheduleInput {
     /// Consumes the builder and constructs an Operation<[`DescribeSchedule`](crate::operation::DescribeSchedule)>
     #[allow(clippy::let_and_return)]
@@ -4672,6 +4741,8 @@ pub mod list_channels_input {
         }
     }
 }
+pub type ListChannelsInputOperationOutputAlias = crate::operation::ListChannels;
+pub type ListChannelsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListChannelsInput {
     /// Consumes the builder and constructs an Operation<[`ListChannels`](crate::operation::ListChannels)>
     #[allow(clippy::let_and_return)]
@@ -4816,6 +4887,8 @@ pub mod list_input_devices_input {
         }
     }
 }
+pub type ListInputDevicesInputOperationOutputAlias = crate::operation::ListInputDevices;
+pub type ListInputDevicesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListInputDevicesInput {
     /// Consumes the builder and constructs an Operation<[`ListInputDevices`](crate::operation::ListInputDevices)>
     #[allow(clippy::let_and_return)]
@@ -4971,6 +5044,9 @@ pub mod list_input_device_transfers_input {
         }
     }
 }
+pub type ListInputDeviceTransfersInputOperationOutputAlias =
+    crate::operation::ListInputDeviceTransfers;
+pub type ListInputDeviceTransfersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListInputDeviceTransfersInput {
     /// Consumes the builder and constructs an Operation<[`ListInputDeviceTransfers`](crate::operation::ListInputDeviceTransfers)>
     #[allow(clippy::let_and_return)]
@@ -5117,6 +5193,8 @@ pub mod list_inputs_input {
         }
     }
 }
+pub type ListInputsInputOperationOutputAlias = crate::operation::ListInputs;
+pub type ListInputsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListInputsInput {
     /// Consumes the builder and constructs an Operation<[`ListInputs`](crate::operation::ListInputs)>
     #[allow(clippy::let_and_return)]
@@ -5261,6 +5339,9 @@ pub mod list_input_security_groups_input {
         }
     }
 }
+pub type ListInputSecurityGroupsInputOperationOutputAlias =
+    crate::operation::ListInputSecurityGroups;
+pub type ListInputSecurityGroupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListInputSecurityGroupsInput {
     /// Consumes the builder and constructs an Operation<[`ListInputSecurityGroups`](crate::operation::ListInputSecurityGroups)>
     #[allow(clippy::let_and_return)]
@@ -5405,6 +5486,8 @@ pub mod list_multiplexes_input {
         }
     }
 }
+pub type ListMultiplexesInputOperationOutputAlias = crate::operation::ListMultiplexes;
+pub type ListMultiplexesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListMultiplexesInput {
     /// Consumes the builder and constructs an Operation<[`ListMultiplexes`](crate::operation::ListMultiplexes)>
     #[allow(clippy::let_and_return)]
@@ -5560,6 +5643,8 @@ pub mod list_multiplex_programs_input {
         }
     }
 }
+pub type ListMultiplexProgramsInputOperationOutputAlias = crate::operation::ListMultiplexPrograms;
+pub type ListMultiplexProgramsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListMultiplexProgramsInput {
     /// Consumes the builder and constructs an Operation<[`ListMultiplexPrograms`](crate::operation::ListMultiplexPrograms)>
     #[allow(clippy::let_and_return)]
@@ -5830,6 +5915,8 @@ pub mod list_offerings_input {
         }
     }
 }
+pub type ListOfferingsInputOperationOutputAlias = crate::operation::ListOfferings;
+pub type ListOfferingsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListOfferingsInput {
     /// Consumes the builder and constructs an Operation<[`ListOfferings`](crate::operation::ListOfferings)>
     #[allow(clippy::let_and_return)]
@@ -6107,6 +6194,8 @@ pub mod list_reservations_input {
         }
     }
 }
+pub type ListReservationsInputOperationOutputAlias = crate::operation::ListReservations;
+pub type ListReservationsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListReservationsInput {
     /// Consumes the builder and constructs an Operation<[`ListReservations`](crate::operation::ListReservations)>
     #[allow(clippy::let_and_return)]
@@ -6267,6 +6356,8 @@ pub mod list_tags_for_resource_input {
         }
     }
 }
+pub type ListTagsForResourceInputOperationOutputAlias = crate::operation::ListTagsForResource;
+pub type ListTagsForResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTagsForResourceInput {
     /// Consumes the builder and constructs an Operation<[`ListTagsForResource`](crate::operation::ListTagsForResource)>
     #[allow(clippy::let_and_return)]
@@ -6459,6 +6550,8 @@ pub mod purchase_offering_input {
         }
     }
 }
+pub type PurchaseOfferingInputOperationOutputAlias = crate::operation::PurchaseOffering;
+pub type PurchaseOfferingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PurchaseOfferingInput {
     /// Consumes the builder and constructs an Operation<[`PurchaseOffering`](crate::operation::PurchaseOffering)>
     #[allow(clippy::let_and_return)]
@@ -6589,6 +6682,9 @@ pub mod reject_input_device_transfer_input {
         }
     }
 }
+pub type RejectInputDeviceTransferInputOperationOutputAlias =
+    crate::operation::RejectInputDeviceTransfer;
+pub type RejectInputDeviceTransferInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RejectInputDeviceTransferInput {
     /// Consumes the builder and constructs an Operation<[`RejectInputDeviceTransfer`](crate::operation::RejectInputDeviceTransfer)>
     #[allow(clippy::let_and_return)]
@@ -6713,6 +6809,8 @@ pub mod start_channel_input {
         }
     }
 }
+pub type StartChannelInputOperationOutputAlias = crate::operation::StartChannel;
+pub type StartChannelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartChannelInput {
     /// Consumes the builder and constructs an Operation<[`StartChannel`](crate::operation::StartChannel)>
     #[allow(clippy::let_and_return)]
@@ -6837,6 +6935,8 @@ pub mod start_multiplex_input {
         }
     }
 }
+pub type StartMultiplexInputOperationOutputAlias = crate::operation::StartMultiplex;
+pub type StartMultiplexInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartMultiplexInput {
     /// Consumes the builder and constructs an Operation<[`StartMultiplex`](crate::operation::StartMultiplex)>
     #[allow(clippy::let_and_return)]
@@ -6961,6 +7061,8 @@ pub mod stop_channel_input {
         }
     }
 }
+pub type StopChannelInputOperationOutputAlias = crate::operation::StopChannel;
+pub type StopChannelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopChannelInput {
     /// Consumes the builder and constructs an Operation<[`StopChannel`](crate::operation::StopChannel)>
     #[allow(clippy::let_and_return)]
@@ -7085,6 +7187,8 @@ pub mod stop_multiplex_input {
         }
     }
 }
+pub type StopMultiplexInputOperationOutputAlias = crate::operation::StopMultiplex;
+pub type StopMultiplexInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopMultiplexInput {
     /// Consumes the builder and constructs an Operation<[`StopMultiplex`](crate::operation::StopMultiplex)>
     #[allow(clippy::let_and_return)]
@@ -7249,6 +7353,8 @@ pub mod transfer_input_device_input {
         }
     }
 }
+pub type TransferInputDeviceInputOperationOutputAlias = crate::operation::TransferInputDevice;
+pub type TransferInputDeviceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TransferInputDeviceInput {
     /// Consumes the builder and constructs an Operation<[`TransferInputDevice`](crate::operation::TransferInputDevice)>
     #[allow(clippy::let_and_return)]
@@ -7484,6 +7590,8 @@ pub mod update_channel_input {
         }
     }
 }
+pub type UpdateChannelInputOperationOutputAlias = crate::operation::UpdateChannel;
+pub type UpdateChannelInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateChannelInput {
     /// Consumes the builder and constructs an Operation<[`UpdateChannel`](crate::operation::UpdateChannel)>
     #[allow(clippy::let_and_return)]
@@ -7642,6 +7750,8 @@ pub mod update_channel_class_input {
         }
     }
 }
+pub type UpdateChannelClassInputOperationOutputAlias = crate::operation::UpdateChannelClass;
+pub type UpdateChannelClassInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateChannelClassInput {
     /// Consumes the builder and constructs an Operation<[`UpdateChannelClass`](crate::operation::UpdateChannelClass)>
     #[allow(clippy::let_and_return)]
@@ -7875,6 +7985,8 @@ pub mod update_input_input {
         }
     }
 }
+pub type UpdateInputInputOperationOutputAlias = crate::operation::UpdateInput;
+pub type UpdateInputInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateInputInput {
     /// Consumes the builder and constructs an Operation<[`UpdateInput`](crate::operation::UpdateInput)>
     #[allow(clippy::let_and_return)]
@@ -8050,6 +8162,8 @@ pub mod update_input_device_input {
         }
     }
 }
+pub type UpdateInputDeviceInputOperationOutputAlias = crate::operation::UpdateInputDevice;
+pub type UpdateInputDeviceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateInputDeviceInput {
     /// Consumes the builder and constructs an Operation<[`UpdateInputDevice`](crate::operation::UpdateInputDevice)>
     #[allow(clippy::let_and_return)]
@@ -8220,6 +8334,9 @@ pub mod update_input_security_group_input {
         }
     }
 }
+pub type UpdateInputSecurityGroupInputOperationOutputAlias =
+    crate::operation::UpdateInputSecurityGroup;
+pub type UpdateInputSecurityGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateInputSecurityGroupInput {
     /// Consumes the builder and constructs an Operation<[`UpdateInputSecurityGroup`](crate::operation::UpdateInputSecurityGroup)>
     #[allow(clippy::let_and_return)]
@@ -8374,6 +8491,8 @@ pub mod update_multiplex_input {
         }
     }
 }
+pub type UpdateMultiplexInputOperationOutputAlias = crate::operation::UpdateMultiplex;
+pub type UpdateMultiplexInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateMultiplexInput {
     /// Consumes the builder and constructs an Operation<[`UpdateMultiplex`](crate::operation::UpdateMultiplex)>
     #[allow(clippy::let_and_return)]
@@ -8530,6 +8649,8 @@ pub mod update_multiplex_program_input {
         }
     }
 }
+pub type UpdateMultiplexProgramInputOperationOutputAlias = crate::operation::UpdateMultiplexProgram;
+pub type UpdateMultiplexProgramInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateMultiplexProgramInput {
     /// Consumes the builder and constructs an Operation<[`UpdateMultiplexProgram`](crate::operation::UpdateMultiplexProgram)>
     #[allow(clippy::let_and_return)]
@@ -8670,6 +8791,8 @@ pub mod update_reservation_input {
         }
     }
 }
+pub type UpdateReservationInputOperationOutputAlias = crate::operation::UpdateReservation;
+pub type UpdateReservationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateReservationInput {
     /// Consumes the builder and constructs an Operation<[`UpdateReservation`](crate::operation::UpdateReservation)>
     #[allow(clippy::let_and_return)]

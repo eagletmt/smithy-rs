@@ -69,6 +69,8 @@ pub mod add_permission_input {
         }
     }
 }
+pub type AddPermissionInputOperationOutputAlias = crate::operation::AddPermission;
+pub type AddPermissionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AddPermissionInput {
     /// Consumes the builder and constructs an Operation<[`AddPermission`](crate::operation::AddPermission)>
     #[allow(clippy::let_and_return)]
@@ -194,6 +196,9 @@ pub mod check_if_phone_number_is_opted_out_input {
         }
     }
 }
+pub type CheckIfPhoneNumberIsOptedOutInputOperationOutputAlias =
+    crate::operation::CheckIfPhoneNumberIsOptedOut;
+pub type CheckIfPhoneNumberIsOptedOutInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CheckIfPhoneNumberIsOptedOutInput {
     /// Consumes the builder and constructs an Operation<[`CheckIfPhoneNumberIsOptedOut`](crate::operation::CheckIfPhoneNumberIsOptedOut)>
     #[allow(clippy::let_and_return)]
@@ -346,6 +351,8 @@ pub mod confirm_subscription_input {
         }
     }
 }
+pub type ConfirmSubscriptionInputOperationOutputAlias = crate::operation::ConfirmSubscription;
+pub type ConfirmSubscriptionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ConfirmSubscriptionInput {
     /// Consumes the builder and constructs an Operation<[`ConfirmSubscription`](crate::operation::ConfirmSubscription)>
     #[allow(clippy::let_and_return)]
@@ -506,6 +513,9 @@ pub mod create_platform_application_input {
         }
     }
 }
+pub type CreatePlatformApplicationInputOperationOutputAlias =
+    crate::operation::CreatePlatformApplication;
+pub type CreatePlatformApplicationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreatePlatformApplicationInput {
     /// Consumes the builder and constructs an Operation<[`CreatePlatformApplication`](crate::operation::CreatePlatformApplication)>
     #[allow(clippy::let_and_return)]
@@ -686,6 +696,8 @@ pub mod create_platform_endpoint_input {
         }
     }
 }
+pub type CreatePlatformEndpointInputOperationOutputAlias = crate::operation::CreatePlatformEndpoint;
+pub type CreatePlatformEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreatePlatformEndpointInput {
     /// Consumes the builder and constructs an Operation<[`CreatePlatformEndpoint`](crate::operation::CreatePlatformEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -850,6 +862,8 @@ pub mod create_topic_input {
         }
     }
 }
+pub type CreateTopicInputOperationOutputAlias = crate::operation::CreateTopic;
+pub type CreateTopicInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateTopicInput {
     /// Consumes the builder and constructs an Operation<[`CreateTopic`](crate::operation::CreateTopic)>
     #[allow(clippy::let_and_return)]
@@ -969,6 +983,8 @@ pub mod delete_endpoint_input {
         }
     }
 }
+pub type DeleteEndpointInputOperationOutputAlias = crate::operation::DeleteEndpoint;
+pub type DeleteEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteEndpointInput {
     /// Consumes the builder and constructs an Operation<[`DeleteEndpoint`](crate::operation::DeleteEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -1094,6 +1110,9 @@ pub mod delete_platform_application_input {
         }
     }
 }
+pub type DeletePlatformApplicationInputOperationOutputAlias =
+    crate::operation::DeletePlatformApplication;
+pub type DeletePlatformApplicationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeletePlatformApplicationInput {
     /// Consumes the builder and constructs an Operation<[`DeletePlatformApplication`](crate::operation::DeletePlatformApplication)>
     #[allow(clippy::let_and_return)]
@@ -1216,6 +1235,8 @@ pub mod delete_topic_input {
         }
     }
 }
+pub type DeleteTopicInputOperationOutputAlias = crate::operation::DeleteTopic;
+pub type DeleteTopicInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteTopicInput {
     /// Consumes the builder and constructs an Operation<[`DeleteTopic`](crate::operation::DeleteTopic)>
     #[allow(clippy::let_and_return)]
@@ -1336,6 +1357,8 @@ pub mod get_endpoint_attributes_input {
         }
     }
 }
+pub type GetEndpointAttributesInputOperationOutputAlias = crate::operation::GetEndpointAttributes;
+pub type GetEndpointAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetEndpointAttributesInput {
     /// Consumes the builder and constructs an Operation<[`GetEndpointAttributes`](crate::operation::GetEndpointAttributes)>
     #[allow(clippy::let_and_return)]
@@ -1464,6 +1487,9 @@ pub mod get_platform_application_attributes_input {
         }
     }
 }
+pub type GetPlatformApplicationAttributesInputOperationOutputAlias =
+    crate::operation::GetPlatformApplicationAttributes;
+pub type GetPlatformApplicationAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetPlatformApplicationAttributesInput {
     /// Consumes the builder and constructs an Operation<[`GetPlatformApplicationAttributes`](crate::operation::GetPlatformApplicationAttributes)>
     #[allow(clippy::let_and_return)]
@@ -1594,6 +1620,8 @@ pub mod get_sms_attributes_input {
         }
     }
 }
+pub type GetSMSAttributesInputOperationOutputAlias = crate::operation::GetSMSAttributes;
+pub type GetSMSAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetSMSAttributesInput {
     /// Consumes the builder and constructs an Operation<[`GetSMSAttributes`](crate::operation::GetSMSAttributes)>
     #[allow(clippy::let_and_return)]
@@ -1720,6 +1748,9 @@ pub mod get_subscription_attributes_input {
         }
     }
 }
+pub type GetSubscriptionAttributesInputOperationOutputAlias =
+    crate::operation::GetSubscriptionAttributes;
+pub type GetSubscriptionAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetSubscriptionAttributesInput {
     /// Consumes the builder and constructs an Operation<[`GetSubscriptionAttributes`](crate::operation::GetSubscriptionAttributes)>
     #[allow(clippy::let_and_return)]
@@ -1843,6 +1874,8 @@ pub mod get_topic_attributes_input {
         }
     }
 }
+pub type GetTopicAttributesInputOperationOutputAlias = crate::operation::GetTopicAttributes;
+pub type GetTopicAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetTopicAttributesInput {
     /// Consumes the builder and constructs an Operation<[`GetTopicAttributes`](crate::operation::GetTopicAttributes)>
     #[allow(clippy::let_and_return)]
@@ -1983,6 +2016,9 @@ pub mod list_endpoints_by_platform_application_input {
         }
     }
 }
+pub type ListEndpointsByPlatformApplicationInputOperationOutputAlias =
+    crate::operation::ListEndpointsByPlatformApplication;
+pub type ListEndpointsByPlatformApplicationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListEndpointsByPlatformApplicationInput {
     /// Consumes the builder and constructs an Operation<[`ListEndpointsByPlatformApplication`](crate::operation::ListEndpointsByPlatformApplication)>
     #[allow(clippy::let_and_return)]
@@ -2111,6 +2147,9 @@ pub mod list_phone_numbers_opted_out_input {
         }
     }
 }
+pub type ListPhoneNumbersOptedOutInputOperationOutputAlias =
+    crate::operation::ListPhoneNumbersOptedOut;
+pub type ListPhoneNumbersOptedOutInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListPhoneNumbersOptedOutInput {
     /// Consumes the builder and constructs an Operation<[`ListPhoneNumbersOptedOut`](crate::operation::ListPhoneNumbersOptedOut)>
     #[allow(clippy::let_and_return)]
@@ -2236,6 +2275,9 @@ pub mod list_platform_applications_input {
         }
     }
 }
+pub type ListPlatformApplicationsInputOperationOutputAlias =
+    crate::operation::ListPlatformApplications;
+pub type ListPlatformApplicationsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListPlatformApplicationsInput {
     /// Consumes the builder and constructs an Operation<[`ListPlatformApplications`](crate::operation::ListPlatformApplications)>
     #[allow(clippy::let_and_return)]
@@ -2359,6 +2401,8 @@ pub mod list_subscriptions_input {
         }
     }
 }
+pub type ListSubscriptionsInputOperationOutputAlias = crate::operation::ListSubscriptions;
+pub type ListSubscriptionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListSubscriptionsInput {
     /// Consumes the builder and constructs an Operation<[`ListSubscriptions`](crate::operation::ListSubscriptions)>
     #[allow(clippy::let_and_return)]
@@ -2493,6 +2537,9 @@ pub mod list_subscriptions_by_topic_input {
         }
     }
 }
+pub type ListSubscriptionsByTopicInputOperationOutputAlias =
+    crate::operation::ListSubscriptionsByTopic;
+pub type ListSubscriptionsByTopicInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListSubscriptionsByTopicInput {
     /// Consumes the builder and constructs an Operation<[`ListSubscriptionsByTopic`](crate::operation::ListSubscriptionsByTopic)>
     #[allow(clippy::let_and_return)]
@@ -2616,6 +2663,8 @@ pub mod list_tags_for_resource_input {
         }
     }
 }
+pub type ListTagsForResourceInputOperationOutputAlias = crate::operation::ListTagsForResource;
+pub type ListTagsForResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTagsForResourceInput {
     /// Consumes the builder and constructs an Operation<[`ListTagsForResource`](crate::operation::ListTagsForResource)>
     #[allow(clippy::let_and_return)]
@@ -2738,6 +2787,8 @@ pub mod list_topics_input {
         }
     }
 }
+pub type ListTopicsInputOperationOutputAlias = crate::operation::ListTopics;
+pub type ListTopicsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTopicsInput {
     /// Consumes the builder and constructs an Operation<[`ListTopics`](crate::operation::ListTopics)>
     #[allow(clippy::let_and_return)]
@@ -2858,6 +2909,8 @@ pub mod opt_in_phone_number_input {
         }
     }
 }
+pub type OptInPhoneNumberInputOperationOutputAlias = crate::operation::OptInPhoneNumber;
+pub type OptInPhoneNumberInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl OptInPhoneNumberInput {
     /// Consumes the builder and constructs an Operation<[`OptInPhoneNumber`](crate::operation::OptInPhoneNumber)>
     #[allow(clippy::let_and_return)]
@@ -3189,6 +3242,8 @@ pub mod publish_input {
         }
     }
 }
+pub type PublishInputOperationOutputAlias = crate::operation::Publish;
+pub type PublishInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PublishInput {
     /// Consumes the builder and constructs an Operation<[`Publish`](crate::operation::Publish)>
     #[allow(clippy::let_and_return)]
@@ -3314,6 +3369,8 @@ pub mod remove_permission_input {
         }
     }
 }
+pub type RemovePermissionInputOperationOutputAlias = crate::operation::RemovePermission;
+pub type RemovePermissionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RemovePermissionInput {
     /// Consumes the builder and constructs an Operation<[`RemovePermission`](crate::operation::RemovePermission)>
     #[allow(clippy::let_and_return)]
@@ -3459,6 +3516,8 @@ pub mod set_endpoint_attributes_input {
         }
     }
 }
+pub type SetEndpointAttributesInputOperationOutputAlias = crate::operation::SetEndpointAttributes;
+pub type SetEndpointAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SetEndpointAttributesInput {
     /// Consumes the builder and constructs an Operation<[`SetEndpointAttributes`](crate::operation::SetEndpointAttributes)>
     #[allow(clippy::let_and_return)]
@@ -3610,6 +3669,9 @@ pub mod set_platform_application_attributes_input {
         }
     }
 }
+pub type SetPlatformApplicationAttributesInputOperationOutputAlias =
+    crate::operation::SetPlatformApplicationAttributes;
+pub type SetPlatformApplicationAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SetPlatformApplicationAttributesInput {
     /// Consumes the builder and constructs an Operation<[`SetPlatformApplicationAttributes`](crate::operation::SetPlatformApplicationAttributes)>
     #[allow(clippy::let_and_return)]
@@ -3748,6 +3810,8 @@ pub mod set_sms_attributes_input {
         }
     }
 }
+pub type SetSMSAttributesInputOperationOutputAlias = crate::operation::SetSMSAttributes;
+pub type SetSMSAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SetSMSAttributesInput {
     /// Consumes the builder and constructs an Operation<[`SetSMSAttributes`](crate::operation::SetSMSAttributes)>
     #[allow(clippy::let_and_return)]
@@ -3944,6 +4008,9 @@ pub mod set_subscription_attributes_input {
         }
     }
 }
+pub type SetSubscriptionAttributesInputOperationOutputAlias =
+    crate::operation::SetSubscriptionAttributes;
+pub type SetSubscriptionAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SetSubscriptionAttributesInput {
     /// Consumes the builder and constructs an Operation<[`SetSubscriptionAttributes`](crate::operation::SetSubscriptionAttributes)>
     #[allow(clippy::let_and_return)]
@@ -4146,6 +4213,8 @@ pub mod set_topic_attributes_input {
         }
     }
 }
+pub type SetTopicAttributesInputOperationOutputAlias = crate::operation::SetTopicAttributes;
+pub type SetTopicAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SetTopicAttributesInput {
     /// Consumes the builder and constructs an Operation<[`SetTopicAttributes`](crate::operation::SetTopicAttributes)>
     #[allow(clippy::let_and_return)]
@@ -4408,6 +4477,8 @@ pub mod subscribe_input {
         }
     }
 }
+pub type SubscribeInputOperationOutputAlias = crate::operation::Subscribe;
+pub type SubscribeInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SubscribeInput {
     /// Consumes the builder and constructs an Operation<[`Subscribe`](crate::operation::Subscribe)>
     #[allow(clippy::let_and_return)]
@@ -4540,6 +4611,8 @@ pub mod tag_resource_input {
         }
     }
 }
+pub type TagResourceInputOperationOutputAlias = crate::operation::TagResource;
+pub type TagResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagResourceInput {
     /// Consumes the builder and constructs an Operation<[`TagResource`](crate::operation::TagResource)>
     #[allow(clippy::let_and_return)]
@@ -4662,6 +4735,8 @@ pub mod unsubscribe_input {
         }
     }
 }
+pub type UnsubscribeInputOperationOutputAlias = crate::operation::Unsubscribe;
+pub type UnsubscribeInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UnsubscribeInput {
     /// Consumes the builder and constructs an Operation<[`Unsubscribe`](crate::operation::Unsubscribe)>
     #[allow(clippy::let_and_return)]
@@ -4796,6 +4871,8 @@ pub mod untag_resource_input {
         }
     }
 }
+pub type UntagResourceInputOperationOutputAlias = crate::operation::UntagResource;
+pub type UntagResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagResourceInput {
     /// Consumes the builder and constructs an Operation<[`UntagResource`](crate::operation::UntagResource)>
     #[allow(clippy::let_and_return)]

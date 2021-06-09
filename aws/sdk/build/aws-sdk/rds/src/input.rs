@@ -56,6 +56,8 @@ pub mod add_role_to_db_cluster_input {
         }
     }
 }
+pub type AddRoleToDBClusterInputOperationOutputAlias = crate::operation::AddRoleToDBCluster;
+pub type AddRoleToDBClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AddRoleToDBClusterInput {
     /// Consumes the builder and constructs an Operation<[`AddRoleToDBCluster`](crate::operation::AddRoleToDBCluster)>
     #[allow(clippy::let_and_return)]
@@ -207,6 +209,8 @@ pub mod add_role_to_db_instance_input {
         }
     }
 }
+pub type AddRoleToDBInstanceInputOperationOutputAlias = crate::operation::AddRoleToDBInstance;
+pub type AddRoleToDBInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AddRoleToDBInstanceInput {
     /// Consumes the builder and constructs an Operation<[`AddRoleToDBInstance`](crate::operation::AddRoleToDBInstance)>
     #[allow(clippy::let_and_return)]
@@ -370,6 +374,9 @@ pub mod add_source_identifier_to_subscription_input {
         }
     }
 }
+pub type AddSourceIdentifierToSubscriptionInputOperationOutputAlias =
+    crate::operation::AddSourceIdentifierToSubscription;
+pub type AddSourceIdentifierToSubscriptionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AddSourceIdentifierToSubscriptionInput {
     /// Consumes the builder and constructs an Operation<[`AddSourceIdentifierToSubscription`](crate::operation::AddSourceIdentifierToSubscription)>
     #[allow(clippy::let_and_return)]
@@ -514,6 +521,8 @@ pub mod add_tags_to_resource_input {
         }
     }
 }
+pub type AddTagsToResourceInputOperationOutputAlias = crate::operation::AddTagsToResource;
+pub type AddTagsToResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AddTagsToResourceInput {
     /// Consumes the builder and constructs an Operation<[`AddTagsToResource`](crate::operation::AddTagsToResource)>
     #[allow(clippy::let_and_return)]
@@ -689,6 +698,9 @@ pub mod apply_pending_maintenance_action_input {
         }
     }
 }
+pub type ApplyPendingMaintenanceActionInputOperationOutputAlias =
+    crate::operation::ApplyPendingMaintenanceAction;
+pub type ApplyPendingMaintenanceActionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ApplyPendingMaintenanceActionInput {
     /// Consumes the builder and constructs an Operation<[`ApplyPendingMaintenanceAction`](crate::operation::ApplyPendingMaintenanceAction)>
     #[allow(clippy::let_and_return)]
@@ -886,6 +898,9 @@ pub mod authorize_db_security_group_ingress_input {
         }
     }
 }
+pub type AuthorizeDBSecurityGroupIngressInputOperationOutputAlias =
+    crate::operation::AuthorizeDBSecurityGroupIngress;
+pub type AuthorizeDBSecurityGroupIngressInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AuthorizeDBSecurityGroupIngressInput {
     /// Consumes the builder and constructs an Operation<[`AuthorizeDBSecurityGroupIngress`](crate::operation::AuthorizeDBSecurityGroupIngress)>
     #[allow(clippy::let_and_return)]
@@ -1089,6 +1104,8 @@ pub mod backtrack_db_cluster_input {
         }
     }
 }
+pub type BacktrackDBClusterInputOperationOutputAlias = crate::operation::BacktrackDBCluster;
+pub type BacktrackDBClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl BacktrackDBClusterInput {
     /// Consumes the builder and constructs an Operation<[`BacktrackDBCluster`](crate::operation::BacktrackDBCluster)>
     #[allow(clippy::let_and_return)]
@@ -1215,6 +1232,8 @@ pub mod cancel_export_task_input {
         }
     }
 }
+pub type CancelExportTaskInputOperationOutputAlias = crate::operation::CancelExportTask;
+pub type CancelExportTaskInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CancelExportTaskInput {
     /// Consumes the builder and constructs an Operation<[`CancelExportTask`](crate::operation::CancelExportTask)>
     #[allow(clippy::let_and_return)]
@@ -1429,6 +1448,9 @@ pub mod copy_db_cluster_parameter_group_input {
         }
     }
 }
+pub type CopyDBClusterParameterGroupInputOperationOutputAlias =
+    crate::operation::CopyDBClusterParameterGroup;
+pub type CopyDBClusterParameterGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CopyDBClusterParameterGroupInput {
     /// Consumes the builder and constructs an Operation<[`CopyDBClusterParameterGroup`](crate::operation::CopyDBClusterParameterGroup)>
     #[allow(clippy::let_and_return)]
@@ -1702,6 +1724,8 @@ pub mod copy_db_cluster_snapshot_input {
         }
     }
 }
+pub type CopyDBClusterSnapshotInputOperationOutputAlias = crate::operation::CopyDBClusterSnapshot;
+pub type CopyDBClusterSnapshotInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CopyDBClusterSnapshotInput {
     /// Consumes the builder and constructs an Operation<[`CopyDBClusterSnapshot`](crate::operation::CopyDBClusterSnapshot)>
     #[allow(clippy::let_and_return)]
@@ -1909,6 +1933,8 @@ pub mod copy_db_parameter_group_input {
         }
     }
 }
+pub type CopyDBParameterGroupInputOperationOutputAlias = crate::operation::CopyDBParameterGroup;
+pub type CopyDBParameterGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CopyDBParameterGroupInput {
     /// Consumes the builder and constructs an Operation<[`CopyDBParameterGroup`](crate::operation::CopyDBParameterGroup)>
     #[allow(clippy::let_and_return)]
@@ -2247,6 +2273,8 @@ pub mod copy_db_snapshot_input {
         }
     }
 }
+pub type CopyDBSnapshotInputOperationOutputAlias = crate::operation::CopyDBSnapshot;
+pub type CopyDBSnapshotInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CopyDBSnapshotInput {
     /// Consumes the builder and constructs an Operation<[`CopyDBSnapshot`](crate::operation::CopyDBSnapshot)>
     #[allow(clippy::let_and_return)]
@@ -2448,6 +2476,8 @@ pub mod copy_option_group_input {
         }
     }
 }
+pub type CopyOptionGroupInputOperationOutputAlias = crate::operation::CopyOptionGroup;
+pub type CopyOptionGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CopyOptionGroupInput {
     /// Consumes the builder and constructs an Operation<[`CopyOptionGroup`](crate::operation::CopyOptionGroup)>
     #[allow(clippy::let_and_return)]
@@ -2623,6 +2653,9 @@ pub mod create_custom_availability_zone_input {
         }
     }
 }
+pub type CreateCustomAvailabilityZoneInputOperationOutputAlias =
+    crate::operation::CreateCustomAvailabilityZone;
+pub type CreateCustomAvailabilityZoneInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateCustomAvailabilityZoneInput {
     /// Consumes the builder and constructs an Operation<[`CreateCustomAvailabilityZone`](crate::operation::CreateCustomAvailabilityZone)>
     #[allow(clippy::let_and_return)]
@@ -3413,6 +3446,8 @@ pub mod create_db_cluster_input {
         }
     }
 }
+pub type CreateDBClusterInputOperationOutputAlias = crate::operation::CreateDBCluster;
+pub type CreateDBClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDBClusterInput {
     /// Consumes the builder and constructs an Operation<[`CreateDBCluster`](crate::operation::CreateDBCluster)>
     #[allow(clippy::let_and_return)]
@@ -3612,6 +3647,9 @@ pub mod create_db_cluster_endpoint_input {
         }
     }
 }
+pub type CreateDBClusterEndpointInputOperationOutputAlias =
+    crate::operation::CreateDBClusterEndpoint;
+pub type CreateDBClusterEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDBClusterEndpointInput {
     /// Consumes the builder and constructs an Operation<[`CreateDBClusterEndpoint`](crate::operation::CreateDBClusterEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -3803,6 +3841,9 @@ pub mod create_db_cluster_parameter_group_input {
         }
     }
 }
+pub type CreateDBClusterParameterGroupInputOperationOutputAlias =
+    crate::operation::CreateDBClusterParameterGroup;
+pub type CreateDBClusterParameterGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDBClusterParameterGroupInput {
     /// Consumes the builder and constructs an Operation<[`CreateDBClusterParameterGroup`](crate::operation::CreateDBClusterParameterGroup)>
     #[allow(clippy::let_and_return)]
@@ -3984,6 +4025,9 @@ pub mod create_db_cluster_snapshot_input {
         }
     }
 }
+pub type CreateDBClusterSnapshotInputOperationOutputAlias =
+    crate::operation::CreateDBClusterSnapshot;
+pub type CreateDBClusterSnapshotInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDBClusterSnapshotInput {
     /// Consumes the builder and constructs an Operation<[`CreateDBClusterSnapshot`](crate::operation::CreateDBClusterSnapshot)>
     #[allow(clippy::let_and_return)]
@@ -5453,6 +5497,8 @@ pub mod create_db_instance_input {
         }
     }
 }
+pub type CreateDBInstanceInputOperationOutputAlias = crate::operation::CreateDBInstance;
+pub type CreateDBInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDBInstanceInput {
     /// Consumes the builder and constructs an Operation<[`CreateDBInstance`](crate::operation::CreateDBInstance)>
     #[allow(clippy::let_and_return)]
@@ -6228,6 +6274,9 @@ pub mod create_db_instance_read_replica_input {
         }
     }
 }
+pub type CreateDBInstanceReadReplicaInputOperationOutputAlias =
+    crate::operation::CreateDBInstanceReadReplica;
+pub type CreateDBInstanceReadReplicaInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDBInstanceReadReplicaInput {
     /// Consumes the builder and constructs an Operation<[`CreateDBInstanceReadReplica`](crate::operation::CreateDBInstanceReadReplica)>
     #[allow(clippy::let_and_return)]
@@ -6417,6 +6466,8 @@ pub mod create_db_parameter_group_input {
         }
     }
 }
+pub type CreateDBParameterGroupInputOperationOutputAlias = crate::operation::CreateDBParameterGroup;
+pub type CreateDBParameterGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDBParameterGroupInput {
     /// Consumes the builder and constructs an Operation<[`CreateDBParameterGroup`](crate::operation::CreateDBParameterGroup)>
     #[allow(clippy::let_and_return)]
@@ -6667,6 +6718,8 @@ pub mod create_db_proxy_input {
         }
     }
 }
+pub type CreateDBProxyInputOperationOutputAlias = crate::operation::CreateDBProxy;
+pub type CreateDBProxyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDBProxyInput {
     /// Consumes the builder and constructs an Operation<[`CreateDBProxy`](crate::operation::CreateDBProxy)>
     #[allow(clippy::let_and_return)]
@@ -6863,6 +6916,8 @@ pub mod create_db_proxy_endpoint_input {
         }
     }
 }
+pub type CreateDBProxyEndpointInputOperationOutputAlias = crate::operation::CreateDBProxyEndpoint;
+pub type CreateDBProxyEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDBProxyEndpointInput {
     /// Consumes the builder and constructs an Operation<[`CreateDBProxyEndpoint`](crate::operation::CreateDBProxyEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -7038,6 +7093,8 @@ pub mod create_db_security_group_input {
         }
     }
 }
+pub type CreateDBSecurityGroupInputOperationOutputAlias = crate::operation::CreateDBSecurityGroup;
+pub type CreateDBSecurityGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDBSecurityGroupInput {
     /// Consumes the builder and constructs an Operation<[`CreateDBSecurityGroup`](crate::operation::CreateDBSecurityGroup)>
     #[allow(clippy::let_and_return)]
@@ -7216,6 +7273,8 @@ pub mod create_db_snapshot_input {
         }
     }
 }
+pub type CreateDBSnapshotInputOperationOutputAlias = crate::operation::CreateDBSnapshot;
+pub type CreateDBSnapshotInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDBSnapshotInput {
     /// Consumes the builder and constructs an Operation<[`CreateDBSnapshot`](crate::operation::CreateDBSnapshot)>
     #[allow(clippy::let_and_return)]
@@ -7389,6 +7448,8 @@ pub mod create_db_subnet_group_input {
         }
     }
 }
+pub type CreateDBSubnetGroupInputOperationOutputAlias = crate::operation::CreateDBSubnetGroup;
+pub type CreateDBSubnetGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateDBSubnetGroupInput {
     /// Consumes the builder and constructs an Operation<[`CreateDBSubnetGroup`](crate::operation::CreateDBSubnetGroup)>
     #[allow(clippy::let_and_return)]
@@ -7601,6 +7662,9 @@ pub mod create_event_subscription_input {
         }
     }
 }
+pub type CreateEventSubscriptionInputOperationOutputAlias =
+    crate::operation::CreateEventSubscription;
+pub type CreateEventSubscriptionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateEventSubscriptionInput {
     /// Consumes the builder and constructs an Operation<[`CreateEventSubscription`](crate::operation::CreateEventSubscription)>
     #[allow(clippy::let_and_return)]
@@ -7807,6 +7871,8 @@ pub mod create_global_cluster_input {
         }
     }
 }
+pub type CreateGlobalClusterInputOperationOutputAlias = crate::operation::CreateGlobalCluster;
+pub type CreateGlobalClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateGlobalClusterInput {
     /// Consumes the builder and constructs an Operation<[`CreateGlobalCluster`](crate::operation::CreateGlobalCluster)>
     #[allow(clippy::let_and_return)]
@@ -8060,6 +8126,8 @@ pub mod create_option_group_input {
         }
     }
 }
+pub type CreateOptionGroupInputOperationOutputAlias = crate::operation::CreateOptionGroup;
+pub type CreateOptionGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateOptionGroupInput {
     /// Consumes the builder and constructs an Operation<[`CreateOptionGroup`](crate::operation::CreateOptionGroup)>
     #[allow(clippy::let_and_return)]
@@ -8188,6 +8256,9 @@ pub mod delete_custom_availability_zone_input {
         }
     }
 }
+pub type DeleteCustomAvailabilityZoneInputOperationOutputAlias =
+    crate::operation::DeleteCustomAvailabilityZone;
+pub type DeleteCustomAvailabilityZoneInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteCustomAvailabilityZoneInput {
     /// Consumes the builder and constructs an Operation<[`DeleteCustomAvailabilityZone`](crate::operation::DeleteCustomAvailabilityZone)>
     #[allow(clippy::let_and_return)]
@@ -8372,6 +8443,8 @@ pub mod delete_db_cluster_input {
         }
     }
 }
+pub type DeleteDBClusterInputOperationOutputAlias = crate::operation::DeleteDBCluster;
+pub type DeleteDBClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDBClusterInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDBCluster`](crate::operation::DeleteDBCluster)>
     #[allow(clippy::let_and_return)]
@@ -8500,6 +8573,9 @@ pub mod delete_db_cluster_endpoint_input {
         }
     }
 }
+pub type DeleteDBClusterEndpointInputOperationOutputAlias =
+    crate::operation::DeleteDBClusterEndpoint;
+pub type DeleteDBClusterEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDBClusterEndpointInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDBClusterEndpoint`](crate::operation::DeleteDBClusterEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -8643,6 +8719,9 @@ pub mod delete_db_cluster_parameter_group_input {
         }
     }
 }
+pub type DeleteDBClusterParameterGroupInputOperationOutputAlias =
+    crate::operation::DeleteDBClusterParameterGroup;
+pub type DeleteDBClusterParameterGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDBClusterParameterGroupInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDBClusterParameterGroup`](crate::operation::DeleteDBClusterParameterGroup)>
     #[allow(clippy::let_and_return)]
@@ -8774,6 +8853,9 @@ pub mod delete_db_cluster_snapshot_input {
         }
     }
 }
+pub type DeleteDBClusterSnapshotInputOperationOutputAlias =
+    crate::operation::DeleteDBClusterSnapshot;
+pub type DeleteDBClusterSnapshotInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDBClusterSnapshotInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDBClusterSnapshot`](crate::operation::DeleteDBClusterSnapshot)>
     #[allow(clippy::let_and_return)]
@@ -8972,6 +9054,8 @@ pub mod delete_db_instance_input {
         }
     }
 }
+pub type DeleteDBInstanceInputOperationOutputAlias = crate::operation::DeleteDBInstance;
+pub type DeleteDBInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDBInstanceInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDBInstance`](crate::operation::DeleteDBInstance)>
     #[allow(clippy::let_and_return)]
@@ -9118,6 +9202,9 @@ pub mod delete_db_instance_automated_backup_input {
         }
     }
 }
+pub type DeleteDBInstanceAutomatedBackupInputOperationOutputAlias =
+    crate::operation::DeleteDBInstanceAutomatedBackup;
+pub type DeleteDBInstanceAutomatedBackupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDBInstanceAutomatedBackupInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDBInstanceAutomatedBackup`](crate::operation::DeleteDBInstanceAutomatedBackup)>
     #[allow(clippy::let_and_return)]
@@ -9259,6 +9346,8 @@ pub mod delete_db_parameter_group_input {
         }
     }
 }
+pub type DeleteDBParameterGroupInputOperationOutputAlias = crate::operation::DeleteDBParameterGroup;
+pub type DeleteDBParameterGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDBParameterGroupInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDBParameterGroup`](crate::operation::DeleteDBParameterGroup)>
     #[allow(clippy::let_and_return)]
@@ -9381,6 +9470,8 @@ pub mod delete_db_proxy_input {
         }
     }
 }
+pub type DeleteDBProxyInputOperationOutputAlias = crate::operation::DeleteDBProxy;
+pub type DeleteDBProxyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDBProxyInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDBProxy`](crate::operation::DeleteDBProxy)>
     #[allow(clippy::let_and_return)]
@@ -9506,6 +9597,8 @@ pub mod delete_db_proxy_endpoint_input {
         }
     }
 }
+pub type DeleteDBProxyEndpointInputOperationOutputAlias = crate::operation::DeleteDBProxyEndpoint;
+pub type DeleteDBProxyEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDBProxyEndpointInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDBProxyEndpoint`](crate::operation::DeleteDBProxyEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -9650,6 +9743,8 @@ pub mod delete_db_security_group_input {
         }
     }
 }
+pub type DeleteDBSecurityGroupInputOperationOutputAlias = crate::operation::DeleteDBSecurityGroup;
+pub type DeleteDBSecurityGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDBSecurityGroupInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDBSecurityGroup`](crate::operation::DeleteDBSecurityGroup)>
     #[allow(clippy::let_and_return)]
@@ -9777,6 +9872,8 @@ pub mod delete_db_snapshot_input {
         }
     }
 }
+pub type DeleteDBSnapshotInputOperationOutputAlias = crate::operation::DeleteDBSnapshot;
+pub type DeleteDBSnapshotInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDBSnapshotInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDBSnapshot`](crate::operation::DeleteDBSnapshot)>
     #[allow(clippy::let_and_return)]
@@ -9910,6 +10007,8 @@ pub mod delete_db_subnet_group_input {
         }
     }
 }
+pub type DeleteDBSubnetGroupInputOperationOutputAlias = crate::operation::DeleteDBSubnetGroup;
+pub type DeleteDBSubnetGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteDBSubnetGroupInput {
     /// Consumes the builder and constructs an Operation<[`DeleteDBSubnetGroup`](crate::operation::DeleteDBSubnetGroup)>
     #[allow(clippy::let_and_return)]
@@ -10036,6 +10135,9 @@ pub mod delete_event_subscription_input {
         }
     }
 }
+pub type DeleteEventSubscriptionInputOperationOutputAlias =
+    crate::operation::DeleteEventSubscription;
+pub type DeleteEventSubscriptionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteEventSubscriptionInput {
     /// Consumes the builder and constructs an Operation<[`DeleteEventSubscription`](crate::operation::DeleteEventSubscription)>
     #[allow(clippy::let_and_return)]
@@ -10164,6 +10266,8 @@ pub mod delete_global_cluster_input {
         }
     }
 }
+pub type DeleteGlobalClusterInputOperationOutputAlias = crate::operation::DeleteGlobalCluster;
+pub type DeleteGlobalClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteGlobalClusterInput {
     /// Consumes the builder and constructs an Operation<[`DeleteGlobalCluster`](crate::operation::DeleteGlobalCluster)>
     #[allow(clippy::let_and_return)]
@@ -10290,6 +10394,9 @@ pub mod delete_installation_media_input {
         }
     }
 }
+pub type DeleteInstallationMediaInputOperationOutputAlias =
+    crate::operation::DeleteInstallationMedia;
+pub type DeleteInstallationMediaInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteInstallationMediaInput {
     /// Consumes the builder and constructs an Operation<[`DeleteInstallationMedia`](crate::operation::DeleteInstallationMedia)>
     #[allow(clippy::let_and_return)]
@@ -10419,6 +10526,8 @@ pub mod delete_option_group_input {
         }
     }
 }
+pub type DeleteOptionGroupInputOperationOutputAlias = crate::operation::DeleteOptionGroup;
+pub type DeleteOptionGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteOptionGroupInput {
     /// Consumes the builder and constructs an Operation<[`DeleteOptionGroup`](crate::operation::DeleteOptionGroup)>
     #[allow(clippy::let_and_return)]
@@ -10586,6 +10695,9 @@ pub mod deregister_db_proxy_targets_input {
         }
     }
 }
+pub type DeregisterDBProxyTargetsInputOperationOutputAlias =
+    crate::operation::DeregisterDBProxyTargets;
+pub type DeregisterDBProxyTargetsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeregisterDBProxyTargetsInput {
     /// Consumes the builder and constructs an Operation<[`DeregisterDBProxyTargets`](crate::operation::DeregisterDBProxyTargets)>
     #[allow(clippy::let_and_return)]
@@ -10696,6 +10808,9 @@ pub mod describe_account_attributes_input {
         }
     }
 }
+pub type DescribeAccountAttributesInputOperationOutputAlias =
+    crate::operation::DescribeAccountAttributes;
+pub type DescribeAccountAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeAccountAttributesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeAccountAttributes`](crate::operation::DescribeAccountAttributes)>
     #[allow(clippy::let_and_return)]
@@ -10877,6 +10992,8 @@ pub mod describe_certificates_input {
         }
     }
 }
+pub type DescribeCertificatesInputOperationOutputAlias = crate::operation::DescribeCertificates;
+pub type DescribeCertificatesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeCertificatesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeCertificates`](crate::operation::DescribeCertificates)>
     #[allow(clippy::let_and_return)]
@@ -11050,6 +11167,9 @@ pub mod describe_custom_availability_zones_input {
         }
     }
 }
+pub type DescribeCustomAvailabilityZonesInputOperationOutputAlias =
+    crate::operation::DescribeCustomAvailabilityZones;
+pub type DescribeCustomAvailabilityZonesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeCustomAvailabilityZonesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeCustomAvailabilityZones`](crate::operation::DescribeCustomAvailabilityZones)>
     #[allow(clippy::let_and_return)]
@@ -11266,6 +11386,9 @@ pub mod describe_db_cluster_backtracks_input {
         }
     }
 }
+pub type DescribeDBClusterBacktracksInputOperationOutputAlias =
+    crate::operation::DescribeDBClusterBacktracks;
+pub type DescribeDBClusterBacktracksInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBClusterBacktracksInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBClusterBacktracks`](crate::operation::DescribeDBClusterBacktracks)>
     #[allow(clippy::let_and_return)]
@@ -11458,6 +11581,9 @@ pub mod describe_db_cluster_endpoints_input {
         }
     }
 }
+pub type DescribeDBClusterEndpointsInputOperationOutputAlias =
+    crate::operation::DescribeDBClusterEndpoints;
+pub type DescribeDBClusterEndpointsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBClusterEndpointsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBClusterEndpoints`](crate::operation::DescribeDBClusterEndpoints)>
     #[allow(clippy::let_and_return)]
@@ -11645,6 +11771,9 @@ pub mod describe_db_cluster_parameter_groups_input {
         }
     }
 }
+pub type DescribeDBClusterParameterGroupsInputOperationOutputAlias =
+    crate::operation::DescribeDBClusterParameterGroups;
+pub type DescribeDBClusterParameterGroupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBClusterParameterGroupsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBClusterParameterGroups`](crate::operation::DescribeDBClusterParameterGroups)>
     #[allow(clippy::let_and_return)]
@@ -11849,6 +11978,9 @@ pub mod describe_db_cluster_parameters_input {
         }
     }
 }
+pub type DescribeDBClusterParametersInputOperationOutputAlias =
+    crate::operation::DescribeDBClusterParameters;
+pub type DescribeDBClusterParametersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBClusterParametersInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBClusterParameters`](crate::operation::DescribeDBClusterParameters)>
     #[allow(clippy::let_and_return)]
@@ -12041,6 +12173,8 @@ pub mod describe_db_clusters_input {
         }
     }
 }
+pub type DescribeDBClustersInputOperationOutputAlias = crate::operation::DescribeDBClusters;
+pub type DescribeDBClustersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBClustersInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBClusters`](crate::operation::DescribeDBClusters)>
     #[allow(clippy::let_and_return)]
@@ -12172,6 +12306,10 @@ pub mod describe_db_cluster_snapshot_attributes_input {
         }
     }
 }
+pub type DescribeDBClusterSnapshotAttributesInputOperationOutputAlias =
+    crate::operation::DescribeDBClusterSnapshotAttributes;
+pub type DescribeDBClusterSnapshotAttributesInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl DescribeDBClusterSnapshotAttributesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBClusterSnapshotAttributes`](crate::operation::DescribeDBClusterSnapshotAttributes)>
     #[allow(clippy::let_and_return)]
@@ -12454,6 +12592,9 @@ pub mod describe_db_cluster_snapshots_input {
         }
     }
 }
+pub type DescribeDBClusterSnapshotsInputOperationOutputAlias =
+    crate::operation::DescribeDBClusterSnapshots;
+pub type DescribeDBClusterSnapshotsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBClusterSnapshotsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBClusterSnapshots`](crate::operation::DescribeDBClusterSnapshots)>
     #[allow(clippy::let_and_return)]
@@ -12781,6 +12922,9 @@ pub mod describe_db_engine_versions_input {
         }
     }
 }
+pub type DescribeDBEngineVersionsInputOperationOutputAlias =
+    crate::operation::DescribeDBEngineVersions;
+pub type DescribeDBEngineVersionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBEngineVersionsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBEngineVersions`](crate::operation::DescribeDBEngineVersions)>
     #[allow(clippy::let_and_return)]
@@ -12984,6 +13128,9 @@ pub mod describe_db_instance_automated_backups_input {
         }
     }
 }
+pub type DescribeDBInstanceAutomatedBackupsInputOperationOutputAlias =
+    crate::operation::DescribeDBInstanceAutomatedBackups;
+pub type DescribeDBInstanceAutomatedBackupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBInstanceAutomatedBackupsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBInstanceAutomatedBackups`](crate::operation::DescribeDBInstanceAutomatedBackups)>
     #[allow(clippy::let_and_return)]
@@ -13169,6 +13316,8 @@ pub mod describe_db_instances_input {
         }
     }
 }
+pub type DescribeDBInstancesInputOperationOutputAlias = crate::operation::DescribeDBInstances;
+pub type DescribeDBInstancesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBInstancesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBInstances`](crate::operation::DescribeDBInstances)>
     #[allow(clippy::let_and_return)]
@@ -13374,6 +13523,8 @@ pub mod describe_db_log_files_input {
         }
     }
 }
+pub type DescribeDBLogFilesInputOperationOutputAlias = crate::operation::DescribeDBLogFiles;
+pub type DescribeDBLogFilesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBLogFilesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBLogFiles`](crate::operation::DescribeDBLogFiles)>
     #[allow(clippy::let_and_return)]
@@ -13556,6 +13707,9 @@ pub mod describe_db_parameter_groups_input {
         }
     }
 }
+pub type DescribeDBParameterGroupsInputOperationOutputAlias =
+    crate::operation::DescribeDBParameterGroups;
+pub type DescribeDBParameterGroupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBParameterGroupsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBParameterGroups`](crate::operation::DescribeDBParameterGroups)>
     #[allow(clippy::let_and_return)]
@@ -13753,6 +13907,8 @@ pub mod describe_db_parameters_input {
         }
     }
 }
+pub type DescribeDBParametersInputOperationOutputAlias = crate::operation::DescribeDBParameters;
+pub type DescribeDBParametersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBParametersInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBParameters`](crate::operation::DescribeDBParameters)>
     #[allow(clippy::let_and_return)]
@@ -13923,6 +14079,8 @@ pub mod describe_db_proxies_input {
         }
     }
 }
+pub type DescribeDBProxiesInputOperationOutputAlias = crate::operation::DescribeDBProxies;
+pub type DescribeDBProxiesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBProxiesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBProxies`](crate::operation::DescribeDBProxies)>
     #[allow(clippy::let_and_return)]
@@ -14109,6 +14267,9 @@ pub mod describe_db_proxy_endpoints_input {
         }
     }
 }
+pub type DescribeDBProxyEndpointsInputOperationOutputAlias =
+    crate::operation::DescribeDBProxyEndpoints;
+pub type DescribeDBProxyEndpointsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBProxyEndpointsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBProxyEndpoints`](crate::operation::DescribeDBProxyEndpoints)>
     #[allow(clippy::let_and_return)]
@@ -14296,6 +14457,9 @@ pub mod describe_db_proxy_target_groups_input {
         }
     }
 }
+pub type DescribeDBProxyTargetGroupsInputOperationOutputAlias =
+    crate::operation::DescribeDBProxyTargetGroups;
+pub type DescribeDBProxyTargetGroupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBProxyTargetGroupsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBProxyTargetGroups`](crate::operation::DescribeDBProxyTargetGroups)>
     #[allow(clippy::let_and_return)]
@@ -14482,6 +14646,8 @@ pub mod describe_db_proxy_targets_input {
         }
     }
 }
+pub type DescribeDBProxyTargetsInputOperationOutputAlias = crate::operation::DescribeDBProxyTargets;
+pub type DescribeDBProxyTargetsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBProxyTargetsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBProxyTargets`](crate::operation::DescribeDBProxyTargets)>
     #[allow(clippy::let_and_return)]
@@ -14658,6 +14824,9 @@ pub mod describe_db_security_groups_input {
         }
     }
 }
+pub type DescribeDBSecurityGroupsInputOperationOutputAlias =
+    crate::operation::DescribeDBSecurityGroups;
+pub type DescribeDBSecurityGroupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBSecurityGroupsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBSecurityGroups`](crate::operation::DescribeDBSecurityGroups)>
     #[allow(clippy::let_and_return)]
@@ -14786,6 +14955,9 @@ pub mod describe_db_snapshot_attributes_input {
         }
     }
 }
+pub type DescribeDBSnapshotAttributesInputOperationOutputAlias =
+    crate::operation::DescribeDBSnapshotAttributes;
+pub type DescribeDBSnapshotAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBSnapshotAttributesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBSnapshotAttributes`](crate::operation::DescribeDBSnapshotAttributes)>
     #[allow(clippy::let_and_return)]
@@ -15089,6 +15261,8 @@ pub mod describe_db_snapshots_input {
         }
     }
 }
+pub type DescribeDBSnapshotsInputOperationOutputAlias = crate::operation::DescribeDBSnapshots;
+pub type DescribeDBSnapshotsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBSnapshotsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBSnapshots`](crate::operation::DescribeDBSnapshots)>
     #[allow(clippy::let_and_return)]
@@ -15264,6 +15438,8 @@ pub mod describe_db_subnet_groups_input {
         }
     }
 }
+pub type DescribeDBSubnetGroupsInputOperationOutputAlias = crate::operation::DescribeDBSubnetGroups;
+pub type DescribeDBSubnetGroupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeDBSubnetGroupsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeDBSubnetGroups`](crate::operation::DescribeDBSubnetGroups)>
     #[allow(clippy::let_and_return)]
@@ -15441,6 +15617,10 @@ pub mod describe_engine_default_cluster_parameters_input {
         }
     }
 }
+pub type DescribeEngineDefaultClusterParametersInputOperationOutputAlias =
+    crate::operation::DescribeEngineDefaultClusterParameters;
+pub type DescribeEngineDefaultClusterParametersInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl DescribeEngineDefaultClusterParametersInput {
     /// Consumes the builder and constructs an Operation<[`DescribeEngineDefaultClusterParameters`](crate::operation::DescribeEngineDefaultClusterParameters)>
     #[allow(clippy::let_and_return)]
@@ -15617,6 +15797,9 @@ pub mod describe_engine_default_parameters_input {
         }
     }
 }
+pub type DescribeEngineDefaultParametersInputOperationOutputAlias =
+    crate::operation::DescribeEngineDefaultParameters;
+pub type DescribeEngineDefaultParametersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeEngineDefaultParametersInput {
     /// Consumes the builder and constructs an Operation<[`DescribeEngineDefaultParameters`](crate::operation::DescribeEngineDefaultParameters)>
     #[allow(clippy::let_and_return)]
@@ -15758,6 +15941,9 @@ pub mod describe_event_categories_input {
         }
     }
 }
+pub type DescribeEventCategoriesInputOperationOutputAlias =
+    crate::operation::DescribeEventCategories;
+pub type DescribeEventCategoriesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeEventCategoriesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeEventCategories`](crate::operation::DescribeEventCategories)>
     #[allow(clippy::let_and_return)]
@@ -16033,6 +16219,8 @@ pub mod describe_events_input {
         }
     }
 }
+pub type DescribeEventsInputOperationOutputAlias = crate::operation::DescribeEvents;
+pub type DescribeEventsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeEventsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeEvents`](crate::operation::DescribeEvents)>
     #[allow(clippy::let_and_return)]
@@ -16208,6 +16396,9 @@ pub mod describe_event_subscriptions_input {
         }
     }
 }
+pub type DescribeEventSubscriptionsInputOperationOutputAlias =
+    crate::operation::DescribeEventSubscriptions;
+pub type DescribeEventSubscriptionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeEventSubscriptionsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeEventSubscriptions`](crate::operation::DescribeEventSubscriptions)>
     #[allow(clippy::let_and_return)]
@@ -16394,6 +16585,8 @@ pub mod describe_export_tasks_input {
         }
     }
 }
+pub type DescribeExportTasksInputOperationOutputAlias = crate::operation::DescribeExportTasks;
+pub type DescribeExportTasksInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeExportTasksInput {
     /// Consumes the builder and constructs an Operation<[`DescribeExportTasks`](crate::operation::DescribeExportTasks)>
     #[allow(clippy::let_and_return)]
@@ -16575,6 +16768,8 @@ pub mod describe_global_clusters_input {
         }
     }
 }
+pub type DescribeGlobalClustersInputOperationOutputAlias = crate::operation::DescribeGlobalClusters;
+pub type DescribeGlobalClustersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeGlobalClustersInput {
     /// Consumes the builder and constructs an Operation<[`DescribeGlobalClusters`](crate::operation::DescribeGlobalClusters)>
     #[allow(clippy::let_and_return)]
@@ -16743,6 +16938,9 @@ pub mod describe_installation_media_input {
         }
     }
 }
+pub type DescribeInstallationMediaInputOperationOutputAlias =
+    crate::operation::DescribeInstallationMedia;
+pub type DescribeInstallationMediaInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeInstallationMediaInput {
     /// Consumes the builder and constructs an Operation<[`DescribeInstallationMedia`](crate::operation::DescribeInstallationMedia)>
     #[allow(clippy::let_and_return)]
@@ -16986,6 +17184,9 @@ pub mod describe_option_group_options_input {
         }
     }
 }
+pub type DescribeOptionGroupOptionsInputOperationOutputAlias =
+    crate::operation::DescribeOptionGroupOptions;
+pub type DescribeOptionGroupOptionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeOptionGroupOptionsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeOptionGroupOptions`](crate::operation::DescribeOptionGroupOptions)>
     #[allow(clippy::let_and_return)]
@@ -17246,6 +17447,8 @@ pub mod describe_option_groups_input {
         }
     }
 }
+pub type DescribeOptionGroupsInputOperationOutputAlias = crate::operation::DescribeOptionGroups;
+pub type DescribeOptionGroupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeOptionGroupsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeOptionGroups`](crate::operation::DescribeOptionGroups)>
     #[allow(clippy::let_and_return)]
@@ -17555,6 +17758,9 @@ pub mod describe_orderable_db_instance_options_input {
         }
     }
 }
+pub type DescribeOrderableDBInstanceOptionsInputOperationOutputAlias =
+    crate::operation::DescribeOrderableDBInstanceOptions;
+pub type DescribeOrderableDBInstanceOptionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeOrderableDBInstanceOptionsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeOrderableDBInstanceOptions`](crate::operation::DescribeOrderableDBInstanceOptions)>
     #[allow(clippy::let_and_return)]
@@ -17736,6 +17942,9 @@ pub mod describe_pending_maintenance_actions_input {
         }
     }
 }
+pub type DescribePendingMaintenanceActionsInputOperationOutputAlias =
+    crate::operation::DescribePendingMaintenanceActions;
+pub type DescribePendingMaintenanceActionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribePendingMaintenanceActionsInput {
     /// Consumes the builder and constructs an Operation<[`DescribePendingMaintenanceActions`](crate::operation::DescribePendingMaintenanceActions)>
     #[allow(clippy::let_and_return)]
@@ -18011,6 +18220,9 @@ pub mod describe_reserved_db_instances_input {
         }
     }
 }
+pub type DescribeReservedDBInstancesInputOperationOutputAlias =
+    crate::operation::DescribeReservedDBInstances;
+pub type DescribeReservedDBInstancesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeReservedDBInstancesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeReservedDBInstances`](crate::operation::DescribeReservedDBInstances)>
     #[allow(clippy::let_and_return)]
@@ -18261,6 +18473,10 @@ pub mod describe_reserved_db_instances_offerings_input {
         }
     }
 }
+pub type DescribeReservedDBInstancesOfferingsInputOperationOutputAlias =
+    crate::operation::DescribeReservedDBInstancesOfferings;
+pub type DescribeReservedDBInstancesOfferingsInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl DescribeReservedDBInstancesOfferingsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeReservedDBInstancesOfferings`](crate::operation::DescribeReservedDBInstancesOfferings)>
     #[allow(clippy::let_and_return)]
@@ -18436,6 +18652,8 @@ pub mod describe_source_regions_input {
         }
     }
 }
+pub type DescribeSourceRegionsInputOperationOutputAlias = crate::operation::DescribeSourceRegions;
+pub type DescribeSourceRegionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeSourceRegionsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeSourceRegions`](crate::operation::DescribeSourceRegions)>
     #[allow(clippy::let_and_return)]
@@ -18565,6 +18783,10 @@ pub mod describe_valid_db_instance_modifications_input {
         }
     }
 }
+pub type DescribeValidDBInstanceModificationsInputOperationOutputAlias =
+    crate::operation::DescribeValidDBInstanceModifications;
+pub type DescribeValidDBInstanceModificationsInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl DescribeValidDBInstanceModificationsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeValidDBInstanceModifications`](crate::operation::DescribeValidDBInstanceModifications)>
     #[allow(clippy::let_and_return)]
@@ -18757,6 +18979,9 @@ pub mod download_db_log_file_portion_input {
         }
     }
 }
+pub type DownloadDBLogFilePortionInputOperationOutputAlias =
+    crate::operation::DownloadDBLogFilePortion;
+pub type DownloadDBLogFilePortionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DownloadDBLogFilePortionInput {
     /// Consumes the builder and constructs an Operation<[`DownloadDBLogFilePortion`](crate::operation::DownloadDBLogFilePortion)>
     #[allow(clippy::let_and_return)]
@@ -18909,6 +19134,8 @@ pub mod failover_db_cluster_input {
         }
     }
 }
+pub type FailoverDBClusterInputOperationOutputAlias = crate::operation::FailoverDBCluster;
+pub type FailoverDBClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl FailoverDBClusterInput {
     /// Consumes the builder and constructs an Operation<[`FailoverDBCluster`](crate::operation::FailoverDBCluster)>
     #[allow(clippy::let_and_return)]
@@ -19062,6 +19289,8 @@ pub mod failover_global_cluster_input {
         }
     }
 }
+pub type FailoverGlobalClusterInputOperationOutputAlias = crate::operation::FailoverGlobalCluster;
+pub type FailoverGlobalClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl FailoverGlobalClusterInput {
     /// Consumes the builder and constructs an Operation<[`FailoverGlobalCluster`](crate::operation::FailoverGlobalCluster)>
     #[allow(clippy::let_and_return)]
@@ -19283,6 +19512,9 @@ pub mod import_installation_media_input {
         }
     }
 }
+pub type ImportInstallationMediaInputOperationOutputAlias =
+    crate::operation::ImportInstallationMedia;
+pub type ImportInstallationMediaInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ImportInstallationMediaInput {
     /// Consumes the builder and constructs an Operation<[`ImportInstallationMedia`](crate::operation::ImportInstallationMedia)>
     #[allow(clippy::let_and_return)]
@@ -19424,6 +19656,8 @@ pub mod list_tags_for_resource_input {
         }
     }
 }
+pub type ListTagsForResourceInputOperationOutputAlias = crate::operation::ListTagsForResource;
+pub type ListTagsForResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTagsForResourceInput {
     /// Consumes the builder and constructs an Operation<[`ListTagsForResource`](crate::operation::ListTagsForResource)>
     #[allow(clippy::let_and_return)]
@@ -19565,6 +19799,8 @@ pub mod modify_certificates_input {
         }
     }
 }
+pub type ModifyCertificatesInputOperationOutputAlias = crate::operation::ModifyCertificates;
+pub type ModifyCertificatesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyCertificatesInput {
     /// Consumes the builder and constructs an Operation<[`ModifyCertificates`](crate::operation::ModifyCertificates)>
     #[allow(clippy::let_and_return)]
@@ -19753,6 +19989,9 @@ pub mod modify_current_db_cluster_capacity_input {
         }
     }
 }
+pub type ModifyCurrentDBClusterCapacityInputOperationOutputAlias =
+    crate::operation::ModifyCurrentDBClusterCapacity;
+pub type ModifyCurrentDBClusterCapacityInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyCurrentDBClusterCapacityInput {
     /// Consumes the builder and constructs an Operation<[`ModifyCurrentDBClusterCapacity`](crate::operation::ModifyCurrentDBClusterCapacity)>
     #[allow(clippy::let_and_return)]
@@ -20334,6 +20573,8 @@ pub mod modify_db_cluster_input {
         }
     }
 }
+pub type ModifyDBClusterInputOperationOutputAlias = crate::operation::ModifyDBCluster;
+pub type ModifyDBClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyDBClusterInput {
     /// Consumes the builder and constructs an Operation<[`ModifyDBCluster`](crate::operation::ModifyDBCluster)>
     #[allow(clippy::let_and_return)]
@@ -20503,6 +20744,9 @@ pub mod modify_db_cluster_endpoint_input {
         }
     }
 }
+pub type ModifyDBClusterEndpointInputOperationOutputAlias =
+    crate::operation::ModifyDBClusterEndpoint;
+pub type ModifyDBClusterEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyDBClusterEndpointInput {
     /// Consumes the builder and constructs an Operation<[`ModifyDBClusterEndpoint`](crate::operation::ModifyDBClusterEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -20649,6 +20893,9 @@ pub mod modify_db_cluster_parameter_group_input {
         }
     }
 }
+pub type ModifyDBClusterParameterGroupInputOperationOutputAlias =
+    crate::operation::ModifyDBClusterParameterGroup;
+pub type ModifyDBClusterParameterGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyDBClusterParameterGroupInput {
     /// Consumes the builder and constructs an Operation<[`ModifyDBClusterParameterGroup`](crate::operation::ModifyDBClusterParameterGroup)>
     #[allow(clippy::let_and_return)]
@@ -20828,6 +21075,9 @@ pub mod modify_db_cluster_snapshot_attribute_input {
         }
     }
 }
+pub type ModifyDBClusterSnapshotAttributeInputOperationOutputAlias =
+    crate::operation::ModifyDBClusterSnapshotAttribute;
+pub type ModifyDBClusterSnapshotAttributeInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyDBClusterSnapshotAttributeInput {
     /// Consumes the builder and constructs an Operation<[`ModifyDBClusterSnapshotAttribute`](crate::operation::ModifyDBClusterSnapshotAttribute)>
     #[allow(clippy::let_and_return)]
@@ -21952,6 +22202,8 @@ pub mod modify_db_instance_input {
         }
     }
 }
+pub type ModifyDBInstanceInputOperationOutputAlias = crate::operation::ModifyDBInstance;
+pub type ModifyDBInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyDBInstanceInput {
     /// Consumes the builder and constructs an Operation<[`ModifyDBInstance`](crate::operation::ModifyDBInstance)>
     #[allow(clippy::let_and_return)]
@@ -22099,6 +22351,8 @@ pub mod modify_db_parameter_group_input {
         }
     }
 }
+pub type ModifyDBParameterGroupInputOperationOutputAlias = crate::operation::ModifyDBParameterGroup;
+pub type ModifyDBParameterGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyDBParameterGroupInput {
     /// Consumes the builder and constructs an Operation<[`ModifyDBParameterGroup`](crate::operation::ModifyDBParameterGroup)>
     #[allow(clippy::let_and_return)]
@@ -22317,6 +22571,8 @@ pub mod modify_db_proxy_input {
         }
     }
 }
+pub type ModifyDBProxyInputOperationOutputAlias = crate::operation::ModifyDBProxy;
+pub type ModifyDBProxyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyDBProxyInput {
     /// Consumes the builder and constructs an Operation<[`ModifyDBProxy`](crate::operation::ModifyDBProxy)>
     #[allow(clippy::let_and_return)]
@@ -22473,6 +22729,8 @@ pub mod modify_db_proxy_endpoint_input {
         }
     }
 }
+pub type ModifyDBProxyEndpointInputOperationOutputAlias = crate::operation::ModifyDBProxyEndpoint;
+pub type ModifyDBProxyEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyDBProxyEndpointInput {
     /// Consumes the builder and constructs an Operation<[`ModifyDBProxyEndpoint`](crate::operation::ModifyDBProxyEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -22639,6 +22897,9 @@ pub mod modify_db_proxy_target_group_input {
         }
     }
 }
+pub type ModifyDBProxyTargetGroupInputOperationOutputAlias =
+    crate::operation::ModifyDBProxyTargetGroup;
+pub type ModifyDBProxyTargetGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyDBProxyTargetGroupInput {
     /// Consumes the builder and constructs an Operation<[`ModifyDBProxyTargetGroup`](crate::operation::ModifyDBProxyTargetGroup)>
     #[allow(clippy::let_and_return)]
@@ -22833,6 +23094,8 @@ pub mod modify_db_snapshot_input {
         }
     }
 }
+pub type ModifyDBSnapshotInputOperationOutputAlias = crate::operation::ModifyDBSnapshot;
+pub type ModifyDBSnapshotInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyDBSnapshotInput {
     /// Consumes the builder and constructs an Operation<[`ModifyDBSnapshot`](crate::operation::ModifyDBSnapshot)>
     #[allow(clippy::let_and_return)]
@@ -23006,6 +23269,9 @@ pub mod modify_db_snapshot_attribute_input {
         }
     }
 }
+pub type ModifyDBSnapshotAttributeInputOperationOutputAlias =
+    crate::operation::ModifyDBSnapshotAttribute;
+pub type ModifyDBSnapshotAttributeInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyDBSnapshotAttributeInput {
     /// Consumes the builder and constructs an Operation<[`ModifyDBSnapshotAttribute`](crate::operation::ModifyDBSnapshotAttribute)>
     #[allow(clippy::let_and_return)]
@@ -23167,6 +23433,8 @@ pub mod modify_db_subnet_group_input {
         }
     }
 }
+pub type ModifyDBSubnetGroupInputOperationOutputAlias = crate::operation::ModifyDBSubnetGroup;
+pub type ModifyDBSubnetGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyDBSubnetGroupInput {
     /// Consumes the builder and constructs an Operation<[`ModifyDBSubnetGroup`](crate::operation::ModifyDBSubnetGroup)>
     #[allow(clippy::let_and_return)]
@@ -23345,6 +23613,9 @@ pub mod modify_event_subscription_input {
         }
     }
 }
+pub type ModifyEventSubscriptionInputOperationOutputAlias =
+    crate::operation::ModifyEventSubscription;
+pub type ModifyEventSubscriptionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyEventSubscriptionInput {
     /// Consumes the builder and constructs an Operation<[`ModifyEventSubscription`](crate::operation::ModifyEventSubscription)>
     #[allow(clippy::let_and_return)]
@@ -23569,6 +23840,8 @@ pub mod modify_global_cluster_input {
         }
     }
 }
+pub type ModifyGlobalClusterInputOperationOutputAlias = crate::operation::ModifyGlobalCluster;
+pub type ModifyGlobalClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyGlobalClusterInput {
     /// Consumes the builder and constructs an Operation<[`ModifyGlobalCluster`](crate::operation::ModifyGlobalCluster)>
     #[allow(clippy::let_and_return)]
@@ -23741,6 +24014,8 @@ pub mod modify_option_group_input {
         }
     }
 }
+pub type ModifyOptionGroupInputOperationOutputAlias = crate::operation::ModifyOptionGroup;
+pub type ModifyOptionGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ModifyOptionGroupInput {
     /// Consumes the builder and constructs an Operation<[`ModifyOptionGroup`](crate::operation::ModifyOptionGroup)>
     #[allow(clippy::let_and_return)]
@@ -23936,6 +24211,8 @@ pub mod promote_read_replica_input {
         }
     }
 }
+pub type PromoteReadReplicaInputOperationOutputAlias = crate::operation::PromoteReadReplica;
+pub type PromoteReadReplicaInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PromoteReadReplicaInput {
     /// Consumes the builder and constructs an Operation<[`PromoteReadReplica`](crate::operation::PromoteReadReplica)>
     #[allow(clippy::let_and_return)]
@@ -24073,6 +24350,9 @@ pub mod promote_read_replica_db_cluster_input {
         }
     }
 }
+pub type PromoteReadReplicaDBClusterInputOperationOutputAlias =
+    crate::operation::PromoteReadReplicaDBCluster;
+pub type PromoteReadReplicaDBClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PromoteReadReplicaDBClusterInput {
     /// Consumes the builder and constructs an Operation<[`PromoteReadReplicaDBCluster`](crate::operation::PromoteReadReplicaDBCluster)>
     #[allow(clippy::let_and_return)]
@@ -24249,6 +24529,10 @@ pub mod purchase_reserved_db_instances_offering_input {
         }
     }
 }
+pub type PurchaseReservedDBInstancesOfferingInputOperationOutputAlias =
+    crate::operation::PurchaseReservedDBInstancesOffering;
+pub type PurchaseReservedDBInstancesOfferingInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl PurchaseReservedDBInstancesOfferingInput {
     /// Consumes the builder and constructs an Operation<[`PurchaseReservedDBInstancesOffering`](crate::operation::PurchaseReservedDBInstancesOffering)>
     #[allow(clippy::let_and_return)]
@@ -24398,6 +24682,8 @@ pub mod reboot_db_instance_input {
         }
     }
 }
+pub type RebootDBInstanceInputOperationOutputAlias = crate::operation::RebootDBInstance;
+pub type RebootDBInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RebootDBInstanceInput {
     /// Consumes the builder and constructs an Operation<[`RebootDBInstance`](crate::operation::RebootDBInstance)>
     #[allow(clippy::let_and_return)]
@@ -24565,6 +24851,8 @@ pub mod register_db_proxy_targets_input {
         }
     }
 }
+pub type RegisterDBProxyTargetsInputOperationOutputAlias = crate::operation::RegisterDBProxyTargets;
+pub type RegisterDBProxyTargetsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RegisterDBProxyTargetsInput {
     /// Consumes the builder and constructs an Operation<[`RegisterDBProxyTargets`](crate::operation::RegisterDBProxyTargets)>
     #[allow(clippy::let_and_return)]
@@ -24709,6 +24997,9 @@ pub mod remove_from_global_cluster_input {
         }
     }
 }
+pub type RemoveFromGlobalClusterInputOperationOutputAlias =
+    crate::operation::RemoveFromGlobalCluster;
+pub type RemoveFromGlobalClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RemoveFromGlobalClusterInput {
     /// Consumes the builder and constructs an Operation<[`RemoveFromGlobalCluster`](crate::operation::RemoveFromGlobalCluster)>
     #[allow(clippy::let_and_return)]
@@ -24859,6 +25150,9 @@ pub mod remove_role_from_db_cluster_input {
         }
     }
 }
+pub type RemoveRoleFromDBClusterInputOperationOutputAlias =
+    crate::operation::RemoveRoleFromDBCluster;
+pub type RemoveRoleFromDBClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RemoveRoleFromDBClusterInput {
     /// Consumes the builder and constructs an Operation<[`RemoveRoleFromDBCluster`](crate::operation::RemoveRoleFromDBCluster)>
     #[allow(clippy::let_and_return)]
@@ -25010,6 +25304,9 @@ pub mod remove_role_from_db_instance_input {
         }
     }
 }
+pub type RemoveRoleFromDBInstanceInputOperationOutputAlias =
+    crate::operation::RemoveRoleFromDBInstance;
+pub type RemoveRoleFromDBInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RemoveRoleFromDBInstanceInput {
     /// Consumes the builder and constructs an Operation<[`RemoveRoleFromDBInstance`](crate::operation::RemoveRoleFromDBInstance)>
     #[allow(clippy::let_and_return)]
@@ -25156,6 +25453,10 @@ pub mod remove_source_identifier_from_subscription_input {
         }
     }
 }
+pub type RemoveSourceIdentifierFromSubscriptionInputOperationOutputAlias =
+    crate::operation::RemoveSourceIdentifierFromSubscription;
+pub type RemoveSourceIdentifierFromSubscriptionInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl RemoveSourceIdentifierFromSubscriptionInput {
     /// Consumes the builder and constructs an Operation<[`RemoveSourceIdentifierFromSubscription`](crate::operation::RemoveSourceIdentifierFromSubscription)>
     #[allow(clippy::let_and_return)]
@@ -25297,6 +25598,8 @@ pub mod remove_tags_from_resource_input {
         }
     }
 }
+pub type RemoveTagsFromResourceInputOperationOutputAlias = crate::operation::RemoveTagsFromResource;
+pub type RemoveTagsFromResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RemoveTagsFromResourceInput {
     /// Consumes the builder and constructs an Operation<[`RemoveTagsFromResource`](crate::operation::RemoveTagsFromResource)>
     #[allow(clippy::let_and_return)]
@@ -25456,6 +25759,9 @@ pub mod reset_db_cluster_parameter_group_input {
         }
     }
 }
+pub type ResetDBClusterParameterGroupInputOperationOutputAlias =
+    crate::operation::ResetDBClusterParameterGroup;
+pub type ResetDBClusterParameterGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ResetDBClusterParameterGroupInput {
     /// Consumes the builder and constructs an Operation<[`ResetDBClusterParameterGroup`](crate::operation::ResetDBClusterParameterGroup)>
     #[allow(clippy::let_and_return)]
@@ -25618,6 +25924,8 @@ pub mod reset_db_parameter_group_input {
         }
     }
 }
+pub type ResetDBParameterGroupInputOperationOutputAlias = crate::operation::ResetDBParameterGroup;
+pub type ResetDBParameterGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ResetDBParameterGroupInput {
     /// Consumes the builder and constructs an Operation<[`ResetDBParameterGroup`](crate::operation::ResetDBParameterGroup)>
     #[allow(clippy::let_and_return)]
@@ -26286,6 +26594,8 @@ pub mod restore_db_cluster_from_s3_input {
         }
     }
 }
+pub type RestoreDBClusterFromS3InputOperationOutputAlias = crate::operation::RestoreDBClusterFromS3;
+pub type RestoreDBClusterFromS3InputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RestoreDBClusterFromS3Input {
     /// Consumes the builder and constructs an Operation<[`RestoreDBClusterFromS3`](crate::operation::RestoreDBClusterFromS3)>
     #[allow(clippy::let_and_return)]
@@ -26807,6 +27117,9 @@ pub mod restore_db_cluster_from_snapshot_input {
         }
     }
 }
+pub type RestoreDBClusterFromSnapshotInputOperationOutputAlias =
+    crate::operation::RestoreDBClusterFromSnapshot;
+pub type RestoreDBClusterFromSnapshotInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RestoreDBClusterFromSnapshotInput {
     /// Consumes the builder and constructs an Operation<[`RestoreDBClusterFromSnapshot`](crate::operation::RestoreDBClusterFromSnapshot)>
     #[allow(clippy::let_and_return)]
@@ -27294,6 +27607,9 @@ pub mod restore_db_cluster_to_point_in_time_input {
         }
     }
 }
+pub type RestoreDBClusterToPointInTimeInputOperationOutputAlias =
+    crate::operation::RestoreDBClusterToPointInTime;
+pub type RestoreDBClusterToPointInTimeInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RestoreDBClusterToPointInTimeInput {
     /// Consumes the builder and constructs an Operation<[`RestoreDBClusterToPointInTime`](crate::operation::RestoreDBClusterToPointInTime)>
     #[allow(clippy::let_and_return)]
@@ -27965,6 +28281,9 @@ pub mod restore_db_instance_from_db_snapshot_input {
         }
     }
 }
+pub type RestoreDBInstanceFromDBSnapshotInputOperationOutputAlias =
+    crate::operation::RestoreDBInstanceFromDBSnapshot;
+pub type RestoreDBInstanceFromDBSnapshotInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RestoreDBInstanceFromDBSnapshotInput {
     /// Consumes the builder and constructs an Operation<[`RestoreDBInstanceFromDBSnapshot`](crate::operation::RestoreDBInstanceFromDBSnapshot)>
     #[allow(clippy::let_and_return)]
@@ -28856,6 +29175,9 @@ pub mod restore_db_instance_from_s3_input {
         }
     }
 }
+pub type RestoreDBInstanceFromS3InputOperationOutputAlias =
+    crate::operation::RestoreDBInstanceFromS3;
+pub type RestoreDBInstanceFromS3InputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RestoreDBInstanceFromS3Input {
     /// Consumes the builder and constructs an Operation<[`RestoreDBInstanceFromS3`](crate::operation::RestoreDBInstanceFromS3)>
     #[allow(clippy::let_and_return)]
@@ -29605,6 +29927,9 @@ pub mod restore_db_instance_to_point_in_time_input {
         }
     }
 }
+pub type RestoreDBInstanceToPointInTimeInputOperationOutputAlias =
+    crate::operation::RestoreDBInstanceToPointInTime;
+pub type RestoreDBInstanceToPointInTimeInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RestoreDBInstanceToPointInTimeInput {
     /// Consumes the builder and constructs an Operation<[`RestoreDBInstanceToPointInTime`](crate::operation::RestoreDBInstanceToPointInTime)>
     #[allow(clippy::let_and_return)]
@@ -29808,6 +30133,9 @@ pub mod revoke_db_security_group_ingress_input {
         }
     }
 }
+pub type RevokeDBSecurityGroupIngressInputOperationOutputAlias =
+    crate::operation::RevokeDBSecurityGroupIngress;
+pub type RevokeDBSecurityGroupIngressInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RevokeDBSecurityGroupIngressInput {
     /// Consumes the builder and constructs an Operation<[`RevokeDBSecurityGroupIngress`](crate::operation::RevokeDBSecurityGroupIngress)>
     #[allow(clippy::let_and_return)]
@@ -29974,6 +30302,8 @@ pub mod start_activity_stream_input {
         }
     }
 }
+pub type StartActivityStreamInputOperationOutputAlias = crate::operation::StartActivityStream;
+pub type StartActivityStreamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartActivityStreamInput {
     /// Consumes the builder and constructs an Operation<[`StartActivityStream`](crate::operation::StartActivityStream)>
     #[allow(clippy::let_and_return)]
@@ -30100,6 +30430,8 @@ pub mod start_db_cluster_input {
         }
     }
 }
+pub type StartDBClusterInputOperationOutputAlias = crate::operation::StartDBCluster;
+pub type StartDBClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartDBClusterInput {
     /// Consumes the builder and constructs an Operation<[`StartDBCluster`](crate::operation::StartDBCluster)>
     #[allow(clippy::let_and_return)]
@@ -30227,6 +30559,8 @@ pub mod start_db_instance_input {
         }
     }
 }
+pub type StartDBInstanceInputOperationOutputAlias = crate::operation::StartDBInstance;
+pub type StartDBInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartDBInstanceInput {
     /// Consumes the builder and constructs an Operation<[`StartDBInstance`](crate::operation::StartDBInstance)>
     #[allow(clippy::let_and_return)]
@@ -30395,6 +30729,10 @@ pub mod start_db_instance_automated_backups_replication_input {
         }
     }
 }
+pub type StartDBInstanceAutomatedBackupsReplicationInputOperationOutputAlias =
+    crate::operation::StartDBInstanceAutomatedBackupsReplication;
+pub type StartDBInstanceAutomatedBackupsReplicationInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl StartDBInstanceAutomatedBackupsReplicationInput {
     /// Consumes the builder and constructs an Operation<[`StartDBInstanceAutomatedBackupsReplication`](crate::operation::StartDBInstanceAutomatedBackupsReplication)>
     #[allow(clippy::let_and_return)]
@@ -30625,6 +30963,8 @@ pub mod start_export_task_input {
         }
     }
 }
+pub type StartExportTaskInputOperationOutputAlias = crate::operation::StartExportTask;
+pub type StartExportTaskInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartExportTaskInput {
     /// Consumes the builder and constructs an Operation<[`StartExportTask`](crate::operation::StartExportTask)>
     #[allow(clippy::let_and_return)]
@@ -30761,6 +31101,8 @@ pub mod stop_activity_stream_input {
         }
     }
 }
+pub type StopActivityStreamInputOperationOutputAlias = crate::operation::StopActivityStream;
+pub type StopActivityStreamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopActivityStreamInput {
     /// Consumes the builder and constructs an Operation<[`StopActivityStream`](crate::operation::StopActivityStream)>
     #[allow(clippy::let_and_return)]
@@ -30887,6 +31229,8 @@ pub mod stop_db_cluster_input {
         }
     }
 }
+pub type StopDBClusterInputOperationOutputAlias = crate::operation::StopDBCluster;
+pub type StopDBClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopDBClusterInput {
     /// Consumes the builder and constructs an Operation<[`StopDBCluster`](crate::operation::StopDBCluster)>
     #[allow(clippy::let_and_return)]
@@ -31029,6 +31373,8 @@ pub mod stop_db_instance_input {
         }
     }
 }
+pub type StopDBInstanceInputOperationOutputAlias = crate::operation::StopDBInstance;
+pub type StopDBInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopDBInstanceInput {
     /// Consumes the builder and constructs an Operation<[`StopDBInstance`](crate::operation::StopDBInstance)>
     #[allow(clippy::let_and_return)]
@@ -31159,6 +31505,10 @@ pub mod stop_db_instance_automated_backups_replication_input {
         }
     }
 }
+pub type StopDBInstanceAutomatedBackupsReplicationInputOperationOutputAlias =
+    crate::operation::StopDBInstanceAutomatedBackupsReplication;
+pub type StopDBInstanceAutomatedBackupsReplicationInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl StopDBInstanceAutomatedBackupsReplicationInput {
     /// Consumes the builder and constructs an Operation<[`StopDBInstanceAutomatedBackupsReplication`](crate::operation::StopDBInstanceAutomatedBackupsReplication)>
     #[allow(clippy::let_and_return)]

@@ -40,6 +40,9 @@ pub mod cancel_journal_kinesis_stream_input {
         }
     }
 }
+pub type CancelJournalKinesisStreamInputOperationOutputAlias =
+    crate::operation::CancelJournalKinesisStream;
+pub type CancelJournalKinesisStreamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CancelJournalKinesisStreamInput {
     /// Consumes the builder and constructs an Operation<[`CancelJournalKinesisStream`](crate::operation::CancelJournalKinesisStream)>
     #[allow(clippy::let_and_return)]
@@ -227,6 +230,8 @@ pub mod create_ledger_input {
         }
     }
 }
+pub type CreateLedgerInputOperationOutputAlias = crate::operation::CreateLedger;
+pub type CreateLedgerInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateLedgerInput {
     /// Consumes the builder and constructs an Operation<[`CreateLedger`](crate::operation::CreateLedger)>
     #[allow(clippy::let_and_return)]
@@ -349,6 +354,8 @@ pub mod delete_ledger_input {
         }
     }
 }
+pub type DeleteLedgerInputOperationOutputAlias = crate::operation::DeleteLedger;
+pub type DeleteLedgerInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteLedgerInput {
     /// Consumes the builder and constructs an Operation<[`DeleteLedger`](crate::operation::DeleteLedger)>
     #[allow(clippy::let_and_return)]
@@ -487,6 +494,9 @@ pub mod describe_journal_kinesis_stream_input {
         }
     }
 }
+pub type DescribeJournalKinesisStreamInputOperationOutputAlias =
+    crate::operation::DescribeJournalKinesisStream;
+pub type DescribeJournalKinesisStreamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeJournalKinesisStreamInput {
     /// Consumes the builder and constructs an Operation<[`DescribeJournalKinesisStream`](crate::operation::DescribeJournalKinesisStream)>
     #[allow(clippy::let_and_return)]
@@ -624,6 +634,9 @@ pub mod describe_journal_s3_export_input {
         }
     }
 }
+pub type DescribeJournalS3ExportInputOperationOutputAlias =
+    crate::operation::DescribeJournalS3Export;
+pub type DescribeJournalS3ExportInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeJournalS3ExportInput {
     /// Consumes the builder and constructs an Operation<[`DescribeJournalS3Export`](crate::operation::DescribeJournalS3Export)>
     #[allow(clippy::let_and_return)]
@@ -749,6 +762,8 @@ pub mod describe_ledger_input {
         }
     }
 }
+pub type DescribeLedgerInputOperationOutputAlias = crate::operation::DescribeLedger;
+pub type DescribeLedgerInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeLedgerInput {
     /// Consumes the builder and constructs an Operation<[`DescribeLedger`](crate::operation::DescribeLedger)>
     #[allow(clippy::let_and_return)]
@@ -955,6 +970,8 @@ pub mod export_journal_to_s3_input {
         }
     }
 }
+pub type ExportJournalToS3InputOperationOutputAlias = crate::operation::ExportJournalToS3;
+pub type ExportJournalToS3InputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ExportJournalToS3Input {
     /// Consumes the builder and constructs an Operation<[`ExportJournalToS3`](crate::operation::ExportJournalToS3)>
     #[allow(clippy::let_and_return)]
@@ -1117,6 +1134,8 @@ pub mod get_block_input {
         }
     }
 }
+pub type GetBlockInputOperationOutputAlias = crate::operation::GetBlock;
+pub type GetBlockInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBlockInput {
     /// Consumes the builder and constructs an Operation<[`GetBlock`](crate::operation::GetBlock)>
     #[allow(clippy::let_and_return)]
@@ -1239,6 +1258,8 @@ pub mod get_digest_input {
         }
     }
 }
+pub type GetDigestInputOperationOutputAlias = crate::operation::GetDigest;
+pub type GetDigestInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetDigestInput {
     /// Consumes the builder and constructs an Operation<[`GetDigest`](crate::operation::GetDigest)>
     #[allow(clippy::let_and_return)]
@@ -1404,6 +1425,8 @@ pub mod get_revision_input {
         }
     }
 }
+pub type GetRevisionInputOperationOutputAlias = crate::operation::GetRevision;
+pub type GetRevisionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetRevisionInput {
     /// Consumes the builder and constructs an Operation<[`GetRevision`](crate::operation::GetRevision)>
     #[allow(clippy::let_and_return)]
@@ -1558,6 +1581,9 @@ pub mod list_journal_kinesis_streams_for_ledger_input {
         }
     }
 }
+pub type ListJournalKinesisStreamsForLedgerInputOperationOutputAlias =
+    crate::operation::ListJournalKinesisStreamsForLedger;
+pub type ListJournalKinesisStreamsForLedgerInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListJournalKinesisStreamsForLedgerInput {
     /// Consumes the builder and constructs an Operation<[`ListJournalKinesisStreamsForLedger`](crate::operation::ListJournalKinesisStreamsForLedger)>
     #[allow(clippy::let_and_return)]
@@ -1708,6 +1734,8 @@ pub mod list_journal_s3_exports_input {
         }
     }
 }
+pub type ListJournalS3ExportsInputOperationOutputAlias = crate::operation::ListJournalS3Exports;
+pub type ListJournalS3ExportsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListJournalS3ExportsInput {
     /// Consumes the builder and constructs an Operation<[`ListJournalS3Exports`](crate::operation::ListJournalS3Exports)>
     #[allow(clippy::let_and_return)]
@@ -1867,6 +1895,9 @@ pub mod list_journal_s3_exports_for_ledger_input {
         }
     }
 }
+pub type ListJournalS3ExportsForLedgerInputOperationOutputAlias =
+    crate::operation::ListJournalS3ExportsForLedger;
+pub type ListJournalS3ExportsForLedgerInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListJournalS3ExportsForLedgerInput {
     /// Consumes the builder and constructs an Operation<[`ListJournalS3ExportsForLedger`](crate::operation::ListJournalS3ExportsForLedger)>
     #[allow(clippy::let_and_return)]
@@ -2015,6 +2046,8 @@ pub mod list_ledgers_input {
         }
     }
 }
+pub type ListLedgersInputOperationOutputAlias = crate::operation::ListLedgers;
+pub type ListLedgersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListLedgersInput {
     /// Consumes the builder and constructs an Operation<[`ListLedgers`](crate::operation::ListLedgers)>
     #[allow(clippy::let_and_return)]
@@ -2145,6 +2178,8 @@ pub mod list_tags_for_resource_input {
         }
     }
 }
+pub type ListTagsForResourceInputOperationOutputAlias = crate::operation::ListTagsForResource;
+pub type ListTagsForResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTagsForResourceInput {
     /// Consumes the builder and constructs an Operation<[`ListTagsForResource`](crate::operation::ListTagsForResource)>
     #[allow(clippy::let_and_return)]
@@ -2382,6 +2417,8 @@ pub mod stream_journal_to_kinesis_input {
         }
     }
 }
+pub type StreamJournalToKinesisInputOperationOutputAlias = crate::operation::StreamJournalToKinesis;
+pub type StreamJournalToKinesisInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StreamJournalToKinesisInput {
     /// Consumes the builder and constructs an Operation<[`StreamJournalToKinesis`](crate::operation::StreamJournalToKinesis)>
     #[allow(clippy::let_and_return)]
@@ -2541,6 +2578,8 @@ pub mod tag_resource_input {
         }
     }
 }
+pub type TagResourceInputOperationOutputAlias = crate::operation::TagResource;
+pub type TagResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagResourceInput {
     /// Consumes the builder and constructs an Operation<[`TagResource`](crate::operation::TagResource)>
     #[allow(clippy::let_and_return)]
@@ -2684,6 +2723,8 @@ pub mod untag_resource_input {
         }
     }
 }
+pub type UntagResourceInputOperationOutputAlias = crate::operation::UntagResource;
+pub type UntagResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagResourceInput {
     /// Consumes the builder and constructs an Operation<[`UntagResource`](crate::operation::UntagResource)>
     #[allow(clippy::let_and_return)]
@@ -2833,6 +2874,8 @@ pub mod update_ledger_input {
         }
     }
 }
+pub type UpdateLedgerInputOperationOutputAlias = crate::operation::UpdateLedger;
+pub type UpdateLedgerInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateLedgerInput {
     /// Consumes the builder and constructs an Operation<[`UpdateLedger`](crate::operation::UpdateLedger)>
     #[allow(clippy::let_and_return)]

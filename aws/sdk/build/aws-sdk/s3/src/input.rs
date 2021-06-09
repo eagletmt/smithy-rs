@@ -84,6 +84,8 @@ pub mod abort_multipart_upload_input {
         }
     }
 }
+pub type AbortMultipartUploadInputOperationOutputAlias = crate::operation::AbortMultipartUpload;
+pub type AbortMultipartUploadInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AbortMultipartUploadInput {
     /// Consumes the builder and constructs an Operation<[`AbortMultipartUpload`](crate::operation::AbortMultipartUpload)>
     #[allow(clippy::let_and_return)]
@@ -330,6 +332,9 @@ pub mod complete_multipart_upload_input {
         }
     }
 }
+pub type CompleteMultipartUploadInputOperationOutputAlias =
+    crate::operation::CompleteMultipartUpload;
+pub type CompleteMultipartUploadInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CompleteMultipartUploadInput {
     /// Consumes the builder and constructs an Operation<[`CompleteMultipartUpload`](crate::operation::CompleteMultipartUpload)>
     #[allow(clippy::let_and_return)]
@@ -1109,6 +1114,8 @@ pub mod copy_object_input {
         }
     }
 }
+pub type CopyObjectInputOperationOutputAlias = crate::operation::CopyObject;
+pub type CopyObjectInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CopyObjectInput {
     /// Consumes the builder and constructs an Operation<[`CopyObject`](crate::operation::CopyObject)>
     #[allow(clippy::let_and_return)]
@@ -2056,6 +2063,8 @@ pub mod create_bucket_input {
         }
     }
 }
+pub type CreateBucketInputOperationOutputAlias = crate::operation::CreateBucket;
+pub type CreateBucketInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateBucketInput {
     /// Consumes the builder and constructs an Operation<[`CreateBucket`](crate::operation::CreateBucket)>
     #[allow(clippy::let_and_return)]
@@ -2726,6 +2735,8 @@ pub mod create_multipart_upload_input {
         }
     }
 }
+pub type CreateMultipartUploadInputOperationOutputAlias = crate::operation::CreateMultipartUpload;
+pub type CreateMultipartUploadInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateMultipartUploadInput {
     /// Consumes the builder and constructs an Operation<[`CreateMultipartUpload`](crate::operation::CreateMultipartUpload)>
     #[allow(clippy::let_and_return)]
@@ -3379,6 +3390,8 @@ pub mod delete_bucket_input {
         }
     }
 }
+pub type DeleteBucketInputOperationOutputAlias = crate::operation::DeleteBucket;
+pub type DeleteBucketInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucket`](crate::operation::DeleteBucket)>
     #[allow(clippy::let_and_return)]
@@ -3555,6 +3568,9 @@ pub mod delete_bucket_analytics_configuration_input {
         }
     }
 }
+pub type DeleteBucketAnalyticsConfigurationInputOperationOutputAlias =
+    crate::operation::DeleteBucketAnalyticsConfiguration;
+pub type DeleteBucketAnalyticsConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketAnalyticsConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucketAnalyticsConfiguration`](crate::operation::DeleteBucketAnalyticsConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -3729,6 +3745,8 @@ pub mod delete_bucket_cors_input {
         }
     }
 }
+pub type DeleteBucketCorsInputOperationOutputAlias = crate::operation::DeleteBucketCors;
+pub type DeleteBucketCorsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketCorsInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucketCors`](crate::operation::DeleteBucketCors)>
     #[allow(clippy::let_and_return)]
@@ -3901,6 +3919,8 @@ pub mod delete_bucket_encryption_input {
         }
     }
 }
+pub type DeleteBucketEncryptionInputOperationOutputAlias = crate::operation::DeleteBucketEncryption;
+pub type DeleteBucketEncryptionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketEncryptionInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucketEncryption`](crate::operation::DeleteBucketEncryption)>
     #[allow(clippy::let_and_return)]
@@ -4073,6 +4093,10 @@ pub mod delete_bucket_intelligent_tiering_configuration_input {
         }
     }
 }
+pub type DeleteBucketIntelligentTieringConfigurationInputOperationOutputAlias =
+    crate::operation::DeleteBucketIntelligentTieringConfiguration;
+pub type DeleteBucketIntelligentTieringConfigurationInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketIntelligentTieringConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucketIntelligentTieringConfiguration`](crate::operation::DeleteBucketIntelligentTieringConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -4236,6 +4260,9 @@ pub mod delete_bucket_inventory_configuration_input {
         }
     }
 }
+pub type DeleteBucketInventoryConfigurationInputOperationOutputAlias =
+    crate::operation::DeleteBucketInventoryConfiguration;
+pub type DeleteBucketInventoryConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketInventoryConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucketInventoryConfiguration`](crate::operation::DeleteBucketInventoryConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -4410,6 +4437,8 @@ pub mod delete_bucket_lifecycle_input {
         }
     }
 }
+pub type DeleteBucketLifecycleInputOperationOutputAlias = crate::operation::DeleteBucketLifecycle;
+pub type DeleteBucketLifecycleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketLifecycleInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucketLifecycle`](crate::operation::DeleteBucketLifecycle)>
     #[allow(clippy::let_and_return)]
@@ -4594,6 +4623,9 @@ pub mod delete_bucket_metrics_configuration_input {
         }
     }
 }
+pub type DeleteBucketMetricsConfigurationInputOperationOutputAlias =
+    crate::operation::DeleteBucketMetricsConfiguration;
+pub type DeleteBucketMetricsConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketMetricsConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucketMetricsConfiguration`](crate::operation::DeleteBucketMetricsConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -4770,6 +4802,9 @@ pub mod delete_bucket_ownership_controls_input {
         }
     }
 }
+pub type DeleteBucketOwnershipControlsInputOperationOutputAlias =
+    crate::operation::DeleteBucketOwnershipControls;
+pub type DeleteBucketOwnershipControlsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketOwnershipControlsInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucketOwnershipControls`](crate::operation::DeleteBucketOwnershipControls)>
     #[allow(clippy::let_and_return)]
@@ -4941,6 +4976,8 @@ pub mod delete_bucket_policy_input {
         }
     }
 }
+pub type DeleteBucketPolicyInputOperationOutputAlias = crate::operation::DeleteBucketPolicy;
+pub type DeleteBucketPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketPolicyInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucketPolicy`](crate::operation::DeleteBucketPolicy)>
     #[allow(clippy::let_and_return)]
@@ -5112,6 +5149,9 @@ pub mod delete_bucket_replication_input {
         }
     }
 }
+pub type DeleteBucketReplicationInputOperationOutputAlias =
+    crate::operation::DeleteBucketReplication;
+pub type DeleteBucketReplicationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketReplicationInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucketReplication`](crate::operation::DeleteBucketReplication)>
     #[allow(clippy::let_and_return)]
@@ -5283,6 +5323,8 @@ pub mod delete_bucket_tagging_input {
         }
     }
 }
+pub type DeleteBucketTaggingInputOperationOutputAlias = crate::operation::DeleteBucketTagging;
+pub type DeleteBucketTaggingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketTaggingInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucketTagging`](crate::operation::DeleteBucketTagging)>
     #[allow(clippy::let_and_return)]
@@ -5454,6 +5496,8 @@ pub mod delete_bucket_website_input {
         }
     }
 }
+pub type DeleteBucketWebsiteInputOperationOutputAlias = crate::operation::DeleteBucketWebsite;
+pub type DeleteBucketWebsiteInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBucketWebsiteInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBucketWebsite`](crate::operation::DeleteBucketWebsite)>
     #[allow(clippy::let_and_return)]
@@ -5690,6 +5734,8 @@ pub mod delete_object_input {
         }
     }
 }
+pub type DeleteObjectInputOperationOutputAlias = crate::operation::DeleteObject;
+pub type DeleteObjectInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteObjectInput {
     /// Consumes the builder and constructs an Operation<[`DeleteObject`](crate::operation::DeleteObject)>
     #[allow(clippy::let_and_return)]
@@ -5970,6 +6016,8 @@ pub mod delete_objects_input {
         }
     }
 }
+pub type DeleteObjectsInputOperationOutputAlias = crate::operation::DeleteObjects;
+pub type DeleteObjectsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteObjectsInput {
     /// Consumes the builder and constructs an Operation<[`DeleteObjects`](crate::operation::DeleteObjects)>
     #[allow(clippy::let_and_return)]
@@ -6217,6 +6265,8 @@ pub mod delete_object_tagging_input {
         }
     }
 }
+pub type DeleteObjectTaggingInputOperationOutputAlias = crate::operation::DeleteObjectTagging;
+pub type DeleteObjectTaggingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteObjectTaggingInput {
     /// Consumes the builder and constructs an Operation<[`DeleteObjectTagging`](crate::operation::DeleteObjectTagging)>
     #[allow(clippy::let_and_return)]
@@ -6393,6 +6443,9 @@ pub mod delete_public_access_block_input {
         }
     }
 }
+pub type DeletePublicAccessBlockInputOperationOutputAlias =
+    crate::operation::DeletePublicAccessBlock;
+pub type DeletePublicAccessBlockInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeletePublicAccessBlockInput {
     /// Consumes the builder and constructs an Operation<[`DeletePublicAccessBlock`](crate::operation::DeletePublicAccessBlock)>
     #[allow(clippy::let_and_return)]
@@ -6566,6 +6619,9 @@ pub mod get_bucket_accelerate_configuration_input {
         }
     }
 }
+pub type GetBucketAccelerateConfigurationInputOperationOutputAlias =
+    crate::operation::GetBucketAccelerateConfiguration;
+pub type GetBucketAccelerateConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketAccelerateConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketAccelerateConfiguration`](crate::operation::GetBucketAccelerateConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -6736,6 +6792,8 @@ pub mod get_bucket_acl_input {
         }
     }
 }
+pub type GetBucketAclInputOperationOutputAlias = crate::operation::GetBucketAcl;
+pub type GetBucketAclInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketAclInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketAcl`](crate::operation::GetBucketAcl)>
     #[allow(clippy::let_and_return)]
@@ -6917,6 +6975,9 @@ pub mod get_bucket_analytics_configuration_input {
         }
     }
 }
+pub type GetBucketAnalyticsConfigurationInputOperationOutputAlias =
+    crate::operation::GetBucketAnalyticsConfiguration;
+pub type GetBucketAnalyticsConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketAnalyticsConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketAnalyticsConfiguration`](crate::operation::GetBucketAnalyticsConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -7091,6 +7152,8 @@ pub mod get_bucket_cors_input {
         }
     }
 }
+pub type GetBucketCorsInputOperationOutputAlias = crate::operation::GetBucketCors;
+pub type GetBucketCorsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketCorsInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketCors`](crate::operation::GetBucketCors)>
     #[allow(clippy::let_and_return)]
@@ -7260,6 +7323,8 @@ pub mod get_bucket_encryption_input {
         }
     }
 }
+pub type GetBucketEncryptionInputOperationOutputAlias = crate::operation::GetBucketEncryption;
+pub type GetBucketEncryptionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketEncryptionInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketEncryption`](crate::operation::GetBucketEncryption)>
     #[allow(clippy::let_and_return)]
@@ -7432,6 +7497,10 @@ pub mod get_bucket_intelligent_tiering_configuration_input {
         }
     }
 }
+pub type GetBucketIntelligentTieringConfigurationInputOperationOutputAlias =
+    crate::operation::GetBucketIntelligentTieringConfiguration;
+pub type GetBucketIntelligentTieringConfigurationInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl GetBucketIntelligentTieringConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketIntelligentTieringConfiguration`](crate::operation::GetBucketIntelligentTieringConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -7595,6 +7664,9 @@ pub mod get_bucket_inventory_configuration_input {
         }
     }
 }
+pub type GetBucketInventoryConfigurationInputOperationOutputAlias =
+    crate::operation::GetBucketInventoryConfiguration;
+pub type GetBucketInventoryConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketInventoryConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketInventoryConfiguration`](crate::operation::GetBucketInventoryConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -7772,6 +7844,9 @@ pub mod get_bucket_lifecycle_configuration_input {
         }
     }
 }
+pub type GetBucketLifecycleConfigurationInputOperationOutputAlias =
+    crate::operation::GetBucketLifecycleConfiguration;
+pub type GetBucketLifecycleConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketLifecycleConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketLifecycleConfiguration`](crate::operation::GetBucketLifecycleConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -7943,6 +8018,8 @@ pub mod get_bucket_location_input {
         }
     }
 }
+pub type GetBucketLocationInputOperationOutputAlias = crate::operation::GetBucketLocation;
+pub type GetBucketLocationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketLocationInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketLocation`](crate::operation::GetBucketLocation)>
     #[allow(clippy::let_and_return)]
@@ -8114,6 +8191,8 @@ pub mod get_bucket_logging_input {
         }
     }
 }
+pub type GetBucketLoggingInputOperationOutputAlias = crate::operation::GetBucketLogging;
+pub type GetBucketLoggingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketLoggingInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketLogging`](crate::operation::GetBucketLogging)>
     #[allow(clippy::let_and_return)]
@@ -8298,6 +8377,9 @@ pub mod get_bucket_metrics_configuration_input {
         }
     }
 }
+pub type GetBucketMetricsConfigurationInputOperationOutputAlias =
+    crate::operation::GetBucketMetricsConfiguration;
+pub type GetBucketMetricsConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketMetricsConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketMetricsConfiguration`](crate::operation::GetBucketMetricsConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -8475,6 +8557,9 @@ pub mod get_bucket_notification_configuration_input {
         }
     }
 }
+pub type GetBucketNotificationConfigurationInputOperationOutputAlias =
+    crate::operation::GetBucketNotificationConfiguration;
+pub type GetBucketNotificationConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketNotificationConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketNotificationConfiguration`](crate::operation::GetBucketNotificationConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -8647,6 +8732,9 @@ pub mod get_bucket_ownership_controls_input {
         }
     }
 }
+pub type GetBucketOwnershipControlsInputOperationOutputAlias =
+    crate::operation::GetBucketOwnershipControls;
+pub type GetBucketOwnershipControlsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketOwnershipControlsInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketOwnershipControls`](crate::operation::GetBucketOwnershipControls)>
     #[allow(clippy::let_and_return)]
@@ -8818,6 +8906,8 @@ pub mod get_bucket_policy_input {
         }
     }
 }
+pub type GetBucketPolicyInputOperationOutputAlias = crate::operation::GetBucketPolicy;
+pub type GetBucketPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketPolicyInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketPolicy`](crate::operation::GetBucketPolicy)>
     #[allow(clippy::let_and_return)]
@@ -8989,6 +9079,8 @@ pub mod get_bucket_policy_status_input {
         }
     }
 }
+pub type GetBucketPolicyStatusInputOperationOutputAlias = crate::operation::GetBucketPolicyStatus;
+pub type GetBucketPolicyStatusInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketPolicyStatusInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketPolicyStatus`](crate::operation::GetBucketPolicyStatus)>
     #[allow(clippy::let_and_return)]
@@ -9160,6 +9252,8 @@ pub mod get_bucket_replication_input {
         }
     }
 }
+pub type GetBucketReplicationInputOperationOutputAlias = crate::operation::GetBucketReplication;
+pub type GetBucketReplicationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketReplicationInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketReplication`](crate::operation::GetBucketReplication)>
     #[allow(clippy::let_and_return)]
@@ -9331,6 +9425,9 @@ pub mod get_bucket_request_payment_input {
         }
     }
 }
+pub type GetBucketRequestPaymentInputOperationOutputAlias =
+    crate::operation::GetBucketRequestPayment;
+pub type GetBucketRequestPaymentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketRequestPaymentInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketRequestPayment`](crate::operation::GetBucketRequestPayment)>
     #[allow(clippy::let_and_return)]
@@ -9502,6 +9599,8 @@ pub mod get_bucket_tagging_input {
         }
     }
 }
+pub type GetBucketTaggingInputOperationOutputAlias = crate::operation::GetBucketTagging;
+pub type GetBucketTaggingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketTaggingInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketTagging`](crate::operation::GetBucketTagging)>
     #[allow(clippy::let_and_return)]
@@ -9673,6 +9772,8 @@ pub mod get_bucket_versioning_input {
         }
     }
 }
+pub type GetBucketVersioningInputOperationOutputAlias = crate::operation::GetBucketVersioning;
+pub type GetBucketVersioningInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketVersioningInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketVersioning`](crate::operation::GetBucketVersioning)>
     #[allow(clippy::let_and_return)]
@@ -9844,6 +9945,8 @@ pub mod get_bucket_website_input {
         }
     }
 }
+pub type GetBucketWebsiteInputOperationOutputAlias = crate::operation::GetBucketWebsite;
+pub type GetBucketWebsiteInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetBucketWebsiteInput {
     /// Consumes the builder and constructs an Operation<[`GetBucketWebsite`](crate::operation::GetBucketWebsite)>
     #[allow(clippy::let_and_return)]
@@ -10270,6 +10373,8 @@ pub mod get_object_input {
         }
     }
 }
+pub type GetObjectInputOperationOutputAlias = crate::operation::GetObject;
+pub type GetObjectInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetObjectInput {
     /// Consumes the builder and constructs an Operation<[`GetObject`](crate::operation::GetObject)>
     #[allow(clippy::let_and_return)]
@@ -10692,6 +10797,8 @@ pub mod get_object_acl_input {
         }
     }
 }
+pub type GetObjectAclInputOperationOutputAlias = crate::operation::GetObjectAcl;
+pub type GetObjectAclInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetObjectAclInput {
     /// Consumes the builder and constructs an Operation<[`GetObjectAcl`](crate::operation::GetObjectAcl)>
     #[allow(clippy::let_and_return)]
@@ -10922,6 +11029,8 @@ pub mod get_object_legal_hold_input {
         }
     }
 }
+pub type GetObjectLegalHoldInputOperationOutputAlias = crate::operation::GetObjectLegalHold;
+pub type GetObjectLegalHoldInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetObjectLegalHoldInput {
     /// Consumes the builder and constructs an Operation<[`GetObjectLegalHold`](crate::operation::GetObjectLegalHold)>
     #[allow(clippy::let_and_return)]
@@ -11116,6 +11225,9 @@ pub mod get_object_lock_configuration_input {
         }
     }
 }
+pub type GetObjectLockConfigurationInputOperationOutputAlias =
+    crate::operation::GetObjectLockConfiguration;
+pub type GetObjectLockConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetObjectLockConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`GetObjectLockConfiguration`](crate::operation::GetObjectLockConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -11327,6 +11439,8 @@ pub mod get_object_retention_input {
         }
     }
 }
+pub type GetObjectRetentionInputOperationOutputAlias = crate::operation::GetObjectRetention;
+pub type GetObjectRetentionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetObjectRetentionInput {
     /// Consumes the builder and constructs an Operation<[`GetObjectRetention`](crate::operation::GetObjectRetention)>
     #[allow(clippy::let_and_return)]
@@ -11561,6 +11675,8 @@ pub mod get_object_tagging_input {
         }
     }
 }
+pub type GetObjectTaggingInputOperationOutputAlias = crate::operation::GetObjectTagging;
+pub type GetObjectTaggingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetObjectTaggingInput {
     /// Consumes the builder and constructs an Operation<[`GetObjectTagging`](crate::operation::GetObjectTagging)>
     #[allow(clippy::let_and_return)]
@@ -11782,6 +11898,8 @@ pub mod get_object_torrent_input {
         }
     }
 }
+pub type GetObjectTorrentInputOperationOutputAlias = crate::operation::GetObjectTorrent;
+pub type GetObjectTorrentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetObjectTorrentInput {
     /// Consumes the builder and constructs an Operation<[`GetObjectTorrent`](crate::operation::GetObjectTorrent)>
     #[allow(clippy::let_and_return)]
@@ -11973,6 +12091,8 @@ pub mod get_public_access_block_input {
         }
     }
 }
+pub type GetPublicAccessBlockInputOperationOutputAlias = crate::operation::GetPublicAccessBlock;
+pub type GetPublicAccessBlockInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetPublicAccessBlockInput {
     /// Consumes the builder and constructs an Operation<[`GetPublicAccessBlock`](crate::operation::GetPublicAccessBlock)>
     #[allow(clippy::let_and_return)]
@@ -12145,6 +12265,8 @@ pub mod head_bucket_input {
         }
     }
 }
+pub type HeadBucketInputOperationOutputAlias = crate::operation::HeadBucket;
+pub type HeadBucketInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl HeadBucketInput {
     /// Consumes the builder and constructs an Operation<[`HeadBucket`](crate::operation::HeadBucket)>
     #[allow(clippy::let_and_return)]
@@ -12479,6 +12601,8 @@ pub mod head_object_input {
         }
     }
 }
+pub type HeadObjectInputOperationOutputAlias = crate::operation::HeadObject;
+pub type HeadObjectInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl HeadObjectInput {
     /// Consumes the builder and constructs an Operation<[`HeadObject`](crate::operation::HeadObject)>
     #[allow(clippy::let_and_return)]
@@ -12841,6 +12965,9 @@ pub mod list_bucket_analytics_configurations_input {
         }
     }
 }
+pub type ListBucketAnalyticsConfigurationsInputOperationOutputAlias =
+    crate::operation::ListBucketAnalyticsConfigurations;
+pub type ListBucketAnalyticsConfigurationsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListBucketAnalyticsConfigurationsInput {
     /// Consumes the builder and constructs an Operation<[`ListBucketAnalyticsConfigurations`](crate::operation::ListBucketAnalyticsConfigurations)>
     #[allow(clippy::let_and_return)]
@@ -13024,6 +13151,10 @@ pub mod list_bucket_intelligent_tiering_configurations_input {
         }
     }
 }
+pub type ListBucketIntelligentTieringConfigurationsInputOperationOutputAlias =
+    crate::operation::ListBucketIntelligentTieringConfigurations;
+pub type ListBucketIntelligentTieringConfigurationsInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl ListBucketIntelligentTieringConfigurationsInput {
     /// Consumes the builder and constructs an Operation<[`ListBucketIntelligentTieringConfigurations`](crate::operation::ListBucketIntelligentTieringConfigurations)>
     #[allow(clippy::let_and_return)]
@@ -13196,6 +13327,9 @@ pub mod list_bucket_inventory_configurations_input {
         }
     }
 }
+pub type ListBucketInventoryConfigurationsInputOperationOutputAlias =
+    crate::operation::ListBucketInventoryConfigurations;
+pub type ListBucketInventoryConfigurationsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListBucketInventoryConfigurationsInput {
     /// Consumes the builder and constructs an Operation<[`ListBucketInventoryConfigurations`](crate::operation::ListBucketInventoryConfigurations)>
     #[allow(clippy::let_and_return)]
@@ -13393,6 +13527,9 @@ pub mod list_bucket_metrics_configurations_input {
         }
     }
 }
+pub type ListBucketMetricsConfigurationsInputOperationOutputAlias =
+    crate::operation::ListBucketMetricsConfigurations;
+pub type ListBucketMetricsConfigurationsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListBucketMetricsConfigurationsInput {
     /// Consumes the builder and constructs an Operation<[`ListBucketMetricsConfigurations`](crate::operation::ListBucketMetricsConfigurations)>
     #[allow(clippy::let_and_return)]
@@ -13543,6 +13680,8 @@ pub mod list_buckets_input {
         }
     }
 }
+pub type ListBucketsInputOperationOutputAlias = crate::operation::ListBuckets;
+pub type ListBucketsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListBucketsInput {
     /// Consumes the builder and constructs an Operation<[`ListBuckets`](crate::operation::ListBuckets)>
     #[allow(clippy::let_and_return)]
@@ -13774,6 +13913,8 @@ pub mod list_multipart_uploads_input {
         }
     }
 }
+pub type ListMultipartUploadsInputOperationOutputAlias = crate::operation::ListMultipartUploads;
+pub type ListMultipartUploadsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListMultipartUploadsInput {
     /// Consumes the builder and constructs an Operation<[`ListMultipartUploads`](crate::operation::ListMultipartUploads)>
     #[allow(clippy::let_and_return)]
@@ -14049,6 +14190,8 @@ pub mod list_objects_input {
         }
     }
 }
+pub type ListObjectsInputOperationOutputAlias = crate::operation::ListObjects;
+pub type ListObjectsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListObjectsInput {
     /// Consumes the builder and constructs an Operation<[`ListObjects`](crate::operation::ListObjects)>
     #[allow(clippy::let_and_return)]
@@ -14357,6 +14500,8 @@ pub mod list_objects_v2_input {
         }
     }
 }
+pub type ListObjectsV2InputOperationOutputAlias = crate::operation::ListObjectsV2;
+pub type ListObjectsV2InputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListObjectsV2Input {
     /// Consumes the builder and constructs an Operation<[`ListObjectsV2`](crate::operation::ListObjectsV2)>
     #[allow(clippy::let_and_return)]
@@ -14661,6 +14806,8 @@ pub mod list_object_versions_input {
         }
     }
 }
+pub type ListObjectVersionsInputOperationOutputAlias = crate::operation::ListObjectVersions;
+pub type ListObjectVersionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListObjectVersionsInput {
     /// Consumes the builder and constructs an Operation<[`ListObjectVersions`](crate::operation::ListObjectVersions)>
     #[allow(clippy::let_and_return)]
@@ -14922,6 +15069,8 @@ pub mod list_parts_input {
         }
     }
 }
+pub type ListPartsInputOperationOutputAlias = crate::operation::ListParts;
+pub type ListPartsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListPartsInput {
     /// Consumes the builder and constructs an Operation<[`ListParts`](crate::operation::ListParts)>
     #[allow(clippy::let_and_return)]
@@ -15142,6 +15291,9 @@ pub mod put_bucket_accelerate_configuration_input {
         }
     }
 }
+pub type PutBucketAccelerateConfigurationInputOperationOutputAlias =
+    crate::operation::PutBucketAccelerateConfiguration;
+pub type PutBucketAccelerateConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketAccelerateConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketAccelerateConfiguration`](crate::operation::PutBucketAccelerateConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -15418,6 +15570,8 @@ pub mod put_bucket_acl_input {
         }
     }
 }
+pub type PutBucketAclInputOperationOutputAlias = crate::operation::PutBucketAcl;
+pub type PutBucketAclInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketAclInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketAcl`](crate::operation::PutBucketAcl)>
     #[allow(clippy::let_and_return)]
@@ -15745,6 +15899,9 @@ pub mod put_bucket_analytics_configuration_input {
         }
     }
 }
+pub type PutBucketAnalyticsConfigurationInputOperationOutputAlias =
+    crate::operation::PutBucketAnalyticsConfiguration;
+pub type PutBucketAnalyticsConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketAnalyticsConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketAnalyticsConfiguration`](crate::operation::PutBucketAnalyticsConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -15952,6 +16109,8 @@ pub mod put_bucket_cors_input {
         }
     }
 }
+pub type PutBucketCorsInputOperationOutputAlias = crate::operation::PutBucketCors;
+pub type PutBucketCorsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketCorsInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketCors`](crate::operation::PutBucketCors)>
     #[allow(clippy::let_and_return)]
@@ -16172,6 +16331,8 @@ pub mod put_bucket_encryption_input {
         }
     }
 }
+pub type PutBucketEncryptionInputOperationOutputAlias = crate::operation::PutBucketEncryption;
+pub type PutBucketEncryptionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketEncryptionInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketEncryption`](crate::operation::PutBucketEncryption)>
     #[allow(clippy::let_and_return)]
@@ -16382,6 +16543,10 @@ pub mod put_bucket_intelligent_tiering_configuration_input {
         }
     }
 }
+pub type PutBucketIntelligentTieringConfigurationInputOperationOutputAlias =
+    crate::operation::PutBucketIntelligentTieringConfiguration;
+pub type PutBucketIntelligentTieringConfigurationInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl PutBucketIntelligentTieringConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketIntelligentTieringConfiguration`](crate::operation::PutBucketIntelligentTieringConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -16564,6 +16729,9 @@ pub mod put_bucket_inventory_configuration_input {
         }
     }
 }
+pub type PutBucketInventoryConfigurationInputOperationOutputAlias =
+    crate::operation::PutBucketInventoryConfiguration;
+pub type PutBucketInventoryConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketInventoryConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketInventoryConfiguration`](crate::operation::PutBucketInventoryConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -16760,6 +16928,9 @@ pub mod put_bucket_lifecycle_configuration_input {
         }
     }
 }
+pub type PutBucketLifecycleConfigurationInputOperationOutputAlias =
+    crate::operation::PutBucketLifecycleConfiguration;
+pub type PutBucketLifecycleConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketLifecycleConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketLifecycleConfiguration`](crate::operation::PutBucketLifecycleConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -16959,6 +17130,8 @@ pub mod put_bucket_logging_input {
         }
     }
 }
+pub type PutBucketLoggingInputOperationOutputAlias = crate::operation::PutBucketLogging;
+pub type PutBucketLoggingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketLoggingInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketLogging`](crate::operation::PutBucketLogging)>
     #[allow(clippy::let_and_return)]
@@ -17177,6 +17350,9 @@ pub mod put_bucket_metrics_configuration_input {
         }
     }
 }
+pub type PutBucketMetricsConfigurationInputOperationOutputAlias =
+    crate::operation::PutBucketMetricsConfiguration;
+pub type PutBucketMetricsConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketMetricsConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketMetricsConfiguration`](crate::operation::PutBucketMetricsConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -17374,6 +17550,9 @@ pub mod put_bucket_notification_configuration_input {
         }
     }
 }
+pub type PutBucketNotificationConfigurationInputOperationOutputAlias =
+    crate::operation::PutBucketNotificationConfiguration;
+pub type PutBucketNotificationConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketNotificationConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketNotificationConfiguration`](crate::operation::PutBucketNotificationConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -17575,6 +17754,9 @@ pub mod put_bucket_ownership_controls_input {
         }
     }
 }
+pub type PutBucketOwnershipControlsInputOperationOutputAlias =
+    crate::operation::PutBucketOwnershipControls;
+pub type PutBucketOwnershipControlsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketOwnershipControlsInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketOwnershipControls`](crate::operation::PutBucketOwnershipControls)>
     #[allow(clippy::let_and_return)]
@@ -17803,6 +17985,8 @@ pub mod put_bucket_policy_input {
         }
     }
 }
+pub type PutBucketPolicyInputOperationOutputAlias = crate::operation::PutBucketPolicy;
+pub type PutBucketPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketPolicyInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketPolicy`](crate::operation::PutBucketPolicy)>
     #[allow(clippy::let_and_return)]
@@ -18055,6 +18239,8 @@ pub mod put_bucket_replication_input {
         }
     }
 }
+pub type PutBucketReplicationInputOperationOutputAlias = crate::operation::PutBucketReplication;
+pub type PutBucketReplicationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketReplicationInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketReplication`](crate::operation::PutBucketReplication)>
     #[allow(clippy::let_and_return)]
@@ -18297,6 +18483,9 @@ pub mod put_bucket_request_payment_input {
         }
     }
 }
+pub type PutBucketRequestPaymentInputOperationOutputAlias =
+    crate::operation::PutBucketRequestPayment;
+pub type PutBucketRequestPaymentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketRequestPaymentInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketRequestPayment`](crate::operation::PutBucketRequestPayment)>
     #[allow(clippy::let_and_return)]
@@ -18513,6 +18702,8 @@ pub mod put_bucket_tagging_input {
         }
     }
 }
+pub type PutBucketTaggingInputOperationOutputAlias = crate::operation::PutBucketTagging;
+pub type PutBucketTaggingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketTaggingInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketTagging`](crate::operation::PutBucketTagging)>
     #[allow(clippy::let_and_return)]
@@ -18747,6 +18938,8 @@ pub mod put_bucket_versioning_input {
         }
     }
 }
+pub type PutBucketVersioningInputOperationOutputAlias = crate::operation::PutBucketVersioning;
+pub type PutBucketVersioningInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketVersioningInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketVersioning`](crate::operation::PutBucketVersioning)>
     #[allow(clippy::let_and_return)]
@@ -18984,6 +19177,8 @@ pub mod put_bucket_website_input {
         }
     }
 }
+pub type PutBucketWebsiteInputOperationOutputAlias = crate::operation::PutBucketWebsite;
+pub type PutBucketWebsiteInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutBucketWebsiteInput {
     /// Consumes the builder and constructs an Operation<[`PutBucketWebsite`](crate::operation::PutBucketWebsite)>
     #[allow(clippy::let_and_return)]
@@ -19631,6 +19826,8 @@ pub mod put_object_input {
         }
     }
 }
+pub type PutObjectInputOperationOutputAlias = crate::operation::PutObject;
+pub type PutObjectInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutObjectInput {
     /// Consumes the builder and constructs an Operation<[`PutObject`](crate::operation::PutObject)>
     #[allow(clippy::let_and_return)]
@@ -20466,6 +20663,8 @@ pub mod put_object_acl_input {
         }
     }
 }
+pub type PutObjectAclInputOperationOutputAlias = crate::operation::PutObjectAcl;
+pub type PutObjectAclInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutObjectAclInput {
     /// Consumes the builder and constructs an Operation<[`PutObjectAcl`](crate::operation::PutObjectAcl)>
     #[allow(clippy::let_and_return)]
@@ -20851,6 +21050,8 @@ pub mod put_object_legal_hold_input {
         }
     }
 }
+pub type PutObjectLegalHoldInputOperationOutputAlias = crate::operation::PutObjectLegalHold;
+pub type PutObjectLegalHoldInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutObjectLegalHoldInput {
     /// Consumes the builder and constructs an Operation<[`PutObjectLegalHold`](crate::operation::PutObjectLegalHold)>
     #[allow(clippy::let_and_return)]
@@ -21121,6 +21322,9 @@ pub mod put_object_lock_configuration_input {
         }
     }
 }
+pub type PutObjectLockConfigurationInputOperationOutputAlias =
+    crate::operation::PutObjectLockConfiguration;
+pub type PutObjectLockConfigurationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutObjectLockConfigurationInput {
     /// Consumes the builder and constructs an Operation<[`PutObjectLockConfiguration`](crate::operation::PutObjectLockConfiguration)>
     #[allow(clippy::let_and_return)]
@@ -21428,6 +21632,8 @@ pub mod put_object_retention_input {
         }
     }
 }
+pub type PutObjectRetentionInputOperationOutputAlias = crate::operation::PutObjectRetention;
+pub type PutObjectRetentionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutObjectRetentionInput {
     /// Consumes the builder and constructs an Operation<[`PutObjectRetention`](crate::operation::PutObjectRetention)>
     #[allow(clippy::let_and_return)]
@@ -21722,6 +21928,8 @@ pub mod put_object_tagging_input {
         }
     }
 }
+pub type PutObjectTaggingInputOperationOutputAlias = crate::operation::PutObjectTagging;
+pub type PutObjectTaggingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutObjectTaggingInput {
     /// Consumes the builder and constructs an Operation<[`PutObjectTagging`](crate::operation::PutObjectTagging)>
     #[allow(clippy::let_and_return)]
@@ -21966,6 +22174,8 @@ pub mod put_public_access_block_input {
         }
     }
 }
+pub type PutPublicAccessBlockInputOperationOutputAlias = crate::operation::PutPublicAccessBlock;
+pub type PutPublicAccessBlockInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutPublicAccessBlockInput {
     /// Consumes the builder and constructs an Operation<[`PutPublicAccessBlock`](crate::operation::PutPublicAccessBlock)>
     #[allow(clippy::let_and_return)]
@@ -22211,6 +22421,8 @@ pub mod restore_object_input {
         }
     }
 }
+pub type RestoreObjectInputOperationOutputAlias = crate::operation::RestoreObject;
+pub type RestoreObjectInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RestoreObjectInput {
     /// Consumes the builder and constructs an Operation<[`RestoreObject`](crate::operation::RestoreObject)>
     #[allow(clippy::let_and_return)]
@@ -22540,6 +22752,8 @@ pub mod upload_part_input {
         }
     }
 }
+pub type UploadPartInputOperationOutputAlias = crate::operation::UploadPart;
+pub type UploadPartInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UploadPartInput {
     /// Consumes the builder and constructs an Operation<[`UploadPart`](crate::operation::UploadPart)>
     #[allow(clippy::let_and_return)]
@@ -23107,6 +23321,8 @@ pub mod upload_part_copy_input {
         }
     }
 }
+pub type UploadPartCopyInputOperationOutputAlias = crate::operation::UploadPartCopy;
+pub type UploadPartCopyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UploadPartCopyInput {
     /// Consumes the builder and constructs an Operation<[`UploadPartCopy`](crate::operation::UploadPartCopy)>
     #[allow(clippy::let_and_return)]
@@ -24079,6 +24295,8 @@ pub mod write_get_object_response_input {
         }
     }
 }
+pub type WriteGetObjectResponseInputOperationOutputAlias = crate::operation::WriteGetObjectResponse;
+pub type WriteGetObjectResponseInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl WriteGetObjectResponseInput {
     /// Consumes the builder and constructs an Operation<[`WriteGetObjectResponse`](crate::operation::WriteGetObjectResponse)>
     #[allow(clippy::let_and_return)]

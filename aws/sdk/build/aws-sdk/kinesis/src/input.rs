@@ -51,6 +51,8 @@ pub mod add_tags_to_stream_input {
         }
     }
 }
+pub type AddTagsToStreamInputOperationOutputAlias = crate::operation::AddTagsToStream;
+pub type AddTagsToStreamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AddTagsToStreamInput {
     /// Consumes the builder and constructs an Operation<[`AddTagsToStream`](crate::operation::AddTagsToStream)>
     #[allow(clippy::let_and_return)]
@@ -179,6 +181,8 @@ pub mod create_stream_input {
         }
     }
 }
+pub type CreateStreamInputOperationOutputAlias = crate::operation::CreateStream;
+pub type CreateStreamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateStreamInput {
     /// Consumes the builder and constructs an Operation<[`CreateStream`](crate::operation::CreateStream)>
     #[allow(clippy::let_and_return)]
@@ -306,6 +310,9 @@ pub mod decrease_stream_retention_period_input {
         }
     }
 }
+pub type DecreaseStreamRetentionPeriodInputOperationOutputAlias =
+    crate::operation::DecreaseStreamRetentionPeriod;
+pub type DecreaseStreamRetentionPeriodInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DecreaseStreamRetentionPeriodInput {
     /// Consumes the builder and constructs an Operation<[`DecreaseStreamRetentionPeriod`](crate::operation::DecreaseStreamRetentionPeriod)>
     #[allow(clippy::let_and_return)]
@@ -435,6 +442,8 @@ pub mod delete_stream_input {
         }
     }
 }
+pub type DeleteStreamInputOperationOutputAlias = crate::operation::DeleteStream;
+pub type DeleteStreamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteStreamInput {
     /// Consumes the builder and constructs an Operation<[`DeleteStream`](crate::operation::DeleteStream)>
     #[allow(clippy::let_and_return)]
@@ -575,6 +584,9 @@ pub mod deregister_stream_consumer_input {
         }
     }
 }
+pub type DeregisterStreamConsumerInputOperationOutputAlias =
+    crate::operation::DeregisterStreamConsumer;
+pub type DeregisterStreamConsumerInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeregisterStreamConsumerInput {
     /// Consumes the builder and constructs an Operation<[`DeregisterStreamConsumer`](crate::operation::DeregisterStreamConsumer)>
     #[allow(clippy::let_and_return)]
@@ -674,6 +686,8 @@ pub mod describe_limits_input {
         }
     }
 }
+pub type DescribeLimitsInputOperationOutputAlias = crate::operation::DescribeLimits;
+pub type DescribeLimitsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeLimitsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeLimits`](crate::operation::DescribeLimits)>
     #[allow(clippy::let_and_return)]
@@ -809,6 +823,8 @@ pub mod describe_stream_input {
         }
     }
 }
+pub type DescribeStreamInputOperationOutputAlias = crate::operation::DescribeStream;
+pub type DescribeStreamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeStreamInput {
     /// Consumes the builder and constructs an Operation<[`DescribeStream`](crate::operation::DescribeStream)>
     #[allow(clippy::let_and_return)]
@@ -944,6 +960,8 @@ pub mod describe_stream_consumer_input {
         }
     }
 }
+pub type DescribeStreamConsumerInputOperationOutputAlias = crate::operation::DescribeStreamConsumer;
+pub type DescribeStreamConsumerInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeStreamConsumerInput {
     /// Consumes the builder and constructs an Operation<[`DescribeStreamConsumer`](crate::operation::DescribeStreamConsumer)>
     #[allow(clippy::let_and_return)]
@@ -1057,6 +1075,8 @@ pub mod describe_stream_summary_input {
         }
     }
 }
+pub type DescribeStreamSummaryInputOperationOutputAlias = crate::operation::DescribeStreamSummary;
+pub type DescribeStreamSummaryInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeStreamSummaryInput {
     /// Consumes the builder and constructs an Operation<[`DescribeStreamSummary`](crate::operation::DescribeStreamSummary)>
     #[allow(clippy::let_and_return)]
@@ -1187,6 +1207,9 @@ pub mod disable_enhanced_monitoring_input {
         }
     }
 }
+pub type DisableEnhancedMonitoringInputOperationOutputAlias =
+    crate::operation::DisableEnhancedMonitoring;
+pub type DisableEnhancedMonitoringInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DisableEnhancedMonitoringInput {
     /// Consumes the builder and constructs an Operation<[`DisableEnhancedMonitoring`](crate::operation::DisableEnhancedMonitoring)>
     #[allow(clippy::let_and_return)]
@@ -1316,6 +1339,9 @@ pub mod enable_enhanced_monitoring_input {
         }
     }
 }
+pub type EnableEnhancedMonitoringInputOperationOutputAlias =
+    crate::operation::EnableEnhancedMonitoring;
+pub type EnableEnhancedMonitoringInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl EnableEnhancedMonitoringInput {
     /// Consumes the builder and constructs an Operation<[`EnableEnhancedMonitoring`](crate::operation::EnableEnhancedMonitoring)>
     #[allow(clippy::let_and_return)]
@@ -1443,6 +1469,8 @@ pub mod get_records_input {
         }
     }
 }
+pub type GetRecordsInputOperationOutputAlias = crate::operation::GetRecords;
+pub type GetRecordsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetRecordsInput {
     /// Consumes the builder and constructs an Operation<[`GetRecords`](crate::operation::GetRecords)>
     #[allow(clippy::let_and_return)]
@@ -1639,6 +1667,8 @@ pub mod get_shard_iterator_input {
         }
     }
 }
+pub type GetShardIteratorInputOperationOutputAlias = crate::operation::GetShardIterator;
+pub type GetShardIteratorInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetShardIteratorInput {
     /// Consumes the builder and constructs an Operation<[`GetShardIterator`](crate::operation::GetShardIterator)>
     #[allow(clippy::let_and_return)]
@@ -1766,6 +1796,9 @@ pub mod increase_stream_retention_period_input {
         }
     }
 }
+pub type IncreaseStreamRetentionPeriodInputOperationOutputAlias =
+    crate::operation::IncreaseStreamRetentionPeriod;
+pub type IncreaseStreamRetentionPeriodInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl IncreaseStreamRetentionPeriodInput {
     /// Consumes the builder and constructs an Operation<[`IncreaseStreamRetentionPeriod`](crate::operation::IncreaseStreamRetentionPeriod)>
     #[allow(clippy::let_and_return)]
@@ -1984,6 +2017,8 @@ pub mod list_shards_input {
         }
     }
 }
+pub type ListShardsInputOperationOutputAlias = crate::operation::ListShards;
+pub type ListShardsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListShardsInput {
     /// Consumes the builder and constructs an Operation<[`ListShards`](crate::operation::ListShards)>
     #[allow(clippy::let_and_return)]
@@ -2161,6 +2196,8 @@ pub mod list_stream_consumers_input {
         }
     }
 }
+pub type ListStreamConsumersInputOperationOutputAlias = crate::operation::ListStreamConsumers;
+pub type ListStreamConsumersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListStreamConsumersInput {
     /// Consumes the builder and constructs an Operation<[`ListStreamConsumers`](crate::operation::ListStreamConsumers)>
     #[allow(clippy::let_and_return)]
@@ -2287,6 +2324,8 @@ pub mod list_streams_input {
         }
     }
 }
+pub type ListStreamsInputOperationOutputAlias = crate::operation::ListStreams;
+pub type ListStreamsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListStreamsInput {
     /// Consumes the builder and constructs an Operation<[`ListStreams`](crate::operation::ListStreams)>
     #[allow(clippy::let_and_return)]
@@ -2430,6 +2469,8 @@ pub mod list_tags_for_stream_input {
         }
     }
 }
+pub type ListTagsForStreamInputOperationOutputAlias = crate::operation::ListTagsForStream;
+pub type ListTagsForStreamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTagsForStreamInput {
     /// Consumes the builder and constructs an Operation<[`ListTagsForStream`](crate::operation::ListTagsForStream)>
     #[allow(clippy::let_and_return)]
@@ -2568,6 +2609,8 @@ pub mod merge_shards_input {
         }
     }
 }
+pub type MergeShardsInputOperationOutputAlias = crate::operation::MergeShards;
+pub type MergeShardsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl MergeShardsInput {
     /// Consumes the builder and constructs an Operation<[`MergeShards`](crate::operation::MergeShards)>
     #[allow(clippy::let_and_return)]
@@ -2744,6 +2787,8 @@ pub mod put_record_input {
         }
     }
 }
+pub type PutRecordInputOperationOutputAlias = crate::operation::PutRecord;
+pub type PutRecordInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutRecordInput {
     /// Consumes the builder and constructs an Operation<[`PutRecord`](crate::operation::PutRecord)>
     #[allow(clippy::let_and_return)]
@@ -2870,6 +2915,8 @@ pub mod put_records_input {
         }
     }
 }
+pub type PutRecordsInputOperationOutputAlias = crate::operation::PutRecords;
+pub type PutRecordsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutRecordsInput {
     /// Consumes the builder and constructs an Operation<[`PutRecords`](crate::operation::PutRecords)>
     #[allow(clippy::let_and_return)]
@@ -2996,6 +3043,8 @@ pub mod register_stream_consumer_input {
         }
     }
 }
+pub type RegisterStreamConsumerInputOperationOutputAlias = crate::operation::RegisterStreamConsumer;
+pub type RegisterStreamConsumerInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RegisterStreamConsumerInput {
     /// Consumes the builder and constructs an Operation<[`RegisterStreamConsumer`](crate::operation::RegisterStreamConsumer)>
     #[allow(clippy::let_and_return)]
@@ -3124,6 +3173,8 @@ pub mod remove_tags_from_stream_input {
         }
     }
 }
+pub type RemoveTagsFromStreamInputOperationOutputAlias = crate::operation::RemoveTagsFromStream;
+pub type RemoveTagsFromStreamInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RemoveTagsFromStreamInput {
     /// Consumes the builder and constructs an Operation<[`RemoveTagsFromStream`](crate::operation::RemoveTagsFromStream)>
     #[allow(clippy::let_and_return)]
@@ -3267,6 +3318,8 @@ pub mod split_shard_input {
         }
     }
 }
+pub type SplitShardInputOperationOutputAlias = crate::operation::SplitShard;
+pub type SplitShardInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SplitShardInput {
     /// Consumes the builder and constructs an Operation<[`SplitShard`](crate::operation::SplitShard)>
     #[allow(clippy::let_and_return)]
@@ -3435,6 +3488,8 @@ pub mod start_stream_encryption_input {
         }
     }
 }
+pub type StartStreamEncryptionInputOperationOutputAlias = crate::operation::StartStreamEncryption;
+pub type StartStreamEncryptionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartStreamEncryptionInput {
     /// Consumes the builder and constructs an Operation<[`StartStreamEncryption`](crate::operation::StartStreamEncryption)>
     #[allow(clippy::let_and_return)]
@@ -3603,6 +3658,8 @@ pub mod stop_stream_encryption_input {
         }
     }
 }
+pub type StopStreamEncryptionInputOperationOutputAlias = crate::operation::StopStreamEncryption;
+pub type StopStreamEncryptionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopStreamEncryptionInput {
     /// Consumes the builder and constructs an Operation<[`StopStreamEncryption`](crate::operation::StopStreamEncryption)>
     #[allow(clippy::let_and_return)]
@@ -3760,6 +3817,8 @@ pub mod update_shard_count_input {
         }
     }
 }
+pub type UpdateShardCountInputOperationOutputAlias = crate::operation::UpdateShardCount;
+pub type UpdateShardCountInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateShardCountInput {
     /// Consumes the builder and constructs an Operation<[`UpdateShardCount`](crate::operation::UpdateShardCount)>
     #[allow(clippy::let_and_return)]

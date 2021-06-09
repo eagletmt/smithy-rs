@@ -148,6 +148,8 @@ pub mod invoke_endpoint_input {
         }
     }
 }
+pub type InvokeEndpointInputOperationOutputAlias = crate::operation::InvokeEndpoint;
+pub type InvokeEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl InvokeEndpointInput {
     /// Consumes the builder and constructs an Operation<[`InvokeEndpoint`](crate::operation::InvokeEndpoint)>
     #[allow(clippy::let_and_return)]

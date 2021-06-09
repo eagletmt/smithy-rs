@@ -244,6 +244,8 @@ pub mod assume_role_input {
         }
     }
 }
+pub type AssumeRoleInputOperationOutputAlias = crate::operation::AssumeRole;
+pub type AssumeRoleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AssumeRoleInput {
     /// Consumes the builder and constructs an Operation<[`AssumeRole`](crate::operation::AssumeRole)>
     #[allow(clippy::let_and_return)]
@@ -468,6 +470,8 @@ pub mod assume_role_with_saml_input {
         }
     }
 }
+pub type AssumeRoleWithSAMLInputOperationOutputAlias = crate::operation::AssumeRoleWithSAML;
+pub type AssumeRoleWithSAMLInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AssumeRoleWithSAMLInput {
     /// Consumes the builder and constructs an Operation<[`AssumeRoleWithSAML`](crate::operation::AssumeRoleWithSAML)>
     #[allow(clippy::let_and_return)]
@@ -721,6 +725,9 @@ pub mod assume_role_with_web_identity_input {
         }
     }
 }
+pub type AssumeRoleWithWebIdentityInputOperationOutputAlias =
+    crate::operation::AssumeRoleWithWebIdentity;
+pub type AssumeRoleWithWebIdentityInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AssumeRoleWithWebIdentityInput {
     /// Consumes the builder and constructs an Operation<[`AssumeRoleWithWebIdentity`](crate::operation::AssumeRoleWithWebIdentity)>
     #[allow(clippy::let_and_return)]
@@ -848,6 +855,9 @@ pub mod decode_authorization_message_input {
         }
     }
 }
+pub type DecodeAuthorizationMessageInputOperationOutputAlias =
+    crate::operation::DecodeAuthorizationMessage;
+pub type DecodeAuthorizationMessageInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DecodeAuthorizationMessageInput {
     /// Consumes the builder and constructs an Operation<[`DecodeAuthorizationMessage`](crate::operation::DecodeAuthorizationMessage)>
     #[allow(clippy::let_and_return)]
@@ -974,6 +984,8 @@ pub mod get_access_key_info_input {
         }
     }
 }
+pub type GetAccessKeyInfoInputOperationOutputAlias = crate::operation::GetAccessKeyInfo;
+pub type GetAccessKeyInfoInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetAccessKeyInfoInput {
     /// Consumes the builder and constructs an Operation<[`GetAccessKeyInfo`](crate::operation::GetAccessKeyInfo)>
     #[allow(clippy::let_and_return)]
@@ -1084,6 +1096,8 @@ pub mod get_caller_identity_input {
         }
     }
 }
+pub type GetCallerIdentityInputOperationOutputAlias = crate::operation::GetCallerIdentity;
+pub type GetCallerIdentityInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetCallerIdentityInput {
     /// Consumes the builder and constructs an Operation<[`GetCallerIdentity`](crate::operation::GetCallerIdentity)>
     #[allow(clippy::let_and_return)]
@@ -1300,6 +1314,8 @@ pub mod get_federation_token_input {
         }
     }
 }
+pub type GetFederationTokenInputOperationOutputAlias = crate::operation::GetFederationToken;
+pub type GetFederationTokenInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetFederationTokenInput {
     /// Consumes the builder and constructs an Operation<[`GetFederationToken`](crate::operation::GetFederationToken)>
     #[allow(clippy::let_and_return)]
@@ -1464,6 +1480,8 @@ pub mod get_session_token_input {
         }
     }
 }
+pub type GetSessionTokenInputOperationOutputAlias = crate::operation::GetSessionToken;
+pub type GetSessionTokenInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetSessionTokenInput {
     /// Consumes the builder and constructs an Operation<[`GetSessionToken`](crate::operation::GetSessionToken)>
     #[allow(clippy::let_and_return)]

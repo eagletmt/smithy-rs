@@ -28,6 +28,8 @@ pub mod delete_lexicon_input {
         }
     }
 }
+pub type DeleteLexiconInputOperationOutputAlias = crate::operation::DeleteLexicon;
+pub type DeleteLexiconInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteLexiconInput {
     /// Consumes the builder and constructs an Operation<[`DeleteLexicon`](crate::operation::DeleteLexicon)>
     #[allow(clippy::let_and_return)]
@@ -198,6 +200,8 @@ pub mod describe_voices_input {
         }
     }
 }
+pub type DescribeVoicesInputOperationOutputAlias = crate::operation::DescribeVoices;
+pub type DescribeVoicesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeVoicesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeVoices`](crate::operation::DescribeVoices)>
     #[allow(clippy::let_and_return)]
@@ -336,6 +340,8 @@ pub mod get_lexicon_input {
         }
     }
 }
+pub type GetLexiconInputOperationOutputAlias = crate::operation::GetLexicon;
+pub type GetLexiconInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetLexiconInput {
     /// Consumes the builder and constructs an Operation<[`GetLexicon`](crate::operation::GetLexicon)>
     #[allow(clippy::let_and_return)]
@@ -458,6 +464,8 @@ pub mod get_speech_synthesis_task_input {
         }
     }
 }
+pub type GetSpeechSynthesisTaskInputOperationOutputAlias = crate::operation::GetSpeechSynthesisTask;
+pub type GetSpeechSynthesisTaskInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetSpeechSynthesisTaskInput {
     /// Consumes the builder and constructs an Operation<[`GetSpeechSynthesisTask`](crate::operation::GetSpeechSynthesisTask)>
     #[allow(clippy::let_and_return)]
@@ -583,6 +591,8 @@ pub mod list_lexicons_input {
         }
     }
 }
+pub type ListLexiconsInputOperationOutputAlias = crate::operation::ListLexicons;
+pub type ListLexiconsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListLexiconsInput {
     /// Consumes the builder and constructs an Operation<[`ListLexicons`](crate::operation::ListLexicons)>
     #[allow(clippy::let_and_return)]
@@ -733,6 +743,9 @@ pub mod list_speech_synthesis_tasks_input {
         }
     }
 }
+pub type ListSpeechSynthesisTasksInputOperationOutputAlias =
+    crate::operation::ListSpeechSynthesisTasks;
+pub type ListSpeechSynthesisTasksInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListSpeechSynthesisTasksInput {
     /// Consumes the builder and constructs an Operation<[`ListSpeechSynthesisTasks`](crate::operation::ListSpeechSynthesisTasks)>
     #[allow(clippy::let_and_return)]
@@ -877,6 +890,8 @@ pub mod put_lexicon_input {
         }
     }
 }
+pub type PutLexiconInputOperationOutputAlias = crate::operation::PutLexicon;
+pub type PutLexiconInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutLexiconInput {
     /// Consumes the builder and constructs an Operation<[`PutLexicon`](crate::operation::PutLexicon)>
     #[allow(clippy::let_and_return)]
@@ -1160,6 +1175,9 @@ pub mod start_speech_synthesis_task_input {
         }
     }
 }
+pub type StartSpeechSynthesisTaskInputOperationOutputAlias =
+    crate::operation::StartSpeechSynthesisTask;
+pub type StartSpeechSynthesisTaskInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartSpeechSynthesisTaskInput {
     /// Consumes the builder and constructs an Operation<[`StartSpeechSynthesisTask`](crate::operation::StartSpeechSynthesisTask)>
     #[allow(clippy::let_and_return)]
@@ -1420,6 +1438,8 @@ pub mod synthesize_speech_input {
         }
     }
 }
+pub type SynthesizeSpeechInputOperationOutputAlias = crate::operation::SynthesizeSpeech;
+pub type SynthesizeSpeechInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SynthesizeSpeechInput {
     /// Consumes the builder and constructs an Operation<[`SynthesizeSpeech`](crate::operation::SynthesizeSpeech)>
     #[allow(clippy::let_and_return)]

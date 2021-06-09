@@ -63,6 +63,8 @@ pub mod create_capacity_provider_input {
         }
     }
 }
+pub type CreateCapacityProviderInputOperationOutputAlias = crate::operation::CreateCapacityProvider;
+pub type CreateCapacityProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateCapacityProviderInput {
     /// Consumes the builder and constructs an Operation<[`CreateCapacityProvider`](crate::operation::CreateCapacityProvider)>
     #[allow(clippy::let_and_return)]
@@ -257,6 +259,8 @@ pub mod create_cluster_input {
         }
     }
 }
+pub type CreateClusterInputOperationOutputAlias = crate::operation::CreateCluster;
+pub type CreateClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateClusterInput {
     /// Consumes the builder and constructs an Operation<[`CreateCluster`](crate::operation::CreateCluster)>
     #[allow(clippy::let_and_return)]
@@ -772,6 +776,8 @@ pub mod create_service_input {
         }
     }
 }
+pub type CreateServiceInputOperationOutputAlias = crate::operation::CreateService;
+pub type CreateServiceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateServiceInput {
     /// Consumes the builder and constructs an Operation<[`CreateService`](crate::operation::CreateService)>
     #[allow(clippy::let_and_return)]
@@ -1063,6 +1069,8 @@ pub mod create_task_set_input {
         }
     }
 }
+pub type CreateTaskSetInputOperationOutputAlias = crate::operation::CreateTaskSet;
+pub type CreateTaskSetInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateTaskSetInput {
     /// Consumes the builder and constructs an Operation<[`CreateTaskSet`](crate::operation::CreateTaskSet)>
     #[allow(clippy::let_and_return)]
@@ -1199,6 +1207,8 @@ pub mod delete_account_setting_input {
         }
     }
 }
+pub type DeleteAccountSettingInputOperationOutputAlias = crate::operation::DeleteAccountSetting;
+pub type DeleteAccountSettingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteAccountSettingInput {
     /// Consumes the builder and constructs an Operation<[`DeleteAccountSetting`](crate::operation::DeleteAccountSetting)>
     #[allow(clippy::let_and_return)]
@@ -1331,6 +1341,8 @@ pub mod delete_attributes_input {
         }
     }
 }
+pub type DeleteAttributesInputOperationOutputAlias = crate::operation::DeleteAttributes;
+pub type DeleteAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteAttributesInput {
     /// Consumes the builder and constructs an Operation<[`DeleteAttributes`](crate::operation::DeleteAttributes)>
     #[allow(clippy::let_and_return)]
@@ -1449,6 +1461,8 @@ pub mod delete_capacity_provider_input {
         }
     }
 }
+pub type DeleteCapacityProviderInputOperationOutputAlias = crate::operation::DeleteCapacityProvider;
+pub type DeleteCapacityProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteCapacityProviderInput {
     /// Consumes the builder and constructs an Operation<[`DeleteCapacityProvider`](crate::operation::DeleteCapacityProvider)>
     #[allow(clippy::let_and_return)]
@@ -1564,6 +1578,8 @@ pub mod delete_cluster_input {
         }
     }
 }
+pub type DeleteClusterInputOperationOutputAlias = crate::operation::DeleteCluster;
+pub type DeleteClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteClusterInput {
     /// Consumes the builder and constructs an Operation<[`DeleteCluster`](crate::operation::DeleteCluster)>
     #[allow(clippy::let_and_return)]
@@ -1704,6 +1720,8 @@ pub mod delete_service_input {
         }
     }
 }
+pub type DeleteServiceInputOperationOutputAlias = crate::operation::DeleteService;
+pub type DeleteServiceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteServiceInput {
     /// Consumes the builder and constructs an Operation<[`DeleteService`](crate::operation::DeleteService)>
     #[allow(clippy::let_and_return)]
@@ -1855,6 +1873,8 @@ pub mod delete_task_set_input {
         }
     }
 }
+pub type DeleteTaskSetInputOperationOutputAlias = crate::operation::DeleteTaskSet;
+pub type DeleteTaskSetInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteTaskSetInput {
     /// Consumes the builder and constructs an Operation<[`DeleteTaskSet`](crate::operation::DeleteTaskSet)>
     #[allow(clippy::let_and_return)]
@@ -2008,6 +2028,9 @@ pub mod deregister_container_instance_input {
         }
     }
 }
+pub type DeregisterContainerInstanceInputOperationOutputAlias =
+    crate::operation::DeregisterContainerInstance;
+pub type DeregisterContainerInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeregisterContainerInstanceInput {
     /// Consumes the builder and constructs an Operation<[`DeregisterContainerInstance`](crate::operation::DeregisterContainerInstance)>
     #[allow(clippy::let_and_return)]
@@ -2130,6 +2153,9 @@ pub mod deregister_task_definition_input {
         }
     }
 }
+pub type DeregisterTaskDefinitionInputOperationOutputAlias =
+    crate::operation::DeregisterTaskDefinition;
+pub type DeregisterTaskDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeregisterTaskDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`DeregisterTaskDefinition`](crate::operation::DeregisterTaskDefinition)>
     #[allow(clippy::let_and_return)]
@@ -2304,6 +2330,9 @@ pub mod describe_capacity_providers_input {
         }
     }
 }
+pub type DescribeCapacityProvidersInputOperationOutputAlias =
+    crate::operation::DescribeCapacityProviders;
+pub type DescribeCapacityProvidersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeCapacityProvidersInput {
     /// Consumes the builder and constructs an Operation<[`DescribeCapacityProviders`](crate::operation::DescribeCapacityProviders)>
     #[allow(clippy::let_and_return)]
@@ -2439,6 +2468,8 @@ pub mod describe_clusters_input {
         }
     }
 }
+pub type DescribeClustersInputOperationOutputAlias = crate::operation::DescribeClusters;
+pub type DescribeClustersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeClustersInput {
     /// Consumes the builder and constructs an Operation<[`DescribeClusters`](crate::operation::DescribeClusters)>
     #[allow(clippy::let_and_return)]
@@ -2588,6 +2619,9 @@ pub mod describe_container_instances_input {
         }
     }
 }
+pub type DescribeContainerInstancesInputOperationOutputAlias =
+    crate::operation::DescribeContainerInstances;
+pub type DescribeContainerInstancesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeContainerInstancesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeContainerInstances`](crate::operation::DescribeContainerInstances)>
     #[allow(clippy::let_and_return)]
@@ -2737,6 +2771,8 @@ pub mod describe_services_input {
         }
     }
 }
+pub type DescribeServicesInputOperationOutputAlias = crate::operation::DescribeServices;
+pub type DescribeServicesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeServicesInput {
     /// Consumes the builder and constructs an Operation<[`DescribeServices`](crate::operation::DescribeServices)>
     #[allow(clippy::let_and_return)]
@@ -2873,6 +2909,8 @@ pub mod describe_task_definition_input {
         }
     }
 }
+pub type DescribeTaskDefinitionInputOperationOutputAlias = crate::operation::DescribeTaskDefinition;
+pub type DescribeTaskDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeTaskDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`DescribeTaskDefinition`](crate::operation::DescribeTaskDefinition)>
     #[allow(clippy::let_and_return)]
@@ -3020,6 +3058,8 @@ pub mod describe_tasks_input {
         }
     }
 }
+pub type DescribeTasksInputOperationOutputAlias = crate::operation::DescribeTasks;
+pub type DescribeTasksInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeTasksInput {
     /// Consumes the builder and constructs an Operation<[`DescribeTasks`](crate::operation::DescribeTasks)>
     #[allow(clippy::let_and_return)]
@@ -3178,6 +3218,8 @@ pub mod describe_task_sets_input {
         }
     }
 }
+pub type DescribeTaskSetsInputOperationOutputAlias = crate::operation::DescribeTaskSets;
+pub type DescribeTaskSetsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeTaskSetsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeTaskSets`](crate::operation::DescribeTaskSets)>
     #[allow(clippy::let_and_return)]
@@ -3310,6 +3352,8 @@ pub mod discover_poll_endpoint_input {
         }
     }
 }
+pub type DiscoverPollEndpointInputOperationOutputAlias = crate::operation::DiscoverPollEndpoint;
+pub type DiscoverPollEndpointInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DiscoverPollEndpointInput {
     /// Consumes the builder and constructs an Operation<[`DiscoverPollEndpoint`](crate::operation::DiscoverPollEndpoint)>
     #[allow(clippy::let_and_return)]
@@ -3471,6 +3515,8 @@ pub mod execute_command_input {
         }
     }
 }
+pub type ExecuteCommandInputOperationOutputAlias = crate::operation::ExecuteCommand;
+pub type ExecuteCommandInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ExecuteCommandInput {
     /// Consumes the builder and constructs an Operation<[`ExecuteCommand`](crate::operation::ExecuteCommand)>
     #[allow(clippy::let_and_return)]
@@ -3667,6 +3713,8 @@ pub mod list_account_settings_input {
         }
     }
 }
+pub type ListAccountSettingsInputOperationOutputAlias = crate::operation::ListAccountSettings;
+pub type ListAccountSettingsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListAccountSettingsInput {
     /// Consumes the builder and constructs an Operation<[`ListAccountSettings`](crate::operation::ListAccountSettings)>
     #[allow(clippy::let_and_return)]
@@ -3859,6 +3907,8 @@ pub mod list_attributes_input {
         }
     }
 }
+pub type ListAttributesInputOperationOutputAlias = crate::operation::ListAttributes;
+pub type ListAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListAttributesInput {
     /// Consumes the builder and constructs an Operation<[`ListAttributes`](crate::operation::ListAttributes)>
     #[allow(clippy::let_and_return)]
@@ -3998,6 +4048,8 @@ pub mod list_clusters_input {
         }
     }
 }
+pub type ListClustersInputOperationOutputAlias = crate::operation::ListClusters;
+pub type ListClustersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListClustersInput {
     /// Consumes the builder and constructs an Operation<[`ListClusters`](crate::operation::ListClusters)>
     #[allow(clippy::let_and_return)]
@@ -4180,6 +4232,8 @@ pub mod list_container_instances_input {
         }
     }
 }
+pub type ListContainerInstancesInputOperationOutputAlias = crate::operation::ListContainerInstances;
+pub type ListContainerInstancesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListContainerInstancesInput {
     /// Consumes the builder and constructs an Operation<[`ListContainerInstances`](crate::operation::ListContainerInstances)>
     #[allow(clippy::let_and_return)]
@@ -4362,6 +4416,8 @@ pub mod list_services_input {
         }
     }
 }
+pub type ListServicesInputOperationOutputAlias = crate::operation::ListServices;
+pub type ListServicesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListServicesInput {
     /// Consumes the builder and constructs an Operation<[`ListServices`](crate::operation::ListServices)>
     #[allow(clippy::let_and_return)]
@@ -4477,6 +4533,8 @@ pub mod list_tags_for_resource_input {
         }
     }
 }
+pub type ListTagsForResourceInputOperationOutputAlias = crate::operation::ListTagsForResource;
+pub type ListTagsForResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTagsForResourceInput {
     /// Consumes the builder and constructs an Operation<[`ListTagsForResource`](crate::operation::ListTagsForResource)>
     #[allow(clippy::let_and_return)]
@@ -4657,6 +4715,9 @@ pub mod list_task_definition_families_input {
         }
     }
 }
+pub type ListTaskDefinitionFamiliesInputOperationOutputAlias =
+    crate::operation::ListTaskDefinitionFamilies;
+pub type ListTaskDefinitionFamiliesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTaskDefinitionFamiliesInput {
     /// Consumes the builder and constructs an Operation<[`ListTaskDefinitionFamilies`](crate::operation::ListTaskDefinitionFamilies)>
     #[allow(clippy::let_and_return)]
@@ -4848,6 +4909,8 @@ pub mod list_task_definitions_input {
         }
     }
 }
+pub type ListTaskDefinitionsInputOperationOutputAlias = crate::operation::ListTaskDefinitions;
+pub type ListTaskDefinitionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTaskDefinitionsInput {
     /// Consumes the builder and constructs an Operation<[`ListTaskDefinitions`](crate::operation::ListTaskDefinitions)>
     #[allow(clippy::let_and_return)]
@@ -5095,6 +5158,8 @@ pub mod list_tasks_input {
         }
     }
 }
+pub type ListTasksInputOperationOutputAlias = crate::operation::ListTasks;
+pub type ListTasksInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTasksInput {
     /// Consumes the builder and constructs an Operation<[`ListTasks`](crate::operation::ListTasks)>
     #[allow(clippy::let_and_return)]
@@ -5245,6 +5310,8 @@ pub mod put_account_setting_input {
         }
     }
 }
+pub type PutAccountSettingInputOperationOutputAlias = crate::operation::PutAccountSetting;
+pub type PutAccountSettingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutAccountSettingInput {
     /// Consumes the builder and constructs an Operation<[`PutAccountSetting`](crate::operation::PutAccountSetting)>
     #[allow(clippy::let_and_return)]
@@ -5380,6 +5447,9 @@ pub mod put_account_setting_default_input {
         }
     }
 }
+pub type PutAccountSettingDefaultInputOperationOutputAlias =
+    crate::operation::PutAccountSettingDefault;
+pub type PutAccountSettingDefaultInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutAccountSettingDefaultInput {
     /// Consumes the builder and constructs an Operation<[`PutAccountSettingDefault`](crate::operation::PutAccountSettingDefault)>
     #[allow(clippy::let_and_return)]
@@ -5511,6 +5581,8 @@ pub mod put_attributes_input {
         }
     }
 }
+pub type PutAttributesInputOperationOutputAlias = crate::operation::PutAttributes;
+pub type PutAttributesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutAttributesInput {
     /// Consumes the builder and constructs an Operation<[`PutAttributes`](crate::operation::PutAttributes)>
     #[allow(clippy::let_and_return)]
@@ -5664,6 +5736,9 @@ pub mod put_cluster_capacity_providers_input {
         }
     }
 }
+pub type PutClusterCapacityProvidersInputOperationOutputAlias =
+    crate::operation::PutClusterCapacityProviders;
+pub type PutClusterCapacityProvidersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutClusterCapacityProvidersInput {
     /// Consumes the builder and constructs an Operation<[`PutClusterCapacityProviders`](crate::operation::PutClusterCapacityProviders)>
     #[allow(clippy::let_and_return)]
@@ -5909,6 +5984,9 @@ pub mod register_container_instance_input {
         }
     }
 }
+pub type RegisterContainerInstanceInputOperationOutputAlias =
+    crate::operation::RegisterContainerInstance;
+pub type RegisterContainerInstanceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RegisterContainerInstanceInput {
     /// Consumes the builder and constructs an Operation<[`RegisterContainerInstance`](crate::operation::RegisterContainerInstance)>
     #[allow(clippy::let_and_return)]
@@ -6408,6 +6486,8 @@ pub mod register_task_definition_input {
         }
     }
 }
+pub type RegisterTaskDefinitionInputOperationOutputAlias = crate::operation::RegisterTaskDefinition;
+pub type RegisterTaskDefinitionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RegisterTaskDefinitionInput {
     /// Consumes the builder and constructs an Operation<[`RegisterTaskDefinition`](crate::operation::RegisterTaskDefinition)>
     #[allow(clippy::let_and_return)]
@@ -6799,6 +6879,8 @@ pub mod run_task_input {
         }
     }
 }
+pub type RunTaskInputOperationOutputAlias = crate::operation::RunTask;
+pub type RunTaskInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RunTaskInput {
     /// Consumes the builder and constructs an Operation<[`RunTask`](crate::operation::RunTask)>
     #[allow(clippy::let_and_return)]
@@ -7070,6 +7152,8 @@ pub mod start_task_input {
         }
     }
 }
+pub type StartTaskInputOperationOutputAlias = crate::operation::StartTask;
+pub type StartTaskInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartTaskInput {
     /// Consumes the builder and constructs an Operation<[`StartTask`](crate::operation::StartTask)>
     #[allow(clippy::let_and_return)]
@@ -7206,6 +7290,8 @@ pub mod stop_task_input {
         }
     }
 }
+pub type StopTaskInputOperationOutputAlias = crate::operation::StopTask;
+pub type StopTaskInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopTaskInput {
     /// Consumes the builder and constructs an Operation<[`StopTask`](crate::operation::StopTask)>
     #[allow(clippy::let_and_return)]
@@ -7336,6 +7422,9 @@ pub mod submit_attachment_state_changes_input {
         }
     }
 }
+pub type SubmitAttachmentStateChangesInputOperationOutputAlias =
+    crate::operation::SubmitAttachmentStateChanges;
+pub type SubmitAttachmentStateChangesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SubmitAttachmentStateChangesInput {
     /// Consumes the builder and constructs an Operation<[`SubmitAttachmentStateChanges`](crate::operation::SubmitAttachmentStateChanges)>
     #[allow(clippy::let_and_return)]
@@ -7535,6 +7624,9 @@ pub mod submit_container_state_change_input {
         }
     }
 }
+pub type SubmitContainerStateChangeInputOperationOutputAlias =
+    crate::operation::SubmitContainerStateChange;
+pub type SubmitContainerStateChangeInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SubmitContainerStateChangeInput {
     /// Consumes the builder and constructs an Operation<[`SubmitContainerStateChange`](crate::operation::SubmitContainerStateChange)>
     #[allow(clippy::let_and_return)]
@@ -7778,6 +7870,8 @@ pub mod submit_task_state_change_input {
         }
     }
 }
+pub type SubmitTaskStateChangeInputOperationOutputAlias = crate::operation::SubmitTaskStateChange;
+pub type SubmitTaskStateChangeInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SubmitTaskStateChangeInput {
     /// Consumes the builder and constructs an Operation<[`SubmitTaskStateChange`](crate::operation::SubmitTaskStateChange)>
     #[allow(clippy::let_and_return)]
@@ -7910,6 +8004,8 @@ pub mod tag_resource_input {
         }
     }
 }
+pub type TagResourceInputOperationOutputAlias = crate::operation::TagResource;
+pub type TagResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagResourceInput {
     /// Consumes the builder and constructs an Operation<[`TagResource`](crate::operation::TagResource)>
     #[allow(clippy::let_and_return)]
@@ -8039,6 +8135,8 @@ pub mod untag_resource_input {
         }
     }
 }
+pub type UntagResourceInputOperationOutputAlias = crate::operation::UntagResource;
+pub type UntagResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagResourceInput {
     /// Consumes the builder and constructs an Operation<[`UntagResource`](crate::operation::UntagResource)>
     #[allow(clippy::let_and_return)]
@@ -8174,6 +8272,8 @@ pub mod update_capacity_provider_input {
         }
     }
 }
+pub type UpdateCapacityProviderInputOperationOutputAlias = crate::operation::UpdateCapacityProvider;
+pub type UpdateCapacityProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateCapacityProviderInput {
     /// Consumes the builder and constructs an Operation<[`UpdateCapacityProvider`](crate::operation::UpdateCapacityProvider)>
     #[allow(clippy::let_and_return)]
@@ -8318,6 +8418,8 @@ pub mod update_cluster_input {
         }
     }
 }
+pub type UpdateClusterInputOperationOutputAlias = crate::operation::UpdateCluster;
+pub type UpdateClusterInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateClusterInput {
     /// Consumes the builder and constructs an Operation<[`UpdateCluster`](crate::operation::UpdateCluster)>
     #[allow(clippy::let_and_return)]
@@ -8449,6 +8551,8 @@ pub mod update_cluster_settings_input {
         }
     }
 }
+pub type UpdateClusterSettingsInputOperationOutputAlias = crate::operation::UpdateClusterSettings;
+pub type UpdateClusterSettingsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateClusterSettingsInput {
     /// Consumes the builder and constructs an Operation<[`UpdateClusterSettings`](crate::operation::UpdateClusterSettings)>
     #[allow(clippy::let_and_return)]
@@ -8581,6 +8685,8 @@ pub mod update_container_agent_input {
         }
     }
 }
+pub type UpdateContainerAgentInputOperationOutputAlias = crate::operation::UpdateContainerAgent;
+pub type UpdateContainerAgentInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateContainerAgentInput {
     /// Consumes the builder and constructs an Operation<[`UpdateContainerAgent`](crate::operation::UpdateContainerAgent)>
     #[allow(clippy::let_and_return)]
@@ -8735,6 +8841,9 @@ pub mod update_container_instances_state_input {
         }
     }
 }
+pub type UpdateContainerInstancesStateInputOperationOutputAlias =
+    crate::operation::UpdateContainerInstancesState;
+pub type UpdateContainerInstancesStateInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateContainerInstancesStateInput {
     /// Consumes the builder and constructs an Operation<[`UpdateContainerInstancesState`](crate::operation::UpdateContainerInstancesState)>
     #[allow(clippy::let_and_return)]
@@ -9051,6 +9160,8 @@ pub mod update_service_input {
         }
     }
 }
+pub type UpdateServiceInputOperationOutputAlias = crate::operation::UpdateService;
+pub type UpdateServiceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateServiceInput {
     /// Consumes the builder and constructs an Operation<[`UpdateService`](crate::operation::UpdateService)>
     #[allow(clippy::let_and_return)]
@@ -9196,6 +9307,9 @@ pub mod update_service_primary_task_set_input {
         }
     }
 }
+pub type UpdateServicePrimaryTaskSetInputOperationOutputAlias =
+    crate::operation::UpdateServicePrimaryTaskSet;
+pub type UpdateServicePrimaryTaskSetInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateServicePrimaryTaskSetInput {
     /// Consumes the builder and constructs an Operation<[`UpdateServicePrimaryTaskSet`](crate::operation::UpdateServicePrimaryTaskSet)>
     #[allow(clippy::let_and_return)]
@@ -9347,6 +9461,8 @@ pub mod update_task_set_input {
         }
     }
 }
+pub type UpdateTaskSetInputOperationOutputAlias = crate::operation::UpdateTaskSet;
+pub type UpdateTaskSetInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateTaskSetInput {
     /// Consumes the builder and constructs an Operation<[`UpdateTaskSet`](crate::operation::UpdateTaskSet)>
     #[allow(clippy::let_and_return)]

@@ -33,6 +33,8 @@ pub mod batch_execute_statement_input {
         }
     }
 }
+pub type BatchExecuteStatementInputOperationOutputAlias = crate::operation::BatchExecuteStatement;
+pub type BatchExecuteStatementInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl BatchExecuteStatementInput {
     /// Consumes the builder and constructs an Operation<[`BatchExecuteStatement`](crate::operation::BatchExecuteStatement)>
     #[allow(clippy::let_and_return)]
@@ -190,6 +192,8 @@ pub mod batch_get_item_input {
         }
     }
 }
+pub type BatchGetItemInputOperationOutputAlias = crate::operation::BatchGetItem;
+pub type BatchGetItemInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl BatchGetItemInput {
     /// Consumes the builder and constructs an Operation<[`BatchGetItem`](crate::operation::BatchGetItem)>
     #[allow(clippy::let_and_return)]
@@ -372,6 +376,8 @@ pub mod batch_write_item_input {
         }
     }
 }
+pub type BatchWriteItemInputOperationOutputAlias = crate::operation::BatchWriteItem;
+pub type BatchWriteItemInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl BatchWriteItemInput {
     /// Consumes the builder and constructs an Operation<[`BatchWriteItem`](crate::operation::BatchWriteItem)>
     #[allow(clippy::let_and_return)]
@@ -494,6 +500,8 @@ pub mod create_backup_input {
         }
     }
 }
+pub type CreateBackupInputOperationOutputAlias = crate::operation::CreateBackup;
+pub type CreateBackupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateBackupInput {
     /// Consumes the builder and constructs an Operation<[`CreateBackup`](crate::operation::CreateBackup)>
     #[allow(clippy::let_and_return)]
@@ -625,6 +633,8 @@ pub mod create_global_table_input {
         }
     }
 }
+pub type CreateGlobalTableInputOperationOutputAlias = crate::operation::CreateGlobalTable;
+pub type CreateGlobalTableInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateGlobalTableInput {
     /// Consumes the builder and constructs an Operation<[`CreateGlobalTable`](crate::operation::CreateGlobalTable)>
     #[allow(clippy::let_and_return)]
@@ -933,6 +943,8 @@ pub mod create_table_input {
         }
     }
 }
+pub type CreateTableInputOperationOutputAlias = crate::operation::CreateTable;
+pub type CreateTableInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateTableInput {
     /// Consumes the builder and constructs an Operation<[`CreateTable`](crate::operation::CreateTable)>
     #[allow(clippy::let_and_return)]
@@ -1045,6 +1057,8 @@ pub mod delete_backup_input {
         }
     }
 }
+pub type DeleteBackupInputOperationOutputAlias = crate::operation::DeleteBackup;
+pub type DeleteBackupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteBackupInput {
     /// Consumes the builder and constructs an Operation<[`DeleteBackup`](crate::operation::DeleteBackup)>
     #[allow(clippy::let_and_return)]
@@ -1386,6 +1400,8 @@ pub mod delete_item_input {
         }
     }
 }
+pub type DeleteItemInputOperationOutputAlias = crate::operation::DeleteItem;
+pub type DeleteItemInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteItemInput {
     /// Consumes the builder and constructs an Operation<[`DeleteItem`](crate::operation::DeleteItem)>
     #[allow(clippy::let_and_return)]
@@ -1498,6 +1514,8 @@ pub mod delete_table_input {
         }
     }
 }
+pub type DeleteTableInputOperationOutputAlias = crate::operation::DeleteTable;
+pub type DeleteTableInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteTableInput {
     /// Consumes the builder and constructs an Operation<[`DeleteTable`](crate::operation::DeleteTable)>
     #[allow(clippy::let_and_return)]
@@ -1610,6 +1628,8 @@ pub mod describe_backup_input {
         }
     }
 }
+pub type DescribeBackupInputOperationOutputAlias = crate::operation::DescribeBackup;
+pub type DescribeBackupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeBackupInput {
     /// Consumes the builder and constructs an Operation<[`DescribeBackup`](crate::operation::DescribeBackup)>
     #[allow(clippy::let_and_return)]
@@ -1722,6 +1742,9 @@ pub mod describe_continuous_backups_input {
         }
     }
 }
+pub type DescribeContinuousBackupsInputOperationOutputAlias =
+    crate::operation::DescribeContinuousBackups;
+pub type DescribeContinuousBackupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeContinuousBackupsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeContinuousBackups`](crate::operation::DescribeContinuousBackups)>
     #[allow(clippy::let_and_return)]
@@ -1851,6 +1874,9 @@ pub mod describe_contributor_insights_input {
         }
     }
 }
+pub type DescribeContributorInsightsInputOperationOutputAlias =
+    crate::operation::DescribeContributorInsights;
+pub type DescribeContributorInsightsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeContributorInsightsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeContributorInsights`](crate::operation::DescribeContributorInsights)>
     #[allow(clippy::let_and_return)]
@@ -1955,6 +1981,8 @@ pub mod describe_endpoints_input {
         }
     }
 }
+pub type DescribeEndpointsInputOperationOutputAlias = crate::operation::DescribeEndpoints;
+pub type DescribeEndpointsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeEndpointsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeEndpoints`](crate::operation::DescribeEndpoints)>
     #[allow(clippy::let_and_return)]
@@ -2064,6 +2092,8 @@ pub mod describe_export_input {
         }
     }
 }
+pub type DescribeExportInputOperationOutputAlias = crate::operation::DescribeExport;
+pub type DescribeExportInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeExportInput {
     /// Consumes the builder and constructs an Operation<[`DescribeExport`](crate::operation::DescribeExport)>
     #[allow(clippy::let_and_return)]
@@ -2179,6 +2209,8 @@ pub mod describe_global_table_input {
         }
     }
 }
+pub type DescribeGlobalTableInputOperationOutputAlias = crate::operation::DescribeGlobalTable;
+pub type DescribeGlobalTableInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeGlobalTableInput {
     /// Consumes the builder and constructs an Operation<[`DescribeGlobalTable`](crate::operation::DescribeGlobalTable)>
     #[allow(clippy::let_and_return)]
@@ -2297,6 +2329,9 @@ pub mod describe_global_table_settings_input {
         }
     }
 }
+pub type DescribeGlobalTableSettingsInputOperationOutputAlias =
+    crate::operation::DescribeGlobalTableSettings;
+pub type DescribeGlobalTableSettingsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeGlobalTableSettingsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeGlobalTableSettings`](crate::operation::DescribeGlobalTableSettings)>
     #[allow(clippy::let_and_return)]
@@ -2416,6 +2451,10 @@ pub mod describe_kinesis_streaming_destination_input {
         }
     }
 }
+pub type DescribeKinesisStreamingDestinationInputOperationOutputAlias =
+    crate::operation::DescribeKinesisStreamingDestination;
+pub type DescribeKinesisStreamingDestinationInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl DescribeKinesisStreamingDestinationInput {
     /// Consumes the builder and constructs an Operation<[`DescribeKinesisStreamingDestination`](crate::operation::DescribeKinesisStreamingDestination)>
     #[allow(clippy::let_and_return)]
@@ -2521,6 +2560,8 @@ pub mod describe_limits_input {
         }
     }
 }
+pub type DescribeLimitsInputOperationOutputAlias = crate::operation::DescribeLimits;
+pub type DescribeLimitsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeLimitsInput {
     /// Consumes the builder and constructs an Operation<[`DescribeLimits`](crate::operation::DescribeLimits)>
     #[allow(clippy::let_and_return)]
@@ -2630,6 +2671,8 @@ pub mod describe_table_input {
         }
     }
 }
+pub type DescribeTableInputOperationOutputAlias = crate::operation::DescribeTable;
+pub type DescribeTableInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeTableInput {
     /// Consumes the builder and constructs an Operation<[`DescribeTable`](crate::operation::DescribeTable)>
     #[allow(clippy::let_and_return)]
@@ -2745,6 +2788,9 @@ pub mod describe_table_replica_auto_scaling_input {
         }
     }
 }
+pub type DescribeTableReplicaAutoScalingInputOperationOutputAlias =
+    crate::operation::DescribeTableReplicaAutoScaling;
+pub type DescribeTableReplicaAutoScalingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeTableReplicaAutoScalingInput {
     /// Consumes the builder and constructs an Operation<[`DescribeTableReplicaAutoScaling`](crate::operation::DescribeTableReplicaAutoScaling)>
     #[allow(clippy::let_and_return)]
@@ -2864,6 +2910,8 @@ pub mod describe_time_to_live_input {
         }
     }
 }
+pub type DescribeTimeToLiveInputOperationOutputAlias = crate::operation::DescribeTimeToLive;
+pub type DescribeTimeToLiveInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeTimeToLiveInput {
     /// Consumes the builder and constructs an Operation<[`DescribeTimeToLive`](crate::operation::DescribeTimeToLive)>
     #[allow(clippy::let_and_return)]
@@ -2990,6 +3038,9 @@ pub mod disable_kinesis_streaming_destination_input {
         }
     }
 }
+pub type DisableKinesisStreamingDestinationInputOperationOutputAlias =
+    crate::operation::DisableKinesisStreamingDestination;
+pub type DisableKinesisStreamingDestinationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DisableKinesisStreamingDestinationInput {
     /// Consumes the builder and constructs an Operation<[`DisableKinesisStreamingDestination`](crate::operation::DisableKinesisStreamingDestination)>
     #[allow(clippy::let_and_return)]
@@ -3122,6 +3173,9 @@ pub mod enable_kinesis_streaming_destination_input {
         }
     }
 }
+pub type EnableKinesisStreamingDestinationInputOperationOutputAlias =
+    crate::operation::EnableKinesisStreamingDestination;
+pub type EnableKinesisStreamingDestinationInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl EnableKinesisStreamingDestinationInput {
     /// Consumes the builder and constructs an Operation<[`EnableKinesisStreamingDestination`](crate::operation::EnableKinesisStreamingDestination)>
     #[allow(clippy::let_and_return)]
@@ -3284,6 +3338,8 @@ pub mod execute_statement_input {
         }
     }
 }
+pub type ExecuteStatementInputOperationOutputAlias = crate::operation::ExecuteStatement;
+pub type ExecuteStatementInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ExecuteStatementInput {
     /// Consumes the builder and constructs an Operation<[`ExecuteStatement`](crate::operation::ExecuteStatement)>
     #[allow(clippy::let_and_return)]
@@ -3420,6 +3476,8 @@ pub mod execute_transaction_input {
         }
     }
 }
+pub type ExecuteTransactionInputOperationOutputAlias = crate::operation::ExecuteTransaction;
+pub type ExecuteTransactionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ExecuteTransactionInput {
     /// Consumes the builder and constructs an Operation<[`ExecuteTransaction`](crate::operation::ExecuteTransaction)>
     #[allow(clippy::let_and_return)]
@@ -3660,6 +3718,9 @@ pub mod export_table_to_point_in_time_input {
         }
     }
 }
+pub type ExportTableToPointInTimeInputOperationOutputAlias =
+    crate::operation::ExportTableToPointInTime;
+pub type ExportTableToPointInTimeInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ExportTableToPointInTimeInput {
     /// Consumes the builder and constructs an Operation<[`ExportTableToPointInTime`](crate::operation::ExportTableToPointInTime)>
     #[allow(clippy::let_and_return)]
@@ -3899,6 +3960,8 @@ pub mod get_item_input {
         }
     }
 }
+pub type GetItemInputOperationOutputAlias = crate::operation::GetItem;
+pub type GetItemInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetItemInput {
     /// Consumes the builder and constructs an Operation<[`GetItem`](crate::operation::GetItem)>
     #[allow(clippy::let_and_return)]
@@ -4090,6 +4153,8 @@ pub mod list_backups_input {
         }
     }
 }
+pub type ListBackupsInputOperationOutputAlias = crate::operation::ListBackups;
+pub type ListBackupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListBackupsInput {
     /// Consumes the builder and constructs an Operation<[`ListBackups`](crate::operation::ListBackups)>
     #[allow(clippy::let_and_return)]
@@ -4225,6 +4290,9 @@ pub mod list_contributor_insights_input {
         }
     }
 }
+pub type ListContributorInsightsInputOperationOutputAlias =
+    crate::operation::ListContributorInsights;
+pub type ListContributorInsightsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListContributorInsightsInput {
     /// Consumes the builder and constructs an Operation<[`ListContributorInsights`](crate::operation::ListContributorInsights)>
     #[allow(clippy::let_and_return)]
@@ -4361,6 +4429,8 @@ pub mod list_exports_input {
         }
     }
 }
+pub type ListExportsInputOperationOutputAlias = crate::operation::ListExports;
+pub type ListExportsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListExportsInput {
     /// Consumes the builder and constructs an Operation<[`ListExports`](crate::operation::ListExports)>
     #[allow(clippy::let_and_return)]
@@ -4504,6 +4574,8 @@ pub mod list_global_tables_input {
         }
     }
 }
+pub type ListGlobalTablesInputOperationOutputAlias = crate::operation::ListGlobalTables;
+pub type ListGlobalTablesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListGlobalTablesInput {
     /// Consumes the builder and constructs an Operation<[`ListGlobalTables`](crate::operation::ListGlobalTables)>
     #[allow(clippy::let_and_return)]
@@ -4632,6 +4704,8 @@ pub mod list_tables_input {
         }
     }
 }
+pub type ListTablesInputOperationOutputAlias = crate::operation::ListTables;
+pub type ListTablesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTablesInput {
     /// Consumes the builder and constructs an Operation<[`ListTables`](crate::operation::ListTables)>
     #[allow(clippy::let_and_return)]
@@ -4757,6 +4831,8 @@ pub mod list_tags_of_resource_input {
         }
     }
 }
+pub type ListTagsOfResourceInputOperationOutputAlias = crate::operation::ListTagsOfResource;
+pub type ListTagsOfResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListTagsOfResourceInput {
     /// Consumes the builder and constructs an Operation<[`ListTagsOfResource`](crate::operation::ListTagsOfResource)>
     #[allow(clippy::let_and_return)]
@@ -5099,6 +5175,8 @@ pub mod put_item_input {
         }
     }
 }
+pub type PutItemInputOperationOutputAlias = crate::operation::PutItem;
+pub type PutItemInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutItemInput {
     /// Consumes the builder and constructs an Operation<[`PutItem`](crate::operation::PutItem)>
     #[allow(clippy::let_and_return)]
@@ -5661,6 +5739,8 @@ pub mod query_input {
         }
     }
 }
+pub type QueryInputOperationOutputAlias = crate::operation::Query;
+pub type QueryInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl QueryInput {
     /// Consumes the builder and constructs an Operation<[`Query`](crate::operation::Query)>
     #[allow(clippy::let_and_return)]
@@ -5863,6 +5943,8 @@ pub mod restore_table_from_backup_input {
         }
     }
 }
+pub type RestoreTableFromBackupInputOperationOutputAlias = crate::operation::RestoreTableFromBackup;
+pub type RestoreTableFromBackupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RestoreTableFromBackupInput {
     /// Consumes the builder and constructs an Operation<[`RestoreTableFromBackup`](crate::operation::RestoreTableFromBackup)>
     #[allow(clippy::let_and_return)]
@@ -6118,6 +6200,9 @@ pub mod restore_table_to_point_in_time_input {
         }
     }
 }
+pub type RestoreTableToPointInTimeInputOperationOutputAlias =
+    crate::operation::RestoreTableToPointInTime;
+pub type RestoreTableToPointInTimeInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RestoreTableToPointInTimeInput {
     /// Consumes the builder and constructs an Operation<[`RestoreTableToPointInTime`](crate::operation::RestoreTableToPointInTime)>
     #[allow(clippy::let_and_return)]
@@ -6587,6 +6672,8 @@ pub mod scan_input {
         }
     }
 }
+pub type ScanInputOperationOutputAlias = crate::operation::Scan;
+pub type ScanInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ScanInput {
     /// Consumes the builder and constructs an Operation<[`Scan`](crate::operation::Scan)>
     #[allow(clippy::let_and_return)]
@@ -6704,6 +6791,8 @@ pub mod tag_resource_input {
         }
     }
 }
+pub type TagResourceInputOperationOutputAlias = crate::operation::TagResource;
+pub type TagResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagResourceInput {
     /// Consumes the builder and constructs an Operation<[`TagResource`](crate::operation::TagResource)>
     #[allow(clippy::let_and_return)]
@@ -6842,6 +6931,8 @@ pub mod transact_get_items_input {
         }
     }
 }
+pub type TransactGetItemsInputOperationOutputAlias = crate::operation::TransactGetItems;
+pub type TransactGetItemsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TransactGetItemsInput {
     /// Consumes the builder and constructs an Operation<[`TransactGetItems`](crate::operation::TransactGetItems)>
     #[allow(clippy::let_and_return)]
@@ -7044,6 +7135,8 @@ pub mod transact_write_items_input {
         }
     }
 }
+pub type TransactWriteItemsInputOperationOutputAlias = crate::operation::TransactWriteItems;
+pub type TransactWriteItemsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TransactWriteItemsInput {
     /// Consumes the builder and constructs an Operation<[`TransactWriteItems`](crate::operation::TransactWriteItems)>
     #[allow(clippy::let_and_return)]
@@ -7175,6 +7268,8 @@ pub mod untag_resource_input {
         }
     }
 }
+pub type UntagResourceInputOperationOutputAlias = crate::operation::UntagResource;
+pub type UntagResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagResourceInput {
     /// Consumes the builder and constructs an Operation<[`UntagResource`](crate::operation::UntagResource)>
     #[allow(clippy::let_and_return)]
@@ -7306,6 +7401,9 @@ pub mod update_continuous_backups_input {
         }
     }
 }
+pub type UpdateContinuousBackupsInputOperationOutputAlias =
+    crate::operation::UpdateContinuousBackups;
+pub type UpdateContinuousBackupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateContinuousBackupsInput {
     /// Consumes the builder and constructs an Operation<[`UpdateContinuousBackups`](crate::operation::UpdateContinuousBackups)>
     #[allow(clippy::let_and_return)]
@@ -7448,6 +7546,9 @@ pub mod update_contributor_insights_input {
         }
     }
 }
+pub type UpdateContributorInsightsInputOperationOutputAlias =
+    crate::operation::UpdateContributorInsights;
+pub type UpdateContributorInsightsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateContributorInsightsInput {
     /// Consumes the builder and constructs an Operation<[`UpdateContributorInsights`](crate::operation::UpdateContributorInsights)>
     #[allow(clippy::let_and_return)]
@@ -7582,6 +7683,8 @@ pub mod update_global_table_input {
         }
     }
 }
+pub type UpdateGlobalTableInputOperationOutputAlias = crate::operation::UpdateGlobalTable;
+pub type UpdateGlobalTableInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateGlobalTableInput {
     /// Consumes the builder and constructs an Operation<[`UpdateGlobalTable`](crate::operation::UpdateGlobalTable)>
     #[allow(clippy::let_and_return)]
@@ -7803,6 +7906,9 @@ pub mod update_global_table_settings_input {
         }
     }
 }
+pub type UpdateGlobalTableSettingsInputOperationOutputAlias =
+    crate::operation::UpdateGlobalTableSettings;
+pub type UpdateGlobalTableSettingsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateGlobalTableSettingsInput {
     /// Consumes the builder and constructs an Operation<[`UpdateGlobalTableSettings`](crate::operation::UpdateGlobalTableSettings)>
     #[allow(clippy::let_and_return)]
@@ -8283,6 +8389,8 @@ pub mod update_item_input {
         }
     }
 }
+pub type UpdateItemInputOperationOutputAlias = crate::operation::UpdateItem;
+pub type UpdateItemInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateItemInput {
     /// Consumes the builder and constructs an Operation<[`UpdateItem`](crate::operation::UpdateItem)>
     #[allow(clippy::let_and_return)]
@@ -8527,6 +8635,8 @@ pub mod update_table_input {
         }
     }
 }
+pub type UpdateTableInputOperationOutputAlias = crate::operation::UpdateTable;
+pub type UpdateTableInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateTableInput {
     /// Consumes the builder and constructs an Operation<[`UpdateTable`](crate::operation::UpdateTable)>
     #[allow(clippy::let_and_return)]
@@ -8702,6 +8812,9 @@ pub mod update_table_replica_auto_scaling_input {
         }
     }
 }
+pub type UpdateTableReplicaAutoScalingInputOperationOutputAlias =
+    crate::operation::UpdateTableReplicaAutoScaling;
+pub type UpdateTableReplicaAutoScalingInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateTableReplicaAutoScalingInput {
     /// Consumes the builder and constructs an Operation<[`UpdateTableReplicaAutoScaling`](crate::operation::UpdateTableReplicaAutoScaling)>
     #[allow(clippy::let_and_return)]
@@ -8837,6 +8950,8 @@ pub mod update_time_to_live_input {
         }
     }
 }
+pub type UpdateTimeToLiveInputOperationOutputAlias = crate::operation::UpdateTimeToLive;
+pub type UpdateTimeToLiveInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateTimeToLiveInput {
     /// Consumes the builder and constructs an Operation<[`UpdateTimeToLive`](crate::operation::UpdateTimeToLive)>
     #[allow(clippy::let_and_return)]

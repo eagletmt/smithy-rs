@@ -43,6 +43,8 @@ pub mod cancel_rotate_secret_input {
         }
     }
 }
+pub type CancelRotateSecretInputOperationOutputAlias = crate::operation::CancelRotateSecret;
+pub type CancelRotateSecretInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CancelRotateSecretInput {
     /// Consumes the builder and constructs an Operation<[`CancelRotateSecret`](crate::operation::CancelRotateSecret)>
     #[allow(clippy::let_and_return)]
@@ -304,6 +306,8 @@ pub mod create_secret_input {
         }
     }
 }
+pub type CreateSecretInputOperationOutputAlias = crate::operation::CreateSecret;
+pub type CreateSecretInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateSecretInput {
     /// Consumes the builder and constructs an Operation<[`CreateSecret`](crate::operation::CreateSecret)>
     #[allow(clippy::let_and_return)]
@@ -435,6 +439,8 @@ pub mod delete_resource_policy_input {
         }
     }
 }
+pub type DeleteResourcePolicyInputOperationOutputAlias = crate::operation::DeleteResourcePolicy;
+pub type DeleteResourcePolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteResourcePolicyInput {
     /// Consumes the builder and constructs an Operation<[`DeleteResourcePolicy`](crate::operation::DeleteResourcePolicy)>
     #[allow(clippy::let_and_return)]
@@ -600,6 +606,8 @@ pub mod delete_secret_input {
         }
     }
 }
+pub type DeleteSecretInputOperationOutputAlias = crate::operation::DeleteSecret;
+pub type DeleteSecretInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteSecretInput {
     /// Consumes the builder and constructs an Operation<[`DeleteSecret`](crate::operation::DeleteSecret)>
     #[allow(clippy::let_and_return)]
@@ -727,6 +735,8 @@ pub mod describe_secret_input {
         }
     }
 }
+pub type DescribeSecretInputOperationOutputAlias = crate::operation::DescribeSecret;
+pub type DescribeSecretInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeSecretInput {
     /// Consumes the builder and constructs an Operation<[`DescribeSecret`](crate::operation::DescribeSecret)>
     #[allow(clippy::let_and_return)]
@@ -936,6 +946,8 @@ pub mod get_random_password_input {
         }
     }
 }
+pub type GetRandomPasswordInputOperationOutputAlias = crate::operation::GetRandomPassword;
+pub type GetRandomPasswordInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetRandomPasswordInput {
     /// Consumes the builder and constructs an Operation<[`GetRandomPassword`](crate::operation::GetRandomPassword)>
     #[allow(clippy::let_and_return)]
@@ -1064,6 +1076,8 @@ pub mod get_resource_policy_input {
         }
     }
 }
+pub type GetResourcePolicyInputOperationOutputAlias = crate::operation::GetResourcePolicy;
+pub type GetResourcePolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetResourcePolicyInput {
     /// Consumes the builder and constructs an Operation<[`GetResourcePolicy`](crate::operation::GetResourcePolicy)>
     #[allow(clippy::let_and_return)]
@@ -1225,6 +1239,8 @@ pub mod get_secret_value_input {
         }
     }
 }
+pub type GetSecretValueInputOperationOutputAlias = crate::operation::GetSecretValue;
+pub type GetSecretValueInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetSecretValueInput {
     /// Consumes the builder and constructs an Operation<[`GetSecretValue`](crate::operation::GetSecretValue)>
     #[allow(clippy::let_and_return)]
@@ -1386,6 +1402,8 @@ pub mod list_secrets_input {
         }
     }
 }
+pub type ListSecretsInputOperationOutputAlias = crate::operation::ListSecrets;
+pub type ListSecretsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListSecretsInput {
     /// Consumes the builder and constructs an Operation<[`ListSecrets`](crate::operation::ListSecrets)>
     #[allow(clippy::let_and_return)]
@@ -1559,6 +1577,8 @@ pub mod list_secret_version_ids_input {
         }
     }
 }
+pub type ListSecretVersionIdsInputOperationOutputAlias = crate::operation::ListSecretVersionIds;
+pub type ListSecretVersionIdsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListSecretVersionIdsInput {
     /// Consumes the builder and constructs an Operation<[`ListSecretVersionIds`](crate::operation::ListSecretVersionIds)>
     #[allow(clippy::let_and_return)]
@@ -1716,6 +1736,8 @@ pub mod put_resource_policy_input {
         }
     }
 }
+pub type PutResourcePolicyInputOperationOutputAlias = crate::operation::PutResourcePolicy;
+pub type PutResourcePolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutResourcePolicyInput {
     /// Consumes the builder and constructs an Operation<[`PutResourcePolicy`](crate::operation::PutResourcePolicy)>
     #[allow(clippy::let_and_return)]
@@ -1946,6 +1968,8 @@ pub mod put_secret_value_input {
         }
     }
 }
+pub type PutSecretValueInputOperationOutputAlias = crate::operation::PutSecretValue;
+pub type PutSecretValueInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutSecretValueInput {
     /// Consumes the builder and constructs an Operation<[`PutSecretValue`](crate::operation::PutSecretValue)>
     #[allow(clippy::let_and_return)]
@@ -2075,6 +2099,8 @@ pub mod restore_secret_input {
         }
     }
 }
+pub type RestoreSecretInputOperationOutputAlias = crate::operation::RestoreSecret;
+pub type RestoreSecretInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RestoreSecretInput {
     /// Consumes the builder and constructs an Operation<[`RestoreSecret`](crate::operation::RestoreSecret)>
     #[allow(clippy::let_and_return)]
@@ -2257,6 +2283,8 @@ pub mod rotate_secret_input {
         }
     }
 }
+pub type RotateSecretInputOperationOutputAlias = crate::operation::RotateSecret;
+pub type RotateSecretInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RotateSecretInput {
     /// Consumes the builder and constructs an Operation<[`RotateSecret`](crate::operation::RotateSecret)>
     #[allow(clippy::let_and_return)]
@@ -2402,6 +2430,8 @@ pub mod tag_resource_input {
         }
     }
 }
+pub type TagResourceInputOperationOutputAlias = crate::operation::TagResource;
+pub type TagResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagResourceInput {
     /// Consumes the builder and constructs an Operation<[`TagResource`](crate::operation::TagResource)>
     #[allow(clippy::let_and_return)]
@@ -2544,6 +2574,8 @@ pub mod untag_resource_input {
         }
     }
 }
+pub type UntagResourceInputOperationOutputAlias = crate::operation::UntagResource;
+pub type UntagResourceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagResourceInput {
     /// Consumes the builder and constructs an Operation<[`UntagResource`](crate::operation::UntagResource)>
     #[allow(clippy::let_and_return)]
@@ -2793,6 +2825,8 @@ pub mod update_secret_input {
         }
     }
 }
+pub type UpdateSecretInputOperationOutputAlias = crate::operation::UpdateSecret;
+pub type UpdateSecretInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateSecretInput {
     /// Consumes the builder and constructs an Operation<[`UpdateSecret`](crate::operation::UpdateSecret)>
     #[allow(clippy::let_and_return)]
@@ -2971,6 +3005,9 @@ pub mod update_secret_version_stage_input {
         }
     }
 }
+pub type UpdateSecretVersionStageInputOperationOutputAlias =
+    crate::operation::UpdateSecretVersionStage;
+pub type UpdateSecretVersionStageInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateSecretVersionStageInput {
     /// Consumes the builder and constructs an Operation<[`UpdateSecretVersionStage`](crate::operation::UpdateSecretVersionStage)>
     #[allow(clippy::let_and_return)]
@@ -3113,6 +3150,8 @@ pub mod validate_resource_policy_input {
         }
     }
 }
+pub type ValidateResourcePolicyInputOperationOutputAlias = crate::operation::ValidateResourcePolicy;
+pub type ValidateResourcePolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ValidateResourcePolicyInput {
     /// Consumes the builder and constructs an Operation<[`ValidateResourcePolicy`](crate::operation::ValidateResourcePolicy)>
     #[allow(clippy::let_and_return)]

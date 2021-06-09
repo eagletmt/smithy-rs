@@ -107,6 +107,8 @@ pub mod batch_execute_statement_input {
         }
     }
 }
+pub type BatchExecuteStatementInputOperationOutputAlias = crate::operation::BatchExecuteStatement;
+pub type BatchExecuteStatementInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl BatchExecuteStatementInput {
     /// Consumes the builder and constructs an Operation<[`BatchExecuteStatement`](crate::operation::BatchExecuteStatement)>
     #[allow(clippy::let_and_return)]
@@ -263,6 +265,8 @@ pub mod begin_transaction_input {
         }
     }
 }
+pub type BeginTransactionInputOperationOutputAlias = crate::operation::BeginTransaction;
+pub type BeginTransactionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl BeginTransactionInput {
     /// Consumes the builder and constructs an Operation<[`BeginTransaction`](crate::operation::BeginTransaction)>
     #[allow(clippy::let_and_return)]
@@ -407,6 +411,8 @@ pub mod commit_transaction_input {
         }
     }
 }
+pub type CommitTransactionInputOperationOutputAlias = crate::operation::CommitTransaction;
+pub type CommitTransactionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CommitTransactionInput {
     /// Consumes the builder and constructs an Operation<[`CommitTransaction`](crate::operation::CommitTransaction)>
     #[allow(clippy::let_and_return)]
@@ -582,6 +588,8 @@ pub mod execute_sql_input {
         }
     }
 }
+pub type ExecuteSqlInputOperationOutputAlias = crate::operation::ExecuteSql;
+pub type ExecuteSqlInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ExecuteSqlInput {
     /// Consumes the builder and constructs an Operation<[`ExecuteSql`](crate::operation::ExecuteSql)>
     #[allow(clippy::let_and_return)]
@@ -824,6 +832,8 @@ pub mod execute_statement_input {
         }
     }
 }
+pub type ExecuteStatementInputOperationOutputAlias = crate::operation::ExecuteStatement;
+pub type ExecuteStatementInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ExecuteStatementInput {
     /// Consumes the builder and constructs an Operation<[`ExecuteStatement`](crate::operation::ExecuteStatement)>
     #[allow(clippy::let_and_return)]
@@ -968,6 +978,8 @@ pub mod rollback_transaction_input {
         }
     }
 }
+pub type RollbackTransactionInputOperationOutputAlias = crate::operation::RollbackTransaction;
+pub type RollbackTransactionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RollbackTransactionInput {
     /// Consumes the builder and constructs an Operation<[`RollbackTransaction`](crate::operation::RollbackTransaction)>
     #[allow(clippy::let_and_return)]

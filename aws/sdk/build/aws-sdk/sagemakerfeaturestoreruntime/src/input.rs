@@ -58,6 +58,8 @@ pub mod delete_record_input {
         }
     }
 }
+pub type DeleteRecordInputOperationOutputAlias = crate::operation::DeleteRecord;
+pub type DeleteRecordInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteRecordInput {
     /// Consumes the builder and constructs an Operation<[`DeleteRecord`](crate::operation::DeleteRecord)>
     #[allow(clippy::let_and_return)]
@@ -228,6 +230,8 @@ pub mod get_record_input {
         }
     }
 }
+pub type GetRecordInputOperationOutputAlias = crate::operation::GetRecord;
+pub type GetRecordInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetRecordInput {
     /// Consumes the builder and constructs an Operation<[`GetRecord`](crate::operation::GetRecord)>
     #[allow(clippy::let_and_return)]
@@ -380,6 +384,8 @@ pub mod put_record_input {
         }
     }
 }
+pub type PutRecordInputOperationOutputAlias = crate::operation::PutRecord;
+pub type PutRecordInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutRecordInput {
     /// Consumes the builder and constructs an Operation<[`PutRecord`](crate::operation::PutRecord)>
     #[allow(clippy::let_and_return)]

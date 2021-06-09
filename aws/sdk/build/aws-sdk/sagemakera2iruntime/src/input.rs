@@ -29,6 +29,8 @@ pub mod delete_human_loop_input {
         }
     }
 }
+pub type DeleteHumanLoopInputOperationOutputAlias = crate::operation::DeleteHumanLoop;
+pub type DeleteHumanLoopInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteHumanLoopInput {
     /// Consumes the builder and constructs an Operation<[`DeleteHumanLoop`](crate::operation::DeleteHumanLoop)>
     #[allow(clippy::let_and_return)]
@@ -154,6 +156,8 @@ pub mod describe_human_loop_input {
         }
     }
 }
+pub type DescribeHumanLoopInputOperationOutputAlias = crate::operation::DescribeHumanLoop;
+pub type DescribeHumanLoopInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DescribeHumanLoopInput {
     /// Consumes the builder and constructs an Operation<[`DescribeHumanLoop`](crate::operation::DescribeHumanLoop)>
     #[allow(clippy::let_and_return)]
@@ -345,6 +349,8 @@ pub mod list_human_loops_input {
         }
     }
 }
+pub type ListHumanLoopsInputOperationOutputAlias = crate::operation::ListHumanLoops;
+pub type ListHumanLoopsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListHumanLoopsInput {
     /// Consumes the builder and constructs an Operation<[`ListHumanLoops`](crate::operation::ListHumanLoops)>
     #[allow(clippy::let_and_return)]
@@ -548,6 +554,8 @@ pub mod start_human_loop_input {
         }
     }
 }
+pub type StartHumanLoopInputOperationOutputAlias = crate::operation::StartHumanLoop;
+pub type StartHumanLoopInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StartHumanLoopInput {
     /// Consumes the builder and constructs an Operation<[`StartHumanLoop`](crate::operation::StartHumanLoop)>
     #[allow(clippy::let_and_return)]
@@ -672,6 +680,8 @@ pub mod stop_human_loop_input {
         }
     }
 }
+pub type StopHumanLoopInputOperationOutputAlias = crate::operation::StopHumanLoop;
+pub type StopHumanLoopInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl StopHumanLoopInput {
     /// Consumes the builder and constructs an Operation<[`StopHumanLoop`](crate::operation::StopHumanLoop)>
     #[allow(clippy::let_and_return)]

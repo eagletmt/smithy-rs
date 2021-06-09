@@ -47,6 +47,9 @@ pub mod add_client_id_to_open_id_connect_provider_input {
         }
     }
 }
+pub type AddClientIDToOpenIDConnectProviderInputOperationOutputAlias =
+    crate::operation::AddClientIDToOpenIDConnectProvider;
+pub type AddClientIDToOpenIDConnectProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AddClientIDToOpenIDConnectProviderInput {
     /// Consumes the builder and constructs an Operation<[`AddClientIDToOpenIDConnectProvider`](crate::operation::AddClientIDToOpenIDConnectProvider)>
     #[allow(clippy::let_and_return)]
@@ -187,6 +190,9 @@ pub mod add_role_to_instance_profile_input {
         }
     }
 }
+pub type AddRoleToInstanceProfileInputOperationOutputAlias =
+    crate::operation::AddRoleToInstanceProfile;
+pub type AddRoleToInstanceProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AddRoleToInstanceProfileInput {
     /// Consumes the builder and constructs an Operation<[`AddRoleToInstanceProfile`](crate::operation::AddRoleToInstanceProfile)>
     #[allow(clippy::let_and_return)]
@@ -325,6 +331,8 @@ pub mod add_user_to_group_input {
         }
     }
 }
+pub type AddUserToGroupInputOperationOutputAlias = crate::operation::AddUserToGroup;
+pub type AddUserToGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AddUserToGroupInput {
     /// Consumes the builder and constructs an Operation<[`AddUserToGroup`](crate::operation::AddUserToGroup)>
     #[allow(clippy::let_and_return)]
@@ -461,6 +469,8 @@ pub mod attach_group_policy_input {
         }
     }
 }
+pub type AttachGroupPolicyInputOperationOutputAlias = crate::operation::AttachGroupPolicy;
+pub type AttachGroupPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AttachGroupPolicyInput {
     /// Consumes the builder and constructs an Operation<[`AttachGroupPolicy`](crate::operation::AttachGroupPolicy)>
     #[allow(clippy::let_and_return)]
@@ -598,6 +608,8 @@ pub mod attach_role_policy_input {
         }
     }
 }
+pub type AttachRolePolicyInputOperationOutputAlias = crate::operation::AttachRolePolicy;
+pub type AttachRolePolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AttachRolePolicyInput {
     /// Consumes the builder and constructs an Operation<[`AttachRolePolicy`](crate::operation::AttachRolePolicy)>
     #[allow(clippy::let_and_return)]
@@ -735,6 +747,8 @@ pub mod attach_user_policy_input {
         }
     }
 }
+pub type AttachUserPolicyInputOperationOutputAlias = crate::operation::AttachUserPolicy;
+pub type AttachUserPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl AttachUserPolicyInput {
     /// Consumes the builder and constructs an Operation<[`AttachUserPolicy`](crate::operation::AttachUserPolicy)>
     #[allow(clippy::let_and_return)]
@@ -876,6 +890,8 @@ pub mod change_password_input {
         }
     }
 }
+pub type ChangePasswordInputOperationOutputAlias = crate::operation::ChangePassword;
+pub type ChangePasswordInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ChangePasswordInput {
     /// Consumes the builder and constructs an Operation<[`ChangePassword`](crate::operation::ChangePassword)>
     #[allow(clippy::let_and_return)]
@@ -1000,6 +1016,8 @@ pub mod create_access_key_input {
         }
     }
 }
+pub type CreateAccessKeyInputOperationOutputAlias = crate::operation::CreateAccessKey;
+pub type CreateAccessKeyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateAccessKeyInput {
     /// Consumes the builder and constructs an Operation<[`CreateAccessKey`](crate::operation::CreateAccessKey)>
     #[allow(clippy::let_and_return)]
@@ -1125,6 +1143,8 @@ pub mod create_account_alias_input {
         }
     }
 }
+pub type CreateAccountAliasInputOperationOutputAlias = crate::operation::CreateAccountAlias;
+pub type CreateAccountAliasInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateAccountAliasInput {
     /// Consumes the builder and constructs an Operation<[`CreateAccountAlias`](crate::operation::CreateAccountAlias)>
     #[allow(clippy::let_and_return)]
@@ -1267,6 +1287,8 @@ pub mod create_group_input {
         }
     }
 }
+pub type CreateGroupInputOperationOutputAlias = crate::operation::CreateGroup;
+pub type CreateGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateGroupInput {
     /// Consumes the builder and constructs an Operation<[`CreateGroup`](crate::operation::CreateGroup)>
     #[allow(clippy::let_and_return)]
@@ -1424,6 +1446,8 @@ pub mod create_instance_profile_input {
         }
     }
 }
+pub type CreateInstanceProfileInputOperationOutputAlias = crate::operation::CreateInstanceProfile;
+pub type CreateInstanceProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateInstanceProfileInput {
     /// Consumes the builder and constructs an Operation<[`CreateInstanceProfile`](crate::operation::CreateInstanceProfile)>
     #[allow(clippy::let_and_return)]
@@ -1579,6 +1603,8 @@ pub mod create_login_profile_input {
         }
     }
 }
+pub type CreateLoginProfileInputOperationOutputAlias = crate::operation::CreateLoginProfile;
+pub type CreateLoginProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateLoginProfileInput {
     /// Consumes the builder and constructs an Operation<[`CreateLoginProfile`](crate::operation::CreateLoginProfile)>
     #[allow(clippy::let_and_return)]
@@ -1756,6 +1782,9 @@ pub mod create_open_id_connect_provider_input {
         }
     }
 }
+pub type CreateOpenIDConnectProviderInputOperationOutputAlias =
+    crate::operation::CreateOpenIDConnectProvider;
+pub type CreateOpenIDConnectProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateOpenIDConnectProviderInput {
     /// Consumes the builder and constructs an Operation<[`CreateOpenIDConnectProvider`](crate::operation::CreateOpenIDConnectProvider)>
     #[allow(clippy::let_and_return)]
@@ -1965,6 +1994,8 @@ pub mod create_policy_input {
         }
     }
 }
+pub type CreatePolicyInputOperationOutputAlias = crate::operation::CreatePolicy;
+pub type CreatePolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreatePolicyInput {
     /// Consumes the builder and constructs an Operation<[`CreatePolicy`](crate::operation::CreatePolicy)>
     #[allow(clippy::let_and_return)]
@@ -2138,6 +2169,8 @@ pub mod create_policy_version_input {
         }
     }
 }
+pub type CreatePolicyVersionInputOperationOutputAlias = crate::operation::CreatePolicyVersion;
+pub type CreatePolicyVersionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreatePolicyVersionInput {
     /// Consumes the builder and constructs an Operation<[`CreatePolicyVersion`](crate::operation::CreatePolicyVersion)>
     #[allow(clippy::let_and_return)]
@@ -2380,6 +2413,8 @@ pub mod create_role_input {
         }
     }
 }
+pub type CreateRoleInputOperationOutputAlias = crate::operation::CreateRole;
+pub type CreateRoleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateRoleInput {
     /// Consumes the builder and constructs an Operation<[`CreateRole`](crate::operation::CreateRole)>
     #[allow(clippy::let_and_return)]
@@ -2538,6 +2573,8 @@ pub mod create_saml_provider_input {
         }
     }
 }
+pub type CreateSAMLProviderInputOperationOutputAlias = crate::operation::CreateSAMLProvider;
+pub type CreateSAMLProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateSAMLProviderInput {
     /// Consumes the builder and constructs an Operation<[`CreateSAMLProvider`](crate::operation::CreateSAMLProvider)>
     #[allow(clippy::let_and_return)]
@@ -2701,6 +2738,9 @@ pub mod create_service_linked_role_input {
         }
     }
 }
+pub type CreateServiceLinkedRoleInputOperationOutputAlias =
+    crate::operation::CreateServiceLinkedRole;
+pub type CreateServiceLinkedRoleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateServiceLinkedRoleInput {
     /// Consumes the builder and constructs an Operation<[`CreateServiceLinkedRole`](crate::operation::CreateServiceLinkedRole)>
     #[allow(clippy::let_and_return)]
@@ -2843,6 +2883,9 @@ pub mod create_service_specific_credential_input {
         }
     }
 }
+pub type CreateServiceSpecificCredentialInputOperationOutputAlias =
+    crate::operation::CreateServiceSpecificCredential;
+pub type CreateServiceSpecificCredentialInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateServiceSpecificCredentialInput {
     /// Consumes the builder and constructs an Operation<[`CreateServiceSpecificCredential`](crate::operation::CreateServiceSpecificCredential)>
     #[allow(clippy::let_and_return)]
@@ -3016,6 +3059,8 @@ pub mod create_user_input {
         }
     }
 }
+pub type CreateUserInputOperationOutputAlias = crate::operation::CreateUser;
+pub type CreateUserInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateUserInput {
     /// Consumes the builder and constructs an Operation<[`CreateUser`](crate::operation::CreateUser)>
     #[allow(clippy::let_and_return)]
@@ -3174,6 +3219,8 @@ pub mod create_virtual_mfa_device_input {
         }
     }
 }
+pub type CreateVirtualMFADeviceInputOperationOutputAlias = crate::operation::CreateVirtualMFADevice;
+pub type CreateVirtualMFADeviceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl CreateVirtualMFADeviceInput {
     /// Consumes the builder and constructs an Operation<[`CreateVirtualMFADevice`](crate::operation::CreateVirtualMFADevice)>
     #[allow(clippy::let_and_return)]
@@ -3314,6 +3361,8 @@ pub mod deactivate_mfa_device_input {
         }
     }
 }
+pub type DeactivateMFADeviceInputOperationOutputAlias = crate::operation::DeactivateMFADevice;
+pub type DeactivateMFADeviceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeactivateMFADeviceInput {
     /// Consumes the builder and constructs an Operation<[`DeactivateMFADevice`](crate::operation::DeactivateMFADevice)>
     #[allow(clippy::let_and_return)]
@@ -3453,6 +3502,8 @@ pub mod delete_access_key_input {
         }
     }
 }
+pub type DeleteAccessKeyInputOperationOutputAlias = crate::operation::DeleteAccessKey;
+pub type DeleteAccessKeyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteAccessKeyInput {
     /// Consumes the builder and constructs an Operation<[`DeleteAccessKey`](crate::operation::DeleteAccessKey)>
     #[allow(clippy::let_and_return)]
@@ -3578,6 +3629,8 @@ pub mod delete_account_alias_input {
         }
     }
 }
+pub type DeleteAccountAliasInputOperationOutputAlias = crate::operation::DeleteAccountAlias;
+pub type DeleteAccountAliasInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteAccountAliasInput {
     /// Consumes the builder and constructs an Operation<[`DeleteAccountAlias`](crate::operation::DeleteAccountAlias)>
     #[allow(clippy::let_and_return)]
@@ -3690,6 +3743,9 @@ pub mod delete_account_password_policy_input {
         }
     }
 }
+pub type DeleteAccountPasswordPolicyInputOperationOutputAlias =
+    crate::operation::DeleteAccountPasswordPolicy;
+pub type DeleteAccountPasswordPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteAccountPasswordPolicyInput {
     /// Consumes the builder and constructs an Operation<[`DeleteAccountPasswordPolicy`](crate::operation::DeleteAccountPasswordPolicy)>
     #[allow(clippy::let_and_return)]
@@ -3815,6 +3871,8 @@ pub mod delete_group_input {
         }
     }
 }
+pub type DeleteGroupInputOperationOutputAlias = crate::operation::DeleteGroup;
+pub type DeleteGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteGroupInput {
     /// Consumes the builder and constructs an Operation<[`DeleteGroup`](crate::operation::DeleteGroup)>
     #[allow(clippy::let_and_return)]
@@ -3951,6 +4009,8 @@ pub mod delete_group_policy_input {
         }
     }
 }
+pub type DeleteGroupPolicyInputOperationOutputAlias = crate::operation::DeleteGroupPolicy;
+pub type DeleteGroupPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteGroupPolicyInput {
     /// Consumes the builder and constructs an Operation<[`DeleteGroupPolicy`](crate::operation::DeleteGroupPolicy)>
     #[allow(clippy::let_and_return)]
@@ -4079,6 +4139,8 @@ pub mod delete_instance_profile_input {
         }
     }
 }
+pub type DeleteInstanceProfileInputOperationOutputAlias = crate::operation::DeleteInstanceProfile;
+pub type DeleteInstanceProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteInstanceProfileInput {
     /// Consumes the builder and constructs an Operation<[`DeleteInstanceProfile`](crate::operation::DeleteInstanceProfile)>
     #[allow(clippy::let_and_return)]
@@ -4204,6 +4266,8 @@ pub mod delete_login_profile_input {
         }
     }
 }
+pub type DeleteLoginProfileInputOperationOutputAlias = crate::operation::DeleteLoginProfile;
+pub type DeleteLoginProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteLoginProfileInput {
     /// Consumes the builder and constructs an Operation<[`DeleteLoginProfile`](crate::operation::DeleteLoginProfile)>
     #[allow(clippy::let_and_return)]
@@ -4333,6 +4397,9 @@ pub mod delete_open_id_connect_provider_input {
         }
     }
 }
+pub type DeleteOpenIDConnectProviderInputOperationOutputAlias =
+    crate::operation::DeleteOpenIDConnectProvider;
+pub type DeleteOpenIDConnectProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteOpenIDConnectProviderInput {
     /// Consumes the builder and constructs an Operation<[`DeleteOpenIDConnectProvider`](crate::operation::DeleteOpenIDConnectProvider)>
     #[allow(clippy::let_and_return)]
@@ -4457,6 +4524,8 @@ pub mod delete_policy_input {
         }
     }
 }
+pub type DeletePolicyInputOperationOutputAlias = crate::operation::DeletePolicy;
+pub type DeletePolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeletePolicyInput {
     /// Consumes the builder and constructs an Operation<[`DeletePolicy`](crate::operation::DeletePolicy)>
     #[allow(clippy::let_and_return)]
@@ -4595,6 +4664,8 @@ pub mod delete_policy_version_input {
         }
     }
 }
+pub type DeletePolicyVersionInputOperationOutputAlias = crate::operation::DeletePolicyVersion;
+pub type DeletePolicyVersionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeletePolicyVersionInput {
     /// Consumes the builder and constructs an Operation<[`DeletePolicyVersion`](crate::operation::DeletePolicyVersion)>
     #[allow(clippy::let_and_return)]
@@ -4719,6 +4790,8 @@ pub mod delete_role_input {
         }
     }
 }
+pub type DeleteRoleInputOperationOutputAlias = crate::operation::DeleteRole;
+pub type DeleteRoleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteRoleInput {
     /// Consumes the builder and constructs an Operation<[`DeleteRole`](crate::operation::DeleteRole)>
     #[allow(clippy::let_and_return)]
@@ -4842,6 +4915,9 @@ pub mod delete_role_permissions_boundary_input {
         }
     }
 }
+pub type DeleteRolePermissionsBoundaryInputOperationOutputAlias =
+    crate::operation::DeleteRolePermissionsBoundary;
+pub type DeleteRolePermissionsBoundaryInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteRolePermissionsBoundaryInput {
     /// Consumes the builder and constructs an Operation<[`DeleteRolePermissionsBoundary`](crate::operation::DeleteRolePermissionsBoundary)>
     #[allow(clippy::let_and_return)]
@@ -4982,6 +5058,8 @@ pub mod delete_role_policy_input {
         }
     }
 }
+pub type DeleteRolePolicyInputOperationOutputAlias = crate::operation::DeleteRolePolicy;
+pub type DeleteRolePolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteRolePolicyInput {
     /// Consumes the builder and constructs an Operation<[`DeleteRolePolicy`](crate::operation::DeleteRolePolicy)>
     #[allow(clippy::let_and_return)]
@@ -5108,6 +5186,8 @@ pub mod delete_saml_provider_input {
         }
     }
 }
+pub type DeleteSAMLProviderInputOperationOutputAlias = crate::operation::DeleteSAMLProvider;
+pub type DeleteSAMLProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteSAMLProviderInput {
     /// Consumes the builder and constructs an Operation<[`DeleteSAMLProvider`](crate::operation::DeleteSAMLProvider)>
     #[allow(clippy::let_and_return)]
@@ -5236,6 +5316,9 @@ pub mod delete_server_certificate_input {
         }
     }
 }
+pub type DeleteServerCertificateInputOperationOutputAlias =
+    crate::operation::DeleteServerCertificate;
+pub type DeleteServerCertificateInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteServerCertificateInput {
     /// Consumes the builder and constructs an Operation<[`DeleteServerCertificate`](crate::operation::DeleteServerCertificate)>
     #[allow(clippy::let_and_return)]
@@ -5359,6 +5442,9 @@ pub mod delete_service_linked_role_input {
         }
     }
 }
+pub type DeleteServiceLinkedRoleInputOperationOutputAlias =
+    crate::operation::DeleteServiceLinkedRole;
+pub type DeleteServiceLinkedRoleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteServiceLinkedRoleInput {
     /// Consumes the builder and constructs an Operation<[`DeleteServiceLinkedRole`](crate::operation::DeleteServiceLinkedRole)>
     #[allow(clippy::let_and_return)]
@@ -5508,6 +5594,9 @@ pub mod delete_service_specific_credential_input {
         }
     }
 }
+pub type DeleteServiceSpecificCredentialInputOperationOutputAlias =
+    crate::operation::DeleteServiceSpecificCredential;
+pub type DeleteServiceSpecificCredentialInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteServiceSpecificCredentialInput {
     /// Consumes the builder and constructs an Operation<[`DeleteServiceSpecificCredential`](crate::operation::DeleteServiceSpecificCredential)>
     #[allow(clippy::let_and_return)]
@@ -5647,6 +5736,9 @@ pub mod delete_signing_certificate_input {
         }
     }
 }
+pub type DeleteSigningCertificateInputOperationOutputAlias =
+    crate::operation::DeleteSigningCertificate;
+pub type DeleteSigningCertificateInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteSigningCertificateInput {
     /// Consumes the builder and constructs an Operation<[`DeleteSigningCertificate`](crate::operation::DeleteSigningCertificate)>
     #[allow(clippy::let_and_return)]
@@ -5788,6 +5880,8 @@ pub mod delete_ssh_public_key_input {
         }
     }
 }
+pub type DeleteSSHPublicKeyInputOperationOutputAlias = crate::operation::DeleteSSHPublicKey;
+pub type DeleteSSHPublicKeyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteSSHPublicKeyInput {
     /// Consumes the builder and constructs an Operation<[`DeleteSSHPublicKey`](crate::operation::DeleteSSHPublicKey)>
     #[allow(clippy::let_and_return)]
@@ -5912,6 +6006,8 @@ pub mod delete_user_input {
         }
     }
 }
+pub type DeleteUserInputOperationOutputAlias = crate::operation::DeleteUser;
+pub type DeleteUserInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteUserInput {
     /// Consumes the builder and constructs an Operation<[`DeleteUser`](crate::operation::DeleteUser)>
     #[allow(clippy::let_and_return)]
@@ -6035,6 +6131,9 @@ pub mod delete_user_permissions_boundary_input {
         }
     }
 }
+pub type DeleteUserPermissionsBoundaryInputOperationOutputAlias =
+    crate::operation::DeleteUserPermissionsBoundary;
+pub type DeleteUserPermissionsBoundaryInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteUserPermissionsBoundaryInput {
     /// Consumes the builder and constructs an Operation<[`DeleteUserPermissionsBoundary`](crate::operation::DeleteUserPermissionsBoundary)>
     #[allow(clippy::let_and_return)]
@@ -6175,6 +6274,8 @@ pub mod delete_user_policy_input {
         }
     }
 }
+pub type DeleteUserPolicyInputOperationOutputAlias = crate::operation::DeleteUserPolicy;
+pub type DeleteUserPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteUserPolicyInput {
     /// Consumes the builder and constructs an Operation<[`DeleteUserPolicy`](crate::operation::DeleteUserPolicy)>
     #[allow(clippy::let_and_return)]
@@ -6302,6 +6403,8 @@ pub mod delete_virtual_mfa_device_input {
         }
     }
 }
+pub type DeleteVirtualMFADeviceInputOperationOutputAlias = crate::operation::DeleteVirtualMFADevice;
+pub type DeleteVirtualMFADeviceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DeleteVirtualMFADeviceInput {
     /// Consumes the builder and constructs an Operation<[`DeleteVirtualMFADevice`](crate::operation::DeleteVirtualMFADevice)>
     #[allow(clippy::let_and_return)]
@@ -6439,6 +6542,8 @@ pub mod detach_group_policy_input {
         }
     }
 }
+pub type DetachGroupPolicyInputOperationOutputAlias = crate::operation::DetachGroupPolicy;
+pub type DetachGroupPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DetachGroupPolicyInput {
     /// Consumes the builder and constructs an Operation<[`DetachGroupPolicy`](crate::operation::DetachGroupPolicy)>
     #[allow(clippy::let_and_return)]
@@ -6576,6 +6681,8 @@ pub mod detach_role_policy_input {
         }
     }
 }
+pub type DetachRolePolicyInputOperationOutputAlias = crate::operation::DetachRolePolicy;
+pub type DetachRolePolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DetachRolePolicyInput {
     /// Consumes the builder and constructs an Operation<[`DetachRolePolicy`](crate::operation::DetachRolePolicy)>
     #[allow(clippy::let_and_return)]
@@ -6713,6 +6820,8 @@ pub mod detach_user_policy_input {
         }
     }
 }
+pub type DetachUserPolicyInputOperationOutputAlias = crate::operation::DetachUserPolicy;
+pub type DetachUserPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl DetachUserPolicyInput {
     /// Consumes the builder and constructs an Operation<[`DetachUserPolicy`](crate::operation::DetachUserPolicy)>
     #[allow(clippy::let_and_return)]
@@ -6899,6 +7008,8 @@ pub mod enable_mfa_device_input {
         }
     }
 }
+pub type EnableMFADeviceInputOperationOutputAlias = crate::operation::EnableMFADevice;
+pub type EnableMFADeviceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl EnableMFADeviceInput {
     /// Consumes the builder and constructs an Operation<[`EnableMFADevice`](crate::operation::EnableMFADevice)>
     #[allow(clippy::let_and_return)]
@@ -7008,6 +7119,9 @@ pub mod generate_credential_report_input {
         }
     }
 }
+pub type GenerateCredentialReportInputOperationOutputAlias =
+    crate::operation::GenerateCredentialReport;
+pub type GenerateCredentialReportInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GenerateCredentialReportInput {
     /// Consumes the builder and constructs an Operation<[`GenerateCredentialReport`](crate::operation::GenerateCredentialReport)>
     #[allow(clippy::let_and_return)]
@@ -7155,6 +7269,9 @@ pub mod generate_organizations_access_report_input {
         }
     }
 }
+pub type GenerateOrganizationsAccessReportInputOperationOutputAlias =
+    crate::operation::GenerateOrganizationsAccessReport;
+pub type GenerateOrganizationsAccessReportInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GenerateOrganizationsAccessReportInput {
     /// Consumes the builder and constructs an Operation<[`GenerateOrganizationsAccessReport`](crate::operation::GenerateOrganizationsAccessReport)>
     #[allow(clippy::let_and_return)]
@@ -7304,6 +7421,9 @@ pub mod generate_service_last_accessed_details_input {
         }
     }
 }
+pub type GenerateServiceLastAccessedDetailsInputOperationOutputAlias =
+    crate::operation::GenerateServiceLastAccessedDetails;
+pub type GenerateServiceLastAccessedDetailsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GenerateServiceLastAccessedDetailsInput {
     /// Consumes the builder and constructs an Operation<[`GenerateServiceLastAccessedDetails`](crate::operation::GenerateServiceLastAccessedDetails)>
     #[allow(clippy::let_and_return)]
@@ -7432,6 +7552,8 @@ pub mod get_access_key_last_used_input {
         }
     }
 }
+pub type GetAccessKeyLastUsedInputOperationOutputAlias = crate::operation::GetAccessKeyLastUsed;
+pub type GetAccessKeyLastUsedInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetAccessKeyLastUsedInput {
     /// Consumes the builder and constructs an Operation<[`GetAccessKeyLastUsed`](crate::operation::GetAccessKeyLastUsed)>
     #[allow(clippy::let_and_return)]
@@ -7593,6 +7715,9 @@ pub mod get_account_authorization_details_input {
         }
     }
 }
+pub type GetAccountAuthorizationDetailsInputOperationOutputAlias =
+    crate::operation::GetAccountAuthorizationDetails;
+pub type GetAccountAuthorizationDetailsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetAccountAuthorizationDetailsInput {
     /// Consumes the builder and constructs an Operation<[`GetAccountAuthorizationDetails`](crate::operation::GetAccountAuthorizationDetails)>
     #[allow(clippy::let_and_return)]
@@ -7704,6 +7829,9 @@ pub mod get_account_password_policy_input {
         }
     }
 }
+pub type GetAccountPasswordPolicyInputOperationOutputAlias =
+    crate::operation::GetAccountPasswordPolicy;
+pub type GetAccountPasswordPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetAccountPasswordPolicyInput {
     /// Consumes the builder and constructs an Operation<[`GetAccountPasswordPolicy`](crate::operation::GetAccountPasswordPolicy)>
     #[allow(clippy::let_and_return)]
@@ -7814,6 +7942,8 @@ pub mod get_account_summary_input {
         }
     }
 }
+pub type GetAccountSummaryInputOperationOutputAlias = crate::operation::GetAccountSummary;
+pub type GetAccountSummaryInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetAccountSummaryInput {
     /// Consumes the builder and constructs an Operation<[`GetAccountSummary`](crate::operation::GetAccountSummary)>
     #[allow(clippy::let_and_return)]
@@ -7943,6 +8073,9 @@ pub mod get_context_keys_for_custom_policy_input {
         }
     }
 }
+pub type GetContextKeysForCustomPolicyInputOperationOutputAlias =
+    crate::operation::GetContextKeysForCustomPolicy;
+pub type GetContextKeysForCustomPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetContextKeysForCustomPolicyInput {
     /// Consumes the builder and constructs an Operation<[`GetContextKeysForCustomPolicy`](crate::operation::GetContextKeysForCustomPolicy)>
     #[allow(clippy::let_and_return)]
@@ -8094,6 +8227,9 @@ pub mod get_context_keys_for_principal_policy_input {
         }
     }
 }
+pub type GetContextKeysForPrincipalPolicyInputOperationOutputAlias =
+    crate::operation::GetContextKeysForPrincipalPolicy;
+pub type GetContextKeysForPrincipalPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetContextKeysForPrincipalPolicyInput {
     /// Consumes the builder and constructs an Operation<[`GetContextKeysForPrincipalPolicy`](crate::operation::GetContextKeysForPrincipalPolicy)>
     #[allow(clippy::let_and_return)]
@@ -8207,6 +8343,8 @@ pub mod get_credential_report_input {
         }
     }
 }
+pub type GetCredentialReportInputOperationOutputAlias = crate::operation::GetCredentialReport;
+pub type GetCredentialReportInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetCredentialReportInput {
     /// Consumes the builder and constructs an Operation<[`GetCredentialReport`](crate::operation::GetCredentialReport)>
     #[allow(clippy::let_and_return)]
@@ -8363,6 +8501,8 @@ pub mod get_group_input {
         }
     }
 }
+pub type GetGroupInputOperationOutputAlias = crate::operation::GetGroup;
+pub type GetGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetGroupInput {
     /// Consumes the builder and constructs an Operation<[`GetGroup`](crate::operation::GetGroup)>
     #[allow(clippy::let_and_return)]
@@ -8495,6 +8635,8 @@ pub mod get_group_policy_input {
         }
     }
 }
+pub type GetGroupPolicyInputOperationOutputAlias = crate::operation::GetGroupPolicy;
+pub type GetGroupPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetGroupPolicyInput {
     /// Consumes the builder and constructs an Operation<[`GetGroupPolicy`](crate::operation::GetGroupPolicy)>
     #[allow(clippy::let_and_return)]
@@ -8622,6 +8764,8 @@ pub mod get_instance_profile_input {
         }
     }
 }
+pub type GetInstanceProfileInputOperationOutputAlias = crate::operation::GetInstanceProfile;
+pub type GetInstanceProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetInstanceProfileInput {
     /// Consumes the builder and constructs an Operation<[`GetInstanceProfile`](crate::operation::GetInstanceProfile)>
     #[allow(clippy::let_and_return)]
@@ -8747,6 +8891,8 @@ pub mod get_login_profile_input {
         }
     }
 }
+pub type GetLoginProfileInputOperationOutputAlias = crate::operation::GetLoginProfile;
+pub type GetLoginProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetLoginProfileInput {
     /// Consumes the builder and constructs an Operation<[`GetLoginProfile`](crate::operation::GetLoginProfile)>
     #[allow(clippy::let_and_return)]
@@ -8874,6 +9020,9 @@ pub mod get_open_id_connect_provider_input {
         }
     }
 }
+pub type GetOpenIDConnectProviderInputOperationOutputAlias =
+    crate::operation::GetOpenIDConnectProvider;
+pub type GetOpenIDConnectProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetOpenIDConnectProviderInput {
     /// Consumes the builder and constructs an Operation<[`GetOpenIDConnectProvider`](crate::operation::GetOpenIDConnectProvider)>
     #[allow(clippy::let_and_return)]
@@ -9045,6 +9194,9 @@ pub mod get_organizations_access_report_input {
         }
     }
 }
+pub type GetOrganizationsAccessReportInputOperationOutputAlias =
+    crate::operation::GetOrganizationsAccessReport;
+pub type GetOrganizationsAccessReportInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetOrganizationsAccessReportInput {
     /// Consumes the builder and constructs an Operation<[`GetOrganizationsAccessReport`](crate::operation::GetOrganizationsAccessReport)>
     #[allow(clippy::let_and_return)]
@@ -9170,6 +9322,8 @@ pub mod get_policy_input {
         }
     }
 }
+pub type GetPolicyInputOperationOutputAlias = crate::operation::GetPolicy;
+pub type GetPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetPolicyInput {
     /// Consumes the builder and constructs an Operation<[`GetPolicy`](crate::operation::GetPolicy)>
     #[allow(clippy::let_and_return)]
@@ -9304,6 +9458,8 @@ pub mod get_policy_version_input {
         }
     }
 }
+pub type GetPolicyVersionInputOperationOutputAlias = crate::operation::GetPolicyVersion;
+pub type GetPolicyVersionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetPolicyVersionInput {
     /// Consumes the builder and constructs an Operation<[`GetPolicyVersion`](crate::operation::GetPolicyVersion)>
     #[allow(clippy::let_and_return)]
@@ -9428,6 +9584,8 @@ pub mod get_role_input {
         }
     }
 }
+pub type GetRoleInputOperationOutputAlias = crate::operation::GetRole;
+pub type GetRoleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetRoleInput {
     /// Consumes the builder and constructs an Operation<[`GetRole`](crate::operation::GetRole)>
     #[allow(clippy::let_and_return)]
@@ -9557,6 +9715,8 @@ pub mod get_role_policy_input {
         }
     }
 }
+pub type GetRolePolicyInputOperationOutputAlias = crate::operation::GetRolePolicy;
+pub type GetRolePolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetRolePolicyInput {
     /// Consumes the builder and constructs an Operation<[`GetRolePolicy`](crate::operation::GetRolePolicy)>
     #[allow(clippy::let_and_return)]
@@ -9684,6 +9844,8 @@ pub mod get_saml_provider_input {
         }
     }
 }
+pub type GetSAMLProviderInputOperationOutputAlias = crate::operation::GetSAMLProvider;
+pub type GetSAMLProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetSAMLProviderInput {
     /// Consumes the builder and constructs an Operation<[`GetSAMLProvider`](crate::operation::GetSAMLProvider)>
     #[allow(clippy::let_and_return)]
@@ -9811,6 +9973,8 @@ pub mod get_server_certificate_input {
         }
     }
 }
+pub type GetServerCertificateInputOperationOutputAlias = crate::operation::GetServerCertificate;
+pub type GetServerCertificateInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetServerCertificateInput {
     /// Consumes the builder and constructs an Operation<[`GetServerCertificate`](crate::operation::GetServerCertificate)>
     #[allow(clippy::let_and_return)]
@@ -9971,6 +10135,9 @@ pub mod get_service_last_accessed_details_input {
         }
     }
 }
+pub type GetServiceLastAccessedDetailsInputOperationOutputAlias =
+    crate::operation::GetServiceLastAccessedDetails;
+pub type GetServiceLastAccessedDetailsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetServiceLastAccessedDetailsInput {
     /// Consumes the builder and constructs an Operation<[`GetServiceLastAccessedDetails`](crate::operation::GetServiceLastAccessedDetails)>
     #[allow(clippy::let_and_return)]
@@ -10153,6 +10320,10 @@ pub mod get_service_last_accessed_details_with_entities_input {
         }
     }
 }
+pub type GetServiceLastAccessedDetailsWithEntitiesInputOperationOutputAlias =
+    crate::operation::GetServiceLastAccessedDetailsWithEntities;
+pub type GetServiceLastAccessedDetailsWithEntitiesInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl GetServiceLastAccessedDetailsWithEntitiesInput {
     /// Consumes the builder and constructs an Operation<[`GetServiceLastAccessedDetailsWithEntities`](crate::operation::GetServiceLastAccessedDetailsWithEntities)>
     #[allow(clippy::let_and_return)]
@@ -10282,6 +10453,9 @@ pub mod get_service_linked_role_deletion_status_input {
         }
     }
 }
+pub type GetServiceLinkedRoleDeletionStatusInputOperationOutputAlias =
+    crate::operation::GetServiceLinkedRoleDeletionStatus;
+pub type GetServiceLinkedRoleDeletionStatusInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetServiceLinkedRoleDeletionStatusInput {
     /// Consumes the builder and constructs an Operation<[`GetServiceLinkedRoleDeletionStatus`](crate::operation::GetServiceLinkedRoleDeletionStatus)>
     #[allow(clippy::let_and_return)]
@@ -10442,6 +10616,8 @@ pub mod get_ssh_public_key_input {
         }
     }
 }
+pub type GetSSHPublicKeyInputOperationOutputAlias = crate::operation::GetSSHPublicKey;
+pub type GetSSHPublicKeyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetSSHPublicKeyInput {
     /// Consumes the builder and constructs an Operation<[`GetSSHPublicKey`](crate::operation::GetSSHPublicKey)>
     #[allow(clippy::let_and_return)]
@@ -10567,6 +10743,8 @@ pub mod get_user_input {
         }
     }
 }
+pub type GetUserInputOperationOutputAlias = crate::operation::GetUser;
+pub type GetUserInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetUserInput {
     /// Consumes the builder and constructs an Operation<[`GetUser`](crate::operation::GetUser)>
     #[allow(clippy::let_and_return)]
@@ -10696,6 +10874,8 @@ pub mod get_user_policy_input {
         }
     }
 }
+pub type GetUserPolicyInputOperationOutputAlias = crate::operation::GetUserPolicy;
+pub type GetUserPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl GetUserPolicyInput {
     /// Consumes the builder and constructs an Operation<[`GetUserPolicy`](crate::operation::GetUserPolicy)>
     #[allow(clippy::let_and_return)]
@@ -10851,6 +11031,8 @@ pub mod list_access_keys_input {
         }
     }
 }
+pub type ListAccessKeysInputOperationOutputAlias = crate::operation::ListAccessKeys;
+pub type ListAccessKeysInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListAccessKeysInput {
     /// Consumes the builder and constructs an Operation<[`ListAccessKeys`](crate::operation::ListAccessKeys)>
     #[allow(clippy::let_and_return)]
@@ -10994,6 +11176,8 @@ pub mod list_account_aliases_input {
         }
     }
 }
+pub type ListAccountAliasesInputOperationOutputAlias = crate::operation::ListAccountAliases;
+pub type ListAccountAliasesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListAccountAliasesInput {
     /// Consumes the builder and constructs an Operation<[`ListAccountAliases`](crate::operation::ListAccountAliases)>
     #[allow(clippy::let_and_return)]
@@ -11167,6 +11351,9 @@ pub mod list_attached_group_policies_input {
         }
     }
 }
+pub type ListAttachedGroupPoliciesInputOperationOutputAlias =
+    crate::operation::ListAttachedGroupPolicies;
+pub type ListAttachedGroupPoliciesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListAttachedGroupPoliciesInput {
     /// Consumes the builder and constructs an Operation<[`ListAttachedGroupPolicies`](crate::operation::ListAttachedGroupPolicies)>
     #[allow(clippy::let_and_return)]
@@ -11341,6 +11528,9 @@ pub mod list_attached_role_policies_input {
         }
     }
 }
+pub type ListAttachedRolePoliciesInputOperationOutputAlias =
+    crate::operation::ListAttachedRolePolicies;
+pub type ListAttachedRolePoliciesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListAttachedRolePoliciesInput {
     /// Consumes the builder and constructs an Operation<[`ListAttachedRolePolicies`](crate::operation::ListAttachedRolePolicies)>
     #[allow(clippy::let_and_return)]
@@ -11514,6 +11704,9 @@ pub mod list_attached_user_policies_input {
         }
     }
 }
+pub type ListAttachedUserPoliciesInputOperationOutputAlias =
+    crate::operation::ListAttachedUserPolicies;
+pub type ListAttachedUserPoliciesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListAttachedUserPoliciesInput {
     /// Consumes the builder and constructs an Operation<[`ListAttachedUserPolicies`](crate::operation::ListAttachedUserPolicies)>
     #[allow(clippy::let_and_return)]
@@ -11724,6 +11917,8 @@ pub mod list_entities_for_policy_input {
         }
     }
 }
+pub type ListEntitiesForPolicyInputOperationOutputAlias = crate::operation::ListEntitiesForPolicy;
+pub type ListEntitiesForPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListEntitiesForPolicyInput {
     /// Consumes the builder and constructs an Operation<[`ListEntitiesForPolicy`](crate::operation::ListEntitiesForPolicy)>
     #[allow(clippy::let_and_return)]
@@ -11881,6 +12076,8 @@ pub mod list_group_policies_input {
         }
     }
 }
+pub type ListGroupPoliciesInputOperationOutputAlias = crate::operation::ListGroupPolicies;
+pub type ListGroupPoliciesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListGroupPoliciesInput {
     /// Consumes the builder and constructs an Operation<[`ListGroupPolicies`](crate::operation::ListGroupPolicies)>
     #[allow(clippy::let_and_return)]
@@ -12042,6 +12239,8 @@ pub mod list_groups_input {
         }
     }
 }
+pub type ListGroupsInputOperationOutputAlias = crate::operation::ListGroups;
+pub type ListGroupsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListGroupsInput {
     /// Consumes the builder and constructs an Operation<[`ListGroups`](crate::operation::ListGroups)>
     #[allow(clippy::let_and_return)]
@@ -12196,6 +12395,8 @@ pub mod list_groups_for_user_input {
         }
     }
 }
+pub type ListGroupsForUserInputOperationOutputAlias = crate::operation::ListGroupsForUser;
+pub type ListGroupsForUserInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListGroupsForUserInput {
     /// Consumes the builder and constructs an Operation<[`ListGroupsForUser`](crate::operation::ListGroupsForUser)>
     #[allow(clippy::let_and_return)]
@@ -12358,6 +12559,8 @@ pub mod list_instance_profiles_input {
         }
     }
 }
+pub type ListInstanceProfilesInputOperationOutputAlias = crate::operation::ListInstanceProfiles;
+pub type ListInstanceProfilesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListInstanceProfilesInput {
     /// Consumes the builder and constructs an Operation<[`ListInstanceProfiles`](crate::operation::ListInstanceProfiles)>
     #[allow(clippy::let_and_return)]
@@ -12517,6 +12720,9 @@ pub mod list_instance_profiles_for_role_input {
         }
     }
 }
+pub type ListInstanceProfilesForRoleInputOperationOutputAlias =
+    crate::operation::ListInstanceProfilesForRole;
+pub type ListInstanceProfilesForRoleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListInstanceProfilesForRoleInput {
     /// Consumes the builder and constructs an Operation<[`ListInstanceProfilesForRole`](crate::operation::ListInstanceProfilesForRole)>
     #[allow(clippy::let_and_return)]
@@ -12677,6 +12883,9 @@ pub mod list_instance_profile_tags_input {
         }
     }
 }
+pub type ListInstanceProfileTagsInputOperationOutputAlias =
+    crate::operation::ListInstanceProfileTags;
+pub type ListInstanceProfileTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListInstanceProfileTagsInput {
     /// Consumes the builder and constructs an Operation<[`ListInstanceProfileTags`](crate::operation::ListInstanceProfileTags)>
     #[allow(clippy::let_and_return)]
@@ -12833,6 +13042,8 @@ pub mod list_mfa_devices_input {
         }
     }
 }
+pub type ListMFADevicesInputOperationOutputAlias = crate::operation::ListMFADevices;
+pub type ListMFADevicesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListMFADevicesInput {
     /// Consumes the builder and constructs an Operation<[`ListMFADevices`](crate::operation::ListMFADevices)>
     #[allow(clippy::let_and_return)]
@@ -12989,6 +13200,8 @@ pub mod list_mfa_device_tags_input {
         }
     }
 }
+pub type ListMFADeviceTagsInputOperationOutputAlias = crate::operation::ListMFADeviceTags;
+pub type ListMFADeviceTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListMFADeviceTagsInput {
     /// Consumes the builder and constructs an Operation<[`ListMFADeviceTags`](crate::operation::ListMFADeviceTags)>
     #[allow(clippy::let_and_return)]
@@ -13099,6 +13312,9 @@ pub mod list_open_id_connect_providers_input {
         }
     }
 }
+pub type ListOpenIDConnectProvidersInputOperationOutputAlias =
+    crate::operation::ListOpenIDConnectProviders;
+pub type ListOpenIDConnectProvidersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListOpenIDConnectProvidersInput {
     /// Consumes the builder and constructs an Operation<[`ListOpenIDConnectProviders`](crate::operation::ListOpenIDConnectProviders)>
     #[allow(clippy::let_and_return)]
@@ -13262,6 +13478,9 @@ pub mod list_open_id_connect_provider_tags_input {
         }
     }
 }
+pub type ListOpenIDConnectProviderTagsInputOperationOutputAlias =
+    crate::operation::ListOpenIDConnectProviderTags;
+pub type ListOpenIDConnectProviderTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListOpenIDConnectProviderTagsInput {
     /// Consumes the builder and constructs an Operation<[`ListOpenIDConnectProviderTags`](crate::operation::ListOpenIDConnectProviderTags)>
     #[allow(clippy::let_and_return)]
@@ -13474,6 +13693,8 @@ pub mod list_policies_input {
         }
     }
 }
+pub type ListPoliciesInputOperationOutputAlias = crate::operation::ListPolicies;
+pub type ListPoliciesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListPoliciesInput {
     /// Consumes the builder and constructs an Operation<[`ListPolicies`](crate::operation::ListPolicies)>
     #[allow(clippy::let_and_return)]
@@ -13626,6 +13847,9 @@ pub mod list_policies_granting_service_access_input {
         }
     }
 }
+pub type ListPoliciesGrantingServiceAccessInputOperationOutputAlias =
+    crate::operation::ListPoliciesGrantingServiceAccess;
+pub type ListPoliciesGrantingServiceAccessInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListPoliciesGrantingServiceAccessInput {
     /// Consumes the builder and constructs an Operation<[`ListPoliciesGrantingServiceAccess`](crate::operation::ListPoliciesGrantingServiceAccess)>
     #[allow(clippy::let_and_return)]
@@ -13784,6 +14008,8 @@ pub mod list_policy_tags_input {
         }
     }
 }
+pub type ListPolicyTagsInputOperationOutputAlias = crate::operation::ListPolicyTags;
+pub type ListPolicyTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListPolicyTagsInput {
     /// Consumes the builder and constructs an Operation<[`ListPolicyTags`](crate::operation::ListPolicyTags)>
     #[allow(clippy::let_and_return)]
@@ -13940,6 +14166,8 @@ pub mod list_policy_versions_input {
         }
     }
 }
+pub type ListPolicyVersionsInputOperationOutputAlias = crate::operation::ListPolicyVersions;
+pub type ListPolicyVersionsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListPolicyVersionsInput {
     /// Consumes the builder and constructs an Operation<[`ListPolicyVersions`](crate::operation::ListPolicyVersions)>
     #[allow(clippy::let_and_return)]
@@ -14097,6 +14325,8 @@ pub mod list_role_policies_input {
         }
     }
 }
+pub type ListRolePoliciesInputOperationOutputAlias = crate::operation::ListRolePolicies;
+pub type ListRolePoliciesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListRolePoliciesInput {
     /// Consumes the builder and constructs an Operation<[`ListRolePolicies`](crate::operation::ListRolePolicies)>
     #[allow(clippy::let_and_return)]
@@ -14258,6 +14488,8 @@ pub mod list_roles_input {
         }
     }
 }
+pub type ListRolesInputOperationOutputAlias = crate::operation::ListRoles;
+pub type ListRolesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListRolesInput {
     /// Consumes the builder and constructs an Operation<[`ListRoles`](crate::operation::ListRoles)>
     #[allow(clippy::let_and_return)]
@@ -14408,6 +14640,8 @@ pub mod list_role_tags_input {
         }
     }
 }
+pub type ListRoleTagsInputOperationOutputAlias = crate::operation::ListRoleTags;
+pub type ListRoleTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListRoleTagsInput {
     /// Consumes the builder and constructs an Operation<[`ListRoleTags`](crate::operation::ListRoleTags)>
     #[allow(clippy::let_and_return)]
@@ -14515,6 +14749,8 @@ pub mod list_saml_providers_input {
         }
     }
 }
+pub type ListSAMLProvidersInputOperationOutputAlias = crate::operation::ListSAMLProviders;
+pub type ListSAMLProvidersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListSAMLProvidersInput {
     /// Consumes the builder and constructs an Operation<[`ListSAMLProviders`](crate::operation::ListSAMLProviders)>
     #[allow(clippy::let_and_return)]
@@ -14675,6 +14911,8 @@ pub mod list_saml_provider_tags_input {
         }
     }
 }
+pub type ListSAMLProviderTagsInputOperationOutputAlias = crate::operation::ListSAMLProviderTags;
+pub type ListSAMLProviderTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListSAMLProviderTagsInput {
     /// Consumes the builder and constructs an Operation<[`ListSAMLProviderTags`](crate::operation::ListSAMLProviderTags)>
     #[allow(clippy::let_and_return)]
@@ -14837,6 +15075,8 @@ pub mod list_server_certificates_input {
         }
     }
 }
+pub type ListServerCertificatesInputOperationOutputAlias = crate::operation::ListServerCertificates;
+pub type ListServerCertificatesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListServerCertificatesInput {
     /// Consumes the builder and constructs an Operation<[`ListServerCertificates`](crate::operation::ListServerCertificates)>
     #[allow(clippy::let_and_return)]
@@ -14996,6 +15236,9 @@ pub mod list_server_certificate_tags_input {
         }
     }
 }
+pub type ListServerCertificateTagsInputOperationOutputAlias =
+    crate::operation::ListServerCertificateTags;
+pub type ListServerCertificateTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListServerCertificateTagsInput {
     /// Consumes the builder and constructs an Operation<[`ListServerCertificateTags`](crate::operation::ListServerCertificateTags)>
     #[allow(clippy::let_and_return)]
@@ -15138,6 +15381,9 @@ pub mod list_service_specific_credentials_input {
         }
     }
 }
+pub type ListServiceSpecificCredentialsInputOperationOutputAlias =
+    crate::operation::ListServiceSpecificCredentials;
+pub type ListServiceSpecificCredentialsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListServiceSpecificCredentialsInput {
     /// Consumes the builder and constructs an Operation<[`ListServiceSpecificCredentials`](crate::operation::ListServiceSpecificCredentials)>
     #[allow(clippy::let_and_return)]
@@ -15296,6 +15542,9 @@ pub mod list_signing_certificates_input {
         }
     }
 }
+pub type ListSigningCertificatesInputOperationOutputAlias =
+    crate::operation::ListSigningCertificates;
+pub type ListSigningCertificatesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListSigningCertificatesInput {
     /// Consumes the builder and constructs an Operation<[`ListSigningCertificates`](crate::operation::ListSigningCertificates)>
     #[allow(clippy::let_and_return)]
@@ -15455,6 +15704,8 @@ pub mod list_ssh_public_keys_input {
         }
     }
 }
+pub type ListSSHPublicKeysInputOperationOutputAlias = crate::operation::ListSSHPublicKeys;
+pub type ListSSHPublicKeysInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListSSHPublicKeysInput {
     /// Consumes the builder and constructs an Operation<[`ListSSHPublicKeys`](crate::operation::ListSSHPublicKeys)>
     #[allow(clippy::let_and_return)]
@@ -15612,6 +15863,8 @@ pub mod list_user_policies_input {
         }
     }
 }
+pub type ListUserPoliciesInputOperationOutputAlias = crate::operation::ListUserPolicies;
+pub type ListUserPoliciesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListUserPoliciesInput {
     /// Consumes the builder and constructs an Operation<[`ListUserPolicies`](crate::operation::ListUserPolicies)>
     #[allow(clippy::let_and_return)]
@@ -15773,6 +16026,8 @@ pub mod list_users_input {
         }
     }
 }
+pub type ListUsersInputOperationOutputAlias = crate::operation::ListUsers;
+pub type ListUsersInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListUsersInput {
     /// Consumes the builder and constructs an Operation<[`ListUsers`](crate::operation::ListUsers)>
     #[allow(clippy::let_and_return)]
@@ -15923,6 +16178,8 @@ pub mod list_user_tags_input {
         }
     }
 }
+pub type ListUserTagsInputOperationOutputAlias = crate::operation::ListUserTags;
+pub type ListUserTagsInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListUserTagsInput {
     /// Consumes the builder and constructs an Operation<[`ListUserTags`](crate::operation::ListUserTags)>
     #[allow(clippy::let_and_return)]
@@ -16081,6 +16338,8 @@ pub mod list_virtual_mfa_devices_input {
         }
     }
 }
+pub type ListVirtualMFADevicesInputOperationOutputAlias = crate::operation::ListVirtualMFADevices;
+pub type ListVirtualMFADevicesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ListVirtualMFADevicesInput {
     /// Consumes the builder and constructs an Operation<[`ListVirtualMFADevices`](crate::operation::ListVirtualMFADevices)>
     #[allow(clippy::let_and_return)]
@@ -16252,6 +16511,8 @@ pub mod put_group_policy_input {
         }
     }
 }
+pub type PutGroupPolicyInputOperationOutputAlias = crate::operation::PutGroupPolicy;
+pub type PutGroupPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutGroupPolicyInput {
     /// Consumes the builder and constructs an Operation<[`PutGroupPolicy`](crate::operation::PutGroupPolicy)>
     #[allow(clippy::let_and_return)]
@@ -16390,6 +16651,9 @@ pub mod put_role_permissions_boundary_input {
         }
     }
 }
+pub type PutRolePermissionsBoundaryInputOperationOutputAlias =
+    crate::operation::PutRolePermissionsBoundary;
+pub type PutRolePermissionsBoundaryInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutRolePermissionsBoundaryInput {
     /// Consumes the builder and constructs an Operation<[`PutRolePermissionsBoundary`](crate::operation::PutRolePermissionsBoundary)>
     #[allow(clippy::let_and_return)]
@@ -16562,6 +16826,8 @@ pub mod put_role_policy_input {
         }
     }
 }
+pub type PutRolePolicyInputOperationOutputAlias = crate::operation::PutRolePolicy;
+pub type PutRolePolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutRolePolicyInput {
     /// Consumes the builder and constructs an Operation<[`PutRolePolicy`](crate::operation::PutRolePolicy)>
     #[allow(clippy::let_and_return)]
@@ -16700,6 +16966,9 @@ pub mod put_user_permissions_boundary_input {
         }
     }
 }
+pub type PutUserPermissionsBoundaryInputOperationOutputAlias =
+    crate::operation::PutUserPermissionsBoundary;
+pub type PutUserPermissionsBoundaryInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutUserPermissionsBoundaryInput {
     /// Consumes the builder and constructs an Operation<[`PutUserPermissionsBoundary`](crate::operation::PutUserPermissionsBoundary)>
     #[allow(clippy::let_and_return)]
@@ -16872,6 +17141,8 @@ pub mod put_user_policy_input {
         }
     }
 }
+pub type PutUserPolicyInputOperationOutputAlias = crate::operation::PutUserPolicy;
+pub type PutUserPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl PutUserPolicyInput {
     /// Consumes the builder and constructs an Operation<[`PutUserPolicy`](crate::operation::PutUserPolicy)>
     #[allow(clippy::let_and_return)]
@@ -17013,6 +17284,10 @@ pub mod remove_client_id_from_open_id_connect_provider_input {
         }
     }
 }
+pub type RemoveClientIDFromOpenIDConnectProviderInputOperationOutputAlias =
+    crate::operation::RemoveClientIDFromOpenIDConnectProvider;
+pub type RemoveClientIDFromOpenIDConnectProviderInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl RemoveClientIDFromOpenIDConnectProviderInput {
     /// Consumes the builder and constructs an Operation<[`RemoveClientIDFromOpenIDConnectProvider`](crate::operation::RemoveClientIDFromOpenIDConnectProvider)>
     #[allow(clippy::let_and_return)]
@@ -17156,6 +17431,9 @@ pub mod remove_role_from_instance_profile_input {
         }
     }
 }
+pub type RemoveRoleFromInstanceProfileInputOperationOutputAlias =
+    crate::operation::RemoveRoleFromInstanceProfile;
+pub type RemoveRoleFromInstanceProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RemoveRoleFromInstanceProfileInput {
     /// Consumes the builder and constructs an Operation<[`RemoveRoleFromInstanceProfile`](crate::operation::RemoveRoleFromInstanceProfile)>
     #[allow(clippy::let_and_return)]
@@ -17295,6 +17573,8 @@ pub mod remove_user_from_group_input {
         }
     }
 }
+pub type RemoveUserFromGroupInputOperationOutputAlias = crate::operation::RemoveUserFromGroup;
+pub type RemoveUserFromGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl RemoveUserFromGroupInput {
     /// Consumes the builder and constructs an Operation<[`RemoveUserFromGroup`](crate::operation::RemoveUserFromGroup)>
     #[allow(clippy::let_and_return)]
@@ -17443,6 +17723,9 @@ pub mod reset_service_specific_credential_input {
         }
     }
 }
+pub type ResetServiceSpecificCredentialInputOperationOutputAlias =
+    crate::operation::ResetServiceSpecificCredential;
+pub type ResetServiceSpecificCredentialInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ResetServiceSpecificCredentialInput {
     /// Consumes the builder and constructs an Operation<[`ResetServiceSpecificCredential`](crate::operation::ResetServiceSpecificCredential)>
     #[allow(clippy::let_and_return)]
@@ -17612,6 +17895,8 @@ pub mod resync_mfa_device_input {
         }
     }
 }
+pub type ResyncMFADeviceInputOperationOutputAlias = crate::operation::ResyncMFADevice;
+pub type ResyncMFADeviceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl ResyncMFADeviceInput {
     /// Consumes the builder and constructs an Operation<[`ResyncMFADevice`](crate::operation::ResyncMFADevice)>
     #[allow(clippy::let_and_return)]
@@ -17749,6 +18034,9 @@ pub mod set_default_policy_version_input {
         }
     }
 }
+pub type SetDefaultPolicyVersionInputOperationOutputAlias =
+    crate::operation::SetDefaultPolicyVersion;
+pub type SetDefaultPolicyVersionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SetDefaultPolicyVersionInput {
     /// Consumes the builder and constructs an Operation<[`SetDefaultPolicyVersion`](crate::operation::SetDefaultPolicyVersion)>
     #[allow(clippy::let_and_return)]
@@ -17888,6 +18176,9 @@ pub mod set_security_token_service_preferences_input {
         }
     }
 }
+pub type SetSecurityTokenServicePreferencesInputOperationOutputAlias =
+    crate::operation::SetSecurityTokenServicePreferences;
+pub type SetSecurityTokenServicePreferencesInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SetSecurityTokenServicePreferencesInput {
     /// Consumes the builder and constructs an Operation<[`SetSecurityTokenServicePreferences`](crate::operation::SetSecurityTokenServicePreferences)>
     #[allow(clippy::let_and_return)]
@@ -18251,6 +18542,8 @@ pub mod simulate_custom_policy_input {
         }
     }
 }
+pub type SimulateCustomPolicyInputOperationOutputAlias = crate::operation::SimulateCustomPolicy;
+pub type SimulateCustomPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SimulateCustomPolicyInput {
     /// Consumes the builder and constructs an Operation<[`SimulateCustomPolicy`](crate::operation::SimulateCustomPolicy)>
     #[allow(clippy::let_and_return)]
@@ -18635,6 +18928,9 @@ pub mod simulate_principal_policy_input {
         }
     }
 }
+pub type SimulatePrincipalPolicyInputOperationOutputAlias =
+    crate::operation::SimulatePrincipalPolicy;
+pub type SimulatePrincipalPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl SimulatePrincipalPolicyInput {
     /// Consumes the builder and constructs an Operation<[`SimulatePrincipalPolicy`](crate::operation::SimulatePrincipalPolicy)>
     #[allow(clippy::let_and_return)]
@@ -18778,6 +19074,8 @@ pub mod tag_instance_profile_input {
         }
     }
 }
+pub type TagInstanceProfileInputOperationOutputAlias = crate::operation::TagInstanceProfile;
+pub type TagInstanceProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagInstanceProfileInput {
     /// Consumes the builder and constructs an Operation<[`TagInstanceProfile`](crate::operation::TagInstanceProfile)>
     #[allow(clippy::let_and_return)]
@@ -18918,6 +19216,8 @@ pub mod tag_mfa_device_input {
         }
     }
 }
+pub type TagMFADeviceInputOperationOutputAlias = crate::operation::TagMFADevice;
+pub type TagMFADeviceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagMFADeviceInput {
     /// Consumes the builder and constructs an Operation<[`TagMFADevice`](crate::operation::TagMFADevice)>
     #[allow(clippy::let_and_return)]
@@ -19058,6 +19358,9 @@ pub mod tag_open_id_connect_provider_input {
         }
     }
 }
+pub type TagOpenIDConnectProviderInputOperationOutputAlias =
+    crate::operation::TagOpenIDConnectProvider;
+pub type TagOpenIDConnectProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagOpenIDConnectProviderInput {
     /// Consumes the builder and constructs an Operation<[`TagOpenIDConnectProvider`](crate::operation::TagOpenIDConnectProvider)>
     #[allow(clippy::let_and_return)]
@@ -19198,6 +19501,8 @@ pub mod tag_policy_input {
         }
     }
 }
+pub type TagPolicyInputOperationOutputAlias = crate::operation::TagPolicy;
+pub type TagPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagPolicyInput {
     /// Consumes the builder and constructs an Operation<[`TagPolicy`](crate::operation::TagPolicy)>
     #[allow(clippy::let_and_return)]
@@ -19332,6 +19637,8 @@ pub mod tag_role_input {
         }
     }
 }
+pub type TagRoleInputOperationOutputAlias = crate::operation::TagRole;
+pub type TagRoleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagRoleInput {
     /// Consumes the builder and constructs an Operation<[`TagRole`](crate::operation::TagRole)>
     #[allow(clippy::let_and_return)]
@@ -19467,6 +19774,8 @@ pub mod tag_saml_provider_input {
         }
     }
 }
+pub type TagSAMLProviderInputOperationOutputAlias = crate::operation::TagSAMLProvider;
+pub type TagSAMLProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagSAMLProviderInput {
     /// Consumes the builder and constructs an Operation<[`TagSAMLProvider`](crate::operation::TagSAMLProvider)>
     #[allow(clippy::let_and_return)]
@@ -19609,6 +19918,8 @@ pub mod tag_server_certificate_input {
         }
     }
 }
+pub type TagServerCertificateInputOperationOutputAlias = crate::operation::TagServerCertificate;
+pub type TagServerCertificateInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagServerCertificateInput {
     /// Consumes the builder and constructs an Operation<[`TagServerCertificate`](crate::operation::TagServerCertificate)>
     #[allow(clippy::let_and_return)]
@@ -19748,6 +20059,8 @@ pub mod tag_user_input {
         }
     }
 }
+pub type TagUserInputOperationOutputAlias = crate::operation::TagUser;
+pub type TagUserInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl TagUserInput {
     /// Consumes the builder and constructs an Operation<[`TagUser`](crate::operation::TagUser)>
     #[allow(clippy::let_and_return)]
@@ -19883,6 +20196,8 @@ pub mod untag_instance_profile_input {
         }
     }
 }
+pub type UntagInstanceProfileInputOperationOutputAlias = crate::operation::UntagInstanceProfile;
+pub type UntagInstanceProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagInstanceProfileInput {
     /// Consumes the builder and constructs an Operation<[`UntagInstanceProfile`](crate::operation::UntagInstanceProfile)>
     #[allow(clippy::let_and_return)]
@@ -20023,6 +20338,8 @@ pub mod untag_mfa_device_input {
         }
     }
 }
+pub type UntagMFADeviceInputOperationOutputAlias = crate::operation::UntagMFADevice;
+pub type UntagMFADeviceInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagMFADeviceInput {
     /// Consumes the builder and constructs an Operation<[`UntagMFADevice`](crate::operation::UntagMFADevice)>
     #[allow(clippy::let_and_return)]
@@ -20165,6 +20482,9 @@ pub mod untag_open_id_connect_provider_input {
         }
     }
 }
+pub type UntagOpenIDConnectProviderInputOperationOutputAlias =
+    crate::operation::UntagOpenIDConnectProvider;
+pub type UntagOpenIDConnectProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagOpenIDConnectProviderInput {
     /// Consumes the builder and constructs an Operation<[`UntagOpenIDConnectProvider`](crate::operation::UntagOpenIDConnectProvider)>
     #[allow(clippy::let_and_return)]
@@ -20306,6 +20626,8 @@ pub mod untag_policy_input {
         }
     }
 }
+pub type UntagPolicyInputOperationOutputAlias = crate::operation::UntagPolicy;
+pub type UntagPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagPolicyInput {
     /// Consumes the builder and constructs an Operation<[`UntagPolicy`](crate::operation::UntagPolicy)>
     #[allow(clippy::let_and_return)]
@@ -20442,6 +20764,8 @@ pub mod untag_role_input {
         }
     }
 }
+pub type UntagRoleInputOperationOutputAlias = crate::operation::UntagRole;
+pub type UntagRoleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagRoleInput {
     /// Consumes the builder and constructs an Operation<[`UntagRole`](crate::operation::UntagRole)>
     #[allow(clippy::let_and_return)]
@@ -20581,6 +20905,8 @@ pub mod untag_saml_provider_input {
         }
     }
 }
+pub type UntagSAMLProviderInputOperationOutputAlias = crate::operation::UntagSAMLProvider;
+pub type UntagSAMLProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagSAMLProviderInput {
     /// Consumes the builder and constructs an Operation<[`UntagSAMLProvider`](crate::operation::UntagSAMLProvider)>
     #[allow(clippy::let_and_return)]
@@ -20724,6 +21050,8 @@ pub mod untag_server_certificate_input {
         }
     }
 }
+pub type UntagServerCertificateInputOperationOutputAlias = crate::operation::UntagServerCertificate;
+pub type UntagServerCertificateInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagServerCertificateInput {
     /// Consumes the builder and constructs an Operation<[`UntagServerCertificate`](crate::operation::UntagServerCertificate)>
     #[allow(clippy::let_and_return)]
@@ -20863,6 +21191,8 @@ pub mod untag_user_input {
         }
     }
 }
+pub type UntagUserInputOperationOutputAlias = crate::operation::UntagUser;
+pub type UntagUserInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UntagUserInput {
     /// Consumes the builder and constructs an Operation<[`UntagUser`](crate::operation::UntagUser)>
     #[allow(clippy::let_and_return)]
@@ -21009,6 +21339,8 @@ pub mod update_access_key_input {
         }
     }
 }
+pub type UpdateAccessKeyInputOperationOutputAlias = crate::operation::UpdateAccessKey;
+pub type UpdateAccessKeyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateAccessKeyInput {
     /// Consumes the builder and constructs an Operation<[`UpdateAccessKey`](crate::operation::UpdateAccessKey)>
     #[allow(clippy::let_and_return)]
@@ -21257,6 +21589,9 @@ pub mod update_account_password_policy_input {
         }
     }
 }
+pub type UpdateAccountPasswordPolicyInputOperationOutputAlias =
+    crate::operation::UpdateAccountPasswordPolicy;
+pub type UpdateAccountPasswordPolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateAccountPasswordPolicyInput {
     /// Consumes the builder and constructs an Operation<[`UpdateAccountPasswordPolicy`](crate::operation::UpdateAccountPasswordPolicy)>
     #[allow(clippy::let_and_return)]
@@ -21417,6 +21752,8 @@ pub mod update_assume_role_policy_input {
         }
     }
 }
+pub type UpdateAssumeRolePolicyInputOperationOutputAlias = crate::operation::UpdateAssumeRolePolicy;
+pub type UpdateAssumeRolePolicyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateAssumeRolePolicyInput {
     /// Consumes the builder and constructs an Operation<[`UpdateAssumeRolePolicy`](crate::operation::UpdateAssumeRolePolicy)>
     #[allow(clippy::let_and_return)]
@@ -21571,6 +21908,8 @@ pub mod update_group_input {
         }
     }
 }
+pub type UpdateGroupInputOperationOutputAlias = crate::operation::UpdateGroup;
+pub type UpdateGroupInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateGroupInput {
     /// Consumes the builder and constructs an Operation<[`UpdateGroup`](crate::operation::UpdateGroup)>
     #[allow(clippy::let_and_return)]
@@ -21734,6 +22073,8 @@ pub mod update_login_profile_input {
         }
     }
 }
+pub type UpdateLoginProfileInputOperationOutputAlias = crate::operation::UpdateLoginProfile;
+pub type UpdateLoginProfileInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateLoginProfileInput {
     /// Consumes the builder and constructs an Operation<[`UpdateLoginProfile`](crate::operation::UpdateLoginProfile)>
     #[allow(clippy::let_and_return)]
@@ -21880,6 +22221,10 @@ pub mod update_open_id_connect_provider_thumbprint_input {
         }
     }
 }
+pub type UpdateOpenIDConnectProviderThumbprintInputOperationOutputAlias =
+    crate::operation::UpdateOpenIDConnectProviderThumbprint;
+pub type UpdateOpenIDConnectProviderThumbprintInputOperationRetryAlias =
+    aws_http::AwsErrorRetryPolicy;
 impl UpdateOpenIDConnectProviderThumbprintInput {
     /// Consumes the builder and constructs an Operation<[`UpdateOpenIDConnectProviderThumbprint`](crate::operation::UpdateOpenIDConnectProviderThumbprint)>
     #[allow(clippy::let_and_return)]
@@ -22035,6 +22380,8 @@ pub mod update_role_input {
         }
     }
 }
+pub type UpdateRoleInputOperationOutputAlias = crate::operation::UpdateRole;
+pub type UpdateRoleInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateRoleInput {
     /// Consumes the builder and constructs an Operation<[`UpdateRole`](crate::operation::UpdateRole)>
     #[allow(clippy::let_and_return)]
@@ -22166,6 +22513,8 @@ pub mod update_role_description_input {
         }
     }
 }
+pub type UpdateRoleDescriptionInputOperationOutputAlias = crate::operation::UpdateRoleDescription;
+pub type UpdateRoleDescriptionInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateRoleDescriptionInput {
     /// Consumes the builder and constructs an Operation<[`UpdateRoleDescription`](crate::operation::UpdateRoleDescription)>
     #[allow(clippy::let_and_return)]
@@ -22311,6 +22660,8 @@ pub mod update_saml_provider_input {
         }
     }
 }
+pub type UpdateSAMLProviderInputOperationOutputAlias = crate::operation::UpdateSAMLProvider;
+pub type UpdateSAMLProviderInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateSAMLProviderInput {
     /// Consumes the builder and constructs an Operation<[`UpdateSAMLProvider`](crate::operation::UpdateSAMLProvider)>
     #[allow(clippy::let_and_return)]
@@ -22472,6 +22823,9 @@ pub mod update_server_certificate_input {
         }
     }
 }
+pub type UpdateServerCertificateInputOperationOutputAlias =
+    crate::operation::UpdateServerCertificate;
+pub type UpdateServerCertificateInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateServerCertificateInput {
     /// Consumes the builder and constructs an Operation<[`UpdateServerCertificate`](crate::operation::UpdateServerCertificate)>
     #[allow(clippy::let_and_return)]
@@ -22631,6 +22985,9 @@ pub mod update_service_specific_credential_input {
         }
     }
 }
+pub type UpdateServiceSpecificCredentialInputOperationOutputAlias =
+    crate::operation::UpdateServiceSpecificCredential;
+pub type UpdateServiceSpecificCredentialInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateServiceSpecificCredentialInput {
     /// Consumes the builder and constructs an Operation<[`UpdateServiceSpecificCredential`](crate::operation::UpdateServiceSpecificCredential)>
     #[allow(clippy::let_and_return)]
@@ -22783,6 +23140,9 @@ pub mod update_signing_certificate_input {
         }
     }
 }
+pub type UpdateSigningCertificateInputOperationOutputAlias =
+    crate::operation::UpdateSigningCertificate;
+pub type UpdateSigningCertificateInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateSigningCertificateInput {
     /// Consumes the builder and constructs an Operation<[`UpdateSigningCertificate`](crate::operation::UpdateSigningCertificate)>
     #[allow(clippy::let_and_return)]
@@ -22937,6 +23297,8 @@ pub mod update_ssh_public_key_input {
         }
     }
 }
+pub type UpdateSSHPublicKeyInputOperationOutputAlias = crate::operation::UpdateSSHPublicKey;
+pub type UpdateSSHPublicKeyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateSSHPublicKeyInput {
     /// Consumes the builder and constructs an Operation<[`UpdateSSHPublicKey`](crate::operation::UpdateSSHPublicKey)>
     #[allow(clippy::let_and_return)]
@@ -23093,6 +23455,8 @@ pub mod update_user_input {
         }
     }
 }
+pub type UpdateUserInputOperationOutputAlias = crate::operation::UpdateUser;
+pub type UpdateUserInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UpdateUserInput {
     /// Consumes the builder and constructs an Operation<[`UpdateUser`](crate::operation::UpdateUser)>
     #[allow(clippy::let_and_return)]
@@ -23345,6 +23709,9 @@ pub mod upload_server_certificate_input {
         }
     }
 }
+pub type UploadServerCertificateInputOperationOutputAlias =
+    crate::operation::UploadServerCertificate;
+pub type UploadServerCertificateInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UploadServerCertificateInput {
     /// Consumes the builder and constructs an Operation<[`UploadServerCertificate`](crate::operation::UploadServerCertificate)>
     #[allow(clippy::let_and_return)]
@@ -23500,6 +23867,9 @@ pub mod upload_signing_certificate_input {
         }
     }
 }
+pub type UploadSigningCertificateInputOperationOutputAlias =
+    crate::operation::UploadSigningCertificate;
+pub type UploadSigningCertificateInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UploadSigningCertificateInput {
     /// Consumes the builder and constructs an Operation<[`UploadSigningCertificate`](crate::operation::UploadSigningCertificate)>
     #[allow(clippy::let_and_return)]
@@ -23657,6 +24027,8 @@ pub mod upload_ssh_public_key_input {
         }
     }
 }
+pub type UploadSSHPublicKeyInputOperationOutputAlias = crate::operation::UploadSSHPublicKey;
+pub type UploadSSHPublicKeyInputOperationRetryAlias = aws_http::AwsErrorRetryPolicy;
 impl UploadSSHPublicKeyInput {
     /// Consumes the builder and constructs an Operation<[`UploadSSHPublicKey`](crate::operation::UploadSSHPublicKey)>
     #[allow(clippy::let_and_return)]
