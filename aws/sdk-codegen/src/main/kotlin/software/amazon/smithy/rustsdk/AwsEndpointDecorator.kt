@@ -279,7 +279,7 @@ class EndpointResolverGenerator(protocolConfig: ProtocolConfig, private val endp
     /**
      * Represents a partition from endpoints.json
      */
-    private inner class PartitionNode(endpointPrefix: String, val config: ObjectNode) {
+    private inner class PartitionNode(endpointPrefix: String, config: ObjectNode) {
         // the partition id/name (e.g. "aws")
         val id: String = config.expectStringMember("partition").value
 
