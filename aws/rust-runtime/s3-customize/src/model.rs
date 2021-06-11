@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 #[derive(Deserialize)]
@@ -58,7 +58,7 @@ pub struct Endpoint {
     pub credential_scope: CredentialScope,
 }
 
-#[derive(Deserialize, Default, Debug, Eq, PartialEq, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Eq, PartialEq, Clone)]
 pub struct CredentialScope {
     #[serde(default)]
     pub region: Option<String>,

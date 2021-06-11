@@ -1,0 +1,304 @@
+[
+  {
+    "use_arn_region": false,
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "region": "us-east-1",
+    "bucket": "arn:aws:s3:us-east-1:123456789012:accesspoint:myendpoint",
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint.us-east-1.amazonaws.com"
+    }
+  },
+  {
+    "use_arn_region": false,
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint.us-west-2.amazonaws.com"
+    },
+    "region": "us-west-2",
+    "bucket": "arn:aws:s3:us-west-2:123456789012:accesspoint:myendpoint"
+  },
+  {
+    "use_arn_region": true,
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "bucket": "arn:aws:s3:us-east-1:123456789012:accesspoint:myendpoint",
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint.us-east-1.amazonaws.com"
+    },
+    "region": "us-west-2"
+  },
+  {
+    "use_arn_region": true,
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "region": "s3-external-1",
+    "bucket": "arn:aws:s3:us-east-1:123456789012:accesspoint:myendpoint",
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint.us-east-1.amazonaws.com"
+    }
+  },
+  {
+    "use_arn_region": false,
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "region": "s3-external-1",
+    "endpoint": {
+      "Err": "Invalid configuration, client region is not a regional endpoint"
+    },
+    "bucket": "arn:aws:s3:us-east-1:123456789012:accesspoint:myendpoint"
+  },
+  {
+    "bucket": "arn:aws:s3:us-east-1:123456789012:accesspoint:myendpoint",
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint.us-east-1.amazonaws.com"
+    },
+    "region": "aws-global",
+    "use_arn_region": true,
+    "use_dualstack": false,
+    "use_s3_accelerate": false
+  },
+  {
+    "use_arn_region": false,
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "endpoint": {
+      "Err": "Invalid configuration, client region is not a regional endpoint"
+    },
+    "region": "aws-global",
+    "bucket": "arn:aws:s3:us-east-1:123456789012:accesspoint:myendpoint"
+  },
+  {
+    "use_arn_region": false,
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "region": "us-west-2",
+    "endpoint": {
+      "Err": "Invalid configuration: invalid region, expected us\\-east\\-1, found us-west-2"
+    },
+    "bucket": "arn:aws:s3:us-east-1:123456789012:accesspoint:myendpoint"
+  },
+  {
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint.dualstack.us-west-2.amazonaws.com"
+    },
+    "use_arn_region": true,
+    "use_dualstack": true,
+    "use_s3_accelerate": false,
+    "region": "us-west-2",
+    "bucket": "arn:aws:s3:us-west-2:123456789012:accesspoint:myendpoint"
+  },
+  {
+    "endpoint": {
+      "Err": "Invalid configuration, cross partition Access Point ARN"
+    },
+    "bucket": "arn:aws-cn:s3:cn-north-1:123456789012:accesspoint:myendpoint",
+    "region": "us-west-2",
+    "use_arn_region": true,
+    "use_s3_accelerate": false,
+    "use_dualstack": false
+  },
+  {
+    "use_arn_region": true,
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint.cn-north-1.amazonaws.com.cn"
+    },
+    "region": "cn-north-1",
+    "bucket": "arn:aws-cn:s3:cn-north-1:123456789012:accesspoint:myendpoint"
+  },
+  {
+    "region": "cn-north-1",
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint.cn-north-1.amazonaws.com.cn"
+    },
+    "bucket": "arn:aws-cn:s3:cn-north-1:123456789012:accesspoint:myendpoint",
+    "use_arn_region": false,
+    "use_s3_accelerate": false,
+    "use_dualstack": false
+  },
+  {
+    "region": "cn-north-1",
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint.cn-northwest-1.amazonaws.com.cn"
+    },
+    "bucket": "arn:aws-cn:s3:cn-northwest-1:123456789012:accesspoint:myendpoint",
+    "use_arn_region": true,
+    "use_s3_accelerate": false,
+    "use_dualstack": false
+  },
+  {
+    "region": "us-gov-east-1",
+    "bucket": "arn:aws-us-gov:s3:us-gov-east-1:123456789012:accesspoint:myendpoint",
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "use_arn_region": true,
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint.us-gov-east-1.amazonaws.com"
+    }
+  },
+  {
+    "bucket": "arn:aws-us-gov:s3:us-gov-east-1:123456789012:accesspoint:myendpoint",
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "use_arn_region": false,
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint-fips.us-gov-east-1.amazonaws.com"
+    },
+    "region": "fips-us-gov-east-1"
+  },
+  {
+    "use_arn_region": true,
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "region": "fips-us-gov-east-1",
+    "bucket": "arn:aws-us-gov:s3:us-gov-east-1:123456789012:accesspoint:myendpoint",
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint-fips.us-gov-east-1.amazonaws.com"
+    }
+  },
+  {
+    "use_arn_region": false,
+    "endpoint": {
+      "Err": "Invalid configuration: invalid region, expected ^fips-us\\-gov\\-west\\-1$, found fips-us-gov-east-1"
+    },
+    "region": "fips-us-gov-east-1",
+    "bucket": "arn:aws-us-gov:s3:us-gov-west-1:123456789012:accesspoint:myendpoint",
+    "use_s3_accelerate": false,
+    "use_dualstack": false
+  },
+  {
+    "region": "fips-us-gov-east-1",
+    "use_arn_region": true,
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "bucket": "arn:aws-us-gov:s3:us-gov-west-1:123456789012:accesspoint:myendpoint",
+    "endpoint": {
+      "Err": "Invalid configuration: invalid region, expected ^fips-us\\-gov\\-west\\-1$, found fips-us-gov-east-1"
+    }
+  },
+  {
+    "region": "fips-us-gov-east-1",
+    "use_arn_region": true,
+    "use_dualstack": true,
+    "use_s3_accelerate": false,
+    "bucket": "arn:aws-us-gov:s3:us-gov-east-1:123456789012:accesspoint:myendpoint",
+    "endpoint": {
+      "Ok": "https://myendpoint-123456789012.s3-accesspoint-fips.dualstack.us-gov-east-1.amazonaws.com"
+    }
+  },
+  {
+    "endpoint": {
+      "Err": "Invalid configuration Access Points do not support accelerate"
+    },
+    "region": "us-west-2",
+    "bucket": "arn:aws:s3:us-west-2:123456789012:accesspoint:myendpoint",
+    "use_s3_accelerate": true,
+    "use_dualstack": false,
+    "use_arn_region": false
+  },
+  {
+    "region": "us-west-2",
+    "endpoint": {
+      "Err": "Invalid ARN not S3 ARN"
+    },
+    "bucket": "arn:aws:sqs:us-west-2:123456789012:someresource",
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "use_arn_region": false
+  },
+  {
+    "bucket": "arn:aws:s3::123456789012:accesspoint:myendpoint",
+    "error": "Invalid ARN, missing region",
+    "region": "us-west-2",
+    "endpoint": {
+      "Err": "Invalid ARN, missing region"
+    },
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "use_arn_region": false
+  },
+  {
+    "bucket": "arn:aws:s3:us-west-2:123456789012:bucket_name:mybucket",
+    "error": "Invalid ARN, missing region",
+    "region": "us-west-2",
+    "endpoint": {
+      "Err": "Invalid ARN unknown resource type"
+    },
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "use_arn_region": false
+  },
+  {
+    "region": "fips-us-gov-west-1",
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "use_arn_region": false,
+    "bucket": "arn:aws-us-gov:s3:fips-us-gov-west-1:123456789012:accesspoint/myendpoint",
+    "endpoint": {
+      "Err": "Invalid ARN, FIPS region not allowed in ARN"
+    }
+  },
+  {
+    "bucket": "arn:aws:s3:us-west-2::accesspoint:myendpoint",
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "use_arn_region": false,
+    "region": "us-west-2",
+    "endpoint": {
+      "Err": "Invalid ARN, missing account-id"
+    }
+  },
+  {
+    "region": "us-west-2",
+    "endpoint": {
+      "Err": "Invalid ARN, account-id contains invalid character"
+    },
+    "bucket": "arn:aws:s3:us-west-2:123.45678.9012:accesspoint:mybucket",
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "use_arn_region": false
+  },
+  {
+    "region": "us-west-2",
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "use_arn_region": false,
+    "endpoint": {
+      "Err": "Invalid ARN, missing Access Point name"
+    },
+    "bucket": "arn:aws:s3:us-west-2:123456789012:accesspoint"
+  },
+  {
+    "bucket": "arn:aws:s3:us-west-2:123456789012:accesspoint:*",
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "use_arn_region": false,
+    "endpoint": {
+      "Err": "Invalid ARN, Access Point Name contains invalid character"
+    },
+    "region": "us-west-2"
+  },
+  {
+    "bucket": "arn:aws:s3:us-west-2:123456789012:accesspoint:my.bucket",
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "use_arn_region": false,
+    "endpoint": {
+      "Err": "Invalid ARN, Access Point Name contains invalid character"
+    },
+    "region": "us-west-2"
+  },
+  {
+    "bucket": "arn:aws:s3:us-west-2:123456789012:accesspoint:mybucket:object:foo",
+    "endpoint": {
+      "Err": "Invalid ARN, Access Point Name contains invalid character"
+    },
+    "region": "us-west-2",
+    "use_s3_accelerate": false,
+    "use_dualstack": false,
+    "use_arn_region": false
+  }
+]

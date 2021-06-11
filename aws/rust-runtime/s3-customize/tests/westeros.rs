@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-use http::{Request, Uri};
 use s3_customize::{AddressingStyle, S3Config, TableRow};
 use serde::Deserialize;
 use std::error::Error;
@@ -11,31 +10,23 @@ use std::fs;
 use std::time::Instant;
 
 #[derive(Deserialize, Debug)]
-#[serde(rename_all = "PascalCase")]
 struct TestCase {
     bucket: String,
-    configured_addressing_style: String,
-    expected_uri: String,
+    endpoint: Result<String, String>,
     region: String,
     use_dualstack: bool,
     use_s3_accelerate: bool,
-    s3_us_east_1_regional_endpoint: String,
+    use_arn_region: bool,
 }
 
 #[test]
 fn run_test_cases() -> Result<(), Box<dyn Error>> {
-    let test_cases = fs::read_to_string("test-data/virtual-addressing.json")?;
+    let test_cases = fs::read_to_string("test-data/westeros.json")?;
     let test_cases: Vec<TestCase> = serde_json::from_str(&test_cases)?;
-    let test_cases = test_cases
-        .into_iter()
-        .filter(|test| {
-            !(test.region == "us-east-1" && test.s3_us_east_1_regional_endpoint == "legacy")
-        })
-        .collect::<Vec<_>>();
     let table = s3_customize::complete_table()?;
     let now = Instant::now();
     for test_case in &test_cases {
-        check(test_case, &table);
+        check(&test_case, &table)
     }
     let after = Instant::now();
     println!(
@@ -51,28 +42,32 @@ fn check(test_case: &TestCase, table: &[TableRow]) {
         region: &test_case.region,
         bucket: &test_case.bucket,
         s3_config: S3Config {
-            address_style: match test_case.configured_addressing_style.as_str() {
-                "default" => AddressingStyle::Auto,
-                "path" => AddressingStyle::Path,
-                _ => panic!(),
-            },
+            address_style: AddressingStyle::Auto,
             dualstack: test_case.use_dualstack,
             accelerate: test_case.use_s3_accelerate,
-            use_arn_region: false,
+            use_arn_region: test_case.use_arn_region,
         },
     };
 
-    let mut input_request = Request::builder()
+    let mut input_request = http::Request::builder()
         .uri(format!("/{}", test_case.bucket))
         .body(())
         .unwrap();
-    request
-        .apply(&mut input_request, table)
-        .expect(&format!("failed to process request: {:?}", test_case));
-    assert_eq!(
-        input_request.uri(),
-        &test_case.expected_uri.parse::<http::Uri>().unwrap(),
-        "{:?}",
-        test_case
-    );
+    match (
+        request.apply(&mut input_request, table),
+        &test_case.endpoint,
+    ) {
+        (Ok(row), Ok(ep)) => assert_eq!(
+            input_request.uri(),
+            &ep.parse::<http::Uri>().unwrap(),
+            "{:?} {:?}",
+            test_case,
+            row
+        ),
+        (Err(actual), Err(expected)) => assert_eq!(&actual, expected, "{:?}", test_case),
+        (actual, expected) => panic!(
+            "Mismatch: \n actual: {:?}\n expected: {:?}\n test case: {:?}",
+            actual, expected, test_case
+        ),
+    }
 }
