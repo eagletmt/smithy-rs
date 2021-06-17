@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0.
  */
 
-use s3_customize::{AddressingStyle, S3Config, TableRow};
 use std::error::Error;
 use std::fs;
 use std::time::Instant;

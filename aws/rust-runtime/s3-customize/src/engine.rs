@@ -69,7 +69,7 @@ pub enum Uri {
 }
 
 #[derive(Debug, Eq, PartialEq)]
-struct EndpointSupport {
+pub struct EndpointSupport {
     /// Can a bucket be prefixed onto this endpoint?
     bucket_prefix: bool,
 
@@ -168,6 +168,7 @@ fn just_dualstack(region_regex: &RegionRegex, derived_endpoint: &DerivedEndpoint
             accelerate: Some(false),
             use_arn_region: None,
             bucket_is_valid_dns: Some(true),
+            custom_endpoint: Some(matches!(derived_endpoint.uri, Uri::CustomerProvided { .. })),
             docs: "virtual address compatible".to_string(),
         };
         let value = match &derived_endpoint.uri {
@@ -190,7 +191,7 @@ fn just_dualstack(region_regex: &RegionRegex, derived_endpoint: &DerivedEndpoint
                     },
                     bucket_regex: Regex::new(".*").unwrap(),
                     header_template: Default::default(),
-                    credential_scope: derived_endpoint.credential_scope.clone(),
+                    credential_scope: (&derived_endpoint.credential_scope).into(),
                     remove_bucket_from_path: true,
                     region_match_regex: None,
                 })
@@ -206,6 +207,7 @@ fn just_dualstack(region_regex: &RegionRegex, derived_endpoint: &DerivedEndpoint
             dualstack: Some(true),
             accelerate: Some(false),
             use_arn_region: None,
+            custom_endpoint: Some(matches!(derived_endpoint.uri, Uri::CustomerProvided { .. })),
             bucket_is_valid_dns: Some(false),
             docs: "dualstack, invalid DNS".to_string(),
         };
@@ -229,7 +231,7 @@ fn just_dualstack(region_regex: &RegionRegex, derived_endpoint: &DerivedEndpoint
                     },
                     bucket_regex: Regex::new(".*").unwrap(),
                     header_template: Default::default(),
-                    credential_scope: derived_endpoint.credential_scope.clone(),
+                    credential_scope: (&derived_endpoint.credential_scope).into(),
                     remove_bucket_from_path: false,
                     region_match_regex: None,
                 })
@@ -263,6 +265,7 @@ fn dualstack_with_accelerate(
             dualstack: Some(true),
             accelerate: Some(true),
             use_arn_region: None,
+            custom_endpoint: Some(matches!(derived_endpoint.uri, Uri::CustomerProvided { .. })),
             bucket_is_valid_dns: Some(true),
             docs: "virtual address compatible".to_string(),
         };
@@ -281,7 +284,7 @@ fn dualstack_with_accelerate(
                 },
                 bucket_regex: Regex::new(".*").unwrap(),
                 header_template: Default::default(),
-                credential_scope: derived_endpoint.credential_scope.clone(),
+                credential_scope: (&derived_endpoint.credential_scope).into(),
                 remove_bucket_from_path: true,
                 region_match_regex: None,
             }),
@@ -308,14 +311,14 @@ fn just_accelerate(
             accelerate: Some(true),
             use_arn_region: None,
             bucket_is_valid_dns: Some(true),
+            custom_endpoint: Some(matches!(derived_endpoint.uri, Uri::CustomerProvided { .. })),
             docs: "virtual address compatible".to_string(),
         };
         let value = match &derived_endpoint.uri {
             Uri::Templated {
-                hostname,
                 protocol,
-                raw_pattern,
                 dns_suffix,
+                ..
             } => Ok(TableValue {
                 uri_template: Template {
                     template: format!("{}://{{bucket:0}}.s3-accelerate.{}", protocol, dns_suffix),
@@ -323,7 +326,7 @@ fn just_accelerate(
                 },
                 bucket_regex: Regex::new(".*").unwrap(),
                 header_template: Default::default(),
-                credential_scope: derived_endpoint.credential_scope.clone(),
+                credential_scope: (&derived_endpoint.credential_scope).into(),
                 remove_bucket_from_path: true,
                 region_match_regex: None,
             }),
@@ -341,7 +344,11 @@ fn virtual_addressing(
     derived_endpoint: &DerivedEndpoint,
     out: &mut Vec<TableRow>,
 ) {
-    for addressing_style in &[AddressingStyle::Virtual, AddressingStyle::Auto] {
+    for addressing_style in &[
+        AddressingStyle::Virtual,
+        AddressingStyle::Auto,
+        AddressingStyle::Path,
+    ] {
         let key = TableKey {
             region_regex: Some(region_regex.to_regex()),
             bucket_regex: Some(basic_bucket()),
@@ -349,6 +356,7 @@ fn virtual_addressing(
             dualstack: Some(false),
             accelerate: Some(false),
             use_arn_region: None,
+            custom_endpoint: Some(matches!(derived_endpoint.uri, Uri::CustomerProvided { .. })),
             bucket_is_valid_dns: Some(true),
             docs: "Dns compatible bucket with vanilla settings".to_string(),
         };
@@ -357,15 +365,30 @@ fn virtual_addressing(
                 hostname,
                 protocol,
                 ..
-            } => Ok(TableValue {
+            } if addressing_style.can_prefix() => Ok(TableValue {
                 uri_template: Template {
                     template: format!("{}://{{bucket:0}}.{}", protocol, hostname),
                     keys: vec!["region", "bucket:0"],
                 },
                 bucket_regex: Regex::new(".*").unwrap(),
                 header_template: Default::default(),
-                credential_scope: derived_endpoint.credential_scope.clone(),
+                credential_scope: (&derived_endpoint.credential_scope).into(),
                 remove_bucket_from_path: true,
+                region_match_regex: None,
+            }),
+            Uri::Templated {
+                hostname,
+                protocol,
+                ..
+            } /* implied: if !addressing_style.can_prefix() */ => Ok(TableValue {
+                uri_template: Template {
+                    template: format!("{}://{}", protocol, hostname),
+                    keys: vec!["region"],
+                },
+                bucket_regex: Regex::new(".*").unwrap(),
+                header_template: Default::default(),
+                credential_scope: (&derived_endpoint.credential_scope).into(),
+                remove_bucket_from_path: false,
                 region_match_regex: None,
             }),
             Uri::CustomerProvided {
@@ -374,37 +397,32 @@ fn virtual_addressing(
                         bucket_prefix: true,
                         ..
                     },
-            } => Ok(TableValue {
+            } if addressing_style.can_prefix() => Ok(TableValue {
                 uri_template: Template {
                     template: "{protocol}://{bucket:0}.{endpoint_url}".to_owned(),
                     keys: vec!["protocol", "endpoint_url", "bucket:0"],
                 },
                 bucket_regex: Regex::new(".*").unwrap(),
                 header_template: Default::default(),
-                credential_scope: derived_endpoint.credential_scope.clone(),
+                credential_scope: (&derived_endpoint.credential_scope).into(),
                 remove_bucket_from_path: true,
                 region_match_regex: None,
             }),
             Uri::CustomerProvided {
-                support:
-                    EndpointSupport {
-                        bucket_prefix: false,
-                        ..
-                    },
+                ..
             } => match addressing_style {
-                AddressingStyle::Auto => Ok(TableValue {
+                AddressingStyle::Auto | AddressingStyle::Path => Ok(TableValue {
                     uri_template: Template {
                         template: "{protocol}://{endpoint_url}".to_owned(),
                         keys: vec!["protocol", "endpoint_url"],
                     },
                     bucket_regex: Regex::new(".*").unwrap(),
                     header_template: Default::default(),
-                    credential_scope: derived_endpoint.credential_scope.clone(),
+                    credential_scope: (&derived_endpoint.credential_scope).into(),
                     remove_bucket_from_path: false,
                     region_match_regex: None,
                 }),
                 AddressingStyle::Virtual => Err("Custom endpoint does not support bucket prefixing but virtual addressing was configured".into()),
-                _ => unreachable!()
             },
         };
         out.push(TableRow { key, value });
@@ -415,16 +433,14 @@ fn virtual_addressing(
         addressing_style: Some(AddressingStyle::Auto),
         dualstack: Some(false),
         accelerate: Some(false),
+        custom_endpoint: Some(matches!(derived_endpoint.uri, Uri::CustomerProvided { .. })),
         use_arn_region: None,
         bucket_is_valid_dns: Some(false),
         docs: "Dns incompatible bucket with vanilla settings".to_string(),
     };
     let value = match &derived_endpoint.uri {
         Uri::Templated {
-            hostname,
-            protocol,
-            raw_pattern,
-            dns_suffix,
+            hostname, protocol, ..
         } => Ok(TableValue {
             uri_template: Template {
                 template: format!("{}://{}", protocol, hostname),
@@ -432,7 +448,7 @@ fn virtual_addressing(
             },
             bucket_regex: Regex::new(".*").unwrap(),
             header_template: Default::default(),
-            credential_scope: derived_endpoint.credential_scope.clone(),
+            credential_scope: (&derived_endpoint.credential_scope).into(),
             remove_bucket_from_path: false,
             region_match_regex: None,
         }),
@@ -443,7 +459,7 @@ fn virtual_addressing(
             },
             bucket_regex: Regex::new(".*").unwrap(),
             header_template: Default::default(),
-            credential_scope: derived_endpoint.credential_scope.clone(),
+            credential_scope: (&derived_endpoint.credential_scope).into(),
             remove_bucket_from_path: false,
             region_match_regex: None,
         }),
@@ -464,7 +480,7 @@ fn protocol(schemes: &[String]) -> &'static str {
 pub fn region_patterns(endpoint: Endpoints) -> Vec<(RegionRegex, DerivedEndpoint)> {
     let mut derived_endpoints = vec![];
     derived_endpoints.push((
-        RegionRegex::ExactMatch("custom".to_string()),
+        RegionRegex::RegexMatch(".*".to_string()),
         DerivedEndpoint {
             uri: Uri::CustomerProvided {
                 support: EndpointSupport {

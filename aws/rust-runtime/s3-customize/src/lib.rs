@@ -4,7 +4,6 @@ use regex::Regex;
 use serde::{Serialize, Serializer};
 use std::collections::HashMap;
 
-mod custom_endpoint;
 mod engine;
 mod model;
 
@@ -13,6 +12,12 @@ pub enum AddressingStyle {
     Virtual,
     Auto,
     Path,
+}
+
+impl AddressingStyle {
+    pub fn can_prefix(&self) -> bool {
+        self == &AddressingStyle::Virtual || self == &Self::Auto
+    }
 }
 
 #[derive(Debug)]
@@ -27,6 +32,7 @@ pub struct S3Config {
 pub struct Request<'a> {
     pub region: &'a str,
     pub bucket: &'a str,
+    pub custom_endpoint: bool,
     pub s3_config: S3Config,
     pub extras: HashMap<String, String>,
 }
@@ -55,7 +61,7 @@ impl Request<'_> {
         &'a self,
         mut request: &mut http::Request<B>,
         table: &'b [TableRow],
-    ) -> Result<&'b TableRow, crate::InvalidState> {
+    ) -> Result<(&'b TableRow, CredentialScope), crate::InvalidState> {
         let matching_row = table
             .into_iter()
             .find(|row| row.key.matches(self))
@@ -97,7 +103,14 @@ impl Request<'_> {
             }
         }
         self.apply_result(&mut request, &matching_value);
-        Ok(&matching_row)
+        let mut credential_scope: CredentialScope = Default::default();
+        if let Some(template) = &matching_value.credential_scope.service {
+            credential_scope.service = Some(template.to_string(&self, &matching_value));
+        }
+        if let Some(template) = &matching_value.credential_scope.region {
+            credential_scope.region = Some(template.to_string(&self, &matching_value));
+        }
+        Ok((&matching_row, credential_scope))
     }
 
     fn apply_result<B>(&self, request: &mut http::Request<B>, table_value: &TableValue) {
@@ -140,6 +153,7 @@ pub struct TableKey {
     accelerate: Option<bool>,
     use_arn_region: Option<bool>,
     bucket_is_valid_dns: Option<bool>,
+    custom_endpoint: Option<bool>,
     docs: String,
 }
 
@@ -147,6 +161,12 @@ impl TableKey {
     fn matches(&self, req: &Request) -> bool {
         if let Some(address_style) = &self.addressing_style {
             if address_style != &req.s3_config.address_style {
+                return false;
+            }
+        }
+
+        if let Some(custom_endpoint) = &self.custom_endpoint {
+            if *custom_endpoint != req.custom_endpoint {
                 return false;
             }
         }
@@ -247,10 +267,31 @@ pub struct TableValue {
     #[serde(serialize_with = "serde_regex")]
     bucket_regex: Regex,
     header_template: HashMap<String, Template>,
-    credential_scope: CredentialScope,
+    pub credential_scope: TemplateCredentialScope,
     remove_bucket_from_path: bool,
     /// Validation that the client region is appropriate for this endpoint
     region_match_regex: Option<Template>,
+}
+
+#[derive(Default, Debug, Serialize)]
+pub struct TemplateCredentialScope {
+    service: Option<Template>,
+    region: Option<Template>,
+}
+
+impl From<&CredentialScope> for TemplateCredentialScope {
+    fn from(scope: &CredentialScope) -> Self {
+        TemplateCredentialScope {
+            service: scope.service.as_ref().map(|service| Template {
+                template: service.clone(),
+                keys: vec![],
+            }),
+            region: scope.region.as_ref().map(|region| Template {
+                template: region.clone(),
+                keys: vec![],
+            }),
+        }
+    }
 }
 
 fn serde_regex<S>(regex: &Regex, s: S) -> Result<S::Ok, S::Error>
@@ -318,6 +359,7 @@ mod test {
         let bucket = "arn:aws:s3-object-lambda:us-east-1:123456789012:accesspoint/mybanner";
         let req = Request {
             region: "us-east-1",
+            custom_endpoint: false,
             bucket,
             s3_config: S3Config {
                 address_style: AddressingStyle::Virtual,
@@ -346,6 +388,7 @@ mod test {
         let req = Request {
             region: "us-east-2",
             bucket: "rust-sdk-bucket",
+            custom_endpoint: false,
             s3_config: S3Config {
                 address_style: AddressingStyle::Virtual,
                 dualstack: false,
@@ -366,6 +409,7 @@ mod test {
         let req = Request {
             region: "us-east-2",
             bucket: "rust-sdk-bucket-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            custom_endpoint: false,
             s3_config: S3Config {
                 address_style: AddressingStyle::Auto,
                 dualstack: false,
@@ -399,6 +443,7 @@ mod test {
         let req = Request {
             region: "us-east-2",
             bucket: "rust-sdk-bucket",
+            custom_endpoint: false,
             s3_config: S3Config {
                 address_style: AddressingStyle::Virtual,
                 dualstack: false,

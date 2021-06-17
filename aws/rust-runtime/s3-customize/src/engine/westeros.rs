@@ -4,7 +4,7 @@
  */
 
 use crate::engine::{DerivedEndpoint, RegionRegex};
-use crate::{AddressingStyle, TableKey, TableRow, TableValue, Template};
+use crate::{AddressingStyle, TableKey, TableRow, TableValue, Template, TemplateCredentialScope};
 use itertools::iproduct;
 use regex::Regex;
 
@@ -25,6 +25,7 @@ fn s3_access_point_regex(partition: &str) -> Regex {
 pub fn access_points_dont_support_accelerate(out: &mut Vec<TableRow>) {
     let key = TableKey {
         region_regex: None,
+        custom_endpoint: None,
         bucket_regex: Some(s3_access_point_regex("[a-zA-Z0-9-]+")),
         addressing_style: None,
         dualstack: None,
@@ -90,6 +91,7 @@ pub fn misc_arn_errors(out: &mut Vec<TableRow>) {
         out.push(TableRow {
             key: TableKey {
                 region_regex: None,
+                custom_endpoint: None,
                 bucket_regex: Some(regex.clone()),
                 addressing_style: None,
                 dualstack: None,
@@ -109,6 +111,7 @@ pub fn no_fips_in_arn(out: &mut Vec<TableRow>) {
     for regex in &[fips_in_arn_prefix, fips_in_arn_suffix] {
         out.push(TableRow {
             key: TableKey {
+                custom_endpoint: None,
                 region_regex: None,
                 bucket_regex: Some(regex.clone()),
                 addressing_style: None,
@@ -125,6 +128,8 @@ pub fn no_fips_in_arn(out: &mut Vec<TableRow>) {
 
 pub fn cross_partition_error(out: &mut Vec<TableRow>) {
     let key = TableKey {
+        // custom endpoints can't trigger cross partition errors
+        custom_endpoint: Some(false),
         region_regex: Some(Regex::new("[a-zA-Z0-9-]+").unwrap()),
         bucket_regex: Some(s3_access_point_regex("[a-zA-Z0-9-]+")),
         addressing_style: None,
@@ -163,6 +168,10 @@ pub fn fips_meta_regions(
             false => "",
         };
         let key = TableKey {
+            custom_endpoint: Some(matches!(
+                derived_endpoint.uri,
+                super::Uri::CustomerProvided { .. }
+            )),
             region_regex: Some(region_regex.clone()),
             bucket_regex: Some(s3_access_point_regex(&derived_endpoint.partition)),
             addressing_style: Some(addressing_style),
@@ -186,10 +195,9 @@ pub fn fips_meta_regions(
             (
                 ..,
                 super::Uri::Templated {
-                    hostname,
                     protocol,
-                    raw_pattern,
                     dns_suffix,
+                    ..
                 },
             ) => Ok(TableValue {
                 uri_template: Template {
@@ -229,6 +237,10 @@ pub fn vanilla_access_point_addressing(
             false => "",
         };
         let key = TableKey {
+            custom_endpoint: Some(matches!(
+                derived_endpoint.uri,
+                super::Uri::CustomerProvided { .. }
+            )),
             region_regex: Some(region_regex.to_regex()),
             bucket_regex: Some(s3_access_point_regex(&derived_endpoint.partition)),
             addressing_style: Some(addressing_style),
@@ -250,7 +262,13 @@ pub fn vanilla_access_point_addressing(
                 },
                 bucket_regex: s3_access_point_regex(&derived_endpoint.partition),
                 header_template: Default::default(),
-                credential_scope: Default::default(),
+                credential_scope: TemplateCredentialScope {
+                    service: None,
+                    region: Some(Template {
+                        template: template_region.to_string(),
+                        keys: vec!["region", "bucket:2"]
+                    })
+                },
                 remove_bucket_from_path: true,
                 region_match_regex: None
             }),

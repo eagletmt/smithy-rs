@@ -45,6 +45,19 @@ class S3Decorator : RustCodegenDecorator {
         }
     }
 
+    /*
+    override fun transformModel(service: ServiceShape, model: Model): Model {
+        return model.letIf(applies(service.id)) {
+            ModelTransformer.create().mapShapes(model) {
+                if (it is StructureShape && it.id == ShapeId.from("com.amazonaws.s3#GetBucketLocationOutput")) {
+                    it.toBuilder().addTrait(UnwrappedResponseTrait()).build()
+                } else {
+                    it
+                }
+            }
+        }
+    }*/
+
     override fun libRsCustomizations(
         protocolConfig: ProtocolConfig,
         baseCustomizations: List<LibRsCustomization>
