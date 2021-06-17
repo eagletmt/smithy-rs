@@ -1,245 +1,258 @@
 [
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3.amazonaws.com",
-    "Region": "us-east-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3.amazonaws.com" },
+    "region": "us-east-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3.us-west-1.amazonaws.com",
-    "Region": "us-west-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3.us-west-1.amazonaws.com" },
+    "region": "us-west-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-with-number-1",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-with-number-1.s3.us-west-1.amazonaws.com",
-    "Region": "us-west-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-with-number-1",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-with-number-1.s3.us-west-1.amazonaws.com" },
+    "region": "us-west-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3.cn-north-1.amazonaws.com.cn",
-    "Region": "cn-north-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3.cn-north-1.amazonaws.com.cn" },
+    "region": "cn-north-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "BucketName",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://s3.amazonaws.com/BucketName",
-    "Region": "us-east-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "BucketName",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://s3.amazonaws.com/BucketName" },
+    "region": "us-east-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "BucketName",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://s3.amazonaws.com/BucketName",
-    "Region": "us-east-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "BucketName",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://s3.amazonaws.com/BucketName" },
+    "region": "us-east-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket_name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://s3.us-west-1.amazonaws.com/bucket_name",
-    "Region": "us-west-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket_name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://s3.us-west-1.amazonaws.com/bucket_name" },
+    "region": "us-west-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket.name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://s3.us-west-1.amazonaws.com/bucket.name",
-    "Region": "us-west-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket.name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://s3.us-west-1.amazonaws.com/bucket.name" },
+    "region": "us-west-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "-bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://s3.us-west-1.amazonaws.com/-bucket-name",
-    "Region": "us-west-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "-bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://s3.us-west-1.amazonaws.com/-bucket-name" },
+    "region": "us-west-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name-",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://s3.us-west-1.amazonaws.com/bucket-name-",
-    "Region": "us-west-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name-",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://s3.us-west-1.amazonaws.com/bucket-name-" },
+    "region": "us-west-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "aa",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://s3.us-west-1.amazonaws.com/aa",
-    "Region": "us-west-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "aa",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://s3.us-west-1.amazonaws.com/aa" },
+    "region": "us-west-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://s3.us-west-1.amazonaws.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    "Region": "us-west-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://s3.us-west-1.amazonaws.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" },
+    "region": "us-west-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3-accelerate.amazonaws.com",
-    "Region": "us-east-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": true,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3-accelerate.amazonaws.com" },
+    "region": "us-east-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": true,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3-accelerate.amazonaws.com",
-    "Region": "us-west-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": true,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3-accelerate.amazonaws.com" },
+    "region": "us-west-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": true,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3.dualstack.us-east-1.amazonaws.com",
-    "Region": "us-east-1",
-    "UseDualstack": true,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3.dualstack.us-east-1.amazonaws.com" },
+    "region": "us-east-1",
+    "use_dualstack": true,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3.dualstack.us-west-2.amazonaws.com",
-    "Region": "us-west-2",
-    "UseDualstack": true,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3.dualstack.us-west-2.amazonaws.com" },
+    "region": "us-west-2",
+    "use_dualstack": true,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket.name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://s3.dualstack.us-west-2.amazonaws.com/bucket.name",
-    "Region": "us-west-2",
-    "UseDualstack": true,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket.name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://s3.dualstack.us-west-2.amazonaws.com/bucket.name" },
+    "region": "us-west-2",
+    "use_dualstack": true,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3-accelerate.dualstack.amazonaws.com",
-    "Region": "us-east-1",
-    "UseDualstack": true,
-    "UseS3Accelerate": true,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3-accelerate.dualstack.amazonaws.com" },
+    "region": "us-east-1",
+    "use_dualstack": true,
+    "use_s3_accelerate": true,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "path",
-    "ExpectedUri": "https://s3.amazonaws.com/bucket-name",
-    "Region": "us-east-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "path",
+    "endpoint": { "Ok": "https://s3.amazonaws.com/bucket-name" },
+    "region": "us-east-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "path",
-    "ExpectedUri": "https://bucket-name.s3-accelerate.amazonaws.com",
-    "Region": "us-east-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": true,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "path",
+    "endpoint": { "Ok": "https://bucket-name.s3-accelerate.amazonaws.com" },
+    "region": "us-east-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": true,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "path",
-    "ExpectedUri": "https://s3.dualstack.us-east-1.amazonaws.com/bucket-name",
-    "Region": "us-east-1",
-    "UseDualstack": true,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "path",
+    "endpoint": { "Ok": "https://s3.dualstack.us-east-1.amazonaws.com/bucket-name" },
+    "region": "us-east-1",
+    "use_dualstack": true,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "path",
-    "ExpectedUri": "https://bucket-name.s3-accelerate.dualstack.amazonaws.com",
-    "Region": "us-east-1",
-    "UseDualstack": true,
-    "UseS3Accelerate": true,
-    "S3UsEast1RegionalEndpoint": "legacy"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "path",
+    "endpoint": { "Ok": "https://bucket-name.s3-accelerate.dualstack.amazonaws.com" },
+    "region": "us-east-1",
+    "use_dualstack": true,
+    "use_s3_accelerate": true,
+    "us_east_1_regional_endpoint": "legacy"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3.us-east-1.amazonaws.com",
-    "Region": "us-east-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "regional"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3.us-east-1.amazonaws.com" },
+    "region": "us-east-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "regional"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3.us-west-2.amazonaws.com",
-    "Region": "us-west-2",
-    "UseDualstack": false,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "regional"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3.us-west-2.amazonaws.com" },
+    "region": "us-west-2",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "regional"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3.dualstack.us-east-1.amazonaws.com",
-    "Region": "us-east-1",
-    "UseDualstack": true,
-    "UseS3Accelerate": false,
-    "S3UsEast1RegionalEndpoint": "regional"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3.dualstack.us-east-1.amazonaws.com" },
+    "region": "us-east-1",
+    "use_dualstack": true,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "regional"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3-accelerate.amazonaws.com",
-    "Region": "us-east-1",
-    "UseDualstack": false,
-    "UseS3Accelerate": true,
-    "S3UsEast1RegionalEndpoint": "regional"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3-accelerate.amazonaws.com" },
+    "region": "us-east-1",
+    "use_dualstack": false,
+    "use_s3_accelerate": true,
+    "us_east_1_regional_endpoint": "regional"
   },
   {
-    "Bucket": "bucket-name",
-    "ConfiguredAddressingStyle": "default",
-    "ExpectedUri": "https://bucket-name.s3-accelerate.dualstack.amazonaws.com",
-    "Region": "us-east-1",
-    "UseDualstack": true,
-    "UseS3Accelerate": true,
-    "S3UsEast1RegionalEndpoint": "regional"
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.s3-accelerate.dualstack.amazonaws.com" },
+    "region": "us-east-1",
+    "use_dualstack": true,
+    "use_s3_accelerate": true,
+    "us_east_1_regional_endpoint": "regional"
+  },
+  {
+    "bucket": "bucket-name",
+    "configured_addressing_style": "default",
+    "endpoint": { "Ok": "https://bucket-name.my-custom-endpoint.example.com" },
+    "region": "custom",
+    "use_dualstack": false,
+    "use_s3_accelerate": false,
+    "us_east_1_regional_endpoint": "regional",
+    "extras": {
+      "endpoint_url": "my-custom-endpoint.example.com",
+      "protocol": "https"
+    }
   }
 ]

@@ -172,18 +172,30 @@ pub fn fips_meta_regions(
             bucket_is_valid_dns: None,
             docs: "s3 access points, dualstack / accelerate disabled".to_string(),
         };
-        let value = match (use_arn_region, derived_endpoint.regional_endpoint) {
-            (false, false) => {
+        let value = match (
+            use_arn_region,
+            derived_endpoint.regional_endpoint,
+            &derived_endpoint.uri,
+        ) {
+            (false, false, _) => {
                 Err("Invalid configuration, client region is not a regional endpoint".to_string())
             }
-            _ => Ok(TableValue {
+            (_, _, super::Uri::CustomerProvided { .. }) => {
+                Err("Invalid configuration, cannot use fips".into())
+            }
+            (
+                ..,
+                super::Uri::Templated {
+                    hostname,
+                    protocol,
+                    raw_pattern,
+                    dns_suffix,
+                },
+            ) => Ok(TableValue {
                 uri_template: Template {
                     template: format!(
                         "{}://{{bucket:4}}-{{bucket:3}}.s3-accesspoint-fips{}.{}.{}",
-                        derived_endpoint.protocol,
-                        dualstack_segment,
-                        template_region,
-                        derived_endpoint.dns_suffix
+                        protocol, dualstack_segment, template_region, dns_suffix
                     ),
                     keys: vec!["region", "bucket:2", "bucket:3", "bucket:4"],
                 },
@@ -226,19 +238,30 @@ pub fn vanilla_access_point_addressing(
             bucket_is_valid_dns: None,
             docs: "s3 access points, dualstack / accelerate disabled".to_string(),
         };
-        let value = match (use_arn_region, derived_endpoint.regional_endpoint) {
-            (false, false) => {
+        let value = match (use_arn_region, derived_endpoint.regional_endpoint, &derived_endpoint.uri) {
+            (false, false, _) => {
                 Err("Invalid configuration, client region is not a regional endpoint".to_string())
-            }
-            //(true, _) if derived_endpoint.partition !=  =>
-            _ => Ok(TableValue {
+            },
+            (_, _, super::Uri::CustomerProvided { support: super::EndpointSupport { access_points: false, ..} }) => Err("Using an AP was specified but the URL does not support access points".to_string()),
+            (_, _, super::Uri::CustomerProvided { support: super::EndpointSupport { access_points: true, ..} }) => Ok(TableValue {
+                uri_template: Template {
+                    template: "{protocol}://{bucket:4}-{bucket:3}.{endpoint_url}".to_string(),
+                    keys: vec!["protocol", "endpoint_url", "bucket:3", "bucket:4"],
+                },
+                bucket_regex: s3_access_point_regex(&derived_endpoint.partition),
+                header_template: Default::default(),
+                credential_scope: Default::default(),
+                remove_bucket_from_path: true,
+                region_match_regex: None
+            }),
+            (_, _, super::Uri::Templated { protocol, dns_suffix, .. }) => Ok(TableValue {
                 uri_template: Template {
                     template: format!(
-                        "{}://{{bucket:4}}-{{bucket:3}}.s3-accesspoint{}.{}.{}",
-                        derived_endpoint.protocol,
-                        dualstack_segment,
-                        template_region,
-                        derived_endpoint.dns_suffix
+                        "{protocol}://{{bucket:4}}-{{bucket:3}}.s3-accesspoint{dualstack}.{region}.{dns_suffix}",
+                        protocol = protocol,
+                        dualstack = dualstack_segment,
+                        region = template_region,
+                        dns_suffix = dns_suffix
                     ),
                     keys: vec!["region", "bucket:2", "bucket:3", "bucket:4"],
                 },
@@ -264,7 +287,6 @@ pub fn vanilla_access_point_addressing(
 mod tests {
     use super::*;
 
-    //#[test]
     fn validate_regex() {
         assert!(s3_access_point_regex("s3")
             .is_match("arn:aws:s3:us-west-2:123456789012:accesspoint:fink"))

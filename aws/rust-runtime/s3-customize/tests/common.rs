@@ -5,48 +5,52 @@
 
 use s3_customize::{AddressingStyle, S3Config, TableRow};
 use serde::Deserialize;
-use std::error::Error;
-use std::fs;
-use std::time::Instant;
+use std::collections::HashMap;
 
 #[derive(Deserialize, Debug)]
-struct TestCase {
-    bucket: String,
-    endpoint: Result<String, String>,
-    region: String,
-    use_dualstack: bool,
-    use_s3_accelerate: bool,
-    use_arn_region: bool,
+pub struct TestCase {
+    pub bucket: String,
+    pub endpoint: Result<String, String>,
+    pub region: String,
+    pub use_dualstack: bool,
+    pub use_s3_accelerate: bool,
+    #[serde(default)]
+    pub use_arn_region: bool,
+    #[serde(default)]
+    pub us_east_1_regional_endpoint: String,
+    #[serde(default)]
+    pub configured_addressing_style: Option<String>,
+    #[serde(default)]
+    pub extras: HashMap<String, String>,
 }
 
-#[test]
-fn run_test_cases() -> Result<(), Box<dyn Error>> {
-    let test_cases = fs::read_to_string("test-data/westeros.json")?;
-    let test_cases: Vec<TestCase> = serde_json::from_str(&test_cases)?;
-    let table = s3_customize::complete_table()?;
-    let now = Instant::now();
-    for test_case in &test_cases {
-        check(&test_case, &table)
+impl TestCase {
+    pub fn addressing_style(&self) -> AddressingStyle {
+        match &self
+            .configured_addressing_style
+            .as_ref()
+            .map(|s| s.as_str())
+        {
+            Some("default") => AddressingStyle::Auto,
+            Some("virtual") => AddressingStyle::Virtual,
+            Some("path") => AddressingStyle::Path,
+            Some(other) => todo!("{}", other),
+            None => AddressingStyle::Auto,
+        }
     }
-    let after = Instant::now();
-    println!(
-        "delta: {:?}, total cases: {}",
-        after - now,
-        test_cases.len()
-    );
-    Ok(())
 }
 
-fn check(test_case: &TestCase, table: &[TableRow]) {
+pub fn check(test_case: &TestCase, table: &[TableRow]) {
     let request = s3_customize::Request {
         region: &test_case.region,
         bucket: &test_case.bucket,
         s3_config: S3Config {
-            address_style: AddressingStyle::Auto,
+            address_style: test_case.addressing_style(),
             dualstack: test_case.use_dualstack,
             accelerate: test_case.use_s3_accelerate,
             use_arn_region: test_case.use_arn_region,
         },
+        extras: test_case.extras.clone(),
     };
 
     let mut input_request = http::Request::builder()

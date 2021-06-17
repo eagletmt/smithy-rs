@@ -4,6 +4,7 @@ use regex::Regex;
 use serde::{Serialize, Serializer};
 use std::collections::HashMap;
 
+mod custom_endpoint;
 mod engine;
 mod model;
 
@@ -27,6 +28,7 @@ pub struct Request<'a> {
     pub region: &'a str,
     pub bucket: &'a str,
     pub s3_config: S3Config,
+    pub extras: HashMap<String, String>,
 }
 
 pub use engine::complete_table;
@@ -98,30 +100,9 @@ impl Request<'_> {
         Ok(&matching_row)
     }
 
-    fn apply_result<B>(&self, request: &mut http::Request<B>, table_result: &TableValue) {
-        let mut base_uri = table_result.uri_template.template.as_str().to_string();
-        for key in &table_result.uri_template.keys {
-            if key == &"region" {
-                base_uri = base_uri.replace("{region}", self.region);
-            } else {
-                let capture_group: usize = key
-                    .strip_prefix("bucket:")
-                    .expect("key must be bucket regex")
-                    .parse()
-                    .expect("must be valid int");
-                base_uri = base_uri.replace(
-                    &format!("{{{}}}", key),
-                    table_result
-                        .bucket_regex
-                        .captures(self.bucket)
-                        .expect("must have captures")
-                        .get(capture_group)
-                        .expect("capture group must exist")
-                        .as_str(),
-                );
-            }
-        }
-        let new_path = if table_result.remove_bucket_from_path {
+    fn apply_result<B>(&self, request: &mut http::Request<B>, table_value: &TableValue) {
+        let base_uri = table_value.uri_template.to_string(&self, &table_value);
+        let new_path = if table_value.remove_bucket_from_path {
             let path = request
                 .uri()
                 .path_and_query()
@@ -222,7 +203,41 @@ impl Template {
         for key in &self.keys {
             patt = patt.replace(&format!("{{{}}}", key), "");
         }
-        assert_eq!(patt.find("{"), None, "invalid pattern: {}", self.template);
+        assert_eq!(
+            patt.find(|c: char| ['{', '}'].contains(&c)),
+            None,
+            "invalid pattern: {}",
+            self.template
+        );
+    }
+
+    fn to_string(&self, request: &Request, result: &TableValue) -> String {
+        let mut out = self.template.clone();
+        for key in &self.keys {
+            let value = match *key {
+                "region" => request.region,
+                bucket_idx if bucket_idx.starts_with("bucket:") => {
+                    let capture_group = bucket_idx
+                        .strip_prefix("bucket:")
+                        .expect("must give capture group")
+                        .parse()
+                        .expect("must be integer");
+                    result
+                        .bucket_regex
+                        .captures(request.bucket)
+                        .expect("must have captures")
+                        .get(capture_group)
+                        .expect("capture group must exist")
+                        .as_str()
+                }
+                other => request
+                    .extras
+                    .get(other)
+                    .expect(&format!("extras must specify key: {}", other)),
+            };
+            out = out.replace(&format!("{{{}}}", key), value);
+        }
+        out
     }
 }
 
@@ -268,6 +283,7 @@ mod test {
     use crate::{engine, model, AddressingStyle, Request, S3Config, TableValue, Template};
     use http::{Method, Uri};
     use regex::Regex;
+    use std::collections::HashMap;
     use std::error::Error;
     use std::fs::File;
     use std::io::Read;
@@ -309,6 +325,7 @@ mod test {
                 accelerate: false,
                 use_arn_region: false,
             },
+            extras: HashMap::new(),
         };
         let mut http_req = http::Request::builder()
             .uri(format!("/{}?foo", bucket))
@@ -335,6 +352,7 @@ mod test {
                 accelerate: false,
                 use_arn_region: false,
             },
+            extras: HashMap::new(),
         };
         let table = engine::complete_table().expect("should be able to build table");
         let mut http_req = request("rust-sdk-bucket");
@@ -354,6 +372,7 @@ mod test {
                 accelerate: false,
                 use_arn_region: false,
             },
+            extras: HashMap::new(),
         };
         assert_eq!(req.bucket_is_valid_dns(), false);
         let table = engine::complete_table().expect("should be able to build table");
@@ -386,6 +405,7 @@ mod test {
                 accelerate: false,
                 use_arn_region: false,
             },
+            extras: HashMap::new(),
         };
         let output_match = TableValue {
             uri_template: Template {
